@@ -41,11 +41,11 @@
       const title = node('h3', video.name); title.title = video.name;
       const meta = node('p'); meta.append(node('span', formatSize(video.size_in_bytes)), node('span', '从头播放 ↗'));
       const features = node('div', undefined, 'video-capabilities');
-      for (const [key, label] of [['open_clip', '语义'], ['owlv2', '物体'], ['insightface', '人脸']]) {
+      for (const [key, label] of [['insightface', '人脸']]) {
         const available = Object.entries(video.features).some(([model, count]) => model.includes(key) && count > 0);
         features.append(node('span', available ? `${label}可检索` : `未检出${label}特征`, available ? '' : 'muted'));
       }
-      features.append(node('span',video.action_segments ? `动作可检索 · ${video.action_segments} 段` : '动作待补建',video.action_segments ? '' : 'muted'));
+      features.append(node('span',video.action_segments ? `图文 / 动作可检索 · ${video.action_segments} 段` : 'Qwen 片段待补建',video.action_segments ? '' : 'muted'));
       info.append(title, meta, features); card.append(picture, info); card.onclick = () => playVideo(video); grid.append(card);
     }
   }
@@ -54,8 +54,7 @@
       const data = await api('/mvp-api/videos'); videos = data.videos;
       el('library-summary').textContent = `${data.count} 个视频 · 总时长 ${formatTime(data.total_duration)} · 点击任一视频直接播放`;
       el('library-error').hidden = true; renderVideos();
-      const info = await api('/demo/info');
-      el('library').textContent = `本机视频库已连接 · ${info.num_media_files} 段素材 / ${info.num_vectors} 条特征 / 可定位播放`;
+      el('library').textContent = `本机视频库已连接 · ${data.count} 段素材 / ${videos.reduce((n,v)=>n+v.action_segments,0)} 个 Qwen 片段 / 可定位播放`;
     } catch (error) { el('library-error').hidden = false; el('library-error').textContent = `视频库读取失败：${error.message}`; }
   }
   function renderJobs() {

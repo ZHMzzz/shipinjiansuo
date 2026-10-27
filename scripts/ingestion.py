@@ -45,7 +45,7 @@ class IngestionManager:
         self.publisher = publisher
         self.action_builder = action_builder
         self.backfill_requested = action_builder is not None
-        self.action_state = {'status': 'pending', 'progress': 0, 'message': '正在检查已有视频的动作索引'}
+        self.action_state = {'status': 'pending', 'progress': 0, 'message': '正在检查已有视频的 Qwen 片段索引'}
         self.dbpath = self.root / 'data/ingestion.sqlite'
         self.uploads = self.root / 'data/uploads'
         self.uploads.mkdir(parents=True, exist_ok=True)
@@ -172,7 +172,7 @@ class IngestionManager:
     def request_backfill(self):
         if self.action_state['status'] in ('pending', 'building'):
             return
-        self.action_state = {'status': 'pending', 'progress': 0, 'message': '等待补建动作索引'}
+        self.action_state = {'status': 'pending', 'progress': 0, 'message': '等待补建 Qwen 片段索引'}
         self.backfill_requested = True
         self.wakeup.set()
 
@@ -192,7 +192,7 @@ class IngestionManager:
             self.action_state = {'status': 'building', 'progress': percent,
                 'completed_segments': done, 'total_segments': total, 'message': message}
             if jid:
-                self.update(jid, status='action_indexing', stage='建立动作片段索引',
+                self.update(jid, status='action_indexing', stage='建立Qwen 片段索引',
                     progress=85+10*percent/100, message=message)
         self.wait_async(self.action_builder(stage, progress))
 
@@ -203,13 +203,13 @@ class IngestionManager:
             from action_search import read_snapshot
             current = (self.root/'projects/demo').resolve()
             if read_snapshot(current, complete=True):
-                self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持动作检索'}
+                self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持 Qwen 片段检索'}
                 return
         except Exception:
             # Missing, outdated or damaged action indexes are rebuilt on a copy.
             pass
         try:
-            self.action_state = {'status': 'building', 'progress': 0, 'message': '准备补建已有视频的动作索引'}
+            self.action_state = {'status': 'building', 'progress': 0, 'message': '准备补建已有视频的 Qwen 片段索引'}
             shutil.copytree((self.root/'projects/demo').resolve(), stage)
             try:
                 read_snapshot(stage)
@@ -217,7 +217,7 @@ class IngestionManager:
                 shutil.rmtree(stage/'action-index', ignore_errors=True)
             self.build_actions(stage)
             self.wait_async(self.publisher(stage))
-            self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持动作检索'}
+            self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持 Qwen 片段检索'}
         except Exception as exc:
             self.action_state = {'status': 'failed', 'progress': 0, 'message': str(exc)[:1500]}
         finally:
@@ -275,23 +275,28 @@ class IngestionManager:
                 self.run([str(self.root/'.media-runtime/bin/ffmpeg'),'-y','-v','error','-nostdin','-i',str(folder/('source'+job['suffix'])),
                     '-map','0:v:0','-map','0:a:0?','-vf',"scale=640:640:force_original_aspect_ratio=decrease:force_divisible_by=2",'-c:v','libx264','-crf','23','-preset','fast','-pix_fmt','yuv420p','-c:a','aac','-movflags','+faststart','-progress','pipe:1',str(video)],log,transcode_progress)
                 if shutil.disk_usage(self.root).free < 2*1024**3: raise RuntimeError('磁盘空间不足，无法创建新索引版本')
-                self.update(jid,status='extracting',stage='提取三路特征',progress=15,message='加载模型，随后提取语义、物体和人脸特征')
+                self.update(jid,status='extracting',stage='提取人脸特征',progress=15,message='提取人脸特征，随后建立 Qwen 片段索引')
                 shutil.copytree((self.root/'projects/demo').resolve(),stage)
-                expected=max(1,math.ceil(duration*2)*3)
+                try:
+                    from .qwen_project import validate_face_project, FACE
+                except ImportError:
+                    from qwen_project import validate_face_project, FACE
+                validate_face_project(stage)
+                expected=max(1,math.ceil(duration*2))
                 def extraction_progress(line):
                     match=re.search(r'Feature extraction:\s*(\d+)it',line)
                     if match:
                         done=int(match[1])
                         self.update(jid,progress=min(78,15+63*done/expected),message=f'已完成 {done} 次帧特征计算，预计约 {expected} 次')
                 self.run([sys.executable,'-u','-m','wise','extract-features',str(prepared),'--project-dir',str(stage),'--num-workers','0','--yes'],log,extraction_progress)
-                self.update(jid,status='indexing',stage='构建检索索引',progress=80,message='合并新旧特征，构建三路检索索引')
+                self.update(jid,status='indexing',stage='构建检索索引',progress=80,message='合并新旧人脸特征，构建人脸检索索引')
                 self.run([sys.executable,'-u','-m','wise','create-index','--project-dir',str(stage),'--overwrite'],log)
             with sqlite3.connect(stage/'metadata/internal.db') as db:
                 row=db.execute('SELECT media.id FROM media JOIN source_collections s ON s.id=media.source_collection_id WHERE s.location=?',(str(prepared),)).fetchone()
                 if not row: raise RuntimeError('处理结束但没有产生视频记录，未发布此任务')
                 media_id=row[0]
                 counts=dict(db.execute('SELECT feature_extractor_id,count(*) FROM vectors WHERE media_id=? GROUP BY feature_extractor_id',(media_id,)))
-                if not any('open_clip' in k and v>0 for k,v in counts.items()): raise RuntimeError('缺少视频语义特征，未发布此任务')
+                if set(counts) - {FACE}: raise RuntimeError('出现已停用的特征模型，未发布此任务')
             with sqlite3.connect(stage/'thumbs.db') as db:
                 if not db.execute('SELECT count(*) FROM thumbnails WHERE media_id=?',(media_id,)).fetchone()[0]:
                     raise RuntimeError('缺少视频缩略图，未发布此任务')
@@ -310,7 +315,7 @@ class IngestionManager:
                         raise RuntimeError('发布等待已中断，可重试处理')
             published=True
             if self.action_builder:
-                self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持动作检索'}
+                self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持 Qwen 片段检索'}
             self.update(jid,status='completed',stage='已入库',progress=100,media_id=media_id,message='已加入视频库，可直接播放和检索')
         except Exception as exc:
             # If pointer publication succeeded immediately before an interruption,

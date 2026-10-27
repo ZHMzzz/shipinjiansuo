@@ -4,6 +4,7 @@ import math
 import sqlite3
 import time
 import gc
+import hashlib
 from collections import OrderedDict
 from pathlib import Path
 
@@ -183,30 +184,61 @@ class ActionEngine:
             self.snapshot, self.cached_project = snapshot, project
         return self.snapshot
 
-    def search(self, project, query, limit):
+    def query_vector(self, query='', image=None, negative=''):
+        query, negative = query.strip(), negative.strip()
+        if not query and image is None and not negative:
+            raise ValueError('请输入描述或提供参考图片')
+        digest = None if image is None else hashlib.sha256(
+            str((image.mode, image.size)).encode()+image.tobytes()).hexdigest()
+        key = query if image is None and not negative else (query, digest, negative)
+        cached = key in self.query_vectors
+        if cached:
+            vector = self.query_vectors[key]
+            self.query_vectors.move_to_end(key)
+        else:
+            model = self.model()
+            vector = (model.extract_query_features(image, query) if image is not None else
+                      model.extract_text_features([query]) if query else None)
+            if negative:
+                excluded = model.extract_text_features([negative]).astype('float32')
+                vector = -excluded if vector is None else vector - .2 * excluded
+            vector = np.asarray(vector, dtype='float32')
+            norm = np.linalg.norm(vector, axis=-1, keepdims=True)
+            if not np.isfinite(vector).all() or np.any(norm < 1e-8):
+                raise RuntimeError('查询向量无效，请重试')
+            vector = vector / norm
+            self.query_vectors[key] = vector
+            if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
+        return vector, cached
+
+    def search(self, project, query, limit, *, image=None, negative='', unique_videos=False):
         snapshot = self.get_snapshot(project)
-        if snapshot is None: raise ValueError('动作索引正在补建，请查看视频库中的动作索引进度')
+        if snapshot is None: raise ValueError('Qwen 片段索引正在补建，请查看视频库中的索引进度')
         meta, vectors, index = snapshot
         started = time.perf_counter()
-        cached = query in self.query_vectors
-        if cached:
-            vector = self.query_vectors[query]
-            self.query_vectors.move_to_end(query)
-        else:
-            vector = self.model().extract_text_features([query]).astype('float32')
-            if not np.isfinite(vector).all(): raise RuntimeError('查询向量无效，请重试')
-            self.query_vectors[query] = vector
-            if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
-        if not np.isfinite(vector).all(): raise RuntimeError('查询向量无效，请重试')
+        vector, cached = self.query_vector(query, image, negative)
         encoded = time.perf_counter()
-        scores, ids = index.search(vector, min(index.ntotal, max(limit*5, 100)))
-        hits = select_hits(meta['segments'], scores[0], ids[0], limit)
+        # Search every segment for video-level ranking: a long source video must
+        # not consume the entire shortlist and hide other source videos.
+        scores, ids = index.search(vector, index.ntotal if unique_videos else min(index.ntotal, max(limit*5, 100)))
+        if unique_videos:
+            hits, seen = [], set()
+            for score, idx in zip(scores[0], ids[0]):
+                if idx < 0: continue
+                item = meta['segments'][int(idx)]
+                if item['media_id'] in seen: continue
+                seen.add(item['media_id']); hits.append({**item, 'distance':float(score)})
+                if len(hits) >= limit: break
+        else:
+            hits = select_hits(meta['segments'], scores[0], ids[0], limit)
         videos = {m['id']: {'filename': m['path'], 'duration': m['duration']} for m in meta['media']}
         for hit in hits:
             mid = hit['media_id']; preview = (hit['ts']+hit['te'])/2
             hit.update(thumbnail_ts=preview, thumbnail=f'/demo/thumbnail?media_id={mid}&timestamp={preview}',
                        link=f'/demo/media/{mid}#t={hit["ts"]},{hit["te"]}')
-        return {'score_kind': 'action', 'query': query, 'settings': SETTINGS,
+        return {'score_kind': 'segment' if unique_videos else 'action', 'query': query,
+                'negative': negative, 'query_kind': 'image_text' if image is not None and query else 'image' if image is not None else 'text',
+                'settings': SETTINGS,
                 'query_embedding_cached': cached,
                 'encode_seconds': encoded-started, 'search_seconds': time.perf_counter()-encoded,
                 'indexed_videos': len(meta['media']), 'indexed_segments': len(meta['segments']),

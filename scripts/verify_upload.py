@@ -14,25 +14,29 @@ assert current['status']=='completed',current
 mid=str(current['media_id'])
 videos=requests.get(BASE+'/mvp-api/videos').json()['videos']
 video=next(v for v in videos if str(v['id'])==mid)
-assert all(any(key in model and count>0 for model,count in video['features'].items()) for key in ['open_clip','owlv2','insightface'])
+assert video['action_segments']>0
+assert video['features'] and all('insightface' in model for model in video['features'])
 report['video']=video
 report['processing_seconds']=round(current['updated']-current['created'],2)
 image=(ROOT/'logs/test-fixtures/new-video-query.jpg').read_bytes()
-for kind,model in [('semantic','mlfoundations/open_clip/ViT-B-16-SigLIP2-256/webli'),('object','transformers/owlv2/google/owlv2-base-patch16-ensemble'),('face','deepinsight/insightface/buffalo_l/_unknown')]:
-    params={'search_in':'video','feature_extractor_id':model,'end':100,'thumbnails_to_send':1,'add_prefix':'false'}
-    files={'image_file_queries':('query.jpg',image,'image/jpeg')}
-    if kind=='semantic':
-        params['text_queries']='穿橙色衣服的小孩坐在地毯上'
-        files=None
-    r=requests.post(BASE+'/demo/search',params=params,files=files,timeout=30)
+for kind in ['semantic','image','face']:
+    if kind=='face':
+        r=requests.post(BASE+'/demo/search',params={'search_in':'video',
+            'feature_extractor_id':'deepinsight/insightface/buffalo_l/_unknown',
+            'end':100,'thumbnails_to_send':1,'add_prefix':'false'},
+            files={'image_file_queries':('query.jpg',image,'image/jpeg')},timeout=120)
+    else:
+        r=requests.post(BASE+'/mvp-api/search',
+            data={'query':'穿橙色衣服的小孩坐在地毯上'} if kind=='semantic' else {},
+            files={'photo':('query.jpg',image,'image/jpeg')} if kind=='image' else None,timeout=120)
     r.raise_for_status()
     hits=r.json()['video_results']['unmerged_windows']
-    assert mid in [h['media_id'] for h in hits],(kind,'uploaded video missing')
-    report[kind]={'top_media_id':hits[0]['media_id'],'uploaded_hit_rank':next(i+1 for i,h in enumerate(hits) if h['media_id']==mid)}
+    assert mid in [str(h['media_id']) for h in hits],(kind,'uploaded video missing')
+    report[kind]={'top_media_id':hits[0]['media_id'],'uploaded_hit_rank':next(i+1 for i,h in enumerate(hits) if str(h['media_id'])==mid)}
 r=requests.post(BASE+'/mvp-api/trace',files={'photo':('query.jpg',image,'image/jpeg')},timeout=30)
 r.raise_for_status()
 top=r.json()['video_results']['unmerged_windows'][0]
-assert top['media_id']==mid,top
+assert str(top['media_id'])==mid,top
 report['trace']={'media_id':top['media_id'],'time':top['thumbnail_ts']}
 for endpoint in [video['url'],video['thumbnail']]:
     r=requests.get(BASE+endpoint,headers={'Range':'bytes=0-1023'},timeout=10)

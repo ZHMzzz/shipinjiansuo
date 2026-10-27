@@ -5,21 +5,18 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'http://127.0.0.1:9670'
-MODEL = 'mlfoundations/open_clip/ViT-B-16-SigLIP2-256/webli'
 
 
 def query(text, negative='', image=False):
-    params = dict(search_in='video', feature_extractor_id=MODEL, end=100,
-                  thumbnails_to_send=0, add_prefix='false', text_queries=text)
-    if negative: params['negative_text_queries'] = negative
-    files = {'image_file_queries': ('bag.jpg', (ROOT/'data/queries/backpack-independent.jpg').read_bytes(), 'image/jpeg')} if image else None
-    response = requests.post(BASE+'/demo/search', params=params, files=files, timeout=30)
+    data = dict(query=text, negative=negative)
+    files = {'photo': ('bag.jpg', (ROOT/'data/queries/backpack-independent.jpg').read_bytes(), 'image/jpeg')} if image else None
+    response = requests.post(BASE+'/mvp-api/search', data=data, files=files, timeout=120)
     response.raise_for_status()
     data = response.json()['video_results']
     seen, hits = set(), []
     for hit in data['unmerged_windows']:
         if hit['media_id'] not in seen:
-            hits.append(dict(video=data['videos'][hit['media_id']]['filename'], score=hit['distance'], time=hit['ts']))
+            hits.append(dict(video=data['videos'][str(hit['media_id'])]['filename'], score=hit['distance'], time=hit['ts']))
             seen.add(hit['media_id'])
     return hits[:5]
 
@@ -44,9 +41,11 @@ if __name__ == '__main__':
     response.raise_for_status()
     data = response.json()
     hits = data['video_results']['unmerged_windows']
-    assert data['score_kind'] == 'fusion'
+    assert data['score_kind'] == 'fusion' and data['scene_scope']=='containing_segment'
     assert hits and all(h['face_similarity'] >= .45 for h in hits)
-    assert all('coughing-6XvsLPDioVA' in data['video_results']['videos'][h['media_id']]['filename'] for h in hits)
+    assert all(h['scene_ts']<=h['thumbnail_ts']<h['scene_te'] for h in hits)
+    assert all('coughing-6XvsLPDioVA' in data['video_results']['videos'][h['media_id']]['filename'] or
+               data['video_results']['videos'][h['media_id']]['filename']=='Qwen人脸入库回归.mp4' for h in hits)
     report['person_scene'] = dict(hits=len(hits), first={k:v for k,v in hits[0].items() if k!='thumbnail'})
     response = requests.post(BASE+'/mvp-api/people/演示人物A/search',
                              data=dict(scene='汽车', threshold=1), timeout=30)

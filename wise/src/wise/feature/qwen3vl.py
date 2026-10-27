@@ -70,7 +70,7 @@ class Qwen3VLEmbeddingFeatureExtractor(FeatureExtractor):
     """Segment-level video feature extractor using Qwen3-VL-Embedding models.
 
     Produces one embedding vector per video segment (multiple frames -> one vector).
-    Supports video_segment and text modalities.
+    Supports video_segment and text modalities plus joint image/text queries.
     """
 
     ID_PREFIX = "hf/Qwen/Qwen3-VL-Embedding/"
@@ -304,6 +304,30 @@ class Qwen3VLEmbeddingFeatureExtractor(FeatureExtractor):
         embedding = embedding.float()
         embedding = embedding / embedding.norm(dim=-1, keepdim=True)
         return embedding.cpu().numpy()
+
+    @torch.inference_mode()
+    def extract_query_features(self, image, text: str = '') -> np.ndarray:
+        """Joint image/text query in the existing user-only video embedding space.
+
+        Keep this template aligned with stored video vectors. Do not introduce
+        the official system prefix without rebuilding the paired video index.
+        Images are queries only; this does not add a frame-indexing modality.
+        """
+        model, processor = self._model_and_processor
+        content = [{'type': 'image', 'image': image,
+                    'min_pixels': 4096, 'max_pixels': 262144}]
+        if text.strip(): content.append({'type': 'text', 'text': text.strip()})
+        messages = [{'role': 'user', 'content': content}]
+        prompt = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        images, _, kwargs = process_vision_info(messages, image_patch_size=16,
+            return_video_metadata=True, return_video_kwargs=True)
+        inputs = processor(text=[prompt], images=images, return_tensors='pt',
+                           padding=True, do_resize=False, **kwargs)
+        inputs = {k: v.to(self.DEVICE) for k, v in inputs.items()}
+        output = model(**inputs)
+        vector = self._last_token_pool(output.last_hidden_state, inputs['attention_mask']).float()
+        vector = vector / vector.norm(dim=-1, keepdim=True)
+        return vector.cpu().numpy()
 
     def warmup(self):
         logger.info("Warming up Qwen3VLEmbeddingFeatureExtractor")

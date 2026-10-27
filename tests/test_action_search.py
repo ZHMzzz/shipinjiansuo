@@ -99,3 +99,34 @@ def test_failed_backfill_preserves_live_version_and_is_retryable(tmp_path, monke
     manager.publisher.assert_not_called()
     manager.request_backfill()
     assert manager.action_state['status']=='pending' and manager.backfill_requested
+
+
+def test_joint_image_text_cache_and_negative_vector():
+    from PIL import Image
+    engine=ActionEngine(); model=Mock()
+    model.extract_query_features.return_value=np.array([[1.,0.]],dtype='float32')
+    model.extract_text_features.return_value=np.array([[0.,1.]],dtype='float32')
+    engine.model=Mock(return_value=model)
+    image=Image.new('RGB',(16,16),'red')
+    vector,cached=engine.query_vector('街道',image,'室内')
+    assert not cached and vector[0,1]<0 and np.linalg.norm(vector)==pytest.approx(1)
+    model.extract_query_features.assert_called_once_with(image,'街道')
+    model.extract_text_features.assert_called_once_with(['室内'])
+    assert engine.query_vector('街道',image.copy(),'室内')[1]
+    engine.query_vector('街道',Image.new('RGB',(16,16),'blue'),'室内')
+    assert model.extract_query_features.call_count==2
+    engine.query_vector('室内',image,'室内')
+    assert model.extract_query_features.call_count==3
+
+
+def test_long_video_does_not_hide_other_videos(tmp_path):
+    path=project(tmp_path,duration=500)
+    with sqlite3.connect(path/'metadata/internal.db') as db:
+        db.execute("INSERT INTO media VALUES(19,'short.mp4',3,1,'VIDEO')")
+    engine=ActionEngine(); catalog=media_catalog(path); records=plan(catalog)
+    vectors=np.tile([1.,0.],(len(records),1)).astype('float32'); vectors[-1]=[0.,1.]
+    engine.finish(path,catalog,records,vectors)
+    engine.query_vector=Mock(return_value=(np.array([[1.,0.]],dtype='float32'),False))
+    result=engine.search(path,'test',2,unique_videos=True)
+    assert [h['media_id'] for h in result['video_results']['unmerged_windows']]==[7,19]
+    assert result['score_kind']=='segment'

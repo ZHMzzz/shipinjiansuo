@@ -29,17 +29,16 @@ from wise.api import dependencies
 from wise.api.services.project import LocalWiseProjectService
 from wise.api.services.search import LocalSearchService
 from wise.wise_project import WiseProject
-from ingestion import IngestionManager, prepare_versions, MAX_UPLOAD
+from ingestion import IngestionManager, MAX_UPLOAD
 from combined_search import person_scene_search
+from qwen_project import prepare_qwen_project, validate_face_project, FACE
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
 from action_reranker import VideoReranker, search_with_reranking, SETTINGS as RERANK_SETTINGS
 
 ROOT = Path(__file__).resolve().parents[1]
-FACE = 'deepinsight/insightface/buffalo_l/_unknown'
-CLIP = 'mlfoundations/open_clip/ViT-B-16-SigLIP2-256/webli'
 DB = ROOT / 'data/people.sqlite'
 logging.basicConfig(level=logging.INFO)
-config = APIConfig(command='serve', project_dir=prepare_versions(ROOT))
+config = APIConfig(command='serve', project_dir=prepare_qwen_project(ROOT))
 app = create_app(config, ROOT / 'wise/frontend/dist')
 search_gate = asyncio.Lock()
 actions = ActionEngine()
@@ -51,7 +50,7 @@ actions.before_model = reranker.unload
 async def serialize_search_and_publication(request, call_next):
     # Keep dependency resolution and inference consistent during a version swap.
     # Uploads and task polling remain available while a search is running.
-    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/trace', '/mvp-api/actions/search')):
+    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/trace', '/mvp-api/actions/search', '/mvp-api/search')):
         async with search_gate:
             return await call_next(request)
     return await call_next(request)
@@ -63,6 +62,7 @@ async def publish_project(stage):
         if ingestion.stopping.is_set(): raise RuntimeError('服务停止，索引未发布')
         new_config = config.model_copy(update={'project_dir':stage})
         def load():
+            validate_face_project(stage)
             read_snapshot(stage, complete=True)
             project = WiseProject(stage, read_only=True)
             service = LocalWiseProjectService(project, new_config)
@@ -97,7 +97,7 @@ async def build_action_index(stage, progress):
     catalog, records, vectors, missing = await asyncio.to_thread(actions.prepare, stage)
     total = sum(len(list(windows(float(m['duration'])))) for m in missing)
     done = 0
-    progress(0, total, f'准备处理 {len(missing)} 个视频、{total} 个动作片段；首次需要加载 Qwen 模型')
+    progress(0, total, f'准备处理 {len(missing)} 个视频、{total} 个Qwen 片段；首次需要加载 Qwen 模型')
     for media in missing:
         for start, end in windows(float(media['duration'])):
             if ingestion.stopping.is_set(): raise RuntimeError('服务停止，动作索引未发布')
@@ -106,7 +106,7 @@ async def build_action_index(stage, progress):
             async with search_gate:
                 vector = await asyncio.to_thread(actions.encode_segment, media, segment)
             records.append(segment); vectors.append(vector); done += 1
-            progress(done, total, f'动作片段 {done}/{total} · {media["path"]} · {start:.1f}–{end:.1f} 秒')
+            progress(done, total, f'Qwen 片段 {done}/{total} · {media["path"]} · {start:.1f}–{end:.1f} 秒')
             await asyncio.sleep(0)
     if ingestion.stopping.is_set(): raise RuntimeError('服务停止，动作索引未发布')
     await asyncio.to_thread(actions.finish, stage, catalog, records, vectors)
@@ -283,13 +283,17 @@ def search_person(name: str, search: SearchServiceDep, project: ProjectServiceDe
     vector = np.frombuffer(row[0], dtype=np.float32).reshape(1, -1).copy()
     scene, negative = scene.strip(), negative.strip()
     if scene or negative:
-        result, evidence = person_scene_search(vector, scene, negative, threshold,
-            face_model=FACE, text_model=CLIP, search=search, embedding=embedding,
-            project=project, config=config)
+        try:
+            result, evidence = person_scene_search(vector, scene, negative, threshold,
+                face_model=FACE, search=search, actions=actions, project=project.wise_project._project_dir)
+        except ValueError as exc:
+            raise HTTPException(409, str(exc)) from exc
+        except RuntimeError as exc:
+            raise HTTPException(503, str(exc)[:500]) from exc
         response = search_output_to_response(config, project, [], MediaType.VIDEO, result, 1)
         payload = response.model_dump(mode='json')
         payload.update(score_kind='fusion', person=name, scene=scene,
-                       negative=negative, face_threshold=threshold)
+                       negative=negative, face_threshold=threshold, scene_scope='containing_segment')
         if payload.get('video_results'):
             for hit in payload['video_results']['unmerged_windows']:
                 hit.update(evidence.get(str(hit['vector_id']), {}))
@@ -303,29 +307,45 @@ def search_person(name: str, search: SearchServiceDep, project: ProjectServiceDe
     return response
 
 
-@app.post('/mvp-api/trace')
-def trace(embedding: EmbeddingServiceDep, search: SearchServiceDep,
-          project: ProjectServiceDep, photo: UploadFile = File(...)):
-    """CLIP shortlist, then 10Hz normalized pixel correlation for screenshot timing.
-
-    This is screenshot matching, not an object-image search. Candidate videos
-    are selected only by embeddings; filenames never determine their ranking.
-    """
-    started = time.perf_counter()
+def query_image(photo):
     raw = photo.file.read(10 * 1024 * 1024 + 1)
     if len(raw) > 10 * 1024 * 1024:
         raise HTTPException(400, '图片应小于 10MB')
     try:
         image = Image.open(io.BytesIO(raw)).convert('RGB')
-    except (UnidentifiedImageError, OSError):
+        image.thumbnail((1280, 1280))
+        return image
+    except (UnidentifiedImageError, OSError, Image.DecompressionBombError):
         raise HTTPException(400, '无法读取图片')
-    extractor = embedding.feature_extractors[CLIP]
-    vector = extractor.extract_image_features(extractor.preprocess_image([image]))[0].vectors
-    result = search.search_with_feature(vector, modality_type=ModalityType.VIDEO,
-        feature_extractor_id=CLIP, start=0, end=100, filter_specs={})
-    response = search_output_to_response(config, project,
-        [VectorQueryTerm(term_id='trace', is_negative=False, vector=vector)], MediaType.VIDEO, result, 1)
-    data = response.model_dump(mode='json')
+
+
+def segment_search(project, query='', image=None, negative='', limit=20):
+    try:
+        return actions.search(project.wise_project._project_dir, query, limit,
+            image=image, negative=negative, unique_videos=True)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    except RuntimeError as exc:
+        logging.exception('Qwen segment search failed')
+        raise HTTPException(503, 'Qwen 暂不可用：'+str(exc)[:500]) from exc
+
+
+@app.post('/mvp-api/search')
+def search_segments(project: ProjectServiceDep, query: str = Form('', max_length=1000),
+                    negative: str = Form('', max_length=1000), photo: UploadFile | None = File(None),
+                    limit: int = Form(20, ge=1, le=50)):
+    query, negative = query.strip(), negative.strip()
+    if not query and photo is None: raise HTTPException(400, '请输入描述或提供参考图片')
+    return segment_search(project, query, query_image(photo) if photo else None, negative, limit)
+
+
+@app.post('/mvp-api/trace')
+def trace(project: ProjectServiceDep, photo: UploadFile = File(...)):
+    """Qwen shortlist, then bounded 10Hz pixel correlation for screenshot timing."""
+    started = time.perf_counter()
+    image = query_image(photo)
+    data = segment_search(project, image=image, limit=5)
+    data['score_kind'] = 'trace'
     video_results = data['video_results']
     candidates = {}
     for hit in video_results['unmerged_windows']:
@@ -340,7 +360,7 @@ def trace(embedding: EmbeddingServiceDep, search: SearchServiceDep,
 
     target = descriptor(cv2.cvtColor(np.array(image),cv2.COLOR_RGB2BGR))
     refined = []
-    with sqlite3.connect(ROOT/'projects/demo/metadata/internal.db') as db:
+    with sqlite3.connect(project.wise_project._project_dir/'metadata/internal.db') as db:
         for mid,hit in candidates.items():
             row = db.execute('SELECT location,path FROM media JOIN source_collections ON source_collections.id=media.source_collection_id WHERE media.id=?',(mid,)).fetchone()
             path = Path(row[0])/row[1]

@@ -33,3 +33,6 @@ __pycache__/
 /experiments/action-search/raw/
 /tools/micromamba.tar.bz2
 /*.zip
+
+# Browser verification artifacts
+/.playwright-mcp/
