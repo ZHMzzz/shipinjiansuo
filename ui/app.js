@@ -5,20 +5,21 @@ const descriptions = {
  action:['动作片段检索','Qwen3-VL 2B · 多帧视频语义','任意中文描述实时编码，检索已入库视频的动作片段；首次查询可能需要加载模型。'],
  mixed:['图文组合检索','Qwen3-VL 2B · 图文联合理解','参考图与文字共同编码，检索最长 8 秒的视频片段；不提供物体框。'],
  text:['中文语义检索','Qwen3-VL 2B · 视频片段语义','中文描述检索最长 8 秒的视频片段，时间范围不代表事件精确起止。'],
- trace:['截图溯源','Qwen 片段召回 + 画面比对','先召回候选视频，再按约 0.1 秒间隔比对画面细化位置。'],
+ trace:['截图溯源','Qwen 片段召回 + 画面比对','先召回候选，再比对画面细化位置；局部截图会尝试对齐，耗时略长。'],
  object:['参考图检索','Qwen3-VL 2B · 图片与视频语义','用参考图片寻找包含相似物体或场景的视频片段，不提供物体框。'],
  face:['按姓名查找人物','InsightFace · 姓名与人脸向量','姓名对应已登记的人脸特征，搜索结果按相似度排序。']
 };
 let mode='text', queryFile=null, previewURL=null, busy=false, lastComparison=null;
 const setError = text => { $('error').hidden=!text; $('error').textContent=text; };
 async function checked(response){if(!response.ok){let data=await response.json().catch(()=>({}));throw new Error(typeof data.detail==='string'?data.detail:JSON.stringify(data.detail||data));}return response;}
-function lock(value){busy=value;$('rerank-enabled').disabled=value;$('rerank-candidates').disabled=value;$('order-original').disabled=value;$('order-reranked').disabled=value;$('search-button').disabled=value;$('search-button').textContent=value?'正在检索…':'开始检索 ↗';document.querySelectorAll('nav button[data-mode]').forEach(b=>b.disabled=value);}
+function lock(value){busy=value;$('object-refine').disabled=value;$('rerank-enabled').disabled=value;$('rerank-candidates').disabled=value;$('order-original').disabled=value;$('order-reranked').disabled=value;$('search-button').disabled=value;$('search-button').textContent=value?'正在检索…':'开始检索 ↗';document.querySelectorAll('nav button[data-mode]').forEach(b=>b.disabled=value);}
 function selectMode(next){
  if(busy)return;window.showSearch?.();mode=next;queryFile=null;
  $('image-query').value='';$('query-preview').hidden=true;$('query-name').textContent='尚未选择图片';
  document.querySelectorAll('nav button[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===next));
  $('text-panel').hidden=!['text','mixed','action'].includes(next);
  $('image-panel').hidden=!['trace','object','mixed'].includes(next);
+ $('object-panel').hidden=next!=='object';
  $('face-panel').hidden=next!=='face';$('scene-panel').hidden=next!=='face';$('negative-panel').hidden=['trace','action'].includes(next);$('action-panel').hidden=next!=='action';document.querySelector('#text-panel .examples').hidden=next==='action';
  $('negative-query').value='';$('scene-query').value='';
  if(next==='mixed')$('text-query').value='在街道上';
@@ -59,13 +60,13 @@ function showResults(data,elapsed,order='reranked'){
  const r=data.video_results;$('results').replaceChildren();let list=r?.unmerged_windows||[];if(applied&&order==='original')list=[...list].sort((a,b)=>a.original_rank-b.original_rank);if(mode==='face'&&data.score_kind!=='fusion')list=list.filter(s=>s.distance>=Number($('face-threshold').value));
  // One strongest match per source video; preserve actual model ranking. No filenames influence retrieval.
  const seen=new Set();list=list.filter(s=>{if(data.score_kind==='action')return true;if(seen.has(s.media_id))return false;seen.add(s.media_id);return true;}).slice(0,data.score_kind==='action'?20:12);
- $('result-status').textContent=`${list.length} 个${data.score_kind==='action'?'片段':'视频'} · ${elapsed.toFixed(2)} 秒 · ${data.score_kind==='action'?`已索引 ${data.indexed_videos} 个视频 / ${data.indexed_segments} 个片段`:data.score_kind==='fusion'?'人物门槛已应用 · 所在片段场景参与排序':'每段显示最佳命中'}`;
+ $('result-status').textContent=`${list.length} 个${data.score_kind==='action'?'片段':'视频'} · ${elapsed.toFixed(2)} 秒 · ${data.score_kind==='action'?`已索引 ${data.indexed_videos} 个视频 / ${data.indexed_segments} 个片段`:data.score_kind==='fusion'?'人物门槛已应用 · 所在片段场景参与排序':data.object_refinement?.applied?`精细匹配 ${data.object_refinement.candidate_count} 个候选 · ${data.object_refinement.cached_frames} 帧缓存`:'每段显示最佳命中'}`;
  if(!list.length){const p=document.createElement('p');p.className='empty';p.textContent='没有符合当前条件的结果。请更换查询图片、描述或调整门槛。';$('results').append(p);return;}
  list.forEach((s,i)=>{const v=r.videos[s.media_id];const card=document.createElement('button');card.type='button';card.className='result';card.title=`播放 ${v.filename}，${clock(isSegment?s.ts:(s.thumbnail_ts??s.ts))}`;
  const thumb=document.createElement('div');thumb.className='thumb';const img=document.createElement('img');img.alt='命中画面';img.src=s.thumbnail.startsWith('data:')?s.thumbnail:mediaURL(s.thumbnail);thumb.append(img);
  if(mode==='face'&&s.bbox){img.onload=()=>{const box=document.createElement('span');box.className='bbox';const w=thumb.clientWidth,h=thumb.clientHeight,scale=Math.min(w/img.naturalWidth,h/img.naturalHeight),iw=img.naturalWidth*scale,ih=img.naturalHeight*scale;box.style.cssText=`left:${(w-iw)/2+s.bbox.x*iw}px;top:${(h-ih)/2+s.bbox.y*ih}px;width:${s.bbox.w*iw}px;height:${s.bbox.h*ih}px`;thumb.append(box);};}
  const rank=document.createElement('span');rank.className='rank';rank.textContent=String(i+1).padStart(2,'0');const time=document.createElement('span');time.className='time';time.textContent=isSegment?clock(s.ts)+'–'+clock(s.te):clock(s.thumbnail_ts??s.ts);thumb.append(rank,time);
- const info=document.createElement('div');info.className='result-info';const title=document.createElement('h3');title.textContent=v.filename;const line=document.createElement('p');const score=document.createElement('span');score.textContent=(s.rerank_score!==undefined?'重排分 ':data.score_kind==='fusion'?'融合排序分 ':'相似度 ')+Number(s.rerank_score??s.distance).toFixed(3);const cta=document.createElement('span');cta.textContent='播放片段 ↗';line.append(score,cta);info.append(title,line);if(s.face_similarity!==undefined){const detail=document.createElement('p');detail.className='score-evidence';detail.textContent=`人脸 ${s.face_similarity.toFixed(3)} · 场景 ${s.scene_similarity.toFixed(3)} · ${clock(s.scene_ts)}–${clock(s.scene_te)}`;info.append(detail);}if(s.original_rank!==undefined){const detail=document.createElement('p');detail.className='score-evidence';detail.textContent=`原第 ${s.original_rank} 名 · 向量相似度 ${s.embedding_score.toFixed(3)}`;info.append(detail);}card.append(thumb,info);card.onclick=()=>play(s,v,isSegment);$('results').append(card);});
+ const info=document.createElement('div');info.className='result-info';const title=document.createElement('h3');title.textContent=v.filename;const line=document.createElement('p');const score=document.createElement('span');score.textContent=(s.rerank_score!==undefined?'重排分 ':data.score_kind==='fusion'?'融合排序分 ':s.frame_score!==undefined?'画面相似度 ':'相似度 ')+Number(s.rerank_score??s.distance).toFixed(3);const cta=document.createElement('span');cta.textContent='播放片段 ↗';line.append(score,cta);info.append(title,line);if(s.face_similarity!==undefined){const detail=document.createElement('p');detail.className='score-evidence';detail.textContent=`人脸 ${s.face_similarity.toFixed(3)} · 场景 ${s.scene_similarity.toFixed(3)} · ${clock(s.scene_ts)}–${clock(s.scene_te)}`;info.append(detail);}if(s.original_rank!==undefined){const detail=document.createElement('p');detail.className='score-evidence';detail.textContent=`原第 ${s.original_rank} 名 · 向量相似度 ${s.embedding_score.toFixed(3)}`;info.append(detail);}card.append(thumb,info);card.onclick=()=>play(s,v,isSegment);$('results').append(card);});
 }
 $('order-original').onclick=()=>{if(lastComparison)showResults(lastComparison.data,lastComparison.elapsed,'original');};
 $('order-reranked').onclick=()=>{if(lastComparison)showResults(lastComparison.data,lastComparison.elapsed,'reranked');};
@@ -88,6 +89,7 @@ $('search-form').onsubmit=async e=>{
   if(['text','mixed'].includes(mode)){const q=$('text-query').value.trim();if(!q)throw new Error('请输入场景描述');form.append('query',q);}
   if(['object','mixed'].includes(mode)){if(!queryFile)throw new Error('请上传图片或使用演示图片');form.append('photo',queryFile);}
   if(negative)form.append('negative',negative);
+  if(mode==='object')form.append('refine',String($('object-refine').checked));
   response=await fetch('/mvp-api/search',{method:'POST',body:form});
  }
  const data=await(await checked(response)).json();showResults(data,(performance.now()-start)/1000);

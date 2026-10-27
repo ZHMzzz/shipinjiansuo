@@ -31,6 +31,9 @@ from wise.api.services.search import LocalSearchService
 from wise.wise_project import WiseProject
 from ingestion import IngestionManager, MAX_UPLOAD
 from combined_search import person_scene_search
+from query_image import decode_query_image
+from screenshot_search import ScreenshotMatcher
+from object_refinement import ObjectRefiner
 from qwen_project import prepare_qwen_project, validate_face_project, FACE
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
 from action_reranker import VideoReranker, search_with_reranking, SETTINGS as RERANK_SETTINGS
@@ -42,6 +45,7 @@ config = APIConfig(command='serve', project_dir=prepare_qwen_project(ROOT))
 app = create_app(config, ROOT / 'wise/frontend/dist')
 search_gate = asyncio.Lock()
 actions = ActionEngine()
+objects = ObjectRefiner()
 reranker = VideoReranker()
 actions.before_model = reranker.unload
 
@@ -242,8 +246,7 @@ def register(embedding: EmbeddingServiceDep, name: str = Form(...), photo: Uploa
     if len(raw) > 10 * 1024 * 1024:
         raise HTTPException(400, '照片应小于 10MB')
     try:
-        image = Image.open(io.BytesIO(raw)).convert('RGB')
-        image.thumbnail((1280, 1280))
+        image = decode_query_image(raw)
     except (UnidentifiedImageError, OSError):
         raise HTTPException(400, '无法读取图片')
     extractor = embedding.feature_extractors[FACE]
@@ -312,8 +315,7 @@ def query_image(photo):
     if len(raw) > 10 * 1024 * 1024:
         raise HTTPException(400, '图片应小于 10MB')
     try:
-        image = Image.open(io.BytesIO(raw)).convert('RGB')
-        image.thumbnail((1280, 1280))
+        image = decode_query_image(raw)
         return image
     except (UnidentifiedImageError, OSError, Image.DecompressionBombError):
         raise HTTPException(400, '无法读取图片')
@@ -333,15 +335,24 @@ def segment_search(project, query='', image=None, negative='', limit=20):
 @app.post('/mvp-api/search')
 def search_segments(project: ProjectServiceDep, query: str = Form('', max_length=1000),
                     negative: str = Form('', max_length=1000), photo: UploadFile | None = File(None),
-                    limit: int = Form(20, ge=1, le=50)):
+                    limit: int = Form(20, ge=1, le=50), refine: bool = Form(False)):
     query, negative = query.strip(), negative.strip()
     if not query and photo is None: raise HTTPException(400, '请输入描述或提供参考图片')
-    return segment_search(project, query, query_image(photo) if photo else None, negative, limit)
+    if refine and (photo is None or query): raise HTTPException(400, '精细匹配仅适用于纯参考图查询')
+    image = query_image(photo) if photo else None
+    result = segment_search(project, query, image, negative, max(limit,20) if refine else limit)
+    if not refine: return result
+    try:
+        return objects.refine(actions, project.wise_project._project_dir, result, image, negative, limit)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(503, '精细匹配失败，可关闭后重试：'+str(exc)[:300]) from exc
 
 
 @app.post('/mvp-api/trace')
 def trace(project: ProjectServiceDep, photo: UploadFile = File(...)):
-    """Qwen shortlist, then bounded 10Hz pixel correlation for screenshot timing."""
+    """Qwen shortlist, then full-frame or geometrically aligned crop matching."""
     started = time.perf_counter()
     image = query_image(photo)
     data = segment_search(project, image=image, limit=5)
@@ -353,42 +364,21 @@ def trace(project: ProjectServiceDep, photo: UploadFile = File(...)):
         if len(candidates) == 5:
             break
 
-    def descriptor(frame):
-        gray = cv2.resize(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY), (160, 90)).astype(np.float32).reshape(-1)
-        gray -= gray.mean()
-        return gray / max(float(np.linalg.norm(gray)), 1e-8)
-
-    target = descriptor(cv2.cvtColor(np.array(image),cv2.COLOR_RGB2BGR))
+    matcher = ScreenshotMatcher(image)
     refined = []
     with sqlite3.connect(project.wise_project._project_dir/'metadata/internal.db') as db:
         for mid,hit in candidates.items():
             row = db.execute('SELECT location,path FROM media JOIN source_collections ON source_collections.id=media.source_collection_id WHERE media.id=?',(mid,)).fetchone()
             path = Path(row[0])/row[1]
             if not path.is_absolute(): path=ROOT/path
-            capture = cv2.VideoCapture(str(path))
-            fps = capture.get(cv2.CAP_PROP_FPS)
-            if fps <= 0:
-                capture.release()
-                continue
-            stride = max(1,round(fps/10))
-            best = (-2.0,0.0,None)
-            index = 0
-            # MVP clips are short. Cap scan to 60s per candidate to bound work.
-            while index / fps < 60:
-                ok,frame = capture.read()
-                if not ok: break
-                if index % stride == 0:
-                    score = float(target @ descriptor(frame))
-                    if score > best[0]: best=(score,index/fps,frame.copy())
-                index += 1
-            capture.release()
-            score,ts,frame = best
-            if frame is None: continue
+            match = matcher.refine(path)
+            if match is None: continue
+            score,ts,frame,method = match
             thumb=cv2.resize(frame,(320,round(frame.shape[0]*320/frame.shape[1])))
             _,jpg=cv2.imencode('.jpg',thumb)
             hit=dict(hit)
             hit.update(ts=ts,te=min(ts+4,video_results['videos'][mid]['duration']),thumbnail_ts=ts,
-                distance=score,link=f'media/{mid}#t={ts}',bbox=None,
+                distance=score,link=f'media/{mid}#t={ts}',bbox=None,trace_method=method,
                 thumbnail='data:image/jpeg;base64,'+base64.b64encode(jpg).decode())
             refined.append(hit)
     refined.sort(key=lambda h:h['distance'],reverse=True)
