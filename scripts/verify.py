@@ -38,7 +38,7 @@ def search(label, expected, text=None, image=None):
     else:
         r=requests.post(BASE+'/mvp-api/search',data={'query':text},timeout=240)
         r.raise_for_status()
-        assert r.json()['score_kind']=='segment'
+        assert r.json()['score_kind']=='action'
     r.raise_for_status()
     return record(label,r,time.perf_counter()-start,expected)
 

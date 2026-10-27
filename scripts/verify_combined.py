@@ -7,8 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'http://127.0.0.1:9670'
 
 
-def query(text, negative='', image=False):
-    data = dict(query=text, negative=negative)
+def query(text, image=False):
+    data = dict(query=text)
     files = {'photo': ('bag.jpg', (ROOT/'data/queries/backpack-independent.jpg').read_bytes(), 'image/jpeg')} if image else None
     response = requests.post(BASE+'/mvp-api/search', data=data, files=files, timeout=120)
     response.raise_for_status()
@@ -22,12 +22,10 @@ def query(text, negative='', image=False):
 
 
 if __name__ == '__main__':
-    report = {name: query(text, negative, image) for name, text, negative, image in [
-        ('text', '一个人背着背包走路', '', False),
-        ('negative', '一个人背着背包走路', '室内', False),
-        ('mixed_street', '在街道上', '', True),
-        ('mixed_indoor', '在室内', '', True),
-        ('mixed_negative', '在街道上', '汽车', True)]}
+    report = {name: query(text, image) for name, text, image in [
+        ('text', '一个人背着背包走路', False),
+        ('mixed_street', '在街道上', True),
+        ('mixed_indoor', '在室内', True)]}
     assert report['mixed_street'][0]['video'] == 'backpack-street.mp4'
     indoor = report['mixed_indoor'][0]
     # The live-action fixture contains the same backpack footage at 8–16s.
@@ -35,7 +33,6 @@ if __name__ == '__main__':
     assert indoor['video'] == 'backpack-walking.mp4' or (
         indoor['video'] == '动作定位_串接测试24秒.mp4' and 8 <= indoor['time'] < 16)
     assert any(h['video'] == 'backpack-walking.mp4' for h in report['mixed_indoor'][:3])
-    assert report['negative'] != report['text']
     response = requests.post(BASE+'/mvp-api/people/演示人物A/search',
                              data=dict(scene='坐在汽车里', threshold=.45), timeout=30)
     response.raise_for_status()
@@ -53,4 +50,4 @@ if __name__ == '__main__':
     assert not response.json()['video_results']
     report['strict_person_threshold'] = 'empty as expected'
     (ROOT/'logs/combined-verification.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
-    print('PASS: mixed street/indoor ranking, negative query, person + scene and identity threshold')
+    print('PASS: mixed street/indoor ranking, person + scene and identity threshold')

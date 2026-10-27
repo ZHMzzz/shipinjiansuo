@@ -32,7 +32,6 @@ from combined_search import person_scene_search
 from query_image import decode_query_image
 from qwen_project import prepare_qwen_project, validate_project, FACE
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
-from action_reranker import VideoReranker, search_with_reranking, SETTINGS as RERANK_SETTINGS
 
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / 'data/people.sqlite'
@@ -42,15 +41,13 @@ validate_project(config.project_dir, require_owl=True)
 app = create_app(config, ROOT / 'wise/frontend/dist')
 search_gate = asyncio.Lock()
 actions = ActionEngine()
-reranker = VideoReranker()
-actions.before_model = reranker.unload
 
 
 @app.middleware('http')
 async def serialize_search_and_publication(request, call_next):
     # Keep dependency resolution and inference consistent during a version swap.
     # Uploads and task polling remain available while a search is running.
-    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/actions/search', '/mvp-api/search')):
+    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/search')):
         async with search_gate:
             return await call_next(request)
     return await call_next(request)
@@ -140,30 +137,13 @@ def action_status(project: ProjectServiceDep):
     meta = json.loads(path.read_text()) if path.exists() else {'media':[], 'segments':[]}
     return {**ingestion.action_state, 'indexed_videos':len(meta['media']),
         'indexed_segments':len(meta['segments']), 'model_loaded':actions.extractor is not None,
-        'model_load_seconds':actions.last_load_seconds, 'settings':ACTION_SETTINGS,
-        'reranker_loaded':reranker.model is not None, 'reranker_settings':RERANK_SETTINGS}
+        'model_load_seconds':actions.last_load_seconds, 'settings':ACTION_SETTINGS}
 
 
 @app.post('/mvp-api/actions/retry')
 def retry_actions():
     ingestion.request_backfill()
     return {'message':'已检查并安排补建任务'}
-
-
-@app.post('/mvp-api/actions/search')
-def search_actions(project: ProjectServiceDep, query: str = Form(..., min_length=1, max_length=500),
-                   limit: int = Form(20, ge=1, le=50), rerank: bool = Form(False),
-                   rerank_candidates: int = Form(10, ge=1, le=20)):
-    query = query.strip()
-    if not query: raise HTTPException(400, '请输入动作或场景描述')
-    try:
-        return search_with_reranking(actions, reranker, project.wise_project._project_dir,
-                                     query, limit, rerank, rerank_candidates)
-    except ValueError as exc:
-        raise HTTPException(409, str(exc)) from exc
-    except RuntimeError as exc:
-        logging.exception('Qwen action search failed')
-        raise HTTPException(503, '动作模型暂不可用：'+str(exc)[:500]) from exc
 
 
 @app.get('/mvp-api/action-report')
@@ -270,7 +250,6 @@ def remove_person(name: str):
 @app.post('/mvp-api/people/{name}/search')
 def search_person(name: str, search: SearchServiceDep, project: ProjectServiceDep,
                   embedding: EmbeddingServiceDep, scene: str = Form('', max_length=1000),
-                  negative: str = Form('', max_length=1000),
                   threshold: float = Form(0.45, ge=0, le=1)):
     started = time.perf_counter()
     with sqlite3.connect(DB) as db:
@@ -280,10 +259,10 @@ def search_person(name: str, search: SearchServiceDep, project: ProjectServiceDe
     if row[1] != FACE:
         raise HTTPException(409, '人脸模型已改变，请重新登记')
     vector = np.frombuffer(row[0], dtype=np.float32).reshape(1, -1).copy()
-    scene, negative = scene.strip(), negative.strip()
-    if scene or negative:
+    scene = scene.strip()
+    if scene:
         try:
-            result, evidence = person_scene_search(vector, scene, negative, threshold,
+            result, evidence = person_scene_search(vector, scene, threshold,
                 face_model=FACE, search=search, actions=actions, project=project.wise_project._project_dir)
         except ValueError as exc:
             raise HTTPException(409, str(exc)) from exc
@@ -292,7 +271,7 @@ def search_person(name: str, search: SearchServiceDep, project: ProjectServiceDe
         response = search_output_to_response(config, project, [], MediaType.VIDEO, result, 1)
         payload = response.model_dump(mode='json')
         payload.update(score_kind='fusion', person=name, scene=scene,
-                       negative=negative, face_threshold=threshold, scene_scope='containing_segment')
+                       face_threshold=threshold, scene_scope='containing_segment')
         if payload.get('video_results'):
             for hit in payload['video_results']['unmerged_windows']:
                 hit.update(evidence.get(str(hit['vector_id']), {}))
@@ -317,10 +296,10 @@ def query_image(photo):
         raise HTTPException(400, '无法读取图片')
 
 
-def segment_search(project, query='', image=None, negative='', limit=20):
+def segment_search(project, query='', image=None, limit=20):
     try:
         return actions.search(project.wise_project._project_dir, query, limit,
-            image=image, negative=negative, unique_videos=True)
+            image=image, unique_videos=image is not None)
     except ValueError as exc:
         raise HTTPException(409, str(exc)) from exc
     except RuntimeError as exc:
@@ -330,12 +309,12 @@ def segment_search(project, query='', image=None, negative='', limit=20):
 
 @app.post('/mvp-api/search')
 def search_segments(project: ProjectServiceDep, query: str = Form('', max_length=1000),
-                    negative: str = Form('', max_length=1000), photo: UploadFile | None = File(None),
+                    photo: UploadFile | None = File(None),
                     limit: int = Form(20, ge=1, le=50), refine: bool = Form(False)):
-    query, negative = query.strip(), negative.strip()
+    query = query.strip()
     if not query and photo is None: raise HTTPException(400, '请输入描述或提供参考图片')
     if refine: raise HTTPException(410, '物体图片已恢复 WISE OWLv2，请刷新页面使用物体图片入口')
-    return segment_search(project, query, query_image(photo) if photo else None, negative, limit)
+    return segment_search(project, query, query_image(photo) if photo else None, limit)
 
 
 app.mount('/queries', StaticFiles(directory=ROOT / 'data/queries'), name='queries')

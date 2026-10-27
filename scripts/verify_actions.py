@@ -20,7 +20,7 @@ def verify():
     report={'status':status,'queries':[]}
     for query,expected,start in queries:
         begin=time.perf_counter()
-        response=requests.post(BASE+'/mvp-api/actions/search',data={'query':query,'limit':10},timeout=120)
+        response=requests.post(BASE+'/mvp-api/search',data={'query':query,'limit':10},timeout=120)
         response.raise_for_status();result=response.json()
         first=result['video_results']['unmerged_windows'][0]
         name=result['video_results']['videos'][str(first['media_id'])]['filename']
@@ -34,10 +34,10 @@ def verify():
         assert media.status_code==206 and len(media.content)==128
         report['queries'].append({'query':query,'elapsed_seconds':time.perf_counter()-begin,
             'encode_seconds':result['encode_seconds'],'top':first,'filename':name})
-    for query,code in [('   ',400),('测'*501,422)]:
-        response=requests.post(BASE+'/mvp-api/actions/search',data={'query':query},timeout=30)
+    for query,code in [('   ',400),('测'*1001,422)]:
+        response=requests.post(BASE+'/mvp-api/search',data={'query':query},timeout=30)
         assert response.status_code==code
-    response=requests.post(BASE+'/mvp-api/actions/search',data={'query':'摔倒','limit':51},timeout=30)
+    response=requests.post(BASE+'/mvp-api/search',data={'query':'摔倒','limit':51},timeout=30)
     assert response.status_code==422
     path=ROOT/'logs/live-action-verification.json'
     path.write_text(json.dumps(report,ensure_ascii=False,indent=2))

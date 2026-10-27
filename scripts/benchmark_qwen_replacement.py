@@ -188,7 +188,7 @@ def reference_check(encoder,q):
 def run(kind):
     import psutil
     import torch
-    from action_reranker import ResourceSampler
+    from resource_metrics import ResourceSampler
     d=load_design();torch.set_num_threads(1);torch.mps.set_per_process_memory_fraction(.55)
     report=dict(kind=kind,queries=[],frame_timings=[],status='running')
     def guard():

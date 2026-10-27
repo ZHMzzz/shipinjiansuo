@@ -169,7 +169,7 @@ class OwlEncoder:
 
 def run(method):
     import torch,psutil
-    from action_reranker import ResourceSampler
+    from resource_metrics import ResourceSampler
     d=design();torch.set_num_threads(1);torch.mps.set_per_process_memory_fraction(.55)
     report=dict(method=method,status='running',queries=[],encode_gallery_seconds=[],controlled_scores={})
     def guard():

@@ -93,7 +93,6 @@ class ActionEngine:
         self.cached_project = None
         self.snapshot = None
         self.last_load_seconds = None
-        self.before_model = None
         self.query_vectors = OrderedDict()
 
     def unload(self):
@@ -106,8 +105,6 @@ class ActionEngine:
     def model(self):
         import psutil
         import torch
-        if self.before_model is not None:
-            self.before_model()
         if psutil.virtual_memory().available < 2 * 1024**3:
             raise RuntimeError('当前可用内存不足 2GiB，请关闭部分应用后重试动作处理')
         if self.extractor is None:
@@ -184,13 +181,13 @@ class ActionEngine:
             self.snapshot, self.cached_project = snapshot, project
         return self.snapshot
 
-    def query_vector(self, query='', image=None, negative=''):
-        query, negative = query.strip(), negative.strip()
-        if not query and image is None and not negative:
+    def query_vector(self, query='', image=None):
+        query = query.strip()
+        if not query and image is None:
             raise ValueError('请输入描述或提供参考图片')
         digest = None if image is None else hashlib.sha256(
             str((image.mode, image.size)).encode()+image.tobytes()).hexdigest()
-        key = query if image is None and not negative else (query, digest, negative)
+        key = query if image is None else (query, digest)
         cached = key in self.query_vectors
         if cached:
             vector = self.query_vectors[key]
@@ -199,9 +196,6 @@ class ActionEngine:
             model = self.model()
             vector = (model.extract_query_features(image, query) if image is not None else
                       model.extract_text_features([query]) if query else None)
-            if negative:
-                excluded = model.extract_text_features([negative]).astype('float32')
-                vector = -excluded if vector is None else vector - .2 * excluded
             vector = np.asarray(vector, dtype='float32')
             norm = np.linalg.norm(vector, axis=-1, keepdims=True)
             if not np.isfinite(vector).all() or np.any(norm < 1e-8):
@@ -211,12 +205,12 @@ class ActionEngine:
             if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
         return vector, cached
 
-    def search(self, project, query, limit, *, image=None, negative='', unique_videos=False):
+    def search(self, project, query, limit, *, image=None, unique_videos=False):
         snapshot = self.get_snapshot(project)
         if snapshot is None: raise ValueError('Qwen 片段索引正在补建，请查看视频库中的索引进度')
         meta, vectors, index = snapshot
         started = time.perf_counter()
-        vector, cached = self.query_vector(query, image, negative)
+        vector, cached = self.query_vector(query, image)
         encoded = time.perf_counter()
         # Search every segment for video-level ranking: a long source video must
         # not consume the entire shortlist and hide other source videos.
@@ -237,7 +231,7 @@ class ActionEngine:
             hit.update(thumbnail_ts=preview, thumbnail=f'/demo/thumbnail?media_id={mid}&timestamp={preview}',
                        link=f'/demo/media/{mid}#t={hit["ts"]},{hit["te"]}')
         return {'score_kind': 'segment' if unique_videos else 'action', 'query': query,
-                'negative': negative, 'query_kind': 'image_text' if image is not None and query else 'image' if image is not None else 'text',
+                'query_kind': 'image_text' if image is not None and query else 'image' if image is not None else 'text',
                 'settings': SETTINGS,
                 'query_embedding_cached': cached,
                 'encode_seconds': encoded-started, 'search_seconds': time.perf_counter()-encoded,
