@@ -1,0 +1,1156 @@
+#!/usr/bin/env python3
+
+## Copyright 2026 University of Oxford
+##
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
+## You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+## See the License for the specific language governing permissions and
+## limitations under the License.
+
+import functools
+import itertools
+import logging
+from collections.abc import Callable, Iterable
+from typing import Annotated, cast
+
+import fastapi
+import numpy as np
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
+from fastapi.responses import PlainTextResponse
+from pydantic import HttpUrl
+
+from wise.api import common
+from wise.api.common import (
+    MediaQueryTerm,
+    Query,
+    TextQueryTerm,
+    VectorIdQueryTerm,
+    VectorQueryTerm,
+    VideoSegment,
+)
+from wise.api.dependencies import (
+    ConfigDep,
+    EmbeddingService,
+    EmbeddingServiceDep,
+    LocalSearchService,
+    LocalWiseProjectService,
+    ProjectInfo,
+    ProjectInfoDep,
+    ProjectServiceDep,
+    SearchServiceDep,
+)
+from wise.api.services.embedding import EmbeddingConfig
+from wise.api.services.search import SearchOutput
+from wise.api.services.search.face_text_standalone import (
+    resolve_face_text_embedder,
+    run_face_text_search_standalone,
+)
+from wise.api.services.search.segments import (
+    get_shots_from_segments as _get_shots_from_segments,
+)
+from wise.api.services.search.segments import (
+    merge_close_segments as _merge_close_segments,
+)
+from wise.config import APIConfig
+from wise.data_models import MediaType, ModalityType, VectorAndMediaMetadata
+from wise.feature.feature_extractor import FeatureExtMetadata
+from wise.search.fts import WISEFTSQuery
+from wise.wise_project import WiseProject
+
+logger = logging.getLogger(__name__)
+
+
+def merge_close_segments(_keyframes: list[VideoSegment]):
+    """
+    Takes a list of segments of a media file and merges them if they are close - within 4 seconds of each other
+    The merged segment is represented by the best matching segment based on distance
+    """
+    return _merge_close_segments(_keyframes)
+
+
+def get_shots_from_segments(
+    segments: list[VideoSegment],
+    merge_function: Callable[
+        [list[VideoSegment]], list[VideoSegment]
+    ] = merge_close_segments,
+):
+    """
+    Functions that takes a list of segments and returns a list of merged segments
+    based on the merge function passed in
+
+    The merge function by default merges close segments
+    """
+    return _get_shots_from_segments(segments, merge_function=merge_function)
+
+
+def keyframes_to_shots(_keyframes: list[VideoSegment], project: WiseProject):
+    """
+    Get Shot corresponding to a keyframe
+    """
+
+    # Assuming segment maps to only one shot (no duplicates)
+    return list(
+        next(
+            project.shot(media_id=int(x.media_id), timestamp=x.ts),
+            None,
+        )
+        for x in _keyframes
+    )
+
+
+def get_shots_from_keyframes(
+    project: WiseProject, _keyframes: list[VideoSegment]
+):
+    """
+    Get unique shots from list of keyframes belonging to a single video
+    """
+    # Input are keyframes from same video
+    shots = keyframes_to_shots(_keyframes, project)
+
+    # Ignore where segment doesn't have a shot mapping
+    shots_iter = filter(lambda x: x[0], zip(shots, _keyframes))
+
+    shots_list = []
+    for _, g in itertools.groupby(shots_iter, key=lambda x: x[0].id):
+        shot_group, keyframes_group = list(zip(*g))
+        _shot = shot_group[0]
+
+        # Computing best matching segment and best thumbnail to represent the segment with
+        # For clip case, it will be same. For internvideo it will be different
+        best_segment = sorted(
+            keyframes_group, key=lambda x: x.distance, reverse=True
+        )[0]
+        shots_list.append(
+            common.VideoSegment(
+                vector_id=best_segment.vector_id,
+                media_id=best_segment.media_id,
+                ts=_shot.ts,
+                te=_shot.te,
+                link=f"media/{best_segment.media_id}#t={_shot.ts},{_shot.te}",
+                distance=best_segment.distance,
+                thumbnail=best_segment.thumbnail,
+                thumbnail_ts=best_segment.thumbnail_ts,
+                bbox=best_segment.bbox,
+            )
+        )
+    return shots_list
+
+
+def construct_video_search_response(
+    search_in: MediaType,
+    top_dist: list[float],
+    all_metadata: list[VectorAndMediaMetadata],
+    all_ext_metadata: list[FeatureExtMetadata],
+    all_thumbs: Iterable[str],
+    merge_function: Callable[[list[VideoSegment]], list[VideoSegment]],
+):
+    videos = {}
+    shots = []
+    segments = []
+    for _dist, _metadata, _ext_metadata, _thumb in zip(
+        top_dist,
+        all_metadata,
+        all_ext_metadata,
+        all_thumbs,
+    ):
+        video_id = str(_metadata.media_id)
+        if video_id not in videos:
+            videos[video_id] = common.VideoInfo(
+                id=video_id,
+                filename=_metadata.path,
+                width=_metadata.width,
+                height=_metadata.height,
+                media_type=_metadata.media_type,
+                format=_metadata.format,
+                duration=_metadata.duration,
+                timeline_hover_thumbnails=f"storyboard/{video_id}.vtt",
+                external_metadata=_metadata.external_metadata,
+            )
+        ts = _metadata.timestamp
+        te = _metadata.end_timestamp
+        if ts is None:
+            logger.error("ts is None for vector %d", _metadata.id)
+        if te is None:
+            te = ts
+
+        if ts == te:
+            te = ts + 4.0
+
+        segment = common.VideoSegment(
+            vector_id=str(_metadata.id),
+            media_id=video_id,
+            ts=float(ts),
+            te=float(te),
+            link=f"media/{video_id}#t={ts},{te}",  # f"{_metadata.source_uri if _metadata.source_uri else f'media/{video_id}{_metadata.path}'}",
+            distance=_dist,
+            thumbnail=_thumb,
+            thumbnail_ts=float(ts),
+            bbox=_ext_metadata.bbox,
+        )
+
+        segments.append(segment)
+
+    shots = get_shots_from_segments(segments, merge_function=merge_function)
+
+    if search_in is MediaType.VIDEO:
+        return common.VideoResults(
+            total=300,  # TODO change this
+            unmerged_windows=segments,
+            merged_windows=shots,
+            videos=videos,
+        )
+    elif search_in is MediaType.AV:
+        return common.VideoAudioResults(
+            total=300,  # TODO change this
+            unmerged_windows=segments,
+            merged_windows=shots,
+            videos=videos,
+        )
+    else:
+        raise ValueError(
+            "`search_in` must be either `MediaType.VIDEO` or `MediaType.AV`"
+        )
+
+
+def construct_image_search_response(
+    top_dist: list[float],
+    all_metadata: list[VectorAndMediaMetadata],
+    all_ext_metadata: list[FeatureExtMetadata],
+    all_thumbs: Iterable[str],
+):
+    images = {}
+    image_vectors = []
+    for _dist, _metadata, _ext_metadata, _thumb in zip(
+        top_dist,
+        all_metadata,
+        all_ext_metadata,
+        all_thumbs,
+    ):
+        image_id = str(_metadata.media_id)
+        if image_id not in images:
+            images[image_id] = common.ImageInfo(
+                id=image_id,
+                filename=_metadata.path,
+                width=_metadata.width,
+                height=_metadata.height,
+                media_type=_metadata.media_type,
+                format=_metadata.format,
+                duration=_metadata.duration,
+                external_metadata=_metadata.external_metadata,
+            )
+
+        image_vector = common.ImageVector(
+            vector_id=str(_metadata.id),
+            media_id=image_id,
+            link=f"media/{image_id}",
+            distance=_dist,
+            thumbnail=_thumb,
+            bbox=_ext_metadata.bbox,
+        )
+        image_vectors.append(image_vector)
+
+    return common.ImageResults(
+        total=300,  # TODO change this
+        vectors=image_vectors,
+        images=images,
+    )
+
+
+def construct_search_response(
+    query: Query,
+    top_dist: list[float],
+    all_metadata: list[VectorAndMediaMetadata],
+    all_ext_metadata: list[FeatureExtMetadata],
+    all_thumbs: Iterable[str],
+    merge_function: Callable[
+        [list[VideoSegment]], list[VideoSegment]
+    ] = merge_close_segments,
+    search_in: MediaType | None = None,
+) -> common.SearchResponse:
+    video_audio_results = None
+    video_results = None
+    image_results = None
+    if search_in is None or search_in is MediaType.IMAGE:
+        image_indices = [
+            i
+            for i, x in enumerate(all_metadata)
+            if x.modality is ModalityType.IMAGE
+        ]
+        if len(image_indices) > 0:
+            image_top_dist = [top_dist[i] for i in image_indices]
+            image_all_metadata = [all_metadata[i] for i in image_indices]
+            image_ext_metadata = [all_ext_metadata[i] for i in image_indices]
+            image_thumbs = [all_thumbs[i] for i in image_indices]
+            image_results = construct_image_search_response(
+                image_top_dist,
+                image_all_metadata,
+                image_ext_metadata,
+                image_thumbs,
+            )
+    if search_in is None or search_in is MediaType.VIDEO:
+        video_indices = [
+            i
+            for i, x in enumerate(all_metadata)
+            if x.modality is ModalityType.VIDEO
+        ]
+        if len(video_indices) > 0:
+            video_top_dist = [top_dist[i] for i in video_indices]
+            video_all_metadata = [all_metadata[i] for i in video_indices]
+            video_ext_metadata = [all_ext_metadata[i] for i in video_indices]
+            video_thumbs = [all_thumbs[i] for i in video_indices]
+            video_results = construct_video_search_response(
+                MediaType.VIDEO,
+                video_top_dist,
+                video_all_metadata,
+                video_ext_metadata,
+                video_thumbs,
+                merge_function,
+            )
+    if search_in is None or search_in is MediaType.AV:
+        av_indices = [
+            i
+            for i, x in enumerate(all_metadata)
+            if x.modality is ModalityType.AUDIO
+            and x.media_type is MediaType.AV
+        ]
+        if len(av_indices) > 0:
+            av_top_dist = [top_dist[i] for i in av_indices]
+            av_all_metadata = [all_metadata[i] for i in av_indices]
+            av_ext_metadata = [all_ext_metadata[i] for i in av_indices]
+            av_thumbs = [all_thumbs[i] for i in av_indices]
+            video_audio_results = construct_video_search_response(
+                MediaType.AV,
+                av_top_dist,
+                av_all_metadata,
+                av_ext_metadata,
+                av_thumbs,
+                merge_function,
+            )
+    if search_in is not None and search_in not in [
+        MediaType.IMAGE,
+        MediaType.VIDEO,
+        MediaType.AV,
+    ]:
+        raise NotImplementedError(
+            "`search_in` must be either `MediaType.IMAGE`, `MediaType.VIDEO`, or `MediaType.AV`. Support for `MediaType.AUDIO` is not available yet"
+        )
+
+    return common.SearchResponse(
+        time=0.0,  # Dummy value to be overwritten by the @add_response_time decorator function
+        query=query,
+        video_audio_results=video_audio_results,
+        video_results=video_results,
+        image_results=image_results,
+    )
+
+
+def get_prefix(config: APIConfig):
+    return {
+        MediaType.IMAGE: config.query_prefix.strip(),
+        MediaType.VIDEO: config.query_prefix.strip(),
+        MediaType.AV: "This is the sound of",  # TODO add this to config
+        MediaType.AUDIO: "This is the sound of",
+    }
+
+
+def get_modality_type(
+    search_in: Annotated[MediaType, fastapi.Query()],
+) -> ModalityType:
+    if search_in is MediaType.AV:
+        return ModalityType.AUDIO
+    else:
+        return ModalityType.from_media(search_in)
+
+
+def validate_search_targets(
+    search_in: Annotated[MediaType, fastapi.Query()],
+    project_info: ProjectInfoDep,
+):
+    search_targets = project_info.search_targets
+    modality_type = get_modality_type(search_in)
+    if modality_type not in search_targets:
+        raise HTTPException(
+            400,
+            {
+                "message": f"No search index exists for this modality: {search_in}"
+            },
+        )
+    return search_in
+
+
+router = APIRouter()
+
+
+@router.get(
+    "/vectors",
+    response_model=common.NPArray,
+    responses={
+        200: {"content": "application/json"},
+        500: {"content": "text/plain"},
+    },
+)
+def reconstruct_vectors(
+    config: ConfigDep,
+    search_service: SearchServiceDep,
+    search_in: Annotated[MediaType, Depends(validate_search_targets)],
+    feature_extractor_id: str = fastapi.Query(),
+    internal_ids: list[int] = fastapi.Query(
+        default=[]
+    ),  # ids to internal images
+):
+    modality_type = get_modality_type(search_in)
+    if not internal_ids:
+        vectors = np.array([])
+        response = common.NPArray.from_array(vectors)
+        return response
+
+    if cast(LocalSearchService, search_service).is_internal_search_supported(
+        modality_type, feature_extractor_id
+    ):
+        try:
+            # reconstruct features from faiss index
+            vectors = cast(
+                LocalSearchService, search_service
+            ).reconstruct_vectors(
+                modality_type, feature_extractor_id, internal_ids
+            )
+        except Exception as e:
+            logger.exception(e)
+            return PlainTextResponse(
+                status_code=500,
+                content=f"Error processing internal search query",
+            )
+    else:
+        index_type = cast(
+            LocalSearchService, search_service
+        ).get_search_index_type(modality_type, feature_extractor_id)
+        logger.exception(
+            "This faiss index does not support internal search.  To enable"
+            " internal search, please re-create the index by running"
+            " `python -m wise create-index --project-dir '%s'"
+            "  --modality-type %s --index-type %s --overwrite`",
+            config.project_dir,
+            modality_type,
+            index_type,
+        )
+        return PlainTextResponse(
+            status_code=500,
+            content=f"Internal search not supported in this project",
+        )
+
+    vectors = np.concatenate(vectors, axis=0)
+    response = common.NPArray.from_array(vectors)
+    return response
+
+
+def build_filter_specs(shot_scale: list[int], metadata_filter: list[str]):
+    filter_specs = {}
+    if len(shot_scale) > 0:
+        filter_specs["shot_scale_query"] = {"$in": shot_scale}
+    if metadata_filter:
+        filter_specs["metadata_query"] = WISEFTSQuery.model_validate(
+            {"$match": " ".join(metadata_filter)}
+        )
+    return filter_specs
+
+
+def replace_vector_ids_with_search_embeddings(
+    search_service,
+    embedding_service,
+    modality_type: ModalityType,
+    feature_extractor_id,
+    q: Query,
+) -> Query:
+    ## Pick up queries for internal vectors
+    q_idx: list[int] = []
+    vector_ids: list[str] = []
+    for i, x in enumerate(q):
+        if isinstance(x, VectorIdQueryTerm):
+            q_idx.append(i)
+            vector_ids.append(int(x.vector_id.rsplit("/", maxsplit=1)[-1]))
+    if not vector_ids:
+        return q.copy()
+
+    ## Reconstruct features from faiss index
+    embeddings = search_service.reconstruct_vectors(
+        modality_type, feature_extractor_id, vector_ids
+    )
+    ## Apply hook to transform internal image query vectors
+    search_embeddings = [
+        embedding_service.transform_internal_image_queries(
+            feature_extractor_id, x
+        )
+        for x in embeddings
+    ]
+
+    new_q = q.copy()
+    for idx, embedding in zip(q_idx, search_embeddings):
+        new_q[idx] = VectorQueryTerm(
+            term_id=q[idx].term_id,
+            is_negative=q[idx].is_negative,
+            vector=embedding,
+        )
+    return new_q
+
+
+def search_output_to_response(
+    config: APIConfig,
+    project_service: LocalWiseProjectService,
+    q: Query,
+    search_in: MediaType,
+    search_output: SearchOutput,
+    thumbnails_to_send: int,
+    merge_shots_if_supported: bool = True,
+) -> common.SearchResponse:
+    if len(search_output.ids) == 0:
+        return common.SearchResponse(
+            time=0.0,
+            query=q,
+            video_audio_results=None,
+            video_results=None,
+            image_results=None,
+        )
+
+    all_thumbs = project_service.get_thumbnail_reader(thumbnails_to_send)(
+        search_output.metadata
+    )
+    merge_function = merge_close_segments
+
+    # supports shots
+    is_shot_merge_supported = config.use_shots and search_in is MediaType.VIDEO
+    if merge_shots_if_supported and is_shot_merge_supported:
+        merge_function = functools.partial(
+            get_shots_from_keyframes, project_service.wise_project
+        )
+
+    response = construct_search_response(
+        query=q,
+        top_dist=search_output.distances,
+        all_metadata=search_output.metadata,
+        all_ext_metadata=search_output.ext_metadata,
+        all_thumbs=all_thumbs,
+        merge_function=merge_function,
+        search_in=search_in,
+    )
+    return response
+
+
+def _search_metadata(
+    config: APIConfig,
+    project_service: LocalWiseProjectService,
+    search_service: LocalSearchService,
+    search_in: MediaType,
+    q: Query,
+    start: int,
+    end: int,
+    thumbnails_to_send: int,
+) -> common.SearchResponse:
+    if any([not isinstance(x, TextQueryTerm) or x.is_negative for x in q]):
+        raise HTTPException(
+            400,
+            {
+                "message": "`wise/metadata` feature extractor can only be used with text queries"
+            },
+        )
+
+    # ASR search
+    if start > end:
+        raise HTTPException(
+            400, {"message": "'start' cannot be greater than 'end'"}
+        )
+
+    modality_type = get_modality_type(search_in)
+    text_queries = [x.txt for x in q]
+    # TODO escape special characters
+    text = " ".join(text_queries)
+    fts_q = WISEFTSQuery.model_validate({"$match": text})
+    search_output = search_service.asr_search(fts_q, modality_type, start, end)
+
+    return search_output_to_response(
+        config,
+        project_service,
+        q,
+        search_in,
+        search_output,
+        thumbnails_to_send,
+        merge_shots_if_supported=False,
+    )
+
+
+async def _search_rrf(
+    config: ConfigDep,
+    project_info: ProjectInfoDep,
+    project_service: LocalWiseProjectService,
+    embedding_service: EmbeddingServiceDep,
+    search_service: LocalSearchService,
+    search_in: MediaType,
+    modality_type: ModalityType,
+    feature_extractor_id: str,
+    text_feature_extractor_id: str,
+    q: Query,
+    start: int,
+    end: int,
+    thumbnails_to_send: int,
+    shot_scale: list[int],
+    metadata_filter: list[str],
+    add_prefix: bool,
+) -> common.SearchResponse:
+
+    filter_specs = build_filter_specs(shot_scale, metadata_filter)
+
+    _prefix = get_prefix(config)
+    prefix = _prefix[search_in] if add_prefix else ""
+    embedding_config = EmbeddingConfig(
+        query_prefix=prefix,
+        text_queries_weight=config.text_queries_weight,
+        negative_queries_weight=config.negative_queries_weight,
+    )
+
+    face_text_options = config.face_text_search_options.get(
+        feature_extractor_id
+    )
+    # TODO: Split it into two functions
+    # - one that runs the face+text search
+    # - one that fuses results based on RRF and returns the final ranked list of results
+    text_k_target = max(end, config.face_text_search_text_k)
+    text_search_nprobe_override = None
+    nprobe_target = config.face_text_search_nprobe_target
+    if nprobe_target is not None and nprobe_target > 0:
+        text_search_nprobe_override = int(nprobe_target)
+    (
+        face_search_output,
+        text_search_output,
+        fused,
+    ) = await run_face_text_search_standalone(
+        q,
+        modality_type=modality_type,
+        feature_extractor_id=feature_extractor_id,
+        text_feature_extractor_id=text_feature_extractor_id,
+        embedding_config=embedding_config,
+        filter_specs=filter_specs,
+        start=start,
+        end=end,
+        num_vectors=project_info.num_vectors,
+        face_text_options=face_text_options,
+        text_k_target=text_k_target,
+        rrf_config=config.face_text_search_rrf,
+        face_score_threshold=(
+            face_text_options.get("score_threshold")
+            if face_text_options
+            else None
+        ),
+        text_search_nprobe_override=text_search_nprobe_override,
+        embedding_service=embedding_service,
+        search_service=search_service,
+        project_service=project_service,
+    )
+
+    if not fused:
+        return common.SearchResponse(
+            time=0.0,
+            query=q,
+            video_audio_results=None,
+            video_results=None,
+            image_results=None,
+        )
+
+    # Build the final ranked list of face results at frame granularity.
+    filtered = []
+    for (vid, meta, ext), rank_score in fused:
+        # Use integer rank-based scores (higher is better) to reflect RRF ordering.
+        filtered.append((vid, float(rank_score), meta, ext))
+
+    if not filtered:
+        return common.SearchResponse(
+            time=0.0,
+            query=q,
+            video_audio_results=None,
+            video_results=None,
+            image_results=None,
+        )
+
+    filtered_ids, filtered_dist, filtered_metadata, filtered_ext_metadata = (
+        zip(*filtered)
+    )
+    all_thumbs = project_service.get_thumbnail_reader(thumbnails_to_send)(
+        list(filtered_metadata)
+    )
+    _get_shots_from_keyframes = functools.partial(
+        get_shots_from_keyframes, project_service.wise_project
+    )
+    is_shot_merge_supported = config.use_shots and search_in == MediaType.VIDEO
+    response = construct_search_response(
+        query=q,
+        top_dist=list(filtered_dist),
+        all_metadata=list(filtered_metadata),
+        all_ext_metadata=list(filtered_ext_metadata),
+        all_thumbs=all_thumbs,
+        merge_function=(
+            _get_shots_from_keyframes
+            if is_shot_merge_supported
+            else merge_close_segments
+        ),
+        search_in=search_in,
+    )
+    return response
+
+
+async def _search_multimodal(
+    config: ConfigDep,
+    project_service: LocalWiseProjectService,
+    embedding_service: EmbeddingServiceDep,
+    search_service: LocalSearchService,
+    search_in: MediaType,
+    feature_extractor_id: str,
+    q: Query,
+    start: int,
+    end: int,
+    thumbnails_to_send: int,
+    shot_scale: list[int],
+    metadata_filter: list[str],
+    add_prefix: bool,
+) -> common.SearchResponse:
+
+    _prefix = get_prefix(config)
+    prefix = _prefix[search_in] if add_prefix else ""
+    embedding_config = EmbeddingConfig(
+        query_prefix=prefix,
+        text_queries_weight=config.text_queries_weight,
+        negative_queries_weight=config.negative_queries_weight,
+    )
+    features = embedding_service.embed(
+        feature_extractor_id, embedding_config, q
+    )
+
+    filter_specs = build_filter_specs(shot_scale, metadata_filter)
+    modality_type = get_modality_type(search_in)
+    search_output = search_service.search_with_feature(
+        features,
+        modality_type=modality_type,
+        feature_extractor_id=feature_extractor_id,
+        start=start,
+        end=end,
+        filter_specs=filter_specs,
+    )
+
+    return search_output_to_response(
+        config,
+        project_service,
+        q,
+        search_in,
+        search_output,
+        thumbnails_to_send,
+    )
+
+
+async def _search(
+    config: APIConfig,
+    project_info: ProjectInfo,
+    project_service: LocalWiseProjectService,
+    embedding_service: EmbeddingService,
+    search_service: LocalSearchService,
+    # Which media type to search on
+    # "video" refers to the visual stream of videos, "av" refers to the audio stream of videos
+    # "audio" refers to pure audio files, and "image" refers to images
+    search_in: MediaType,
+    feature_extractor_id: str,
+    q: Query,
+    start: int,
+    end: int,
+    thumbnails_to_send: int,
+    shot_scale: list[int],
+    metadata_filter: list[str],
+    add_prefix: bool,
+) -> common.SearchResponse:
+    max_end = min(config.max_search_results, project_info.num_vectors)
+    start, end = common.clamp_search_window(start, end, max_end)
+
+    if feature_extractor_id == "wise/metadata":
+        return _search_metadata(
+            config,
+            project_service,
+            search_service,
+            search_in,
+            q,
+            start,
+            end,
+            thumbnails_to_send,
+        )
+
+    if search_in == MediaType.IMAGE:
+        if any(
+            [isinstance(x, MediaQueryTerm) and x.qtype == "audio" for x in q]
+        ):
+            raise HTTPException(
+                400,
+                {"message": "Cannot search on images using an audio query"},
+            )
+    elif search_in == MediaType.VIDEO:
+        if any(
+            [isinstance(x, MediaQueryTerm) and x.qtype == "audio" for x in q]
+        ):
+            raise HTTPException(
+                400,
+                {
+                    "message": "Cannot search on visual stream of video files using an audio query"
+                },
+            )
+    elif search_in == MediaType.AUDIO or search_in == MediaType.AV:
+        if any(
+            [isinstance(x, MediaQueryTerm) and x.qtype == "visual" for x in q]
+        ):
+            raise HTTPException(
+                400, {"message": "Cannot search on audio using a visual query"}
+            )
+
+    modality_type = get_modality_type(search_in)
+
+    if any(
+        [isinstance(x, VectorIdQueryTerm) for x in q]
+    ) and not search_service.is_internal_search_supported(
+        modality_type, feature_extractor_id
+    ):
+        index_type = search_service.get_search_index_type(
+            modality_type, feature_extractor_id
+        )
+        logger.exception(
+            "This faiss index does not support internal search.  To enable"
+            " internal search, please re-create the index by running"
+            " `python -m wise create-index --project-dir '%s'"
+            "  --modality-type %s --index-type %s --overwrite`",
+            config.project_dir,
+            modality_type,
+            index_type,
+        )
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "message": "Internal search not supported in this project"
+            },
+        )
+
+    try:
+        q = replace_vector_ids_with_search_embeddings(
+            search_service,
+            embedding_service,
+            modality_type,
+            feature_extractor_id,
+            q,
+        )
+    except Exception as e:
+        logger.exception(e)
+        raise HTTPException(
+            status_code=500,
+            detail={"message": "Error processing internal search query"},
+        )
+
+    # check for rrf query
+    search_targets = project_info.search_targets
+    (
+        text_feature_extractor_id,
+        has_text_queries,
+        has_image_queries,
+        supports_text,
+    ) = resolve_face_text_embedder(
+        q,
+        modality_type=modality_type,
+        feature_extractor_id=feature_extractor_id,
+        search_targets=search_targets,
+        embedding_service=embedding_service,
+        preferred_id=config.face_text_search_text_embedder,
+    )
+    # if supported, respond with the face+text search results
+    if has_text_queries and has_image_queries and not supports_text:
+        # Select the text feature extractor for the face+text flow.
+        if text_feature_extractor_id is None:
+            raise HTTPException(
+                400,
+                {
+                    "message": "No text-capable feature extractor available for this modality"
+                },
+            )
+
+        response = await _search_rrf(
+            config,
+            project_info,
+            project_service,
+            embedding_service,
+            search_service,
+            search_in,
+            modality_type,
+            feature_extractor_id,
+            text_feature_extractor_id,
+            q,
+            start,
+            end,
+            thumbnails_to_send,
+            shot_scale,
+            metadata_filter,
+            add_prefix,
+        )
+
+    else:  # or proceed as regular multimodal search
+        response = await _search_multimodal(
+            config,
+            project_service,
+            embedding_service,
+            search_service,
+            search_in,
+            feature_extractor_id,
+            q,
+            start,
+            end,
+            thumbnails_to_send,
+            shot_scale,
+            metadata_filter,
+            add_prefix,
+        )
+
+    response.query = common.build_response_query(q, response.query)
+    return response
+
+
+@router.post("/search_with_feature", response_model=common.SearchResponse)
+@common.add_response_time
+async def handle_post_search_feature(
+    config: ConfigDep,
+    project_info: ProjectInfoDep,
+    project_service: ProjectServiceDep,
+    search_service: SearchServiceDep,
+    vector_qterm: VectorQueryTerm,
+    # Which media type to search on
+    # "video" refers to the visual stream of videos, "av" refers to the audio stream of videos
+    # "audio" refers to pure audio files, and "image" refers to images
+    search_in: Annotated[MediaType, Depends(validate_search_targets)],
+    feature_extractor_id: str = fastapi.Query(),
+    # Other parameters
+    start: int = fastapi.Query(0, ge=0),
+    end: int = fastapi.Query(20, gt=0),
+    thumbnails_to_send: int = fastapi.Query(0),
+    shot_scale: list[int] = fastapi.Query(default=[]),
+    metadata_filter: list[str] = fastapi.Query(default=[]),
+):
+    if feature_extractor_id == "wise/metadata":
+        raise HTTPException(
+            400,
+            {
+                "message": "`wise/metadata` feature extractor cannot be used for feature-based search. Please use a different feature extractor."
+            },
+        )
+
+    max_end = min(config.max_search_results, project_info.num_vectors)
+    start, end = common.clamp_search_window(start, end, max_end)
+
+    filter_specs = build_filter_specs(shot_scale, metadata_filter)
+    modality_type = get_modality_type(search_in)
+
+    search_output = cast(
+        LocalSearchService, search_service
+    ).search_with_feature(
+        vector_qterm.vector,
+        modality_type=modality_type,
+        feature_extractor_id=feature_extractor_id,
+        start=start,
+        end=end,
+        filter_specs=filter_specs,
+        vector_id_constraint=None,
+    )
+    return search_output_to_response(
+        config,
+        cast(LocalWiseProjectService, project_service),
+        [vector_qterm],
+        search_in,
+        search_output,
+        thumbnails_to_send,
+    )
+
+
+@router.post("/search", response_model=common.SearchResponse)
+@common.add_response_time
+async def handle_post_search(
+    config: ConfigDep,
+    project_info: ProjectInfoDep,
+    project_service: ProjectServiceDep,
+    embedding_service: EmbeddingServiceDep,
+    search_service: SearchServiceDep,
+    # Which media type to search on
+    # "video" refers to the visual stream of videos, "av" refers to the audio stream of videos
+    # "audio" refers to pure audio files, and "image" refers to images
+    search_in: Annotated[MediaType, Depends(validate_search_targets)],
+    feature_extractor_id: str = fastapi.Query(),
+    # Positive queries
+    text_queries: list[str] = fastapi.Query(default=[]),
+    image_file_queries: list[bytes] = File([]),  # user-uploaded images
+    audio_file_queries: list[bytes] = File([]),  # user-uploaded audio files
+    image_url_queries: list[HttpUrl] = Form([]),  # URLs to online images
+    audio_url_queries: list[HttpUrl] = Form([]),  # URLs to online audio files
+    internal_image_queries: list[str] = fastapi.Query(
+        default=[]
+    ),  # ids to internal images
+    # Negative queries
+    negative_text_queries: list[str] = fastapi.Query(default=[]),
+    negative_image_file_queries: list[bytes] = File(
+        []
+    ),  # user-uploaded images
+    negative_audio_file_queries: list[bytes] = File(
+        []
+    ),  # user-uploaded audio files
+    negative_image_url_queries: list[HttpUrl] = Form(
+        []
+    ),  # URLs to online images
+    negative_audio_url_queries: list[HttpUrl] = Form(
+        []
+    ),  # URLs to online audio files
+    negative_internal_image_queries: list[str] = fastapi.Query(
+        default=[]
+    ),  # ids to internal images
+    start: int = fastapi.Query(0, ge=0),
+    end: int = fastapi.Query(20, gt=0),
+    thumbnails_to_send: int = fastapi.Query(0),
+    shot_scale: list[int] = fastapi.Query(default=[]),
+    metadata_filter: list[str] = fastapi.Query(default=[]),
+    add_prefix: bool = fastapi.Query(True),
+):
+    """
+    Handles queries sent by POST request. This endpoint can handle file queries, URL queries (i.e. URL to an image), and/or text queries.
+    Multimodal queries (i.e. images + text) are performed by computing a weighted sum of the feature vectors of the
+    input images/text, and then using this as the query vector.
+    """
+
+    q = common.parse_old_api_query(
+        text_queries,
+        image_file_queries,
+        audio_file_queries,
+        image_url_queries,
+        audio_url_queries,
+        internal_image_queries,
+        negative_text_queries,
+        negative_image_file_queries,
+        negative_audio_file_queries,
+        negative_image_url_queries,
+        negative_audio_url_queries,
+        negative_internal_image_queries,
+    )
+
+    if len(q) == 0:
+        raise HTTPException(400, {"message": "Missing search query"})
+    elif len(q) > 5:
+        raise HTTPException(400, {"message": "Too many query items"})
+
+    return await _search(
+        config=config,
+        project_info=project_info,
+        project_service=cast(LocalWiseProjectService, project_service),
+        embedding_service=embedding_service,
+        search_service=cast(LocalSearchService, search_service),
+        search_in=search_in,
+        feature_extractor_id=feature_extractor_id,
+        q=q,
+        start=start,
+        end=end,
+        thumbnails_to_send=thumbnails_to_send,
+        shot_scale=shot_scale,
+        metadata_filter=metadata_filter,
+        add_prefix=add_prefix,
+    )
+
+
+@router.post("/search2", response_model=common.SearchResponse)
+@common.add_response_time
+async def handle_post_search2(
+    config: ConfigDep,
+    project_info: ProjectInfoDep,
+    project_service: ProjectServiceDep,
+    embedding_service: EmbeddingServiceDep,
+    search_service: SearchServiceDep,
+    # Which media type to search on
+    # "video" refers to the visual stream of videos, "av" refers to the audio stream of videos
+    # "audio" refers to pure audio files, and "image" refers to images
+    search_in: Annotated[MediaType, Depends(validate_search_targets)],
+    feature_extractor_id: str = fastapi.Query(),
+    # Query
+    query_term: Annotated[list[str], Form()] = [],
+    query_file: list[UploadFile] = [],
+    # Other parameters
+    start: int = fastapi.Query(0, ge=0),
+    end: int = fastapi.Query(20, gt=0),
+    thumbnails_to_send: int = fastapi.Query(0),
+    shot_scale: list[int] = fastapi.Query(default=[]),
+    metadata_filter: list[str] = fastapi.Query(default=[]),
+    add_prefix: bool = fastapi.Query(True),
+):
+    """
+    Handles queries sent by POST request. This endpoint can handle file queries, URL queries (i.e. URL to an image), and/or text queries.
+    Multimodal queries (i.e. images + text) are performed by computing a weighted sum of the feature vectors of the
+    input images/text, and then using this as the query vector.
+    """
+    if len(query_term) == 0:
+        raise HTTPException(400, {"message": "Missing search query"})
+    elif len(query_term) > 5:
+        raise HTTPException(400, {"message": "Too many query items"})
+
+    q = common.merge_multipart_query_form(query_term, query_file)
+
+    return await _search(
+        config=config,
+        project_info=project_info,
+        project_service=cast(LocalWiseProjectService, project_service),
+        embedding_service=embedding_service,
+        search_service=cast(LocalSearchService, search_service),
+        search_in=search_in,
+        feature_extractor_id=feature_extractor_id,
+        q=q,
+        start=start,
+        end=end,
+        thumbnails_to_send=thumbnails_to_send,
+        shot_scale=shot_scale,
+        metadata_filter=metadata_filter,
+        add_prefix=add_prefix,
+    )
+
+
+@router.get("/featured", response_model=common.SearchResponse)
+@common.add_response_time
+async def handle_get_featured(
+    config: ConfigDep,
+    project_service: ProjectServiceDep,
+    search_service: SearchServiceDep,
+    # The "media type" used for "featured_in" does not actually
+    # refer to the media_type in the database.  It is actually
+    # closer, but not the same, to the frontend viewModality but
+    # we use MediaType because it uses a subset of its keys.  This
+    # is just a convenience to get the values checked.
+    featured_in: MediaType = fastapi.Query(),
+    feature_extractor_id: str = fastapi.Query(),
+    start: int = fastapi.Query(0, ge=0),
+    end: int = fastapi.Query(20, gt=0),
+    thumbnails_to_send: int = fastapi.Query(0),
+    # This seed is used to randomly select the set of images used for the featured images
+    random_seed: int = fastapi.Query(123),
+):
+    start, end = common.clamp_search_window(
+        start, end, config.max_search_results
+    )
+    modality_type = get_modality_type(featured_in)
+    search_output = search_service.featured(
+        modality_type, feature_extractor_id, start, end, random_seed
+    )
+    all_thumbs = project_service.get_thumbnail_reader(thumbnails_to_send)(
+        search_output.metadata
+    )
+    response = construct_search_response(
+        query=[],
+        top_dist=search_output.distances,
+        all_metadata=search_output.metadata,
+        all_ext_metadata=search_output.ext_metadata,
+        all_thumbs=all_thumbs,
+    )
+
+    return response

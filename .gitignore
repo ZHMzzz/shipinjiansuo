@@ -1,0 +1,35 @@
+# Local environments and generated build output
+/.venv/
+/.media-runtime/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.DS_Store
+
+# Credentials and machine-specific settings
+.env
+.env.*
+*.env
+!.env.template
+!.env.example
+
+# Runtime data, uploaded media, and generated indexes
+/logs/
+/projects/
+/data/uploads/
+/data/downloads/
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.faiss
+*.npy
+*.npz
+*.log
+
+# Download caches and duplicate media archives
+/experiments/action-search/raw/
+/tools/micromamba.tar.bz2
+/*.zip

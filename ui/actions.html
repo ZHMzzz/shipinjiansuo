@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>动作检索 · 本机实验记录</title><link rel="stylesheet" href="/mvp/style.css"><link rel="stylesheet" href="/mvp/actions.css"></head>
+<body><header><a class="brand" href="/mvp/">寻帧<span>ACTION RESEARCH / 02</span></a><a href="/mvp/">返回检索台 ↗</a></header>
+<main><section class="intro"><div><p class="eyebrow">QWEN3-VL-EMBEDDING · 2B · APPLE M5</p><h1>看见动作，也看见误检。<em>本机试跑记录与可播放样本</em></h1></div></section>
+<p class="experiment-note">这里展示已完成试跑的真实结果，选择预设查询可回看排序；不是实时推理入口。10 个短片包含影视/GIF、模拟摔倒和作业画面，部分对照来自同一原片，不是独立准确率评测。“头部裸露”也不等于已判定违反现场安全规定。</p>
+<div class="experiment-controls"><label>运行配置<select id="experiment-run"><option value="qwen-fp16">Mac 轻量配置 · FP16 / 低分辨率</option><option value="qwen-default-fp32">WISE 原始配置 · FP32 / 默认像素预算</option></select></label><label>已测试的查询<select id="experiment-query"></select></label></div>
+<div id="experiment-stats" class="experiment-stats"></div><p id="experiment-status" role="status"></p><p id="experiment-error" role="alert" hidden></p>
+<section id="experiment-results" class="experiment-results"></section>
+<p class="help">Metal 驱动内存包含模型和缓存，与进程 RSS 口径不同，不能简单相加。单次查询耗时不含模型首次加载。结果按模型原始相似度排序，没有根据人工标签重排。</p>
+</main><footer><span>寻帧 / 动作检索可行性试验</span><span>本地推理 · 保留失败样本</span></footer><script src="/mvp/actions.js"></script></body></html>

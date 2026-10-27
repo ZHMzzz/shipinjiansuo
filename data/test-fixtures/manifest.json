@@ -1,0 +1,27 @@
+{
+  "purpose": "Synthetic concatenation solely to verify non-zero segment seeking; not a continuous real incident.",
+  "file": "动作定位_串接测试24秒.mp4",
+  "sha256": "e9b7d46406fde1d6fbd2a037a1ebbe54c3c20124fe6c6390b502407b1ccff2c9",
+  "timeline": [
+    {
+      "start": 0,
+      "end": 8,
+      "source": "experiments/action-search/videos/helmet_indoor.mp4"
+    },
+    {
+      "start": 8,
+      "end": 16,
+      "source": "experiments/action-search/videos/normal_walking.mp4"
+    },
+    {
+      "start": 16,
+      "end": 24,
+      "source": "experiments/action-search/videos/fall.mp4"
+    }
+  ],
+  "source_attribution": "experiments/action-search/manifest.json",
+  "uploaded_jobs": [
+    "9fa8c12df98e4e4dbbba6f9ba2e56bb6",
+    "0e66275176d4465bb35d882b6c7b984c"
+  ]
+}

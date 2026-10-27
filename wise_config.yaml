@@ -1,0 +1,17 @@
+listen_address: 127.0.0.1
+port: 9670
+query_prefix: ''
+max_search_results: 100
+feature_extractor_config:
+  default:
+    device: mps
+    compile: false
+    warmup: true
+  deepinsight/insightface/buffalo_l/_unknown:
+    device: cpu
+    compile: false
+    warmup: true
+search_target_order:
+  - open_clip
+  - owlv2
+  - insightface

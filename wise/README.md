@@ -1,0 +1,105 @@
+<div align="center">
+  <h1>WISE 2 - WISE Search Engine</h1>
+
+  <p>
+    <img src="docs/assets/wise_logo.svg" alt="wise-logo" width="160px" height="70px"/>
+    <br>
+    WISE is a search engine for images, videos, and audio powered by multimodal AI, allowing you to quickly and easily search through large collections of audiovisual media. You can search using natural language, an uploaded image/audio file, or a combination of these modalities. Use WISE locally on your own collections of images/videos.
+  </p>
+  <p>
+    For more details, visit
+    <a href="https://www.robots.ox.ac.uk/~vgg/software/wise/" target="_blank">
+      https://www.robots.ox.ac.uk/~vgg/software/wise/
+    </a>
+  </p>
+</div>
+
+## Key Features
+
+<details open>
+  <summary><b>Natural language search</b></summary>
+  <p>Use natural language to describe what you want to search for.</p>
+  <img src="docs/assets/natural_language_search.png" width="700px">
+  <p>
+  WISE uses a language model to understand the meaning behind your query, allowing you to flexibly describe what you are looking for. Moreover, WISE uses a vision model to understand what's being depicted in an image/video (i.e. it searches on visual content rather than metadata such as keywords, tags, or descriptions), so the images do not need to be manually tagged or labelled with text captions.
+  </p>
+</details>
+
+<details>
+  <summary><b>Visual similarity search</b></summary>
+  <p>Upload an image or paste an image link to find similar images:</p>
+  <img src="docs/assets/visual_similarity_search.png" width="700px">
+</details>
+
+<details>
+  <summary><b>Multi-modal search</b></summary>
+  <p>
+  Combine images and text in your query. For example, if you upload a picture of a golden retriever and enter the text "in snow", WISE will find images of golden retrievers in snow.
+  </p>
+  <img src="docs/assets/multimodal_search.png" width="700px">
+</details>
+
+<details>
+  <summary><b>Various multimodal / vision-language models supported</b></summary>
+  <p>
+  Various models are supported including vision-language models from <a target="_blank" href="https://github.com/mlfoundations/open_clip">OpenCLIP</a> (including OpenAI CLIP) and the <a target="_blank" href="https://github.com/microsoft/CLAP">Microsoft CLAP</a> audio-language model.
+  </p>
+</details>
+
+<details>
+  <summary><b>Different ways to perform searches</b></summary>
+  <p>Searches can be performed via:</p>
+  <ul>
+    <li>REST API</li>
+    <li>Web frontend</li>
+  </ul>
+</details>
+
+
+## Colab demo
+
+Try out WISE in Google Colab below (Google Colab is a free cloud service allowing you to run
+machine learning models and code without installing anything locally):
+
+<a target="_blank" href="https://colab.research.google.com/github/ox-vgg/wise/blob/main/notebooks/image_search.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+## Online demo
+
+Various capabilities of WISE can be demonstrated using a set of [public online demo](https://www.robots.ox.ac.uk/~vgg/software/wise/demo/) maintained by the VGG. If you are not sure what to search for, then visit the [examples page](https://www.robots.ox.ac.uk/~vgg/software/wise/examples/) for detailed instructions and ready-to-try search engine queries.
+
+## Documentation
+
+The WISE open source software is developed and maintained by the
+Visual Geometry Group ([VGG](https://www.robots.ox.ac.uk/~vgg/software/wise/)) at the University of Oxford.
+
+Here are some documents for users and developers of WISE.
+
+  - [Install](docs/Install.md) : describes the process for installing WISE
+  - [User Guide](docs/UserGuide.md) : demonstrates the usage of WISE using a sample video dataset
+    - User guide for the [Cinephile-2025](https://meru.robots.ox.ac.uk/cinephile/) online demo : [pdf](https://www.robots.ox.ac.uk/~vgg/software/wise/data/cinephile2025/WISE%20User%20Guide.pdf), [odt](https://www.robots.ox.ac.uk/~vgg/software/wise/data/cinephile2025/WISE%20User%20Guide.odt), [docx](https://www.robots.ox.ac.uk/~vgg/software/wise/data/cinephile2025/WISE%20User%20Guide.docx)
+  - [Video](https://www.robots.ox.ac.uk/~vgg/software/wise/data/wise-search-engine-2min-demo.mp4): a 2 minute video showcasing visual, face, audio, metadata and object search capabilities of WISE.
+  - [Metadata](docs/Metadata.md) : describes support for text metadata search in WISE
+  - Developer Resources
+    - [Data Loading](docs/data-loading.md): describes interface for loading media files
+    - [Feature Extractor](docs/FeatureExtractor.md) : guide for creating new feature extractors in WISE
+    - [FeatureStore](docs/FeatureStore.md) : describes the data structure containing the extracted features
+    - [Frontend](frontend/README.md) : describes the frontend web-based interface
+    - [Database](docs/Database.md) : describes the structure of the internal metadata database, which stores information about the source collections (i.e. input folders), media files (e.g. images, videos, or audio files), vectors, and extra metadata
+    - [Tests](docs/Tests.md) : describes the software testing process for WISE
+
+## Contact
+
+Please submit any bug reports and feature requests on the [Issues page](https://gitlab.com/vgg/wise/wise/-/issues).
+
+For any queries or feedback related to the WISE software, contact [Prasanna Sridhar](mailto:prasanna@robots.ox.ac.uk), [Horace Lee](mailto:horacelee@robots.ox.ac.uk), [David M. S. Pinto](mailto:pinto@robots.ox.ac.uk) or [Abhishek Dutta](mailto:adutta@robots.ox.ac.uk).
+
+## Citation
+The WISE software can be cited as follows:
+
+Prasanna Sridhar, Horace Lee, David M. S. Pinto, Andrew Zisserman, and Abhishek Dutta. 2026. WISE: A Multimodal Search Engine for Visual Scenes, Audio, Objects, Faces, Speech, and Metadata. In Proceedings of the 49th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR '26). Association for Computing Machinery, New York, NY, USA, 5230–5234. ( [doi](https://doi.org/10.1145/3805712.3808375), [pdf](https://www.robots.ox.ac.uk/~vgg/publications/2026/sridhar2026wise/sridhar2026wise.pdf) )
+
+## Acknowledgements
+
+Development and maintenance of WISE software has been supported by the following grant: Visual AI: An Open World Interpretable Visual Transformer (UKRI Grant [EP/T028572/1](https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/T028572/1))

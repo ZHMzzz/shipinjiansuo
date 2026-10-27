@@ -1,0 +1,101 @@
+import json
+import sqlite3
+from unittest.mock import Mock
+
+import numpy as np
+import pytest
+from scripts.action_search import ActionEngine, windows, plan, media_catalog, read_snapshot, select_hits
+
+
+def project(tmp_path, duration=18):
+    path = tmp_path/'demo'; (path/'metadata').mkdir(parents=True)
+    with sqlite3.connect(path/'metadata/internal.db') as db:
+        db.executescript('''CREATE TABLE source_collections(id INTEGER,location TEXT);
+            CREATE TABLE media(id INTEGER,path TEXT,duration REAL,source_collection_id INTEGER,media_type TEXT);
+            INSERT INTO source_collections VALUES(1,'/example');''')
+        db.execute("INSERT INTO media VALUES(7,'a.mp4',?,1,'VIDEO')", (duration,))
+    return path
+
+
+def save(path):
+    engine = ActionEngine(); catalog = media_catalog(path); records = plan(catalog)
+    matrix = np.eye(len(records), dtype='float32')
+    engine.finish(path, catalog, records, matrix)
+    return engine, records, matrix
+
+
+@pytest.mark.parametrize('duration,expected', [(.2, [(0,.2)]), (8, [(0,8)]),
+    (8.1, [(0,8),(4,8.1)]), (12, [(0,8),(4,12)]), (18, [(0,8),(4,12),(8,16),(12,18)])])
+def test_windows_cover_tail_without_redundant_terminal_clip(duration, expected):
+    assert list(windows(duration)) == expected
+
+
+@pytest.mark.parametrize('duration', [0, -1, float('nan'), float('inf')])
+def test_bad_duration_rejected(duration):
+    with pytest.raises(ValueError): list(windows(duration))
+
+
+def test_incremental_index_preserves_vectors_and_blocks_incomplete_publication(tmp_path):
+    path = project(tmp_path); engine, records, matrix = save(path)
+    with sqlite3.connect(path/'metadata/internal.db') as db:
+        db.execute("INSERT INTO media VALUES(19,'new.mp4',3,1,'AV')")
+    with pytest.raises(ValueError, match='缺少动作索引'): read_snapshot(path, complete=True)
+    catalog, old_records, old_vectors, missing = engine.prepare(path)
+    assert [m['id'] for m in missing] == [19]
+    np.testing.assert_array_equal(old_vectors, matrix)
+    new_record = plan(missing)[0]
+    engine.finish(path, catalog, old_records+[new_record], old_vectors+[np.ones(matrix.shape[1], dtype='float32')])
+    meta, result, index = read_snapshot(path, complete=True)
+    np.testing.assert_array_equal(result[:-1], matrix)
+    assert index.ntotal == len(records)+1
+    assert meta['segments'][-1] == dict(media_id=19,ts=0.,te=3.)
+
+
+def test_snapshot_rejects_changed_media_and_misaligned_vectors(tmp_path):
+    path=project(tmp_path); save(path)
+    np.save(path/'action-index/vectors.npy',np.zeros((1,4),dtype='float32'))
+    with pytest.raises(ValueError,match='不一致'): read_snapshot(path)
+    save(path)
+    with sqlite3.connect(path/'metadata/internal.db') as db:
+        db.execute("UPDATE media SET path='other.mp4'")
+    with pytest.raises(ValueError,match='媒体'): read_snapshot(path)
+
+
+def test_arbitrary_query_reaches_encoder_and_returns_ranked_nonzero_timestamps(tmp_path):
+    path=project(tmp_path); engine, records, _ = save(path)
+    encoder = Mock(); encoder.extract_text_features.return_value = np.array([[0,0,1,0]],dtype='float32')
+    engine.model = Mock(return_value=encoder)
+    query='一个人从椅子旁边突然向前倒下，这是未预设的描述'
+    result=engine.search(path,query,4)
+    encoder.extract_text_features.assert_called_once_with([query])
+    best=result['video_results']['unmerged_windows'][0]
+    assert (best['ts'],best['te'])==(8,16)
+    assert best['link']=='/demo/media/7#t=8.0,16.0'
+    assert result['indexed_segments']==4
+    assert result['score_kind']=='action'
+
+
+def test_overlapping_duplicates_suppressed_but_separate_events_kept():
+    segments=[dict(media_id=1,ts=0,te=8), dict(media_id=1,ts=1,te=9),
+              dict(media_id=1,ts=12,te=20), dict(media_id=2,ts=0,te=8)]
+    hits=select_hits(segments,[.9,.8,.7,.6],[0,1,2,3],20)
+    assert [(h['media_id'],h['ts']) for h in hits]==[(1,0),(1,12),(2,0)]
+
+
+def test_failed_backfill_preserves_live_version_and_is_retryable(tmp_path, monkeypatch):
+    from pathlib import Path
+    from scripts.ingestion import IngestionManager
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1]/'scripts'))
+    (tmp_path/'data').mkdir(); (tmp_path/'logs').mkdir()
+    stage=project(tmp_path/'projects')
+    (stage/'preserve.txt').write_text('existing video library')
+    manager=IngestionManager(tmp_path, Mock(), action_builder=Mock())
+    manager.build_actions=Mock(side_effect=RuntimeError('test model failure'))
+    manager.backfill_actions()
+    assert manager.action_state['status']=='failed'
+    assert (stage/'preserve.txt').read_text()=='existing video library'
+    assert not (stage/'action-index').exists()
+    assert list((tmp_path/'projects/releases').iterdir())==[]
+    manager.publisher.assert_not_called()
+    manager.request_backfill()
+    assert manager.action_state['status']=='pending' and manager.backfill_requested

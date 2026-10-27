@@ -1,0 +1,115 @@
+// Copyright 2026 University of Oxford
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.ant-collapse {
+  background-color: #f2f2f2;
+}
+.ant-collapse-header {
+  > .ant-collapse-header-text {
+    > img.wise-occurrences-preview-thumbnail {
+      width: 64px;
+      height: 36px;
+      object-fit: contain;
+      background-color: black;
+      border-radius: 4px;
+      margin: -5px 10px -5px -5px;
+    }
+    > img.wise-occurrences-preview-thumbnail, > span {
+      vertical-align: middle;
+    }
+  }
+}
+
+.wise-occurrences-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+
+  > .wise-occurrence {
+    display: inline-flex;
+    flex-flow: row wrap;
+    flex: 0 1 160px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    min-width: 160px; // make it fixed-width as flex sometimes shrinks thumbnails when there is a lot of them
+    position: relative;
+    padding: 3px;
+    border-radius: 7px;
+    cursor: pointer;
+
+    &:hover, &:hover > .wise-top-match-label {
+      background-color: #ccc;
+    }
+    // Add a wrapper div to control height of the stillimage
+    >.wise-occurrence-preview {
+      position: relative;
+      width: 100%;
+      height: 90px;
+      background-color: black;
+    }
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: black;
+      border-radius: 5px;
+    }
+    > .wise-occurrence-timestamp {
+      margin-top: 6px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background-color: gray;
+      color: white;
+      font-size: 12px;
+      width: fit-content;
+      z-index: 1;
+    }
+    > .wise-top-match-label {
+      background-color: #eaeaea;
+      z-index: 1;
+      margin-top: 5px;
+      margin-left: 5px;
+      padding: 0 2px;
+      color: #faad14;
+    }
+  }
+
+  > .wise-occurrences-timeline {
+    position: absolute;
+    top: 109px;
+    left: 10px;
+    height: 2px;
+    background-color: gray;
+  }
+}
+.ant-collapse-content-box {
+  position: relative;
+  padding: 10px 16px !important;
+  padding-top: 0 !important;
+
+  > .wise-occurrences-left-arrow, > .wise-occurrences-right-arrow {
+    position: absolute;
+    z-index: 2;
+    bottom: 70px;
+    display: none;
+  }
+  > .wise-occurrences-left-arrow {
+    left: 0;
+  }
+  > .wise-occurrences-right-arrow {
+    right: 0;
+  }
+}

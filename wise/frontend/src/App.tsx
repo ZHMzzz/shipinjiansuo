@@ -1,0 +1,210 @@
+// Copyright 2026 University of Oxford
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import React, { useEffect, useRef, useState } from 'react';
+import { Layout, Modal } from 'antd';
+const { Content } = Layout;
+import { CloseCircleFilled, StopTwoTone } from '@ant-design/icons';
+import { nanoid } from 'nanoid';
+
+import './App.scss';
+import SearchResults from './SearchResults.tsx';
+import WiseHeader from './WiseHeader.tsx';
+import WiseOverviewCard from './WiseOverviewCard.tsx';
+import {
+  ProjectInfo,
+  Query,
+  TourVariables,
+  ViewModality,
+} from './misc/types.ts';
+import { fetchWithTimeout, is_metadata_supported } from './misc/utils.ts';
+import { useDataService } from './DataService.ts';
+
+import config from './config';
+
+export const App: React.FunctionComponent = () => {
+  const [multimodalQueries, setMultimodalQueries] = useState<Query[]>([]); // Stores the file, URL, and text queries
+  const [searchText, setSearchText] = useState(''); // Stores the main text query entered in the search bar
+  const [viewModality, setViewModality] = useState<ViewModality>('Image');
+  const [featureExtractorId, setFeatureExtractorId] = useState<string>('');
+  const [shotScaleFilter, setShotScaleFilter] = useState<number[]>([]);
+
+  const [projectInfo, setProjectInfo] = useState<ProjectInfo>({});
+  const dataService = useDataService(projectInfo.max_search_results);
+  const [isHomePage, setIsHomePage] = useState(true);
+
+  const [isSearchDropdownOpenForTour, setIsSearchDropdownOpenForTour] = useState(false);
+  const tourVariables: TourVariables = {
+    searchBar: useRef(null),
+    isSearchDropdownOpenForTour,
+    setIsSearchDropdownOpenForTour,
+    imageUploadButton: useRef(null),
+    multimodalSearchArea: useRef(null),
+    paginationControls: useRef(null),
+    reportImageButton: useRef(null)
+  }
+
+  useEffect(() => {
+    // Fetch project info
+    fetchWithTimeout("info", 30000, { method: 'GET' })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch project info. ${response.status} - ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data: ProjectInfo) => {
+        data.is_metadata_supported = is_metadata_supported(data); // Add is_metadata_supported to projectInfo
+        // Display maybe only selected search targets
+        if (config.DISPLAYED_SEARCH_TARGETS !== undefined
+            && data.search_targets !== undefined) {
+          for (const [key, values] of Object.entries(data.search_targets)) {
+            const media_type = key as keyof typeof data.search_targets;
+            if (media_type in config.DISPLAYED_SEARCH_TARGETS) {
+              // Extract the value out to use inside the filter anonymous function
+              // So that when the filter runs, we are sure the targes are not
+              // undefined (Even though we dont change config typically)
+              // See [MR-148](https://gitlab.com/vgg/wise/wise/-/merge_requests/148)
+              const targets = config.DISPLAYED_SEARCH_TARGETS[media_type];
+              data.search_targets[media_type] = values.filter(
+                x => targets.includes(x)
+              );
+            } else {
+              delete data.search_targets[media_type];
+            }
+          }
+        }
+        setProjectInfo(data);
+      })
+      .catch((err) => {
+        Modal.error({
+          title: 'Error: unable to load project info',
+          content: 'Please try again later',
+        });
+        console.error(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Set viewModality based on the first search modality listed in projectInfo.search_targets
+    if (projectInfo.search_targets && Object.keys(projectInfo.search_targets).length > 0) {
+      const media_types = Object.keys(projectInfo.search_targets) as Array<keyof typeof projectInfo.search_targets>;
+      const default_media_type = media_types[0];
+      const default_feature_extractor_id = projectInfo.search_targets[default_media_type]?.[0];
+      const _viewModality = {
+        'image': 'Image',
+        'video': 'Video',
+        'audio': 'VideoAudio'
+      }[default_media_type];
+      setViewModality(_viewModality as ViewModality)
+      setFeatureExtractorId(default_feature_extractor_id ?? '');
+    }
+  }, [projectInfo]);
+
+  useEffect(() => {
+    // When WISE starts, these may be the empty string.  Wait until
+    // they are set before fetching featured images.
+    if (!viewModality || !featureExtractorId)
+      return;
+
+    // Dont submit another search - probably it was triggered manually in the handle example query function
+    if (dataService.isLoadingNewSearch) {
+      return;
+    }
+    // Now that we have set the feature extractor and modality, we can
+    // initialise home page with featured images
+    if (isHomePage) {
+      dataService.fetchFeaturedImagesAndSetState(
+        viewModality, featureExtractorId
+      ).then(_ => {
+        setIsHomePage(true); // TODO set setIsFeaturedImages based on the page route, rather than setting it here
+      }).catch((err) => {
+        Modal.error({
+          title: 'Error: unable to load featured images',
+          content: 'Please try again later',
+        });
+        console.error(err);
+      });
+    } else {
+      submitSearch();
+    }
+  }, [viewModality, featureExtractorId]);
+
+  const _submitSearch = (queries: Query[], _viewModality: ViewModality, _featureExtractorId: string) => {
+    dataService.performNewSearch(queries, _viewModality, _featureExtractorId, shotScaleFilter).then(_ => {
+      setIsHomePage(false); // TODO set setIsFeaturedImages based on the page route, rather than setting it here
+    }).catch((err) => {
+      Modal.error({
+        icon: (err.status === 403) ? <StopTwoTone twoToneColor="#ff4d4f" /> : <CloseCircleFilled />,
+        title: 'Error: unable to load search results',
+        content: (err.message) ? err.message : 'Please try again later',
+      });
+      console.error(err);
+    });
+  }
+
+  const submitSearch = (queries?: Query[]) => {
+    let _queries = queries?.slice() || [...multimodalQueries];
+    let searchTextTrimmed = searchText.trim();
+    if (searchTextTrimmed) _queries.push({
+      id: nanoid(),
+      type: "TEXT",
+      value: searchTextTrimmed
+    });
+    if (_queries.length === 0) return;
+    else if (_queries.length > 5) {
+      Modal.error({
+        title: 'The maximum number of queries is 5 queries',
+        content: 'Please delete some of the queries',
+      });
+      return;
+    }
+
+    _submitSearch(_queries, viewModality, featureExtractorId);
+  }
+
+  const handleExampleQueryClick = (exampleQuery: string, _viewModality?: ViewModality, _featureExtractorId?: string) => {
+    setViewModality(_viewModality || viewModality);
+    setFeatureExtractorId(_featureExtractorId || featureExtractorId);
+    setMultimodalQueries([]);
+    setSearchText(exampleQuery);
+    _submitSearch([{
+      id: nanoid(),
+      type: "TEXT",
+      value: exampleQuery
+    }], _viewModality || viewModality, _featureExtractorId || featureExtractorId);
+  }
+
+  return <Layout>
+    <WiseHeader multimodalQueries={multimodalQueries} setMultimodalQueries={setMultimodalQueries}
+                searchText={searchText} setSearchText={setSearchText}
+                viewModality={viewModality} setViewModality={setViewModality}
+                featureExtractorId={featureExtractorId} setFeatureExtractorId={setFeatureExtractorId}
+                submitSearch={submitSearch}
+                tourVariables={tourVariables}
+                projectInfo={projectInfo}
+                shotScaleFilter={shotScaleFilter} setShotScaleFilter={setShotScaleFilter}
+                isHomePage={isHomePage} isLoadingNewSearch={dataService.isLoadingNewSearch}></WiseHeader>
+    <Content className="wise-content">
+      {isHomePage && // Only show if isHomePage is true
+        <WiseOverviewCard handleExampleQueryClick={handleExampleQueryClick} projectInfo={projectInfo} tourVariables={tourVariables} />
+      }
+      <SearchResults dataService={dataService} isHomePage={isHomePage} projectInfo={projectInfo}
+                      setSearchText={setSearchText} multimodalQueries={multimodalQueries} setMultimodalQueries={setMultimodalQueries}
+                      viewModality={viewModality}
+                      featureExtractorId={featureExtractorId}
+                      submitSearch={submitSearch} />
+    </Content>
+  </Layout>
+};

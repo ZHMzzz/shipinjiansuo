@@ -1,0 +1,673 @@
+#!/bin/bash
+
+## Copyright 2026 University of Oxford
+##
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
+## You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+## See the License for the specific language governing permissions and
+## limitations under the License.
+
+if [ "$#" -ne 1 ]; then
+    echo "This script tests the functionality of WISE software using the Wikimedia Commons Images 25 dataset"
+    echo "which contains 25 images taken from the Wikimedia Commons repository."
+    echo ""
+    echo "Usage: bash tests/${0} TMP_DIR"
+    echo ""
+    echo "where, the assumptions are:"
+    echo "  - The virtual environment containing all the required python packages is already activated."
+    echo "  - The WISE code is already cloned to the current directory."
+    echo ""
+    echo "For example, if you have cloned the WISE repository to $HOME/wise, run the following commands:"
+    echo "    1. cd $HOME/wise/"
+    echo "    2. source .../bin/activate"
+    echo "    3. bash ${0} /tmp/wise-test/"
+    echo ""
+    echo "The TMP_DIR will contain everything (test data, wise project, etc.) required by this script to run the tests."
+    echo "In the final stage, this script will start the WISE server and run a series of tests to verify the installation."
+    exit
+fi
+
+# uncomment the following line to produce verbose output and enable debugging
+#set -euxo pipefail
+
+# Set these variables to the appropriate values
+# for your environment
+TEST_ID="wikimedia-commons-images-25"
+IMAGE_FEATURE_ID1="mlfoundations/open_clip/ViT-B-16-SigLIP2-512/webli"
+IMAGE_FEATURE_ID2="deepinsight/insightface/buffalo_l/_unknown"
+IMAGE_FEATURE_ID3="transformers/owlv2/google/owlv2-large-patch14-ensemble"
+FAISS_INDEX_TYPE="IndexFlatIP"
+HTTP_SERVER_HOST="0.0.0.0"
+HTTP_SERVER_PORT="10001"
+MAX_POLL_SERVER_COUNT=25
+CUDA_VISIBLE_DEVICES=0
+NUM_WORKERS=2
+
+EXTENSION="faiss" # options are: faiss, tar, npy
+
+# The face+text based test is reproducible only with these values
+FACE_TEXT_SEARCH_RRF='{"k":60,"face_weight":1.0,"text_weight":2.0,"face_low_weight":0.0}'
+
+NEW_CONFIG="{
+  \"${IMAGE_FEATURE_ID3}\": {
+    \"objectness_threshold\": 0.10
+  }
+}"
+
+if [ -n "${FEATURE_EXTRACTOR_CONFIG:-}" ]; then
+  # If FEATURE_EXTRACTOR_CONFIG is already set, merge the new config into it
+  FEATURE_EXTRACTOR_CONFIG=$(jq -n --argjson old "$FEATURE_EXTRACTOR_CONFIG" --argjson new "$NEW_CONFIG" '$old + $new')
+else
+  # Otherwise, just set it to the new config
+  FEATURE_EXTRACTOR_CONFIG="$NEW_CONFIG"
+fi
+
+WISE_CODE_DIR=`pwd`
+TMP_DIR=$(realpath ${1})
+OUTDIR="${TMP_DIR}/wise-test/"
+mkdir -p "${OUTDIR}"
+
+## Ensure we are running the version in the repo instead of some other
+## version of wise installed.
+export PYTHONPATH="$WISE_CODE_DIR/src:$PYTHONPATH"
+
+WISE_PKG_PATH=$(python -c 'import wise; print(wise.__path__[0])')
+if [ "$WISE_CODE_DIR/src/wise" !=  $WISE_PKG_PATH ];
+then
+    echo "ERROR: WISE in path '$WISE_PKG_PATH' is not the current repo" >&2
+    exit 1
+fi
+
+DATA_DIR="${OUTDIR}/test-data"
+TEST_DATA_DIR="${DATA_DIR}/${TEST_ID}/"
+TEST_DATA_DOWNLOAD_URL="https://thor.robots.ox.ac.uk/wise/assets/test/${TEST_ID}.zip"
+WISE_PROJECT_DIR="${OUTDIR}/wise-project/${TEST_ID}/"
+
+QUERY_DATA_DIR="${OUTDIR}/test-query/${TEST_ID}/"
+mkdir -p "${QUERY_DATA_DIR}"
+
+# check if required tools exist
+REQUIRED_TOOLS=(ffmpeg sqlite3 jq curl unzip)
+for tool in "${REQUIRED_TOOLS[@]}"; do
+    if ! command -v "$tool" &> /dev/null; then
+        echo "$tool package not found, install the $tool software using your distribution package manager"
+        exit 1
+    fi
+done
+
+# check if required python packages exist
+REQUIRED_PYTHON_PACKAGES=(torch torchvision torchaudio transformers faiss msclap open_clip)
+for package in "${REQUIRED_PYTHON_PACKAGES[@]}"; do
+    if ! python3 -c "import importlib.util; exit(0) if importlib.util.find_spec('${package}') else exit(1)"; then
+        echo "$package package not found, please install the $package python package"
+        exit 1
+    fi
+done
+
+start=`date +%s`
+echo "Starting tests for ${TEST_ID} ..."
+
+## Task: 1. Download test dataset
+if [ ! -d "${TEST_DATA_DIR}" ]; then
+    echo "Downloading test dataset to ${DATA_DIR} ..."
+    mkdir -p "${DATA_DIR}"
+    cd "${DATA_DIR}"
+    curl -sLO $TEST_DATA_DOWNLOAD_URL
+    unzip -q "${TEST_ID}.zip" -d "${DATA_DIR}"
+    rm "${TEST_ID}.zip"
+    if [ ! -d "${TEST_DATA_DIR}" ]; then
+        echo "Failed to download and extract the test dataset in ${TEST_DATA_DIR}"
+        exit 1
+    fi
+else
+    echo "Skipping test dataset download"
+fi
+
+## Task: 2. Extract features
+if [ ! -d "${WISE_PROJECT_DIR}" ]; then
+    echo "Extracting features from videos using ${NUM_WORKERS} workers (takes about 3 min.) ..."
+    cd "${WISE_CODE_DIR}"
+    CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
+    FEATURE_EXTRACTOR_CONFIG="$FEATURE_EXTRACTOR_CONFIG" \
+    python -m wise extract-features \
+           "${TEST_DATA_DIR}" \
+           --media-include "*.jpg" \
+           --shard-maxcount 128 \
+           --num-workers $NUM_WORKERS \
+           --image-feature-id "${IMAGE_FEATURE_ID1}" \
+           --image-feature-id "${IMAGE_FEATURE_ID2}" \
+           --image-feature-id "${IMAGE_FEATURE_ID3}" \
+           --enable-autocast \
+           --project-dir "$WISE_PROJECT_DIR"
+fi
+
+## Task: 3. Import media metadata
+METADATA_DB_FILE="${WISE_PROJECT_DIR}metadata/internal.db"
+METADATA_TABLE_NAME="metadata-${TEST_ID}"
+RESULT=$(sqlite3 "$METADATA_DB_FILE" "SELECT name FROM sqlite_master WHERE type='table' AND name='$METADATA_TABLE_NAME';")
+if [ "$RESULT" != "$METADATA_TABLE_NAME" ]; then
+    echo "Importing metadata from ${TEST_DATA_DIR}/media-metadata.csv (takes few seconds) ..."
+    python3 -m wise media-metadata import \
+            --metadata-id "${TEST_ID}" \
+            --from-csv "${TEST_DATA_DIR}/media-metadata.csv" \
+            --metadata-type "media" \
+            --project-dir "$WISE_PROJECT_DIR"
+fi
+
+## Test 3.1 : check if the metadata table exists
+TABLE_NAME=$(sqlite3 "$METADATA_DB_FILE" "SELECT name FROM sqlite_master WHERE type='table' AND name='$METADATA_TABLE_NAME';")
+if [ "$TABLE_NAME" != "$METADATA_TABLE_NAME" ]; then
+    echo "Test 3.1 FAILED: metadata table $TABLE_NAME does not exist in $METADATA_DB_FILE"
+    exit 1
+else
+    echo "Test 3.1 PASSED"
+fi
+
+## Test 3.2 : check if all the metadata rows are imported
+ROW_COUNT=$(sqlite3 "$METADATA_DB_FILE" "SELECT COUNT(*) FROM '$METADATA_TABLE_NAME';")
+TRUE_ROW_COUNT=$(wc -l < "${TEST_DATA_DIR}/media-metadata.csv")
+TRUE_ROW_COUNT=$((TRUE_ROW_COUNT - 1)) # subtract 1 for the header row
+if [ "$ROW_COUNT" -ne "$TRUE_ROW_COUNT" ]; then
+    echo "Test 3.2 FAILED: metadata table $TABLE_NAME has $ROW_COUNT rows, expected $TRUE_ROW_COUNT rows"
+    exit 1
+else
+    echo "Test 3.2 PASSED"
+fi
+
+## Task 4. Create search index for features and metadata
+IMAGE_INDEX_FILENAME1="${WISE_PROJECT_DIR}store/${IMAGE_FEATURE_ID1}/index/image-${FAISS_INDEX_TYPE}.faiss"
+IMAGE_INDEX_FILENAME2="${WISE_PROJECT_DIR}store/${IMAGE_FEATURE_ID2}/index/image-${FAISS_INDEX_TYPE}.faiss"
+IMAGE_INDEX_FILENAME3="${WISE_PROJECT_DIR}store/${IMAGE_FEATURE_ID3}/index/image-${FAISS_INDEX_TYPE}.faiss"
+
+if [ ! -f "${IMAGE_INDEX_FILENAME1}" ] || [ ! -f "${IMAGE_INDEX_FILENAME2}" ] || [ ! -f "${IMAGE_INDEX_FILENAME3}" ]; then
+    echo "Creating index (takes about 1 min.) ..."
+    cd "${WISE_CODE_DIR}"
+    FTS_CONFIG_FILE="${WISE_PROJECT_DIR}metadata-fts-config.json"
+    echo "{ \"${METADATA_TABLE_NAME}\": [ \"description\", \"date\", \"source_url\", \"author\" ] }" > "${FTS_CONFIG_FILE}"
+    python -m wise create-index \
+        --modality-type "image" \
+        --fts-config "${FTS_CONFIG_FILE}" \
+        --index-type "${FAISS_INDEX_TYPE}" \
+        --project-dir "$WISE_PROJECT_DIR"
+fi
+# Test 4.1 : check if the image index files exist
+if [ ! -f "${IMAGE_INDEX_FILENAME1}" ] && [ ! -f "${IMAGE_INDEX_FILENAME2}" ] && [ ! -f "${IMAGE_INDEX_FILENAME3}" ]; then
+    echo "Test 4.1 FAILED: image index files ${IMAGE_INDEX_FILENAME1}, ${IMAGE_INDEX_FILENAME2}, and ${IMAGE_INDEX_FILENAME3} do not exist"
+    exit 1
+else
+    echo "Test 4.1 PASSED"
+fi
+
+## Test 4.2 : check if all the metadata full text search index (FTS) files exist
+METADATA_FTS_TABLE_NAME="metadata_fts"
+ROW_COUNT=$(sqlite3 "$METADATA_DB_FILE" "SELECT COUNT(*) FROM '$METADATA_FTS_TABLE_NAME';")
+TRUE_ROW_COUNT=$(wc -l < "${TEST_DATA_DIR}/media-metadata.csv")
+TRUE_ROW_COUNT=$((TRUE_ROW_COUNT - 1)) # subtract 1 for the header row
+if [ "$ROW_COUNT" -ne "$TRUE_ROW_COUNT" ]; then
+    echo "Test 4.2 FAILED: metadata FTS table $METADATA_FTS_TABLE_NAME has $ROW_COUNT rows, expected $TRUE_ROW_COUNT rows"
+    exit 1
+else
+    echo "Test 4.2 PASSED"
+fi
+
+## 5 Start WISE server
+# Define cleanup function to run on Ctrl+C
+cleanup() {
+    echo -e "\nCaught Ctrl+C. Shutting down server..."
+    kill $SERVER_PID
+    wait $SERVER_PID 2>/dev/null
+    echo "Server stopped."
+}
+
+echo "Starting WISE server on ${HTTP_SERVER_HOST}:${HTTP_SERVER_PORT} (takes about 1 min.) ..."
+cd "${WISE_CODE_DIR}"
+FACE_TEXT_SEARCH_RRF=$FACE_TEXT_SEARCH_RRF LISTEN_ADDRESS=$HTTP_SERVER_HOST PORT=$HTTP_SERVER_PORT python -m wise serve \
+        --index-type "${FAISS_INDEX_TYPE}" \
+        --project-dir "$WISE_PROJECT_DIR" & # to start the server in the background
+SERVER_PID=$!
+trap cleanup SIGINT
+trap cleanup SIGTERM
+trap cleanup EXIT
+
+SERVER_URL="http://${HTTP_SERVER_HOST}:${HTTP_SERVER_PORT}/${TEST_ID}/"
+PROJECT_INFO_URL="${SERVER_URL}info"
+SLEEP_DURATION=5
+# Wait for the server to start
+# poll server every 5 seconds for 30 seconds
+for ((i=1; i<=MAX_POLL_SERVER_COUNT; i++)); do
+    if curl -s --head --request GET "${PROJECT_INFO_URL}" | grep "200 OK" > /dev/null; then
+        echo "Checking if server is running at ${PROJECT_INFO_URL}"
+        break
+    else
+        echo "Waiting for ${SLEEP_DURATION} sec. before checking again (${i}/${MAX_POLL_SERVER_COUNT}) ..."
+        sleep $SLEEP_DURATION
+    fi
+    if [ "$i" -eq "$MAX_POLL_SERVER_COUNT" ]; then
+        echo "Server did not start within the expected time."
+        cleanup
+        exit 1
+    fi
+done
+
+sleep 5 # give the server some time to start
+echo "Server started successfully."
+
+# Test 5.1 : check if the server is running
+if curl -s --head --request GET "${SERVER_URL}" | grep "200 OK" > /dev/null; then
+    echo "Test 5.1 PASSED"
+else
+    echo "Test 5.1 FAILED: server is not running at ${SERVER_URL}"
+    exit 1
+    cleanup
+fi
+
+# Test 5.2 : check project info
+response=$(curl -s -X GET -H "Content-Type: application/json" "${PROJECT_INFO_URL}")
+expected_project_name="${TEST_ID}"
+expected_targets=(
+    "mlfoundations/open_clip/ViT-B-16-SigLIP2-512/webli"
+    "deepinsight/insightface/buffalo_l/_unknown"
+    "transformers/owlv2/google/owlv2-large-patch14-ensemble"
+    "wise/metadata"
+)
+project_name=$(echo "$response" | jq -r '.project_name')
+search_targets=($(echo "$response" | jq -r '.search_targets.image[]'))
+
+if [ "$project_name" == "$expected_project_name" ]; then
+    echo "Test 5.2a PASSED"
+else
+    echo "Test 5.2a FAILED: project_name does not match expected value"
+    echo "Expected: $expected_project_name"
+    echo "Actual: $project_name"
+    exit 1
+    cleanup
+fi
+
+for expected in "${expected_targets[@]}"; do
+        found=0
+        for actual in "${search_targets[@]}"; do
+                if [ "$expected" == "$actual" ]; then
+                        found=1
+                        break
+                fi
+        done
+        if [ $found -eq 0 ]; then
+            echo "Test 5.2b FAILED: video search_targets missing expected value: $expected"
+            echo "Actual: ${video_search_targets[*]}"
+            exit 1
+            cleanup
+        fi
+done
+echo "Test 5.2b PASSED"
+
+validate_metadata_response () {
+    local test_id="${1}"
+    local response="${2}"
+    local expected_json="${3}"
+
+    response_selected_json=$(echo "$response" | jq -c '{
+      images: (
+        .image_results.images |
+        to_entries |
+        map({
+          filename: .value.filename,
+          external_metadata: .value.external_metadata
+        })
+      )
+    }')
+
+    if diff <(echo "$expected_json" | jq -S .) <(echo "$response_selected_json" | jq -S .) > /dev/null; then
+        echo "Test ${test_id} PASSED"
+    else
+        echo "Test ${test_id} FAILED: unexpected face image search results"
+        echo "Expected:"
+        echo "$expected_json" | jq .
+        echo "Actual:"
+        echo "$response_selected_json" | jq .
+        exit 1
+    fi
+}
+# Test 5.3 : metadata search
+echo "5.3 Running metadata search test ..."
+
+expected_json='{
+  "images": [
+    {
+      "filename": "960px-St_Nikolaus_Mittelberg_South_Tyrol_Rainbow.jpg",
+      "external_metadata": {
+        "asr_segments": [],
+        "description": " The picture shows the St. Nikolaus <b>Church</b> in Mittelberg on the Ritten plateau, just before a huge thunderstorm. My first images had the strong rainbow, but with the <b>church</b> still in the shadow, but luckily the sky opened a bit further, placing the <b>church</b> in the limelight.",
+        "date": "26 April 2019",
+        "source_url": "https://commons.wikimedia.org/wiki/File:St_Nikolaus_Mittelberg_South_Tyrol_Rainbow.jpg",
+        "author": "C-M"
+      }
+    }
+  ]
+}'
+METADATA_SEARCH_QUERY="church"
+RESULT_COUNT=3
+SEARCH_URL="${SERVER_URL}search?start=0&end=${RESULT_COUNT}&thumbs=0&search_in=image&feature_extractor_id=wise/metadata&text_queries=${METADATA_SEARCH_QUERY}"
+response=$(curl -s -X POST -H "Content-Type: application/json" "${SEARCH_URL}")
+
+validate_metadata_response "5.3.1 (search)" "$response" "$expected_json"
+
+METADATA_SEARCH_QUERY='{"term_id": "x", "is_negative": false, "txt": "church"}'
+RESULT_COUNT=3
+SEARCH_URL="${SERVER_URL}search2?start=0&end=${RESULT_COUNT}&thumbs=0&search_in=image&feature_extractor_id=wise/metadata"
+response=$(curl -s -X POST -H "Content-Type:multipart/form-data" \
+                -F "query_term=$METADATA_SEARCH_QUERY" \
+                "${SEARCH_URL}")
+
+
+validate_metadata_response "5.3.2 (search2)" "$response" "$expected_json"
+
+
+# Test 5.4 : face search
+validate_face_response() {
+    local test_id="${1}"
+    local response="${2}"
+    local expected_json="${3}"
+
+    response_selected_json=$(echo "$response" | jq -c '. as $root | {
+      results: (
+        .image_results.vectors |
+        map(
+          .media_id as $id |
+          {
+            filename: $root.image_results.images[$id].filename,
+            source_url: $root.image_results.images[$id].external_metadata.source_url
+          }
+        )
+      )
+    }')
+
+    if diff <(echo "$expected_json" | jq -S .) <(echo "$response_selected_json" | jq -S .) > /dev/null; then
+        echo "Test ${test_id} PASSED"
+    else
+        echo "Test ${test_id} FAILED: unexpected face image search results"
+        echo "Expected:"
+        echo "$expected_json" | jq .
+        echo "Actual:"
+        echo "$response_selected_json" | jq .
+        exit 1
+    fi
+}
+
+if [ "$IMAGE_FEATURE_ID2" == "deepinsight/insightface/buffalo_l/_unknown" ]; then
+    echo "5.4 Running face search test ..."
+
+    FACE_IMG_URL="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Christy_Turlington_and_Edward_Burns_at_the_2024_Toronto_International_Film_Festival_%28cropped%29.jpg/250px-Christy_Turlington_and_Edward_Burns_at_the_2024_Toronto_International_Film_Festival_%28cropped%29.jpg"
+    FACE_IMG_FILE="${QUERY_DATA_DIR}/Christy_Turlington_wikipedia_180x240.jpg"
+    if [ ! -f "${FACE_IMG_FILE}" ]; then
+        echo "Downloading face image to ${FACE_IMG_FILE} ..."
+        curl -sLO "${FACE_IMG_URL}"
+        mv "$(basename "${FACE_IMG_URL}")" "${FACE_IMG_FILE}"
+    fi
+    if [ ! -f "${FACE_IMG_FILE}" ]; then
+        echo "Failed to download face image from ${FACE_IMG_URL}"
+        exit 1
+    fi
+
+    expected_json='{
+      "results": [
+        {
+          "filename": "960px-Christy_Turlington_at_the_2024_Toronto_International_Film_Festival.jpg",
+          "source_url": "https://en.wikipedia.org/wiki/File:Christy_Turlington_at_the_2024_Toronto_International_Film_Festival.jpg"
+        },
+        {
+          "filename": "Ed_Burns,_Christy_Turlington_at_27_Dresses_Premiere_1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Ed_Burns,_Christy_Turlington_at_27_Dresses_Premiere_1.jpg"
+        },
+        {
+          "filename": "500px-Christie_Turlington_2000.jpg",
+          "source_url": "https://en.wikipedia.org/wiki/File:Christie_Turlington_2000.jpg"
+        }
+      ]
+    }'
+    RESULT_COUNT=3
+    SEARCH_URL="${SERVER_URL}search?start=0&end=${RESULT_COUNT}&thumbs=0&search_in=image&feature_extractor_id=${IMAGE_FEATURE_ID2}"
+    response=$(curl -s -X POST "${SEARCH_URL}" -F "image_file_queries=@${FACE_IMG_FILE}")
+    validate_face_response "5.4.1 (search)" "$response" "$expected_json"
+
+    RESULT_COUNT=3
+    SEARCH_URL="${SERVER_URL}search2?start=0&end=${RESULT_COUNT}&thumbs=0&search_in=image&feature_extractor_id=${IMAGE_FEATURE_ID2}"
+    response=$(curl -s -X POST -H "Content-Type:multipart/form-data" \
+                    -F 'query_term={"term_id": "x", "is_negative": false, "src": null, "qtype": "visual"}' \
+                    -F "query_file=@${FACE_IMG_FILE};filename=x" \
+                    "${SEARCH_URL}")
+
+
+    validate_face_response "5.4.2 (search2)" "$response" "$expected_json"
+fi
+validate_object_response () {
+    local test_id="${1}"
+    local response="${2}"
+    local expected_json="${3}"
+
+    response_selected_json=$(echo "$response" | jq -c '. as $root | {
+      results: (
+        .image_results.vectors |
+        map(
+          .media_id as $id |
+          {
+            filename: $root.image_results.images[$id].filename,
+            source_url: $root.image_results.images[$id].external_metadata.source_url
+          }
+        )
+      )
+    }')
+
+    if diff <(echo "$expected_json" | jq -S .) <(echo "$response_selected_json" | jq -S .) > /dev/null; then
+        echo "Test ${test_id} PASSED"
+    else
+        echo "Test ${test_id} FAILED: unexpected object search results"
+        echo "Expected:"
+        echo "$expected_json" | jq .
+        echo "Actual:"
+        echo "$response_selected_json" | jq .
+        exit 1
+    fi
+}
+# Test 5.5 : object search
+if [ "$IMAGE_FEATURE_ID3" == "transformers/owlv2/google/owlv2-large-patch14-ensemble" ]; then
+    echo "5.5 Running object search test ..."
+
+    expected_json='{
+      "results": [
+        {
+          "filename": "960px-Merisk_-_Eurasian_oystercatcher_-_Haematopus_ostralegus_(1)_copy.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Merisk_-_Eurasian_oystercatcher_-_Haematopus_ostralegus_(1)_copy.jpg"
+        },
+        {
+          "filename": "960px-Merisk_-_Eurasian_oystercatcher_-_Haematopus_ostralegus_(1)_copy.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Merisk_-_Eurasian_oystercatcher_-_Haematopus_ostralegus_(1)_copy.jpg"
+        },
+        {
+          "filename": "960px-Puffin_(Fratercula_arctica)_with_lesser_sand_eels_(Ammodytes_tobianus).jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Puffin_(Fratercula_arctica)_with_lesser_sand_eels_(Ammodytes_tobianus).jpg"
+        }
+      ]
+    }'
+
+    RESULT_COUNT=3
+    # http://localhost:10001/wikimedia-commons-images-25/search?start=0&end=500&thumbs=1&search_in=image&feature_extractor_id=transformers/owlv2/google/owlv2-large-patch14-ensemble&text_queries=bird
+    SEARCH_URL="${SERVER_URL}search?start=0&end=${RESULT_COUNT}&thumbs=0&search_in=image&feature_extractor_id=${IMAGE_FEATURE_ID3}&text_queries=bird"
+    response=$(curl -s -X POST "${SEARCH_URL}")
+    validate_object_response "5.5.1 (search)" "$response" "$expected_json"
+
+    RESULT_COUNT=3
+    # http://localhost:10001/wikimedia-commons-images-25/search?start=0&end=500&thumbs=1&search_in=image&feature_extractor_id=transformers/owlv2/google/owlv2-large-patch14-ensemble&text_queries=bird
+    SEARCH_URL="${SERVER_URL}search2?start=0&end=${RESULT_COUNT}&thumbs=0&search_in=image&feature_extractor_id=${IMAGE_FEATURE_ID3}"
+    response=$(curl -s -X POST -H "Content-Type:multipart/form-data" \
+                    -F 'query_term={"term_id": "x", "is_negative": false, "txt": "bird"}' \
+                    "${SEARCH_URL}")
+    validate_object_response "5.5.2 (search2)" "$response" "$expected_json"
+fi
+
+# Test 5.6 : face+text search
+if [ "$IMAGE_FEATURE_ID2" == "deepinsight/insightface/buffalo_l/_unknown" ]; then
+    FACE_IMG_URL="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Christy_Turlington_and_Edward_Burns_at_the_2024_Toronto_International_Film_Festival_%28cropped%29.jpg/250px-Christy_Turlington_and_Edward_Burns_at_the_2024_Toronto_International_Film_Festival_%28cropped%29.jpg"
+    FACE_IMG_FILE="${QUERY_DATA_DIR}/Christy_Turlington_wikipedia_180x240.jpg"
+    if [ ! -f "${FACE_IMG_FILE}" ]; then
+        echo "Downloading face image to ${FACE_IMG_FILE} ..."
+        curl -sLO "${FACE_IMG_URL}"
+        mv "$(basename "${FACE_IMG_URL}")" "${FACE_IMG_FILE}"
+    fi
+    if [ ! -f "${FACE_IMG_FILE}" ]; then
+        echo "Failed to download face image from ${FACE_IMG_URL}"
+        exit 1
+    fi
+    RESULT_COUNT=6
+    FACE_TEXT_QUERY="two%20people"
+    SEARCH_URL="${SERVER_URL}search?start=0&end=${RESULT_COUNT}&thumbs=0&search_in=image&feature_extractor_id=${IMAGE_FEATURE_ID2}&text_queries=${FACE_TEXT_QUERY}"
+    response=$(curl -s -X POST "${SEARCH_URL}" -F "image_file_queries=@${FACE_IMG_FILE}")
+    # We only look at the top 3 results here as they are correct
+    response_selected_json=$(echo "$response" | jq -c '. as $root | {
+      results: (
+        .image_results.vectors[:3] |
+        map(
+          .media_id as $id |
+          {
+            filename: $root.image_results.images[$id].filename,
+            source_url: $root.image_results.images[$id].external_metadata.source_url
+          }
+        )
+      )
+    }')
+    expected_json='{
+      "results": [
+        {
+          "filename": "Ed_Burns,_Christy_Turlington_at_27_Dresses_Premiere_1.jpg",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Ed_Burns,_Christy_Turlington_at_27_Dresses_Premiere_1.jpg"
+        },
+        {
+          "filename": "500px-Christie_Turlington_2000.jpg",
+          "source_url": "https://en.wikipedia.org/wiki/File:Christie_Turlington_2000.jpg"
+        },
+        {
+          "filename": "960px-Christy_Turlington_at_the_2024_Toronto_International_Film_Festival.jpg",
+          "source_url": "https://en.wikipedia.org/wiki/File:Christy_Turlington_at_the_2024_Toronto_International_Film_Festival.jpg"
+        }
+      ]
+    }'
+
+    if diff <(echo "$expected_json" | jq -S .) <(echo "$response_selected_json" | jq -S .) > /dev/null; then
+        echo "Test 5.6 PASSED"
+    else
+        echo "Test 5.6 FAILED: unexpected face image search results"
+        echo "Expected:"
+        echo "$expected_json" | jq .
+        echo "Actual:"
+        echo "$response_selected_json" | jq .
+        exit 1
+    fi
+fi
+
+
+json_get_filename_results() {
+    jq '.image_results as $results
+           | [$results.vectors[].media_id]
+           | map($results.images[.].filename)'
+}
+
+
+json_are_equal() {
+    jq \
+        --argjson expected "$1" \
+        --argjson observed "$2" \
+        --exit-status \
+        --null-input \
+        '$expected == $observed'
+}
+
+
+assert_response_filenames() {
+    local test_id="$1"
+    local expected_filenames="$2"
+    local observed_response="$3"
+
+    local observed_filenames=$(echo "$observed_response" | json_get_filename_results)
+    if $(json_are_equal "$expected_filenames" "$observed_filenames"); then
+        echo "Test $test_id PASSED"
+    else
+        echo "Test $test_id FAILED: unexpected search results"
+        echo "Expected filenames:"
+        echo "$expected_filenames" | jq .
+        echo "Observed filenames:"
+        echo "$observed_filenames" | jq .
+        echo "Observed full response:"
+        echo "$observed_response" | jq .
+        exit 1
+    fi
+}
+
+
+# Test 5.6 : face region search search
+test_face_region_search() {
+    local test_id="${1}"
+
+    ## This image is part of the dataset.  We are using it because it
+    ## has two faces, only one of which (Christy Turlington) appears
+    ## 3x in the dataset.  We then test with a box around the other
+    ## face (Edward Burns) to ensure that the given box is actually
+    ## used and exclude the case where the box is ignored and the "top
+    ## detection" is used (which is what should happens in the absence
+    ## of a bbox).  Also, the given bboxes are slightly off from the
+    ## boxes detected by insightface on purpose (to ensure search can
+    ## "adjust").
+    local query_img_fpath="${TEST_DATA_DIR}/Ed_Burns,_Christy_Turlington_at_27_Dresses_Premiere_1.jpg"
+
+    local christy_bbox='{"x": 0.45, "y": 0.23, "w": 0.27, "h": 0.38}'
+    local expected_christy_filenames='[
+        "Ed_Burns,_Christy_Turlington_at_27_Dresses_Premiere_1.jpg",
+        "500px-Christie_Turlington_2000.jpg",
+        "960px-Christy_Turlington_at_the_2024_Toronto_International_Film_Festival.jpg"
+    ]'
+
+    local edward_bbox='{"x": 0.05, "y": 0.12, "w": 0.25, "h": 0.45}'
+    local expected_edward_filenames='[
+        "Ed_Burns,_Christy_Turlington_at_27_Dresses_Premiere_1.jpg",
+        "960px-Edward_Burns_at_the_2024_Toronto_International_Film_Festival_(cropped).jpg",
+        "960px-Admiral_Chester_Nimitz_signs_as_Supreme_Allied_Commander_during_formal_surrender_ceremonies_on_the_USS_Missouri.jpg"
+    ]'
+
+
+    local search_url="${SERVER_URL}search2?start=0&end=3&thumbs=0&search_in=image&feature_extractor_id=${IMAGE_FEATURE_ID2}"
+    local christy_response=$(curl -s -X POST -H "Content-Type:multipart/form-data" \
+                    -F 'query_term={"term_id": "x", "is_negative": false, "src": null, "qtype": "visual", "bbox": '"$christy_bbox"'}' \
+                    -F "query_file=@\"${query_img_fpath}\";filename=x" \
+                    "$search_url")
+
+    assert_response_filenames \
+        "5.7.1" \
+        "$expected_christy_filenames" \
+        "$christy_response"
+
+    local edward_response=$(curl -s -X POST -H "Content-Type:multipart/form-data" \
+                    -F 'query_term={"term_id": "x", "is_negative": false, "src": null, "qtype": "visual", "bbox": '"$edward_bbox"'}' \
+                    -F "query_file=@\"${query_img_fpath}\";filename=x" \
+                    "$search_url")
+
+    assert_response_filenames \
+        "5.7.2" \
+        "$expected_edward_filenames" \
+        "$edward_response"
+}
+
+test_face_region_search
+
+
+end_time=`date +%s`
+elapsed_time=$((end_time-start))
+echo ""
+echo "*** All tests for ${TEST_ID} completed in ${elapsed_time} sec. ***"
+echo ""
+
+cleanup

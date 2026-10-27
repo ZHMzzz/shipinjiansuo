@@ -1,0 +1,209 @@
+// Copyright 2026 University of Oxford
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.wise-image-details-modal {
+  top: 5vh;
+  --video-bg: #f2f2f2;
+
+  .ant-modal-content {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+
+    // > .ant-modal-header {
+    //   height: 24px;
+    //   overflow: hidden;
+    //   text-overflow: ellipsis;
+    //   white-space: nowrap;
+    //   width: 100%;
+    // }
+    > .ant-modal-header > .ant-modal-title > .ant-btn {
+      white-space: normal;
+      height: unset;
+      text-align: left;
+      font-size: 17px;
+      margin-left: -10px;
+      margin-top: -5px;
+      margin-right: 20px;
+      word-break: break-word;
+
+      > svg {
+        height: 22px;
+        width: 22px;
+        vertical-align: -5px;
+        margin-left: 5px;
+      }
+    }
+
+    > .ant-modal-body {
+      flex-grow: 1;
+      position: relative;
+      overflow: scroll;
+
+      > .wise-image-wrapper {
+        width: 100%;
+        height: 100%;
+        max-height: calc(100% - 80px);
+        // height: fit-content;
+        display: inline-flex;
+        position: relative;
+        // position: absolute;
+        // left: 0;
+        // top: 0;
+        // flex-grow: 1;
+
+        video {
+          width: 100%;
+          height: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+
+        [data-part='cue'] b {
+          background-color: rgba(255, 225, 0, 0.4);
+        }
+
+        .vds-slider-chapters {
+          > .vds-slider-chapter {
+            margin-right: 0;
+            &, & > .vds-slider-track {
+              border-radius: 0;
+            }
+          }
+          > .vds-slider-chapter:nth-of-type(odd):hover {
+            transform: unset;
+          }
+
+          > .vds-slider-chapter:nth-of-type(even) {
+            &::before, &::after {
+              content: '';
+              position: absolute;
+              width: 4px;
+              height: 18px;
+              z-index: 10;
+            }
+            &::before {
+              left: 0;
+              border-left: 3px solid white;
+            }
+
+            &::after {
+              right: 0;
+            }
+
+            &:hover {
+              // margin-left: 3px;
+              // margin-right: 3px;
+
+              &::before, &::after {
+                height: 10px;
+                border-top: 1px solid white;
+                border-bottom: 1px solid white;
+              }
+              &::after {
+                border-right: 3px solid white;
+              }
+            }
+          }
+        }
+      }
+
+      > .wise-image-details-metadata {
+        width: 300px;
+        height: 100%;
+        padding: 10px 0 10px 25px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 11px;
+        overflow: scroll;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .ant-list {
+        max-height: 300px;
+        overflow-y: scroll;
+
+        .ant-list-item {
+          cursor: pointer;
+          &:hover {
+            background-color: #f5f5f5;
+          }
+
+          > span > b {
+            background-color: rgba(255, 225, 0, 0.7);
+          }
+
+          > .wise-asr-timestamp {
+            padding: 1px 5px;
+            border-radius: 4px;
+            background-color: #eee;
+            font-size: 12px;
+          }
+        }
+      }
+
+      > .ant-descriptions > .ant-descriptions-view .ant-descriptions-item-content > span {
+        white-space: pre-wrap;
+        b {
+          background-color: rgba(255, 225, 0, 0.7);
+        }
+      }
+
+    }
+  }
+
+  // Styles for smaller screens / mobile devices
+  @media (max-width: 800px) {
+    top: 2vh;
+
+    .ant-modal-content > .ant-modal-body {
+      overflow: scroll;
+
+      // > .wise-image-wrapper {
+      //   width: 100%;
+      //   height: fit-content;
+      //   max-height: 80%;
+      //   position: unset;
+
+      //   video {
+      //     height: unset;
+      //   }
+      // }
+
+      > .wise-image-details-metadata {
+        width: 100%;
+        height: unset;
+        position: unset;
+        display: block;
+        right: unset;
+        top: unset;
+      }
+    }
+
+    &:hover > .wise-image-hover-display, &.wise-image-dropdown-open > .wise-image-hover-display {
+      display: block;
+      visibility: visible;
+      background-color: rgba(0,0,0,0.35);
+      color: white;
+    }
+  }
+
+  &:hover > .wise-image-hover-display, &.wise-image-dropdown-open > .wise-image-hover-display {
+    display: block;
+    visibility: visible;
+    background-color: rgba(0,0,0,0.35);
+    color: white;
+  }
+}

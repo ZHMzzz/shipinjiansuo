@@ -1,0 +1,206 @@
+variables:
+  HOST_UID: 1000
+  HOST_GID: 1000
+  MAMBA_IMAGE: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/mambaorg/micromamba:1.5.10
+  PYTHON_IMAGE: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/python:3.10-slim
+  NODE_IMAGE: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/node:22-slim
+  REGISTRY: ${CI_REGISTRY_IMAGE}
+
+
+stages:
+  - lint
+  - build
+  - pages
+
+# job to push to pages, only on commit in main branch
+pages:
+  stage: pages
+  image: python:latest
+  services: []
+  before_script:
+    - pip install pip --upgrade
+  script:
+    - pip install -r requirements-docs.txt && pip install --no-deps .
+    - (cd mkdocs && mkdocs build --site-dir public)
+    - mv mkdocs/public .
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - ~/.cache/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  tags:
+    - saas-linux-small-amd64
+
+pre-commit:
+  stage: lint
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/python:3
+  services: []
+  variables:
+    PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
+  cache:
+    paths:
+      - ${PRE_COMMIT_HOME}
+  before_script:
+    - pip install pre-commit
+  script:
+    - pre-commit run --all-files
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  tags:
+    - saas-linux-small-amd64
+
+.docker-changes: &docker-changes
+  changes:
+    - 'api/**/*'
+    - 'frontend/**/*'
+    - 'src/**/*'
+    - .dockerignore
+    - 'Dockerfile'
+    - 'compose.yaml'
+    - 'compose.cpu.yaml'
+    - 'compose.gitlab.yaml'
+    - '.gitlab-ci.yml'
+    - 'environment.yaml'
+    - 'requirements.txt'
+    - '.env.template'
+    - '*.py'
+
+.doc-changes: &doc-changes
+  changes:
+    - 'data/**/*'
+    - 'docs/**/*'
+    - 'mkdocs/**/*'
+    - '*.md'
+    - 'LICENSE'
+    - 'NEWS.md'
+    - 'NOTICE'
+    - 'README.md'
+
+# create a pipeline for main branch, and for merge requests targeting the main branch
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "merge_request_event"
+
+default:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:26.1.4
+  services:
+    - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:26.1.4-dind
+      alias: docker
+
+  before_script:
+    - docker info
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker login -u "$CI_DEPENDENCY_PROXY_USER" -p "$CI_DEPENDENCY_PROXY_PASSWORD" "$CI_DEPENDENCY_PROXY_SERVER"
+    - docker context create buildx-builder
+    - apk update && apk add jq
+
+  tags:
+    - saas-linux-small-amd64
+
+build-only:
+  stage: build
+  interruptible: true
+  script:
+    - export CACHE_TAG=${APP//wise-/}-${PLATFORM}
+    - docker buildx create --driver docker-container --use --bootstrap buildx-builder --platform linux/${PLATFORM}
+    - docker compose -f compose.yaml -f compose.gitlab.yaml config
+    - docker compose -f compose.yaml -f compose.gitlab.yaml build --pull wise
+  rules:
+    - <<: *docker-changes
+      if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never # change to always to re-enable docker build
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: never
+  parallel:
+    matrix:
+      - PLATFORM: [amd64]
+        APP: [wise, wise-cpu]
+        SIZE: [medium]
+      - PLATFORM: [arm64]
+        APP: [wise-cpu]
+        SIZE: [small]
+  tags:
+    - saas-linux-${SIZE}-${PLATFORM}
+
+build:
+  stage: build
+  artifacts:
+    name: ${APP}-${PLATFORM}-image-digest
+    paths:
+      - bake-meta-${APP}-${PLATFORM}.json
+  script:
+    - export CACHE_TAG=${APP//wise-/}-${PLATFORM}
+    - docker buildx create --driver docker-container --use --bootstrap buildx-builder --platform linux/${PLATFORM}
+    - docker compose -f compose.yaml -f compose.gitlab.yaml config
+    - docker buildx bake --metadata-file bake-meta-${APP}-${PLATFORM}.json --pull -f compose.yaml -f compose.gitlab.yaml wise
+  parallel:
+    matrix:
+      - PLATFORM: [amd64]
+        APP: [wise, wise-cpu]
+        SIZE: [medium]
+      - PLATFORM: [arm64]
+        APP: [wise-cpu]
+        SIZE: [small]
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: never # change to always to re-enable docker build
+  tags:
+    - saas-linux-${SIZE}-${PLATFORM}
+
+# this job only runs on default branch
+.push-manifest: &push-manifest
+  stage: build
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: never
+
+  script:
+    - set -x
+    - docker buildx create --driver docker-container --use --bootstrap buildx-builder --platform linux/amd64
+    - IMAGE_TAG=$(docker buildx bake -f compose.yaml -f compose.gitlab.yaml wise --print | jq -cr '.target.wise.tags[0]')
+    - IMAGE_NAME=${IMAGE_TAG%%:*}
+    - printf "${IMAGE_TAG%%:*}"'@%s ' $(jq -rc 'map(.wise."containerimage.digest") | join(" ")' -s bake-meta*.json)
+    - |
+      docker buildx imagetools create \
+        -t ${IMAGE_TAG} \
+        $(printf "${IMAGE_TAG%%:*}"'@%s ' $(jq -rc 'map(.wise."containerimage.digest") | join(" ")' -s bake-meta*.json))
+
+push-manifest:
+  <<: *push-manifest
+  needs:
+    - job: build
+      parallel:
+        matrix:
+          - PLATFORM: [amd64]
+            APP: [wise]
+            SIZE: [medium]
+      artifacts: true
+  variables:
+    APP: wise
+    CACHE_TAG: "ignored"
+
+push-manifest-cpu:
+  <<: *push-manifest
+  needs:
+    - job: build
+      parallel:
+        matrix:
+          - PLATFORM: [amd64]
+            APP: [wise-cpu]
+            SIZE: [medium]
+          - PLATFORM: [arm64]
+            APP: [wise-cpu]
+            SIZE: [small]
+      artifacts: true
+  variables:
+    APP: wise-cpu
+    CACHE_TAG: "ignored"

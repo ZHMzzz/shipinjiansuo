@@ -1,0 +1,183 @@
+diff --git a/requirements.txt b/requirements.txt
+index 9b94b0d..c3feef2 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -6,15 +6,16 @@ fastapi[all]
+ filetype
+ huggingface_hub
+ httpx
+-insightface
++insightface==0.7.3
+ numpy
+ msclap>=1.3.4  # 1.3.4 dropped incompatible req on torchvision (see #133)
+-onnxruntime-gpu  # undeclared dependency of insightface
++onnxruntime-gpu; sys_platform != 'darwin'
++onnxruntime; sys_platform == 'darwin'
+ open-clip-torch>=2.24.0  # 2.24.0 added the SigLIP models
+ pydantic-settings
+ pydantic>2  # we only support 2+ syntax
+ python-magic
+-sqlalchemy>=2.0.42  # values statement support
++sqlalchemy>=2.0.42,<2.1  # values statement support; compiled execution API
+ ## torchaudio 2.9 dropped torchaudio.streamreader --- that's our real
+ ## requirement.  torch and torch* packages are released in tandem with
+ ## matching requirements so to speed up the dependency resolver we
+@@ -27,8 +28,8 @@ torchvision>=0.17.2,<0.24
+ tqdm
+ ## [sentencepiece] required by open-clip-torch to load many
+ ## HuggingFace models, namely the SigLIP models that we use.
+-transformers[sentencepiece]>=4.57.0  # 4.57.0 added Qwen3-VL-Embedding support
++transformers[sentencepiece]>=4.57.0,<5
+ qwen-vl-utils>=0.0.14  # required by Qwen3-VL-Embedding feature extractor
+-tritonclient[all]
++tritonclient[grpc,http]
+ typer
+ webvtt-py
+diff --git a/src/wise/_main/extract_features.py b/src/wise/_main/extract_features.py
+index 969cb69..3c3846e 100644
+--- a/src/wise/_main/extract_features.py
++++ b/src/wise/_main/extract_features.py
+@@ -1093,10 +1093,10 @@ def main(argv: list[str]):
+                         continue
+                     handle_chunk(_chunk, modality_type, feature_extractor_id)
+ 
+-            if "thumbnails" in chunks and chunks["thumbnails"] is not None:
++            if MediaChunkType.THUMBNAILS in chunks and chunks[MediaChunkType.THUMBNAILS] is not None:
+                 # Handle thumbnails
+-                _thumb_jpegs = chunks["thumbnails"].tensor
+-                _thumb_pts = chunks["thumbnails"].pts
++                _thumb_jpegs = chunks[MediaChunkType.THUMBNAILS].tensor
++                _thumb_pts = chunks[MediaChunkType.THUMBNAILS].pts
+ 
+                 # Store in thumbnail store
+                 # (thumbnail will be N x 3 x 192 x W)
+diff --git a/src/wise/api/services/embedding/_embedding.py b/src/wise/api/services/embedding/_embedding.py
+index 7480673..7e45b95 100644
+--- a/src/wise/api/services/embedding/_embedding.py
++++ b/src/wise/api/services/embedding/_embedding.py
+@@ -183,7 +183,11 @@ class EmbeddingService:
+                 logger.debug(
+                     "multiple features found, will return vector for the top feature only"
+                 )
+-            return features.vectors[0:1]
++            # External image features need the same query-side conversion as
++            # stored image features (e.g. undo OWLv2 logit augmentation).
++            return feature_extractor.transform_internal_image_queries_hook(
++                features.vectors[0:1].copy()
++            )
+ 
+         def extract_image_region_features(
+             image: Image.Image, bbox
+@@ -205,7 +209,9 @@ class EmbeddingService:
+                 logger.debug(
+                     "multiple features found, will return vector for the top feature only"
+                 )
+-            return features.vectors[0:1]
++            return feature_extractor.transform_internal_image_queries_hook(
++                features.vectors[0:1].copy()
++            )
+ 
+         def extract_audio_features(audio: torch.Tensor) -> np.ndarray:
+             if feature_extractor.extract_audio_features is None:
+diff --git a/src/wise/api/services/project/local.py b/src/wise/api/services/project/local.py
+index d12d96c..dabe5b3 100644
+--- a/src/wise/api/services/project/local.py
++++ b/src/wise/api/services/project/local.py
+@@ -145,7 +145,7 @@ class LocalWiseProjectService(WiseProjectService):
+ 
+         def _thumbnail(_m: VectorAndMediaMetadata):
+             thumbnail = project.thumbnail(
+-                media_id=_m.id, timestamp=_m.timestamp
++                media_id=_m.media_id, timestamp=_m.timestamp
+             )
+             return convert_uint8array_to_base64(thumbnail)
+ 
+diff --git a/src/wise/feature/mlfoundation_openclip.py b/src/wise/feature/mlfoundation_openclip.py
+index 19dda68..eedb916 100644
+--- a/src/wise/feature/mlfoundation_openclip.py
++++ b/src/wise/feature/mlfoundation_openclip.py
+@@ -342,7 +342,16 @@ class MlfoundationOpenClipFeatureExtractor(FeatureExtractor):
+                 "input to extract_features() must be an instance of torch.Tensor"
+             )
+ 
+-        model_output = self.model.get_image_features(images=images).float()
++        # PyTorch 2.8 / MPS on Apple M5 can abort in SigLIP's attention
++        # pooling for batches > 1 (MPSNDArray buffer-size assertion).
++        # Process each frame separately on MPS, preserving batch ordering.
++        if str(self.model.DEVICE).startswith("mps") and len(images) > 1:
++            model_output = torch.cat([
++                self.model.get_image_features(images=frame).float()
++                for frame in images.split(1)
++            ], dim=0)
++        else:
++            model_output = self.model.get_image_features(images=images).float()
+         model_output /= torch.linalg.norm(model_output, dim=-1, keepdims=True)
+         model_output = model_output.cpu().numpy()
+         feature_vectors = list(np.expand_dims(model_output, axis=1))
+diff --git a/src/wise/feature/qwen3vl.py b/src/wise/feature/qwen3vl.py
+index e2d2b64..7948ed5 100644
+--- a/src/wise/feature/qwen3vl.py
++++ b/src/wise/feature/qwen3vl.py
+@@ -16,6 +16,7 @@
+ 
+ import logging
+ from functools import cached_property
++from typing import Literal
+ 
+ import numpy as np
+ import torch
+@@ -85,6 +86,9 @@ class Qwen3VLEmbeddingFeatureExtractor(FeatureExtractor):
+         # torch.compile is not beneficial for VLMs with dynamic visual token counts
+         # and adds significant startup overhead for large models — disabled by default.
+         compile: bool = False
++        # Explicit research knobs for Apple Silicon / constrained-memory runs.
++        dtype: Literal['auto', 'float32', 'float16', 'bfloat16'] = 'auto'
++        max_total_pixels: int = _MAX_TOTAL_PIXELS
+ 
+     def __init__(
+         self,
+@@ -107,6 +111,8 @@ class Qwen3VLEmbeddingFeatureExtractor(FeatureExtractor):
+             )
+         self._hf_model_id = info["hf_model_id"]
+         self.compile = config.compile
++        self.inference_dtype = config.dtype
++        self.max_total_pixels = config.max_total_pixels
+ 
+         if warmup:
+             self.warmup()
+@@ -138,7 +144,7 @@ class Qwen3VLEmbeddingFeatureExtractor(FeatureExtractor):
+             model = _Qwen3VLForEmbedding.from_pretrained(
+                 self._hf_model_id,
+                 trust_remote_code=True,
+-                dtype=(
++                dtype=getattr(torch, self.inference_dtype) if self.inference_dtype != 'auto' else (
+                     torch.float16
+                     if self.DEVICE.type == "cuda"
+                     else torch.float32
+@@ -225,7 +231,7 @@ class Qwen3VLEmbeddingFeatureExtractor(FeatureExtractor):
+                     {
+                         "type": "video",
+                         "video": pil_frames,
+-                        "total_pixels": _MAX_TOTAL_PIXELS,
++                        "total_pixels": self.max_total_pixels,
+                     }
+                 ],
+             }
+diff --git a/src/wise/feature/transformers_owlv2.py b/src/wise/feature/transformers_owlv2.py
+index b4d38d5..555a424 100644
+--- a/src/wise/feature/transformers_owlv2.py
++++ b/src/wise/feature/transformers_owlv2.py
+@@ -625,6 +625,13 @@ class TransformersOWLv2FeatureExtractor(FeatureExtractor):
+                 "input to extract_features() must be an instance of torch.Tensor"
+             )
+ 
++        # OWLv2 uses 3600 visual tokens at 960px. Eight-frame batches can
++        # consume most of a 32GB Mac's unified memory. Keep MPS batches at
++        # one frame; results and metadata remain in the original order.
++        if str(self.model.DEVICE).startswith("mps") and len(images) > 1:
++            return [feature for frame in images.split(1)
++                    for feature in self.extract_image_features(frame)]
++
+         # Save original image sizes in a list before they get resized
+         orig_sizes = [
+             (image.shape[2], image.shape[1]) for image in images

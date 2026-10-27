@@ -1,0 +1,1013 @@
+{
+  "model": "Qwen/Qwen3-VL-Embedding-2B",
+  "device": "mps",
+  "dtype": "float16",
+  "max_total_pixels": 1048576,
+  "frames_per_segment": 16,
+  "clips": [
+    {
+      "id": "fence_vault",
+      "file": "videos/fence_vault.mp4",
+      "labels": [
+        "fence"
+      ],
+      "note": "影视片段：翻越木围栏",
+      "source": "https://tenor.com/view/fence-vaulting-parkour-shortcut-chase-gif-12946237",
+      "source_start": 2.3,
+      "sha256": "8066dfd94b76998313851b686eff60dcdbc650a00f4276942c8d504ef5f37840",
+      "duration": 2.5,
+      "decode_seconds": 0.1505627500009723,
+      "embedding_seconds": 2.127729250001721,
+      "memory": {
+        "rss_bytes": 784695296,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5455626240
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "fence_jump",
+      "file": "videos/fence_jump.mp4",
+      "labels": [
+        "fence"
+      ],
+      "note": "户外翻越金属围栏",
+      "source": "https://media.tenor.com/Rc5UK-RgCNwAAAP1/jump-fence.mp4",
+      "source_start": 0,
+      "sha256": "7d2bb181eab0a50361dfb94b2cceaf3a22eb0f14c7790ceb13881bd3f8909887",
+      "duration": 1.4,
+      "decode_seconds": 0.09237304102862254,
+      "embedding_seconds": 2.127987541956827,
+      "memory": {
+        "rss_bytes": 1035550720,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5542952960
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            22,
+            22
+          ]
+        ],
+        "tokens": 1052
+      }
+    },
+    {
+      "id": "fall",
+      "file": "videos/fall.mp4",
+      "labels": [
+        "fall",
+        "no_helmet"
+      ],
+      "note": "仓库模拟摔倒，头部裸露",
+      "source": "https://github.com/aayushgzip/Fall_detection/blob/main/fall.mp4",
+      "source_start": 2,
+      "sha256": "a5dc08a21d8ed83f387116355f6359a6a47830191650dc5a0c7b2d3983c208e7",
+      "duration": 8.006672226855713,
+      "decode_seconds": 0.1986953750019893,
+      "embedding_seconds": 1.752257833024487,
+      "memory": {
+        "rss_bytes": 1038630912,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5542952960
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "worker_barehead",
+      "file": "videos/worker_barehead.mp4",
+      "labels": [
+        "no_helmet",
+        "walking"
+      ],
+      "note": "同一仓库素材中摔倒前的正常行走，头部裸露",
+      "source": "https://github.com/aayushgzip/Fall_detection/blob/main/fall.mp4",
+      "source_start": 0,
+      "sha256": "caee006f3b296082c940eda0d9444e35c332d72f1a388182e167376b788176f8",
+      "duration": 2.0016680567139282,
+      "decode_seconds": 0.06985466595506296,
+      "embedding_seconds": 1.7984678749926388,
+      "memory": {
+        "rss_bytes": 1038991360,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5542952960
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "helmet_indoor",
+      "file": "videos/helmet_indoor.mp4",
+      "labels": [
+        "helmet"
+      ],
+      "note": "室内工人戴黄色安全帽",
+      "source": "https://github.com/rahilmoosavi/DetectConstructionSafety/blob/master/videos/ppe-1.mp4",
+      "source_start": 0,
+      "sha256": "3bea0ba7f5e29afddcbea0d15926537441a9d545bd3611d670cb2bf54d44bb2f",
+      "duration": 8.008000000000001,
+      "decode_seconds": 0.1300992079777643,
+      "embedding_seconds": 1.7751973749836907,
+      "memory": {
+        "rss_bytes": 1039269888,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473746944
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "helmet_outdoor",
+      "file": "videos/helmet_outdoor.mp4",
+      "labels": [
+        "helmet"
+      ],
+      "note": "两名室外工人均戴安全帽",
+      "source": "https://github.com/rahilmoosavi/DetectConstructionSafety/blob/master/videos/ppe-2.mp4",
+      "source_start": 0,
+      "sha256": "609d21909366521148feca9387f7280341d149cd11989e483880bfd587547540",
+      "duration": 8.0,
+      "decode_seconds": 0.17443120799725875,
+      "embedding_seconds": 1.8041026249993593,
+      "memory": {
+        "rss_bytes": 1039532032,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473746944
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "helmet_squat",
+      "file": "videos/helmet_squat.mp4",
+      "labels": [
+        "helmet",
+        "squatting"
+      ],
+      "note": "佩戴安全帽的工人蹲下作业，摔倒对照",
+      "source": "https://github.com/rahilmoosavi/DetectConstructionSafety/blob/master/videos/ppe-3.mp4",
+      "source_start": 0,
+      "sha256": "281b50733cea30e04cf7ff18ede029b9ae07a4ea475d6d5fa70af20f560b5d76",
+      "duration": 8.0,
+      "decode_seconds": 0.19722666597226635,
+      "embedding_seconds": 1.8305626250221394,
+      "memory": {
+        "rss_bytes": 1040252928,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473746944
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "fence_standing",
+      "file": "videos/fence_standing.mp4",
+      "labels": [
+        "standing"
+      ],
+      "note": "同一影视片段，围栏前站立交谈，尚未翻越",
+      "source": "https://tenor.com/view/fence-vaulting-parkour-shortcut-chase-gif-12946237",
+      "source_start": 0,
+      "sha256": "ba0c013059173a61c8212676efbd8adca231db5ff7f10c7b2ab3e13d6277b963",
+      "duration": 2.0,
+      "decode_seconds": 0.08284579199971631,
+      "embedding_seconds": 1.8084447080036625,
+      "memory": {
+        "rss_bytes": 1040826368,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473746944
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "normal_walking",
+      "file": "videos/normal_walking.mp4",
+      "labels": [
+        "walking"
+      ],
+      "note": "背着背包正常行走",
+      "source": "https://www.pexels.com/video/a-man-walking-while-carrying-a-backpack-6326811/",
+      "source_start": 0,
+      "sha256": "ebbbdaa959d42e8fd2341e36604b00f21dfdb1f7a233ba59eb9b7df155fd6fa4",
+      "duration": 8.0,
+      "decode_seconds": 0.14413737499853596,
+      "embedding_seconds": 1.8652608339907601,
+      "memory": {
+        "rss_bytes": 1041301504,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473746944
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            28,
+            16
+          ]
+        ],
+        "tokens": 980
+      }
+    },
+    {
+      "id": "normal_sitting",
+      "file": "videos/normal_sitting.mp4",
+      "labels": [
+        "sitting"
+      ],
+      "note": "坐在汽车里，非工地安全帽场景",
+      "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+      "source_start": 0,
+      "sha256": "f44d8f41d357aa0e607489a7f659bca9ebf8deafd7ee30c0e1f03dd37c84317f",
+      "duration": 8.0,
+      "decode_seconds": 0.14514375000726432,
+      "embedding_seconds": 1.856432374974247,
+      "memory": {
+        "rss_bytes": 1041678336,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473746944
+      },
+      "model_input": {
+        "video_grid_thw": [
+          [
+            8,
+            16,
+            28
+          ]
+        ],
+        "tokens": 980
+      }
+    }
+  ],
+  "queries": [
+    {
+      "category": "fence",
+      "language": "zh",
+      "text": "人员翻越围栏",
+      "expected": [
+        "fence_vault",
+        "fence_jump"
+      ],
+      "encode_seconds": 0.09120583295589313,
+      "search_seconds": 7.208401802927256e-05,
+      "ranking": [
+        {
+          "id": "fence_jump",
+          "score": 0.690193235874176
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.5985954999923706
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.4930628538131714
+        },
+        {
+          "id": "fall",
+          "score": 0.475607693195343
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.4664883613586426
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.43959903717041016
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.4288930296897888
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.4201422333717346
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.4083237648010254
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.3223104774951935
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1078984704,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473763328
+      }
+    },
+    {
+      "category": "fence",
+      "language": "en",
+      "text": "A person climbs over a fence.",
+      "expected": [
+        "fence_vault",
+        "fence_jump"
+      ],
+      "encode_seconds": 0.07926699996460229,
+      "search_seconds": 2.5917019229382277e-05,
+      "ranking": [
+        {
+          "id": "fence_jump",
+          "score": 0.7366552352905273
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.6621391177177429
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.467202365398407
+        },
+        {
+          "id": "fall",
+          "score": 0.45330798625946045
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.42772531509399414
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.41807830333709717
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.39075911045074463
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.3877618610858917
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.3815089464187622
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.32297220826148987
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1092452352,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473779712
+      }
+    },
+    {
+      "category": "fall",
+      "language": "zh",
+      "text": "一个人失去平衡摔倒在地",
+      "expected": [
+        "fall"
+      ],
+      "encode_seconds": 0.07905087497783825,
+      "search_seconds": 2.8959009796380997e-05,
+      "ranking": [
+        {
+          "id": "fall",
+          "score": 0.7067006826400757
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.5677942037582397
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.5471258759498596
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.456526517868042
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.4389718770980835
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.40497252345085144
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.40238216519355774
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.40194404125213623
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.39969727396965027
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.37045058608055115
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1105838080,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473796096
+      }
+    },
+    {
+      "category": "fall",
+      "language": "en",
+      "text": "A person loses balance and falls to the ground.",
+      "expected": [
+        "fall"
+      ],
+      "encode_seconds": 0.08529891702346504,
+      "search_seconds": 2.8999987989664078e-05,
+      "ranking": [
+        {
+          "id": "fall",
+          "score": 0.6985167264938354
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.5801489353179932
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.5572660565376282
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.44698721170425415
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.4066550135612488
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.3828924894332886
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.36615556478500366
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.36065858602523804
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.35459673404693604
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.31493696570396423
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1118814208,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473812480
+      }
+    },
+    {
+      "category": "no_helmet",
+      "language": "zh",
+      "text": "作业人员没有佩戴安全帽",
+      "expected": [
+        "fall",
+        "worker_barehead"
+      ],
+      "encode_seconds": 0.04131683398736641,
+      "search_seconds": 2.520799171179533e-05,
+      "ranking": [
+        {
+          "id": "helmet_outdoor",
+          "score": 0.5755518674850464
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.5560930967330933
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.5344464778900146
+        },
+        {
+          "id": "fall",
+          "score": 0.5087121725082397
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.42677661776542664
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.4099352955818176
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.4025013744831085
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.38955003023147583
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.3827843964099884
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.3563947081565857
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1119223808,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473812480
+      }
+    },
+    {
+      "category": "no_helmet",
+      "language": "en",
+      "text": "A worker without a safety helmet.",
+      "expected": [
+        "fall",
+        "worker_barehead"
+      ],
+      "encode_seconds": 0.04092941601993516,
+      "search_seconds": 2.7375004719942808e-05,
+      "ranking": [
+        {
+          "id": "helmet_outdoor",
+          "score": 0.5822993516921997
+        },
+        {
+          "id": "fall",
+          "score": 0.5788541436195374
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.5334641337394714
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.526626467704773
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.5049526691436768
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.4331209659576416
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.41836488246917725
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.4112206697463989
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.3865216076374054
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.3553329110145569
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1119633408,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473812480
+      }
+    },
+    {
+      "category": "helmet",
+      "language": "zh",
+      "text": "工人佩戴安全帽",
+      "expected": [
+        "helmet_indoor",
+        "helmet_outdoor",
+        "helmet_squat"
+      ],
+      "encode_seconds": 0.08010100002866238,
+      "search_seconds": 2.6250025257468224e-05,
+      "ranking": [
+        {
+          "id": "helmet_outdoor",
+          "score": 0.645206093788147
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.6165405511856079
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.5674079060554504
+        },
+        {
+          "id": "fall",
+          "score": 0.5097552537918091
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.48533087968826294
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.3981595039367676
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.3810203969478607
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.37526780366897583
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.37121695280075073
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.3685782849788666
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1132544000,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473828864
+      }
+    },
+    {
+      "category": "helmet",
+      "language": "en",
+      "text": "Workers wearing safety helmets.",
+      "expected": [
+        "helmet_indoor",
+        "helmet_outdoor",
+        "helmet_squat"
+      ],
+      "encode_seconds": 0.049785375013016164,
+      "search_seconds": 2.6875000912696123e-05,
+      "ranking": [
+        {
+          "id": "helmet_outdoor",
+          "score": 0.6656584739685059
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.5547916889190674
+        },
+        {
+          "id": "fall",
+          "score": 0.4410404860973358
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.42280954122543335
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.39733874797821045
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.3136550486087799
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.2920546233654022
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.2913006544113159
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.288602352142334
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.24072276055812836
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1132937216,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473828864
+      }
+    },
+    {
+      "category": "squatting",
+      "language": "zh",
+      "text": "工人蹲下作业",
+      "expected": [
+        "helmet_squat"
+      ],
+      "encode_seconds": 0.039473666984122247,
+      "search_seconds": 2.49580480158329e-05,
+      "ranking": [
+        {
+          "id": "helmet_squat",
+          "score": 0.5829044580459595
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.5316334962844849
+        },
+        {
+          "id": "fall",
+          "score": 0.5092605948448181
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.5070620775222778
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.42395877838134766
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.41154754161834717
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.40039339661598206
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.36601534485816956
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.3622313141822815
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.35274893045425415
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1133117440,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473828864
+      }
+    },
+    {
+      "category": "squatting",
+      "language": "en",
+      "text": "Workers squatting down to work.",
+      "expected": [
+        "helmet_squat"
+      ],
+      "encode_seconds": 0.04630108398851007,
+      "search_seconds": 3.420800203457475e-05,
+      "ranking": [
+        {
+          "id": "helmet_squat",
+          "score": 0.5757776498794556
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.559086799621582
+        },
+        {
+          "id": "fall",
+          "score": 0.4321671724319458
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.4098139703273773
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.36278820037841797
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.34427422285079956
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.31732651591300964
+        },
+        {
+          "id": "normal_walking",
+          "score": 0.31366562843322754
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.29925286769866943
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.26667702198028564
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1133494272,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473828864
+      }
+    },
+    {
+      "category": "walking",
+      "language": "zh",
+      "text": "一个人正常行走",
+      "expected": [
+        "worker_barehead",
+        "normal_walking"
+      ],
+      "encode_seconds": 0.07427479099715129,
+      "search_seconds": 2.3458036594092846e-05,
+      "ranking": [
+        {
+          "id": "normal_walking",
+          "score": 0.6391081213951111
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.534724771976471
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.47572532296180725
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.46680107712745667
+        },
+        {
+          "id": "fall",
+          "score": 0.4643293023109436
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.4617646634578705
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.43145933747291565
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.4243009686470032
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.39267170429229736
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.3778473734855652
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1145978880,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473845248
+      }
+    },
+    {
+      "category": "walking",
+      "language": "en",
+      "text": "A person walking normally.",
+      "expected": [
+        "worker_barehead",
+        "normal_walking"
+      ],
+      "encode_seconds": 0.040462917007971555,
+      "search_seconds": 2.762500662356615e-05,
+      "ranking": [
+        {
+          "id": "normal_walking",
+          "score": 0.6092146635055542
+        },
+        {
+          "id": "worker_barehead",
+          "score": 0.5218014717102051
+        },
+        {
+          "id": "fence_vault",
+          "score": 0.4401877522468567
+        },
+        {
+          "id": "fence_standing",
+          "score": 0.4376930296421051
+        },
+        {
+          "id": "fall",
+          "score": 0.43173280358314514
+        },
+        {
+          "id": "fence_jump",
+          "score": 0.4257127046585083
+        },
+        {
+          "id": "helmet_outdoor",
+          "score": 0.38442569971084595
+        },
+        {
+          "id": "helmet_indoor",
+          "score": 0.3647040128707886
+        },
+        {
+          "id": "normal_sitting",
+          "score": 0.33472687005996704
+        },
+        {
+          "id": "helmet_squat",
+          "score": 0.3337550461292267
+        }
+      ],
+      "memory": {
+        "rss_bytes": 1146241024,
+        "mps_allocated_bytes": 4255064832,
+        "mps_driver_bytes": 5473845248
+      }
+    }
+  ],
+  "status": "completed",
+  "sampled_metal_peaks": {
+    "mps_allocated_bytes": 4466675200,
+    "mps_driver_bytes": 5542969344
+  },
+  "load_seconds": 4.677197874989361,
+  "loaded_memory": {
+    "rss_bytes": 409206784,
+    "mps_allocated_bytes": 4255064576,
+    "mps_driver_bytes": 4263968768
+  },
+  "index_seconds": 2.68329749815166e-05,
+  "wall_seconds": 25.604271332966164,
+  "total_video_seconds": 55.91634028356964,
+  "total_embedding_seconds": 18.746443041949533
+}

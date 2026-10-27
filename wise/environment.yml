@@ -1,0 +1,17 @@
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - nodefaults  # ensure default channel is not used due to its ToS
+
+dependencies:
+  - python>=3.10
+  - pip>=24
+  - conda-forge::ffmpeg>=6,<7
+  - libmagic
+  - sqlite>=3.35
+  - blas
+  - pip:
+    - -r requirements.txt
+variables:
+  PYTHONNOUSERSITE: 1

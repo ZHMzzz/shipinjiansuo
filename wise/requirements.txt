@@ -1,0 +1,35 @@
+accelerate  # used by some HuggingFace models
+faiss-cpu>=1.7.4
+## [all] required for Starlette's schema generation and multipart
+## support, etc.
+fastapi[all]
+filetype
+huggingface_hub
+httpx
+insightface==0.7.3
+numpy
+msclap>=1.3.4  # 1.3.4 dropped incompatible req on torchvision (see #133)
+onnxruntime-gpu; sys_platform != 'darwin'
+onnxruntime; sys_platform == 'darwin'
+open-clip-torch>=2.24.0  # 2.24.0 added the SigLIP models
+pydantic-settings
+pydantic>2  # we only support 2+ syntax
+python-magic
+sqlalchemy>=2.0.42,<2.1  # values statement support; compiled execution API
+## torchaudio 2.9 dropped torchaudio.streamreader --- that's our real
+## requirement.  torch and torch* packages are released in tandem with
+## matching requirements so to speed up the dependency resolver we
+## include matching requirements (torch<2.9, and torchvision<0.24).
+## Once we replace torchaudio.streamreader with torchcodec we can drop
+## these requirements (see comments on #175).
+torch>=2.2.2,<2.9
+torchaudio>=2.2.2,<2.9
+torchvision>=0.17.2,<0.24
+tqdm
+## [sentencepiece] required by open-clip-torch to load many
+## HuggingFace models, namely the SigLIP models that we use.
+transformers[sentencepiece]>=4.57.0,<5
+qwen-vl-utils>=0.0.14  # required by Qwen3-VL-Embedding feature extractor
+tritonclient[grpc,http]
+typer
+webvtt-py

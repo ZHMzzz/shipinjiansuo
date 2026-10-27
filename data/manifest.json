@@ -1,0 +1,86 @@
+[
+  {
+    "file": "coughing-6XvsLPDioVA_000000_000010.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "coughing-7XXXwvatW1U_000051_000061.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "frying-vegetables-hxK9mej0_zw_000086_000096.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "jogging-OmWoDAQM1kk_000000_000010.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "shouting-84cxLPOEnGg_000011_000021.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "shouting-85P9CDTfGjE_000000_000010.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "singing-GO5DhmRmHco_000112_000122.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "singing-I6NDj1EcP6w_000073_000083.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "whistling-LqQYSUb_TJI_000052_000062.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+    "source": "https://thor.robots.ox.ac.uk/wise/assets/test/Kinetics-6.tar.gz",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "backpack-walking.mp4",
+    "source": "https://www.pexels.com/video/6326811/",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  },
+  {
+    "file": "backpack-street.mp4",
+    "source": "https://www.pexels.com/video/3551155/",
+    "query_preview_time": 2.25,
+    "transform": "H264, max 640 px, audio removed; original timeline retained"
+  }
+]

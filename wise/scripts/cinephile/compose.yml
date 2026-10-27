@@ -1,0 +1,106 @@
+x-common: &common
+  # Request NVIDIA gpu
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: 'nvidia'
+            capabilities: [gpu]
+            count: all
+  # Increase shared memory size to prevent segmentation faults with PyTorch/multiprocessing
+  shm_size: '2gb'
+  ulimits:
+    memlock: -1
+    stack: 67108864
+
+  # Attach a tty so that we can send interact with the container if needed
+  tty: true
+
+  volumes:
+    # For development: Mount the entire project directory to instantly reflect
+    # local changes in the container. Remove for production.
+    - ../../:/wise
+    # Set the CINEPHILE_DATA_DIR environment variable on your host to map a local folder here.
+    # For example: export CINEPHILE_DATA_DIR=/path/to/my/data
+    - ${CINEPHILE_DATA_DIR?'CINEPHILE_DATA_DIR must be set to the location of dataset before running this container'}:/data/cinephile/
+    - wise-cache:/tmp/cache
+
+  environment: &env
+    MODE: production
+    HOST_UID: ${HOST_UID?'HOST_UID must be set before using this compose.yaml. Please see docs/Docker.md'}
+    HOST_GID: ${HOST_GID?'HOST_GID must be set before using this compose.yaml. Please see docs/Docker.md'}
+    CINEPHILE_DATA_DIR: /data/cinephile
+    QUERY_PREFIX: ""
+
+services:
+  wise:
+    # add common settings
+    <<: *common
+    restart: on-failure:5
+
+    command:
+      - python3
+      - serve.py
+      - --index-type
+      - IndexFlatIP
+      - --project-dir
+      - /data/cinephile/wise-project/cinephile/
+
+    build:
+      context: ../../
+      dockerfile: scripts/cinephile/Dockerfile
+      target: wise
+
+    image: ${REGISTRY:-$USER}/wise:${VERSION:-cinephile}
+    environment:
+      <<: *env
+      ENV_NAME: wise-env # default micromamba environment
+      PORT: ${WISE_HOST_PORT:-10001}  # Port to run the WISE server on
+      USE_SHOTS: 1
+
+    ports:
+      # Set the WISE_HOST_PORT environment variable to map a different host port.
+      # Example: export WISE_HOST_PORT=12345
+      - "${WISE_HOST_PORT:-10001}:${WISE_HOST_PORT:-10001}"
+
+    volumes:
+      # Cannot use anchors here, so repeat the volume definitions
+      # For development: Mount the entire project directory to instantly reflect
+      # local changes in the container. Remove for production.
+      - ../../:/wise
+      # Set the CINEPHILE_DATA_DIR environment variable on your host to map a local folder here.
+      # For example: export CINEPHILE_DATA_DIR=/path/to/my/data
+      - ${CINEPHILE_DATA_DIR?'CINEPHILE_DATA_DIR must be set to the location of dataset before running this container'}:/data/cinephile/
+      - wise-cache:/tmp/cache
+      - ./wise-frontend-config.js:/app/frontend/dist/config.js # custom frontend config
+
+  shot-detection:
+    # add common settings
+    <<: *common
+
+    build:
+      context: ../../
+      dockerfile: scripts/cinephile/Dockerfile
+      target: shot-detection-env
+
+    image: ${REGISTRY:-$USER}/shot-detection:${VERSION:-cinephile}
+    environment:
+      <<: *env
+      ENV_NAME: shot-detection-env # default micromamba environment
+
+  shot-scale-classifier:
+    <<: *common
+
+    build:
+      context: ../../
+      dockerfile: scripts/cinephile/Dockerfile
+      target: shot-scale-classifier-env
+
+    image: ${REGISTRY:-$USER}/shot-scale-classifier:${VERSION:-cinephile}
+    environment:
+      <<: *env
+      ENV_NAME: shot-scale-classifier-env # default micromamba environment
+
+
+volumes:
+  wise-cache:

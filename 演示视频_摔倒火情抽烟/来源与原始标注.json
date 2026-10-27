@@ -1,0 +1,956 @@
+[
+  {
+    "file": "摔倒/摔倒01_白天工地.mp4",
+    "source_video_id": "video_00353",
+    "source_member": "videos/video_00353.mp4",
+    "sha256": "644e53a4d1da7a6d5a06d61223ab2cad3d176df6d15f7e8350e528fc4b786a25",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1",
+      "video_id": "video_00353",
+      "anomaly_type": "person_falling_or_collapsing",
+      "total_frames": 192,
+      "video_duration_sec": 8.0,
+      "fps": 24.0,
+      "video_path": "videos/video_00353.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_00353.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "person_falling_or_collapsing",
+          "dense_caption": "A construction worker in a yellow helmet and orange safety vest stands still on a dirt path at a construction site. The construction worker begins to lose balance and tips forward. The worker falls forward, landing on their knees and hands on the sandy ground. The worker hits the ground with force, kicking up a small cloud of dust. The worker remains on the ground, beginning to shift their position after the fall. The worker is seen kneeling on the dirt path, recovering from the fall. The worker remains in a kneeling position on the construction site path.",
+          "scene_caption": "The scene takes place at an outdoor construction site during a bright, sunny day. The camera is positioned at a fixed, high-angle perspective, overlooking a dirt path flanked by stacks of concrete blocks, rebar foundations, and several yellow excavators. General activity consists of heavy machinery operation and personnel movement across the dusty terrain.",
+          "pas_queries": [
+            "person wearing orange vest",
+            "person wearing yellow headwear",
+            "person wearing orange vest and blue pants",
+            "person wearing blue t-shirt and black boots",
+            "person wearing orange vest and black boots"
+          ],
+          "caption_queries": [
+            "outdoor construction site with yellow excavators",
+            "construction worker walking on a dirt path",
+            "worker kneeling on a construction site path",
+            "dirt path with concrete blocks and rebar foundations",
+            "person recovering from a fall on a dusty terrain"
+          ],
+          "anomaly_queries": [
+            "person in orange safety vest falling",
+            "construction worker falling on a dirt path",
+            "person in yellow helmet falling on sandy ground",
+            "worker in orange vest losing balance and falling",
+            "person falling and kicking up dust"
+          ],
+          "action_queries": [
+            "a person losing balance",
+            "a person falling forward",
+            "a person landing on their hands and knees",
+            "a person recovering from a fall"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 3.0,
+          "end_time_sec": 8.0,
+          "start_frame": 72,
+          "end_frame": 191,
+          "is_anomaly": true,
+          "anomaly_type": "person_falling_or_collapsing",
+          "dense_caption": "A construction worker in a yellow helmet and orange vest falls flat onto the dirt path. The worker quickly attempts to push themselves up from the ground. The worker remains in a kneeling position on the dirt path, looking around. The worker slowly lowers themselves back down toward the ground.",
+          "scene_caption": "This outdoor scene takes place at a large-scale construction site featuring dirt paths, concrete foundations, and heavy machinery. The camera is positioned at a fixed, high-mounted angle looking down over the site. The lighting is bright and clear, indicating a sunny day. The general activity involves industrial operations with multiple excavators and stockpiles of building materials present.",
+          "pas_queries": [
+            "person wearing orange vest",
+            "person wearing yellow headwear",
+            "person wearing blue pants",
+            "person wearing orange vest and blue pants",
+            "person wearing black boots"
+          ],
+          "caption_queries": [
+            "construction site with dirt paths and heavy machinery",
+            "worker in yellow helmet and orange vest on a dirt path",
+            "industrial operations with excavators and building materials",
+            "person kneeling on a dirt path at a construction site",
+            "high angle view of a sunny construction site"
+          ],
+          "anomaly_queries": [
+            "person in orange vest falling",
+            "worker in yellow helmet falling on dirt path",
+            "person falling at a construction site",
+            "person in orange vest falling flat onto the ground",
+            "worker falling on a dirt path"
+          ],
+          "action_queries": [
+            "a person falling to the ground",
+            "a person pushing themselves up",
+            "a person kneeling",
+            "a person lowering themselves back down"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 8.0,
+    "width": 1280,
+    "height": 720,
+    "bytes": 15053253
+  },
+  {
+    "file": "摔倒/摔倒02_夜间工地.mp4",
+    "source_video_id": "video_00459",
+    "source_member": "videos/video_00459.mp4",
+    "sha256": "7c6b9e4550baceab1da1fcc6e797622871ac84667736b669aa06e2ec270ae90f",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1",
+      "video_id": "video_00459",
+      "anomaly_type": "falling",
+      "total_frames": 192,
+      "video_duration_sec": 8.0,
+      "fps": 24.0,
+      "video_path": "videos/video_00459.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_00459.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "falling",
+          "dense_caption": "A person construction worker wearing a yellow hard hat and orange safety vest walks across a construction site at dusk. The worker loses their balance and begins to trip forward. The worker falls forward, landing on their knees and hands on the sandy ground. The worker remains on the ground for a moment, kicking up dust as they stabilize themselves near a pile of steel rebar. The worker begins to push themselves up from the ground.",
+          "scene_caption": "This outdoor scene takes place at a construction site during twilight or night, characterized by a dark blue sky and bright artificial floodlights. The camera is positioned at a low, fixed angle, capturing a wide view of the dusty ground, piles of dirt, and stacks of rebar. Heavy machinery, including excavators, is visible in the background, framing a setting of active industrial work.",
+          "pas_queries": [
+            "person wearing yellow hard hat",
+            "person wearing orange vest",
+            "person wearing black pants",
+            "person wearing brown boots",
+            "person wearing orange vest and black pants"
+          ],
+          "caption_queries": [
+            "construction site at dusk with artificial floodlights",
+            "excavators and piles of dirt at an industrial work site",
+            "person walking across a dusty construction site",
+            "stacks of steel rebar on sandy ground",
+            "person pushing themselves up from the ground at a construction site"
+          ],
+          "anomaly_queries": [
+            "person in orange safety vest falling",
+            "person wearing yellow hard hat falling on sandy ground",
+            "construction worker losing balance and tripping",
+            "person in orange vest falling near steel rebar",
+            "person falling at a construction site"
+          ],
+          "action_queries": [
+            "a person walking",
+            "a person tripping forward",
+            "a person falling to the ground",
+            "a person pushing themselves up"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 3.0,
+          "end_time_sec": 8.0,
+          "start_frame": 72,
+          "end_frame": 191,
+          "is_anomaly": true,
+          "anomaly_type": "person kneeling",
+          "dense_caption": "A construction worker wearing a yellow hard hat and orange safety vest is kneeling and reaching toward a pile of rebar. The worker shifts their position and looks up while kneeling on the dirt ground. The worker leans back down and continues to organize or inspect the rebar on the site.",
+          "scene_caption": "The scene takes place at an outdoor construction site during twilight, characterized by a deep blue sky and artificial floodlighting. The camera is positioned at a low, eye-level angle, capturing a wide view of the dirt ground, piles of rebar, and heavy machinery in the background. The environment is industrial and active, with dust in the air and high-intensity lamps illuminating the workspace.",
+          "pas_queries": [
+            "person wearing orange vest",
+            "person wearing yellow headwear",
+            "person wearing orange vest and black pants",
+            "person wearing grey shirt",
+            "person wearing brown boots"
+          ],
+          "caption_queries": [
+            "outdoor construction site during twilight",
+            "piles of rebar on dirt ground",
+            "industrial workspace with artificial floodlighting",
+            "heavy machinery in the background of a construction site",
+            "worker inspecting materials under high-intensity lamps"
+          ],
+          "anomaly_queries": [
+            "person in orange safety vest kneeling on the ground",
+            "worker in yellow hard hat inspecting rebar",
+            "person kneeling on dirt ground at a construction site",
+            "worker inspecting rebar at twilight",
+            "person in safety gear reaching toward rebar"
+          ],
+          "action_queries": [
+            "a person kneeling",
+            "a person reaching toward rebar",
+            "a person shifting position",
+            "a person inspecting materials"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 8.0,
+    "width": 1280,
+    "height": 720,
+    "bytes": 3489699
+  },
+  {
+    "file": "摔倒/摔倒03_砂石堆旁.mp4",
+    "source_video_id": "video_00763",
+    "source_member": "videos/video_00763.mp4",
+    "sha256": "4983c00ff9699795a3f7635a9f60512f432085a84418710bdf24fe06b3a8e2e4",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1",
+      "video_id": "video_00763",
+      "anomaly_type": "falling",
+      "total_frames": 192,
+      "video_duration_sec": 8.0,
+      "fps": 24.0,
+      "video_path": "videos/video_00763.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_00763.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "falling",
+          "dense_caption": "A construction worker trips and falls into a pile of gravel. 00:00 - 00:01: A construction worker in a yellow helmet and orange safety vest walks across a sandy construction site. 00:01 - 00:02: The worker begins to lose their balance while moving toward a pile of gravel. 00:02 - 00:03: The worker continues to stumble forward, leaning toward the gravel pile. 00:03 - 00:04: The worker falls forward, landing on their side against the base of the gravel pile. 00:04 - 00:06: The worker lies on the ground, partially resting against the gravel pile. 00:06 - 00:07: The worker slides further down into the gravel, kicking up dust.",
+          "scene_caption": "The scene takes place outdoors at a bright, sunlit construction site during the day. A fixed, eye-level camera captures a wide view of the dusty environment, featuring a concrete building frame, cement mixers, and a large crane in the background. The area is characterized by large piles of gravel and sand, with general construction activity occurring across the site.",
+          "pas_queries": [
+            "person wearing orange vest",
+            "person wearing yellow headwear",
+            "person wearing white t-shirt",
+            "person wearing blue pants",
+            "person wearing orange vest and blue pants"
+          ],
+          "caption_queries": [
+            "construction site with cement mixers and a crane",
+            "worker walking across a sandy construction site",
+            "person lying on the ground against a gravel pile",
+            "dusty construction environment with piles of gravel and sand",
+            "worker kicking up dust while sliding in gravel"
+          ],
+          "anomaly_queries": [
+            "person in orange safety vest falling",
+            "construction worker falling on a sandy site",
+            "person in yellow helmet falling against a gravel pile",
+            "person in orange vest stumbling and falling",
+            "worker falling and sliding into gravel"
+          ],
+          "action_queries": [
+            "a person walking",
+            "a person losing balance",
+            "a person falling to the ground",
+            "a person sliding into gravel"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 3.0,
+          "end_time_sec": 8.0,
+          "start_frame": 72,
+          "end_frame": 191,
+          "is_anomaly": true,
+          "anomaly_type": "falling",
+          "dense_caption": "A construction worker falls from a pile of gravel, kicking up a large cloud of dust. 00:00 - 00:03: A construction worker in a yellow hard hat and orange safety vest is lying on the ground next to a pile of gravel. 00:03 - 00:04: The worker suddenly slides and falls down the side of the gravel pile. 00:04 - 00:05: The worker hits the ground, creating a significant burst of dust and debris. 00:05 - 00:07: The worker remains lying on the ground as the dust settles around them.",
+          "scene_caption": "This outdoor scene takes place at an active construction site featuring a building under development, heavy machinery, and piles of gravel. The camera is positioned at a fixed, eye-level wide shot, capturing the dusty environment under bright, clear daylight. The general activity involves industrial construction work amidst a sandy and rocky landscape.",
+          "pas_queries": [
+            "person wearing orange vest",
+            "person wearing yellow headwear",
+            "person wearing white t-shirt",
+            "person wearing blue pants",
+            "person wearing orange vest and blue pants"
+          ],
+          "caption_queries": [
+            "construction site with heavy machinery and gravel",
+            "worker lying on the ground next to a pile of gravel",
+            "dust and debris bursting on the ground",
+            "industrial construction work in a sandy landscape",
+            "worker remaining on the ground as dust settles"
+          ],
+          "anomaly_queries": [
+            "person in orange safety vest falling",
+            "construction worker falling down a gravel pile",
+            "person in yellow hard hat falling",
+            "worker falling and creating a burst of dust",
+            "person sliding down a sandy slope"
+          ],
+          "action_queries": [
+            "a person falling",
+            "a person sliding down a pile",
+            "a person hitting the ground",
+            "dust and debris bursting"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 8.0,
+    "width": 1280,
+    "height": 720,
+    "bytes": 10952130
+  },
+  {
+    "file": "火情/火情01_货架起火.mp4",
+    "source_video_id": "video_01416",
+    "source_member": "videos/video_01416.mp4",
+    "sha256": "d68b151f661e7f8c3b0919e4ab255398ddf6de8359a6164416093ea213973158",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1.1",
+      "video_id": "video_01416",
+      "anomaly_type": "fire_smoke_or_explosion, warehouse_safety_violation",
+      "total_frames": 189,
+      "video_duration_sec": 7.875,
+      "fps": 24.0,
+      "video_path": "videos/video_01416.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_01416.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "fire_smoke_or_explosion, warehouse_safety_violation",
+          "dense_caption": "Two people stand in a warehouse aisle between tall storage racks filled with boxes. Faint smoke begins to appear among the boxes on the lower left shelf. Small flames become visible on the bottom shelf of the left rack as smoke increases. The fire grows larger on the lower shelf, with bright orange flames and thick grey smoke billowing upwards.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle, flanked by tall industrial shelving units filled with cardboard boxes. The camera is positioned from a fixed high-mounted angle, providing a wide view of the concrete floor and the depth of the storage area. Lighting is provided by overhead industrial fixtures, creating a bright, sterile environment. The general activity involves individuals standing in the aisle amidst a sudden emergency event.",
+          "pas_queries": [
+            "person wearing white t-shirt",
+            "person wearing black pants",
+            "person wearing blue t-shirt",
+            "person wearing white t-shirt and black pants",
+            "person wearing blue t-shirt and black pants"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall industrial shelving units",
+            "two people standing in a warehouse aisle",
+            "smoke appearing among boxes on a shelf",
+            "bright orange flames on a lower shelf",
+            "industrial warehouse with concrete floor and overhead lighting"
+          ],
+          "anomaly_queries": [
+            "fire in environment",
+            "fire on the bottom shelf of a warehouse rack",
+            "thick grey smoke billowing in a warehouse",
+            "person in white t-shirt standing near a fire",
+            "person in blue t-shirt standing near a fire"
+          ],
+          "action_queries": [
+            "people standing",
+            "smoke appearing",
+            "fire breaking out",
+            "flames and smoke spreading"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 2.875,
+          "end_time_sec": 7.875,
+          "start_frame": 69,
+          "end_frame": 188,
+          "is_anomaly": true,
+          "anomaly_type": "fire_smoke_or_explosion, warehouse_safety_violation",
+          "dense_caption": "A fire is visible on the bottom shelf of the left racking unit, with smoke beginning to rise. The fire intensifies on the lower shelf, and thick black smoke billows upward and toward the left. Flames continue to burn brightly among the boxes on the bottom shelf as a large plume of dark smoke expands, partially obscuring the view of the racking.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle lined with tall industrial shelving units filled with cardboard boxes. The camera is positioned from a fixed, high-mounted angle looking down the corridor. The area is brightly lit by overhead artificial lighting, and the general activity involves individuals standing in the aisle near a fire and smoke emanating from the lower shelves.",
+          "pas_queries": [
+            "person wearing white t-shirt",
+            "person wearing black pants",
+            "person wearing blue t-shirt",
+            "person wearing white t-shirt and black pants",
+            "person wearing blue t-shirt and black pants"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall industrial shelving units",
+            "fire and smoke emanating from lower shelves",
+            "dark smoke expanding and obscuring racking",
+            "cardboard boxes on industrial shelving",
+            "flames burning among boxes on the bottom shelf"
+          ],
+          "anomaly_queries": [
+            "fire in warehouse environment",
+            "person in white t-shirt near fire in environment",
+            "person in blue t-shirt near fire in environment",
+            "fire on the bottom shelf of a racking unit",
+            "thick black smoke billowing in a warehouse"
+          ],
+          "action_queries": [
+            "fire breaking out on a shelf",
+            "smoke billowing upward",
+            "flames burning among boxes",
+            "smoke and fire spreading"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 7.875,
+    "width": 832,
+    "height": 480,
+    "bytes": 5121191
+  },
+  {
+    "file": "火情/火情02_明火黑烟.mp4",
+    "source_video_id": "video_01426",
+    "source_member": "videos/video_01426.mp4",
+    "sha256": "c918a217a3f4121c01ab9c776e7dbed292f3fd77a93881983825d089301a4b36",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1.1",
+      "video_id": "video_01426",
+      "anomaly_type": "fire_smoke_or_explosion, warehouse_safety_violation",
+      "total_frames": 189,
+      "video_duration_sec": 7.875,
+      "fps": 24.0,
+      "video_path": "videos/video_01426.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_01426.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "fire_smoke_or_explosion, warehouse_safety_violation",
+          "dense_caption": "A warehouse aisle with shelves full of boxes and two people standing in the distance. Flames suddenly appear on a lower shelf among the cardboard boxes. The fire grows in intensity, with orange flames becoming more prominent. Thick black smoke begins to rise from the fire, billowing upwards toward the ceiling.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle lined with tall metal shelving units filled with boxed inventory. The camera is positioned from a fixed, high-mounted angle looking down the length of the aisle. The lighting is bright and industrial, and the general nature of the activity involves personnel observing a fire breaking out on one of the lower shelves.",
+          "pas_queries": [
+            "person wearing white t-shirt and black pants",
+            "person wearing yellow vest and black pants",
+            "person wearing yellow headwear and yellow vest",
+            "person wearing black t-shirt and black pants",
+            "person wearing white t-shirt and black sneakers"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall metal shelving units filled with boxed inventory",
+            "two people standing in a warehouse aisle",
+            "industrial indoor scene with bright lighting and metal shelves",
+            "black smoke rising toward the ceiling in a warehouse",
+            "fire breaking out on the lower shelves of a warehouse"
+          ],
+          "anomaly_queries": [
+            "fire in environment in a warehouse aisle",
+            "flames appearing on a lower shelf among cardboard boxes",
+            "orange flames growing in intensity on warehouse shelves",
+            "thick black smoke billowing upwards from a fire",
+            "person in yellow safety vest observing a fire in a warehouse"
+          ],
+          "action_queries": [
+            "fire breaking out on shelves",
+            "flames spreading through boxes",
+            "black smoke billowing upwards",
+            "people standing near a fire"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 2.875,
+          "end_time_sec": 7.875,
+          "start_frame": 69,
+          "end_frame": 188,
+          "is_anomaly": true,
+          "anomaly_type": "fire_smoke_or_explosion, warehouse_safety_violation",
+          "dense_caption": "A fire is burning on a lower shelf of a warehouse rack, emitting thick dark smoke that rises upward.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle lined with tall industrial shelving units holding boxed inventory. The camera is positioned from a fixed high-mounted angle, looking down the length of the aisle. The lighting is bright and artificial, typical of a commercial facility, while the general activity involves an emergency situation with a fire and smoke occurring among the stored goods.",
+          "pas_queries": [
+            "person wearing white t-shirt and black pants",
+            "person wearing yellow vest and black pants",
+            "person wearing yellow headwear and yellow vest",
+            "person wearing black t-shirt and black pants",
+            "person wearing white t-shirt and black sneakers"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall industrial shelving units",
+            "fire burning on a lower shelf of a warehouse rack",
+            "thick dark smoke rising upward in a warehouse",
+            "indoor warehouse with boxed inventory and artificial lighting",
+            "emergency situation with fire and smoke among stored goods"
+          ],
+          "anomaly_queries": [
+            "fire in environment in a warehouse",
+            "fire burning on a warehouse rack",
+            "thick dark smoke rising in a warehouse",
+            "person in yellow vest near a fire in environment",
+            "person in white t-shirt near a fire in environment"
+          ],
+          "action_queries": [
+            "fire burning on a shelf",
+            "smoke rising upward",
+            "a fire spreading",
+            "thick smoke emitting from a fire"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 7.875,
+    "width": 832,
+    "height": 480,
+    "bytes": 3915437
+  },
+  {
+    "file": "火情/火情03_火势扩大.mp4",
+    "source_video_id": "video_01429",
+    "source_member": "videos/video_01429.mp4",
+    "sha256": "aec9643994b60602978ed2d971a1ba7ea24a7aa08718325d51ac60640c282700",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1.1",
+      "video_id": "video_01429",
+      "anomaly_type": "warehouse_safety_violation, fire in environment",
+      "total_frames": 189,
+      "video_duration_sec": 7.875,
+      "fps": 24.0,
+      "video_path": "videos/video_01429.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_01429.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "warehouse_safety_violation, fire in environment",
+          "dense_caption": "A wide shot of a warehouse aisle with shelves full of boxes and two people standing in the distance. Small flames begin to appear on the bottom left shelf of the warehouse rack. The fire on the lower shelf grows in size and intensity. Flames intensify and smoke starts to billow up from the fire on the left side of the aisle. The fire continues to spread across the bottom shelf, with thick grey smoke rising. Large flames and heavy smoke engulf the lower left section of the warehouse racking. The fire remains active on the lower shelf, with smoke filling the left side of the frame while the people in the background remain stationary. The fire continues to burn brightly on the lower left shelf with rising smoke.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle, characterized by tall industrial shelving units filled with shrink-wrapped boxes and pallets. The camera is positioned from a fixed, high-mounted angle looking down the length of the aisle. The lighting is bright and consistent with an industrial setting, and the general activity involves personnel standing in the corridor.",
+          "pas_queries": [
+            "person wearing white t-shirt and black pants",
+            "person wearing yellow vest and black pants",
+            "person wearing yellow headwear",
+            "person wearing black sneakers",
+            "person wearing black t-shirt and yellow vest"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall industrial shelving units",
+            "shelves full of shrink-wrapped boxes and pallets",
+            "smoke billowing up from the left side of a warehouse aisle",
+            "two people standing in a warehouse corridor",
+            "fire burning brightly on a lower warehouse shelf"
+          ],
+          "anomaly_queries": [
+            "fire in environment in a warehouse aisle",
+            "flames appearing on the bottom shelf of a warehouse rack",
+            "thick grey smoke rising from a fire in a warehouse",
+            "large flames engulfing warehouse racking",
+            "person in yellow vest standing near a fire in a warehouse"
+          ],
+          "action_queries": [
+            "fire starting on a shelf",
+            "flames growing in intensity",
+            "smoke billowing up from a fire",
+            "fire spreading across a rack"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 2.875,
+          "end_time_sec": 7.875,
+          "start_frame": 69,
+          "end_frame": 188,
+          "is_anomaly": true,
+          "anomaly_type": "warehouse_safety_violation, fire in environment",
+          "dense_caption": "A fire is burning intensely on the lower shelf of a warehouse rack on the left, with flames and grey smoke rising. Two workers are standing further down the warehouse aisle, seemingly unaware of the fire behind them. A blue light is projected onto the concrete floor in the center of the aisle.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle lined with tall industrial storage racks filled with boxed goods. The camera is positioned from a fixed, high-mounted angle looking down the length of the aisle. Lighting is a mix of ambient indoor light and a bright blue spot on the floor, with a fire and smoke emerging from the left side of the frame. The general activity involves personnel standing at the far end of the aisle as an emergency situation unfolds.",
+          "pas_queries": [
+            "person wearing white t-shirt and black pants",
+            "person wearing yellow vest and blue pants",
+            "person wearing yellow vest and black t-shirt",
+            "person wearing yellow headwear",
+            "person wearing black sneakers"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall industrial storage racks",
+            "blue light projected onto the concrete floor",
+            "two workers standing in a warehouse aisle",
+            "grey smoke rising from a warehouse rack",
+            "industrial storage racks filled with boxed goods"
+          ],
+          "anomaly_queries": [
+            "fire burning in a warehouse aisle",
+            "person in yellow vest near a fire in the environment",
+            "person in white t-shirt near a fire in the environment",
+            "flames and smoke emerging from warehouse racks",
+            "fire burning on a warehouse shelf"
+          ],
+          "action_queries": [
+            "fire burning on a shelf",
+            "smoke rising from a rack",
+            "people standing in an aisle",
+            "a fire spreading in a warehouse"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 7.875,
+    "width": 832,
+    "height": 480,
+    "bytes": 4469226
+  },
+  {
+    "file": "抽烟/抽烟01_坐姿吸烟.mp4",
+    "source_video_id": "video_00327",
+    "source_member": "videos/video_00327.mp4",
+    "sha256": "f370c4b6a89073cd5657638e331a2de5591e1c36b415273a989d8647743f7fc0",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1",
+      "video_id": "video_00327",
+      "anomaly_type": "warehouse_safety_violation, smoking",
+      "total_frames": 192,
+      "video_duration_sec": 8.0,
+      "fps": 24.0,
+      "video_path": "videos/video_00327.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_00327.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "warehouse_safety_violation, smoking",
+          "dense_caption": "A person wearing a blue shirt, yellow high-visibility vest, and grey work pants sits on a wooden crate, holding a cigarette and a plastic cup. The person brings the cigarette to their mouth and inhales. The person exhales a cloud of smoke while continuing to hold the plastic cup. The person lowers the cigarette and taps it over the plastic cup to remove ash.",
+          "scene_caption": "The scene takes place indoors within a brightly lit warehouse, featuring industrial shelving, storage crates, and a break area with a vending machine. The camera is positioned at a fixed eye-level angle with a slight vignette effect, framing the center of the room. Natural light streams in from large windows in the background, illuminating the polished concrete floor. The general nature of the activity is a quiet moment of rest amidst an industrial workplace environment.",
+          "pas_queries": [
+            "person wearing yellow vest",
+            "person wearing yellow vest and blue t-shirt",
+            "person wearing grey pants and black boots",
+            "person wearing yellow vest and gray pants",
+            "person wearing blue t-shirt and black boots"
+          ],
+          "caption_queries": [
+            "worker sitting on a wooden crate in a warehouse",
+            "warehouse with industrial shelving and storage crates",
+            "person holding a plastic cup in a warehouse",
+            "warehouse break area with a vending machine",
+            "natural light streaming through large windows in a warehouse"
+          ],
+          "anomaly_queries": [
+            "person in yellow safety vest smoking",
+            "person in yellow vest exhaling a cloud of smoke",
+            "person in yellow safety vest smoking in a warehouse",
+            "person in yellow vest inhaling from a cigarette",
+            "person in yellow vest violating warehouse safety rules by smoking"
+          ],
+          "action_queries": [
+            "a person smoking a cigarette",
+            "a person inhaling from a cigarette",
+            "a person exhaling smoke",
+            "a person tapping ash into a cup"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 3.0,
+          "end_time_sec": 8.0,
+          "start_frame": 72,
+          "end_frame": 191,
+          "is_anomaly": true,
+          "anomaly_type": "warehouse_safety_violation, smoking",
+          "dense_caption": "A person wearing a blue shirt, a yellow high-visibility vest, and dark grey work trousers sits on a wooden crate, smoking a cigarette and exhaling smoke. The person continues to sit on the crate, holding a plastic cup in their left hand and tapping the cigarette over the cup with their right hand. The person brings the cigarette back to their lips and takes another puff, exhaling smoke while looking forward.",
+          "scene_caption": "The scene takes place indoors within a large warehouse, characterized by high ceilings, industrial shelving filled with boxes, and a break area with a vending machine. The footage is captured from a fixed, eye-level perspective with a circular vignette, simulating a peephole or security lens. Bright, natural light enters through large windows in the background, illuminating the polished concrete floor. The general activity is low, depicting a moment of respite amidst an industrial work environment.",
+          "pas_queries": [
+            "person wearing yellow vest",
+            "person wearing blue t-shirt and grey pants",
+            "person wearing yellow vest and black boots",
+            "person wearing blue t-shirt, yellow vest, and grey pants",
+            "person wearing yellow vest, blue T-shirt, and black boots"
+          ],
+          "caption_queries": [
+            "a person sitting on a wooden crate in a warehouse",
+            "warehouse interior with industrial shelving and a vending machine",
+            "a person holding a plastic cup in a warehouse",
+            "indoor warehouse scene with polished concrete floors",
+            "a person looking around a warehouse while exhaling smoke"
+          ],
+          "anomaly_queries": [
+            "person in yellow vest smoking in a warehouse",
+            "person exhaling smoke while sitting on a crate",
+            "person in a high-visibility vest smoking in the warehouse",
+            "person smoking and holding a plastic cup",
+            "person in grey pants smoking in an industrial area"
+          ],
+          "action_queries": [
+            "a person smoking a cigarette",
+            "a person exhaling smoke",
+            "a person tapping a cigarette over a cup",
+            "a person sitting and smoking"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 8.0,
+    "width": 1280,
+    "height": 720,
+    "bytes": 1874169
+  },
+  {
+    "file": "抽烟/抽烟02_安全帽工人吸烟.mp4",
+    "source_video_id": "video_01263",
+    "source_member": "videos/video_01263.mp4",
+    "sha256": "ce9164d8c84e4dc5a3e8ee51c6476b46c3f806b1dfd492205c16b2ec8899b4e6",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1.1",
+      "video_id": "video_01263",
+      "anomaly_type": "warehouse_safety_violation, person smoking",
+      "total_frames": 189,
+      "video_duration_sec": 7.875,
+      "fps": 24.0,
+      "video_path": "videos/video_01263.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_01263.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "warehouse_safety_violation, person smoking",
+          "dense_caption": "A wide shot of a warehouse aisle with shelving and a blue light on the floor. A worker wearing a yellow safety vest and helmet enters the frame from the bottom left. The worker brings a cigarette to their mouth and exhales a cloud of smoke. The worker continues to smoke and begins to walk forward through the aisle.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle lined with tall industrial shelving units filled with boxed goods and shrink-wrapped pallets. The camera is positioned from a fixed, high-mounted angle looking down the length of the corridor. The lighting is bright and artificial, typical of a commercial facility, and the general activity involves personnel moving through the workspace.",
+          "pas_queries": [
+            "person wearing yellow vest",
+            "person wearing white t-shirt",
+            "person wearing yellow vest and black pants",
+            "person wearing yellow headwear",
+            "person wearing white t-shirt and black sneakers"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall industrial shelving units",
+            "worker in yellow safety vest walking through a warehouse corridor",
+            "industrial warehouse with boxed goods and shrink-wrapped pallets",
+            "a blue light on the floor of a warehouse aisle",
+            "personnel moving through a commercial facility workspace"
+          ],
+          "anomaly_queries": [
+            "person in yellow safety vest smoking",
+            "person in yellow hard hat smoking a cigarette",
+            "person smoking in a warehouse aisle",
+            "worker in yellow safety vest exhaling smoke",
+            "person in yellow vest violating smoking policy"
+          ],
+          "action_queries": [
+            "a person smoking a cigarette",
+            "a person exhaling smoke",
+            "a person walking forward",
+            "a person smoking while walking"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 2.875,
+          "end_time_sec": 7.875,
+          "start_frame": 69,
+          "end_frame": 188,
+          "is_anomaly": true,
+          "anomaly_type": "warehouse_safety_violation, person smoking",
+          "dense_caption": "A worker wearing a yellow hard hat and safety vest is seen smoking and exhaling a cloud of smoke in a warehouse aisle. The worker continues to smoke while standing near warehouse shelving, with other staff visible in the background. The worker remains in the aisle, holding a cigarette to their mouth, while a blue light reflects on the floor nearby.",
+          "scene_caption": "The scene takes place indoors within a warehouse aisle, characterized by tall industrial shelving units filled with boxed inventory and plastic-wrapped pallets. A fixed, high-mounted camera provides a wide-angle overhead view of the concrete floor and surrounding storage racks. The lighting is bright and consistent with industrial interior conditions, and the general activity involves personnel in safety gear monitoring the workspace.",
+          "pas_queries": [
+            "person wearing yellow vest",
+            "person wearing white t-shirt",
+            "person wearing yellow hard hat",
+            "person wearing yellow vest and black pants",
+            "person wearing white t-shirt and black pants"
+          ],
+          "caption_queries": [
+            "warehouse aisle with tall industrial shelving units",
+            "industrial storage racks with boxed inventory and plastic-wrapped pallets",
+            "worker standing near warehouse shelving",
+            "blue light reflecting on the concrete floor of a warehouse",
+            "overhead wide-angle view of a warehouse interior"
+          ],
+          "anomaly_queries": [
+            "person in yellow safety vest smoking",
+            "person wearing a yellow hard hat smoking in a warehouse",
+            "person smoking and exhaling smoke in a warehouse aisle",
+            "person holding a cigarette to their mouth in a warehouse",
+            "person in safety gear violating warehouse rules by smoking"
+          ],
+          "action_queries": [
+            "a person smoking",
+            "a person exhaling smoke",
+            "a person holding a cigarette",
+            "a person standing and smoking"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 7.875,
+    "width": 832,
+    "height": 480,
+    "bytes": 4035207
+  },
+  {
+    "file": "抽烟/抽烟03_站立吸烟.mp4",
+    "source_video_id": "video_01390",
+    "source_member": "videos/video_01390.mp4",
+    "sha256": "f7afd3da54b65c3e1ef635806d9c812a8dde39346c140d970a752d844a08ea3d",
+    "source_dataset": "https://huggingface.co/datasets/nvidia/PhysicalAI-Event-Videos",
+    "synthetic": true,
+    "original_annotation": {
+      "split": "train",
+      "dataset": "NV-VAD-v1.1",
+      "video_id": "video_01390",
+      "anomaly_type": "person smoking",
+      "total_frames": 189,
+      "video_duration_sec": 7.875,
+      "fps": 24.0,
+      "video_path": "videos/video_01390.mp4",
+      "source_video": {
+        "access": "bundled",
+        "path": "videos/video_01390.mp4"
+      },
+      "chunks": [
+        {
+          "chunk_index": 0,
+          "start_time_sec": 0.0,
+          "end_time_sec": 5.0,
+          "start_frame": 0,
+          "end_frame": 119,
+          "is_anomaly": true,
+          "anomaly_type": "person smoking",
+          "dense_caption": "Wide shot of a warehouse aisle with workers and shelving. A person in a blue shirt stands near some boxes in the warehouse. The person brings a cigarette to their mouth. The person continues to smoke the cigarette while standing in the warehouse.",
+          "scene_caption": "This indoor scene takes place within a warehouse aisle lined with tall storage racks and cardboard boxes. The camera is positioned from a high-mounted, fixed angle, providing a surveillance-style view of the workspace. The lighting is bright and artificial, typical of an industrial setting, with general activity centered around the movement of personnel and equipment in the aisle.",
+          "pas_queries": [
+            "person wearing blue shirt",
+            "person wearing black pants",
+            "person wearing brown shoes",
+            "person wearing blue shirt and black pants",
+            "person wearing blue shirt and brown shoes"
+          ],
+          "caption_queries": [
+            "wide shot of a warehouse aisle with workers and shelving",
+            "person standing near boxes in a warehouse",
+            "warehouse aisle lined with tall storage racks and cardboard boxes",
+            "person bringing a cigarette to their mouth in a warehouse",
+            "surveillance view of a workspace with industrial lighting"
+          ],
+          "anomaly_queries": [
+            "person in blue shirt smoking",
+            "person smoking in a warehouse aisle",
+            "person violating safety rules by smoking",
+            "person in black pants smoking a cigarette",
+            "person smoking while standing on a grey floor"
+          ],
+          "action_queries": [
+            "a person smoking a cigarette",
+            "a person bringing a cigarette to their mouth",
+            "a person standing and smoking",
+            "a person smoking in a workspace"
+          ],
+          "chunk_file": "chunk_000.mp4"
+        },
+        {
+          "chunk_index": 1,
+          "start_time_sec": 2.875,
+          "end_time_sec": 7.875,
+          "start_frame": 69,
+          "end_frame": 188,
+          "is_anomaly": true,
+          "anomaly_type": "person smoking",
+          "dense_caption": "A person in a blue shirt and dark trousers stands in a warehouse, holding a cigarette to their lips. The person continues to smoke while looking slightly downward. The person remains in place, smoking and looking down, with a security camera visible in the foreground.",
+          "scene_caption": "The scene takes place indoors within a warehouse setting, characterized by concrete floors, white plastic sheeting, and cardboard boxes. The camera is positioned from a high-mounted, fixed angle, looking down upon the area. The lighting is bright and consistent, typical of an industrial interior. A single individual is present, engaged in a stationary activity near a visible security camera.",
+          "pas_queries": [
+            "person wearing blue shirt",
+            "person wearing black pants",
+            "person wearing brown shoes",
+            "person wearing blue shirt and black pants",
+            "person wearing blue shirt and brown shoes"
+          ],
+          "caption_queries": [
+            "a person standing in a warehouse with concrete floors",
+            "a person holding a cigarette to their lips",
+            "a person standing near a security camera in a warehouse",
+            "a warehouse interior with white plastic sheeting and cardboard boxes",
+            "a person looking downward while standing in a warehouse"
+          ],
+          "anomaly_queries": [
+            "person in blue shirt smoking",
+            "person smoking in a warehouse",
+            "person smoking near a security camera",
+            "person in black pants smoking",
+            "person violating warehouse rules by smoking"
+          ],
+          "action_queries": [
+            "a person smoking",
+            "a person holding a cigarette to their lips",
+            "a person standing and smoking",
+            "a person looking downward while smoking"
+          ],
+          "chunk_file": "chunk_001.mp4"
+        }
+      ]
+    },
+    "duration_sec": 7.875,
+    "width": 832,
+    "height": 480,
+    "bytes": 3253636
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "file": "backpack-independent.jpg",
+    "source": "https://unsplash.com/photos/brown-leather-backpack-on-white-wall-OFHkPCkhYEY",
+    "download": "https://images.unsplash.com/photo-1622560257067-108402fcedc0?auto=format&fit=crop&fm=jpg&q=85&w=800",
+    "relationship_to_index": "independent object photo; excluded from indexed videos; similar object retrieval, not same physical object verification"
+  },
+  {
+    "file": "jogging-OV-CGjSLNbg_000053_000063-preview.jpg",
+    "source_video": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+    "timestamp_seconds": 2.25,
+    "relationship_to_index": "screenshot provenance query between 0.5-second sampling points"
+  },
+  {
+    "file": "coughing-6XvsLPDioVA_000000_000010-preview.jpg",
+    "source_video": "coughing-6XvsLPDioVA_000000_000010.mp4",
+    "timestamp_seconds": 2.25,
+    "enrollment_alias": "演示人物A",
+    "relationship_to_index": "same-video enrollment demo only; alias does not assert real-world identity"
+  }
+]

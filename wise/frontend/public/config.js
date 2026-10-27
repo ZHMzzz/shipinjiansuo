@@ -1,0 +1,120 @@
+// Config for production mode
+const productionConfig = {
+  MAX_SEARCH_RESULTS: 1000, // Maximum number of search rsults
+  PAGE_SIZE: 500, // Number of images in each page when displaying search results
+  NUM_PAGES_PER_REQUEST: 1, // Number of pages (each with having size PAGE_SIZE) to fetch in each API call
+  FETCH_THUMBS: 1,
+  FETCH_TIMEOUT: 60000, // Number of milliseconds to wait when fetching search results / featured images
+  WISE_OVERVIEW_CARD: {
+    OVERVIEW: `This audiovisual search engine is based on the <a href="https://www.robots.ox.ac.uk/~vgg/software/wise/">WISE</a> software.`,
+    ABOUT: `
+     <p>This audiovisual search engine is based on the <a href="https://www.robots.ox.ac.uk/~vgg/software/wise/">WISE</a> software developed and maintained by the Visual Geometry Group (<a href="https://www.robots.ox.ac.uk/~vgg/">VGG</a>) of Department of Engineering Science at University of Oxford.</p>
+     <p>More details about WISE can be found in the <a href="https://www.robots.ox.ac.uk/~vgg/software/wise/">project page</a> and the <a href="https://gitlab.com/vgg/wise/wise/-/tree/main/">code repository</a>.</p>
+    `,
+    DISCLAIMER: `
+      <p>The media showcased in this demo are for research purposes only. All rights to the original content are held by their respective copyright owners.</p>
+    `
+  },
+  // Example queries shown in Overview card
+  EXAMPLE_QUERIES: [
+    // 'Cute puppy', 'Bees feeding on flower', 'Hot air balloon above a mountain',
+    // 'Penguin with wings raised', 'Dolphin playing with ball', 'People taking pictures of mona lisa',
+    // 'Painting of a naval battle', 'Panda chewing on bamboo', 'Plane refuelling another plane',
+    // 'Mount Fuji during sunset',  'Car with a bicycle on top', 'Squirrel eating a nut',
+    // 'People on a roller coaster', 'Running on a hill', 'A peculiar airplane', 'Busy street in Paris',
+    // 'Singer next to a piano', 'Black and white photo of a steam train', 'First lady and her husband',
+    // 'Cubist painting of a violin'
+  ],
+  // Alternative format for EXAMPLE_QUERIES in case of multiple
+  // modality:feature_extractor_id pairs
+  // EXAMPLE_QUERIES: {
+  //   'Image:mlfoundations/open_clip/ViT-B-16-SigLIP2-512/webli': [
+  //     'Cute puppy',
+  //     'Singer next to a piano',
+  //     'Cubist painting of a violin',
+  //   ]
+  // },
+  // Multimodal example queries shown in search dropdown
+  MULTIMODAL_EXAMPLE_QUERIES: {
+    'Video:open_clip': [
+      {
+        url: 'https://images.unsplash.com/photo-1559562328-bc48b8b32e2b?fm=jpg&w=640&fit=crop&q=80',
+        text: 'in snow'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1588064011404-57a7bc7133f5?auto=format&fit=crop&w=640&q=80',
+        text: 'at night'
+      },
+    ],
+    'Image:open_clip': [
+      {
+        url: 'https://images.unsplash.com/photo-1559562328-bc48b8b32e2b?fm=jpg&w=640&fit=crop&q=80',
+        text: 'in snow'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1588064011404-57a7bc7133f5?auto=format&fit=crop&w=640&q=80',
+        text: 'at night'
+      },
+    ],
+    'VideoAudio:clap': [
+      {
+        text: 'alarm',
+      }
+    ]
+  },
+  ENABLE_REPORT_MEDIA: true, // shows a "Report media" button in the image details page
+  SHOT_SCALE_FILTER_LABEL: {
+    0: "Extreme close-up",
+    1: "Close-up",
+    2: "Medium shot",
+    3: "Full shot",
+    4: "Long shot"
+  },
+  METADATA_TABLE_COLUMNS: [],
+  METADATA_FILTER_PLACEHOLDER: "",
+  METADATA_FILTER_HELP: "Use AND/OR to combine filters, Ctrl + Space key to show metadata columns.",
+
+  // Select which of search targets to be displayed on the frontend
+  // for each media type.  If DISPLAYED_SEARCH_TARGETS is undefined
+  // then all search targets announced by the backend will be
+  // displayed.
+  //
+  // NB 1: *undefined* DISPLAYED_SEARCH_TARGETS is different from
+  // empty.  If DISPLAYED_SEARCH_TARGETS is empty it means none of the
+  // search targets will be displayed.
+  //
+  // NB 2: this option only affects what search targets are displayed
+  // on the frontend.  All search targets announced by the backend
+  // remain available for people to directly make queries against,
+  // i.e., this option provides no security against abuse or privacy.
+  // DISPLAYED_SEARCH_TARGETS: {
+  //   "image" : [
+  //     "mlfoundations/open_clip/ViT-B-16-SigLIP2-512/webli",
+  //     "deepinsight/insightface/buffalo_l/_",
+  //     "wise/metadata"
+  //   ],
+  //   "video": [],
+  //   "audio":[]
+  // },
+  PREFERRED_SEARCH_TARGETS_NAME: {
+    "mlfoundations/open_clip/": "Visual",
+    "deepinsight/insightface/": "Faces",
+    "deepinsight/insightface-average/": "Many Faces",
+    "wise/metadata/": "Metadata",
+    "transformers/owlv2/": "Objects",
+    "microsoft/clap/": "Audio"
+  }
+};
+
+// Config for development mode
+const devConfig = {
+  ...productionConfig,
+  PAGE_SIZE: 500,
+  NUM_PAGES_PER_REQUEST: 1,
+  FETCH_THUMBS: 1,
+};
+
+window.wiseConfig = {
+  productionConfig,
+  devConfig
+};

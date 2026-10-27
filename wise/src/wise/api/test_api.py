@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+
+## Copyright 2026 University of Oxford
+##
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
+## You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+## See the License for the specific language governing permissions and
+## limitations under the License.
+
+import os.path
+import tempfile
+import unittest
+from io import BytesIO
+
+from fastapi import UploadFile
+from fastapi.testclient import TestClient
+from pydantic import HttpUrl
+
+import wise.api.common
+import wise.api.dependencies
+from wise.api import create_app
+from wise.api.common import MediaQueryTerm, TextQueryTerm
+from wise.config import APIConfig
+from wise.wise_project import WiseProject
+
+
+class TestWithEmptyProject(unittest.TestCase):
+    def setUp(self):
+        self.tmp_dir = tempfile.TemporaryDirectory(prefix="wise-test-")
+        self.project_dir = self.tmp_dir.name
+        self.project_name = os.path.basename(self.project_dir)
+
+        project = WiseProject(
+            self.project_dir, create_project=True, read_only=False
+        )
+        self.api_config = APIConfig(
+            project_dir=self.project_dir,
+            command="serve",
+        )
+        self.app = create_app(self.api_config, self.project_dir)
+        self.client = TestClient(self.app)
+
+    def get_request(self, path: str):
+        return self.client.get(f"/{self.project_name}/{path}")
+
+    def test_get_info(self):
+        response = self.get_request("info")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "project_name": self.project_name,
+                "num_vectors": 0,
+                "num_media_files": 0,
+                "num_thumbnails": 0,
+                "num_shots": 0,
+                "media_file_counts": {},
+                "max_search_results": 1000,
+                "total_duration": 0.0,
+                "shot_based_filters": None,
+                "search_targets": {},
+                "enable_facets": False,
+            },
+        )
+
+    def test_get_nonexistent_media(self):
+        resp = self.get_request("media/1")
+        self.assertEqual(resp.status_code, 404)
+        ## XXX: this returns plain text but maybe should return json
+        ## like the others when it errors?
+        self.assertEqual(resp.content, b"1 not found!")
+
+    def test_get_related_vectors_to_nonexistent_vector(self):
+        resp = self.get_request("related-vectors/1")
+        ## XXX: this succeeds but maybe it should 404?
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json(), [])
+
+    def test_get_metadata_to_nonexistent_media(self):
+        resp = self.get_request("metadata/1")
+        self.assertEqual(resp.status_code, 404)
+        self.assertEqual(resp.json()["detail"], "Metadata not found!")
+
+    def test_get_thumbnail_to_nonexistent_media(self):
+        resp = self.get_request("thumbnail/1")
+        self.assertEqual(resp.status_code, 404)
+        self.assertEqual(resp.json()["detail"], "Not Found")
+
+    def tearDown(self):
+        self.tmp_dir.cleanup()
+        # HACK: need to destroy the app services which are global
+        # variables and created by the first app (see #252)
+        wise.api.dependencies.project_service = None
+        wise.api.dependencies.project_info = None
+        wise.api.dependencies.search_service = None
+        wise.api.dependencies.embedding_service = None
+
+
+class TestHandlingMultipartForm(unittest.TestCase):
+    def test_merge_with_file(self):
+        query_form = [
+            '{"term_id": "bill", "is_negative": true, "txt": "vi"}',
+            '{"term_id": "rms", "is_negative": false, "src": null, "qtype": "visual"}',
+        ]
+        query_form_files = [
+            UploadFile(
+                file=BytesIO(bytes([101, 109, 97, 99, 115])),
+                filename="rms",
+                headers={"content-type": "application/octet-stream"},
+            )
+        ]
+        expected_query = [
+            TextQueryTerm(term_id="bill", is_negative=True, txt="vi"),
+            MediaQueryTerm(
+                term_id="rms",
+                is_negative=False,
+                src=bytes([101, 109, 97, 99, 115]),
+                qtype="visual",
+            ),
+        ]
+
+        self.assertEqual(
+            wise.api.common.merge_multipart_query_form(
+                query_form, query_form_files
+            ),
+            expected_query,
+        )
+
+    def test_parsing_internal_vector_id(self):
+        query_form = [
+            '{"term_id": "foo", "is_negative": true, "txt": "crane"}',
+            '{"term_id": "bar", "is_negative": false, "vector_id": "0/0/0"}',
+        ]
+        expected_q = [
+            wise.api.common.TextQueryTerm(
+                term_id="foo", is_negative=True, txt="crane"
+            ),
+            wise.api.common.VectorIdQueryTerm(
+                term_id="bar", is_negative=False, vector_id="0/0/0"
+            ),
+        ]
+        self.assertEqual(
+            wise.api.common.merge_multipart_query_form(query_form, []),
+            expected_q,
+        )
+
+    def test_parsing_url(self):
+        url = "http://www.example.com/960px-Flagstone_3_(20767991).jpg"
+        query_form = [
+            '{"term_id": "gnu", "is_negative": false, "src": "%s", "qtype": "visual"}'
+            % url,
+        ]
+        expected_q = [
+            wise.api.common.MediaQueryTerm(
+                term_id="gnu",
+                is_negative=False,
+                src=HttpUrl(url),
+                qtype="visual",
+            )
+        ]
+        self.assertEqual(
+            wise.api.common.merge_multipart_query_form(query_form, []),
+            expected_q,
+        )

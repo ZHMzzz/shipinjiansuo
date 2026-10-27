@@ -1,0 +1,55 @@
+.vscode/
+# dotenv
+.env
+*.env
+
+!.env.template
+
+# data folder
+!/data/.gitkeep
+/data/
+/wise-data/
+/wise-projects/
+/images/
+/projects
+/public/images
+/public/thumbs
+*.h5
+*.npy
+*.tar
+*.db
+/cmd
+# generated output
+/output/
+/logs/
+build*.json
+/build/
+/dist/
+/tmp/
+# Python
+/env/
+/venv/
+__pycache__/
+/src/wise.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temp files by editors
+*~
+.*~
+
+# Vim
+*.swo
+*.swp
+
+# System files
+.DS_Store
+
+# huggingface
+hub/
+# trivial change to trigger test pipeline
+
+/site/
+/public/
+/mkdocs/public/
