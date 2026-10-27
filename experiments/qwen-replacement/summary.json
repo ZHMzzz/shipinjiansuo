@@ -1,0 +1,138 @@
+{
+  "live-siglip": {
+    "screenshot": {
+      "count": 6,
+      "top1": 6,
+      "top5": 6,
+      "median_seconds": 0.02749854201101698,
+      "min_seconds": 0.026941707998048514,
+      "max_seconds": 0.22938033402897418
+    },
+    "appearance": {
+      "count": 1,
+      "top1": 1,
+      "top5": 1,
+      "median_seconds": 0.045047666993923485,
+      "min_seconds": 0.04302137502236292,
+      "max_seconds": 0.04870354098966345
+    },
+    "mixed": {
+      "count": 6,
+      "top1": 5,
+      "top5": 6,
+      "median_seconds": 0.058400250010890886,
+      "min_seconds": 0.05185933399479836,
+      "max_seconds": 0.18537724995985627
+    },
+    "text": {
+      "count": 3,
+      "top1": 3,
+      "top5": 3,
+      "median_seconds": 0.026863667008001357,
+      "min_seconds": 0.026243083993904293,
+      "max_seconds": 0.03673433302901685
+    }
+  },
+  "siglip": {
+    "screenshot": {
+      "count": 6,
+      "top1": 6,
+      "top5": 6,
+      "median_seconds": 0.026517041987972334,
+      "min_seconds": 0.02448874997207895,
+      "max_seconds": 0.02820262499153614
+    },
+    "appearance": {
+      "count": 1,
+      "top1": 1,
+      "top5": 1,
+      "median_seconds": 0.02673987502930686,
+      "min_seconds": 0.02594895800575614,
+      "max_seconds": 0.026850750029552728
+    },
+    "mixed": {
+      "count": 6,
+      "top1": 5,
+      "top5": 6,
+      "median_seconds": 0.050817146024201065,
+      "min_seconds": 0.04738870804430917,
+      "max_seconds": 0.06289170903619379
+    },
+    "text": {
+      "count": 3,
+      "top1": 2,
+      "top5": 3,
+      "median_seconds": 0.02522237499943003,
+      "min_seconds": 0.023603416979312897,
+      "max_seconds": 0.0273981670034118
+    }
+  },
+  "qwen": {
+    "screenshot": {
+      "count": 6,
+      "top1": 6,
+      "top5": 6,
+      "median_seconds": 0.5382521460123826,
+      "min_seconds": 0.48457354097627103,
+      "max_seconds": 0.6258305000374094
+    },
+    "appearance": {
+      "count": 1,
+      "top1": 1,
+      "top5": 1,
+      "median_seconds": 0.6327611660235561,
+      "min_seconds": 0.5770254580420442,
+      "max_seconds": 0.6382153339800425
+    },
+    "mixed": {
+      "count": 6,
+      "top1": 4,
+      "top5": 6,
+      "median_seconds": 0.6148562505550217,
+      "min_seconds": 0.5491855000145733,
+      "max_seconds": 1.0045185830094852
+    },
+    "text": {
+      "count": 3,
+      "top1": 3,
+      "top5": 3,
+      "median_seconds": 0.04416275001130998,
+      "min_seconds": 0.04103908297838643,
+      "max_seconds": 0.1105857920483686
+    }
+  },
+  "qwen-existing-segments": {
+    "screenshot": {
+      "count": 6,
+      "top1": 6,
+      "top5": 6,
+      "median_seconds": 0.5388471665210091,
+      "min_seconds": 0.48074262496083975,
+      "max_seconds": 0.7539572499808855
+    },
+    "appearance": {
+      "count": 1,
+      "top1": 1,
+      "top5": 1,
+      "median_seconds": 0.5724698330159299,
+      "min_seconds": 0.5696110419812612,
+      "max_seconds": 0.5765344999963418
+    },
+    "mixed": {
+      "count": 6,
+      "top1": 5,
+      "top5": 6,
+      "median_seconds": 0.5808284169761464,
+      "min_seconds": 0.5503877499722876,
+      "max_seconds": 0.6519822919508442
+    },
+    "text": {
+      "count": 3,
+      "top1": 3,
+      "top5": 3,
+      "median_seconds": 0.04396587499650195,
+      "min_seconds": 0.04072904196800664,
+      "max_seconds": 0.049413957982324064
+    }
+  }
+}

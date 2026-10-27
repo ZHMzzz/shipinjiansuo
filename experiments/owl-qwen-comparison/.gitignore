@@ -1,0 +1,4 @@
+# Locally retained, reproducible image fixtures.
+/source-*.png
+/queries/
+/controls/

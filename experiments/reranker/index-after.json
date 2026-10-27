@@ -1,0 +1,8 @@
+{
+  "project": "/Users/zhanghemign/Desktop/\u89c6\u9891\u68c0\u7d22/projects/releases/ac20096d1f6f4db88c9d4dbe980748f5/demo",
+  "sha256": {
+    "action-index/metadata.json": "c8ae3b0c0101be482cf93368c31627a5703e5bba7a37d404b812debbbbc976c5",
+    "action-index/vectors.npy": "d735ebb36e6e2bd13b9a8fe503abdbec828c26389909389f4e147350bc3e7c2c",
+    "action-index/index.faiss": "6713271e3ea418f27f291159279c9c132fb5e2b3408c16e21e18668aa42338ea"
+  }
+}

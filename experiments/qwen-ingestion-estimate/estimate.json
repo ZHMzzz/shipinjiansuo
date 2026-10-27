@@ -1,0 +1,48 @@
+[
+  {
+    "job_id": "0292b4b6f8f34a9696c91335cd35f56b",
+    "duration": 18.08431,
+    "historical_extract_reported_seconds": 60,
+    "new_face_extract_reported_seconds": 12,
+    "new_face_extract_wall_seconds": 15.156695042038336,
+    "historical_total_seconds": 74.85684728622437,
+    "estimated_queue_seconds": 0,
+    "estimated_historical_active_seconds": 74.85684728622437,
+    "estimated_saving_range_seconds": [
+      44.843304957961664,
+      48
+    ],
+    "estimated_new_active_range_seconds": [
+      26.856847286224365,
+      30.0135423282627
+    ],
+    "estimated_reduction_range": [
+      0.5990541491347848,
+      0.6412239058968927
+    ],
+    "note": "Historical baseline vs isolated face-only run; unmeasured common stages held constant. Not a new end-to-end upload benchmark."
+  },
+  {
+    "job_id": "21ebf62dda0a43d787470765fab53d3f",
+    "duration": 33.900998,
+    "historical_extract_reported_seconds": 86,
+    "new_face_extract_reported_seconds": 17,
+    "new_face_extract_wall_seconds": 19.671036792045925,
+    "historical_total_seconds": 243.34595036506653,
+    "estimated_queue_seconds": 131.8866560459137,
+    "estimated_historical_active_seconds": 111.45929431915283,
+    "estimated_saving_range_seconds": [
+      66.32896320795408,
+      69
+    ],
+    "estimated_new_active_range_seconds": [
+      42.45929431915283,
+      45.13033111119876
+    ],
+    "estimated_reduction_range": [
+      0.5950958474403001,
+      0.6190600830687589
+    ],
+    "note": "Historical baseline vs isolated face-only run; unmeasured common stages held constant. Not a new end-to-end upload benchmark."
+  }
+]

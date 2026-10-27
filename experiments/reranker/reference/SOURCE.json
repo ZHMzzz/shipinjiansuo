@@ -1,0 +1,6 @@
+{
+  "url": "https://huggingface.co/Qwen/Qwen3-VL-Reranker-2B/raw/4bd860ac4f15ad1897a214615cccc700f8f71818/scripts/qwen3_vl_reranker.py",
+  "sha256": "bd5d2f5d97fc4a738864d93f6b15d8850243e60da4484f3ea78867a46efdebd6",
+  "license": "Apache-2.0",
+  "purpose": "Check local prompt and scoring against official reference; not used by server"
+}

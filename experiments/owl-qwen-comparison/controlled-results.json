@@ -1,0 +1,1022 @@
+[
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": 0.01,
+    "rank": 2,
+    "ranking": [
+      {
+        "id": "background_11-1-bag_indoor",
+        "score": 2.2481117248535156
+      },
+      {
+        "id": "background_11-1-bag_street",
+        "score": 0.7044810652732849
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.6201267242431641
+      },
+      {
+        "id": "background_11-1-helmet_large",
+        "score": 0.5690131783485413
+      }
+    ],
+    "iou": 0.7697364909683302
+  },
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": 0.04,
+    "rank": 2,
+    "ranking": [
+      {
+        "id": "background_11-4-bag_indoor",
+        "score": 2.573992967605591
+      },
+      {
+        "id": "background_11-4-bag_street",
+        "score": 2.4200708866119385
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.6201267242431641
+      },
+      {
+        "id": "background_11-4-helmet_large",
+        "score": 0.4791397154331207
+      }
+    ],
+    "iou": 0.7507123841837786
+  },
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-16-bag_street",
+        "score": 3.3975162506103516
+      },
+      {
+        "id": "background_11-16-bag_indoor",
+        "score": 2.794248104095459
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.6201267242431641
+      },
+      {
+        "id": "background_11-16-helmet_large",
+        "score": 0.5951768159866333
+      }
+    ],
+    "iou": 0.8119564368697425
+  },
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": "multi",
+    "iou": 0.0
+  },
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-1-bag_street",
+        "score": 1.6434553861618042
+      },
+      {
+        "id": "background_12-1-bag_indoor",
+        "score": 1.6068331003189087
+      },
+      {
+        "id": "background_12-1-helmet_large",
+        "score": 1.5286586284637451
+      },
+      {
+        "id": "background_12-empty",
+        "score": 1.4483026266098022
+      }
+    ],
+    "iou": 0.0
+  },
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-4-bag_street",
+        "score": 1.7970101833343506
+      },
+      {
+        "id": "background_12-4-bag_indoor",
+        "score": 1.4988198280334473
+      },
+      {
+        "id": "background_12-4-helmet_large",
+        "score": 1.4497807025909424
+      },
+      {
+        "id": "background_12-empty",
+        "score": 1.4483026266098022
+      }
+    ],
+    "iou": 0.0
+  },
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-16-bag_street",
+        "score": 2.5053231716156006
+      },
+      {
+        "id": "background_12-16-bag_indoor",
+        "score": 2.3320510387420654
+      },
+      {
+        "id": "background_12-16-helmet_large",
+        "score": 1.7402756214141846
+      },
+      {
+        "id": "background_12-empty",
+        "score": 1.4483026266098022
+      }
+    ],
+    "iou": 0.4073542767445503
+  },
+  {
+    "method": "owl",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": "multi",
+    "iou": 0.7325544713143356
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-1-bag_indoor",
+        "score": 3.0959486961364746
+      },
+      {
+        "id": "background_11-1-bag_street",
+        "score": 0.07829978317022324
+      },
+      {
+        "id": "background_11-1-helmet_large",
+        "score": -0.03241390362381935
+      },
+      {
+        "id": "background_11-empty",
+        "score": -0.05563686415553093
+      }
+    ],
+    "iou": 0.7129799950729298
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-4-bag_indoor",
+        "score": 6.455743312835693
+      },
+      {
+        "id": "background_11-4-bag_street",
+        "score": 0.09879817068576813
+      },
+      {
+        "id": "background_11-4-helmet_large",
+        "score": -0.029752954840660095
+      },
+      {
+        "id": "background_11-empty",
+        "score": -0.05563686415553093
+      }
+    ],
+    "iou": 0.7373585253142061
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-16-bag_indoor",
+        "score": 8.18770694732666
+      },
+      {
+        "id": "background_11-16-helmet_large",
+        "score": 0.52668297290802
+      },
+      {
+        "id": "background_11-16-bag_street",
+        "score": 0.4245130717754364
+      },
+      {
+        "id": "background_11-empty",
+        "score": -0.05563686415553093
+      }
+    ],
+    "iou": 0.730192754815313
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": "multi",
+    "iou": 0.746322534912519
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-1-bag_indoor",
+        "score": 2.7589304447174072
+      },
+      {
+        "id": "background_12-1-bag_street",
+        "score": 2.685643196105957
+      },
+      {
+        "id": "background_12-empty",
+        "score": 2.6665360927581787
+      },
+      {
+        "id": "background_12-1-helmet_large",
+        "score": 2.6593518257141113
+      }
+    ],
+    "iou": 0.0
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-4-bag_indoor",
+        "score": 5.658932209014893
+      },
+      {
+        "id": "background_12-4-bag_street",
+        "score": 2.7267844676971436
+      },
+      {
+        "id": "background_12-4-helmet_large",
+        "score": 2.7216975688934326
+      },
+      {
+        "id": "background_12-empty",
+        "score": 2.6665360927581787
+      }
+    ],
+    "iou": 0.7487564621339108
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-16-bag_indoor",
+        "score": 6.606464385986328
+      },
+      {
+        "id": "background_12-empty",
+        "score": 2.6665360927581787
+      },
+      {
+        "id": "background_12-16-bag_street",
+        "score": 2.5672354698181152
+      },
+      {
+        "id": "background_12-16-helmet_large",
+        "score": 2.4194552898406982
+      }
+    ],
+    "iou": 0.7605490935150924
+  },
+  {
+    "method": "owl",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": "multi",
+    "iou": 0.7493790315410737
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-1-helmet_large",
+        "score": 3.4011552333831787
+      },
+      {
+        "id": "background_11-1-bag_street",
+        "score": -0.2419966608285904
+      },
+      {
+        "id": "background_11-empty",
+        "score": -0.2784213125705719
+      },
+      {
+        "id": "background_11-1-bag_indoor",
+        "score": -0.3813004493713379
+      }
+    ],
+    "iou": 0.6467172463717532
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-4-helmet_large",
+        "score": 6.106842517852783
+      },
+      {
+        "id": "background_11-4-bag_indoor",
+        "score": -0.25811731815338135
+      },
+      {
+        "id": "background_11-empty",
+        "score": -0.2784213125705719
+      },
+      {
+        "id": "background_11-4-bag_street",
+        "score": -0.28091108798980713
+      }
+    ],
+    "iou": 0.660124840218105
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-16-helmet_large",
+        "score": 7.677159309387207
+      },
+      {
+        "id": "background_11-16-bag_street",
+        "score": 0.3319995105266571
+      },
+      {
+        "id": "background_11-16-bag_indoor",
+        "score": -0.17226780951023102
+      },
+      {
+        "id": "background_11-empty",
+        "score": -0.2784213125705719
+      }
+    ],
+    "iou": 0.647793734708876
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": "multi",
+    "iou": 0.6552689232597686
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-1-helmet_large",
+        "score": 5.230905055999756
+      },
+      {
+        "id": "background_12-1-bag_street",
+        "score": 0.19861897826194763
+      },
+      {
+        "id": "background_12-1-bag_indoor",
+        "score": 0.16645987331867218
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.10554910451173782
+      }
+    ],
+    "iou": 0.6484706612511599
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-4-helmet_large",
+        "score": 5.5384416580200195
+      },
+      {
+        "id": "background_12-4-bag_street",
+        "score": 0.3587858974933624
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.10554910451173782
+      },
+      {
+        "id": "background_12-4-bag_indoor",
+        "score": 0.06283605843782425
+      }
+    ],
+    "iou": 0.6683223700019879
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-16-helmet_large",
+        "score": 5.181848049163818
+      },
+      {
+        "id": "background_12-16-bag_street",
+        "score": 0.7454296350479126
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.10554910451173782
+      },
+      {
+        "id": "background_12-16-bag_indoor",
+        "score": 0.010194208472967148
+      }
+    ],
+    "iou": 0.663771829114758
+  },
+  {
+    "method": "owl",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": "multi",
+    "iou": 0.6696464877377024
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": 0.01,
+    "rank": 2,
+    "ranking": [
+      {
+        "id": "background_11-1-bag_indoor",
+        "score": 0.3254966139793396
+      },
+      {
+        "id": "background_11-1-bag_street",
+        "score": 0.30079928040504456
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.17299479246139526
+      },
+      {
+        "id": "background_11-1-helmet_large",
+        "score": 0.1588141918182373
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-4-bag_street",
+        "score": 0.6343802213668823
+      },
+      {
+        "id": "background_11-4-bag_indoor",
+        "score": 0.33119380474090576
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.17299479246139526
+      },
+      {
+        "id": "background_11-4-helmet_large",
+        "score": 0.15274211764335632
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-16-bag_street",
+        "score": 0.554868221282959
+      },
+      {
+        "id": "background_11-16-bag_indoor",
+        "score": 0.32390525937080383
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.17299479246139526
+      },
+      {
+        "id": "background_11-16-helmet_large",
+        "score": 0.1511063575744629
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_11",
+    "area": "multi",
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-1-bag_street",
+        "score": 0.238075852394104
+      },
+      {
+        "id": "background_12-1-helmet_large",
+        "score": 0.16505521535873413
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.1611083447933197
+      },
+      {
+        "id": "background_12-1-bag_indoor",
+        "score": 0.16052459180355072
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-4-bag_street",
+        "score": 0.4553952217102051
+      },
+      {
+        "id": "background_12-4-bag_indoor",
+        "score": 0.4212273955345154
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.1611083447933197
+      },
+      {
+        "id": "background_12-4-helmet_large",
+        "score": 0.159760981798172
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-16-bag_street",
+        "score": 0.583585798740387
+      },
+      {
+        "id": "background_12-16-bag_indoor",
+        "score": 0.39408591389656067
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.1611083447933197
+      },
+      {
+        "id": "background_12-16-helmet_large",
+        "score": 0.1516028642654419
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_street",
+    "background": "background_12",
+    "area": "multi",
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-1-bag_indoor",
+        "score": 0.4380337595939636
+      },
+      {
+        "id": "background_11-1-bag_street",
+        "score": 0.17452526092529297
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.16108021140098572
+      },
+      {
+        "id": "background_11-1-helmet_large",
+        "score": 0.1452045738697052
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-4-bag_indoor",
+        "score": 0.5657511949539185
+      },
+      {
+        "id": "background_11-4-bag_street",
+        "score": 0.3567153811454773
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.16108021140098572
+      },
+      {
+        "id": "background_11-4-helmet_large",
+        "score": 0.12380395829677582
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-16-bag_indoor",
+        "score": 0.7694625854492188
+      },
+      {
+        "id": "background_11-16-bag_street",
+        "score": 0.3476189076900482
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.16108021140098572
+      },
+      {
+        "id": "background_11-16-helmet_large",
+        "score": 0.15047875046730042
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_11",
+    "area": "multi",
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-1-bag_indoor",
+        "score": 0.2091585099697113
+      },
+      {
+        "id": "background_12-1-bag_street",
+        "score": 0.198561429977417
+      },
+      {
+        "id": "background_12-1-helmet_large",
+        "score": 0.13474316895008087
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.09490369260311127
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-4-bag_indoor",
+        "score": 0.49847543239593506
+      },
+      {
+        "id": "background_12-4-bag_street",
+        "score": 0.31172627210617065
+      },
+      {
+        "id": "background_12-4-helmet_large",
+        "score": 0.11925069987773895
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.09490369260311127
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-16-bag_indoor",
+        "score": 0.7203913331031799
+      },
+      {
+        "id": "background_12-16-bag_street",
+        "score": 0.34593886137008667
+      },
+      {
+        "id": "background_12-16-helmet_large",
+        "score": 0.10009097307920456
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.09490369260311127
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "bag_indoor",
+    "background": "background_12",
+    "area": "multi",
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-1-helmet_large",
+        "score": 0.5375933647155762
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.21365638077259064
+      },
+      {
+        "id": "background_11-1-bag_street",
+        "score": 0.20128066837787628
+      },
+      {
+        "id": "background_11-1-bag_indoor",
+        "score": 0.15014545619487762
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-4-helmet_large",
+        "score": 0.5445976257324219
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.21365638077259064
+      },
+      {
+        "id": "background_11-4-bag_street",
+        "score": 0.17587628960609436
+      },
+      {
+        "id": "background_11-4-bag_indoor",
+        "score": 0.008002699352800846
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_11-16-helmet_large",
+        "score": 0.5710722804069519
+      },
+      {
+        "id": "background_11-16-bag_street",
+        "score": 0.22621996700763702
+      },
+      {
+        "id": "background_11-empty",
+        "score": 0.21365638077259064
+      },
+      {
+        "id": "background_11-16-bag_indoor",
+        "score": 0.027686873450875282
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_11",
+    "area": "multi",
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": 0.01,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-1-helmet_large",
+        "score": 0.32245349884033203
+      },
+      {
+        "id": "background_12-1-bag_street",
+        "score": 0.16686299443244934
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.126016765832901
+      },
+      {
+        "id": "background_12-1-bag_indoor",
+        "score": 0.1254512518644333
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": 0.04,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-4-helmet_large",
+        "score": 0.4340771436691284
+      },
+      {
+        "id": "background_12-4-bag_street",
+        "score": 0.15657684206962585
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.126016765832901
+      },
+      {
+        "id": "background_12-4-bag_indoor",
+        "score": 0.10488411784172058
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": 0.16,
+    "rank": 1,
+    "ranking": [
+      {
+        "id": "background_12-16-helmet_large",
+        "score": 0.5294619798660278
+      },
+      {
+        "id": "background_12-16-bag_street",
+        "score": 0.1410376876592636
+      },
+      {
+        "id": "background_12-empty",
+        "score": 0.126016765832901
+      },
+      {
+        "id": "background_12-16-bag_indoor",
+        "score": 0.08805939555168152
+      }
+    ],
+    "iou": null
+  },
+  {
+    "method": "qwen",
+    "target": "helmet_large",
+    "background": "background_12",
+    "area": "multi",
+    "iou": null
+  }
+]

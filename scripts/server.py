@@ -32,6 +32,7 @@ from wise.wise_project import WiseProject
 from ingestion import IngestionManager, prepare_versions, MAX_UPLOAD
 from combined_search import person_scene_search
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
+from action_reranker import VideoReranker, search_with_reranking, SETTINGS as RERANK_SETTINGS
 
 ROOT = Path(__file__).resolve().parents[1]
 FACE = 'deepinsight/insightface/buffalo_l/_unknown'
@@ -42,6 +43,8 @@ config = APIConfig(command='serve', project_dir=prepare_versions(ROOT))
 app = create_app(config, ROOT / 'wise/frontend/dist')
 search_gate = asyncio.Lock()
 actions = ActionEngine()
+reranker = VideoReranker()
+actions.before_model = reranker.unload
 
 
 @app.middleware('http')
@@ -137,7 +140,8 @@ def action_status(project: ProjectServiceDep):
     meta = json.loads(path.read_text()) if path.exists() else {'media':[], 'segments':[]}
     return {**ingestion.action_state, 'indexed_videos':len(meta['media']),
         'indexed_segments':len(meta['segments']), 'model_loaded':actions.extractor is not None,
-        'model_load_seconds':actions.last_load_seconds, 'settings':ACTION_SETTINGS}
+        'model_load_seconds':actions.last_load_seconds, 'settings':ACTION_SETTINGS,
+        'reranker_loaded':reranker.model is not None, 'reranker_settings':RERANK_SETTINGS}
 
 
 @app.post('/mvp-api/actions/retry')
@@ -148,11 +152,13 @@ def retry_actions():
 
 @app.post('/mvp-api/actions/search')
 def search_actions(project: ProjectServiceDep, query: str = Form(..., min_length=1, max_length=500),
-                   limit: int = Form(20, ge=1, le=50)):
+                   limit: int = Form(20, ge=1, le=50), rerank: bool = Form(False),
+                   rerank_candidates: int = Form(10, ge=1, le=20)):
     query = query.strip()
     if not query: raise HTTPException(400, '请输入动作或场景描述')
     try:
-        return actions.search(project.wise_project._project_dir, query, limit)
+        return search_with_reranking(actions, reranker, project.wise_project._project_dir,
+                                     query, limit, rerank, rerank_candidates)
     except ValueError as exc:
         raise HTTPException(409, str(exc)) from exc
     except RuntimeError as exc:

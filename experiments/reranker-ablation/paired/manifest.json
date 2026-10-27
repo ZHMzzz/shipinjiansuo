@@ -1,0 +1,88 @@
+{
+  "notes": [
+    "Real same-photo different-person head crops, not same-person counterfactual pairs.",
+    "Manual crops selected before scoring; 3 scenes only; pose, identity and scale still differ.",
+    "Static-image diagnostic, not video retrieval validation.",
+    "Source shwd-6 rejected: all visible people wear helmets."
+  ],
+  "items": [
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf"
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6"
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0"
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32"
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac"
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b"
+    }
+  ]
+}

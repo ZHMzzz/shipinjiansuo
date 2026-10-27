@@ -1,0 +1,1068 @@
+[
+  {
+    "candidates": 5,
+    "http_seconds": 11.952300041040871,
+    "result": {
+      "score_kind": "action",
+      "query": "作业人员没有佩戴安全帽",
+      "settings": {
+        "schema": 1,
+        "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+        "dtype": "float16",
+        "max_total_pixels": 1048576,
+        "window_seconds": 8.0,
+        "stride_seconds": 4.0,
+        "frames": 16
+      },
+      "query_embedding_cached": true,
+      "encode_seconds": 3.491598181426525e-05,
+      "search_seconds": 6.795901572331786e-05,
+      "indexed_videos": 26,
+      "indexed_segments": 70,
+      "video_results": {
+        "videos": {
+          "1": {
+            "filename": "backpack-street.mp4",
+            "duration": 14.6146
+          },
+          "2": {
+            "filename": "backpack-walking.mp4",
+            "duration": 8.52
+          },
+          "3": {
+            "filename": "coughing-6XvsLPDioVA_000000_000010.mp4",
+            "duration": 10.0
+          },
+          "4": {
+            "filename": "coughing-7XXXwvatW1U_000051_000061.mp4",
+            "duration": 10.0
+          },
+          "5": {
+            "filename": "frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+            "duration": 10.0
+          },
+          "6": {
+            "filename": "frying-vegetables-hxK9mej0_zw_000086_000096.mp4",
+            "duration": 10.01
+          },
+          "7": {
+            "filename": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+            "duration": 9.833333
+          },
+          "8": {
+            "filename": "jogging-OmWoDAQM1kk_000000_000010.mp4",
+            "duration": 9.533333
+          },
+          "9": {
+            "filename": "shouting-84cxLPOEnGg_000011_000021.mp4",
+            "duration": 10.01
+          },
+          "10": {
+            "filename": "shouting-85P9CDTfGjE_000000_000010.mp4",
+            "duration": 10.0
+          },
+          "11": {
+            "filename": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "duration": 10.0
+          },
+          "12": {
+            "filename": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "duration": 10.0
+          },
+          "13": {
+            "filename": "whistling-LqQYSUb_TJI_000052_000062.mp4",
+            "duration": 10.0
+          },
+          "14": {
+            "filename": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+            "duration": 10.0
+          },
+          "15": {
+            "filename": "新增人物检索验证.mp4",
+            "duration": 3.0
+          },
+          "16": {
+            "filename": "带音轨上传验证.mp4",
+            "duration": 2.0
+          },
+          "17": {
+            "filename": "动作定位_串接测试24秒.mp4",
+            "duration": 24.0
+          },
+          "18": {
+            "filename": "围栏翻越_户外短片.mp4",
+            "duration": 1.4
+          },
+          "19": {
+            "filename": "抽烟02_安全帽工人吸烟.mp4",
+            "duration": 7.875
+          },
+          "20": {
+            "filename": "火情02_明火黑烟.mp4",
+            "duration": 7.875
+          },
+          "21": {
+            "filename": "摔倒01_白天工地.mp4",
+            "duration": 8.0
+          },
+          "22": {
+            "filename": "抖音20261026-905866.mp4",
+            "duration": 37.533333
+          },
+          "23": {
+            "filename": "抖音20261026-627411.mp4",
+            "duration": 56.24
+          },
+          "24": {
+            "filename": "256df2fd406b3ef48f3e351fdb950be1.mp4",
+            "duration": 8.8
+          },
+          "25": {
+            "filename": "01_走廊抽香烟.mp4",
+            "duration": 9.72
+          },
+          "26": {
+            "filename": "03_雪地滑倒.mp4",
+            "duration": 13.2
+          }
+        },
+        "unmerged_windows": [
+          {
+            "media_id": 21,
+            "ts": 0.0,
+            "te": 8.0,
+            "distance": 0.5641825795173645,
+            "thumbnail_ts": 4.0,
+            "thumbnail": "/demo/thumbnail?media_id=21&timestamp=4.0",
+            "link": "/demo/media/21#t=0.0,8.0",
+            "original_rank": 1,
+            "embedding_score": 0.5641825795173645,
+            "rerank_score": 0.5318521857261658
+          },
+          {
+            "media_id": 19,
+            "ts": 0.0,
+            "te": 7.875,
+            "distance": 0.545344352722168,
+            "thumbnail_ts": 3.9375,
+            "thumbnail": "/demo/thumbnail?media_id=19&timestamp=3.9375",
+            "link": "/demo/media/19#t=0.0,7.875",
+            "original_rank": 2,
+            "embedding_score": 0.545344352722168,
+            "rerank_score": 0.5030874609947205
+          },
+          {
+            "media_id": 17,
+            "ts": 4.0,
+            "te": 12.0,
+            "distance": 0.528074324131012,
+            "thumbnail_ts": 8.0,
+            "thumbnail": "/demo/thumbnail?media_id=17&timestamp=8.0",
+            "link": "/demo/media/17#t=4.0,12.0",
+            "original_rank": 4,
+            "embedding_score": 0.528074324131012,
+            "rerank_score": 0.4938353896141052
+          },
+          {
+            "media_id": 17,
+            "ts": 0.0,
+            "te": 8.0,
+            "distance": 0.5395722985267639,
+            "thumbnail_ts": 4.0,
+            "thumbnail": "/demo/thumbnail?media_id=17&timestamp=4.0",
+            "link": "/demo/media/17#t=0.0,8.0",
+            "original_rank": 3,
+            "embedding_score": 0.5395722985267639,
+            "rerank_score": 0.4525502026081085
+          },
+          {
+            "media_id": 17,
+            "ts": 16.0,
+            "te": 24.0,
+            "distance": 0.49755603075027466,
+            "thumbnail_ts": 20.0,
+            "thumbnail": "/demo/thumbnail?media_id=17&timestamp=20.0",
+            "link": "/demo/media/17#t=16.0,24.0",
+            "original_rank": 5,
+            "embedding_score": 0.49755603075027466,
+            "rerank_score": 0.41102856397628784
+          }
+        ]
+      },
+      "retrieval_seconds": 0.00022604200057685375,
+      "rerank": {
+        "requested": true,
+        "applied": true,
+        "settings": {
+          "model": "Qwen/Qwen3-VL-Reranker-2B",
+          "revision": "4bd860ac4f15ad1897a214615cccc700f8f71818",
+          "device": "mps",
+          "dtype": "float16",
+          "frames": 16,
+          "max_total_pixels": 1048576,
+          "instruction": "Given a search query, retrieve relevant candidates that answer the query."
+        },
+        "candidate_count": 5,
+        "timing": {
+          "load_seconds": 0.0,
+          "total_seconds": 11.943241042026784,
+          "candidates": [
+            {
+              "media_id": 21,
+              "ts": 0.0,
+              "te": 8.0,
+              "decode_seconds": 0.5372004170203581,
+              "inference_seconds": 2.1481775830034167
+            },
+            {
+              "media_id": 19,
+              "ts": 0.0,
+              "te": 7.875,
+              "decode_seconds": 0.206689374987036,
+              "inference_seconds": 2.0887169160414487
+            },
+            {
+              "media_id": 17,
+              "ts": 0.0,
+              "te": 8.0,
+              "decode_seconds": 0.15614666702458635,
+              "inference_seconds": 2.0616689999587834
+            },
+            {
+              "media_id": 17,
+              "ts": 4.0,
+              "te": 12.0,
+              "decode_seconds": 0.17796383396489546,
+              "inference_seconds": 2.0625502500333823
+            },
+            {
+              "media_id": 17,
+              "ts": 16.0,
+              "te": 24.0,
+              "decode_seconds": 0.38971233303891495,
+              "inference_seconds": 2.1142624999629334
+            }
+          ]
+        },
+        "embedding_unload_seconds": 5.00003807246685e-07
+      },
+      "baseline_results": [
+        {
+          "media_id": 21,
+          "ts": 0.0,
+          "te": 8.0,
+          "distance": 0.5641825795173645,
+          "thumbnail_ts": 4.0,
+          "thumbnail": "/demo/thumbnail?media_id=21&timestamp=4.0",
+          "link": "/demo/media/21#t=0.0,8.0"
+        },
+        {
+          "media_id": 19,
+          "ts": 0.0,
+          "te": 7.875,
+          "distance": 0.545344352722168,
+          "thumbnail_ts": 3.9375,
+          "thumbnail": "/demo/thumbnail?media_id=19&timestamp=3.9375",
+          "link": "/demo/media/19#t=0.0,7.875"
+        },
+        {
+          "media_id": 17,
+          "ts": 0.0,
+          "te": 8.0,
+          "distance": 0.5395722985267639,
+          "thumbnail_ts": 4.0,
+          "thumbnail": "/demo/thumbnail?media_id=17&timestamp=4.0",
+          "link": "/demo/media/17#t=0.0,8.0"
+        },
+        {
+          "media_id": 17,
+          "ts": 4.0,
+          "te": 12.0,
+          "distance": 0.528074324131012,
+          "thumbnail_ts": 8.0,
+          "thumbnail": "/demo/thumbnail?media_id=17&timestamp=8.0",
+          "link": "/demo/media/17#t=4.0,12.0"
+        },
+        {
+          "media_id": 17,
+          "ts": 16.0,
+          "te": 24.0,
+          "distance": 0.49755603075027466,
+          "thumbnail_ts": 20.0,
+          "thumbnail": "/demo/thumbnail?media_id=17&timestamp=20.0",
+          "link": "/demo/media/17#t=16.0,24.0"
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 11.944206124986522,
+        "before": {
+          "rss_bytes": 854147072,
+          "mps_allocated_bytes": 6449538304,
+          "mps_driver_bytes": 8056111104,
+          "system_available_bytes": 10924867584,
+          "system_swap_used_bytes": 18828558336
+        },
+        "after": {
+          "rss_bytes": 874430464,
+          "mps_allocated_bytes": 6449538304,
+          "mps_driver_bytes": 8158871552,
+          "system_available_bytes": 8092516352,
+          "system_swap_used_bytes": 18828558336
+        },
+        "sampled_peak": {
+          "rss_bytes": 874594304,
+          "mps_allocated_bytes": 6642888704,
+          "mps_driver_bytes": 8158887936,
+          "system_available_bytes": 10924867584,
+          "system_swap_used_bytes": 18828558336
+        },
+        "min_system_available_bytes": 8041545728
+      }
+    }
+  },
+  {
+    "candidates": 20,
+    "http_seconds": 48.79095191601664,
+    "result": {
+      "score_kind": "action",
+      "query": "作业人员没有佩戴安全帽",
+      "settings": {
+        "schema": 1,
+        "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+        "dtype": "float16",
+        "max_total_pixels": 1048576,
+        "window_seconds": 8.0,
+        "stride_seconds": 4.0,
+        "frames": 16
+      },
+      "query_embedding_cached": true,
+      "encode_seconds": 2.987496554851532e-05,
+      "search_seconds": 0.00014262500917539,
+      "indexed_videos": 26,
+      "indexed_segments": 70,
+      "video_results": {
+        "videos": {
+          "1": {
+            "filename": "backpack-street.mp4",
+            "duration": 14.6146
+          },
+          "2": {
+            "filename": "backpack-walking.mp4",
+            "duration": 8.52
+          },
+          "3": {
+            "filename": "coughing-6XvsLPDioVA_000000_000010.mp4",
+            "duration": 10.0
+          },
+          "4": {
+            "filename": "coughing-7XXXwvatW1U_000051_000061.mp4",
+            "duration": 10.0
+          },
+          "5": {
+            "filename": "frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+            "duration": 10.0
+          },
+          "6": {
+            "filename": "frying-vegetables-hxK9mej0_zw_000086_000096.mp4",
+            "duration": 10.01
+          },
+          "7": {
+            "filename": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+            "duration": 9.833333
+          },
+          "8": {
+            "filename": "jogging-OmWoDAQM1kk_000000_000010.mp4",
+            "duration": 9.533333
+          },
+          "9": {
+            "filename": "shouting-84cxLPOEnGg_000011_000021.mp4",
+            "duration": 10.01
+          },
+          "10": {
+            "filename": "shouting-85P9CDTfGjE_000000_000010.mp4",
+            "duration": 10.0
+          },
+          "11": {
+            "filename": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "duration": 10.0
+          },
+          "12": {
+            "filename": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "duration": 10.0
+          },
+          "13": {
+            "filename": "whistling-LqQYSUb_TJI_000052_000062.mp4",
+            "duration": 10.0
+          },
+          "14": {
+            "filename": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+            "duration": 10.0
+          },
+          "15": {
+            "filename": "新增人物检索验证.mp4",
+            "duration": 3.0
+          },
+          "16": {
+            "filename": "带音轨上传验证.mp4",
+            "duration": 2.0
+          },
+          "17": {
+            "filename": "动作定位_串接测试24秒.mp4",
+            "duration": 24.0
+          },
+          "18": {
+            "filename": "围栏翻越_户外短片.mp4",
+            "duration": 1.4
+          },
+          "19": {
+            "filename": "抽烟02_安全帽工人吸烟.mp4",
+            "duration": 7.875
+          },
+          "20": {
+            "filename": "火情02_明火黑烟.mp4",
+            "duration": 7.875
+          },
+          "21": {
+            "filename": "摔倒01_白天工地.mp4",
+            "duration": 8.0
+          },
+          "22": {
+            "filename": "抖音20261026-905866.mp4",
+            "duration": 37.533333
+          },
+          "23": {
+            "filename": "抖音20261026-627411.mp4",
+            "duration": 56.24
+          },
+          "24": {
+            "filename": "256df2fd406b3ef48f3e351fdb950be1.mp4",
+            "duration": 8.8
+          },
+          "25": {
+            "filename": "01_走廊抽香烟.mp4",
+            "duration": 9.72
+          },
+          "26": {
+            "filename": "03_雪地滑倒.mp4",
+            "duration": 13.2
+          }
+        },
+        "unmerged_windows": [
+          {
+            "media_id": 21,
+            "ts": 0.0,
+            "te": 8.0,
+            "distance": 0.5641825795173645,
+            "thumbnail_ts": 4.0,
+            "thumbnail": "/demo/thumbnail?media_id=21&timestamp=4.0",
+            "link": "/demo/media/21#t=0.0,8.0",
+            "original_rank": 1,
+            "embedding_score": 0.5641825795173645,
+            "rerank_score": 0.5318521857261658
+          },
+          {
+            "media_id": 19,
+            "ts": 0.0,
+            "te": 7.875,
+            "distance": 0.545344352722168,
+            "thumbnail_ts": 3.9375,
+            "thumbnail": "/demo/thumbnail?media_id=19&timestamp=3.9375",
+            "link": "/demo/media/19#t=0.0,7.875",
+            "original_rank": 2,
+            "embedding_score": 0.545344352722168,
+            "rerank_score": 0.5030874609947205
+          },
+          {
+            "media_id": 17,
+            "ts": 4.0,
+            "te": 12.0,
+            "distance": 0.528074324131012,
+            "thumbnail_ts": 8.0,
+            "thumbnail": "/demo/thumbnail?media_id=17&timestamp=8.0",
+            "link": "/demo/media/17#t=4.0,12.0",
+            "original_rank": 4,
+            "embedding_score": 0.528074324131012,
+            "rerank_score": 0.4938353896141052
+          },
+          {
+            "media_id": 20,
+            "ts": 0.0,
+            "te": 7.875,
+            "distance": 0.45839038491249084,
+            "thumbnail_ts": 3.9375,
+            "thumbnail": "/demo/thumbnail?media_id=20&timestamp=3.9375",
+            "link": "/demo/media/20#t=0.0,7.875",
+            "original_rank": 9,
+            "embedding_score": 0.45839038491249084,
+            "rerank_score": 0.4608698785305023
+          },
+          {
+            "media_id": 17,
+            "ts": 0.0,
+            "te": 8.0,
+            "distance": 0.5395722985267639,
+            "thumbnail_ts": 4.0,
+            "thumbnail": "/demo/thumbnail?media_id=17&timestamp=4.0",
+            "link": "/demo/media/17#t=0.0,8.0",
+            "original_rank": 3,
+            "embedding_score": 0.5395722985267639,
+            "rerank_score": 0.4525502026081085
+          },
+          {
+            "media_id": 23,
+            "ts": 28.0,
+            "te": 36.0,
+            "distance": 0.442058801651001,
+            "thumbnail_ts": 32.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=32.0",
+            "link": "/demo/media/23#t=28.0,36.0",
+            "original_rank": 15,
+            "embedding_score": 0.442058801651001,
+            "rerank_score": 0.41606271266937256
+          },
+          {
+            "media_id": 23,
+            "ts": 40.0,
+            "te": 48.0,
+            "distance": 0.42814382910728455,
+            "thumbnail_ts": 44.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=44.0",
+            "link": "/demo/media/23#t=40.0,48.0",
+            "original_rank": 20,
+            "embedding_score": 0.42814382910728455,
+            "rerank_score": 0.41594240069389343
+          },
+          {
+            "media_id": 17,
+            "ts": 16.0,
+            "te": 24.0,
+            "distance": 0.49755603075027466,
+            "thumbnail_ts": 20.0,
+            "thumbnail": "/demo/thumbnail?media_id=17&timestamp=20.0",
+            "link": "/demo/media/17#t=16.0,24.0",
+            "original_rank": 5,
+            "embedding_score": 0.49755603075027466,
+            "rerank_score": 0.41102856397628784
+          },
+          {
+            "media_id": 17,
+            "ts": 12.0,
+            "te": 20.0,
+            "distance": 0.47050848603248596,
+            "thumbnail_ts": 16.0,
+            "thumbnail": "/demo/thumbnail?media_id=17&timestamp=16.0",
+            "link": "/demo/media/17#t=12.0,20.0",
+            "original_rank": 7,
+            "embedding_score": 0.47050848603248596,
+            "rerank_score": 0.4065728485584259
+          },
+          {
+            "media_id": 23,
+            "ts": 24.0,
+            "te": 32.0,
+            "distance": 0.4565401077270508,
+            "thumbnail_ts": 28.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=28.0",
+            "link": "/demo/media/23#t=24.0,32.0",
+            "original_rank": 10,
+            "embedding_score": 0.4565401077270508,
+            "rerank_score": 0.4023238718509674
+          },
+          {
+            "media_id": 23,
+            "ts": 32.0,
+            "te": 40.0,
+            "distance": 0.4565085768699646,
+            "thumbnail_ts": 36.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=36.0",
+            "link": "/demo/media/23#t=32.0,40.0",
+            "original_rank": 11,
+            "embedding_score": 0.4565085768699646,
+            "rerank_score": 0.38109567761421204
+          },
+          {
+            "media_id": 23,
+            "ts": 16.0,
+            "te": 24.0,
+            "distance": 0.4650871157646179,
+            "thumbnail_ts": 20.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=20.0",
+            "link": "/demo/media/23#t=16.0,24.0",
+            "original_rank": 8,
+            "embedding_score": 0.4650871157646179,
+            "rerank_score": 0.3779037594795227
+          },
+          {
+            "media_id": 23,
+            "ts": 20.0,
+            "te": 28.0,
+            "distance": 0.4475805163383484,
+            "thumbnail_ts": 24.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=24.0",
+            "link": "/demo/media/23#t=20.0,28.0",
+            "original_rank": 13,
+            "embedding_score": 0.4475805163383484,
+            "rerank_score": 0.3707599937915802
+          },
+          {
+            "media_id": 23,
+            "ts": 12.0,
+            "te": 20.0,
+            "distance": 0.4282868504524231,
+            "thumbnail_ts": 16.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=16.0",
+            "link": "/demo/media/23#t=12.0,20.0",
+            "original_rank": 19,
+            "embedding_score": 0.4282868504524231,
+            "rerank_score": 0.3654293119907379
+          },
+          {
+            "media_id": 26,
+            "ts": 8.0,
+            "te": 13.2,
+            "distance": 0.43940579891204834,
+            "thumbnail_ts": 10.6,
+            "thumbnail": "/demo/thumbnail?media_id=26&timestamp=10.6",
+            "link": "/demo/media/26#t=8.0,13.2",
+            "original_rank": 16,
+            "embedding_score": 0.43940579891204834,
+            "rerank_score": 0.3569225072860718
+          },
+          {
+            "media_id": 23,
+            "ts": 36.0,
+            "te": 44.0,
+            "distance": 0.4503783583641052,
+            "thumbnail_ts": 40.0,
+            "thumbnail": "/demo/thumbnail?media_id=23&timestamp=40.0",
+            "link": "/demo/media/23#t=36.0,44.0",
+            "original_rank": 12,
+            "embedding_score": 0.4503783583641052,
+            "rerank_score": 0.3538583517074585
+          },
+          {
+            "media_id": 26,
+            "ts": 0.0,
+            "te": 8.0,
+            "distance": 0.4790637493133545,
+            "thumbnail_ts": 4.0,
+            "thumbnail": "/demo/thumbnail?media_id=26&timestamp=4.0",
+            "link": "/demo/media/26#t=0.0,8.0",
+            "original_rank": 6,
+            "embedding_score": 0.4790637493133545,
+            "rerank_score": 0.34414148330688477
+          },
+          {
+            "media_id": 26,
+            "ts": 4.0,
+            "te": 12.0,
+            "distance": 0.44595688581466675,
+            "thumbnail_ts": 8.0,
+            "thumbnail": "/demo/thumbnail?media_id=26&timestamp=8.0",
+            "link": "/demo/media/26#t=4.0,12.0",
+            "original_rank": 14,
+            "embedding_score": 0.44595688581466675,
+            "rerank_score": 0.3221776783466339
+          },
+          {
+            "media_id": 25,
+            "ts": 4.0,
+            "te": 9.72,
+            "distance": 0.43197643756866455,
+            "thumbnail_ts": 6.86,
+            "thumbnail": "/demo/thumbnail?media_id=25&timestamp=6.86",
+            "link": "/demo/media/25#t=4.0,9.72",
+            "original_rank": 18,
+            "embedding_score": 0.43197643756866455,
+            "rerank_score": 0.23554256558418274
+          },
+          {
+            "media_id": 11,
+            "ts": 4.0,
+            "te": 10.0,
+            "distance": 0.43243661522865295,
+            "thumbnail_ts": 7.0,
+            "thumbnail": "/demo/thumbnail?media_id=11&timestamp=7.0",
+            "link": "/demo/media/11#t=4.0,10.0",
+            "original_rank": 17,
+            "embedding_score": 0.43243661522865295,
+            "rerank_score": 0.23340055346488953
+          }
+        ]
+      },
+      "retrieval_seconds": 0.0003805409651249647,
+      "rerank": {
+        "requested": true,
+        "applied": true,
+        "settings": {
+          "model": "Qwen/Qwen3-VL-Reranker-2B",
+          "revision": "4bd860ac4f15ad1897a214615cccc700f8f71818",
+          "device": "mps",
+          "dtype": "float16",
+          "frames": 16,
+          "max_total_pixels": 1048576,
+          "instruction": "Given a search query, retrieve relevant candidates that answer the query."
+        },
+        "candidate_count": 20,
+        "timing": {
+          "load_seconds": 0.0,
+          "total_seconds": 48.78391245799139,
+          "candidates": [
+            {
+              "media_id": 21,
+              "ts": 0.0,
+              "te": 8.0,
+              "decode_seconds": 0.6889950829790905,
+              "inference_seconds": 2.0434912919881754
+            },
+            {
+              "media_id": 19,
+              "ts": 0.0,
+              "te": 7.875,
+              "decode_seconds": 0.20894575002603233,
+              "inference_seconds": 2.177711124997586
+            },
+            {
+              "media_id": 17,
+              "ts": 0.0,
+              "te": 8.0,
+              "decode_seconds": 0.14920512499520555,
+              "inference_seconds": 2.0574677910190076
+            },
+            {
+              "media_id": 17,
+              "ts": 4.0,
+              "te": 12.0,
+              "decode_seconds": 0.20814374997280538,
+              "inference_seconds": 2.066175459010992
+            },
+            {
+              "media_id": 17,
+              "ts": 16.0,
+              "te": 24.0,
+              "decode_seconds": 0.36990958399837837,
+              "inference_seconds": 2.1435459579806775
+            },
+            {
+              "media_id": 26,
+              "ts": 0.0,
+              "te": 8.0,
+              "decode_seconds": 0.08639212499838322,
+              "inference_seconds": 2.2849267499987036
+            },
+            {
+              "media_id": 17,
+              "ts": 12.0,
+              "te": 20.0,
+              "decode_seconds": 0.18581304204417393,
+              "inference_seconds": 2.22648108296562
+            },
+            {
+              "media_id": 23,
+              "ts": 16.0,
+              "te": 24.0,
+              "decode_seconds": 0.1897317090188153,
+              "inference_seconds": 2.1450282500009052
+            },
+            {
+              "media_id": 20,
+              "ts": 0.0,
+              "te": 7.875,
+              "decode_seconds": 0.3352450829697773,
+              "inference_seconds": 2.1247699999948964
+            },
+            {
+              "media_id": 23,
+              "ts": 24.0,
+              "te": 32.0,
+              "decode_seconds": 0.2659167909878306,
+              "inference_seconds": 2.077922791999299
+            },
+            {
+              "media_id": 23,
+              "ts": 32.0,
+              "te": 40.0,
+              "decode_seconds": 0.21286600001621991,
+              "inference_seconds": 2.1187749580130912
+            },
+            {
+              "media_id": 23,
+              "ts": 36.0,
+              "te": 44.0,
+              "decode_seconds": 0.2652074590441771,
+              "inference_seconds": 2.1679611659492366
+            },
+            {
+              "media_id": 23,
+              "ts": 20.0,
+              "te": 28.0,
+              "decode_seconds": 0.15905937500065193,
+              "inference_seconds": 2.21465762500884
+            },
+            {
+              "media_id": 26,
+              "ts": 4.0,
+              "te": 12.0,
+              "decode_seconds": 0.15419833298074082,
+              "inference_seconds": 2.254892249999102
+            },
+            {
+              "media_id": 23,
+              "ts": 28.0,
+              "te": 36.0,
+              "decode_seconds": 0.3805528749944642,
+              "inference_seconds": 2.254637666977942
+            },
+            {
+              "media_id": 26,
+              "ts": 8.0,
+              "te": 13.2,
+              "decode_seconds": 0.19414750003488734,
+              "inference_seconds": 2.1807947079651058
+            },
+            {
+              "media_id": 11,
+              "ts": 4.0,
+              "te": 10.0,
+              "decode_seconds": 0.18148458300856873,
+              "inference_seconds": 2.280987209000159
+            },
+            {
+              "media_id": 25,
+              "ts": 4.0,
+              "te": 9.72,
+              "decode_seconds": 0.3585530830314383,
+              "inference_seconds": 2.2328113339608535
+            },
+            {
+              "media_id": 23,
+              "ts": 12.0,
+              "te": 20.0,
+              "decode_seconds": 0.3632297920412384,
+              "inference_seconds": 2.214110624976456
+            },
+            {
+              "media_id": 23,
+              "ts": 40.0,
+              "te": 48.0,
+              "decode_seconds": 0.2045490830205381,
+              "inference_seconds": 2.3537934169871733
+            }
+          ]
+        },
+        "embedding_unload_seconds": 5.00003807246685e-07
+      },
+      "baseline_results": [
+        {
+          "media_id": 21,
+          "ts": 0.0,
+          "te": 8.0,
+          "distance": 0.5641825795173645,
+          "thumbnail_ts": 4.0,
+          "thumbnail": "/demo/thumbnail?media_id=21&timestamp=4.0",
+          "link": "/demo/media/21#t=0.0,8.0"
+        },
+        {
+          "media_id": 19,
+          "ts": 0.0,
+          "te": 7.875,
+          "distance": 0.545344352722168,
+          "thumbnail_ts": 3.9375,
+          "thumbnail": "/demo/thumbnail?media_id=19&timestamp=3.9375",
+          "link": "/demo/media/19#t=0.0,7.875"
+        },
+        {
+          "media_id": 17,
+          "ts": 0.0,
+          "te": 8.0,
+          "distance": 0.5395722985267639,
+          "thumbnail_ts": 4.0,
+          "thumbnail": "/demo/thumbnail?media_id=17&timestamp=4.0",
+          "link": "/demo/media/17#t=0.0,8.0"
+        },
+        {
+          "media_id": 17,
+          "ts": 4.0,
+          "te": 12.0,
+          "distance": 0.528074324131012,
+          "thumbnail_ts": 8.0,
+          "thumbnail": "/demo/thumbnail?media_id=17&timestamp=8.0",
+          "link": "/demo/media/17#t=4.0,12.0"
+        },
+        {
+          "media_id": 17,
+          "ts": 16.0,
+          "te": 24.0,
+          "distance": 0.49755603075027466,
+          "thumbnail_ts": 20.0,
+          "thumbnail": "/demo/thumbnail?media_id=17&timestamp=20.0",
+          "link": "/demo/media/17#t=16.0,24.0"
+        },
+        {
+          "media_id": 26,
+          "ts": 0.0,
+          "te": 8.0,
+          "distance": 0.4790637493133545,
+          "thumbnail_ts": 4.0,
+          "thumbnail": "/demo/thumbnail?media_id=26&timestamp=4.0",
+          "link": "/demo/media/26#t=0.0,8.0"
+        },
+        {
+          "media_id": 17,
+          "ts": 12.0,
+          "te": 20.0,
+          "distance": 0.47050848603248596,
+          "thumbnail_ts": 16.0,
+          "thumbnail": "/demo/thumbnail?media_id=17&timestamp=16.0",
+          "link": "/demo/media/17#t=12.0,20.0"
+        },
+        {
+          "media_id": 23,
+          "ts": 16.0,
+          "te": 24.0,
+          "distance": 0.4650871157646179,
+          "thumbnail_ts": 20.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=20.0",
+          "link": "/demo/media/23#t=16.0,24.0"
+        },
+        {
+          "media_id": 20,
+          "ts": 0.0,
+          "te": 7.875,
+          "distance": 0.45839038491249084,
+          "thumbnail_ts": 3.9375,
+          "thumbnail": "/demo/thumbnail?media_id=20&timestamp=3.9375",
+          "link": "/demo/media/20#t=0.0,7.875"
+        },
+        {
+          "media_id": 23,
+          "ts": 24.0,
+          "te": 32.0,
+          "distance": 0.4565401077270508,
+          "thumbnail_ts": 28.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=28.0",
+          "link": "/demo/media/23#t=24.0,32.0"
+        },
+        {
+          "media_id": 23,
+          "ts": 32.0,
+          "te": 40.0,
+          "distance": 0.4565085768699646,
+          "thumbnail_ts": 36.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=36.0",
+          "link": "/demo/media/23#t=32.0,40.0"
+        },
+        {
+          "media_id": 23,
+          "ts": 36.0,
+          "te": 44.0,
+          "distance": 0.4503783583641052,
+          "thumbnail_ts": 40.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=40.0",
+          "link": "/demo/media/23#t=36.0,44.0"
+        },
+        {
+          "media_id": 23,
+          "ts": 20.0,
+          "te": 28.0,
+          "distance": 0.4475805163383484,
+          "thumbnail_ts": 24.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=24.0",
+          "link": "/demo/media/23#t=20.0,28.0"
+        },
+        {
+          "media_id": 26,
+          "ts": 4.0,
+          "te": 12.0,
+          "distance": 0.44595688581466675,
+          "thumbnail_ts": 8.0,
+          "thumbnail": "/demo/thumbnail?media_id=26&timestamp=8.0",
+          "link": "/demo/media/26#t=4.0,12.0"
+        },
+        {
+          "media_id": 23,
+          "ts": 28.0,
+          "te": 36.0,
+          "distance": 0.442058801651001,
+          "thumbnail_ts": 32.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=32.0",
+          "link": "/demo/media/23#t=28.0,36.0"
+        },
+        {
+          "media_id": 26,
+          "ts": 8.0,
+          "te": 13.2,
+          "distance": 0.43940579891204834,
+          "thumbnail_ts": 10.6,
+          "thumbnail": "/demo/thumbnail?media_id=26&timestamp=10.6",
+          "link": "/demo/media/26#t=8.0,13.2"
+        },
+        {
+          "media_id": 11,
+          "ts": 4.0,
+          "te": 10.0,
+          "distance": 0.43243661522865295,
+          "thumbnail_ts": 7.0,
+          "thumbnail": "/demo/thumbnail?media_id=11&timestamp=7.0",
+          "link": "/demo/media/11#t=4.0,10.0"
+        },
+        {
+          "media_id": 25,
+          "ts": 4.0,
+          "te": 9.72,
+          "distance": 0.43197643756866455,
+          "thumbnail_ts": 6.86,
+          "thumbnail": "/demo/thumbnail?media_id=25&timestamp=6.86",
+          "link": "/demo/media/25#t=4.0,9.72"
+        },
+        {
+          "media_id": 23,
+          "ts": 12.0,
+          "te": 20.0,
+          "distance": 0.4282868504524231,
+          "thumbnail_ts": 16.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=16.0",
+          "link": "/demo/media/23#t=12.0,20.0"
+        },
+        {
+          "media_id": 23,
+          "ts": 40.0,
+          "te": 48.0,
+          "distance": 0.42814382910728455,
+          "thumbnail_ts": 44.0,
+          "thumbnail": "/demo/thumbnail?media_id=23&timestamp=44.0",
+          "link": "/demo/media/23#t=40.0,48.0"
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 48.785076792002656,
+        "before": {
+          "rss_bytes": 874463232,
+          "mps_allocated_bytes": 6449538304,
+          "mps_driver_bytes": 8158871552,
+          "system_available_bytes": 8092516352,
+          "system_swap_used_bytes": 18828558336
+        },
+        "after": {
+          "rss_bytes": 637829120,
+          "mps_allocated_bytes": 6449538304,
+          "mps_driver_bytes": 8158871552,
+          "system_available_bytes": 7618838528,
+          "system_swap_used_bytes": 18635554816
+        },
+        "sampled_peak": {
+          "rss_bytes": 878821376,
+          "mps_allocated_bytes": 6670139136,
+          "mps_driver_bytes": 8198733824,
+          "system_available_bytes": 8953675776,
+          "system_swap_used_bytes": 18828558336
+        },
+        "min_system_available_bytes": 7137165312
+      }
+    }
+  }
+]

@@ -1,0 +1,1587 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "generic",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.5104421377182007,
+      "seconds": 1.5215362079907209,
+      "input_shape": null,
+      "tokens": 80,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 1.5195417499635369
+    },
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "generic",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.5747547149658203,
+      "seconds": 0.22732487501343712,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.2254145829938352
+    },
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "generic",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.48550882935523987,
+      "seconds": 0.21990845794789493,
+      "input_shape": null,
+      "tokens": 79,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.2182102920487523
+    },
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "generic",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.5419914722442627,
+      "seconds": 0.13861466600792482,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.13694229198154062
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "generic",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.4054230749607086,
+      "seconds": 0.13439737498993054,
+      "input_shape": null,
+      "tokens": 80,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.13293404201976955
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "generic",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.38332852721214294,
+      "seconds": 0.1426802499918267,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.14087133400607854
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "generic",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.4729343056678772,
+      "seconds": 0.14405820798128843,
+      "input_shape": null,
+      "tokens": 79,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.14231241698144004
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "generic",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.40890055894851685,
+      "seconds": 0.16205149999586865,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.1603074999875389
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "generic",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.5165436267852783,
+      "seconds": 0.16069570800755173,
+      "input_shape": null,
+      "tokens": 80,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.15866962500149384
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "generic",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.6080633401870728,
+      "seconds": 0.1554280410055071,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.153047833009623
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "generic",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.4956372082233429,
+      "seconds": 0.14283033402170986,
+      "input_shape": null,
+      "tokens": 79,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.14123612502589822
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "generic",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.5584937334060669,
+      "seconds": 0.14719695900566876,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.14558658399619162
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "generic",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.3988529145717621,
+      "seconds": 0.1462661669938825,
+      "input_shape": null,
+      "tokens": 80,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.14426579204155132
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "generic",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.38228070735931396,
+      "seconds": 0.13706312497379258,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.13537262502359226
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "generic",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.4745553135871887,
+      "seconds": 0.13656995899509639,
+      "input_shape": null,
+      "tokens": 79,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.13508283300325274
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "generic",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.4112927317619324,
+      "seconds": 0.1391433750395663,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.1375645839725621
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "generic",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.47657227516174316,
+      "seconds": 0.41614108299836516,
+      "input_shape": null,
+      "tokens": 94,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.4143789170193486
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "generic",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.5403385758399963,
+      "seconds": 0.2321306670201011,
+      "input_shape": null,
+      "tokens": 92,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.23022258403943852
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "generic",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.4718485176563263,
+      "seconds": 0.25331725005526096,
+      "input_shape": null,
+      "tokens": 93,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.251192124967929
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "generic",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.5119273066520691,
+      "seconds": 0.16133070801151916,
+      "input_shape": null,
+      "tokens": 92,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.1594713749946095
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "generic",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.18182311952114105,
+      "seconds": 0.1914818329969421,
+      "input_shape": null,
+      "tokens": 80,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.1893516659620218
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "generic",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.20662610232830048,
+      "seconds": 0.15086916700238362,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.1492019160068594
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "generic",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.37891218066215515,
+      "seconds": 0.16001095797400922,
+      "input_shape": null,
+      "tokens": 79,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.15840499999467283
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "generic",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.30638134479522705,
+      "seconds": 0.14525029103970155,
+      "input_shape": null,
+      "tokens": 78,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.14328458299860358
+    },
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "ppe",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.47474396228790283,
+      "seconds": 0.6775564589770511,
+      "input_shape": null,
+      "tokens": 173,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.6759010420064442
+    },
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "ppe",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.6549251079559326,
+      "seconds": 0.254195291956421,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.2520784579683095
+    },
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "ppe",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.47353804111480713,
+      "seconds": 0.2629554170416668,
+      "input_shape": null,
+      "tokens": 172,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.26078820799011737
+    },
+    {
+      "pair": "scene2",
+      "label": "helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        204,
+        110,
+        267,
+        199
+      ],
+      "file": "scene2-helmet.jpg",
+      "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+      "instruction": "ppe",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.6501068472862244,
+      "seconds": 0.16573991696350276,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.1638791669975035
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "ppe",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.5235202312469482,
+      "seconds": 0.16627879202133045,
+      "input_shape": null,
+      "tokens": 173,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.16462024999782443
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "ppe",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.49546757340431213,
+      "seconds": 0.16789395798696205,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.16606479103211313
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "ppe",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.5377065539360046,
+      "seconds": 0.17095125000923872,
+      "input_shape": null,
+      "tokens": 172,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.1693447500001639
+    },
+    {
+      "pair": "scene2",
+      "label": "no_helmet",
+      "source_file": "shwd-2.jpg",
+      "box": [
+        658,
+        123,
+        720,
+        206
+      ],
+      "file": "scene2-no_helmet.jpg",
+      "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+      "instruction": "ppe",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.5045433044433594,
+      "seconds": 0.21742654097033665,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.21568595798453316
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "ppe",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.5154261589050293,
+      "seconds": 0.1656189159839414,
+      "input_shape": null,
+      "tokens": 173,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.16371245798654854
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "ppe",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.6713888049125671,
+      "seconds": 0.1656361250206828,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.16399725002702326
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "ppe",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.48858842253685,
+      "seconds": 0.17116670799441636,
+      "input_shape": null,
+      "tokens": 172,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.169418667035643
+    },
+    {
+      "pair": "scene7",
+      "label": "helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        233,
+        75,
+        313,
+        166
+      ],
+      "file": "scene7-helmet.jpg",
+      "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+      "instruction": "ppe",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.6499778032302856,
+      "seconds": 0.16030204197159037,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.15833320800447837
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "ppe",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.555543065071106,
+      "seconds": 0.18282795802224427,
+      "input_shape": null,
+      "tokens": 173,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.18121483403956518
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "ppe",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.5185618996620178,
+      "seconds": 0.2532260420266539,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.24646729097003117
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "ppe",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.589735746383667,
+      "seconds": 0.17536866600858048,
+      "input_shape": null,
+      "tokens": 172,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.17325920902658254
+    },
+    {
+      "pair": "scene7",
+      "label": "no_helmet",
+      "source_file": "shwd-7.jpg",
+      "box": [
+        485,
+        85,
+        551,
+        166
+      ],
+      "file": "scene7-no_helmet.jpg",
+      "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+      "instruction": "ppe",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.540420651435852,
+      "seconds": 0.16921200003707781,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.16755325003759935
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "ppe",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.4589104652404785,
+      "seconds": 0.3046463750069961,
+      "input_shape": null,
+      "tokens": 187,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.3027325419825502
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "ppe",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.5592096447944641,
+      "seconds": 0.3005799170350656,
+      "input_shape": null,
+      "tokens": 185,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.2987040000152774
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "ppe",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.442947655916214,
+      "seconds": 0.22524337499635294,
+      "input_shape": null,
+      "tokens": 186,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.2233706249971874
+    },
+    {
+      "pair": "scene8",
+      "label": "helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        434,
+        108,
+        566,
+        254
+      ],
+      "file": "scene8-helmet.jpg",
+      "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+      "instruction": "ppe",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.545993447303772,
+      "seconds": 0.1917085830355063,
+      "input_shape": null,
+      "tokens": 185,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          10,
+          8
+        ]
+      ],
+      "forward_seconds": 0.1896156250149943
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "ppe",
+      "category": "no_helmet",
+      "query": "作业人员没有佩戴安全帽",
+      "score": 0.3796178996562958,
+      "seconds": 0.17959445796441287,
+      "input_shape": null,
+      "tokens": 173,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.17791533301351592
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "ppe",
+      "category": "helmet",
+      "query": "工人佩戴安全帽",
+      "score": 0.2692006230354309,
+      "seconds": 0.1790803749463521,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.1771420000004582
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "ppe",
+      "category": "no_helmet_neutral",
+      "query": "一个人没有佩戴安全帽",
+      "score": 0.47271737456321716,
+      "seconds": 0.19105950003722683,
+      "input_shape": null,
+      "tokens": 172,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.18909887498011813
+    },
+    {
+      "pair": "scene8",
+      "label": "no_helmet",
+      "source_file": "shwd-8.jpg",
+      "box": [
+        244,
+        54,
+        319,
+        155
+      ],
+      "file": "scene8-no_helmet.jpg",
+      "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+      "instruction": "ppe",
+      "category": "helmet_neutral",
+      "query": "一个人佩戴安全帽",
+      "score": 0.378149151802063,
+      "seconds": 0.19306966598378494,
+      "input_shape": null,
+      "tokens": 171,
+      "metadata": null,
+      "video_grid_thw": null,
+      "image_grid_thw": [
+        [
+          1,
+          6,
+          4
+        ]
+      ],
+      "forward_seconds": 0.18906937498832121
+    }
+  ],
+  "manifest": {
+    "notes": [
+      "Real same-photo different-person head crops, not same-person counterfactual pairs.",
+      "Manual crops selected before scoring; 3 scenes only; pose, identity and scale still differ.",
+      "Static-image diagnostic, not video retrieval validation.",
+      "Source shwd-6 rejected: all visible people wear helmets."
+    ],
+    "items": [
+      {
+        "pair": "scene2",
+        "label": "helmet",
+        "source_file": "shwd-2.jpg",
+        "box": [
+          204,
+          110,
+          267,
+          199
+        ],
+        "file": "scene2-helmet.jpg",
+        "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf"
+      },
+      {
+        "pair": "scene2",
+        "label": "no_helmet",
+        "source_file": "shwd-2.jpg",
+        "box": [
+          658,
+          123,
+          720,
+          206
+        ],
+        "file": "scene2-no_helmet.jpg",
+        "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6"
+      },
+      {
+        "pair": "scene7",
+        "label": "helmet",
+        "source_file": "shwd-7.jpg",
+        "box": [
+          233,
+          75,
+          313,
+          166
+        ],
+        "file": "scene7-helmet.jpg",
+        "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0"
+      },
+      {
+        "pair": "scene7",
+        "label": "no_helmet",
+        "source_file": "shwd-7.jpg",
+        "box": [
+          485,
+          85,
+          551,
+          166
+        ],
+        "file": "scene7-no_helmet.jpg",
+        "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32"
+      },
+      {
+        "pair": "scene8",
+        "label": "helmet",
+        "source_file": "shwd-8.jpg",
+        "box": [
+          434,
+          108,
+          566,
+          254
+        ],
+        "file": "scene8-helmet.jpg",
+        "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac"
+      },
+      {
+        "pair": "scene8",
+        "label": "no_helmet",
+        "source_file": "shwd-8.jpg",
+        "box": [
+          244,
+          54,
+          319,
+          155
+        ],
+        "file": "scene8-no_helmet.jpg",
+        "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b"
+      }
+    ]
+  },
+  "generic_resources": {
+    "scope": "current_process",
+    "sample_interval_seconds": 0.05,
+    "total_seconds": 5.583312749979086,
+    "before": {
+      "rss_bytes": 1599029248,
+      "mps_allocated_bytes": 4322443776,
+      "mps_driver_bytes": 5548523520,
+      "system_available_bytes": 9756098560,
+      "system_swap_used_bytes": 18571067392
+    },
+    "after": {
+      "rss_bytes": 1728806912,
+      "mps_allocated_bytes": 4322443776,
+      "mps_driver_bytes": 5404934144,
+      "system_available_bytes": 9846063104,
+      "system_swap_used_bytes": 18571067392
+    },
+    "sampled_peak": {
+      "rss_bytes": 1728839680,
+      "mps_allocated_bytes": 4337203200,
+      "mps_driver_bytes": 5551423488,
+      "system_available_bytes": 9976168448,
+      "system_swap_used_bytes": 18571067392
+    },
+    "min_system_available_bytes": 9403957248
+  },
+  "ppe_resources": {
+    "scope": "current_process",
+    "sample_interval_seconds": 0.05,
+    "total_seconds": 5.317592874984257,
+    "before": {
+      "rss_bytes": 1728806912,
+      "mps_allocated_bytes": 4322443776,
+      "mps_driver_bytes": 5404934144,
+      "system_available_bytes": 9846063104,
+      "system_swap_used_bytes": 18571067392
+    },
+    "after": {
+      "rss_bytes": 1830895616,
+      "mps_allocated_bytes": 4322443776,
+      "mps_driver_bytes": 5410488320,
+      "system_available_bytes": 9627795456,
+      "system_swap_used_bytes": 18554290176
+    },
+    "sampled_peak": {
+      "rss_bytes": 1830928384,
+      "mps_allocated_bytes": 4336614912,
+      "mps_driver_bytes": 5410504704,
+      "system_available_bytes": 9846063104,
+      "system_swap_used_bytes": 18571067392
+    },
+    "min_system_available_bytes": 9536585728
+  }
+}

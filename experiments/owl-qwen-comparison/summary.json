@@ -1,0 +1,62 @@
+{
+  "live-owl": {
+    "source_media": {
+      "count": 10,
+      "top1": 5,
+      "top5": 10
+    },
+    "known_class_media": {
+      "count": 11,
+      "top1": 8,
+      "top5": 11
+    },
+    "median_seconds": 0.7670863749808632,
+    "min_seconds": 0.7310302080004476,
+    "max_seconds": 1.7315101670101285
+  },
+  "owl": {
+    "source_media": {
+      "count": 10,
+      "top1": 6,
+      "top5": 9
+    },
+    "known_class_media": {
+      "count": 11,
+      "top1": 10,
+      "top5": 11
+    },
+    "median_seconds": 0.7628527920460328,
+    "min_seconds": 0.7301347089814954,
+    "max_seconds": 1.4380506250308827
+  },
+  "qwen": {
+    "source_media": {
+      "count": 10,
+      "top1": 8,
+      "top5": 10
+    },
+    "known_class_media": {
+      "count": 11,
+      "top1": 11,
+      "top5": 11
+    },
+    "median_seconds": 0.12830270797712728,
+    "min_seconds": 0.10081995802465826,
+    "max_seconds": 1.0568437920301221
+  },
+  "qwen-segments": {
+    "source_media": {
+      "count": 10,
+      "top1": 7,
+      "top5": 9
+    },
+    "known_class_media": {
+      "count": 11,
+      "top1": 11,
+      "top5": 11
+    },
+    "median_seconds": 0.12882887502200902,
+    "min_seconds": 0.09334112500073388,
+    "max_seconds": 0.5406788329710253
+  }
+}

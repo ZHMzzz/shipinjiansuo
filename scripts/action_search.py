@@ -3,6 +3,8 @@ import json
 import math
 import sqlite3
 import time
+import gc
+from collections import OrderedDict
 from pathlib import Path
 
 import faiss
@@ -90,10 +92,21 @@ class ActionEngine:
         self.cached_project = None
         self.snapshot = None
         self.last_load_seconds = None
+        self.before_model = None
+        self.query_vectors = OrderedDict()
+
+    def unload(self):
+        if self.extractor is not None:
+            import torch
+            self.extractor = None
+            gc.collect()
+            torch.mps.empty_cache()
 
     def model(self):
         import psutil
         import torch
+        if self.before_model is not None:
+            self.before_model()
         if psutil.virtual_memory().available < 2 * 1024**3:
             raise RuntimeError('当前可用内存不足 2GiB，请关闭部分应用后重试动作处理')
         if self.extractor is None:
@@ -175,7 +188,15 @@ class ActionEngine:
         if snapshot is None: raise ValueError('动作索引正在补建，请查看视频库中的动作索引进度')
         meta, vectors, index = snapshot
         started = time.perf_counter()
-        vector = self.model().extract_text_features([query]).astype('float32')
+        cached = query in self.query_vectors
+        if cached:
+            vector = self.query_vectors[query]
+            self.query_vectors.move_to_end(query)
+        else:
+            vector = self.model().extract_text_features([query]).astype('float32')
+            if not np.isfinite(vector).all(): raise RuntimeError('查询向量无效，请重试')
+            self.query_vectors[query] = vector
+            if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
         if not np.isfinite(vector).all(): raise RuntimeError('查询向量无效，请重试')
         encoded = time.perf_counter()
         scores, ids = index.search(vector, min(index.ntotal, max(limit*5, 100)))
@@ -186,6 +207,7 @@ class ActionEngine:
             hit.update(thumbnail_ts=preview, thumbnail=f'/demo/thumbnail?media_id={mid}&timestamp={preview}',
                        link=f'/demo/media/{mid}#t={hit["ts"]},{hit["te"]}')
         return {'score_kind': 'action', 'query': query, 'settings': SETTINGS,
+                'query_embedding_cached': cached,
                 'encode_seconds': encoded-started, 'search_seconds': time.perf_counter()-encoded,
                 'indexed_videos': len(meta['media']), 'indexed_segments': len(meta['segments']),
                 'video_results': {'videos': videos, 'unmerged_windows': hits}}

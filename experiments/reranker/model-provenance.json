@@ -1,0 +1,6 @@
+{
+  "model": "Qwen/Qwen3-VL-Reranker-2B",
+  "revision": "4bd860ac4f15ad1897a214615cccc700f8f71818",
+  "weight_bytes": 4255140312,
+  "weight_sha256": "466ec01961061e9d7f804b4fb1625fb6f406106cd1567e026096d4736fa9d5b9"
+}

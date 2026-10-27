@@ -1,0 +1,9 @@
+{
+  "query_records_verified": true,
+  "cached_frames_and_qwen_vectors_unchanged": true,
+  "source_frame_regeneration_exact": true,
+  "controlled_records_verified": true,
+  "production_unchanged_at_experiment_finish": true,
+  "frozen_snapshot_still_unchanged": true,
+  "later_live_library_update": 30
+}

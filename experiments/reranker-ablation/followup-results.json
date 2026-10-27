@@ -1,0 +1,5821 @@
+{
+  "status": "completed",
+  "exploratory": true,
+  "model_load_seconds": 5.070304333989043,
+  "runs": [
+    {
+      "id": "paired_256_generic",
+      "rows": [
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.48892903327941895,
+          "seconds": 1.0890247499919496,
+          "input_shape": null,
+          "tokens": 138,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 1.0619099580217153
+        },
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.5440342426300049,
+          "seconds": 0.29151433298829943,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2891281659831293
+        },
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.4882848560810089,
+          "seconds": 0.2870836669462733,
+          "input_shape": null,
+          "tokens": 137,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2847055000020191
+        },
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.5159284472465515,
+          "seconds": 0.209830834006425,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.20795700000599027
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.39492276310920715,
+          "seconds": 0.20713283302029595,
+          "input_shape": null,
+          "tokens": 138,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2047669580206275
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.3240078091621399,
+          "seconds": 0.2151872080285102,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.21289462503045797
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.46144211292266846,
+          "seconds": 0.23329570901114494,
+          "input_shape": null,
+          "tokens": 137,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.23094070801744238
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.351510614156723,
+          "seconds": 0.22481983300531283,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.22266199998557568
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.5128282308578491,
+          "seconds": 0.22693195898318663,
+          "input_shape": null,
+          "tokens": 138,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.22493320796638727
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.6186741590499878,
+          "seconds": 0.2227328330045566,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2206821659929119
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.505142092704773,
+          "seconds": 0.21926991699729115,
+          "input_shape": null,
+          "tokens": 137,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.21700595796573907
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.5636520981788635,
+          "seconds": 0.22610429098131135,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.22412770800292492
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.4071860611438751,
+          "seconds": 0.23217708303127438,
+          "input_shape": null,
+          "tokens": 138,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.22945375001290813
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.3538956642150879,
+          "seconds": 0.22220312501303852,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.22025958396261558
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.4887778162956238,
+          "seconds": 0.25006554200081155,
+          "input_shape": null,
+          "tokens": 137,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2480220419820398
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.3951900005340576,
+          "seconds": 0.2574330829665996,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2499887499725446
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.4717422127723694,
+          "seconds": 0.22374299995135516,
+          "input_shape": null,
+          "tokens": 138,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.22152787499362603
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.5380155444145203,
+          "seconds": 0.221039458992891,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2175613329745829
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.4624626338481903,
+          "seconds": 0.22921804204816,
+          "input_shape": null,
+          "tokens": 137,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.22744495799997821
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.4942634701728821,
+          "seconds": 0.22069262497825548,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.21855429199058563
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.17841081321239471,
+          "seconds": 0.21933108399389312,
+          "input_shape": null,
+          "tokens": 138,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2174334589508362
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.16122953593730927,
+          "seconds": 0.2146172919892706,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.21253637498011813
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.34055009484291077,
+          "seconds": 0.21110816701548174,
+          "input_shape": null,
+          "tokens": 137,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.20929233299102634
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.2666945159435272,
+          "seconds": 0.23379245796240866,
+          "input_shape": null,
+          "tokens": 136,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.23156100005144253
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 6.400100417027716,
+        "before": {
+          "rss_bytes": 209092608,
+          "mps_allocated_bytes": 4322443520,
+          "mps_driver_bytes": 5337710592,
+          "system_available_bytes": 7119552512,
+          "system_swap_used_bytes": 17639866368
+        },
+        "after": {
+          "rss_bytes": 396361728,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5373263872,
+          "system_available_bytes": 9117908992,
+          "system_swap_used_bytes": 17639866368
+        },
+        "sampled_peak": {
+          "rss_bytes": 396361728,
+          "mps_allocated_bytes": 4359524864,
+          "mps_driver_bytes": 5373280256,
+          "system_available_bytes": 9357950976,
+          "system_swap_used_bytes": 17639866368
+        },
+        "min_system_available_bytes": 7119552512
+      }
+    },
+    {
+      "id": "paired_256_ppe",
+      "rows": [
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.44557878375053406,
+          "seconds": 0.35671970795374364,
+          "input_shape": null,
+          "tokens": 231,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.3513889579917304
+        },
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.6030896306037903,
+          "seconds": 0.310671791958157,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.3084935829974711
+        },
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.435647189617157,
+          "seconds": 0.31020883400924504,
+          "input_shape": null,
+          "tokens": 230,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.30824437498813495
+        },
+        {
+          "pair": "scene2",
+          "label": "helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            204,
+            110,
+            267,
+            199
+          ],
+          "file": "scene2-helmet.jpg",
+          "sha256": "4742c0e34f2a7c5353ee5187cac51236a052891118e1da87d5aaf333e57f36cf",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.574124813079834,
+          "seconds": 0.23953212500782683,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.23750312498304993
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.49451637268066406,
+          "seconds": 0.25185775000136346,
+          "input_shape": null,
+          "tokens": 231,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.24722537497291341
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.473971962928772,
+          "seconds": 0.2332420829916373,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.23101724998559803
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.515641450881958,
+          "seconds": 0.25744549999944866,
+          "input_shape": null,
+          "tokens": 230,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2553277079714462
+        },
+        {
+          "pair": "scene2",
+          "label": "no_helmet",
+          "source_file": "shwd-2.jpg",
+          "box": [
+            658,
+            123,
+            720,
+            206
+          ],
+          "file": "scene2-no_helmet.jpg",
+          "sha256": "43717c06ff755975be7bdaacbc694985ac2b49657c277496c1347c6922fb44e6",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.49722811579704285,
+          "seconds": 0.2827096250257455,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2688499999931082
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.5391966104507446,
+          "seconds": 0.24937966599827632,
+          "input_shape": null,
+          "tokens": 231,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2473624169942923
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.7034834623336792,
+          "seconds": 0.2505735839949921,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.24836979096289724
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.5188693404197693,
+          "seconds": 0.27267516701249406,
+          "input_shape": null,
+          "tokens": 230,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.27061325003160164
+        },
+        {
+          "pair": "scene7",
+          "label": "helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            233,
+            75,
+            313,
+            166
+          ],
+          "file": "scene7-helmet.jpg",
+          "sha256": "d05a750dba6769aae675e17b06b6a116bfccaa1e6da8a490a65d2c240694cee0",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.7013508677482605,
+          "seconds": 0.28456245799316093,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.27901020902208984
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.5304481387138367,
+          "seconds": 0.24520966701675206,
+          "input_shape": null,
+          "tokens": 231,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.24296270799823105
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.4894081950187683,
+          "seconds": 0.24208891595480964,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.23930970899527892
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.5639475584030151,
+          "seconds": 0.276044666999951,
+          "input_shape": null,
+          "tokens": 230,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2732956249965355
+        },
+        {
+          "pair": "scene7",
+          "label": "no_helmet",
+          "source_file": "shwd-7.jpg",
+          "box": [
+            485,
+            85,
+            551,
+            166
+          ],
+          "file": "scene7-no_helmet.jpg",
+          "sha256": "b460ee16815f59eecce81323b5ac1e804b308be1ac936a37b0601f3f84ee0e32",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.5179867744445801,
+          "seconds": 0.24965754197910428,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2471132079954259
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.470205694437027,
+          "seconds": 0.26387933298246935,
+          "input_shape": null,
+          "tokens": 231,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2614527500118129
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.5918545126914978,
+          "seconds": 0.2448315419605933,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2426306669949554
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.44958651065826416,
+          "seconds": 0.24808845797087997,
+          "input_shape": null,
+          "tokens": 230,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2456098329857923
+        },
+        {
+          "pair": "scene8",
+          "label": "helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            434,
+            108,
+            566,
+            254
+          ],
+          "file": "scene8-helmet.jpg",
+          "sha256": "6bde63d67364def8a7b818d6ab75eeca944448fc98858a5226b17c49c8f1d0ac",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.5839942693710327,
+          "seconds": 0.24376841698540375,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2417848749901168
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "no_helmet",
+          "query": "作业人员没有佩戴安全帽",
+          "score": 0.3792974650859833,
+          "seconds": 0.24665774998720735,
+          "input_shape": null,
+          "tokens": 231,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.24456020898651332
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "helmet",
+          "query": "工人佩戴安全帽",
+          "score": 0.2820545434951782,
+          "seconds": 0.23916866700164974,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.23706479102838784
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.44850480556488037,
+          "seconds": 0.2623879170278087,
+          "input_shape": null,
+          "tokens": 230,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2588409170275554
+        },
+        {
+          "pair": "scene8",
+          "label": "no_helmet",
+          "source_file": "shwd-8.jpg",
+          "box": [
+            244,
+            54,
+            319,
+            155
+          ],
+          "file": "scene8-no_helmet.jpg",
+          "sha256": "b896da38b184c785ab4a3e59a0dc7dd18692199dd463efd06a4fc12b4651a37b",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.3485519587993622,
+          "seconds": 0.25947245804127306,
+          "input_shape": null,
+          "tokens": 229,
+          "metadata": null,
+          "video_grid_thw": null,
+          "image_grid_thw": [
+            [
+              1,
+              16,
+              16
+            ]
+          ],
+          "forward_seconds": 0.2572865419788286
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 6.324890082993079,
+        "before": {
+          "rss_bytes": 396558336,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5373263872,
+          "system_available_bytes": 9117908992,
+          "system_swap_used_bytes": 17639866368
+        },
+        "after": {
+          "rss_bytes": 458768384,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5376049152,
+          "system_available_bytes": 9061826560,
+          "system_swap_used_bytes": 17639866368
+        },
+        "sampled_peak": {
+          "rss_bytes": 458801152,
+          "mps_allocated_bytes": 4363159040,
+          "mps_driver_bytes": 5376065536,
+          "system_available_bytes": 9262006272,
+          "system_swap_used_bytes": 17639866368
+        },
+        "min_system_available_bytes": 8755216384
+      }
+    },
+    {
+      "id": "full_ppe",
+      "config": {
+        "id": "full",
+        "frames": 16,
+        "pixels": 1048576,
+        "real_time": true,
+        "crop": null,
+        "instruction": "Retrieve visual evidence that strictly satisfies the query, including negation. For safety-helmet queries, inspect visible heads and distinguish a safety helmet from exposed hair or scalp. Construction scenery and safety vests alone do not satisfy a helmet condition. If the query asks for a person without a safety helmet, at least one clearly visible head must lack a safety helmet; an obscured head is not sufficient evidence. If it asks for a person wearing a safety helmet, at least one visible person must wear one. Judge visible appearance, not legal requirements."
+      },
+      "rows": [
+        {
+          "clip": "helmet_indoor",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.44595736265182495,
+          "seconds": 2.2105861250311136,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1124,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.151153124985285
+        },
+        {
+          "clip": "helmet_indoor",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.5193837285041809,
+          "seconds": 2.088195334014017,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1123,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0399841659818776
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.45635589957237244,
+          "seconds": 2.0934082089806907,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1124,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0467915830085985
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.5150487422943115,
+          "seconds": 2.0640746249700896,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1123,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.021649540984072
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.5154862999916077,
+          "seconds": 2.066041082958691,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1124,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0206656659720466
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.49167731404304504,
+          "seconds": 2.0540644170250744,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1123,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0132058750023134
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.45159435272216797,
+          "seconds": 2.083102499949746,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1124,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.039028082974255
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.3709366023540497,
+          "seconds": 2.143655000021681,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1123,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.097997208009474
+        },
+        {
+          "clip": "fall",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.3830755949020386,
+          "seconds": 2.332618792017456,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1124,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0707889159675688
+        },
+        {
+          "clip": "fall",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.3499639332294464,
+          "seconds": 2.1226270840270445,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1123,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0596959580434486
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 22.309255832980853,
+        "before": {
+          "rss_bytes": 458850304,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5376049152,
+          "system_available_bytes": 9061826560,
+          "system_swap_used_bytes": 17639866368
+        },
+        "after": {
+          "rss_bytes": 806961152,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5500665856,
+          "system_available_bytes": 8545386496,
+          "system_swap_used_bytes": 17606311936
+        },
+        "sampled_peak": {
+          "rss_bytes": 809320448,
+          "mps_allocated_bytes": 4504597504,
+          "mps_driver_bytes": 5509070848,
+          "system_available_bytes": 9061826560,
+          "system_swap_used_bytes": 17639866368
+        },
+        "min_system_available_bytes": 8115290112
+      }
+    },
+    {
+      "id": "full_generic",
+      "config": {
+        "id": "full",
+        "frames": 16,
+        "pixels": 1048576,
+        "real_time": true,
+        "crop": null
+      },
+      "rows": [
+        {
+          "clip": "helmet_indoor",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.2640575170516968,
+          "seconds": 2.159092875022907,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1034,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.1132635829853825
+        },
+        {
+          "clip": "helmet_indoor",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.485246866941452,
+          "seconds": 2.1437284169951454,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1032,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0983632910065353
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.2828596830368042,
+          "seconds": 2.111801583028864,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1034,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0664344590040855
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.44917601346969604,
+          "seconds": 2.109263958001975,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1032,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0626202080165967
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.3192403018474579,
+          "seconds": 2.009291124995798,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1034,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 1.959041874972172
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.42565464973449707,
+          "seconds": 2.0064972499967553,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1032,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 1.966751291998662
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.2797749638557434,
+          "seconds": 1.9962875000201166,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1034,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 1.9492894579889253
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.32182395458221436,
+          "seconds": 2.1675227080122568,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1032,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.077178791980259
+        },
+        {
+          "clip": "fall",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.30005255341529846,
+          "seconds": 2.138423792028334,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1034,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.092977875028737
+        },
+        {
+          "clip": "fall",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.35427066683769226,
+          "seconds": 2.0989361660322174,
+          "crop_boxes": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "input_shape": [
+            16,
+            3,
+            256,
+            448
+          ],
+          "tokens": 1032,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              16,
+              28
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.0553552079945803
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 21.76227787497919,
+        "before": {
+          "rss_bytes": 806961152,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5500665856,
+          "system_available_bytes": 8545386496,
+          "system_swap_used_bytes": 17606311936
+        },
+        "after": {
+          "rss_bytes": 845955072,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5488492544,
+          "system_available_bytes": 8694988800,
+          "system_swap_used_bytes": 17597923328
+        },
+        "sampled_peak": {
+          "rss_bytes": 845987840,
+          "mps_allocated_bytes": 4504597504,
+          "mps_driver_bytes": 5503188992,
+          "system_available_bytes": 8826863616,
+          "system_swap_used_bytes": 17606311936
+        },
+        "min_system_available_bytes": 8236810240
+      }
+    },
+    {
+      "id": "head_ppe",
+      "config": {
+        "id": "head",
+        "frames": 16,
+        "pixels": 1048576,
+        "real_time": true,
+        "crop": "head",
+        "instruction": "Retrieve visual evidence that strictly satisfies the query, including negation. For safety-helmet queries, inspect visible heads and distinguish a safety helmet from exposed hair or scalp. Construction scenery and safety vests alone do not satisfy a helmet condition. If the query asks for a person without a safety helmet, at least one clearly visible head must lack a safety helmet; an obscured head is not sufficient evidence. If it asks for a person wearing a safety helmet, at least one visible person must wear one. Judge visible appearance, not legal requirements."
+      },
+      "rows": [
+        {
+          "clip": "helmet_indoor",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.47651931643486023,
+          "seconds": 2.7909773329738528,
+          "crop_boxes": [
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1348,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.7534797079861164
+        },
+        {
+          "clip": "helmet_indoor",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.5697226524353027,
+          "seconds": 2.6503798330086283,
+          "crop_boxes": [
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1347,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.622617374989204
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.48454758524894714,
+          "seconds": 2.6311023749876767,
+          "crop_boxes": [
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1348,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.6030775840044953
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.661524772644043,
+          "seconds": 2.5990972500294447,
+          "crop_boxes": [
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1347,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.5724150410387665
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.4685836136341095,
+          "seconds": 2.579840124992188,
+          "crop_boxes": [
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1348,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.549976708018221
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.6074684262275696,
+          "seconds": 2.5800196249620058,
+          "crop_boxes": [
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1347,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.553245417017024
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.47497716546058655,
+          "seconds": 2.5903663340141065,
+          "crop_boxes": [
+            [
+              176,
+              0,
+              272,
+              112
+            ],
+            [
+              184,
+              0,
+              280,
+              112
+            ],
+            [
+              190,
+              0,
+              286,
+              112
+            ],
+            [
+              192,
+              0,
+              288,
+              112
+            ],
+            [
+              194,
+              4,
+              290,
+              116
+            ],
+            [
+              200,
+              4,
+              296,
+              116
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              206,
+              8,
+              302,
+              120
+            ],
+            [
+              208,
+              8,
+              304,
+              120
+            ],
+            [
+              212,
+              8,
+              308,
+              120
+            ],
+            [
+              214,
+              8,
+              310,
+              120
+            ],
+            [
+              228,
+              8,
+              324,
+              120
+            ],
+            [
+              232,
+              8,
+              328,
+              120
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1348,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.560908416984603
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.3871712386608124,
+          "seconds": 2.6118099999730475,
+          "crop_boxes": [
+            [
+              176,
+              0,
+              272,
+              112
+            ],
+            [
+              184,
+              0,
+              280,
+              112
+            ],
+            [
+              190,
+              0,
+              286,
+              112
+            ],
+            [
+              192,
+              0,
+              288,
+              112
+            ],
+            [
+              194,
+              4,
+              290,
+              116
+            ],
+            [
+              200,
+              4,
+              296,
+              116
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              206,
+              8,
+              302,
+              120
+            ],
+            [
+              208,
+              8,
+              304,
+              120
+            ],
+            [
+              212,
+              8,
+              308,
+              120
+            ],
+            [
+              214,
+              8,
+              310,
+              120
+            ],
+            [
+              228,
+              8,
+              324,
+              120
+            ],
+            [
+              232,
+              8,
+              328,
+              120
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1347,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.5872455000062473
+        },
+        {
+          "clip": "fall",
+          "category": "no_helmet_neutral",
+          "query": "一个人没有佩戴安全帽",
+          "score": 0.44660425186157227,
+          "seconds": 2.709786041988991,
+          "crop_boxes": [
+            [
+              234,
+              6,
+              342,
+              120
+            ],
+            [
+              248,
+              0,
+              356,
+              110
+            ],
+            [
+              262,
+              4,
+              370,
+              118
+            ],
+            [
+              252,
+              18,
+              360,
+              132
+            ],
+            [
+              296,
+              26,
+              404,
+              140
+            ],
+            [
+              450,
+              140,
+              558,
+              254
+            ],
+            [
+              410,
+              134,
+              518,
+              248
+            ],
+            [
+              416,
+              134,
+              524,
+              248
+            ],
+            [
+              424,
+              134,
+              532,
+              248
+            ],
+            [
+              416,
+              130,
+              524,
+              244
+            ],
+            [
+              398,
+              152,
+              506,
+              266
+            ],
+            [
+              422,
+              156,
+              530,
+              270
+            ],
+            [
+              426,
+              124,
+              534,
+              238
+            ],
+            [
+              430,
+              128,
+              538,
+              242
+            ],
+            [
+              430,
+              132,
+              538,
+              246
+            ],
+            [
+              434,
+              130,
+              542,
+              244
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1348,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.675973374978639
+        },
+        {
+          "clip": "fall",
+          "category": "helmet_neutral",
+          "query": "一个人佩戴安全帽",
+          "score": 0.39720451831817627,
+          "seconds": 2.6964122919598594,
+          "crop_boxes": [
+            [
+              234,
+              6,
+              342,
+              120
+            ],
+            [
+              248,
+              0,
+              356,
+              110
+            ],
+            [
+              262,
+              4,
+              370,
+              118
+            ],
+            [
+              252,
+              18,
+              360,
+              132
+            ],
+            [
+              296,
+              26,
+              404,
+              140
+            ],
+            [
+              450,
+              140,
+              558,
+              254
+            ],
+            [
+              410,
+              134,
+              518,
+              248
+            ],
+            [
+              416,
+              134,
+              524,
+              248
+            ],
+            [
+              424,
+              134,
+              532,
+              248
+            ],
+            [
+              416,
+              130,
+              524,
+              244
+            ],
+            [
+              398,
+              152,
+              506,
+              266
+            ],
+            [
+              422,
+              156,
+              530,
+              270
+            ],
+            [
+              426,
+              124,
+              534,
+              238
+            ],
+            [
+              430,
+              128,
+              538,
+              242
+            ],
+            [
+              430,
+              132,
+              538,
+              246
+            ],
+            [
+              434,
+              130,
+              542,
+              244
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1347,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.6686485000536777
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 27.250325999979395,
+        "before": {
+          "rss_bytes": 845955072,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5488492544,
+          "system_available_bytes": 8694988800,
+          "system_swap_used_bytes": 17597923328
+        },
+        "after": {
+          "rss_bytes": 986857472,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5559631872,
+          "system_available_bytes": 8484847616,
+          "system_swap_used_bytes": 17597923328
+        },
+        "sampled_peak": {
+          "rss_bytes": 986890240,
+          "mps_allocated_bytes": 4606547200,
+          "mps_driver_bytes": 5587009536,
+          "system_available_bytes": 8915173376,
+          "system_swap_used_bytes": 17597923328
+        },
+        "min_system_available_bytes": 8258256896
+      }
+    },
+    {
+      "id": "head_generic",
+      "config": {
+        "id": "head",
+        "frames": 16,
+        "pixels": 1048576,
+        "real_time": true,
+        "crop": "head"
+      },
+      "rows": [
+        {
+          "clip": "helmet_indoor",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.35100117325782776,
+          "seconds": 2.852662749995943,
+          "crop_boxes": [
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1258,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.817658832995221
+        },
+        {
+          "clip": "helmet_indoor",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.5497241616249084,
+          "seconds": 2.6814998330082744,
+          "crop_boxes": [
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ],
+            [
+              275,
+              43,
+              499,
+              230
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1256,
+          "metadata": [
+            {
+              "fps": 29.97002997002997,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.651955125038512
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.3836660385131836,
+          "seconds": 2.7435180000029504,
+          "crop_boxes": [
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1258,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.713080457993783
+        },
+        {
+          "clip": "helmet_outdoor",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.5591463446617126,
+          "seconds": 2.605053458013572,
+          "crop_boxes": [
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ],
+            [
+              173,
+              32,
+              275,
+              166
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1256,
+          "metadata": [
+            {
+              "fps": 25.0,
+              "frames_indices": [
+                0,
+                13,
+                26,
+                39,
+                53,
+                66,
+                79,
+                92,
+                106,
+                119,
+                132,
+                145,
+                159,
+                172,
+                185,
+                199
+              ],
+              "total_num_frames": 200
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.5781502080499195
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.4015434980392456,
+          "seconds": 2.81002025003545,
+          "crop_boxes": [
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1258,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.7804192500188947
+        },
+        {
+          "clip": "helmet_squat",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.5867922306060791,
+          "seconds": 3.2791862500016578,
+          "crop_boxes": [
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ],
+            [
+              218,
+              18,
+              352,
+              158
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1256,
+          "metadata": [
+            {
+              "fps": 30.0,
+              "frames_indices": [
+                0,
+                15,
+                31,
+                47,
+                63,
+                79,
+                95,
+                111,
+                127,
+                143,
+                159,
+                175,
+                191,
+                207,
+                223,
+                239
+              ],
+              "total_num_frames": 240
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 3.1018714999663644
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.4169338345527649,
+          "seconds": 3.0456245000241324,
+          "crop_boxes": [
+            [
+              176,
+              0,
+              272,
+              112
+            ],
+            [
+              184,
+              0,
+              280,
+              112
+            ],
+            [
+              190,
+              0,
+              286,
+              112
+            ],
+            [
+              192,
+              0,
+              288,
+              112
+            ],
+            [
+              194,
+              4,
+              290,
+              116
+            ],
+            [
+              200,
+              4,
+              296,
+              116
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              206,
+              8,
+              302,
+              120
+            ],
+            [
+              208,
+              8,
+              304,
+              120
+            ],
+            [
+              212,
+              8,
+              308,
+              120
+            ],
+            [
+              214,
+              8,
+              310,
+              120
+            ],
+            [
+              228,
+              8,
+              324,
+              120
+            ],
+            [
+              232,
+              8,
+              328,
+              120
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1258,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 3.013788415992167
+        },
+        {
+          "clip": "worker_barehead",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.3132874667644501,
+          "seconds": 3.0256135420058854,
+          "crop_boxes": [
+            [
+              176,
+              0,
+              272,
+              112
+            ],
+            [
+              184,
+              0,
+              280,
+              112
+            ],
+            [
+              190,
+              0,
+              286,
+              112
+            ],
+            [
+              192,
+              0,
+              288,
+              112
+            ],
+            [
+              194,
+              4,
+              290,
+              116
+            ],
+            [
+              200,
+              4,
+              296,
+              116
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              204,
+              6,
+              300,
+              118
+            ],
+            [
+              206,
+              8,
+              302,
+              120
+            ],
+            [
+              208,
+              8,
+              304,
+              120
+            ],
+            [
+              212,
+              8,
+              308,
+              120
+            ],
+            [
+              214,
+              8,
+              310,
+              120
+            ],
+            [
+              228,
+              8,
+              324,
+              120
+            ],
+            [
+              232,
+              8,
+              328,
+              120
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ],
+            [
+              238,
+              10,
+              334,
+              122
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1256,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21,
+                25,
+                28,
+                31,
+                34,
+                37,
+                40,
+                43,
+                47
+              ],
+              "total_num_frames": 48
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.983923042018432
+        },
+        {
+          "clip": "fall",
+          "category": "bare_head",
+          "query": "一个头部裸露、可以看到头发的人",
+          "score": 0.44201263785362244,
+          "seconds": 3.0020416249753907,
+          "crop_boxes": [
+            [
+              234,
+              6,
+              342,
+              120
+            ],
+            [
+              248,
+              0,
+              356,
+              110
+            ],
+            [
+              262,
+              4,
+              370,
+              118
+            ],
+            [
+              252,
+              18,
+              360,
+              132
+            ],
+            [
+              296,
+              26,
+              404,
+              140
+            ],
+            [
+              450,
+              140,
+              558,
+              254
+            ],
+            [
+              410,
+              134,
+              518,
+              248
+            ],
+            [
+              416,
+              134,
+              524,
+              248
+            ],
+            [
+              424,
+              134,
+              532,
+              248
+            ],
+            [
+              416,
+              130,
+              524,
+              244
+            ],
+            [
+              398,
+              152,
+              506,
+              266
+            ],
+            [
+              422,
+              156,
+              530,
+              270
+            ],
+            [
+              426,
+              124,
+              534,
+              238
+            ],
+            [
+              430,
+              128,
+              538,
+              242
+            ],
+            [
+              430,
+              132,
+              538,
+              246
+            ],
+            [
+              434,
+              130,
+              542,
+              244
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1258,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 2.9446787500055507
+        },
+        {
+          "clip": "fall",
+          "category": "helmet_visible",
+          "query": "一个头上戴着安全帽的人",
+          "score": 0.37821775674819946,
+          "seconds": 3.1196090409648605,
+          "crop_boxes": [
+            [
+              234,
+              6,
+              342,
+              120
+            ],
+            [
+              248,
+              0,
+              356,
+              110
+            ],
+            [
+              262,
+              4,
+              370,
+              118
+            ],
+            [
+              252,
+              18,
+              360,
+              132
+            ],
+            [
+              296,
+              26,
+              404,
+              140
+            ],
+            [
+              450,
+              140,
+              558,
+              254
+            ],
+            [
+              410,
+              134,
+              518,
+              248
+            ],
+            [
+              416,
+              134,
+              524,
+              248
+            ],
+            [
+              424,
+              134,
+              532,
+              248
+            ],
+            [
+              416,
+              130,
+              524,
+              244
+            ],
+            [
+              398,
+              152,
+              506,
+              266
+            ],
+            [
+              422,
+              156,
+              530,
+              270
+            ],
+            [
+              426,
+              124,
+              534,
+              238
+            ],
+            [
+              430,
+              128,
+              538,
+              242
+            ],
+            [
+              430,
+              132,
+              538,
+              246
+            ],
+            [
+              434,
+              130,
+              542,
+              244
+            ]
+          ],
+          "input_shape": [
+            16,
+            3,
+            448,
+            320
+          ],
+          "tokens": 1256,
+          "metadata": [
+            {
+              "fps": 23.98,
+              "frames_indices": [
+                0,
+                12,
+                25,
+                38,
+                50,
+                63,
+                76,
+                89,
+                101,
+                114,
+                127,
+                140,
+                152,
+                165,
+                178,
+                191
+              ],
+              "total_num_frames": 192
+            }
+          ],
+          "video_grid_thw": [
+            [
+              8,
+              28,
+              20
+            ]
+          ],
+          "image_grid_thw": null,
+          "forward_seconds": 3.0844339589821175
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 30.335008041991387,
+        "before": {
+          "rss_bytes": 986857472,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5559631872,
+          "system_available_bytes": 8484847616,
+          "system_swap_used_bytes": 17597923328
+        },
+        "after": {
+          "rss_bytes": 1023918080,
+          "mps_allocated_bytes": 4322443776,
+          "mps_driver_bytes": 5550555136,
+          "system_available_bytes": 8715436032,
+          "system_swap_used_bytes": 17597923328
+        },
+        "sampled_peak": {
+          "rss_bytes": 1023950848,
+          "mps_allocated_bytes": 4606547200,
+          "mps_driver_bytes": 5561401344,
+          "system_available_bytes": 8835760128,
+          "system_swap_used_bytes": 17597923328
+        },
+        "min_system_available_bytes": 8289124352
+      }
+    }
+  ]
+}
