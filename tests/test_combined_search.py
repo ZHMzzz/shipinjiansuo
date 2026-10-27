@@ -36,3 +36,12 @@ def test_no_identity_match_does_not_load_qwen():
     assert not result.ids and not evidence
     actions.get_snapshot.assert_not_called()
     actions.query_vector.assert_not_called()
+
+
+def test_filename_restriction_applies_before_person_scene_ranking():
+    search = face_search([.95,.8], [(1,1.),(2,1.)])
+    actions = NS(get_snapshot=Mock(return_value=({'segments':[dict(media_id=1,ts=0,te=8),dict(media_id=2,ts=0,te=8)]},np.array([[1.],[.2]]),None)),
+                 query_vector=Mock(return_value=(np.ones((1,1)),False)))
+    result,evidence = person_scene_search(np.ones((1,4)), '汽车', .45,
+        face_model='face',search=search,actions=actions,project='project',allowed_media={2})
+    assert result.ids==[11] and list(evidence)==['11']

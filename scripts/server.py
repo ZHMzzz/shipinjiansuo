@@ -14,7 +14,7 @@ from pathlib import Path
 import numpy as np
 import uvicorn
 from fastapi import File, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse, RedirectResponse
+from fastapi.responses import FileResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, UnidentifiedImageError
 from wise.api import create_app
@@ -31,6 +31,7 @@ from ingestion import IngestionManager, MAX_UPLOAD
 from combined_search import person_scene_search
 from query_image import decode_query_image
 from qwen_project import prepare_qwen_project, validate_project, FACE
+from library_search import search_library
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,7 +48,7 @@ actions = ActionEngine()
 async def serialize_search_and_publication(request, call_next):
     # Keep dependency resolution and inference consistent during a version swap.
     # Uploads and task polling remain available while a search is running.
-    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/search')):
+    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/search', '/mvp-api/library/search')):
         async with search_gate:
             return await call_next(request)
     return await call_next(request)
@@ -213,6 +214,16 @@ def people():
         return [row[0] for row in db.execute('SELECT name FROM people ORDER BY name')]
 
 
+@app.get('/mvp-api/people/{name}/photo')
+def person_photo(name: str):
+    """Read the existing enrollment photo for the maintenance list."""
+    with sqlite3.connect(DB) as db:
+        row = db.execute('SELECT photo FROM people WHERE name=?', (name,)).fetchone()
+    if row is None:
+        raise HTTPException(404, '此姓名尚未登记')
+    return Response(content=row[0], media_type='image/jpeg', headers={'Cache-Control':'no-store'})
+
+
 @app.post('/mvp-api/people')
 def register(embedding: EmbeddingServiceDep, name: str = Form(...), photo: UploadFile = File(...)):
     name = name.strip()
@@ -296,10 +307,9 @@ def query_image(photo):
         raise HTTPException(400, '无法读取图片')
 
 
-def segment_search(project, query='', image=None, limit=20):
+def segment_search(project, query, limit=20):
     try:
-        return actions.search(project.wise_project._project_dir, query, limit,
-            image=image, unique_videos=image is not None)
+        return actions.search(project.wise_project._project_dir, query, limit)
     except ValueError as exc:
         raise HTTPException(409, str(exc)) from exc
     except RuntimeError as exc:
@@ -312,9 +322,33 @@ def search_segments(project: ProjectServiceDep, query: str = Form('', max_length
                     photo: UploadFile | None = File(None),
                     limit: int = Form(20, ge=1, le=50), refine: bool = Form(False)):
     query = query.strip()
-    if not query and photo is None: raise HTTPException(400, '请输入描述或提供参考图片')
+    if photo is not None: raise HTTPException(400, '图片请使用物体检索，已移除图文联合检索')
+    if not query: raise HTTPException(400, '请输入场景或动作描述')
     if refine: raise HTTPException(410, '物体图片已恢复 WISE OWLv2，请刷新页面使用物体图片入口')
-    return segment_search(project, query, query_image(photo) if photo else None, limit)
+    return segment_search(project, query, limit)
+
+
+@app.post('/mvp-api/library/search')
+def library_query(project: ProjectServiceDep, search: SearchServiceDep, embedding: EmbeddingServiceDep,
+                  query: str = Form('', max_length=1000), person: str = Form('', max_length=60),
+                  filename: str = Form('', max_length=255), photo: UploadFile | None = File(None),
+                  threshold: float = Form(.45, ge=0, le=1), limit: int = Form(100, ge=1, le=100)):
+    query, person, filename = query.strip(), person.strip(), filename.strip()
+    if query and photo is not None: raise HTTPException(400, '自然语言与参考图片请分开查询')
+    raw = None
+    if photo is not None:
+        query_image(photo)  # Validate size and readability before the native WISE image path.
+        photo.file.seek(0)
+        raw = photo.file.read()
+    try:
+        return search_library(catalog=list_videos(project)['videos'], query=query,person=person,
+            filename=filename,image_bytes=raw,threshold=threshold,limit=limit,project=project,
+            search=search,embedding=embedding,actions=actions,config=config,people_db=DB)
+    except ValueError as exc:
+        raise HTTPException(409,str(exc)) from exc
+    except RuntimeError as exc:
+        logging.exception('Library search failed')
+        raise HTTPException(503,'检索暂不可用：'+str(exc)[:300]) from exc
 
 
 app.mount('/queries', StaticFiles(directory=ROOT / 'data/queries'), name='queries')

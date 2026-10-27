@@ -4,7 +4,6 @@ import math
 import sqlite3
 import time
 import gc
-import hashlib
 from collections import OrderedDict
 from pathlib import Path
 
@@ -181,21 +180,18 @@ class ActionEngine:
             self.snapshot, self.cached_project = snapshot, project
         return self.snapshot
 
-    def query_vector(self, query='', image=None):
+    def query_vector(self, query):
         query = query.strip()
-        if not query and image is None:
-            raise ValueError('请输入描述或提供参考图片')
-        digest = None if image is None else hashlib.sha256(
-            str((image.mode, image.size)).encode()+image.tobytes()).hexdigest()
-        key = query if image is None else (query, digest)
+        if not query:
+            raise ValueError('请输入场景或动作描述')
+        key = query
         cached = key in self.query_vectors
         if cached:
             vector = self.query_vectors[key]
             self.query_vectors.move_to_end(key)
         else:
             model = self.model()
-            vector = (model.extract_query_features(image, query) if image is not None else
-                      model.extract_text_features([query]) if query else None)
+            vector = model.extract_text_features([query])
             vector = np.asarray(vector, dtype='float32')
             norm = np.linalg.norm(vector, axis=-1, keepdims=True)
             if not np.isfinite(vector).all() or np.any(norm < 1e-8):
@@ -205,33 +201,27 @@ class ActionEngine:
             if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
         return vector, cached
 
-    def search(self, project, query, limit, *, image=None, unique_videos=False):
+    def search(self, project, query, limit, *, media_ids=None):
         snapshot = self.get_snapshot(project)
         if snapshot is None: raise ValueError('Qwen 片段索引正在补建，请查看视频库中的索引进度')
         meta, vectors, index = snapshot
         started = time.perf_counter()
-        vector, cached = self.query_vector(query, image)
+        vector, cached = self.query_vector(query)
         encoded = time.perf_counter()
-        # Search every segment for video-level ranking: a long source video must
-        # not consume the entire shortlist and hide other source videos.
-        scores, ids = index.search(vector, index.ntotal if unique_videos else min(index.ntotal, max(limit*5, 100)))
-        if unique_videos:
-            hits, seen = [], set()
-            for score, idx in zip(scores[0], ids[0]):
-                if idx < 0: continue
-                item = meta['segments'][int(idx)]
-                if item['media_id'] in seen: continue
-                seen.add(item['media_id']); hits.append({**item, 'distance':float(score)})
-                if len(hits) >= limit: break
-        else:
-            hits = select_hits(meta['segments'], scores[0], ids[0], limit)
+        # Apply filename candidate restrictions before truncating the ranking.
+        # Otherwise unrelated videos can consume the entire shortlist.
+        scores, ids = index.search(vector, index.ntotal if media_ids is not None else min(index.ntotal, max(limit*5, 100)))
+        if media_ids is not None:
+            keep = [i for i, idx in enumerate(ids[0]) if idx >= 0 and meta['segments'][int(idx)]['media_id'] in media_ids]
+            scores, ids = scores[:,keep], ids[:,keep]
+        hits = select_hits(meta['segments'], scores[0], ids[0], limit)
         videos = {m['id']: {'filename': m['path'], 'duration': m['duration']} for m in meta['media']}
         for hit in hits:
             mid = hit['media_id']; preview = (hit['ts']+hit['te'])/2
             hit.update(thumbnail_ts=preview, thumbnail=f'/demo/thumbnail?media_id={mid}&timestamp={preview}',
                        link=f'/demo/media/{mid}#t={hit["ts"]},{hit["te"]}')
-        return {'score_kind': 'segment' if unique_videos else 'action', 'query': query,
-                'query_kind': 'image_text' if image is not None and query else 'image' if image is not None else 'text',
+        return {'score_kind': 'action', 'query': query,
+                'query_kind': 'text',
                 'settings': SETTINGS,
                 'query_embedding_cached': cached,
                 'encode_seconds': encoded-started, 'search_seconds': time.perf_counter()-encoded,

@@ -1,0 +1,20 @@
+ <dialog id="upload-modal" class="maintenance-dialog" aria-labelledby="upload-title">
+  <div class="modal-heading"><div><h2 id="upload-title">新增视频</h2><p>上传本地视频，处理完成后即可检索。</p></div><button class="modal-close" data-close="upload-modal" aria-label="关闭新增视频">×</button></div>
+  <form id="upload-form">
+   <div class="modal-content"><label for="new-video-file" id="video-dropzone" class="dropzone"><span class="upload-symbol">↑</span><strong>拖拽视频到这里，或 <em>选择文件</em></strong><span>支持 MP4、MOV、MKV、AVI、WebM 等格式</span><small>单个文件最大 1 GB</small><input id="new-video-file" type="file" accept="video/*,.mkv,.ts,.m4v"></label>
+   <div id="video-selection" class="selected-file" hidden><span class="file-symbol">▶</span><div><strong id="selected-video-name"></strong><span id="selected-video-size"></span></div><button id="clear-video" type="button" aria-label="移除所选视频">×</button></div>
+   <div class="upload-flow"><span class="flow-current"><i>1</i>选择视频</span><b></b><span><i>2</i>上传文件</span><b></b><span><i>3</i>后台处理</span></div>
+   <div id="upload-transfer" hidden><div class="progress-heading"><span id="upload-stage"></span><span id="upload-percentage"></span></div><progress id="upload-progress" value="0" max="100"></progress></div>
+   <p id="upload-feedback" class="modal-feedback" role="status" hidden></p>
+   <div class="recent-upload-heading"><h3>最近上传</h3><span>处理状态</span></div><div id="recent-uploads" class="recent-uploads"><p class="subtle">正在读取…</p></div>
+   </div><div class="modal-footer"><span class="modal-note">上传后自动处理并加入视频库</span><div><button type="button" class="outline-button" data-close="upload-modal">取消</button><button type="submit" class="primary-button" id="start-upload" disabled>开始上传</button></div></div>
+  </form>
+ </dialog>
+ <dialog id="people-modal" class="maintenance-dialog people-modal" aria-labelledby="people-title">
+  <div class="modal-heading"><div><h2 id="people-title">人脸维护</h2><p>登记人物照片，之后可通过姓名查找视频。</p></div><button class="modal-close" data-close="people-modal" aria-label="关闭人脸维护">×</button></div>
+  <div class="people-columns"><form id="person-form" class="new-person-panel"><h3>新增人名</h3><label class="person-name-label" for="new-person-name">姓名 <span>*</span></label><input id="new-person-name" type="text" placeholder="输入人名" maxlength="60" required autocomplete="off">
+   <label class="person-name-label" for="new-person-photo">人脸照片 <span>*</span></label><label class="portrait-picker" for="new-person-photo"><span id="portrait-empty">♙<strong>选择人脸照片</strong><small>清晰、正面、单人照片</small></span><img id="new-portrait" hidden alt="待登记的人脸照片"><span id="replace-portrait" hidden>更换照片</span><input id="new-person-photo" type="file" accept="image/*"></label>
+   <p class="photo-help">支持 JPG、PNG 等格式，最大 10 MB。</p><p id="person-feedback" class="modal-feedback" role="status" hidden></p><button type="submit" class="primary-button full-width">新增人名</button>
+  </form><section class="people-list-panel"><div class="people-list-heading"><h3>已登记人物 <span id="person-count"></span></h3><span class="subtle">头像 / 姓名</span></div><div id="registered-people"></div><p class="people-list-note">照片仅用于检索已登记人物。</p></section></div>
+  <div class="modal-footer"><span class="modal-note">登记成功后可通过姓名检索视频</span><button class="outline-button" type="button" data-close="people-modal">关闭</button></div>
+ </dialog>

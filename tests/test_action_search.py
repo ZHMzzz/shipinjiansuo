@@ -101,25 +101,20 @@ def test_failed_backfill_preserves_live_version_and_is_retryable(tmp_path, monke
     assert manager.action_state['status']=='pending' and manager.backfill_requested
 
 
-def test_joint_image_text_cache_uses_image_and_text():
-    from PIL import Image
+def test_text_cache_uses_trimmed_query_and_rejects_empty():
     engine=ActionEngine(); model=Mock()
-    model.extract_query_features.return_value=np.array([[1.,0.]],dtype='float32')
-    model.extract_text_features.return_value=np.array([[0.,1.]],dtype='float32')
+    model.extract_text_features.return_value=np.array([[0.,2.]],dtype='float32')
     engine.model=Mock(return_value=model)
-    image=Image.new('RGB',(16,16),'red')
-    vector,cached=engine.query_vector('街道',image)
-    assert not cached and vector[0,1]==0 and np.linalg.norm(vector)==pytest.approx(1)
-    model.extract_query_features.assert_called_once_with(image,'街道')
-    model.extract_text_features.assert_not_called()
-    assert engine.query_vector('街道',image.copy())[1]
-    engine.query_vector('街道',Image.new('RGB',(16,16),'blue'))
-    assert model.extract_query_features.call_count==2
-    engine.query_vector('室内',image)
-    assert model.extract_query_features.call_count==3
+    vector,cached=engine.query_vector('街道')
+    assert not cached and np.linalg.norm(vector)==pytest.approx(1)
+    model.extract_text_features.assert_called_once_with(['街道'])
+    assert engine.query_vector(' 街道 ')[1]
+    engine.query_vector('室内')
+    assert model.extract_text_features.call_count==2
+    with pytest.raises(ValueError): engine.query_vector(' ')
 
 
-def test_long_video_does_not_hide_other_videos(tmp_path):
+def test_filename_candidate_is_not_lost_beyond_initial_shortlist(tmp_path):
     path=project(tmp_path,duration=500)
     with sqlite3.connect(path/'metadata/internal.db') as db:
         db.execute("INSERT INTO media VALUES(19,'short.mp4',3,1,'VIDEO')")
@@ -127,6 +122,6 @@ def test_long_video_does_not_hide_other_videos(tmp_path):
     vectors=np.tile([1.,0.],(len(records),1)).astype('float32'); vectors[-1]=[0.,1.]
     engine.finish(path,catalog,records,vectors)
     engine.query_vector=Mock(return_value=(np.array([[1.,0.]],dtype='float32'),False))
-    result=engine.search(path,'test',2,unique_videos=True)
-    assert [h['media_id'] for h in result['video_results']['unmerged_windows']]==[7,19]
-    assert result['score_kind']=='segment'
+    result=engine.search(path,'test',2,media_ids={19})
+    assert [h['media_id'] for h in result['video_results']['unmerged_windows']]==[19]
+    assert result['score_kind']=='action'

@@ -4,13 +4,14 @@ from wise.api.services.search.face_text import fuse_face_text_frame_results
 from wise.data_models import ModalityType
 
 
-def person_scene_search(vector, scene, threshold, *, face_model, search, actions, project):
+def person_scene_search(vector, scene, threshold, *, face_model, search, actions, project, allowed_media=None):
     count = search.search_indices[ModalityType.VIDEO][face_model].index.ntotal
     faces = search.search_with_feature(vector, modality_type=ModalityType.VIDEO,
         feature_extractor_id=face_model, start=0, end=count, filter_specs={})
     matches = [(vid, score, meta, ext) for vid, score, meta, ext in
                zip(faces.ids, faces.distances, faces.metadata, faces.ext_metadata)
-               if score >= threshold and meta.timestamp is not None]
+               if score >= threshold and meta.timestamp is not None
+               and (allowed_media is None or meta.media_id in allowed_media)]
     if not matches: return SearchOutput(), {}
     snapshot = actions.get_snapshot(project)
     if snapshot is None: raise ValueError('Qwen 片段索引尚未建立')
