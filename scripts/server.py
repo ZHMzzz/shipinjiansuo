@@ -13,7 +13,7 @@ from pathlib import Path
 
 import numpy as np
 import uvicorn
-from fastapi import File, Form, HTTPException, UploadFile
+from fastapi import File, Form, Header, HTTPException, UploadFile
 from fastapi.responses import FileResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, UnidentifiedImageError
@@ -32,6 +32,7 @@ from combined_search import person_scene_search
 from query_image import decode_query_image
 from qwen_project import prepare_qwen_project, validate_project, FACE
 from library_search import search_library
+from video_deletion import delete_video, media_revision
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -178,7 +179,7 @@ def list_videos(project: ProjectServiceDep):
     # Read the immutable version bound to this request, not the moving symlink.
     with sqlite3.connect(project.wise_project._project_dir/'metadata/internal.db') as db:
         db.row_factory=sqlite3.Row
-        rows=db.execute("SELECT id,path,duration,width,height,size_in_bytes FROM media WHERE media_type IN ('VIDEO','AV') ORDER BY id DESC").fetchall()
+        rows=db.execute("SELECT m.id,m.path,m.checksum,s.location,m.duration,m.width,m.height,m.size_in_bytes FROM media m JOIN source_collections s ON s.id=m.source_collection_id WHERE media_type IN ('VIDEO','AV') ORDER BY m.id DESC").fetchall()
         counts={}
         for mid,model,count in db.execute('SELECT media_id,feature_extractor_id,count(*) FROM vectors GROUP BY media_id,feature_extractor_id'):
             counts.setdefault(mid,{})[model]=count
@@ -191,6 +192,8 @@ def list_videos(project: ProjectServiceDep):
     videos=[]
     for row in rows:
         item=dict(row)
+        item['revision']=media_revision(item,project.wise_project._project_dir)
+        item.pop('checksum');item.pop('location')
         job=uploaded.get(row['id'])
         item.update(name=job['filename'] if job else row['path'],created=job['created'] if job else None,
                     url=f"/demo/media/{row['id']}",thumbnail=f"/demo/thumbnail?media_id={row['id']}&timestamp=0",
@@ -198,6 +201,17 @@ def list_videos(project: ProjectServiceDep):
         item['action_segments'] = action_counts.get(row['id'], 0)
         videos.append(item)
     return {'videos':videos,'count':len(videos),'total_duration':sum(v['duration'] or 0 for v in videos)}
+
+@app.delete('/mvp-api/videos/{media_id}')
+async def remove_video(media_id: int, revision: str = Header(..., alias='If-Match', min_length=64, max_length=64)):
+    try:
+        return await asyncio.to_thread(delete_video, ingestion, media_id, revision)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        logging.exception('Video deletion failed')
+        raise HTTPException(503, '删除未完成，请重试：'+str(exc)[:200]) from exc
+
 
 with sqlite3.connect(DB) as db:
     db.execute('CREATE TABLE IF NOT EXISTS people (name TEXT PRIMARY KEY, vector BLOB NOT NULL, photo BLOB NOT NULL, model TEXT NOT NULL)')

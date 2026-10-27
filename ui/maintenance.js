@@ -156,5 +156,6 @@ export async function mountMaintenance({onPeopleChanged, onLibraryChanged}) {
   };
   el('open-upload').disabled = false; el('open-people').disabled = false;
   await loadPeople().catch(e => feedback('person-feedback','人物列表读取失败：' + e.message,true));
+  document.addEventListener('video-library-changed', pollJobs);
   pollJobs();
 }

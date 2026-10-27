@@ -1,11 +1,20 @@
 import {el, node, api, feedback, formatTime, formatSize} from './api.js';
 import {mountMaintenance} from './maintenance.js';
+import {createVideoDeletion, trashIcon} from './video-delete.js';
 
 const PAGE_SIZE = 12;
 let catalog = [], items = [], page = 1, mode = 'browse', applied = {}, limited = false;
 let request = null, generation = 0, previewURL = null;
 const natural = el('natural'), reference = el('reference');
 const labels = {text:'语义片段', object:'物体图片', face:'人物', person_scene:'人物与场景', person_object:'人物与物体'};
+
+const openDeletion = createVideoDeletion(async (item,result) => {
+  cancelSearch();
+  catalog = catalog.filter(v => v.id !== item.id); items = items.filter(v => v.id !== item.id); render();
+  document.dispatchEvent(new Event('video-library-changed'));
+  el('search-status').textContent = result.cleanup_pending ? '视频已从检索库移除，部分历史文件正在重试清理。' : `已删除「${item.name}」及对应检索索引。`;
+  try { await loadCatalog(); } catch(e) { feedback('search-error','删除已完成，列表刷新失败：'+e.message,true); }
+});
 
 function syncInputs() {
   const hasImage = Boolean(reference.files[0]);
@@ -57,16 +66,23 @@ function render() {
   const grid = el('video-grid'); grid.replaceChildren();
   if (!items.length) grid.append(node('p', '没有找到视频，请调整条件或新增视频。', 'empty'));
   for (const item of items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)) {
-    const card = node('button', undefined, 'video-card'); card.type = 'button';
-    card.title = `播放 ${item.name}${item.kind ? ' · ' + formatTime(item.start) : ''}`;
+    const card = node('article', undefined, 'video-card');
+    const open = node('button', undefined, 'video-open'); open.type = 'button';
+    open.title = `播放 ${item.name}${item.kind ? ' · ' + formatTime(item.start) : ''}`;
     const thumb = node('div', undefined, 'thumbnail');
     const img = node('img'); img.src = new URL(item.thumbnail, location.origin + '/demo/').href;
     img.alt = ''; img.loading = 'lazy';
     thumb.append(img, node('span', item.kind ? formatTime(item.start) : formatTime(item.duration), 'duration'), node('span', '▶', 'play'));
     const info = node('div', undefined, 'card-info');
-    const title = node('h3', item.name); title.title = item.name;
-    const meta = node('p'); meta.append(node('span', item.kind ? labels[item.kind] : `${item.width} × ${item.height}`), node('span', item.kind ? `${formatTime(item.start)}–${formatTime(item.end)}` : formatSize(item.size_in_bytes)));
-    info.append(title, meta); card.append(thumb, info); card.onclick = () => play(item); grid.append(card);
+    const title = node('h3', item.name); title.title = item.name; info.append(title);
+    open.append(thumb, info); open.onclick = () => play(item);
+    const footer = node('div', undefined, 'card-footer');
+    const meta = node('div', undefined, 'card-meta');
+    meta.append(node('span', item.kind ? labels[item.kind] : `${item.width} × ${item.height}`), node('span', item.kind ? `${formatTime(item.start)}–${formatTime(item.end)}` : formatSize(item.size_in_bytes)));
+    const remove = node('button', undefined, 'delete-video-button'); remove.type = 'button';
+    remove.innerHTML = trashIcon + '<span>删除</span>'; remove.setAttribute('aria-label',`删除视频：${item.name}`);
+    remove.onclick = () => openDeletion(item); footer.append(meta,remove);
+    card.append(open,footer); grid.append(card);
   }
   el('range').textContent = items.length ? `${(page - 1) * PAGE_SIZE + 1}–${Math.min(page * PAGE_SIZE, items.length)} / ${items.length} 条${limited ? ' · 当前返回的候选结果' : ''}` : '0 条';
   const nav = el('pages'); nav.replaceChildren();

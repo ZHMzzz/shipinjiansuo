@@ -3,6 +3,7 @@ import asyncio
 import fcntl
 import hashlib
 import json
+import logging
 import math
 import os
 import re
@@ -52,6 +53,7 @@ class IngestionManager:
         self.stopping = threading.Event()
         self.wakeup = threading.Event()
         self.process = None
+        self.mutation_lock = threading.Lock()
         self.loop = None
         with self.connect() as db:
             db.execute('PRAGMA journal_mode=WAL')
@@ -154,18 +156,30 @@ class IngestionManager:
         if hasattr(self,'lockfile'): self.lockfile.close()
 
     def worker(self):
+        try:
+            from .video_deletion import pending_cleanup
+        except ImportError:
+            from video_deletion import pending_cleanup
         while not self.stopping.is_set():
-            if self.backfill_requested:
-                self.backfill_requested = False
-                self.backfill_actions()
-                continue
-            with self.connect() as db:
-                row = db.execute("SELECT * FROM jobs WHERE status='queued' ORDER BY created LIMIT 1").fetchone()
+            row = None
+            with self.mutation_lock:
+                try:
+                    pending_cleanup(self)
+                except Exception:
+                    logging.exception('视频清理尚未完成，暂缓发布新版本')
+                    self.stopping.wait(2)
+                    continue
+                if self.backfill_requested:
+                    self.backfill_requested = False
+                    self.backfill_actions()
+                    continue
+                with self.connect() as db:
+                    row = db.execute("SELECT * FROM jobs WHERE status='queued' ORDER BY created LIMIT 1").fetchone()
+                    if row:
+                        db.execute("UPDATE jobs SET status='validating',stage='检查视频',progress=2,attempts=attempts+1,updated=? WHERE id=?",(time.time(),row['id']))
                 if row:
-                    db.execute("UPDATE jobs SET status='validating',stage='检查视频',progress=2,attempts=attempts+1,updated=? WHERE id=?",(time.time(),row['id']))
-            if row:
-                self.process_job(dict(row))
-            else:
+                    self.process_job(dict(row))
+            if not row:
                 self.wakeup.wait(1)
                 self.wakeup.clear()
 
