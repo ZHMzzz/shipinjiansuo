@@ -1,7 +1,7 @@
 import sqlite3
 from pathlib import Path
 import pytest
-from scripts.qwen_project import prepare_qwen_project, retained_fingerprint, FACE, RETIRED
+from scripts.qwen_project import prepare_qwen_project, retained_fingerprint, FACE, RETIRED, OWL
 from test_action_search import project, save
 
 
@@ -12,11 +12,11 @@ def fixture(root):
             CREATE TABLE vector_metadata_insightface(vector_id INTEGER REFERENCES vectors(id) ON DELETE CASCADE,score REAL);
             CREATE TABLE vector_metadata_owlv2(vector_id INTEGER REFERENCES vectors(id) ON DELETE CASCADE,score REAL);
             CREATE TABLE featured(vector_id INTEGER REFERENCES vectors(id) ON DELETE CASCADE);''')
-        db.executemany('INSERT INTO vectors VALUES(?,?)',enumerate((FACE,*RETIRED),1))
+        db.executemany('INSERT INTO vectors VALUES(?,?)',enumerate((FACE,*RETIRED,OWL),1))
         db.execute('INSERT INTO vector_metadata_insightface VALUES(1,.9)')
         db.execute('INSERT INTO vector_metadata_owlv2 VALUES(3,.8)')
         db.executemany('INSERT INTO featured VALUES(?)',[(1,),(2,),(3,)])
-    for model in (FACE,*RETIRED):
+    for model in (FACE,*RETIRED,OWL):
         folder=path/'store'/model/'features';folder.mkdir(parents=True)
         (folder/'vectors.bin').write_bytes(model.encode())
     (path/'thumbs.db').write_bytes(b'preserve thumbnails')
@@ -31,8 +31,8 @@ def test_migration_preserves_data_and_old_release_and_is_idempotent(tmp_path):
     assert before==retained_fingerprint(stage)==retained_fingerprint(old)
     assert all((old/'store'/m).exists() and not (stage/'store'/m).exists() for m in RETIRED)
     with sqlite3.connect(stage/'metadata/internal.db') as db:
-        assert db.execute('SELECT * FROM vectors').fetchall()==[(1,FACE)]
-        assert db.execute('SELECT * FROM featured').fetchall()==[(1,)]
+        assert db.execute('SELECT * FROM vectors').fetchall()==[(1,FACE),(3,OWL)]
+        assert db.execute('SELECT * FROM featured').fetchall()==[(1,),(3,)]
     assert prepare_qwen_project(tmp_path)==stage
 
 
@@ -47,7 +47,7 @@ def test_incomplete_qwen_index_blocks_migration(tmp_path):
 def test_failed_validation_does_not_publish_partial_version(tmp_path,monkeypatch):
     from scripts import qwen_project
     path=fixture(tmp_path)
-    monkeypatch.setattr(qwen_project,'validate_face_project',lambda _: (_ for _ in ()).throw(ValueError('test failure')))
+    monkeypatch.setattr(qwen_project,'validate_project',lambda _: (_ for _ in ()).throw(ValueError('test failure')))
     with pytest.raises(ValueError,match='test failure'): prepare_qwen_project(tmp_path)
     assert (tmp_path/'projects/demo').resolve()==tmp_path/'projects/releases/initial/demo'
     assert not list((tmp_path/'projects/releases').glob('qwen-*'))

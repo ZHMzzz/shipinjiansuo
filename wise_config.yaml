@@ -12,4 +12,5 @@ feature_extractor_config:
     compile: false
     warmup: true
 search_target_order:
+  - owlv2
   - insightface

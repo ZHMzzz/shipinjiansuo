@@ -2,7 +2,7 @@
 
 这是可阅读、可修改的源码工程。WISE 负责视频解码、特征提取、向量索引和检索接口；本项目增加中文演示界面、姓名登记与查询、视频上传与后台入库、可播放的视频库，以及 Apple Silicon 环境适配。模型权重使用现成预训练模型，没有训练新模型。
 
-当前文字、参考图、图文组合、截图召回和动作检索共用已有 Qwen3-VL-Embedding 2B 片段索引；InsightFace 继续负责人物检索。正式链路已移除 SigLIP 与 OWLv2，不再生成物体框。当前实现、迁移与验证见 [Qwen 统一检索](docs/Qwen统一检索.md)，用户截图与物体图片的后续修复见 [图片检索回归](docs/用户图片检索回归.md)；旧实验文档保留当时的实现与数据。
+当前文字、图文组合、截图召回和动作检索使用 Qwen3-VL-Embedding 2B；物体图片已按用户选择恢复 **WISE2 原生 OWLv2 链路**，人脸使用 InsightFace。SigLIP 停用，页面隐藏物体框。当前实现与验证见 [恢复 WISE2 物体检索](docs/恢复WISE2物体检索.md)，此前 Qwen 替换与图片修复文档保留阶段记录。
 
 ## 启动与演示
 
@@ -16,7 +16,7 @@
 
 1. **中文语义**：输入“一个人背着背包走路”“一个人在跑步”“锅里正在炒蔬菜”，开始检索，点击结果播放。
 2. **截图溯源**：点“使用 2.25 秒演示截图”，检索跑步原片段。先用 Qwen 片段向量召回候选，再做画面比对细化时间。也可上传自己的截图。
-3. **物体图片**：点“使用独立背包照片”，检索包含相似背包的视频片段，不返回物体框。默认开启精细画面匹配，比较前 20 个候选的代表帧，首次查询可能增加约 10 秒；可关闭以使用快速片段检索。该图没有收入视频索引；这个功能检索外观或语义相似物体，不能证明是同一个实物。
+3. **物体图片**：点“使用独立背包照片”，检索包含相似背包的视频片段，不返回物体框。使用 WISE2 的 OWLv2 区域特征与原生排序；此前 Qwen 精细匹配开关已移除。该图没有收入视频索引；这个功能检索外观或语义相似物体，不能证明是同一个实物。
 4. **人物姓名**：点“载入演示人物”，再按“演示人物A”检索。可以展开登记区上传单人照片、输入姓名，完成登记后检索。多人照片与未检出人脸的照片会拒绝登记，避免静默选错人。演示人物A仅是别名，不推断真实姓名。
 
 5. **视频库与上传**：点击左侧「05 视频库与上传」，或直接打开 http://127.0.0.1:9670/mvp/#library。查看全部已入库视频、按名称筛选、点击卡片从头播放。选择本机视频后点击「上传并处理」，页面显示上传进度和后台处理阶段，完成后自动参与检索，无需重启。单个文件最大 1GB；任务串行处理，关闭网页后仍在后台继续，但电脑与服务须保持运行。失败任务显示原因并可重试，内容相同的文件不会重复入库。
@@ -46,9 +46,11 @@
 
 ```text
 视频 → 每秒2帧 → InsightFace → 人脸 FAISS + SQLite
+视频 → 每秒2帧 → OWLv2 → 物体区域 FAISS + SQLite
+物体图片 → WISE OWLv2 原生查询 ──────────┘
 姓名 → 本地人物登记库 → 人脸向量 ────────┘
 视频 → 8秒窗口 / 4秒步长 / 16帧 → Qwen FP16 → 共享片段 FAISS
-文字 / 参考图 / 图片＋文字 → 同一 Qwen 查询编码 ─────────┘
+文字 / 图片＋文字 → 同一 Qwen 查询编码 ─────────┘
          → 视频ID、片段时间范围 → 从片段起点播放
 截图 → Qwen 候选视频 → 画面相关性 → 细化时刻
 人物＋场景 → 人脸门槛 → 包含命中时刻的 Qwen 片段 → 融合排序
@@ -61,7 +63,7 @@
 | `wise/src/wise/dataloader/streamreader.py` | 解码、采样率与时间戳如何对应 |
 | `wise/src/wise/feature/feature_extractor_factory.py` | 模型ID怎样映射到具体编码器 |
 | `wise/src/wise/feature/qwen3vl.py` | 文字、图片、图文联合查询与视频片段如何进入同一向量空间 |
-| `scripts/qwen_project.py` | 校验保留数据、移除旧模型资产、原子迁移索引版本 |
+| `scripts/qwen_project.py` | 校验保留数据、只移除 SigLIP 资产并保留 OWLv2 |
 | `wise/src/wise/feature/insightface.py` | 检测、对齐、身份特征，以及多人帧的多条向量 |
 | `wise/src/wise/api/services/search/local.py` | FAISS 内积检索怎样回查视频元数据 |
 | `wise/src/wise/api/standalone/search.py` | 查询解析、候选结果、时间窗合并与返回结构 |
@@ -69,6 +71,7 @@
 | `ui/app.js` | 检索请求、帧与片段结果呈现、起止时间与视频跳转播放 |
 | `scripts/ingestion.py` | 上传去重、持久任务队列、转码、增量提取、重建索引及版本发布 |
 | `ui/library.js` | 上传进度、任务轮询、视频库列表、名称筛选与从头播放 |
+| `scripts/restore_owl_project.py` | 用 WISE 合并旧物体特征、补提取缺失视频并原子恢复 |
 | `scripts/combined_search.py` | 人物身份门槛、同视频片段约束与 WISE RRF 排名融合 |
 | `scripts/action_search.py` | 滑动窗口、多帧抽样、增量共享片段索引、多模态查询与片段排序 |
 | `scripts/action_reranker.py` | Qwen 查询与候选联合评分、模型切换、同候选重排和资源采样 |
@@ -82,7 +85,7 @@
 ## 本机环境与改动
 
 - Apple M5，32GB 统一内存；Python 3.11；PyTorch 2.8 / Torchaudio 2.8；FFmpeg 6.1.2。
-- 当前 Qwen3-VL-Embedding 2B 使用 MPS / FP16；InsightFace `buffalo_l` 使用 CPU。SigLIP、OWLv2 编码器源码保留供历史实验使用，正式索引不加载。
+- 当前 Qwen3-VL-Embedding 2B 使用 MPS / FP16；InsightFace `buffalo_l` 使用 CPU。OWLv2 使用 MPS，已恢复正式检索与上传特征提取；SigLIP 只保留历史源码。
 - Qwen 动作模型使用 MPS、FP16、16 帧、总像素预算 1,048,576；配置集中在 `scripts/action_search.py` 的 `SETTINGS`，复用 WISE 编码器。Qwen 缓存恢复方式见 [在线动作检索](docs/在线动作检索.md)。
 - `wise_config.yaml` 禁用模型编译，避免上游默认 CUDA/编译设置不适合此 Mac。
 - `.media-runtime/` 独立安装 FFmpeg 6；`DYLD_FALLBACK_LIBRARY_PATH` 让 Torchaudio 能找到它，同时避免替换 OpenCV 自带 FFmpeg/libiconv。

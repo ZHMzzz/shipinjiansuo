@@ -33,8 +33,7 @@ from ingestion import IngestionManager, MAX_UPLOAD
 from combined_search import person_scene_search
 from query_image import decode_query_image
 from screenshot_search import ScreenshotMatcher
-from object_refinement import ObjectRefiner
-from qwen_project import prepare_qwen_project, validate_face_project, FACE
+from qwen_project import prepare_qwen_project, validate_project, FACE
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
 from action_reranker import VideoReranker, search_with_reranking, SETTINGS as RERANK_SETTINGS
 
@@ -42,10 +41,10 @@ ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / 'data/people.sqlite'
 logging.basicConfig(level=logging.INFO)
 config = APIConfig(command='serve', project_dir=prepare_qwen_project(ROOT))
+validate_project(config.project_dir, require_owl=True)
 app = create_app(config, ROOT / 'wise/frontend/dist')
 search_gate = asyncio.Lock()
 actions = ActionEngine()
-objects = ObjectRefiner()
 reranker = VideoReranker()
 actions.before_model = reranker.unload
 
@@ -66,7 +65,7 @@ async def publish_project(stage):
         if ingestion.stopping.is_set(): raise RuntimeError('服务停止，索引未发布')
         new_config = config.model_copy(update={'project_dir':stage})
         def load():
-            validate_face_project(stage)
+            validate_project(stage, require_owl=True)
             read_snapshot(stage, complete=True)
             project = WiseProject(stage, read_only=True)
             service = LocalWiseProjectService(project, new_config)
@@ -338,16 +337,8 @@ def search_segments(project: ProjectServiceDep, query: str = Form('', max_length
                     limit: int = Form(20, ge=1, le=50), refine: bool = Form(False)):
     query, negative = query.strip(), negative.strip()
     if not query and photo is None: raise HTTPException(400, '请输入描述或提供参考图片')
-    if refine and (photo is None or query): raise HTTPException(400, '精细匹配仅适用于纯参考图查询')
-    image = query_image(photo) if photo else None
-    result = segment_search(project, query, image, negative, max(limit,20) if refine else limit)
-    if not refine: return result
-    try:
-        return objects.refine(actions, project.wise_project._project_dir, result, image, negative, limit)
-    except ValueError as exc:
-        raise HTTPException(409, str(exc)) from exc
-    except RuntimeError as exc:
-        raise HTTPException(503, '精细匹配失败，可关闭后重试：'+str(exc)[:300]) from exc
+    if refine: raise HTTPException(410, '物体图片已恢复 WISE OWLv2，请刷新页面使用物体图片入口')
+    return segment_search(project, query, query_image(photo) if photo else None, negative, limit)
 
 
 @app.post('/mvp-api/trace')

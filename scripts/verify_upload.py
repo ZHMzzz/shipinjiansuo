@@ -15,14 +15,15 @@ mid=str(current['media_id'])
 videos=requests.get(BASE+'/mvp-api/videos').json()['videos']
 video=next(v for v in videos if str(v['id'])==mid)
 assert video['action_segments']>0
-assert video['features'] and all('insightface' in model for model in video['features'])
+assert any('owlv2' in model for model in video['features'])
+assert any('insightface' in model for model in video['features'])
 report['video']=video
 report['processing_seconds']=round(current['updated']-current['created'],2)
 image=(ROOT/'logs/test-fixtures/new-video-query.jpg').read_bytes()
 for kind in ['semantic','image','face']:
-    if kind=='face':
+    if kind in ['face','image']:
         r=requests.post(BASE+'/demo/search',params={'search_in':'video',
-            'feature_extractor_id':'deepinsight/insightface/buffalo_l/_unknown',
+            'feature_extractor_id':('deepinsight/insightface/buffalo_l/_unknown' if kind=='face' else 'transformers/owlv2/google/owlv2-base-patch16-ensemble'),
             'end':100,'thumbnails_to_send':1,'add_prefix':'false'},
             files={'image_file_queries':('query.jpg',image,'image/jpeg')},timeout=120)
     else:

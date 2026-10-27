@@ -41,7 +41,7 @@
       const title = node('h3', video.name); title.title = video.name;
       const meta = node('p'); meta.append(node('span', formatSize(video.size_in_bytes)), node('span', '从头播放 ↗'));
       const features = node('div', undefined, 'video-capabilities');
-      for (const [key, label] of [['insightface', '人脸']]) {
+      for (const [key, label] of [['owlv2', '物体'], ['insightface', '人脸']]) {
         const available = Object.entries(video.features).some(([model, count]) => model.includes(key) && count > 0);
         features.append(node('span', available ? `${label}可检索` : `未检出${label}特征`, available ? '' : 'muted'));
       }

@@ -19,19 +19,20 @@ def main():
                           ('excavator',{'摔倒01_白天工地.mp4'}),
                           ('sunglasses',{'whistling-OdLV8MmYkKI_000001_000011.mp4','whistling-LqQYSUb_TJI_000052_000062.mp4'})]:
         path=getattr(args,kind);raw=path.read_bytes();started=time.perf_counter()
-        endpoint='/mvp-api/trace' if kind=='screenshot' else '/mvp-api/search'
-        response=requests.post(base+endpoint,data={} if kind=='screenshot' else {'refine':'true'},
-            files={'photo':(path.name,raw,'application/octet-stream')},timeout=180)
+        endpoint='/mvp-api/trace' if kind=='screenshot' else '/demo/search'
+        params={} if kind=='screenshot' else {'search_in':'video','feature_extractor_id':'transformers/owlv2/google/owlv2-base-patch16-ensemble','end':100,'thumbnails_to_send':1,'add_prefix':'false'}
+        response=requests.post(base+endpoint,params=params,
+            files={('photo' if kind=='screenshot' else 'image_file_queries'):(path.name,raw,'application/octet-stream')},timeout=180)
         response.raise_for_status();result=response.json();videos=result['video_results'];hits=videos['unmerged_windows']
         ranking=[dict(media_id=h['media_id'],name=videos['videos'][str(h['media_id'])]['filename'],
             score=h['distance'],ts=h['ts'],te=h['te'],method=h.get('trace_method'),original_rank=h.get('original_rank')) for h in hits]
         report[kind]={'sha256':hashlib.sha256(raw).hexdigest(),'seconds':time.perf_counter()-started,
             'ranking':ranking,'refinement':result.get('object_refinement')}
-        output=Path(__file__).resolve().parents[1]/'logs/user-image-regression/live-after.json'
+        output=Path(__file__).resolve().parents[1]/'logs/owl-restored-user-images.json'
         output.parent.mkdir(exist_ok=True,parents=True);output.write_text(json.dumps(report,ensure_ascii=False,indent=2))
         assert ranking[0]['name'] in expected,(kind,ranking[:5])
         if kind=='screenshot': assert ranking[0]['method']=='aligned_crop' and ranking[0]['score']>.8
-        else: assert result['object_refinement']['applied'] and all(not h.get('bbox') for h in hits)
+        else: assert any(h.get('bbox') for h in hits) and not result.get('object_refinement')
         print(kind,'PASS',ranking[0],'seconds',round(report[kind]['seconds'],2),flush=True)
 
 

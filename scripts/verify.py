@@ -29,13 +29,17 @@ def record(label, response, elapsed, expected):
     return matches
 
 def search(label, expected, text=None, image=None):
-    data={'query':text} if text else {}
-    files={'photo':(image,(ROOT/'data/queries'/image).read_bytes(),'image/jpeg')} if image else None
     start=time.perf_counter()
-    r=requests.post(BASE+'/mvp-api/search',data=data,files=files,timeout=240)
+    if image:
+        r=requests.post(BASE+'/demo/search',params={'search_in':'video',
+            'feature_extractor_id':'transformers/owlv2/google/owlv2-base-patch16-ensemble',
+            'end':100,'thumbnails_to_send':1,'add_prefix':'false'},
+            files={'image_file_queries':(image,(ROOT/'data/queries'/image).read_bytes(),'image/jpeg')},timeout=240)
+    else:
+        r=requests.post(BASE+'/mvp-api/search',data={'query':text},timeout=240)
+        r.raise_for_status()
+        assert r.json()['score_kind']=='segment'
     r.raise_for_status()
-    assert r.json()['score_kind']=='segment'
-    assert all(not h.get('bbox') for h in r.json()['video_results']['unmerged_windows'])
     return record(label,r,time.perf_counter()-start,expected)
 
 info=requests.get(BASE+'/demo/info',timeout=240)

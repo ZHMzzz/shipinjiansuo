@@ -1,4 +1,4 @@
-"""Retire legacy encoders on a copy; preserve Qwen and face indexes byte for byte."""
+"""Retire SigLIP on a copy; retain Qwen, InsightFace and WISE OWLv2."""
 import fcntl
 import hashlib
 import json
@@ -16,8 +16,8 @@ except ImportError:
     from ingestion import prepare_versions
 
 FACE = 'deepinsight/insightface/buffalo_l/_unknown'
-RETIRED = ('mlfoundations/open_clip/ViT-B-16-SigLIP2-256/webli',
-           'transformers/owlv2/google/owlv2-base-patch16-ensemble')
+OWL = 'transformers/owlv2/google/owlv2-base-patch16-ensemble'
+RETIRED = ('mlfoundations/open_clip/ViT-B-16-SigLIP2-256/webli',)
 
 
 def retained_fingerprint(project):
@@ -34,17 +34,19 @@ def retained_fingerprint(project):
     return fingerprints
 
 
-def validate_face_project(project):
+def validate_project(project, require_owl=False):
     with sqlite3.connect(project/'metadata/internal.db') as db:
         models = {r[0] for r in db.execute('SELECT DISTINCT feature_extractor_id FROM vectors')}
-    if models - {FACE} or any((project/'store'/model).exists() for model in RETIRED):
-        raise ValueError('WISE 索引仍包含已停用模型，请先迁移至 Qwen 片段与人脸索引')
+    if models - {FACE, OWL} or any((project/'store'/model).exists() for model in RETIRED):
+        raise ValueError('WISE 索引仍包含已停用模型，请先移除 SigLIP，保留 Qwen、OWLv2 与人脸索引')
+    if require_owl and not (project/'store'/OWL/'index/video-IndexFlatIP.faiss').exists():
+        raise ValueError('缺少 OWLv2 索引，请先运行 scripts/restore_owl_project.py 构建并发布')
 
 
 def prepare_qwen_project(root):
     current = prepare_versions(root)
     if not any((current/'store'/model).exists() for model in RETIRED):
-        validate_face_project(current)
+        validate_project(current)
         return current
     (root/'logs').mkdir(exist_ok=True)
     with (root/'logs/ingestion.lock').open('a') as lock:
@@ -59,10 +61,9 @@ def prepare_qwen_project(root):
             with sqlite3.connect(stage/'metadata/internal.db') as db:
                 db.execute('PRAGMA foreign_keys=ON')
                 db.executemany('DELETE FROM vectors WHERE feature_extractor_id=?', [(m,) for m in RETIRED])
-                db.execute('DROP TABLE IF EXISTS vector_metadata_owlv2')
             for model in RETIRED:
                 shutil.rmtree(stage/'store'/model, ignore_errors=True)
-            validate_face_project(stage)
+            validate_project(stage)
             read_snapshot(stage, complete=True)
             if retained_fingerprint(stage) != before:
                 raise RuntimeError('迁移改变了应保留的数据，未发布')

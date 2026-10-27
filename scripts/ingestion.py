@@ -275,28 +275,28 @@ class IngestionManager:
                 self.run([str(self.root/'.media-runtime/bin/ffmpeg'),'-y','-v','error','-nostdin','-i',str(folder/('source'+job['suffix'])),
                     '-map','0:v:0','-map','0:a:0?','-vf',"scale=640:640:force_original_aspect_ratio=decrease:force_divisible_by=2",'-c:v','libx264','-crf','23','-preset','fast','-pix_fmt','yuv420p','-c:a','aac','-movflags','+faststart','-progress','pipe:1',str(video)],log,transcode_progress)
                 if shutil.disk_usage(self.root).free < 2*1024**3: raise RuntimeError('磁盘空间不足，无法创建新索引版本')
-                self.update(jid,status='extracting',stage='提取人脸特征',progress=15,message='提取人脸特征，随后建立 Qwen 片段索引')
+                self.update(jid,status='extracting',stage='提取物体与人脸特征',progress=15,message='通过 WISE 提取 OWLv2 物体与人脸特征，随后建立 Qwen 片段索引')
                 shutil.copytree((self.root/'projects/demo').resolve(),stage)
                 try:
-                    from .qwen_project import validate_face_project, FACE
+                    from .qwen_project import validate_project, FACE, OWL
                 except ImportError:
-                    from qwen_project import validate_face_project, FACE
-                validate_face_project(stage)
-                expected=max(1,math.ceil(duration*2))
+                    from qwen_project import validate_project, FACE, OWL
+                validate_project(stage, require_owl=True)
+                expected=max(1,math.ceil(duration*2)*2)
                 def extraction_progress(line):
                     match=re.search(r'Feature extraction:\s*(\d+)it',line)
                     if match:
                         done=int(match[1])
                         self.update(jid,progress=min(78,15+63*done/expected),message=f'已完成 {done} 次帧特征计算，预计约 {expected} 次')
                 self.run([sys.executable,'-u','-m','wise','extract-features',str(prepared),'--project-dir',str(stage),'--num-workers','0','--yes'],log,extraction_progress)
-                self.update(jid,status='indexing',stage='构建检索索引',progress=80,message='合并新旧人脸特征，构建人脸检索索引')
+                self.update(jid,status='indexing',stage='构建检索索引',progress=80,message='合并新旧物体和人脸特征，构建 WISE 检索索引')
                 self.run([sys.executable,'-u','-m','wise','create-index','--project-dir',str(stage),'--overwrite'],log)
             with sqlite3.connect(stage/'metadata/internal.db') as db:
                 row=db.execute('SELECT media.id FROM media JOIN source_collections s ON s.id=media.source_collection_id WHERE s.location=?',(str(prepared),)).fetchone()
                 if not row: raise RuntimeError('处理结束但没有产生视频记录，未发布此任务')
                 media_id=row[0]
                 counts=dict(db.execute('SELECT feature_extractor_id,count(*) FROM vectors WHERE media_id=? GROUP BY feature_extractor_id',(media_id,)))
-                if set(counts) - {FACE}: raise RuntimeError('出现已停用的特征模型，未发布此任务')
+                if set(counts) - {FACE, OWL}: raise RuntimeError('出现已停用的特征模型，未发布此任务')
             with sqlite3.connect(stage/'thumbs.db') as db:
                 if not db.execute('SELECT count(*) FROM thumbnails WHERE media_id=?',(media_id,)).fetchone()[0]:
                     raise RuntimeError('缺少视频缩略图，未发布此任务')
