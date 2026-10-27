@@ -34,11 +34,6 @@ for kind in ['semantic','image','face']:
     hits=r.json()['video_results']['unmerged_windows']
     assert mid in [str(h['media_id']) for h in hits],(kind,'uploaded video missing')
     report[kind]={'top_media_id':hits[0]['media_id'],'uploaded_hit_rank':next(i+1 for i,h in enumerate(hits) if str(h['media_id'])==mid)}
-r=requests.post(BASE+'/mvp-api/trace',files={'photo':('query.jpg',image,'image/jpeg')},timeout=30)
-r.raise_for_status()
-top=r.json()['video_results']['unmerged_windows'][0]
-assert str(top['media_id'])==mid,top
-report['trace']={'media_id':top['media_id'],'time':top['thumbnail_ts']}
 for endpoint in [video['url'],video['thumbnail']]:
     r=requests.get(BASE+endpoint,headers={'Range':'bytes=0-1023'},timeout=10)
     assert r.status_code in (200,206)

@@ -48,10 +48,6 @@ assert info.json()['num_thumbnails'] > 0, 'Missing thumbnails'
 (ROOT/'logs/project-info.json').write_text(json.dumps(info.json(),ensure_ascii=False,indent=2))
 for query,expected in [('一个人背着背包走路','backpack'),('一个人在跑步','jogging'),('锅里正在炒蔬菜','frying-vegetables')]:
     search('中文：'+query,expected,text=query)
-start=time.perf_counter()
-r=requests.post(BASE+'/mvp-api/trace',files={'photo':('trace.jpg',(ROOT/'data/queries/jogging-OV-CGjSLNbg_000053_000063-preview.jpg').read_bytes(),'image/jpeg')},timeout=120)
-trace_matches=record('截图溯源：2.25秒',r,time.perf_counter()-start,'jogging-OV-CGjSLNbg')
-assert abs(trace_matches[0]['time']-2.25)<0.3, 'Screenshot temporal refinement failed'
 search('独立背包图片','backpack',image='backpack-independent.jpg')
 names=requests.get(BASE+'/mvp-api/people').json()
 if '演示人物A' not in names:

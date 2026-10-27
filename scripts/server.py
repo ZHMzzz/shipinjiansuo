@@ -1,6 +1,5 @@
 """Local research extension. WISE retains decoding, embeddings, FAISS and playback APIs."""
 import io
-import base64
 import logging
 import sqlite3
 import time
@@ -13,7 +12,6 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 import numpy as np
-import cv2
 import uvicorn
 from fastapi import File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, RedirectResponse
@@ -32,7 +30,6 @@ from wise.wise_project import WiseProject
 from ingestion import IngestionManager, MAX_UPLOAD
 from combined_search import person_scene_search
 from query_image import decode_query_image
-from screenshot_search import ScreenshotMatcher
 from qwen_project import prepare_qwen_project, validate_project, FACE
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
 from action_reranker import VideoReranker, search_with_reranking, SETTINGS as RERANK_SETTINGS
@@ -53,7 +50,7 @@ actions.before_model = reranker.unload
 async def serialize_search_and_publication(request, call_next):
     # Keep dependency resolution and inference consistent during a version swap.
     # Uploads and task polling remain available while a search is running.
-    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/trace', '/mvp-api/actions/search', '/mvp-api/search')):
+    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/actions/search', '/mvp-api/search')):
         async with search_gate:
             return await call_next(request)
     return await call_next(request)
@@ -339,43 +336,6 @@ def search_segments(project: ProjectServiceDep, query: str = Form('', max_length
     if not query and photo is None: raise HTTPException(400, '请输入描述或提供参考图片')
     if refine: raise HTTPException(410, '物体图片已恢复 WISE OWLv2，请刷新页面使用物体图片入口')
     return segment_search(project, query, query_image(photo) if photo else None, negative, limit)
-
-
-@app.post('/mvp-api/trace')
-def trace(project: ProjectServiceDep, photo: UploadFile = File(...)):
-    """Qwen shortlist, then full-frame or geometrically aligned crop matching."""
-    started = time.perf_counter()
-    image = query_image(photo)
-    data = segment_search(project, image=image, limit=5)
-    data['score_kind'] = 'trace'
-    video_results = data['video_results']
-    candidates = {}
-    for hit in video_results['unmerged_windows']:
-        candidates.setdefault(hit['media_id'],hit)
-        if len(candidates) == 5:
-            break
-
-    matcher = ScreenshotMatcher(image)
-    refined = []
-    with sqlite3.connect(project.wise_project._project_dir/'metadata/internal.db') as db:
-        for mid,hit in candidates.items():
-            row = db.execute('SELECT location,path FROM media JOIN source_collections ON source_collections.id=media.source_collection_id WHERE media.id=?',(mid,)).fetchone()
-            path = Path(row[0])/row[1]
-            if not path.is_absolute(): path=ROOT/path
-            match = matcher.refine(path)
-            if match is None: continue
-            score,ts,frame,method = match
-            thumb=cv2.resize(frame,(320,round(frame.shape[0]*320/frame.shape[1])))
-            _,jpg=cv2.imencode('.jpg',thumb)
-            hit=dict(hit)
-            hit.update(ts=ts,te=min(ts+4,video_results['videos'][mid]['duration']),thumbnail_ts=ts,
-                distance=score,link=f'media/{mid}#t={ts}',bbox=None,trace_method=method,
-                thumbnail='data:image/jpeg;base64,'+base64.b64encode(jpg).decode())
-            refined.append(hit)
-    refined.sort(key=lambda h:h['distance'],reverse=True)
-    video_results.update(unmerged_windows=refined,merged_windows=refined,total=len(refined))
-    data['time']=time.perf_counter()-started
-    return data
 
 
 app.mount('/queries', StaticFiles(directory=ROOT / 'data/queries'), name='queries')

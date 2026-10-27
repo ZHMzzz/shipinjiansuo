@@ -1,3 +1,5 @@
+> 截图溯源相关内容已被 [ADR 0004](0004-remove-screenshot-tracing.md) 取代，以下保留历史决策。
+
 # 使用 Qwen 片段索引统一视觉语义检索，保留专用人脸索引
 
 物体检索部分已由 [ADR 0002](0002-restore-wise-owlv2.md) 更新：按用户明确选择恢复 WISE2 OWLv2 链路。
