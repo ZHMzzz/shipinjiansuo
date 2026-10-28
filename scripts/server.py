@@ -97,7 +97,7 @@ async def build_action_index(stage, progress):
     catalog, records, vectors, missing = await asyncio.to_thread(actions.prepare, stage)
     total = sum(len(list(windows(float(m['duration'])))) for m in missing)
     done = 0
-    progress(0, total, f'准备处理 {len(missing)} 个视频、{total} 个Qwen 片段；首次需要加载 Qwen 模型')
+    progress(0, total, f'准备处理 {len(missing)} 个视频、{total} 个Qwen 片段')
     for media in missing:
         for start, end in windows(float(media['duration'])):
             if ingestion.stopping.is_set(): raise RuntimeError('服务停止，动作索引未发布')
@@ -119,6 +119,16 @@ wise_lifespan = app.router.lifespan_context
 @asynccontextmanager
 async def lifespan(application):
     async with wise_lifespan(application) as state:
+        # Finish loading and the first text inference before accepting requests
+        # or starting ingestion, which shares the same model and MPS device.
+        started = time.perf_counter()
+        logging.info('正在加载并预热 Qwen 自然语言检索模型…')
+        try:
+            await asyncio.to_thread(actions.query_vector, '视频中的场景和动作')
+        except Exception:
+            logging.exception('Qwen 启动预热失败，服务未就绪；请处理错误后重新启动')
+            raise
+        logging.info('Qwen 自然语言检索模型已就绪，加载及预热耗时 %.2f 秒', time.perf_counter() - started)
         ingestion.start(asyncio.get_running_loop())
         try:
             yield state
