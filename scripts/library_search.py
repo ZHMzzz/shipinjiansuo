@@ -11,9 +11,11 @@ from wise.data_models import MediaType, ModalityType
 if __package__:
     from .qwen_project import OWL, FACE
     from .combined_search import person_scene_search
+    from .semantic_filter import filter_semantic_hits
 else:
     from qwen_project import OWL, FACE
     from combined_search import person_scene_search
+    from semantic_filter import filter_semantic_hits
 
 
 def matching_media(catalog, filename):
@@ -42,6 +44,9 @@ def object_constraints(db_path, allowed, face_times=None):
 def normalize(data, catalog, mode, limit, threshold):
     by_id = {str(v['id']): v for v in catalog}
     hits = (data.get('video_results') or {}).get('unmerged_windows', [])
+    if mode in ('text', 'person_scene'):
+        hits = filter_semantic_hits(hits,
+            score_key='scene_similarity' if mode == 'person_scene' else 'distance')
     items, seen = [], set()
     for hit in hits:
         mid = str(hit['media_id'])

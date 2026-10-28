@@ -73,7 +73,7 @@ def test_text_route_groups_before_video_limit_and_reports_extra_video(count, lim
     catalog=[dict(id=i,name=f'{i}.mp4',duration=20) for i in range(1,4)]
     actions=Mock()
     actions.search.return_value={'video_results':{'unmerged_windows':[
-        dict(media_id=i,ts=8,te=16,thumbnail=f'thumb/{i}',distance=1-i*.1)
+        dict(media_id=i,ts=8,te=16,thumbnail=f'thumb/{i}',distance=.9-i*.01)
         for i in range(1,count+1)]}}
     result=search_library(catalog=catalog,query='写字',person='',filename='',image_bytes=None,
         threshold=.45,limit=2,project=NS(wise_project=NS(_project_dir='project')),
