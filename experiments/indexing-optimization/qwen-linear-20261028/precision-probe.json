@@ -1,0 +1,16 @@
+{
+  "fp32_projection_seconds": 0.008143058198038488,
+  "items": 2,
+  "linear_fp16": {
+    "max_abs": 0.00390625,
+    "mean_abs": 3.483281398075633e-05,
+    "relative_l2": 0.0002601973828859627,
+    "exact_fraction": 0.7338062524795532
+  },
+  "linear_fp32": {
+    "max_abs": 0.00390625,
+    "mean_abs": 3.4836783015634865e-05,
+    "relative_l2": 0.00026021749363280833,
+    "exact_fraction": 0.733788251876831
+  }
+}

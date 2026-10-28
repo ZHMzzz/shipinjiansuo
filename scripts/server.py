@@ -31,7 +31,7 @@ from ingestion import IngestionManager, MAX_UPLOAD
 from combined_search import person_scene_search
 from query_image import decode_query_image
 from qwen_project import validate_project, FACE
-from native_qwen import prepare_native_qwen_project, sync_native_qwen, validate_native_qwen, QWEN
+from native_qwen import prepare_native_qwen_project, validate_native_qwen, QWEN
 from library_search import search_library, native_text_search
 from video_deletion import delete_video
 from library_catalog import list_video_catalog
@@ -112,7 +112,6 @@ async def build_action_index(stage, progress):
             await asyncio.sleep(0)
     if ingestion.stopping.is_set(): raise RuntimeError('服务停止，动作索引未发布')
     await asyncio.to_thread(actions.finish, stage, catalog, records, vectors)
-    await asyncio.to_thread(sync_native_qwen, stage)
 
 
 ingestion = IngestionManager(ROOT, publish_project, build_action_index)
@@ -150,8 +149,8 @@ def jobs():
 
 @app.get('/mvp-api/actions/status')
 def action_status(project: ProjectServiceDep):
-    path = project.wise_project._project_dir/'action-index/metadata.json'
-    meta = json.loads(path.read_text()) if path.exists() else {'media':[], 'segments':[]}
+    snapshot = actions.get_snapshot(project.wise_project._project_dir)
+    meta = snapshot[0] if snapshot else {'media':[], 'segments':[]}
     return {**ingestion.action_state, 'indexed_videos':len(meta['media']),
         'indexed_segments':len(meta['segments']), 'model_loaded':actions.extractor is not None,
         'model_load_seconds':actions.last_load_seconds, 'settings':ACTION_SETTINGS}

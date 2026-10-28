@@ -12,7 +12,7 @@ import numpy as np
 import pytest
 from fastapi import HTTPException, UploadFile
 from wise.wise_project import WiseProject
-from scripts.action_search import ActionEngine, media_catalog, plan, read_snapshot
+from scripts.action_search import ActionEngine, SETTINGS, media_catalog, plan, read_snapshot
 from scripts.ingestion import IngestionManager
 from scripts.qwen_project import FACE, OWL
 from scripts.video_deletion import (delete_video, prune_project, read_media,
@@ -40,7 +40,12 @@ def fixture(root):
                 index=faiss.IndexIDMap2(faiss.IndexFlatIP(3));index.add_with_ids(vectors,ids);faiss.write_index(index,str(path/file))
     with sqlite3.connect(stage/'thumbs.db') as db:
         db.executemany('INSERT INTO thumbnails(media_id,timestamp,content) VALUES(?,?,?)',[(10,0,b'keep'),(20,0,b'delete')])
-    catalog=media_catalog(stage);ActionEngine().finish(stage,catalog,plan(catalog),np.array([[1,0,0],[0,1,0]],dtype='float32'))
+    # Historical releases must remain deletable after native-only migration.
+    catalog=media_catalog(stage);matrix=np.array([[1,0,0],[0,1,0]],dtype='float32')
+    folder=stage/'action-index';folder.mkdir()
+    index=faiss.IndexFlatIP(3);index.add(matrix)
+    np.save(folder/'vectors.npy',matrix);faiss.write_index(index,str(folder/'index.faiss'))
+    (folder/'metadata.json').write_text(json.dumps({'settings':SETTINGS,'media':catalog,'segments':plan(catalog)}))
     (root/'projects/demo').symlink_to(stage)
     manager.update(job['id'],status='completed',media_id=20)
     async def publish(new):

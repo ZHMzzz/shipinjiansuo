@@ -1,0 +1,14 @@
+{
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "python": "3.11.15",
+  "chip": "Apple M5",
+  "memory_bytes": 34359738368,
+  "packages": {
+    "torch": "2.8.0",
+    "torchaudio": "2.8.0",
+    "transformers": "4.57.6",
+    "qwen-vl-utils": "0.0.14",
+    "faiss-cpu": "1.15.1",
+    "numpy": "1.26.4"
+  }
+}

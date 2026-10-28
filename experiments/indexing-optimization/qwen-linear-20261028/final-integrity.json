@@ -1,0 +1,11 @@
+{
+  "production_unchanged": true,
+  "project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/e0a462544ac0415c8d415e5f5ac6cf72/demo",
+  "source_sha256": {
+    "qwen_linear.py": "956c210c39afe73cb1e2061fc095736d6fd7b31ddf2808eef2987aa0796503a3",
+    "qwen_linear_evaluate.py": "c64ed1f3b51075fc80bcb913a98e3b8aba5184e4fef647db56f30a600fa21a4a",
+    "qwen_linear_summary.py": "a13c4a19960dde0c315796678dd19a24b110e05111fbc957d3fe5e6f431df9cb",
+    "qwen_linear_precision_probe.py": "e00b2304e9ae87dc6e808c6743096fd3302bf422eab913cb6b09382e22a56ae9"
+  },
+  "all_six_encoding_runs_completed": true
+}

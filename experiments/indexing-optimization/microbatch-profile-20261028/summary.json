@@ -1,0 +1,2081 @@
+{
+  "owl": {
+    "runtime": {
+      "dtype": "torch.float16",
+      "attention_class": "Owlv2Attention"
+    },
+    "stages": {
+      "1": {
+        "preprocess": 0.02806513504765462,
+        "to_mps": 0.004012854231405072,
+        "model": 1.15548267721897,
+        "float_and_sort": 0.005736760227591731,
+        "to_cpu": 0.0038148744934005663,
+        "construct_features": 0.0029406877438304946
+      },
+      "2": {
+        "preprocess": 0.028596187228686176,
+        "to_mps": 0.003172489727148786,
+        "model": 1.207644947746303,
+        "float_and_sort": 0.004509531223447993,
+        "to_cpu": 0.0026693749969126657,
+        "construct_features": 0.0032121042313519865
+      }
+    },
+    "modules": {
+      "1": {
+        "preprocess": 0.029715438518906012,
+        "to_mps": 0.004751291970023885,
+        "vision_attention": 0.9265070424589794,
+        "vision_mlp": 0.25095927208894864,
+        "model": 1.2638376879913267,
+        "float_and_sort": 0.005669062462402508,
+        "to_cpu": 0.0037586874968837947,
+        "construct_features": 0.0031310830381698906
+      },
+      "2": {
+        "preprocess": 0.028841208521043882,
+        "to_mps": 0.0038666045002173632,
+        "vision_attention": 0.9062631664855871,
+        "vision_mlp": 0.23838318546768278,
+        "model": 1.221299834025558,
+        "float_and_sort": 0.004573478479869664,
+        "to_cpu": 0.0033232500427402556,
+        "construct_features": 0.003031312982784584
+      }
+    },
+    "mps": {
+      "1": {
+        "no_cpu_fallback_reported": true,
+        "operations": [
+          {
+            "id": "G2",
+            "calls": 4,
+            "mean_scheduling_ms": 0.049,
+            "mean_gpu_ms": 4.253,
+            "total_gpu_ms": 17.011,
+            "name": "mps_convolution:16:16:1:1:0:0:1:Contiguous:f16[1,3,960,960]:f16[768,3,16,16]:0:nobias"
+          },
+          {
+            "id": "G5",
+            "calls": 96,
+            "mean_scheduling_ms": 0.013,
+            "mean_gpu_ms": 1.925,
+            "total_gpu_ms": 184.777,
+            "name": "bmm_out_mps_impl:f16[-1]:f16[-1]0"
+          },
+          {
+            "id": "K3",
+            "calls": 96,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.812,
+            "total_gpu_ms": 77.913,
+            "name": "mul_strided_cast_half:MPS:Half[1, 3601, 3072]:CPU:Float[]"
+          },
+          {
+            "id": "K2",
+            "calls": 324,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.625,
+            "total_gpu_ms": 202.373,
+            "name": "mps_linear:MPS:Half[1, 3600, 768]:MPS:Half[4, 768]:MPS:Half[4]"
+          },
+          {
+            "id": "K6",
+            "calls": 48,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.595,
+            "total_gpu_ms": 28.557,
+            "name": "mul_dense_half_half:MPS:Half[1, 3601, 3072]:MPS:Half[1, 3601, 3072]"
+          },
+          {
+            "id": "K7",
+            "calls": 8,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.563,
+            "total_gpu_ms": 4.506,
+            "name": "mul_strided_half_half:MPS:Half[1, 3600, 513]:MPS:Half[1, 3600, 1]"
+          },
+          {
+            "id": "G14",
+            "calls": 4,
+            "mean_scheduling_ms": 0.064,
+            "mean_gpu_ms": 0.485,
+            "total_gpu_ms": 1.942,
+            "name": "gather_out_mps:f32[1,3600,513]:i64[1,3600,513]:f32[1,3600,513]:1"
+          },
+          {
+            "id": "K5",
+            "calls": 56,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.328,
+            "total_gpu_ms": 18.378,
+            "name": "sigmoid:MPS:Half[1, 3600, 4]"
+          },
+          {
+            "id": "G3",
+            "calls": 4,
+            "mean_scheduling_ms": 0.026,
+            "mean_gpu_ms": 0.271,
+            "total_gpu_ms": 1.086,
+            "name": "cat_out_mps:1:NCHW:f16:2"
+          },
+          {
+            "id": "K4",
+            "calls": 192,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.259,
+            "total_gpu_ms": 49.671,
+            "name": "gather_kernel_4:MPS:Half[1, 3601, 12, 64]:MPS:Half[1, 3601, 12, 64]"
+          },
+          {
+            "id": "K9",
+            "calls": 4,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.224,
+            "total_gpu_ms": 0.894,
+            "name": "div_true_strided_half_half:MPS:Half[1, 3600, 512]:MPS:Half[1, 3600, 1]"
+          },
+          {
+            "id": "G4",
+            "calls": 4,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.218,
+            "total_gpu_ms": 0.872,
+            "name": "index_select_out_mps:f16[3601,768]:i64[3601]:0"
+          },
+          {
+            "id": "K1",
+            "calls": 100,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.18,
+            "total_gpu_ms": 17.967,
+            "name": "add_dense_half_half:MPS:Half[1, 3601, 768]:MPS:Half[1, 3601, 768]"
+          },
+          {
+            "id": "G1",
+            "calls": 4,
+            "mean_scheduling_ms": 0.038,
+            "mean_gpu_ms": 0.129,
+            "total_gpu_ms": 0.517,
+            "name": "copy_cast_mps:f32[-1]:f16[-1]:0"
+          },
+          {
+            "id": "G10",
+            "calls": 16,
+            "mean_scheduling_ms": 0.025,
+            "mean_gpu_ms": 0.078,
+            "total_gpu_ms": 1.25,
+            "name": "gelu_out_mps:f16[1,3600,768]:none"
+          },
+          {
+            "id": "G12",
+            "calls": 4,
+            "mean_scheduling_ms": 0.03,
+            "mean_gpu_ms": 0.06,
+            "total_gpu_ms": 0.239,
+            "name": "sort:1,3600:Float32:dim1:descending1"
+          },
+          {
+            "id": "G11",
+            "calls": 12,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.06,
+            "total_gpu_ms": 0.714,
+            "name": "copy_cast_mps:f16[-1]:f32[-1]:0"
+          },
+          {
+            "id": "G9",
+            "calls": 4,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.049,
+            "total_gpu_ms": 0.196,
+            "name": "cat_out_mps:2:NCHW:f16:2"
+          },
+          {
+            "id": "G7",
+            "calls": 4,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.046,
+            "total_gpu_ms": 0.183,
+            "name": "norm_out_mps:-1::f16[1,3600,512]:p2.000000:keepdim=1:Half"
+          },
+          {
+            "id": "G13",
+            "calls": 4,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.007,
+            "total_gpu_ms": 0.028,
+            "name": "gather_out_mps:f32[1,3600]:i64[1,3600]:f32[1,3600]:1"
+          },
+          {
+            "id": "G15",
+            "calls": 4,
+            "mean_scheduling_ms": 0.026,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.021,
+            "name": "gather_out_mps:f32[1,3600,4]:i64[1,3600,4]:f32[1,3600,4]:1"
+          },
+          {
+            "id": "K8",
+            "calls": 8,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.025,
+            "name": "add_strided_cast_half:MPS:Half[1, 3600, 1]:CPU:Long[]"
+          },
+          {
+            "id": "K10",
+            "calls": 4,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.01,
+            "name": "add_dense_cast_half:MPS:Half[1, 3600, 4]:MPS:Float[3600, 4]"
+          },
+          {
+            "id": "G8",
+            "calls": 4,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.001,
+            "total_gpu_ms": 0.006,
+            "name": "elu_out_mps::f16[1,3600,1]:1.000000:1.000000:1.000000"
+          },
+          {
+            "id": "G6",
+            "calls": 48,
+            "mean_scheduling_ms": 0.001,
+            "mean_gpu_ms": 0.0,
+            "total_gpu_ms": 0.003,
+            "name": "softmax_mps_out:f16[-1]:Contiguous:2"
+          }
+        ],
+        "warning": "Commit/wait profiling changes scheduling. Timings are diagnostics, not production throughput. Names for shared Metal kernels may show only last observed shape; use CPU dispatch traces for all shapes."
+      },
+      "2": {
+        "no_cpu_fallback_reported": true,
+        "operations": [
+          {
+            "id": "G2",
+            "calls": 2,
+            "mean_scheduling_ms": 0.164,
+            "mean_gpu_ms": 9.379,
+            "total_gpu_ms": 18.758,
+            "name": "mps_convolution:16:16:1:1:0:0:1:Contiguous:f16[2,3,960,960]:f16[768,3,16,16]:0:nobias"
+          },
+          {
+            "id": "G5",
+            "calls": 48,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 4.214,
+            "total_gpu_ms": 202.261,
+            "name": "bmm_out_mps_impl:f16[-1]:f16[-1]0"
+          },
+          {
+            "id": "K3",
+            "calls": 48,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 1.481,
+            "total_gpu_ms": 71.067,
+            "name": "mul_strided_cast_half:MPS:Half[2, 3601, 3072]:CPU:Float[]"
+          },
+          {
+            "id": "K2",
+            "calls": 162,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 1.25,
+            "total_gpu_ms": 202.471,
+            "name": "mps_linear:MPS:Half[2, 3600, 768]:MPS:Half[4, 768]:MPS:Half[4]"
+          },
+          {
+            "id": "K7",
+            "calls": 24,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 1.219,
+            "total_gpu_ms": 29.261,
+            "name": "mul_dense_half_half:MPS:Half[2, 3601, 3072]:MPS:Half[2, 3601, 3072]"
+          },
+          {
+            "id": "G14",
+            "calls": 2,
+            "mean_scheduling_ms": 3.552,
+            "mean_gpu_ms": 1.031,
+            "total_gpu_ms": 2.062,
+            "name": "gather_out_mps:f32[2,3600,513]:i64[2,3600,513]:f32[2,3600,513]:1"
+          },
+          {
+            "id": "K9",
+            "calls": 4,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.795,
+            "total_gpu_ms": 3.18,
+            "name": "mul_strided_half_half:MPS:Half[2, 3600, 513]:MPS:Half[2, 3600, 1]"
+          },
+          {
+            "id": "K1",
+            "calls": 2,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.662,
+            "total_gpu_ms": 1.324,
+            "name": "add_strided_half_half:MPS:Half[2, 3601, 768]:MPS:Half[1, 3601, 768]"
+          },
+          {
+            "id": "K6",
+            "calls": 28,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.612,
+            "total_gpu_ms": 17.132,
+            "name": "sigmoid:MPS:Half[2, 3600, 4]"
+          },
+          {
+            "id": "K4",
+            "calls": 96,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.585,
+            "total_gpu_ms": 56.201,
+            "name": "gather_kernel_4:MPS:Half[2, 3601, 12, 64]:MPS:Half[2, 3601, 12, 64]"
+          },
+          {
+            "id": "K11",
+            "calls": 2,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.445,
+            "total_gpu_ms": 0.89,
+            "name": "div_true_strided_half_half:MPS:Half[2, 3600, 512]:MPS:Half[2, 3600, 1]"
+          },
+          {
+            "id": "K5",
+            "calls": 48,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.312,
+            "total_gpu_ms": 14.964,
+            "name": "add_dense_half_half:MPS:Half[2, 3601, 768]:MPS:Half[2, 3601, 768]"
+          },
+          {
+            "id": "G3",
+            "calls": 2,
+            "mean_scheduling_ms": 0.032,
+            "mean_gpu_ms": 0.299,
+            "total_gpu_ms": 0.597,
+            "name": "cat_out_mps:1:NCHW:f16:2"
+          },
+          {
+            "id": "G1",
+            "calls": 2,
+            "mean_scheduling_ms": 0.086,
+            "mean_gpu_ms": 0.296,
+            "total_gpu_ms": 0.593,
+            "name": "copy_cast_mps:f32[-1]:f16[-1]:0"
+          },
+          {
+            "id": "G10",
+            "calls": 8,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.201,
+            "total_gpu_ms": 1.606,
+            "name": "gelu_out_mps:f16[2,3600,768]:none"
+          },
+          {
+            "id": "G11",
+            "calls": 6,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.137,
+            "total_gpu_ms": 0.823,
+            "name": "copy_cast_mps:f16[-1]:f32[-1]:0"
+          },
+          {
+            "id": "G9",
+            "calls": 2,
+            "mean_scheduling_ms": 0.028,
+            "mean_gpu_ms": 0.123,
+            "total_gpu_ms": 0.247,
+            "name": "cat_out_mps:2:NCHW:f16:2"
+          },
+          {
+            "id": "G4",
+            "calls": 2,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.109,
+            "total_gpu_ms": 0.219,
+            "name": "index_select_out_mps:f16[3601,768]:i64[3601]:0"
+          },
+          {
+            "id": "G7",
+            "calls": 2,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.105,
+            "total_gpu_ms": 0.209,
+            "name": "norm_out_mps:-1::f16[2,3600,512]:p2.000000:keepdim=1:Half"
+          },
+          {
+            "id": "G12",
+            "calls": 2,
+            "mean_scheduling_ms": 0.106,
+            "mean_gpu_ms": 0.047,
+            "total_gpu_ms": 0.095,
+            "name": "sort:2,3600:Float32:dim1:descending1"
+          },
+          {
+            "id": "G15",
+            "calls": 2,
+            "mean_scheduling_ms": 0.062,
+            "mean_gpu_ms": 0.015,
+            "total_gpu_ms": 0.03,
+            "name": "gather_out_mps:f32[2,3600,4]:i64[2,3600,4]:f32[2,3600,4]:1"
+          },
+          {
+            "id": "G13",
+            "calls": 2,
+            "mean_scheduling_ms": 0.026,
+            "mean_gpu_ms": 0.01,
+            "total_gpu_ms": 0.02,
+            "name": "gather_out_mps:f32[2,3600]:i64[2,3600]:f32[2,3600]:1"
+          },
+          {
+            "id": "G8",
+            "calls": 2,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.009,
+            "name": "elu_out_mps::f16[2,3600,1]:1.000000:1.000000:1.000000"
+          },
+          {
+            "id": "K10",
+            "calls": 6,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.024,
+            "name": "add_strided_cast_half:MPS:Half[2, 3600, 4]:MPS:Float[3600, 4]"
+          },
+          {
+            "id": "K8",
+            "calls": 2,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.005,
+            "name": "gather_kernel_2:MPS:Half[2, 768]:MPS:Half[2, 768]"
+          },
+          {
+            "id": "G6",
+            "calls": 24,
+            "mean_scheduling_ms": 0.002,
+            "mean_gpu_ms": 0.0,
+            "total_gpu_ms": 0.001,
+            "name": "softmax_mps_out:f16[-1]:Contiguous:2"
+          }
+        ],
+        "warning": "Commit/wait profiling changes scheduling. Timings are diagnostics, not production throughput. Names for shared Metal kernels may show only last observed shape; use CPU dispatch traces for all shapes."
+      }
+    },
+    "kernels": {
+      "1": {
+        "two_image_seconds": 0.032306270829091474,
+        "qk_bmm": 0.01013837504433468,
+        "softmax": 0.014859999995678663,
+        "av_bmm": 0.009030874993186444
+      },
+      "2": {
+        "two_image_seconds": 0.03131498616615621,
+        "qk_bmm": 0.009894249495118856,
+        "softmax": 0.013127374520990998,
+        "av_bmm": 0.008890978991985321
+      }
+    },
+    "coarse": {
+      "False-b1": {
+        "total": 1.166078051988734
+      },
+      "False-b2": {
+        "total": 1.1486731250042794
+      },
+      "True-b1": {
+        "vision_model": 1.1416498747712467,
+        "class_head": 0.005541166246985085,
+        "objectness_head": 0.005117895780131221,
+        "box_head": 0.004626802270649932,
+        "total": 1.1687884994898923
+      },
+      "True-b2": {
+        "vision_model": 1.1642073330149287,
+        "class_head": 0.005078875008621253,
+        "objectness_head": 0.004021166489110328,
+        "box_head": 0.004076145502040163,
+        "total": 1.185951666746405
+      }
+    }
+  },
+  "qwen": {
+    "runtime": {
+      "dtype": "torch.float16",
+      "vision_attention": "sdpa",
+      "text_attention": "sdpa"
+    },
+    "stages": {
+      "1": {
+        "preprocess": 0.30824831218342297,
+        "to_mps": 0.0128581987664802,
+        "model": 9.065951624754234,
+        "pool_normalize": 0.006581666544661857,
+        "to_cpu": 0.0011498442472657189
+      },
+      "2": {
+        "preprocess": 0.27630816628516186,
+        "to_mps": 0.00681611399340909,
+        "model": 9.350091530985082,
+        "pool_normalize": 0.0018676767504075542,
+        "to_cpu": 0.0004801355244126171
+      }
+    },
+    "modules": {
+      "1": {
+        "preprocess": 0.367272958450485,
+        "to_mps": 0.010461373487487435,
+        "visual_attention": 1.786262312612962,
+        "visual_mlp": 0.6659895672055427,
+        "visual_total": 6.769906998990336,
+        "language_attention": 1.1910373919818085,
+        "language_mlp": 1.0139793286216445,
+        "language_total": 2.6826838339911774,
+        "model": 9.604003208514769,
+        "pool_normalize": 0.003095395484706387,
+        "to_cpu": 0.0009262095263693482
+      },
+      "2": {
+        "preprocess": 0.34516214599716477,
+        "to_mps": 0.005787311994936317,
+        "visual_attention": 1.9085509965661913,
+        "visual_mlp": 0.639742459403351,
+        "visual_total": 6.829249750036979,
+        "language_attention": 1.2643220233730972,
+        "language_mlp": 0.985530952719273,
+        "language_total": 2.6665997704840265,
+        "model": 9.625109332991997,
+        "pool_normalize": 0.0018270414730068296,
+        "to_cpu": 0.00046139550977386534
+      }
+    },
+    "mps": {
+      "1": {
+        "no_cpu_fallback_reported": true,
+        "operations": [
+          {
+            "id": "G3",
+            "calls": 4,
+            "mean_scheduling_ms": 0.825,
+            "mean_gpu_ms": 890.382,
+            "total_gpu_ms": 3561.53,
+            "name": "mps_3d_convolution:2:16:16:1:1:1:0:0:0:1:Contiguous:f16[3584,3,2,16,16]:f16[1024,3,2,16,16]:1:1024"
+          },
+          {
+            "id": "G34",
+            "calls": 8,
+            "mean_scheduling_ms": 0.296,
+            "mean_gpu_ms": 5.067,
+            "total_gpu_ms": 40.538,
+            "name": "nonzero_out_native_mps:b8[1,980,2048]"
+          },
+          {
+            "id": "K13",
+            "calls": 416,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 1.961,
+            "total_gpu_ms": 815.837,
+            "name": "mps_linear:MPS:Half[896, 4096]:MPS:Half[2048, 4096]:MPS:Half[2048]"
+          },
+          {
+            "id": "K15",
+            "calls": 192,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 1.429,
+            "total_gpu_ms": 274.456,
+            "name": "neg:MPS:Float[3584, 16, 32]"
+          },
+          {
+            "id": "K27",
+            "calls": 784,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 1.221,
+            "total_gpu_ms": 956.983,
+            "name": "mps_linear:MPS:Half[1, 980, 6144]:MPS:Half[2048, 6144]:undefined"
+          },
+          {
+            "id": "G28",
+            "calls": 96,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.729,
+            "total_gpu_ms": 70.011,
+            "name": "gelu_out_mps:f16[3584,4096]:tanh"
+          },
+          {
+            "id": "G29",
+            "calls": 16,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.612,
+            "total_gpu_ms": 9.794,
+            "name": "gelu_out_mps:f16[896,4096]:none"
+          },
+          {
+            "id": "K6",
+            "calls": 848,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.552,
+            "total_gpu_ms": 467.783,
+            "name": "mul_strided_float_float:MPS:Float[1, 980, 2048]:MPS:Float[1, 980, 1]"
+          },
+          {
+            "id": "K30",
+            "calls": 112,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.512,
+            "total_gpu_ms": 57.356,
+            "name": "mul_dense_half_half:MPS:Half[1, 980, 6144]:MPS:Half[1, 980, 6144]"
+          },
+          {
+            "id": "K16",
+            "calls": 192,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.488,
+            "total_gpu_ms": 93.609,
+            "name": "add_dense_float_float:MPS:Float[3584, 16, 64]:MPS:Float[3584, 16, 64]"
+          },
+          {
+            "id": "G56",
+            "calls": 112,
+            "mean_scheduling_ms": 0.007,
+            "mean_gpu_ms": 0.45,
+            "total_gpu_ms": 50.447,
+            "name": "sdpa_general_mps:f16[1,16,980,128]:f16[1,16,980,128]:f16[1,16,980,128]:1:0"
+          },
+          {
+            "id": "K14",
+            "calls": 192,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.34,
+            "total_gpu_ms": 65.291,
+            "name": "gather_kernel_3:MPS:Half[3584, 16, 64]:MPS:Float[3584, 16, 64]"
+          },
+          {
+            "id": "G57",
+            "calls": 112,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.318,
+            "total_gpu_ms": 35.606,
+            "name": "silu_out_mps::f16[1,980,6144]"
+          },
+          {
+            "id": "G26",
+            "calls": 768,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 0.318,
+            "total_gpu_ms": 243.926,
+            "name": "sdpa_general_mps:f16[1,16,448,64]:f16[1,16,448,64]:f16[1,16,448,64]:0:0"
+          },
+          {
+            "id": "K29",
+            "calls": 224,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.312,
+            "total_gpu_ms": 69.785,
+            "name": "add_strided_half_half:MPS:Half[1, 8, 980, 128]:MPS:Half[1, 8, 980, 128]"
+          },
+          {
+            "id": "K1",
+            "calls": 904,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.289,
+            "total_gpu_ms": 260.809,
+            "name": "mul_strided_half_half:MPS:Half[2048]:MPS:Half[1, 980, 2048]"
+          },
+          {
+            "id": "K5",
+            "calls": 228,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.283,
+            "total_gpu_ms": 64.605,
+            "name": "gather_kernel_n:MPS:Half[1, 8, 2, 980, 128]:MPS:Half[1, 8, 2, 980, 128]"
+          },
+          {
+            "id": "G51",
+            "calls": 112,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.249,
+            "total_gpu_ms": 27.92,
+            "name": "power:f32[1,980,16,128]:i64[Scalar]:f32[1,980,16,128]"
+          },
+          {
+            "id": "G25",
+            "calls": 196,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.235,
+            "total_gpu_ms": 46.078,
+            "name": "cat_out_mps:2:NCHW:f32:2"
+          },
+          {
+            "id": "K2",
+            "calls": 444,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.233,
+            "total_gpu_ms": 103.624,
+            "name": "add_dense_half_half:MPS:Half[1, 980, 2048]:MPS:Half[1, 980, 2048]"
+          },
+          {
+            "id": "K28",
+            "calls": 224,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.2,
+            "total_gpu_ms": 44.819,
+            "name": "neg:MPS:Half[1, 8, 980, 64]"
+          },
+          {
+            "id": "G49",
+            "calls": 228,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.185,
+            "total_gpu_ms": 42.229,
+            "name": "power:f32[1,980,2048]:i64[Scalar]:f32[1,980,2048]"
+          },
+          {
+            "id": "G23",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.176,
+            "total_gpu_ms": 0.703,
+            "name": "cumsum_out_mps0:i32[8]:i32[8]"
+          },
+          {
+            "id": "G10",
+            "calls": 4,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.158,
+            "total_gpu_ms": 0.63,
+            "name": "sum_out_mps:0::i64[1]:0:4::i64[Scalar]:"
+          },
+          {
+            "id": "G33",
+            "calls": 8,
+            "mean_scheduling_ms": 0.051,
+            "mean_gpu_ms": 0.154,
+            "total_gpu_ms": 1.229,
+            "name": "count_nonzero_mps:0,1,2::b8[1,980,2048]:0:7::i64[Scalar]:Bool"
+          },
+          {
+            "id": "G12",
+            "calls": 4,
+            "mean_scheduling_ms": 0.03,
+            "mean_gpu_ms": 0.149,
+            "total_gpu_ms": 0.594,
+            "name": "arange_mps_out:i64[14]:14"
+          },
+          {
+            "id": "G27",
+            "calls": 96,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.148,
+            "total_gpu_ms": 14.227,
+            "name": "cat_out_mps:1:NCHW:f16:8"
+          },
+          {
+            "id": "G45",
+            "calls": 4,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.136,
+            "total_gpu_ms": 0.543,
+            "name": "all_all_out_mps::b8[1,980]"
+          },
+          {
+            "id": "G22",
+            "calls": 4,
+            "mean_scheduling_ms": 0.013,
+            "mean_gpu_ms": 0.126,
+            "total_gpu_ms": 0.503,
+            "name": "copy_cast_mps:i64[-1]:i32[-1]:0"
+          },
+          {
+            "id": "G2",
+            "calls": 656,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.126,
+            "total_gpu_ms": 82.455,
+            "name": "copy_cast_mps:f32[-1]:f16[-1]:0"
+          },
+          {
+            "id": "G53",
+            "calls": 112,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.121,
+            "total_gpu_ms": 13.595,
+            "name": "power:f32[1,980,8,128]:i64[Scalar]:f32[1,980,8,128]"
+          },
+          {
+            "id": "G52",
+            "calls": 112,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.119,
+            "total_gpu_ms": 13.304,
+            "name": "mean_out_mps:-1::f32[1,980,16,128]:1:6::f32[1,980,16,1]:"
+          },
+          {
+            "id": "G44",
+            "calls": 4,
+            "mean_scheduling_ms": 0.012,
+            "mean_gpu_ms": 0.118,
+            "total_gpu_ms": 0.474,
+            "name": "copy_cast_mps:i64[-1]:b8[-1]:0"
+          },
+          {
+            "id": "G9",
+            "calls": 4,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.118,
+            "total_gpu_ms": 0.473,
+            "name": "prod_out_mps:1::i64[1,3]:0:5::i64[1]:"
+          },
+          {
+            "id": "G5",
+            "calls": 4,
+            "mean_scheduling_ms": 0.036,
+            "mean_gpu_ms": 0.115,
+            "total_gpu_ms": 0.458,
+            "name": "repeat_mps::f16[448,1024]:8,1"
+          },
+          {
+            "id": "G48",
+            "calls": 456,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.096,
+            "total_gpu_ms": 43.626,
+            "name": "copy_cast_mps:f16[-1]:f32[-1]:0"
+          },
+          {
+            "id": "K18",
+            "calls": 880,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.094,
+            "total_gpu_ms": 82.87,
+            "name": "gather_kernel_4:MPS:Half[1, 980, 16, 128]:MPS:Half[1, 980, 16, 128]"
+          },
+          {
+            "id": "K23",
+            "calls": 8,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.091,
+            "total_gpu_ms": 0.731,
+            "name": "gather_kernel_3:MPS:Float[1, 980, 20]:MPS:Float[1, 980, 20]"
+          },
+          {
+            "id": "G47",
+            "calls": 4,
+            "mean_scheduling_ms": 0.014,
+            "mean_gpu_ms": 0.09,
+            "total_gpu_ms": 0.361,
+            "name": "bmm_out_mps_impl:f32[-1]:f32[-1]0"
+          },
+          {
+            "id": "G32",
+            "calls": 8,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.08,
+            "total_gpu_ms": 0.638,
+            "name": "sum_out_mps:0,1::b8[1,980]:0:4::i64[Scalar]:"
+          },
+          {
+            "id": "G43",
+            "calls": 4,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.075,
+            "total_gpu_ms": 0.301,
+            "name": "arange_mps_out:i64[980]:980"
+          },
+          {
+            "id": "K10",
+            "calls": 8,
+            "mean_scheduling_ms": 0.029,
+            "mean_gpu_ms": 0.073,
+            "total_gpu_ms": 0.584,
+            "name": "cos:MPS:Float[1, 980, 128]"
+          },
+          {
+            "id": "G42",
+            "calls": 8,
+            "mean_scheduling_ms": 0.014,
+            "mean_gpu_ms": 0.071,
+            "total_gpu_ms": 0.568,
+            "name": "sum_out_mps:0::b8[8]:0:4::i64[Scalar]:"
+          },
+          {
+            "id": "G41",
+            "calls": 8,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.064,
+            "total_gpu_ms": 0.513,
+            "name": "equal:i64[8]:i64[Scalar]:b8[8]"
+          },
+          {
+            "id": "G6",
+            "calls": 8,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.063,
+            "total_gpu_ms": 0.501,
+            "name": "cat_out_mps:0:NCHW:f16:1"
+          },
+          {
+            "id": "G4",
+            "calls": 4,
+            "mean_scheduling_ms": 0.027,
+            "mean_gpu_ms": 0.063,
+            "total_gpu_ms": 0.25,
+            "name": "index_select_out_mps:f16[2304,1024]:i64[1792]:0"
+          },
+          {
+            "id": "G50",
+            "calls": 228,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.062,
+            "total_gpu_ms": 14.104,
+            "name": "mean_out_mps:-1::f32[1,980,2048]:1:6::f32[1,980,1]:"
+          },
+          {
+            "id": "G1",
+            "calls": 4,
+            "mean_scheduling_ms": 0.035,
+            "mean_gpu_ms": 0.057,
+            "total_gpu_ms": 0.23,
+            "name": "index_select_out_mps:f16[151936,2048]:i64[980]:0"
+          },
+          {
+            "id": "G39",
+            "calls": 12,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.051,
+            "total_gpu_ms": 0.613,
+            "name": "count_nonzero_mps:0::b8[980]:0:7::i64[Scalar]:Bool"
+          },
+          {
+            "id": "G11",
+            "calls": 4,
+            "mean_scheduling_ms": 0.035,
+            "mean_gpu_ms": 0.05,
+            "total_gpu_ms": 0.201,
+            "name": "arange_mps_out:i64[8]:8"
+          },
+          {
+            "id": "G55",
+            "calls": 224,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.041,
+            "total_gpu_ms": 9.283,
+            "name": "cat_out_mps:3:NCHW:f16:2"
+          },
+          {
+            "id": "G7",
+            "calls": 4,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.038,
+            "total_gpu_ms": 0.153,
+            "name": "max_mps:i64[1,2]"
+          },
+          {
+            "id": "G54",
+            "calls": 112,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.037,
+            "total_gpu_ms": 4.126,
+            "name": "mean_out_mps:-1::f32[1,980,8,128]:1:6::f32[1,980,8,1]:"
+          },
+          {
+            "id": "G17",
+            "calls": 4,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.035,
+            "total_gpu_ms": 0.139,
+            "name": "cat_out_mps:1:NCHW:f32:2"
+          },
+          {
+            "id": "G46",
+            "calls": 4,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.021,
+            "total_gpu_ms": 0.084,
+            "name": "copy_cast_mps:i64[-1]:f32[-1]:0"
+          },
+          {
+            "id": "G21",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.02,
+            "total_gpu_ms": 0.082,
+            "name": "index_select_out_mps:i64[1]:i64[8]:0"
+          },
+          {
+            "id": "K8",
+            "calls": 12,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.02,
+            "total_gpu_ms": 0.237,
+            "name": "add_strided_long_long:MPS:Long[8]:CPU:Long[]"
+          },
+          {
+            "id": "K25",
+            "calls": 452,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.012,
+            "total_gpu_ms": 5.414,
+            "name": "add_strided_float_float:MPS:Float[1, 980, 1]:CPU:Float[]"
+          },
+          {
+            "id": "G59",
+            "calls": 24,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.01,
+            "total_gpu_ms": 0.237,
+            "name": "nonzero_out_native_mps:b8[1,980]"
+          },
+          {
+            "id": "K11",
+            "calls": 8,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.008,
+            "total_gpu_ms": 0.062,
+            "name": "sin:MPS:Float[1, 980, 128]"
+          },
+          {
+            "id": "K4",
+            "calls": 20,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.008,
+            "total_gpu_ms": 0.154,
+            "name": "div_floor_dense_long_long:MPS:Long[1]:CPU:Long[]"
+          },
+          {
+            "id": "G62",
+            "calls": 4,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.006,
+            "total_gpu_ms": 0.026,
+            "name": "norm_out_mps:-1::f32[1,2048]:p2.000000:keepdim=1:Float"
+          },
+          {
+            "id": "G40",
+            "calls": 12,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.066,
+            "name": "nonzero_out_native_mps:b8[980]"
+          },
+          {
+            "id": "G58",
+            "calls": 24,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.119,
+            "name": "count_nonzero_mps:0,1::b8[1,980]:0:7::i64[Scalar]:Bool"
+          },
+          {
+            "id": "G31",
+            "calls": 8,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.039,
+            "name": "equal:i64[1,980]:i64[Scalar]:b8[1,980]"
+          },
+          {
+            "id": "G60",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.019,
+            "name": "sum_out_mps:1::i64[1,980]:0:4::i64[1]:"
+          },
+          {
+            "id": "G13",
+            "calls": 8,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.038,
+            "name": "arange_mps_out:i64[2]:2"
+          },
+          {
+            "id": "K9",
+            "calls": 8,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.037,
+            "name": "gather_kernel_4:MPS:Long[8, 14, 2, 2]:MPS:Long[8, 14, 2, 2]"
+          },
+          {
+            "id": "G18",
+            "calls": 8,
+            "mean_scheduling_ms": 0.031,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.034,
+            "name": "cumsum_out_mps0:i64[1]:i64[1]"
+          },
+          {
+            "id": "G14",
+            "calls": 4,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.017,
+            "name": "cat_out_mps:1:NCHW:i64:2"
+          },
+          {
+            "id": "K7",
+            "calls": 8,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.032,
+            "name": "mul_strided_long_long:MPS:Long[1, 14, 1, 1]:CPU:Long[]"
+          },
+          {
+            "id": "K26",
+            "calls": 452,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 1.808,
+            "name": "rsqrt:MPS:Float[1, 980, 1]"
+          },
+          {
+            "id": "G20",
+            "calls": 8,
+            "mean_scheduling_ms": 0.043,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.031,
+            "name": "all_all_out_mps::b8[1]"
+          },
+          {
+            "id": "G30",
+            "calls": 4,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.015,
+            "name": "prod_out_mps:-1::i64[1,3]:0:5::i64[1]:"
+          },
+          {
+            "id": "G16",
+            "calls": 4,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.015,
+            "name": "repeat_mps::i64[448,2]:8,1"
+          },
+          {
+            "id": "G15",
+            "calls": 36,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.122,
+            "name": "greaterThan:i64[Scalar]:i64[Scalar]:b8[Scalar]"
+          },
+          {
+            "id": "K22",
+            "calls": 36,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.118,
+            "name": "sub_dense_long_long:MPS:Long[1]:CPU:Long[]"
+          },
+          {
+            "id": "G35",
+            "calls": 4,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.012,
+            "name": "index_select_out_mps:i64[1,3]:i64[8]:0"
+          },
+          {
+            "id": "G24",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.012,
+            "name": "constant_pad_nd_mps:i32[8]:Undefined:i32[9]:[1,0]:0.000000"
+          },
+          {
+            "id": "K24",
+            "calls": 8,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.024,
+            "name": "scatter_kernel_3:MPS:Float[1, 980, 20]:MPS:Float[1, 980, 20]"
+          },
+          {
+            "id": "G61",
+            "calls": 4,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.012,
+            "name": "arange_mps_out:i64[1]:1"
+          },
+          {
+            "id": "G38",
+            "calls": 12,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.035,
+            "name": "equal:i64[980]:i64[Scalar]:b8[980]"
+          },
+          {
+            "id": "G36",
+            "calls": 4,
+            "mean_scheduling_ms": 0.023,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.011,
+            "name": "fill_scalar_mps_impl:i64[Scalar]:1.000000"
+          },
+          {
+            "id": "K31",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.011,
+            "name": "div_true_strided_float_float:MPS:Float[1, 2048]:MPS:Float[1, 1]"
+          },
+          {
+            "id": "G37",
+            "calls": 4,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.01,
+            "name": "fill_scalar_mps_impl:i64[3,1,980]:1.000000"
+          },
+          {
+            "id": "G19",
+            "calls": 8,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.018,
+            "name": "greaterThanOrEqualTo:i64[1]:i64[Scalar]:b8[1]"
+          },
+          {
+            "id": "K12",
+            "calls": 8,
+            "mean_scheduling_ms": 0.014,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.018,
+            "name": "repeat_interleave:int64_t"
+          },
+          {
+            "id": "K3",
+            "calls": 8,
+            "mean_scheduling_ms": 0.042,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.017,
+            "name": "mul_dense_long_long:MPS:Long[1]:MPS:Long[1]"
+          },
+          {
+            "id": "G8",
+            "calls": 4,
+            "mean_scheduling_ms": 0.128,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.008,
+            "name": "arange_mps_out:f32[28]:28"
+          },
+          {
+            "id": "K19",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.008,
+            "name": "gather_kernel_1:MPS:Long[8]:MPS:Long[8]"
+          },
+          {
+            "id": "K20",
+            "calls": 4,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.007,
+            "name": "scatter_kernel_1:MPS:Long[8]:MPS:Long[8]"
+          },
+          {
+            "id": "K17",
+            "calls": 96,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.165,
+            "name": "sub_dense_int_int:MPS:Int[8]:MPS:Int[8]"
+          },
+          {
+            "id": "K21",
+            "calls": 4,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.006,
+            "name": "add_dense_long_long:MPS:Long[]:MPS:Long[]"
+          }
+        ],
+        "warning": "Commit/wait profiling changes scheduling. Timings are diagnostics, not production throughput. Names for shared Metal kernels may show only last observed shape; use CPU dispatch traces for all shapes."
+      },
+      "2": {
+        "no_cpu_fallback_reported": true,
+        "operations": [
+          {
+            "id": "G3",
+            "calls": 2,
+            "mean_scheduling_ms": 0.912,
+            "mean_gpu_ms": 1793.306,
+            "total_gpu_ms": 3586.611,
+            "name": "mps_3d_convolution:2:16:16:1:1:1:0:0:0:1:Contiguous:f16[7168,3,2,16,16]:f16[1024,3,2,16,16]:1:1024"
+          },
+          {
+            "id": "K16",
+            "calls": 96,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 6.161,
+            "total_gpu_ms": 591.48,
+            "name": "neg:MPS:Float[7168, 16, 32]"
+          },
+          {
+            "id": "K14",
+            "calls": 208,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 3.989,
+            "total_gpu_ms": 829.696,
+            "name": "mps_linear:MPS:Half[1792, 4096]:MPS:Half[2048, 4096]:MPS:Half[2048]"
+          },
+          {
+            "id": "K28",
+            "calls": 392,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 2.602,
+            "total_gpu_ms": 1020.111,
+            "name": "mps_linear:MPS:Half[2, 980, 6144]:MPS:Half[2048, 6144]:undefined"
+          },
+          {
+            "id": "G28",
+            "calls": 48,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 1.203,
+            "total_gpu_ms": 57.75,
+            "name": "gelu_out_mps:f16[7168,4096]:tanh"
+          },
+          {
+            "id": "K6",
+            "calls": 424,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 1.085,
+            "total_gpu_ms": 459.862,
+            "name": "mul_strided_float_float:MPS:Float[2, 980, 2048]:MPS:Float[2, 980, 1]"
+          },
+          {
+            "id": "G56",
+            "calls": 56,
+            "mean_scheduling_ms": 0.009,
+            "mean_gpu_ms": 0.965,
+            "total_gpu_ms": 54.057,
+            "name": "sdpa_general_mps:f16[2,16,980,128]:f16[2,16,980,128]:f16[2,16,980,128]:1:0"
+          },
+          {
+            "id": "K31",
+            "calls": 56,
+            "mean_scheduling_ms": 0.037,
+            "mean_gpu_ms": 0.929,
+            "total_gpu_ms": 52.03,
+            "name": "mul_dense_half_half:MPS:Half[2, 980, 6144]:MPS:Half[2, 980, 6144]"
+          },
+          {
+            "id": "K30",
+            "calls": 112,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.929,
+            "total_gpu_ms": 104.016,
+            "name": "add_strided_half_half:MPS:Half[2, 8, 980, 128]:MPS:Half[2, 8, 980, 128]"
+          },
+          {
+            "id": "K17",
+            "calls": 96,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.854,
+            "total_gpu_ms": 81.957,
+            "name": "add_dense_float_float:MPS:Float[7168, 16, 64]:MPS:Float[7168, 16, 64]"
+          },
+          {
+            "id": "K1",
+            "calls": 452,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.643,
+            "total_gpu_ms": 290.701,
+            "name": "mul_strided_half_half:MPS:Half[2048]:MPS:Half[2, 980, 2048]"
+          },
+          {
+            "id": "G25",
+            "calls": 98,
+            "mean_scheduling_ms": 0.023,
+            "mean_gpu_ms": 0.633,
+            "total_gpu_ms": 62.069,
+            "name": "cat_out_mps:2:NCHW:f32:2"
+          },
+          {
+            "id": "K5",
+            "calls": 116,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.61,
+            "total_gpu_ms": 70.717,
+            "name": "gather_kernel_n:MPS:Half[2, 8, 2, 980, 128]:MPS:Half[2, 8, 2, 980, 128]"
+          },
+          {
+            "id": "G1",
+            "calls": 2,
+            "mean_scheduling_ms": 0.141,
+            "mean_gpu_ms": 0.592,
+            "total_gpu_ms": 1.184,
+            "name": "index_select_out_mps:f16[151936,2048]:i64[1960]:0"
+          },
+          {
+            "id": "G57",
+            "calls": 56,
+            "mean_scheduling_ms": 0.028,
+            "mean_gpu_ms": 0.574,
+            "total_gpu_ms": 32.17,
+            "name": "silu_out_mps::f16[2,980,6144]"
+          },
+          {
+            "id": "K29",
+            "calls": 112,
+            "mean_scheduling_ms": 0.025,
+            "mean_gpu_ms": 0.551,
+            "total_gpu_ms": 61.699,
+            "name": "neg:MPS:Half[2, 8, 980, 64]"
+          },
+          {
+            "id": "K15",
+            "calls": 96,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.508,
+            "total_gpu_ms": 48.798,
+            "name": "gather_kernel_3:MPS:Half[7168, 16, 64]:MPS:Float[7168, 16, 64]"
+          },
+          {
+            "id": "G49",
+            "calls": 114,
+            "mean_scheduling_ms": 0.023,
+            "mean_gpu_ms": 0.463,
+            "total_gpu_ms": 52.81,
+            "name": "power:f32[2,980,2048]:i64[Scalar]:f32[2,980,2048]"
+          },
+          {
+            "id": "K2",
+            "calls": 222,
+            "mean_scheduling_ms": 0.026,
+            "mean_gpu_ms": 0.456,
+            "total_gpu_ms": 101.223,
+            "name": "add_dense_half_half:MPS:Half[2, 980, 2048]:MPS:Half[2, 980, 2048]"
+          },
+          {
+            "id": "G51",
+            "calls": 56,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 0.389,
+            "total_gpu_ms": 21.799,
+            "name": "power:f32[2,980,16,128]:i64[Scalar]:f32[2,980,16,128]"
+          },
+          {
+            "id": "G27",
+            "calls": 48,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.336,
+            "total_gpu_ms": 16.11,
+            "name": "cat_out_mps:1:NCHW:f16:16"
+          },
+          {
+            "id": "G26",
+            "calls": 768,
+            "mean_scheduling_ms": 0.104,
+            "mean_gpu_ms": 0.317,
+            "total_gpu_ms": 243.309,
+            "name": "sdpa_general_mps:f16[1,16,448,64]:f16[1,16,448,64]:f16[1,16,448,64]:0:0"
+          },
+          {
+            "id": "G2",
+            "calls": 328,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.294,
+            "total_gpu_ms": 96.295,
+            "name": "copy_cast_mps:f32[-1]:f16[-1]:0"
+          },
+          {
+            "id": "G29",
+            "calls": 8,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 0.293,
+            "total_gpu_ms": 2.344,
+            "name": "gelu_out_mps:f16[1792,4096]:none"
+          },
+          {
+            "id": "G53",
+            "calls": 56,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.256,
+            "total_gpu_ms": 14.351,
+            "name": "power:f32[2,980,8,128]:i64[Scalar]:f32[2,980,8,128]"
+          },
+          {
+            "id": "G48",
+            "calls": 228,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.239,
+            "total_gpu_ms": 54.47,
+            "name": "copy_cast_mps:f16[-1]:f32[-1]:0"
+          },
+          {
+            "id": "G52",
+            "calls": 56,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.23,
+            "total_gpu_ms": 12.888,
+            "name": "mean_out_mps:-1::f32[2,980,16,128]:1:6::f32[2,980,16,1]:"
+          },
+          {
+            "id": "G6",
+            "calls": 4,
+            "mean_scheduling_ms": 0.03,
+            "mean_gpu_ms": 0.184,
+            "total_gpu_ms": 0.738,
+            "name": "cat_out_mps:0:NCHW:f16:2"
+          },
+          {
+            "id": "G22",
+            "calls": 2,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 0.182,
+            "total_gpu_ms": 0.364,
+            "name": "copy_cast_mps:i64[-1]:i32[-1]:0"
+          },
+          {
+            "id": "G14",
+            "calls": 4,
+            "mean_scheduling_ms": 0.028,
+            "mean_gpu_ms": 0.181,
+            "total_gpu_ms": 0.725,
+            "name": "cat_out_mps:1:NCHW:i64:2"
+          },
+          {
+            "id": "G50",
+            "calls": 114,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.157,
+            "total_gpu_ms": 17.912,
+            "name": "mean_out_mps:-1::f32[2,980,2048]:1:6::f32[2,980,1]:"
+          },
+          {
+            "id": "G55",
+            "calls": 112,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.116,
+            "total_gpu_ms": 12.988,
+            "name": "cat_out_mps:3:NCHW:f16:2"
+          },
+          {
+            "id": "G5",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.115,
+            "total_gpu_ms": 0.459,
+            "name": "repeat_mps::f16[448,1024]:8,1"
+          },
+          {
+            "id": "K9",
+            "calls": 8,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.11,
+            "total_gpu_ms": 0.876,
+            "name": "gather_kernel_4:MPS:Long[8, 14, 2, 2]:MPS:Long[8, 14, 2, 2]"
+          },
+          {
+            "id": "K19",
+            "calls": 824,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.107,
+            "total_gpu_ms": 88.356,
+            "name": "gather_kernel_4:MPS:Half[2, 980, 16, 128]:MPS:Half[2, 980, 16, 128]"
+          },
+          {
+            "id": "G42",
+            "calls": 8,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.082,
+            "total_gpu_ms": 0.66,
+            "name": "sum_out_mps:0::b8[8]:0:4::i64[Scalar]:"
+          },
+          {
+            "id": "G4",
+            "calls": 2,
+            "mean_scheduling_ms": 0.039,
+            "mean_gpu_ms": 0.081,
+            "total_gpu_ms": 0.163,
+            "name": "index_select_out_mps:f16[2304,1024]:i64[3584]:0"
+          },
+          {
+            "id": "G41",
+            "calls": 8,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.077,
+            "total_gpu_ms": 0.613,
+            "name": "equal:i64[8]:i64[Scalar]:b8[8]"
+          },
+          {
+            "id": "G17",
+            "calls": 2,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.075,
+            "total_gpu_ms": 0.15,
+            "name": "cat_out_mps:1:NCHW:f32:2"
+          },
+          {
+            "id": "G45",
+            "calls": 2,
+            "mean_scheduling_ms": 0.111,
+            "mean_gpu_ms": 0.07,
+            "total_gpu_ms": 0.139,
+            "name": "all_all_out_mps::b8[2,980]"
+          },
+          {
+            "id": "G54",
+            "calls": 56,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.069,
+            "total_gpu_ms": 3.843,
+            "name": "mean_out_mps:-1::f32[2,980,8,128]:1:6::f32[2,980,8,1]:"
+          },
+          {
+            "id": "G24",
+            "calls": 2,
+            "mean_scheduling_ms": 0.036,
+            "mean_gpu_ms": 0.067,
+            "total_gpu_ms": 0.133,
+            "name": "constant_pad_nd_mps:i32[16]:Undefined:i32[17]:[1,0]:0.000000"
+          },
+          {
+            "id": "G43",
+            "calls": 2,
+            "mean_scheduling_ms": 0.134,
+            "mean_gpu_ms": 0.062,
+            "total_gpu_ms": 0.123,
+            "name": "arange_mps_out:i64[980]:980"
+          },
+          {
+            "id": "G33",
+            "calls": 4,
+            "mean_scheduling_ms": 0.095,
+            "mean_gpu_ms": 0.053,
+            "total_gpu_ms": 0.212,
+            "name": "count_nonzero_mps:0,1,2::b8[2,980,2048]:0:7::i64[Scalar]:Bool"
+          },
+          {
+            "id": "K8",
+            "calls": 12,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.034,
+            "total_gpu_ms": 0.407,
+            "name": "add_strided_long_long:MPS:Long[8]:CPU:Long[]"
+          },
+          {
+            "id": "G60",
+            "calls": 2,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.022,
+            "total_gpu_ms": 0.044,
+            "name": "sum_out_mps:1::i64[2,980]:0:4::i64[2]:"
+          },
+          {
+            "id": "K27",
+            "calls": 226,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.014,
+            "total_gpu_ms": 3.196,
+            "name": "rsqrt:MPS:Float[2, 980, 1]"
+          },
+          {
+            "id": "G40",
+            "calls": 12,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.014,
+            "total_gpu_ms": 0.166,
+            "name": "nonzero_out_native_mps:b8[980]"
+          },
+          {
+            "id": "K26",
+            "calls": 226,
+            "mean_scheduling_ms": 0.019,
+            "mean_gpu_ms": 0.011,
+            "total_gpu_ms": 2.536,
+            "name": "add_strided_float_float:MPS:Float[2, 980, 1]:CPU:Float[]"
+          },
+          {
+            "id": "K11",
+            "calls": 4,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.011,
+            "total_gpu_ms": 0.043,
+            "name": "sin:MPS:Float[2, 980, 128]"
+          },
+          {
+            "id": "K10",
+            "calls": 4,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.01,
+            "total_gpu_ms": 0.042,
+            "name": "cos:MPS:Float[2, 980, 128]"
+          },
+          {
+            "id": "G59",
+            "calls": 12,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.01,
+            "total_gpu_ms": 0.115,
+            "name": "nonzero_out_native_mps:b8[2,980]"
+          },
+          {
+            "id": "G47",
+            "calls": 2,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.009,
+            "total_gpu_ms": 0.019,
+            "name": "bmm_out_mps_impl:f32[-1]:f32[-1]0"
+          },
+          {
+            "id": "G46",
+            "calls": 2,
+            "mean_scheduling_ms": 0.021,
+            "mean_gpu_ms": 0.008,
+            "total_gpu_ms": 0.016,
+            "name": "copy_cast_mps:i64[-1]:f32[-1]:0"
+          },
+          {
+            "id": "G8",
+            "calls": 2,
+            "mean_scheduling_ms": 0.521,
+            "mean_gpu_ms": 0.008,
+            "total_gpu_ms": 0.015,
+            "name": "arange_mps_out:f32[28]:28"
+          },
+          {
+            "id": "G7",
+            "calls": 2,
+            "mean_scheduling_ms": 0.078,
+            "mean_gpu_ms": 0.008,
+            "total_gpu_ms": 0.015,
+            "name": "max_mps:i64[2,2]"
+          },
+          {
+            "id": "G30",
+            "calls": 2,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.008,
+            "total_gpu_ms": 0.015,
+            "name": "prod_out_mps:-1::i64[2,3]:0:5::i64[2]:"
+          },
+          {
+            "id": "G23",
+            "calls": 2,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.007,
+            "total_gpu_ms": 0.014,
+            "name": "cumsum_out_mps0:i32[16]:i32[16]"
+          },
+          {
+            "id": "G21",
+            "calls": 2,
+            "mean_scheduling_ms": 0.028,
+            "mean_gpu_ms": 0.007,
+            "total_gpu_ms": 0.014,
+            "name": "index_select_out_mps:i64[2]:i64[16]:0"
+          },
+          {
+            "id": "G10",
+            "calls": 2,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.007,
+            "total_gpu_ms": 0.014,
+            "name": "sum_out_mps:0::i64[2]:0:4::i64[Scalar]:"
+          },
+          {
+            "id": "G39",
+            "calls": 12,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.007,
+            "total_gpu_ms": 0.082,
+            "name": "count_nonzero_mps:0::b8[980]:0:7::i64[Scalar]:Bool"
+          },
+          {
+            "id": "G35",
+            "calls": 2,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.007,
+            "total_gpu_ms": 0.014,
+            "name": "index_select_out_mps:i64[2,3]:i64[16]:0"
+          },
+          {
+            "id": "G58",
+            "calls": 12,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.065,
+            "name": "count_nonzero_mps:0,1::b8[2,980]:0:7::i64[Scalar]:Bool"
+          },
+          {
+            "id": "G20",
+            "calls": 4,
+            "mean_scheduling_ms": 0.14,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.019,
+            "name": "all_all_out_mps::b8[2]"
+          },
+          {
+            "id": "K4",
+            "calls": 16,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.076,
+            "name": "div_floor_dense_long_long:MPS:Long[]:CPU:Long[]"
+          },
+          {
+            "id": "G18",
+            "calls": 4,
+            "mean_scheduling_ms": 0.057,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.019,
+            "name": "cumsum_out_mps0:i64[2]:i64[2]"
+          },
+          {
+            "id": "K20",
+            "calls": 2,
+            "mean_scheduling_ms": 0.012,
+            "mean_gpu_ms": 0.005,
+            "total_gpu_ms": 0.009,
+            "name": "div_floor_strided_long_long:MPS:Long[2]:CPU:Long[]"
+          },
+          {
+            "id": "K18",
+            "calls": 48,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.205,
+            "name": "sub_dense_int_int:MPS:Int[16]:MPS:Int[16]"
+          },
+          {
+            "id": "G32",
+            "calls": 4,
+            "mean_scheduling_ms": 0.103,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.017,
+            "name": "sum_out_mps:0,1::b8[2,980]:0:4::i64[Scalar]:"
+          },
+          {
+            "id": "G44",
+            "calls": 2,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.008,
+            "name": "copy_cast_mps:i64[-1]:b8[-1]:0"
+          },
+          {
+            "id": "G36",
+            "calls": 2,
+            "mean_scheduling_ms": 0.029,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.008,
+            "name": "fill_scalar_mps_impl:i64[Scalar]:1.000000"
+          },
+          {
+            "id": "K25",
+            "calls": 4,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.017,
+            "name": "scatter_kernel_3:MPS:Float[2, 980, 20]:MPS:Float[2, 980, 20]"
+          },
+          {
+            "id": "G38",
+            "calls": 12,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.049,
+            "name": "equal:i64[980]:i64[Scalar]:b8[980]"
+          },
+          {
+            "id": "K24",
+            "calls": 4,
+            "mean_scheduling_ms": 0.015,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.016,
+            "name": "gather_kernel_3:MPS:Float[2, 980, 20]:MPS:Float[2, 980, 20]"
+          },
+          {
+            "id": "G61",
+            "calls": 2,
+            "mean_scheduling_ms": 0.336,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.008,
+            "name": "norm_out_mps:-1::f32[2,2048]:p2.000000:keepdim=1:Float"
+          },
+          {
+            "id": "G19",
+            "calls": 4,
+            "mean_scheduling_ms": 0.024,
+            "mean_gpu_ms": 0.004,
+            "total_gpu_ms": 0.014,
+            "name": "greaterThanOrEqualTo:i64[2]:i64[Scalar]:b8[2]"
+          },
+          {
+            "id": "G11",
+            "calls": 4,
+            "mean_scheduling_ms": 0.023,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.014,
+            "name": "arange_mps_out:i64[8]:8"
+          },
+          {
+            "id": "G12",
+            "calls": 4,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.014,
+            "name": "arange_mps_out:i64[14]:14"
+          },
+          {
+            "id": "K33",
+            "calls": 2,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.007,
+            "name": "div_true_strided_float_float:MPS:Float[2, 2048]:MPS:Float[2, 1]"
+          },
+          {
+            "id": "G9",
+            "calls": 2,
+            "mean_scheduling_ms": 0.02,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.007,
+            "name": "prod_out_mps:1::i64[2,3]:0:5::i64[2]:"
+          },
+          {
+            "id": "K32",
+            "calls": 2,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.006,
+            "name": "sub_strided_long_long:MPS:Long[2]:CPU:Long[]"
+          },
+          {
+            "id": "G13",
+            "calls": 10,
+            "mean_scheduling_ms": 0.027,
+            "mean_gpu_ms": 0.003,
+            "total_gpu_ms": 0.026,
+            "name": "arange_mps_out:i64[2]:2"
+          },
+          {
+            "id": "K7",
+            "calls": 10,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.024,
+            "name": "mul_strided_long_long:MPS:Long[2]:MPS:Long[2]"
+          },
+          {
+            "id": "G16",
+            "calls": 4,
+            "mean_scheduling_ms": 0.022,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.009,
+            "name": "repeat_mps::i64[448,2]:8,1"
+          },
+          {
+            "id": "G31",
+            "calls": 4,
+            "mean_scheduling_ms": 0.22,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.008,
+            "name": "equal:i64[2,980]:i64[Scalar]:b8[2,980]"
+          },
+          {
+            "id": "G37",
+            "calls": 2,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.004,
+            "name": "fill_scalar_mps_impl:i64[3,2,980]:1.000000"
+          },
+          {
+            "id": "K12",
+            "calls": 6,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.012,
+            "name": "gather_kernel_1:MPS:Long[16]:MPS:Long[16]"
+          },
+          {
+            "id": "K13",
+            "calls": 4,
+            "mean_scheduling_ms": 0.018,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.008,
+            "name": "repeat_interleave:int64_t"
+          },
+          {
+            "id": "K21",
+            "calls": 2,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.003,
+            "name": "scatter_kernel_1:MPS:Long[16]:MPS:Long[16]"
+          },
+          {
+            "id": "G15",
+            "calls": 36,
+            "mean_scheduling_ms": 0.016,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.059,
+            "name": "greaterThan:i64[Scalar]:i64[Scalar]:b8[Scalar]"
+          },
+          {
+            "id": "K22",
+            "calls": 4,
+            "mean_scheduling_ms": 0.014,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.006,
+            "name": "add_dense_long_long:MPS:Long[]:MPS:Long[]"
+          },
+          {
+            "id": "K3",
+            "calls": 4,
+            "mean_scheduling_ms": 0.165,
+            "mean_gpu_ms": 0.002,
+            "total_gpu_ms": 0.006,
+            "name": "mul_dense_long_long:MPS:Long[]:MPS:Long[]"
+          },
+          {
+            "id": "K23",
+            "calls": 32,
+            "mean_scheduling_ms": 0.017,
+            "mean_gpu_ms": 0.001,
+            "total_gpu_ms": 0.046,
+            "name": "sub_dense_long_long:MPS:Long[]:CPU:Long[]"
+          },
+          {
+            "id": "G34",
+            "calls": 4,
+            "mean_scheduling_ms": 0.006,
+            "mean_gpu_ms": 0.0,
+            "total_gpu_ms": 0.0,
+            "name": "nonzero_out_native_mps:b8[2,980,2048]"
+          }
+        ],
+        "warning": "Commit/wait profiling changes scheduling. Timings are diagnostics, not production throughput. Names for shared Metal kernels may show only last observed shape; use CPU dispatch traces for all shapes."
+      }
+    },
+    "kernels": {
+      "1": {
+        "conv3d_seconds": 1.5351016669883393,
+        "linear_probe_seconds": 0.0023248333406324186,
+        "rotate_half_seconds": 0.005418802102212794,
+        "neg_slice_seconds": 0.0033063270748243667
+      },
+      "2": {
+        "conv3d_seconds": 1.527495041518705,
+        "linear_probe_seconds": 0.002131034658911328,
+        "rotate_half_seconds": 0.006808318698313087,
+        "neg_slice_seconds": 0.00573585105012171
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "service_restarted": true,
+  "query_rankings_and_metadata_unchanged": true,
+  "score_absolute_tolerance": 1e-06,
+  "production_unchanged": true,
+  "videos": 42,
+  "qwen_segments": 138
+}

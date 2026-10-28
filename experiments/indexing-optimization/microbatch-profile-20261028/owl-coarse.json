@@ -1,0 +1,325 @@
+{
+  "rows": [
+    {
+      "module_sync_enabled": false,
+      "turn": 0,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.209484709019307,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": false,
+      "turn": 1,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.2052864999859594,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": false,
+      "turn": 2,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.1559063750319183,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": false,
+      "turn": 3,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.1742258329759352,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": false,
+      "turn": 4,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.0965895830304362,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": false,
+      "turn": 5,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.122879708011169,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": false,
+      "turn": 6,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.1577219579485245,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": false,
+      "turn": 7,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "total": {
+          "seconds": 1.1369100419688039,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 0,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.1071799160563387,
+          "calls": 4
+        },
+        "class_head": {
+          "seconds": 0.005289332941174507,
+          "calls": 4
+        },
+        "objectness_head": {
+          "seconds": 0.004507709003519267,
+          "calls": 4
+        },
+        "box_head": {
+          "seconds": 0.004476041009183973,
+          "calls": 4
+        },
+        "total": {
+          "seconds": 1.1319915829808451,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 1,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.1590184579836205,
+          "calls": 2
+        },
+        "class_head": {
+          "seconds": 0.005529250018298626,
+          "calls": 2
+        },
+        "objectness_head": {
+          "seconds": 0.003940791008062661,
+          "calls": 2
+        },
+        "box_head": {
+          "seconds": 0.003973000042606145,
+          "calls": 2
+        },
+        "total": {
+          "seconds": 1.1807998750009574,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 2,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.1433852500049397,
+          "calls": 2
+        },
+        "class_head": {
+          "seconds": 0.005057416041381657,
+          "calls": 2
+        },
+        "objectness_head": {
+          "seconds": 0.0038987500010989606,
+          "calls": 2
+        },
+        "box_head": {
+          "seconds": 0.0039002919802442193,
+          "calls": 2
+        },
+        "total": {
+          "seconds": 1.1642501250025816,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 3,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.1631111659808084,
+          "calls": 4
+        },
+        "class_head": {
+          "seconds": 0.006429708038922399,
+          "calls": 4
+        },
+        "objectness_head": {
+          "seconds": 0.0048102080472745,
+          "calls": 4
+        },
+        "box_head": {
+          "seconds": 0.004862708039581776,
+          "calls": 4
+        },
+        "total": {
+          "seconds": 1.193552540964447,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 4,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.2084535830072127,
+          "calls": 2
+        },
+        "class_head": {
+          "seconds": 0.004661166982259601,
+          "calls": 2
+        },
+        "objectness_head": {
+          "seconds": 0.004170749976765364,
+          "calls": 2
+        },
+        "box_head": {
+          "seconds": 0.004405457933899015,
+          "calls": 2
+        },
+        "total": {
+          "seconds": 1.23106983397156,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 5,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.1806390000274405,
+          "calls": 4
+        },
+        "class_head": {
+          "seconds": 0.005256540956906974,
+          "calls": 4
+        },
+        "objectness_head": {
+          "seconds": 0.006494207016658038,
+          "calls": 4
+        },
+        "box_head": {
+          "seconds": 0.004530208942014724,
+          "calls": 4
+        },
+        "total": {
+          "seconds": 1.2081352079985663,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 6,
+      "batch": 1,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.1156694170203991,
+          "calls": 4
+        },
+        "class_head": {
+          "seconds": 0.0051890830509364605,
+          "calls": 4
+        },
+        "objectness_head": {
+          "seconds": 0.004659459053073078,
+          "calls": 4
+        },
+        "box_head": {
+          "seconds": 0.0046382510918192565,
+          "calls": 4
+        },
+        "total": {
+          "seconds": 1.1414746660157107,
+          "calls": 1
+        }
+      }
+    },
+    {
+      "module_sync_enabled": true,
+      "turn": 7,
+      "batch": 2,
+      "logical_images": 4,
+      "timers": {
+        "vision_model": {
+          "seconds": 1.145972041063942,
+          "calls": 2
+        },
+        "class_head": {
+          "seconds": 0.005067666992545128,
+          "calls": 2
+        },
+        "objectness_head": {
+          "seconds": 0.004074374970514327,
+          "calls": 2
+        },
+        "box_head": {
+          "seconds": 0.004025832051411271,
+          "calls": 2
+        },
+        "total": {
+          "seconds": 1.1676868330105208,
+          "calls": 1
+        }
+      }
+    }
+  ],
+  "scope": "model only; identical preprocessed resident MPS input tensors; excludes preprocessing/output conversion"
+}

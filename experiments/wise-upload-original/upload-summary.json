@@ -1,0 +1,22 @@
+[
+  {
+    "media_id": 40,
+    "duration": 35.44,
+    "current_seconds": 104.7309972490184,
+    "original_seconds": 136.4821679579909,
+    "added_seconds": 31.751170708972495,
+    "added_percent": 30.316879952434594,
+    "current_qwen_seconds": 21.789430083008483,
+    "original_qwen_seconds": 58.6306087920093
+  },
+  {
+    "media_id": 41,
+    "duration": 26.875,
+    "current_seconds": 73.49332116701407,
+    "original_seconds": 109.94338791701011,
+    "added_seconds": 36.45006674999604,
+    "added_percent": 49.59643430341516,
+    "current_qwen_seconds": 12.700261624995619,
+    "original_qwen_seconds": 49.708631374989636
+  }
+]

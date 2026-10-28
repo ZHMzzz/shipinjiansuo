@@ -1,0 +1,4 @@
+*.npy
+*.log
+work/
+__pycache__/

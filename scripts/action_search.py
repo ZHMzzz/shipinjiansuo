@@ -1,4 +1,4 @@
-"""Versioned Qwen segment index. Only pixels and query text reach the model."""
+"""Qwen encoding and WISE snapshot views, with legacy migration reads."""
 import json
 import math
 import sqlite3
@@ -42,7 +42,7 @@ def plan(catalog):
             for m in catalog for start, end in windows(float(m['duration']))]
 
 
-def read_snapshot(project, complete=False):
+def read_legacy_snapshot(project, complete=False):
     folder = Path(project)/'action-index'
     if not folder.exists():
         if complete: raise ValueError('动作索引尚未建立')
@@ -64,6 +64,16 @@ def read_snapshot(project, complete=False):
     if complete and current != meta['media']:
         raise ValueError('尚有视频缺少动作索引，未发布')
     return meta, vectors, index
+
+
+def read_snapshot(project, complete=False):
+    if __package__:
+        from .native_qwen import MANIFEST, read_native_snapshot
+    else:
+        from native_qwen import MANIFEST, read_native_snapshot
+    if (Path(project)/MANIFEST).exists():
+        return read_native_snapshot(project, complete=complete)
+    return read_legacy_snapshot(project, complete=complete)
 
 
 def select_hits(segments, scores, ids, limit=20, *, group_by_video=False):
@@ -163,18 +173,11 @@ class ActionEngine:
         return catalog, records, vectors, missing
 
     def finish(self, project, catalog, records, vectors):
-        # Keep metadata/vector positions aligned even if database IDs have gaps.
-        order = sorted(range(len(records)), key=lambda i: (records[i]['media_id'], records[i]['ts']))
-        records = [records[i] for i in order]
-        matrix = np.asarray([vectors[i] for i in order], dtype='float32')
-        if not records: raise ValueError('没有可建立动作索引的视频')
-        index = faiss.IndexFlatIP(matrix.shape[1]); index.add(matrix)
-        folder = Path(project)/'action-index'; folder.mkdir(exist_ok=True)
-        np.save(folder/'vectors.npy', matrix)
-        faiss.write_index(index, str(folder/'index.faiss'))
-        (folder/'metadata.json').write_text(json.dumps({'settings': SETTINGS, 'media': catalog,
-            'segments': records, 'built_at': time.time()}, ensure_ascii=False, indent=2))
-        read_snapshot(project, complete=True)
+        if __package__:
+            from .native_qwen import write_native_qwen
+        else:
+            from native_qwen import write_native_qwen
+        write_native_qwen(project, catalog, records, vectors)
 
     def get_snapshot(self, project):
         project = Path(project).resolve()

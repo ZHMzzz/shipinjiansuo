@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "started": 1793175536.774262,
+  "service_restored": true,
+  "restored_status": {
+    "status": "ready",
+    "progress": 100,
+    "message": "全部已入库视频支持 Qwen 片段检索",
+    "indexed_videos": 41,
+    "indexed_segments": 135,
+    "model_loaded": true,
+    "model_load_seconds": 8.314128458034247,
+    "settings": {
+      "schema": 1,
+      "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+      "dtype": "float16",
+      "max_total_pixels": 1048576,
+      "window_seconds": 8.0,
+      "stride_seconds": 4.0,
+      "frames": 16
+    }
+  },
+  "finished": 1793175731.442063
+}

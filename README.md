@@ -27,6 +27,10 @@
 
 停止：`./scripts/stop.sh`。重新建索引：`./scripts/index.sh`，请先停止服务。新增视频优先使用网页上传。实现逻辑、文件位置及验证记录见 [视频上传与视频库](docs/视频上传与视频库.md)。
 
+Apple Silicon 入库默认使用 OWLv2 快速 CPU 预处理、MPS FP16 权重和 InsightFace CoreML，网页上传与 `index.sh` 共用 `scripts/extract_frames.py`。这些适配只在提取子进程启用，查询端保持原处理器/精度；Qwen 继续写入原生 WISE。固定形状模型副本与编译缓存位于 `data/model-cache/frame-acceleration/`，不改下载的原模型。首次编译可能较慢；后端不可用时任务明确失败，已有视频库继续可用。
+
+如需回退后续入库任务，先停止服务，再以 `VIDEO_FRAME_ACCELERATION=0 ./scripts/start.sh` 启动；命令行可用 `VIDEO_FRAME_ACCELERATION=0 ./scripts/index.sh`。取消该环境变量并重启即可恢复默认加速。此开关不会重算已有索引。
+
 ## 素材与结果
 
 - 初始 14 段短视频，缩放到最长边 640、H.264、去掉音轨，保留原片段时间轴。逐项来源见 `data/manifest.json`，预览见 `data/contact-sheet.jpg`。网页上传的视频另存于 `data/uploads/`，保留可用音轨，当前总数以视频库为准。
@@ -56,6 +60,7 @@
 | 阅读入口 | 需要理解的问题 |
 |---|---|
 | `scripts/index.sh` | 提取特征和建索引是两个独立阶段 |
+| `scripts/extract_frames.py` / `scripts/frame_acceleration.py` | 仅在入库子进程启用加速，隔离在线查询模型 |
 | `wise/src/wise/_main/extract_features.py` | 如何遍历媒体、抽帧、写特征与元数据 |
 | `wise/src/wise/dataloader/streamreader.py` | 解码、采样率与时间戳如何对应 |
 | `wise/src/wise/feature/feature_extractor_factory.py` | 模型ID怎样映射到具体编码器 |

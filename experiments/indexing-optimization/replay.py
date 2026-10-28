@@ -60,6 +60,15 @@ def rodb(path):
     return sqlite3.connect(Path(path).resolve().as_uri() + "?mode=ro", uri=True)
 
 
+def media_report(media):
+    """Represent SQLite checksum bytes losslessly without changing DB values."""
+    result = dict(media)
+    checksum = result.get("checksum")
+    if isinstance(checksum, (bytes, bytearray, memoryview)):
+        result["checksum"] = {"sqlite_bytes_hex": bytes(checksum).hex()}
+    return result
+
+
 def child_environment():
     return {
         **os.environ,
@@ -154,6 +163,44 @@ def safe_cleanup(work, work_root):
     if work.is_symlink() or work.parent.resolve() != work_root.resolve() or not work.name.startswith("replay-"):
         raise RuntimeError(f"Refusing unsafe experiment cleanup: {work}")
     shutil.rmtree(work)
+
+
+def finalize_trial(row, metrics_path, work, work_root, resources, *,
+                   resource_sampling_started, keep_project, exc_info):
+    """Cleanup remains independent of sampling and report-serialization errors."""
+    try:
+        if resource_sampling_started:
+            resources.__exit__(*exc_info)
+            row["resources"] = resources.result
+        row["resource_scope_note"] = (
+            "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own "
+            "resources in extract-metrics.json. System availability/swap include the "
+            "online server and other processes. Do not add overlapping measurements."
+        )
+        row["excluded_verification_seconds"] = sum(row["stages"][name] for name in row["excluded_stages"])
+        row["adjusted_wall_seconds"] = row["elapsed_wall_seconds"] - row["excluded_verification_seconds"]
+        row["wall_definition"] = (
+            "elapsed_wall_seconds covers probe through completed index load and SHA checks. "
+            "adjusted_wall_seconds subtracts only listed excluded_stages. "
+            "Qwen cold loading, runtime imports, and post-trial cleanup are outside both."
+        )
+        row["finished_epoch"] = time.time()
+        dump(metrics_path, row)
+    finally:
+        cleanup_started = time.perf_counter()
+        try:
+            if not keep_project:
+                safe_cleanup(work, work_root)
+            row["temporary_project_retained"] = keep_project
+        except BaseException as error:
+            row["cleanup_error"] = repr(error)
+            raise
+        finally:
+            row["cleanup_seconds"] = time.perf_counter() - cleanup_started
+            try:
+                dump(metrics_path, row)
+            finally:
+                gc.collect()
 
 
 def replay_one(source, config, trial_dir, suite, base, base_hashes, actions, runtime,
@@ -271,7 +318,7 @@ def replay_one(source, config, trial_dir, suite, base, base_hashes, actions, run
                 thumbs = db.execute("SELECT count(*) FROM thumbnails WHERE media_id=?", (media["id"],)).fetchone()[0]
                 if not thumbs:
                     raise RuntimeError("Replay has no thumbnails")
-            return {"media": media, "vector_counts": counts, "thumbnails": thumbs}
+            return {"media": media_report(media), "vector_counts": counts, "thumbnails": thumbs}
         row["new_media"] = measure("new_media_validation", validate_new_media)
         catalog, records, vectors, missing = measure("qwen_prepare", lambda: actions.prepare(project))
         new_id = row["new_media"]["media"]["id"]
@@ -317,30 +364,9 @@ def replay_one(source, config, trial_dir, suite, base, base_hashes, actions, run
         raise
     finally:
         row["elapsed_wall_seconds"] = time.perf_counter() - started
-        if resource_sampling_started:
-            resources.__exit__(*sys.exc_info())
-            row["resources"] = resources.result
-        row["resource_scope_note"] = (
-            "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own "
-            "resources in extract-metrics.json. System availability/swap include the "
-            "online server and other processes. Do not add overlapping measurements."
-        )
-        row["excluded_verification_seconds"] = sum(row["stages"][name] for name in row["excluded_stages"])
-        row["adjusted_wall_seconds"] = row["elapsed_wall_seconds"] - row["excluded_verification_seconds"]
-        row["wall_definition"] = (
-            "elapsed_wall_seconds covers probe through completed index load and SHA checks. "
-            "adjusted_wall_seconds subtracts only listed excluded_stages. "
-            "Qwen cold loading, runtime imports, and post-trial cleanup are outside both."
-        )
-        row["finished_epoch"] = time.time()
-        dump(metrics_path, row)
-        cleanup_started = time.perf_counter()
-        if not keep_project:
-            safe_cleanup(work, work_root)
-        row["temporary_project_retained"] = keep_project
-        row["cleanup_seconds"] = time.perf_counter() - cleanup_started
-        dump(metrics_path, row)
-        gc.collect()
+        finalize_trial(row, metrics_path, work, work_root, resources,
+                       resource_sampling_started=resource_sampling_started,
+                       keep_project=keep_project, exc_info=sys.exc_info())
     return row
 
 

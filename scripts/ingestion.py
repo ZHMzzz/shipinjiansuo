@@ -228,7 +228,8 @@ class IngestionManager:
             try:
                 read_snapshot(stage)
             except Exception:
-                shutil.rmtree(stage/'action-index', ignore_errors=True)
+                from native_qwen import reset_native_qwen
+                reset_native_qwen(stage)
             self.build_actions(stage)
             self.wait_async(self.publisher(stage))
             self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持 Qwen 片段检索'}
@@ -296,23 +297,21 @@ class IngestionManager:
                 except ImportError:
                     from qwen_project import validate_project, FACE, OWL
                 validate_project(stage, require_owl=True)
-                # WISE add_media discovers every model in store/. Qwen segments
-                # are encoded by build_actions, so omit its derived store during
-                # frame extraction and recreate it before publishing this stage.
+                # Keep the sole Qwen store while WISE discovers frame models.
                 try:
-                    from .native_qwen import QWEN
+                    from .native_qwen import suspend_native_store
                 except ImportError:
-                    from native_qwen import QWEN
-                shutil.rmtree(stage/'store'/QWEN, ignore_errors=True)
-                expected=max(1,math.ceil(duration*2)*2)
-                def extraction_progress(line):
-                    match=re.search(r'Feature extraction:\s*(\d+)it',line)
-                    if match:
-                        done=int(match[1])
-                        self.update(jid,progress=min(78,15+63*done/expected),message=f'已完成 {done} 次帧特征计算，预计约 {expected} 次')
-                self.run([sys.executable,'-u','-m','wise','extract-features',str(prepared),'--project-dir',str(stage),'--num-workers','0','--yes'],log,extraction_progress)
-                self.update(jid,status='indexing',stage='构建检索索引',progress=80,message='合并新旧物体和人脸特征，构建 WISE 检索索引')
-                self.run([sys.executable,'-u','-m','wise','create-index','--project-dir',str(stage),'--overwrite'],log)
+                    from native_qwen import suspend_native_store
+                with suspend_native_store(stage):
+                    expected=max(1,math.ceil(duration*2)*2)
+                    def extraction_progress(line):
+                        match=re.search(r'Feature extraction:\s*(\d+)it',line)
+                        if match:
+                            done=int(match[1])
+                            self.update(jid,progress=min(78,15+63*done/expected),message=f'已完成 {done} 次帧特征计算，预计约 {expected} 次')
+                    self.run([sys.executable,'-u',str(Path(__file__).resolve().with_name('extract_frames.py')),str(prepared),'--project-dir',str(stage),'--num-workers','0','--yes'],log,extraction_progress)
+                    self.update(jid,status='indexing',stage='构建检索索引',progress=80,message='合并新旧物体和人脸特征，构建 WISE 检索索引')
+                    self.run([sys.executable,'-u','-m','wise','create-index','--project-dir',str(stage),'--overwrite'],log)
             with sqlite3.connect(stage/'metadata/internal.db') as db:
                 row=db.execute('SELECT media.id FROM media JOIN source_collections s ON s.id=media.source_collection_id WHERE s.location=?',(str(prepared),)).fetchone()
                 if not row: raise RuntimeError('处理结束但没有产生视频记录，未发布此任务')

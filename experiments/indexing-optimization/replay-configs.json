@@ -1,0 +1,12 @@
+[
+  {
+    "name": "baseline",
+    "owl": "baseline",
+    "face": "cpu"
+  },
+  {
+    "name": "optimized",
+    "owl": "fast_fp16_weights",
+    "face": "coreml"
+  }
+]

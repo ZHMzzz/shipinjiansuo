@@ -48,7 +48,8 @@ def prune_project(project, media_id):
     """Idempotent removal, metadata last so an interrupted cleanup can resume."""
     with sqlite3.connect(project/'metadata/internal.db') as db:
         vector_ids=np.array([r[0] for r in db.execute('SELECT id FROM vectors WHERE media_id=?',(media_id,))],dtype='int64')
-    removed={'vectors':len(vector_ids),'segments':0}
+        qwen_count=db.execute('SELECT count(*) FROM vectors WHERE media_id=? AND feature_extractor_id=?',(media_id,'hf/Qwen/Qwen3-VL-Embedding/2B')).fetchone()[0]
+    removed={'vectors':len(vector_ids),'segments':qwen_count}
     if len(vector_ids):
         for path in (project/'store').rglob('*.faiss'):
             index=faiss.read_index(str(path))
@@ -88,6 +89,10 @@ def prune_project(project, media_id):
         db.execute('DELETE FROM source_collections WHERE id NOT IN (SELECT source_collection_id FROM media)')
         db.commit();db.execute('VACUUM')
         if db.execute('PRAGMA foreign_key_check').fetchall(): raise RuntimeError('删除后元数据引用不完整')
+    marker=project/'qwen-encoding.json'
+    if marker.exists():
+        config=json.loads(marker.read_text());config['media_signatures'].pop(str(media_id),None)
+        temporary=marker.with_suffix('.json.tmp');temporary.write_text(json.dumps(config,ensure_ascii=False,indent=2));os.replace(temporary,marker)
     return removed
 
 

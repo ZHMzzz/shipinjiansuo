@@ -1,0 +1,13 @@
+{
+  "model": "qwen",
+  "mode": "mps",
+  "runtime": {
+    "dtype": "torch.float16",
+    "vision_attention": "sdpa",
+    "text_attention": "sdpa"
+  },
+  "stages": [],
+  "modules": [],
+  "batch": 2,
+  "logical_items": 4
+}

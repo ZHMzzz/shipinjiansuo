@@ -1,0 +1,255 @@
+{
+  "name": "low-1",
+  "budget": 1048576,
+  "rounds": [
+    {
+      "round": 0,
+      "wall_seconds_excluding_hash": 8.183173749013804
+    },
+    {
+      "round": 1,
+      "wall_seconds_excluding_hash": 8.63674662495032
+    }
+  ],
+  "segments": [
+    {
+      "round": 0,
+      "media_id": 27,
+      "ts": 0.0,
+      "te": 8.0,
+      "encode_seconds": 1.9454751249868423,
+      "hash_seconds": 0.027650791977066547,
+      "raw_hash": "69d57b97b7e441f3c6f57afa19491784554f4dc775705a4aa6eec1648107c017",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 2.0797842500614934
+    },
+    {
+      "round": 0,
+      "media_id": 27,
+      "ts": 4.0,
+      "te": 12.0,
+      "encode_seconds": 1.9645241250400431,
+      "hash_seconds": 0.025692249997518957,
+      "raw_hash": "37bc693b27d6943b57c27f118ddaff3ea8d457a36636b98abb313e0dc63d39e4",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 2.1343981249956414
+    },
+    {
+      "round": 0,
+      "media_id": 27,
+      "ts": 8.0,
+      "te": 16.0,
+      "encode_seconds": 1.9268797499826178,
+      "hash_seconds": 0.027902709029149264,
+      "raw_hash": "ac5fb03ff15b2ba0e72b34c090997b0b45a8d7278ddff31eddc6f7ab5601b514",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 2.0656077489838935
+    },
+    {
+      "round": 0,
+      "media_id": 27,
+      "ts": 12.0,
+      "te": 16.4,
+      "encode_seconds": 1.7907474579988047,
+      "hash_seconds": 0.02798370801610872,
+      "raw_hash": "f67fc205b50c8ee394438a6e427dd49e6fad1e636e52178b5466c2ba9ad351f9",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 1.903335207956843
+    },
+    {
+      "round": 1,
+      "media_id": 27,
+      "ts": 0.0,
+      "te": 8.0,
+      "encode_seconds": 2.0126405829796568,
+      "hash_seconds": 0.02875216701067984,
+      "raw_hash": "69d57b97b7e441f3c6f57afa19491784554f4dc775705a4aa6eec1648107c017",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 2.158478416968137
+    },
+    {
+      "round": 1,
+      "media_id": 27,
+      "ts": 4.0,
+      "te": 12.0,
+      "encode_seconds": 1.8475317920092493,
+      "hash_seconds": 0.02576695801690221,
+      "raw_hash": "37bc693b27d6943b57c27f118ddaff3ea8d457a36636b98abb313e0dc63d39e4",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 2.032953916990664
+    },
+    {
+      "round": 1,
+      "media_id": 27,
+      "ts": 8.0,
+      "te": 16.0,
+      "encode_seconds": 2.0937660420313478,
+      "hash_seconds": 0.02835875004529953,
+      "raw_hash": "ac5fb03ff15b2ba0e72b34c090997b0b45a8d7278ddff31eddc6f7ab5601b514",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 2.2380406669690274
+    },
+    {
+      "round": 1,
+      "media_id": 27,
+      "ts": 12.0,
+      "te": 16.4,
+      "encode_seconds": 2.0748331660288386,
+      "hash_seconds": 0.032520500011742115,
+      "raw_hash": "f67fc205b50c8ee394438a6e427dd49e6fad1e636e52178b5466c2ba9ad351f9",
+      "raw_shape": [
+        16,
+        3,
+        640,
+        362
+      ],
+      "model_input": {
+        "tokens": 980,
+        "grid": [
+          [
+            8,
+            28,
+            16
+          ]
+        ]
+      },
+      "wall_seconds_excluding_hash": 2.2072133750189096
+    }
+  ],
+  "status": "completed",
+  "dtype": "torch.float16",
+  "load_seconds": 8.336336917011067,
+  "warmup_seconds": 2.46463116700761,
+  "resources": {
+    "scope": "current_process",
+    "sample_interval_seconds": 0.05,
+    "total_seconds": 30.307679834018927,
+    "before": {
+      "rss_bytes": 216956928,
+      "mps_allocated_bytes": 0,
+      "mps_driver_bytes": 458752,
+      "system_available_bytes": 13268090880,
+      "system_swap_used_bytes": 20261306368
+    },
+    "after": {
+      "rss_bytes": 639172608,
+      "mps_allocated_bytes": 4255064832,
+      "mps_driver_bytes": 5564710912,
+      "system_available_bytes": 7317340160,
+      "system_swap_used_bytes": 20261306368
+    },
+    "sampled_peak": {
+      "rss_bytes": 4432805888,
+      "mps_allocated_bytes": 4435212544,
+      "mps_driver_bytes": 5564727296,
+      "system_available_bytes": 13275873280,
+      "system_swap_used_bytes": 20261306368
+    },
+    "min_system_available_bytes": 6833520640
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-28",
+  "project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo",
+  "pointer": "releases/delete-a665db9e78f848339dc4973e202b29d4/demo",
+  "media": {
+    "id": 27,
+    "path": "抖音20261027-739727.mp4",
+    "duration": 16.4,
+    "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/581fdcafb2194abb86fc39b1ff23e60d/prepared"
+  },
+  "segments": [
+    {
+      "media_id": 27,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 27,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 27,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 27,
+      "ts": 12.0,
+      "te": 16.4
+    }
+  ],
+  "settings": {
+    "schema": 1,
+    "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+    "dtype": "float16",
+    "max_total_pixels": 1048576,
+    "window_seconds": 8.0,
+    "stride_seconds": 4.0,
+    "frames": 16
+  },
+  "queries": [
+    [
+      "红色安全帽写字",
+      true
+    ],
+    [
+      "蓝色工服的人员在门岗旁，一人坐着写字、一人站着",
+      true
+    ],
+    [
+      "站在门岗旁的蓝色工服人员头上没有戴安全帽",
+      true
+    ],
+    [
+      "红色安全帽骑自行车",
+      false
+    ],
+    [
+      "户外慢跑",
+      false
+    ],
+    [
+      "有人在游泳池里游泳",
+      false
+    ]
+  ],
+  "protected": {
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/thumbs.db": "a68ccc1b902c1da7daafb91f24e69b7d09f50c08209c9c07afcaae0918bec047",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/qwen-migration.json": "4d6ab18d9a0fb757a2bf7a5b71c903192d558216020e1262e05f51021e427943",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/owl-restoration.json": "af6ad40e8eac8495455746818d81c2f441a1a773aa934cc7159139ead059b8b7",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/deletion.json": "1a07530d5ba583ce80556b4bfe6eb1c99eeabb91e53ef6baf46e67b8c2b5a4f2",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/action-index/index.faiss": "c8b8321121be9e494bc672d9dfcdbc741317846ed56c1a3afab0d8cd2f8aa5df",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/action-index/metadata.json": "1ac2b0d3d5f73d1cf0212586fb96fdbbd621837f686c647d99d25e766fedd8dc",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/action-index/vectors.npy": "cb7e80d0ea3732f73e033dc22caf87e203659a84288d9d5f3743f8b4d41c99ec",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/metadata/internal.db": "e8ba2ebac002773da8ffa6d26ca50d4dc3019915c99b2d1797eb335ce891bb19",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000017.faiss": "5f322a4f3069a139f9290164bbf1d8cb160bc3e04927211e590c7d5888c0e70f",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000015.faiss": "08c22213775bd077639977a12944b73e94f65ba4d4af7f78f13fe9ce53cc238d",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000011.faiss": "7ca7395ac7d1afdb1b7c9c6e4aeebb9b4c3a1b255203af9c4b4414fc41a2e043",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000008.faiss": "87918fb22e0ab3ee976453b9309a3b073fd1cd04d16c640e6a7bdb56834ce677",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000013.faiss": "c62e63ccedfa4d20f08fba6f8edc0a5dfc2b07c9ca0394a02b73539358b20086",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000014.faiss": "48fc53bd564c12d1cbe39eea66d706b8c15422d698e53dbcf6bd6e404d1593a2",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000016.faiss": "d53be58cb878f632cbe18f019afd7c10bf7f9a6abadd0d4f669c14c2c79b4e61",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000012.faiss": "2c692c14375961314817cc61c02771ac0df1aba30b24722bc2cef5944c6fde28",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000010.faiss": "fa32e20854b5a6300155efbdac2cdf0181fc0b5b927a56e5f7fd2f4890360b12",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000009.faiss": "abc7e22045c48065d8d567c44f7dd843d013bf0df7dc7ded709f628a86d0bf0a",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000005.faiss": "51169f0a399334588c4269af2e4cd62dd765355a5d83fca600029c155da31e09",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000021.faiss": "c63b0c7045cf5ced1a65a039277f84627b2feef5a0d5ea7d24fee36455252185",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000023.faiss": "efa671c6f4863b2b11113887d8d6851589741dccfd5b93009cc1bb9cdab29d70",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000007.faiss": "7d05305eff33c758a6151575ca92e5c86d917d5599714530061a5f775d0c65bd",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000003.faiss": "5d87cc4ea8c24b2d375c06d72441c5286f78d19a5879c5e95bbf269b0f996953",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000018.faiss": "545ba6ee70c3aeaf7aafae72311523d83d0c8a65f7a84e6dba69a76b6f713fe9",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000025.faiss": "e5f1b4e59ec3bda36e7d54875a6c973443cf13afc4535e9592c81974f5cb938b",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000001.faiss": "423aa4f3c5b5cc4b6f819fa81f7dd18295d39668bd4063178bd70be0aff147fc",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000022.faiss": "7fdaca768b1bffa75c8da54ad34da0c54319d722e5b444884b36c3f16c9aa17a",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000006.faiss": "75ba0d7d4ced6b7bc4ce421ea59367b02b8a4c0304bc23bd8cf60df4c8594bf9",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000004.faiss": "3bd01c9a1e656796f5a16e9e1ee755cbfabc2183333dcb2630f52c2cbf3c2349",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000020.faiss": "9a7e52b7f366e8d1210f357d3cd66fbcd9cf94a47607fe7a146ff78403666ccd",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000024.faiss": "e5f1b4e59ec3bda36e7d54875a6c973443cf13afc4535e9592c81974f5cb938b",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000019.faiss": "a67adc94a8e3214aa07031ae1c87a26298ac354bc0547cbfc4b8d1712c562970",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000000.faiss": "18da1b13755c6bdfff19bb600128ab73a03056e55a4937acb96e31b11f92bc82",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000002.faiss": "675bc79dc4b49d44ae606aa5f07d3ba1ef6d5190e2baed7064e41cfda7b7b0a7",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/features/video-000026.faiss": "6b18d5a1b4850c8f5edc9b6e47776edd1b56543816574e068db82597d61a0562",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/deepinsight/insightface/buffalo_l/_unknown/index/video-IndexFlatIP.faiss": "255ff4d871234a0b53368ea2e4402d5c4e5d5c15c0043c3a7ca4baafae83772f",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/features/video-000005.faiss": "4597cb40e318f14f8203825a9a418e34ac32d285f09c6b14a8a21787524e621a",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/features/video-000003.faiss": "cda4f6062b2932747113b0ba8d87e26b46655d2ae8c892804d354ea6b48e1dff",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/features/video-000001.faiss": "c574171c603cd9e1a19af4eb77fbefacbb2b07cc5eff0be0273c8b4d0f790fa7",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/features/video-000006.faiss": "c3d1e31e8de18fc4f326ee66682ad2a453ae1d4fe51b89b3072016ef3179c6d2",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/features/video-000004.faiss": "4597cb40e318f14f8203825a9a418e34ac32d285f09c6b14a8a21787524e621a",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/features/video-000000.faiss": "2c20c445217692375ca258b37c75a144fb8956b13f59c9089ef0d1a718443378",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/features/video-000002.faiss": "924110efdaa9f6d4fffbb54c8003bcdd5b33922478a85d83b984ce82ab41ad68",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/transformers/owlv2/google/owlv2-base-patch16-ensemble/index/video-IndexFlatIP.faiss": "523b507b704d2ba3d023777e3ca3f1da45b0b730cfc97dad8e9d9d7515ed97e7",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/hf/Qwen/Qwen3-VL-Embedding/2B/features/video-000000.faiss": "a8e7ec492cdad241db6eced9473af6c9e9b5ca7401bea8cd4f3908685c727288",
+    "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-a665db9e78f848339dc4973e202b29d4/demo/store/hf/Qwen/Qwen3-VL-Embedding/2B/index/video-IndexFlatIP.faiss": "a8e7ec492cdad241db6eced9473af6c9e9b5ca7401bea8cd4f3908685c727288",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/warm_models.py": "b51406938f27459e5698f1bdd57975d8ff5be38babe57e54fb71e0a81cc77590",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/ingestion.py": "3dd67e2e3a373dd2047e6aa9e75b25b72638ec157a99aace22313576123e61c0",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/action_search.py": "8bd73515964bc6e11db54d2a1711d162cac91d498064ea9639cbc3428c7733f0",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/server.py": "ff5c99b2a3cf81f949aa0edfd00f3287c1fb54206d1313974507017779322712",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/restore_owl_project.py": "eacce7712adab1c58d8eedd49f6ddcb4cb969032e0554a9c65d3df3f7c5daf78",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/backfill_thumbnails.py": "669c3012d673e1648285fadc9bf6473367e49e948aac29c740c7632daefeeb45",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/verify_combined.py": "4677a349cf50c546547129ffcae3c11a757eb0bfed9daefd4beef2b6aa48e056",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/video_deletion.py": "544757164ca950814e964be3e7d00e27bb7da252d896ae29df9115d2d85fa11a",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/benchmark_face_only_ingestion.py": "e8e576f0fa27bac3d7fe962664f3204c4de807fa99c82e928ec3094a127b2cb3",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/verify_actions.py": "333f5904c4f2cdee16a68727bd6123bc794840fef68bdb7a1c6b51ebaceefd6a",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/prepare_media.py": "fe1d91509020a0153454b9c4390fcc2bc1ac9ee559b9f1275a19550299a8edcf",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/benchmark_owl_qwen.py": "1858e8c17e681605a5c7146af5dda2db0a10fadd0ede4cb13b3f6b25abea234c",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/library_catalog.py": "31ef0e029a27f44a9a21cc4405c4b57b1d1472ef65fbe176173c8e6abd7626d3",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/resource_metrics.py": "4e421e88421f9c9a5023147a4eea90d4f04a0e3aa949ac3d80dd511d90cf580f",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/query_image.py": "201646da7f89d10a0d596c8504407bc871034397978ddd0622c6d29dada11b4c",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/benchmark_actions.py": "f5c4b42e38e83c237ebe76f0dcc507b467b3d9b056b06bd4d3484eab8c53ec23",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/verify_image_regressions.py": "3dcbcbfadf8660e86411b660769307492ddd1934a98a97f05c6b99f49f204bf0",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/manage.py": "1f41e76d09f387ebc83c1fe380d627a7df6ad2e36f3bc03af8d47e95b7a3b736",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/library_search.py": "62c6150011f447e29e018e9c22cf3ddbd6502ccc6401e9be5d8a820b8b08159e",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/verify.py": "c3f71e3810de72faab3da543580e1973f562e9ba6a88d0b3fb63b4565ad69863",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/qwen_project.py": "15aba6e8433648db2bd6cad52bc331368b56e6de54d0143cfadd7a9ddb72812a",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/verify_upload.py": "05a3c10c025c8efaa4dde5f4d1a0bb6c8c0926900d8fd2373e74e5bbb68709cc",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/native_qwen.py": "c673e72ce53ce58e993e46c213621b0dbc794923fcb30f565d03539726b21e0b",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/combined_search.py": "10c66f1bd7beffbc93f639fae8d419b845923a0a4c5e9b87c5c5cc09bd87ad54",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/benchmark_qwen_replacement.py": "74e62b770ce9804e966d9a000f659c62a4b4f67c4ae36ae984623db9137da0cb",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/semantic_filter.py": "1b7beab8a58d4708a3215588e7fb7976b0ae2a0d9e4d46431ef2a6ebd993faec",
+    "/Users/zhanghemign/Desktop/视频检索/scripts/fix_openmp.py": "ce1e001aa2dbb504c3dcb85e6a5989b805f4609be45001b650fa63ecb827fc8e",
+    "/Users/zhanghemign/Desktop/视频检索/ui/maintenance.js": "4a6e05fff3462da0cdd88d23a1cceb3de2b86e64bd62655f4171b76c5550ab5f",
+    "/Users/zhanghemign/Desktop/视频检索/ui/actions.html": "31d63473f469143917cd107723e01913015af629f70ae1f8e6ad8ff2c08f7660",
+    "/Users/zhanghemign/Desktop/视频检索/ui/index.html": "c064246760c47ed78b336b0d30d2ddadd336e6e0402eb91c01e74134a584c423",
+    "/Users/zhanghemign/Desktop/视频检索/ui/actions.js": "714b3fe3aed75fd02c4db9d587621695d8ae654c06c13c0101d1bb89b34f1b59",
+    "/Users/zhanghemign/Desktop/视频检索/ui/catalog.css": "014ca790b7c54e4ce309d6cd529940e8f34873cde4849f6bf2962aa036371fc6",
+    "/Users/zhanghemign/Desktop/视频检索/ui/catalog.js": "63f1b5137f57db2a733c2aca4330b9ab23ad4a4fd9dbad3a55b034b6c260788d",
+    "/Users/zhanghemign/Desktop/视频检索/ui/actions.css": "4516338aa83c46ff3edad9d0a6a0a8eadf592777f86a43b0b1b0bde098276507",
+    "/Users/zhanghemign/Desktop/视频检索/ui/style.css": "7b845d3499360197403b0d1b8ae9d970b2cacb0aaecab1eff90c89e1fcc6c0bf",
+    "/Users/zhanghemign/Desktop/视频检索/ui/api.js": "81fdfa25e29d7ebba1197493aec5dd89d4d3cce4067163bc527f58a7289fb799",
+    "/Users/zhanghemign/Desktop/视频检索/ui/maintenance.html": "5162028fba0a2c0179eb6e2bc31a0f10fb5cb7c654cf0915d1bf93681963155d",
+    "/Users/zhanghemign/Desktop/视频检索/ui/video-delete.js": "88f18233052dacba47d22f62a27b8f55ab7b88f830f7e5bc5acab0ca545e07b7",
+    "/Users/zhanghemign/Desktop/视频检索/wise_config.yaml": "0c0952689910ea5887f0d4b0100b9e7d7797ca38abfaae4451c44ee481e64946",
+    "/Users/zhanghemign/Desktop/视频检索/data/people.sqlite": "c8f9a0ea112947b8cf15446b3ea03c114573a253783065ff1050e69fd4577f6c",
+    "/Users/zhanghemign/Desktop/视频检索/wise/src/wise/feature/qwen3vl.py": "689c7cafc3e17edce2702665b0049b275a7afddb387ec958f25a5ba28a7a86c3",
+    "/Users/zhanghemign/Desktop/视频检索/data/uploads/581fdcafb2194abb86fc39b1ff23e60d/prepared/抖音20261027-739727.mp4": "cdb7a4b3b7353c347fd0dd44991d851cd978a1e6121fe3e7934ca507afd0e1a3"
+  },
+  "order": [
+    "low-1",
+    "high-1",
+    "high-2",
+    "low-2"
+  ]
+}

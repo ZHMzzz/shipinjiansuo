@@ -1,0 +1,687 @@
+{
+  "status": "completed",
+  "settings": {
+    "schema": 1,
+    "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+    "dtype": "float16",
+    "max_total_pixels": 1048576,
+    "window_seconds": 8.0,
+    "stride_seconds": 4.0,
+    "frames": 16
+  },
+  "source_media_id": 40,
+  "source_sha256": "ff5484d7eca0ca2fef86ed6f7dc3f14740b6e4f5b390bb04c4417a0d36e6ea0c",
+  "baseline_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/native-qwen-40b9627ca4e34dc3b78dda4ed7e62a00/demo",
+  "before_media_count": 41,
+  "before_segments": 135,
+  "trials": [
+    {
+      "name": "baseline",
+      "owl": "baseline",
+      "face": "cpu",
+      "status": "completed",
+      "stages": {
+        "transcode": 1.171011832950171,
+        "extract": 83.9303383330116,
+        "index": 3.406055874947924,
+        "qwen_prepare_and_encode": 21.50214358296944,
+        "qwen_write_native": 0.012968625000212342,
+        "validate_load_local_publish": 0.6189935830188915
+      },
+      "initial_copy_hashes_match": true,
+      "qwen_hidden_during_frame_extraction": true,
+      "qwen_store_restored_before_encoding": true,
+      "only_missing_media_encoded": [
+        42
+      ],
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2152,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 313420,
+          "VIDEO:hf/Qwen/Qwen3-VL-Embedding/2B": 143
+        },
+        "media_count": 42,
+        "qwen_segments": 143
+      },
+      "process_job_seconds": 113.57725154201034,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 113.5799637499731,
+        "before": {
+          "rss_bytes": 134955008,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 4283170816,
+          "system_available_bytes": 5835292672,
+          "system_swap_used_bytes": 23031119872
+        },
+        "after": {
+          "rss_bytes": 1202470912,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5458067456,
+          "system_available_bytes": 7131824128,
+          "system_swap_used_bytes": 25905004544
+        },
+        "sampled_peak": {
+          "rss_bytes": 1211252736,
+          "mps_allocated_bytes": 4474246912,
+          "mps_driver_bytes": 5474861056,
+          "system_available_bytes": 9208561664,
+          "system_swap_used_bytes": 26097942528
+        },
+        "min_system_available_bytes": 5215043584
+      },
+      "old_qwen_vectors_and_ids_exact": true,
+      "new_segments": 8,
+      "new_media_id": 42,
+      "duration": 35.44,
+      "no_action_index": true,
+      "new_qwen_sha256": "8f3ef738d04ec964f685a60e6183d018db9bfc4011425b6da9368a7823cdc8b6",
+      "qwen_queries": [
+        {
+          "query": "视频中的场景和动作",
+          "hits": [
+            {
+              "media_id": 28,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5952649116516113
+            },
+            {
+              "media_id": 32,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5862172842025757
+            },
+            {
+              "media_id": 32,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5793654322624207
+            },
+            {
+              "media_id": 31,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5742199420928955
+            },
+            {
+              "media_id": 28,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5682600736618042
+            },
+            {
+              "media_id": 11,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5630843043327332
+            },
+            {
+              "media_id": 23,
+              "ts": 16.0,
+              "te": 24.0,
+              "score": 0.5620134472846985
+            },
+            {
+              "media_id": 23,
+              "ts": 20.0,
+              "te": 28.0,
+              "score": 0.5601748824119568
+            },
+            {
+              "media_id": 11,
+              "ts": 4.0,
+              "te": 10.0,
+              "score": 0.5601018667221069
+            },
+            {
+              "media_id": 23,
+              "ts": 40.0,
+              "te": 48.0,
+              "score": 0.5559448003768921
+            }
+          ]
+        },
+        {
+          "query": "骑自行车",
+          "hits": [
+            {
+              "media_id": 32,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.46205079555511475
+            },
+            {
+              "media_id": 18,
+              "ts": 0.0,
+              "te": 1.4,
+              "score": 0.44330406188964844
+            },
+            {
+              "media_id": 32,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4325510859489441
+            },
+            {
+              "media_id": 1,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.41968029737472534
+            },
+            {
+              "media_id": 28,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.4119056165218353
+            },
+            {
+              "media_id": 2,
+              "ts": 4.0,
+              "te": 8.52,
+              "score": 0.4037688672542572
+            },
+            {
+              "media_id": 28,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4034059941768646
+            },
+            {
+              "media_id": 1,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.40263012051582336
+            },
+            {
+              "media_id": 1,
+              "ts": 8.0,
+              "te": 14.6146,
+              "score": 0.4023692309856415
+            },
+            {
+              "media_id": 2,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.40068715810775757
+            }
+          ]
+        },
+        {
+          "query": "户外慢跑",
+          "hits": [
+            {
+              "media_id": 2,
+              "ts": 4.0,
+              "te": 8.52,
+              "score": 0.5537369847297668
+            },
+            {
+              "media_id": 2,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5522398948669434
+            },
+            {
+              "media_id": 17,
+              "ts": 8.0,
+              "te": 16.0,
+              "score": 0.5162301063537598
+            },
+            {
+              "media_id": 7,
+              "ts": 4.0,
+              "te": 9.833333,
+              "score": 0.5108307600021362
+            },
+            {
+              "media_id": 1,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.509075939655304
+            },
+            {
+              "media_id": 1,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5062068700790405
+            },
+            {
+              "media_id": 1,
+              "ts": 8.0,
+              "te": 14.6146,
+              "score": 0.49511396884918213
+            },
+            {
+              "media_id": 7,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4904923141002655
+            },
+            {
+              "media_id": 8,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4672154188156128
+            },
+            {
+              "media_id": 28,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.46349388360977173
+            }
+          ]
+        },
+        {
+          "query": "红色安全帽写字",
+          "hits": [
+            {
+              "media_id": 27,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5957640409469604
+            },
+            {
+              "media_id": 27,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5606287121772766
+            },
+            {
+              "media_id": 27,
+              "ts": 8.0,
+              "te": 16.0,
+              "score": 0.5569507479667664
+            },
+            {
+              "media_id": 27,
+              "ts": 12.0,
+              "te": 16.4,
+              "score": 0.5019755363464355
+            },
+            {
+              "media_id": 17,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.4786475896835327
+            },
+            {
+              "media_id": 17,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4752581715583801
+            },
+            {
+              "media_id": 31,
+              "ts": 12.0,
+              "te": 20.0,
+              "score": 0.47310322523117065
+            },
+            {
+              "media_id": 19,
+              "ts": 0.0,
+              "te": 7.875,
+              "score": 0.46713757514953613
+            },
+            {
+              "media_id": 41,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.458738774061203
+            },
+            {
+              "media_id": 31,
+              "ts": 8.0,
+              "te": 16.0,
+              "score": 0.45191606879234314
+            }
+          ]
+        }
+      ],
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10674
+      },
+      "old_frame_feature_shards_unchanged": true
+    },
+    {
+      "name": "optimized",
+      "owl": "fast_fp16_weights",
+      "face": "coreml",
+      "status": "completed",
+      "stages": {
+        "transcode": 1.3941452919971198,
+        "extract": 41.80679154198151,
+        "index": 6.393894416978583,
+        "qwen_prepare_and_encode": 35.15630700002657,
+        "qwen_write_native": 0.013647624989971519,
+        "validate_load_local_publish": 0.4958808749797754
+      },
+      "initial_copy_hashes_match": true,
+      "qwen_hidden_during_frame_extraction": true,
+      "qwen_store_restored_before_encoding": true,
+      "only_missing_media_encoded": [
+        42
+      ],
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2152,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 313399,
+          "VIDEO:hf/Qwen/Qwen3-VL-Embedding/2B": 143
+        },
+        "media_count": 42,
+        "qwen_segments": 143
+      },
+      "process_job_seconds": 86.41707512497669,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 86.4176606250112,
+        "before": {
+          "rss_bytes": 829521920,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5458067456,
+          "system_available_bytes": 7114129408,
+          "system_swap_used_bytes": 25905004544
+        },
+        "after": {
+          "rss_bytes": 1110474752,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5474844672,
+          "system_available_bytes": 8971681792,
+          "system_swap_used_bytes": 28191293440
+        },
+        "sampled_peak": {
+          "rss_bytes": 1110474752,
+          "mps_allocated_bytes": 4474246912,
+          "mps_driver_bytes": 5474861056,
+          "system_available_bytes": 9775185920,
+          "system_swap_used_bytes": 28342288384
+        },
+        "min_system_available_bytes": 5004394496
+      },
+      "old_qwen_vectors_and_ids_exact": true,
+      "new_segments": 8,
+      "new_media_id": 42,
+      "duration": 35.44,
+      "no_action_index": true,
+      "new_qwen_sha256": "8f3ef738d04ec964f685a60e6183d018db9bfc4011425b6da9368a7823cdc8b6",
+      "qwen_queries": [
+        {
+          "query": "视频中的场景和动作",
+          "hits": [
+            {
+              "media_id": 28,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5952649116516113
+            },
+            {
+              "media_id": 32,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5862172842025757
+            },
+            {
+              "media_id": 32,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5793654322624207
+            },
+            {
+              "media_id": 31,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5742199420928955
+            },
+            {
+              "media_id": 28,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5682600736618042
+            },
+            {
+              "media_id": 11,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5630843043327332
+            },
+            {
+              "media_id": 23,
+              "ts": 16.0,
+              "te": 24.0,
+              "score": 0.5620134472846985
+            },
+            {
+              "media_id": 23,
+              "ts": 20.0,
+              "te": 28.0,
+              "score": 0.5601748824119568
+            },
+            {
+              "media_id": 11,
+              "ts": 4.0,
+              "te": 10.0,
+              "score": 0.5601018667221069
+            },
+            {
+              "media_id": 23,
+              "ts": 40.0,
+              "te": 48.0,
+              "score": 0.5559448003768921
+            }
+          ]
+        },
+        {
+          "query": "骑自行车",
+          "hits": [
+            {
+              "media_id": 32,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.46205079555511475
+            },
+            {
+              "media_id": 18,
+              "ts": 0.0,
+              "te": 1.4,
+              "score": 0.44330406188964844
+            },
+            {
+              "media_id": 32,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4325510859489441
+            },
+            {
+              "media_id": 1,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.41968029737472534
+            },
+            {
+              "media_id": 28,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.4119056165218353
+            },
+            {
+              "media_id": 2,
+              "ts": 4.0,
+              "te": 8.52,
+              "score": 0.4037688672542572
+            },
+            {
+              "media_id": 28,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4034059941768646
+            },
+            {
+              "media_id": 1,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.40263012051582336
+            },
+            {
+              "media_id": 1,
+              "ts": 8.0,
+              "te": 14.6146,
+              "score": 0.4023692309856415
+            },
+            {
+              "media_id": 2,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.40068715810775757
+            }
+          ]
+        },
+        {
+          "query": "户外慢跑",
+          "hits": [
+            {
+              "media_id": 2,
+              "ts": 4.0,
+              "te": 8.52,
+              "score": 0.5537369847297668
+            },
+            {
+              "media_id": 2,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5522398948669434
+            },
+            {
+              "media_id": 17,
+              "ts": 8.0,
+              "te": 16.0,
+              "score": 0.5162301063537598
+            },
+            {
+              "media_id": 7,
+              "ts": 4.0,
+              "te": 9.833333,
+              "score": 0.5108307600021362
+            },
+            {
+              "media_id": 1,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.509075939655304
+            },
+            {
+              "media_id": 1,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5062068700790405
+            },
+            {
+              "media_id": 1,
+              "ts": 8.0,
+              "te": 14.6146,
+              "score": 0.49511396884918213
+            },
+            {
+              "media_id": 7,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4904923141002655
+            },
+            {
+              "media_id": 8,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4672154188156128
+            },
+            {
+              "media_id": 28,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.46349388360977173
+            }
+          ]
+        },
+        {
+          "query": "红色安全帽写字",
+          "hits": [
+            {
+              "media_id": 27,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.5957640409469604
+            },
+            {
+              "media_id": 27,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.5606287121772766
+            },
+            {
+              "media_id": 27,
+              "ts": 8.0,
+              "te": 16.0,
+              "score": 0.5569507479667664
+            },
+            {
+              "media_id": 27,
+              "ts": 12.0,
+              "te": 16.4,
+              "score": 0.5019755363464355
+            },
+            {
+              "media_id": 17,
+              "ts": 4.0,
+              "te": 12.0,
+              "score": 0.4786475896835327
+            },
+            {
+              "media_id": 17,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.4752581715583801
+            },
+            {
+              "media_id": 31,
+              "ts": 12.0,
+              "te": 20.0,
+              "score": 0.47310322523117065
+            },
+            {
+              "media_id": 19,
+              "ts": 0.0,
+              "te": 7.875,
+              "score": 0.46713757514953613
+            },
+            {
+              "media_id": 41,
+              "ts": 0.0,
+              "te": 8.0,
+              "score": 0.458738774061203
+            },
+            {
+              "media_id": 31,
+              "ts": 8.0,
+              "te": 16.0,
+              "score": 0.45191606879234314
+            }
+          ]
+        }
+      ],
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+      },
+      "old_frame_feature_shards_unchanged": true
+    }
+  ],
+  "scope": "actual process_job on isolated roots; publication/load is local; no HTTP upload or queue wait",
+  "qwen_load_and_query_warmup_seconds": 12.306970542005729,
+  "new_qwen_vectors_exact": true,
+  "qwen_query_top10_identical": true,
+  "time_reduction": 0.2391339467039978,
+  "production_unchanged": true
+}

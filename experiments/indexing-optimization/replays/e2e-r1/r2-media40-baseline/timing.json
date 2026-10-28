@@ -1,0 +1,217 @@
+{
+  "status": "completed",
+  "config": {
+    "name": "baseline",
+    "owl": "baseline",
+    "face": "cpu",
+    "processor_device": "cpu"
+  },
+  "original_media_id": 40,
+  "source": {
+    "media": {
+      "id": 40,
+      "path": "1246.mp4",
+      "duration": 35.44,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared",
+      "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared/1246.mp4",
+      "sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7"
+    },
+    "job": {
+      "id": "029be21217b547ccb94d194e00715f08",
+      "filename": "1246.mp4",
+      "suffix": ".mp4",
+      "sha256": "ff5484d7eca0ca2fef86ed6f7dc3f14740b6e4f5b390bb04c4417a0d36e6ea0c",
+      "bytes": 2310208,
+      "duration": 35.44
+    },
+    "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+    "prepared_name": "1246.mp4"
+  },
+  "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+  "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-amfz7l60/project",
+  "stages": {
+    "probe": 0.03607720899162814,
+    "transcode": 0.9797005419968627,
+    "transcoded_sha256_check": 0.0010854160063900054,
+    "full_project_copy": 1.2542160830344073,
+    "full_copy_sha256_check": 1.2188009579549544,
+    "pre_extraction_validation": 0.0178454170236364,
+    "wise_extract_subprocess": 66.49263458303176,
+    "wise_create_index_subprocess": 3.0305167909828015,
+    "new_media_validation": 0.014805082988459617,
+    "qwen_prepare": 0.0033939999993890524,
+    "qwen_encode_new_segments": 18.436268500052392,
+    "qwen_finish": 0.0024632909917272627,
+    "validate_and_load": 0.3731755829649046,
+    "qwen_reuse_verification": 0.31039895804133266
+  },
+  "excluded_stages": [
+    "transcoded_sha256_check",
+    "full_copy_sha256_check",
+    "qwen_reuse_verification"
+  ],
+  "started_epoch": 1793169219.898585,
+  "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+  "source_probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 640,
+        "height": 314,
+        "coded_width": 640,
+        "coded_height": 314,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "16799:16800",
+        "display_aspect_ratio": "214:105",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt470bg",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/12800",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 453632,
+        "duration": "35.440000",
+        "bit_rate": "518897",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "886",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "35.440000",
+      "size": "2310208",
+      "bit_rate": "521491",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf58.76.100"
+      }
+    }
+  },
+  "transcoded_sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7",
+  "matches_frozen_prepared_sha256": true,
+  "base_copy_bytes": 1349105793,
+  "full_copy_file_count": 44,
+  "full_copy_hashes_match": true,
+  "new_media": {
+    "media": {
+      "id": 42,
+      "source_collection_id": 29,
+      "path": "1246.mp4",
+      "checksum": {
+        "sqlite_bytes_hex": "6338333261363733633937633532653961646266303333313130393339313436"
+      },
+      "size_in_bytes": 2273350,
+      "date_modified": "2026-10-28 06:33:40.868893",
+      "media_type": "VIDEO",
+      "format": "mp4",
+      "width": 640,
+      "height": 314,
+      "num_frames": 886,
+      "duration": 35.44
+    },
+    "vector_counts": {
+      "deepinsight/insightface/buffalo_l/_unknown": 77,
+      "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10674
+    },
+    "thumbnails": 71
+  },
+  "reused_qwen_segments": 135,
+  "loaded": {
+    "index_counts": {
+      "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2152,
+      "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 313420
+    },
+    "media_count": 42,
+    "qwen_segments": 143
+  },
+  "new_qwen_segments": 8,
+  "new_qwen_vectors_sha256": "3f37fda4b6bb7cf82e143e1062bb386a2f85c685cfcc9cf2d0e24e0f5b6e85f1",
+  "old_qwen_vectors_exactly_unchanged": true,
+  "old_wise_feature_shards_exactly_unchanged": true,
+  "elapsed_wall_seconds": 92.17939375003334,
+  "resources": {
+    "scope": "current_process",
+    "sample_interval_seconds": 0.05,
+    "total_seconds": 92.17956775001949,
+    "before": {
+      "rss_bytes": 1422180352,
+      "mps_allocated_bytes": 4255064832,
+      "mps_driver_bytes": 5475975168,
+      "system_available_bytes": 7588741120,
+      "system_swap_used_bytes": 25893076992
+    },
+    "after": {
+      "rss_bytes": 1185824768,
+      "mps_allocated_bytes": 4255064832,
+      "mps_driver_bytes": 5475975168,
+      "system_available_bytes": 7467352064,
+      "system_swap_used_bytes": 26057375744
+    },
+    "sampled_peak": {
+      "rss_bytes": 1422311424,
+      "mps_allocated_bytes": 4474246912,
+      "mps_driver_bytes": 5475991552,
+      "system_available_bytes": 10500866048,
+      "system_swap_used_bytes": 26166427648
+    },
+    "min_system_available_bytes": 5368987648
+  },
+  "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+  "excluded_verification_seconds": 1.530285332002677,
+  "adjusted_wall_seconds": 90.64910841803066,
+  "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+  "finished_epoch": 1793169312.078451,
+  "temporary_project_retained": false,
+  "cleanup_seconds": 0.17220575001556426
+}

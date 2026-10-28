@@ -20,7 +20,9 @@ def read_catalog_snapshot(project):
             counts.setdefault(mid,{})[model]=count
     action_counts={}
     metadata=project/'action-index/metadata.json'
-    if metadata.exists():
+    if (project/'qwen-encoding.json').exists():
+        action_counts={mid:models.get('hf/Qwen/Qwen3-VL-Embedding/2B',0) for mid,models in counts.items()}
+    elif metadata.exists():
         for segment in json.loads(metadata.read_text())['segments']:
             mid=segment['media_id'];action_counts[mid]=action_counts.get(mid,0)+1
     for item in rows:

@@ -1,0 +1,4 @@
+# Generated local model caches and symlinks to the existing video library.
+cache/
+inputs/
+replays/*/work/

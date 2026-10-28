@@ -1,0 +1,1972 @@
+{
+  "baseline_vector_validation": {
+    "max_abs_error": 0.0,
+    "min_cosine": 0.9999998807907104,
+    "segments_match": true
+  },
+  "variants": {
+    "A_current": {
+      "all": {
+        "queries": 64,
+        "hit@1": 0.953125,
+        "hit@3": 1,
+        "hit@5": 1,
+        "recall@5": 1.0,
+        "mrr": 0.9739583333333334,
+        "ndcg@5": 0.980654054799108
+      },
+      "groups": {
+        "口语改写": {
+          "queries": 8,
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0
+        },
+        "基础": {
+          "queries": 40,
+          "hit@1": 0.95,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.9708333333333333,
+          "ndcg@5": 0.9782732438392865
+        },
+        "混淆": {
+          "queries": 16,
+          "hit@1": 0.9375,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.96875,
+          "ndcg@5": 0.9769331095982161
+        }
+      },
+      "native_search_response_seconds": {
+        "n": 73,
+        "sum": 2.1999997872044332,
+        "median": 0.0039870000327937305,
+        "p95": 0.004525899596046656,
+        "min": 0.003679499961435795,
+        "max": 1.909681459015701
+      }
+    },
+    "B_original_upload": {
+      "all": {
+        "queries": 64,
+        "hit@1": 0.9375,
+        "hit@3": 0.984375,
+        "hit@5": 0.984375,
+        "recall@5": 0.984375,
+        "mrr": 0.9622395833333334,
+        "ndcg@5": 0.9651563215008191
+      },
+      "groups": {
+        "口语改写": {
+          "queries": 8,
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 0.9846519144172562
+        },
+        "基础": {
+          "queries": 40,
+          "hit@1": 0.9,
+          "hit@3": 0.975,
+          "hit@5": 0.975,
+          "recall@5": 0.975,
+          "mrr": 0.9395833333333333,
+          "ndcg@5": 0.9473197315178593
+        },
+        "混淆": {
+          "queries": 16,
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0
+        }
+      },
+      "native_search_response_seconds": {
+        "n": 73,
+        "sum": 0.29686620738357306,
+        "median": 0.004026917042210698,
+        "p95": 0.00435990000842139,
+        "min": 0.0038177919923327863,
+        "max": 0.005430333025287837
+      }
+    },
+    "C_original_both": {
+      "all": {
+        "queries": 64,
+        "hit@1": 0.9375,
+        "hit@3": 0.984375,
+        "hit@5": 0.984375,
+        "recall@5": 0.984375,
+        "mrr": 0.9622395833333334,
+        "ndcg@5": 0.9651563215008191
+      },
+      "groups": {
+        "口语改写": {
+          "queries": 8,
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 0.9846519144172562
+        },
+        "基础": {
+          "queries": 40,
+          "hit@1": 0.9,
+          "hit@3": 0.975,
+          "hit@5": 0.975,
+          "recall@5": 0.975,
+          "mrr": 0.9395833333333333,
+          "ndcg@5": 0.9473197315178593
+        },
+        "混淆": {
+          "queries": 16,
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0
+        }
+      },
+      "native_search_response_seconds": {
+        "n": 73,
+        "sum": 0.27678504097275436,
+        "median": 0.0037415000260807574,
+        "p95": 0.004139433021191507,
+        "min": 0.0036315839970484376,
+        "max": 0.0050406670197844505
+      }
+    }
+  },
+  "performance": {
+    "current-full": {
+      "segments": 135,
+      "video_seconds": 601.776333,
+      "main_video_wall_seconds": 341.099047501164,
+      "main_segment_encode_seconds": 306.8837632598006,
+      "repeat_video_wall_seconds": 63.73569045896875,
+      "model_load_seconds": 8.017666708037723,
+      "feature_store_seconds": 0.005772333999630064,
+      "faiss_build_seconds": 0.03603100002510473,
+      "query_all_seconds": {
+        "n": 219,
+        "sum": 16.50688371056458,
+        "median": 0.06514750001952052,
+        "p95": 0.12476589940488336,
+        "min": 0.047196083003655076,
+        "max": 0.7719202080043033
+      },
+      "query_first_round_seconds": {
+        "n": 73,
+        "sum": 6.545523043256253,
+        "median": 0.06372537498828024,
+        "p95": 0.150085833587218,
+        "min": 0.04854645795421675,
+        "max": 0.7719202080043033
+      },
+      "query_repeated_seconds": {
+        "n": 146,
+        "sum": 9.961360667308327,
+        "median": 0.06617287499830127,
+        "p95": 0.09756384375214111,
+        "min": 0.047196083003655076,
+        "max": 0.1758629169780761
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 430.0770315839909,
+        "before": {
+          "rss_bytes": 340656128,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 12438896640,
+          "system_swap_used_bytes": 19117375488
+        },
+        "after": {
+          "rss_bytes": 364183552,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5415321600,
+          "system_available_bytes": 6476480512,
+          "system_swap_used_bytes": 18315476992
+        },
+        "sampled_peak": {
+          "rss_bytes": 4192583680,
+          "mps_allocated_bytes": 4609247488,
+          "mps_driver_bytes": 5555503104,
+          "system_available_bytes": 12522848256,
+          "system_swap_used_bytes": 19117375488
+        },
+        "min_system_available_bytes": 5546622976
+      }
+    },
+    "original-full": {
+      "segments": 134,
+      "video_seconds": 601.776333,
+      "main_video_wall_seconds": 1183.1025476270588,
+      "main_segment_encode_seconds": 1142.9617030354566,
+      "repeat_video_wall_seconds": 215.24363008193905,
+      "model_load_seconds": 12.090651749982499,
+      "feature_store_seconds": 0.032461208989843726,
+      "faiss_build_seconds": 0.04331758298212662,
+      "query_all_seconds": {
+        "n": 219,
+        "sum": 24.548688290233258,
+        "median": 0.1040631250361912,
+        "p95": 0.15325753369252196,
+        "min": 0.08088283299002796,
+        "max": 0.3423567499849014
+      },
+      "query_first_round_seconds": {
+        "n": 73,
+        "sum": 8.658631247002631,
+        "median": 0.10076954198302701,
+        "p95": 0.2008714582305396,
+        "min": 0.08088283299002796,
+        "max": 0.3423567499849014
+      },
+      "query_repeated_seconds": {
+        "n": 146,
+        "sum": 15.890057043230627,
+        "median": 0.10556952099432237,
+        "p95": 0.13231482327682897,
+        "min": 0.08696595899527892,
+        "max": 0.1542055830359459
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 1436.2713365830132,
+        "before": {
+          "rss_bytes": 341082112,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 12436717568,
+          "system_swap_used_bytes": 18315476992
+        },
+        "after": {
+          "rss_bytes": 221986816,
+          "mps_allocated_bytes": 8510128896,
+          "mps_driver_bytes": 12522651648,
+          "system_available_bytes": 5021188096,
+          "system_swap_used_bytes": 22808166400
+        },
+        "sampled_peak": {
+          "rss_bytes": 2539241472,
+          "mps_allocated_bytes": 9691212800,
+          "mps_driver_bytes": 13568917504,
+          "system_available_bytes": 12614008832,
+          "system_swap_used_bytes": 23101767680
+        },
+        "min_system_available_bytes": 3014279168
+      }
+    },
+    "current-check": {
+      "segments": 23,
+      "video_seconds": 108.09626599999999,
+      "main_video_wall_seconds": 56.678819455963094,
+      "main_segment_encode_seconds": 52.01958924997598,
+      "repeat_video_wall_seconds": 0,
+      "model_load_seconds": 6.204001875012182,
+      "feature_store_seconds": 0.000512166996486485,
+      "faiss_build_seconds": 0.032158082991372794,
+      "query_all_seconds": {
+        "n": 219,
+        "sum": 13.326118611148559,
+        "median": 0.05733650003094226,
+        "p95": 0.09409189653233624,
+        "min": 0.041546875028871,
+        "max": 0.12974825000856072
+      },
+      "query_first_round_seconds": {
+        "n": 73,
+        "sum": 4.900031706027221,
+        "median": 0.05966595804784447,
+        "p95": 0.10810218341648571,
+        "min": 0.045944124984089285,
+        "max": 0.12974825000856072
+      },
+      "query_repeated_seconds": {
+        "n": 146,
+        "sum": 8.426086905121338,
+        "median": 0.05647593748290092,
+        "p95": 0.07555160427000374,
+        "min": 0.041546875028871,
+        "max": 0.0901171249570325
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 76.62092741695233,
+        "before": {
+          "rss_bytes": 340459520,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 16871800832,
+          "system_swap_used_bytes": 22615228416
+        },
+        "after": {
+          "rss_bytes": 1523974144,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5395791872,
+          "system_available_bytes": 9871998976,
+          "system_swap_used_bytes": 22573285376
+        },
+        "sampled_peak": {
+          "rss_bytes": 5564284928,
+          "mps_allocated_bytes": 4531521792,
+          "mps_driver_bytes": 5561253888,
+          "system_available_bytes": 16871800832,
+          "system_swap_used_bytes": 22615228416
+        },
+        "min_system_available_bytes": 8279801856
+      }
+    }
+  },
+  "source_videos": 41,
+  "labeled_videos": 40,
+  "labeled_queries": 68,
+  "extra_diagnostic_queries": 5,
+  "changes": {
+    "B_original_upload": [
+      {
+        "query_id": "B23",
+        "text": "穿白色上衣的男子坐在桌前面对镜头讲话",
+        "before": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg@5": 0.5,
+          "first_relevant_rank": 3
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 0,
+          "hit@5": 0,
+          "recall@5": 0.0,
+          "mrr": 0.08333333333333333,
+          "ndcg@5": 0.0,
+          "first_relevant_rank": 12
+        },
+        "before_top": [
+          {
+            "media_id": 24,
+            "name": "256df2fd406b3ef48f3e351fdb950be1.mp4",
+            "score": 0.6217023134231567,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.8,
+            "vector_id": "65"
+          },
+          {
+            "media_id": 23,
+            "name": "抖音20261026-627411.mp4",
+            "score": 0.5824867486953735,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 56.0,
+            "vector_id": "50"
+          },
+          {
+            "media_id": 22,
+            "name": "抖音20261026-905866.mp4",
+            "score": 0.5599097013473511,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 32.0,
+            "vector_id": "43"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5102095603942871,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "22"
+          },
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.5017392635345459,
+            "start": 12.0,
+            "merged_start": 0.0,
+            "end": 52.0,
+            "vector_id": "94"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 34,
+            "name": "Qwen人脸入库回归.mp4",
+            "score": 0.515714168548584,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.5,
+            "vector_id": "108"
+          },
+          {
+            "media_id": 24,
+            "name": "256df2fd406b3ef48f3e351fdb950be1.mp4",
+            "score": 0.5081745982170105,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.5,
+            "vector_id": "64"
+          },
+          {
+            "media_id": 3,
+            "name": "coughing-6XvsLPDioVA_000000_000010.mp4",
+            "score": 0.4975310266017914,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "7"
+          },
+          {
+            "media_id": 13,
+            "name": "whistling-LqQYSUb_TJI_000052_000062.mp4",
+            "score": 0.4753839373588562,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "26"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.474653422832489,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          }
+        ]
+      },
+      {
+        "query_id": "B28",
+        "text": "蓝色工服的人员在门岗旁，一人坐着写字、一人站着",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "before_top": [
+          {
+            "media_id": 27,
+            "name": "抖音20261027-739727.mp4",
+            "score": 0.5755628943443298,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 16.4,
+            "vector_id": "72"
+          },
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.5267829895019531,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.875,
+            "vector_id": "38"
+          },
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.4964388906955719,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 24.0,
+            "vector_id": "33"
+          },
+          {
+            "media_id": 26,
+            "name": "03_雪地滑倒.mp4",
+            "score": 0.4921115040779114,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 13.2,
+            "vector_id": "70"
+          },
+          {
+            "media_id": 23,
+            "name": "抖音20261026-627411.mp4",
+            "score": 0.4896184206008911,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 52.0,
+            "vector_id": "50"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.5015339851379395,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.5,
+            "vector_id": "38"
+          },
+          {
+            "media_id": 27,
+            "name": "抖音20261027-739727.mp4",
+            "score": 0.4859541058540344,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 16.0,
+            "vector_id": "70"
+          },
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.4849800765514374,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 23.5,
+            "vector_id": "33"
+          },
+          {
+            "media_id": 18,
+            "name": "围栏翻越_户外短片.mp4",
+            "score": 0.4476395845413208,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "37"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.4453135132789612,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          }
+        ]
+      },
+      {
+        "query_id": "B29",
+        "text": "行人街道上，穿黑色上衣的人在白衣男子身旁弯下身",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "before_top": [
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.6522897481918335,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          },
+          {
+            "media_id": 26,
+            "name": "03_雪地滑倒.mp4",
+            "score": 0.591911792755127,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 13.2,
+            "vector_id": "70"
+          },
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5780885219573975,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 14.6146,
+            "vector_id": "2"
+          },
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.5518616437911987,
+            "start": 24.0,
+            "merged_start": 0.0,
+            "end": 55.22,
+            "vector_id": "97"
+          },
+          {
+            "media_id": 25,
+            "name": "01_走廊抽香烟.mp4",
+            "score": 0.5487772822380066,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.72,
+            "vector_id": "66"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5693711042404175,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 14.0,
+            "vector_id": "3"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.5544217824935913,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "75"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.540394127368927,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          },
+          {
+            "media_id": 18,
+            "name": "围栏翻越_户外短片.mp4",
+            "score": 0.537571907043457,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "37"
+          },
+          {
+            "media_id": 26,
+            "name": "03_雪地滑倒.mp4",
+            "score": 0.5244163870811462,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 12.5,
+            "vector_id": "69"
+          }
+        ]
+      },
+      {
+        "query_id": "B32",
+        "text": "有观众围观的舞台上，有人跳街舞",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "before_top": [
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.7063398957252502,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 55.22,
+            "vector_id": "92"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.6590431928634644,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.615169882774353,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "22"
+          },
+          {
+            "media_id": 23,
+            "name": "抖音20261026-627411.mp4",
+            "score": 0.6024917960166931,
+            "start": 28.0,
+            "merged_start": 0.0,
+            "end": 56.0,
+            "vector_id": "57"
+          },
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.5197591781616211,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 12.0,
+            "vector_id": "110"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5699476003646851,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.5601404905319214,
+            "start": 28.0,
+            "merged_start": 0.0,
+            "end": 54.5,
+            "vector_id": "97"
+          },
+          {
+            "media_id": 18,
+            "name": "围栏翻越_户外短片.mp4",
+            "score": 0.5319487452507019,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "37"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.5187379121780396,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.49349260330200195,
+            "start": 12.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "77"
+          }
+        ]
+      },
+      {
+        "query_id": "B36",
+        "text": "夜间室外活动中，穿黑色长裙的女子在摄影镜头前摆姿势",
+        "before": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "after": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "before_top": [
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.6556789875030518,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.9,
+            "vector_id": "110"
+          },
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.6554344892501831,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.2,
+            "vector_id": "114"
+          },
+          {
+            "media_id": 38,
+            "name": "抖音20261027-340275.mp4",
+            "score": 0.5158724784851074,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 17.6,
+            "vector_id": "118"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5148807764053345,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.5098832845687866,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.6446192264556885,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "113"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5098631381988525,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.48720282316207886,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "109"
+          },
+          {
+            "media_id": 39,
+            "name": "OWLv2原生链路入库回归.mp4",
+            "score": 0.4678837060928345,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "120"
+          },
+          {
+            "media_id": 14,
+            "name": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+            "score": 0.461422860622406,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "28"
+          }
+        ]
+      },
+      {
+        "query_id": "H14",
+        "text": "穿黑色长裙的女子在夜间室外活动现场摆姿势",
+        "before": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "after": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "before_top": [
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.6810804605484009,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.9,
+            "vector_id": "110"
+          },
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.675032913684845,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.2,
+            "vector_id": "114"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5256864428520203,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 38,
+            "name": "抖音20261027-340275.mp4",
+            "score": 0.5104930996894836,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 17.6,
+            "vector_id": "118"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.5026807188987732,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.6515496969223022,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "113"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5191706418991089,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.5177624225616455,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "109"
+          },
+          {
+            "media_id": 14,
+            "name": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+            "score": 0.45895904302597046,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "28"
+          },
+          {
+            "media_id": 39,
+            "name": "OWLv2原生链路入库回归.mp4",
+            "score": 0.45876288414001465,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "120"
+          }
+        ]
+      },
+      {
+        "query_id": "P02",
+        "text": "找背着包在屋里走来走去的那个人",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 0.8772153153380493,
+          "first_relevant_rank": 1
+        },
+        "before_top": [
+          {
+            "media_id": 2,
+            "name": "backpack-walking.mp4",
+            "score": 0.6385148167610168,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.52,
+            "vector_id": "5"
+          },
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.6262170076370239,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 24.0,
+            "vector_id": "34"
+          },
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5874074101448059,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 14.6146,
+            "vector_id": "2"
+          },
+          {
+            "media_id": 25,
+            "name": "01_走廊抽香烟.mp4",
+            "score": 0.5682957768440247,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.72,
+            "vector_id": "66"
+          },
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.5514553785324097,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.875,
+            "vector_id": "38"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.601772665977478,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 23.5,
+            "vector_id": "34"
+          },
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5944229364395142,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 14.0,
+            "vector_id": "3"
+          },
+          {
+            "media_id": 7,
+            "name": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+            "score": 0.5487182140350342,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "15"
+          },
+          {
+            "media_id": 2,
+            "name": "backpack-walking.mp4",
+            "score": 0.5343832969665527,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.0,
+            "vector_id": "5"
+          },
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.5150954723358154,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.5,
+            "vector_id": "38"
+          }
+        ]
+      }
+    ],
+    "C_original_both": [
+      {
+        "query_id": "B23",
+        "text": "穿白色上衣的男子坐在桌前面对镜头讲话",
+        "before": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg@5": 0.5,
+          "first_relevant_rank": 3
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 0,
+          "hit@5": 0,
+          "recall@5": 0.0,
+          "mrr": 0.08333333333333333,
+          "ndcg@5": 0.0,
+          "first_relevant_rank": 12
+        },
+        "before_top": [
+          {
+            "media_id": 24,
+            "name": "256df2fd406b3ef48f3e351fdb950be1.mp4",
+            "score": 0.6217023134231567,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.8,
+            "vector_id": "65"
+          },
+          {
+            "media_id": 23,
+            "name": "抖音20261026-627411.mp4",
+            "score": 0.5824867486953735,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 56.0,
+            "vector_id": "50"
+          },
+          {
+            "media_id": 22,
+            "name": "抖音20261026-905866.mp4",
+            "score": 0.5599097013473511,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 32.0,
+            "vector_id": "43"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5102095603942871,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "22"
+          },
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.5017392635345459,
+            "start": 12.0,
+            "merged_start": 0.0,
+            "end": 52.0,
+            "vector_id": "94"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 34,
+            "name": "Qwen人脸入库回归.mp4",
+            "score": 0.5156990885734558,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.5,
+            "vector_id": "108"
+          },
+          {
+            "media_id": 24,
+            "name": "256df2fd406b3ef48f3e351fdb950be1.mp4",
+            "score": 0.5081278681755066,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.5,
+            "vector_id": "64"
+          },
+          {
+            "media_id": 3,
+            "name": "coughing-6XvsLPDioVA_000000_000010.mp4",
+            "score": 0.49769824743270874,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "7"
+          },
+          {
+            "media_id": 13,
+            "name": "whistling-LqQYSUb_TJI_000052_000062.mp4",
+            "score": 0.47522515058517456,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "26"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.47453057765960693,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          }
+        ]
+      },
+      {
+        "query_id": "B28",
+        "text": "蓝色工服的人员在门岗旁，一人坐着写字、一人站着",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "before_top": [
+          {
+            "media_id": 27,
+            "name": "抖音20261027-739727.mp4",
+            "score": 0.5755628943443298,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 16.4,
+            "vector_id": "72"
+          },
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.5267829895019531,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.875,
+            "vector_id": "38"
+          },
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.4964388906955719,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 24.0,
+            "vector_id": "33"
+          },
+          {
+            "media_id": 26,
+            "name": "03_雪地滑倒.mp4",
+            "score": 0.4921115040779114,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 13.2,
+            "vector_id": "70"
+          },
+          {
+            "media_id": 23,
+            "name": "抖音20261026-627411.mp4",
+            "score": 0.4896184206008911,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 52.0,
+            "vector_id": "50"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.501535177230835,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.5,
+            "vector_id": "38"
+          },
+          {
+            "media_id": 27,
+            "name": "抖音20261027-739727.mp4",
+            "score": 0.48601096868515015,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 16.0,
+            "vector_id": "70"
+          },
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.4847976863384247,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 23.5,
+            "vector_id": "33"
+          },
+          {
+            "media_id": 18,
+            "name": "围栏翻越_户外短片.mp4",
+            "score": 0.4474916458129883,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "37"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.4452801048755646,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          }
+        ]
+      },
+      {
+        "query_id": "B29",
+        "text": "行人街道上，穿黑色上衣的人在白衣男子身旁弯下身",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "before_top": [
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.6522897481918335,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          },
+          {
+            "media_id": 26,
+            "name": "03_雪地滑倒.mp4",
+            "score": 0.591911792755127,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 13.2,
+            "vector_id": "70"
+          },
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5780885219573975,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 14.6146,
+            "vector_id": "2"
+          },
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.5518616437911987,
+            "start": 24.0,
+            "merged_start": 0.0,
+            "end": 55.22,
+            "vector_id": "97"
+          },
+          {
+            "media_id": 25,
+            "name": "01_走廊抽香烟.mp4",
+            "score": 0.5487772822380066,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.72,
+            "vector_id": "66"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5692472457885742,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 14.0,
+            "vector_id": "3"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.554440975189209,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "75"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.540366530418396,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          },
+          {
+            "media_id": 18,
+            "name": "围栏翻越_户外短片.mp4",
+            "score": 0.5376120805740356,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "37"
+          },
+          {
+            "media_id": 26,
+            "name": "03_雪地滑倒.mp4",
+            "score": 0.5243027210235596,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 12.5,
+            "vector_id": "69"
+          }
+        ]
+      },
+      {
+        "query_id": "B32",
+        "text": "有观众围观的舞台上，有人跳街舞",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "before_top": [
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.7063398957252502,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 55.22,
+            "vector_id": "92"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.6590431928634644,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.615169882774353,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "22"
+          },
+          {
+            "media_id": 23,
+            "name": "抖音20261026-627411.mp4",
+            "score": 0.6024917960166931,
+            "start": 28.0,
+            "merged_start": 0.0,
+            "end": 56.0,
+            "vector_id": "57"
+          },
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.5197591781616211,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 12.0,
+            "vector_id": "110"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5698723196983337,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 31,
+            "name": "抖音20261027-852563.mp4",
+            "score": 0.5599262714385986,
+            "start": 28.0,
+            "merged_start": 0.0,
+            "end": 54.5,
+            "vector_id": "97"
+          },
+          {
+            "media_id": 18,
+            "name": "围栏翻越_户外短片.mp4",
+            "score": 0.5318219661712646,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "37"
+          },
+          {
+            "media_id": 12,
+            "name": "singing-I6NDj1EcP6w_000073_000083.mp4",
+            "score": 0.5186781883239746,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "25"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.4935276508331299,
+            "start": 12.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "77"
+          }
+        ]
+      },
+      {
+        "query_id": "B36",
+        "text": "夜间室外活动中，穿黑色长裙的女子在摄影镜头前摆姿势",
+        "before": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "after": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "before_top": [
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.6556789875030518,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.9,
+            "vector_id": "110"
+          },
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.6554344892501831,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.2,
+            "vector_id": "114"
+          },
+          {
+            "media_id": 38,
+            "name": "抖音20261027-340275.mp4",
+            "score": 0.5158724784851074,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 17.6,
+            "vector_id": "118"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5148807764053345,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.5098832845687866,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.6448485255241394,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "113"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5096670389175415,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.48745080828666687,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "109"
+          },
+          {
+            "media_id": 39,
+            "name": "OWLv2原生链路入库回归.mp4",
+            "score": 0.46748825907707214,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "120"
+          },
+          {
+            "media_id": 14,
+            "name": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+            "score": 0.4611292779445648,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "28"
+          }
+        ]
+      },
+      {
+        "query_id": "H14",
+        "text": "穿黑色长裙的女子在夜间室外活动现场摆姿势",
+        "before": {
+          "hit@1": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 0.5,
+          "ndcg@5": 0.6309297535714574,
+          "first_relevant_rank": 2
+        },
+        "after": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "before_top": [
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.6810804605484009,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.9,
+            "vector_id": "110"
+          },
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.675032913684845,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 10.2,
+            "vector_id": "114"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5256864428520203,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 10.0,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 38,
+            "name": "抖音20261027-340275.mp4",
+            "score": 0.5104930996894836,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 17.6,
+            "vector_id": "118"
+          },
+          {
+            "media_id": 28,
+            "name": "抖音20261027-677447.mp4",
+            "score": 0.5026807188987732,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 18.083333,
+            "vector_id": "76"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 36,
+            "name": "抖音20261027-386739.mp4",
+            "score": 0.651655912399292,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "113"
+          },
+          {
+            "media_id": 11,
+            "name": "singing-GO5DhmRmHco_000112_000122.mp4",
+            "score": 0.5191793441772461,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "23"
+          },
+          {
+            "media_id": 35,
+            "name": "抖音20261027-177626.mp4",
+            "score": 0.5176012516021729,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 17.5,
+            "vector_id": "109"
+          },
+          {
+            "media_id": 14,
+            "name": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+            "score": 0.4589460492134094,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "28"
+          },
+          {
+            "media_id": 39,
+            "name": "OWLv2原生链路入库回归.mp4",
+            "score": 0.4587205946445465,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 1.0,
+            "vector_id": "120"
+          }
+        ]
+      },
+      {
+        "query_id": "P02",
+        "text": "找背着包在屋里走来走去的那个人",
+        "before": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 1.0,
+          "first_relevant_rank": 1
+        },
+        "after": {
+          "hit@1": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@5": 1.0,
+          "mrr": 1.0,
+          "ndcg@5": 0.8772153153380493,
+          "first_relevant_rank": 1
+        },
+        "before_top": [
+          {
+            "media_id": 2,
+            "name": "backpack-walking.mp4",
+            "score": 0.6385148167610168,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.52,
+            "vector_id": "5"
+          },
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.6262170076370239,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 24.0,
+            "vector_id": "34"
+          },
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5874074101448059,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 14.6146,
+            "vector_id": "2"
+          },
+          {
+            "media_id": 25,
+            "name": "01_走廊抽香烟.mp4",
+            "score": 0.5682957768440247,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 9.72,
+            "vector_id": "66"
+          },
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.5514553785324097,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.875,
+            "vector_id": "38"
+          }
+        ],
+        "after_top": [
+          {
+            "media_id": 17,
+            "name": "动作定位_串接测试24秒.mp4",
+            "score": 0.6014628410339355,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 23.5,
+            "vector_id": "34"
+          },
+          {
+            "media_id": 1,
+            "name": "backpack-street.mp4",
+            "score": 0.5940284729003906,
+            "start": 8.0,
+            "merged_start": 0.0,
+            "end": 14.0,
+            "vector_id": "3"
+          },
+          {
+            "media_id": 7,
+            "name": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+            "score": 0.5485289096832275,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 9.5,
+            "vector_id": "15"
+          },
+          {
+            "media_id": 2,
+            "name": "backpack-walking.mp4",
+            "score": 0.5340801477432251,
+            "start": 4.0,
+            "merged_start": 0.0,
+            "end": 8.0,
+            "vector_id": "5"
+          },
+          {
+            "media_id": 19,
+            "name": "抽烟02_安全帽工人吸烟.mp4",
+            "score": 0.515144407749176,
+            "start": 0.0,
+            "merged_start": 0.0,
+            "end": 7.5,
+            "vector_id": "38"
+          }
+        ]
+      }
+    ]
+  }
+}

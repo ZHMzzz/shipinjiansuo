@@ -1,0 +1,2993 @@
+{
+  "sample_runs": [
+    {
+      "name": "baseline-r1",
+      "owl": "baseline",
+      "face": "cpu",
+      "wise_seconds": 288.64636549999705,
+      "extract_seconds": 286.4999960419955,
+      "index_seconds": 2.1463694580015726,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 215,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 75699
+      },
+      "timers": {
+        "warmup_owl_forward": {
+          "seconds": 2.123810167016927,
+          "calls": 1
+        },
+        "warmup_owl_features": {
+          "seconds": 2.325532666989602,
+          "calls": 1
+        },
+        "warmup_face_features": {
+          "seconds": 0.42204820801271126,
+          "calls": 1
+        },
+        "owl_forward": {
+          "seconds": 211.66883045749273,
+          "calls": 303
+        },
+        "owl_features": {
+          "seconds": 241.95395766588626,
+          "calls": 42
+        },
+        "face_features": {
+          "seconds": 25.936499121948145,
+          "calls": 42
+        }
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 281.2727547500399,
+        "before": {
+          "rss_bytes": 527499264,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 6250577920,
+          "system_swap_used_bytes": 18699714560
+        },
+        "after": {
+          "rss_bytes": 752123904,
+          "mps_allocated_bytes": 619897600,
+          "mps_driver_bytes": 2408267776,
+          "system_available_bytes": 6919733248,
+          "system_swap_used_bytes": 21303984128
+        },
+        "sampled_peak": {
+          "rss_bytes": 1284931584,
+          "mps_allocated_bytes": 1942182144,
+          "mps_driver_bytes": 2419326976,
+          "system_available_bytes": 7100383232,
+          "system_swap_used_bytes": 21424177152
+        },
+        "min_system_available_bytes": 5283971072
+      },
+      "speedup": 1.0,
+      "time_reduction_fraction": 0.0
+    },
+    {
+      "name": "fast-r1",
+      "owl": "fast",
+      "face": "cpu",
+      "wise_seconds": 262.72868883400224,
+      "extract_seconds": 260.779575499997,
+      "index_seconds": 1.949113334005233,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 215,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 75699
+      },
+      "timers": {
+        "warmup_owl_forward": {
+          "seconds": 1.5664536249823868,
+          "calls": 1
+        },
+        "warmup_owl_features": {
+          "seconds": 1.6957249999977648,
+          "calls": 1
+        },
+        "warmup_face_features": {
+          "seconds": 0.40637566696386784,
+          "calls": 1
+        },
+        "owl_forward": {
+          "seconds": 207.94570754515007,
+          "calls": 303
+        },
+        "owl_features": {
+          "seconds": 215.75826395687182,
+          "calls": 42
+        },
+        "face_features": {
+          "seconds": 25.88472658279352,
+          "calls": 42
+        }
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 256.1235051249969,
+        "before": {
+          "rss_bytes": 573669376,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 8282095616,
+          "system_swap_used_bytes": 21278818304
+        },
+        "after": {
+          "rss_bytes": 702693376,
+          "mps_allocated_bytes": 619897600,
+          "mps_driver_bytes": 2406170624,
+          "system_available_bytes": 6126649344,
+          "system_swap_used_bytes": 22004957184
+        },
+        "sampled_peak": {
+          "rss_bytes": 1511260160,
+          "mps_allocated_bytes": 1942182144,
+          "mps_driver_bytes": 2419326976,
+          "system_available_bytes": 10052861952,
+          "system_swap_used_bytes": 22340108288
+        },
+        "min_system_available_bytes": 5171838976
+      },
+      "speedup": 1.0986480645909598,
+      "time_reduction_fraction": 0.08979041402825172
+    },
+    {
+      "name": "fp16-r1",
+      "owl": "fp16",
+      "face": "cpu",
+      "wise_seconds": 302.18063041596906,
+      "extract_seconds": 299.2439293329953,
+      "index_seconds": 2.936701082973741,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 215,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 75633
+      },
+      "timers": {
+        "warmup_face_features": {
+          "seconds": 0.3377565830014646,
+          "calls": 1
+        },
+        "warmup_owl_forward": {
+          "seconds": 4.837127249978948,
+          "calls": 1
+        },
+        "warmup_owl_features": {
+          "seconds": 5.066145624965429,
+          "calls": 1
+        },
+        "face_features": {
+          "seconds": 27.015401334967464,
+          "calls": 42
+        },
+        "owl_forward": {
+          "seconds": 221.9268160747015,
+          "calls": 303
+        },
+        "owl_features": {
+          "seconds": 249.1191140829469,
+          "calls": 42
+        }
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 292.7344925000216,
+        "before": {
+          "rss_bytes": 593608704,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 8253816832,
+          "system_swap_used_bytes": 20891566080
+        },
+        "after": {
+          "rss_bytes": 363708416,
+          "mps_allocated_bytes": 619897600,
+          "mps_driver_bytes": 9073016832,
+          "system_available_bytes": 5358682112,
+          "system_swap_used_bytes": 27595964416
+        },
+        "sampled_peak": {
+          "rss_bytes": 1615855616,
+          "mps_allocated_bytes": 6650057984,
+          "mps_driver_bytes": 9084076032,
+          "system_available_bytes": 8269692928,
+          "system_swap_used_bytes": 27735818240
+        },
+        "min_system_available_bytes": 3332456448
+      },
+      "speedup": 0.9552113419799895,
+      "time_reduction_fraction": -0.046888741843424064
+    },
+    {
+      "name": "fp16_weights-r1",
+      "owl": "fp16_weights",
+      "face": "cpu",
+      "wise_seconds": 150.10002158401767,
+      "extract_seconds": 148.20086020900635,
+      "index_seconds": 1.8991613750113174,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 215,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 75569
+      },
+      "timers": {
+        "warmup_owl_forward": {
+          "seconds": 0.653727083990816,
+          "calls": 1
+        },
+        "warmup_owl_features": {
+          "seconds": 0.9483943340019323,
+          "calls": 1
+        },
+        "warmup_face_features": {
+          "seconds": 0.41853774996707216,
+          "calls": 1
+        },
+        "owl_forward": {
+          "seconds": 88.46834492380731,
+          "calls": 303
+        },
+        "owl_features": {
+          "seconds": 113.12732167192735,
+          "calls": 42
+        },
+        "face_features": {
+          "seconds": 21.003695040009916,
+          "calls": 42
+        }
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 143.93628083303338,
+        "before": {
+          "rss_bytes": 592035840,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 12642385920,
+          "system_swap_used_bytes": 27391426560
+        },
+        "after": {
+          "rss_bytes": 979566592,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1135296512,
+          "system_available_bytes": 10545594368,
+          "system_swap_used_bytes": 26257915904
+        },
+        "sampled_peak": {
+          "rss_bytes": 1634156544,
+          "mps_allocated_bytes": 982165760,
+          "mps_driver_bytes": 1146355712,
+          "system_available_bytes": 12642385920,
+          "system_swap_used_bytes": 27391426560
+        },
+        "min_system_available_bytes": 10140401664
+      },
+      "speedup": 1.9230268087498497,
+      "time_reduction_fraction": 0.4799864487328208
+    },
+    {
+      "name": "fast_fp16_weights-r1",
+      "owl": "fast_fp16_weights",
+      "face": "cpu",
+      "wise_seconds": 128.23626087507,
+      "extract_seconds": 125.97387550002895,
+      "index_seconds": 2.262385375041049,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 215,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 75582
+      },
+      "timers": {
+        "warmup_face_features": {
+          "seconds": 0.2613239160273224,
+          "calls": 1
+        },
+        "warmup_owl_forward": {
+          "seconds": 1.1291534579941072,
+          "calls": 1
+        },
+        "warmup_owl_features": {
+          "seconds": 1.3412526660249569,
+          "calls": 1
+        },
+        "face_features": {
+          "seconds": 20.973857793142088,
+          "calls": 42
+        },
+        "owl_forward": {
+          "seconds": 88.39330992515897,
+          "calls": 303
+        },
+        "owl_features": {
+          "seconds": 91.80211579322349,
+          "calls": 42
+        }
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 121.83749687502859,
+        "before": {
+          "rss_bytes": 591151104,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 11524833280,
+          "system_swap_used_bytes": 26207584256
+        },
+        "after": {
+          "rss_bytes": 1104527360,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1135296512,
+          "system_available_bytes": 10151477248,
+          "system_swap_used_bytes": 26015498240
+        },
+        "sampled_peak": {
+          "rss_bytes": 1863434240,
+          "mps_allocated_bytes": 982165760,
+          "mps_driver_bytes": 1146355712,
+          "system_available_bytes": 11549687808,
+          "system_swap_used_bytes": 26207584256
+        },
+        "min_system_available_bytes": 9822306304
+      },
+      "speedup": 2.250895055191927,
+      "time_reduction_fraction": 0.5557322862772325
+    },
+    {
+      "name": "fast_fp16_coreml-r1",
+      "owl": "fast_fp16_weights",
+      "face": "coreml",
+      "wise_seconds": 111.3718319159816,
+      "extract_seconds": 109.30769412498921,
+      "index_seconds": 2.0641377909923904,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 215,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 75582
+      },
+      "timers": {
+        "warmup_face_features": {
+          "seconds": 0.41086379101034254,
+          "calls": 1
+        },
+        "warmup_owl_forward": {
+          "seconds": 0.9592269999557175,
+          "calls": 1
+        },
+        "warmup_owl_features": {
+          "seconds": 1.1683006249950267,
+          "calls": 1
+        },
+        "face_features": {
+          "seconds": 5.019824123068247,
+          "calls": 42
+        },
+        "owl_forward": {
+          "seconds": 87.3174768735771,
+          "calls": 303
+        },
+        "owl_features": {
+          "seconds": 90.39468841510825,
+          "calls": 42
+        }
+      },
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 105.11883783299709,
+        "before": {
+          "rss_bytes": 591200256,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 12523601920,
+          "system_swap_used_bytes": 26631405568
+        },
+        "after": {
+          "rss_bytes": 1107836928,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1186676736,
+          "system_available_bytes": 10752770048,
+          "system_swap_used_bytes": 26497187840
+        },
+        "sampled_peak": {
+          "rss_bytes": 1805762560,
+          "mps_allocated_bytes": 976634624,
+          "mps_driver_bytes": 1403715584,
+          "system_available_bytes": 12533760000,
+          "system_swap_used_bytes": 26631405568
+        },
+        "min_system_available_bytes": 10568056832
+      },
+      "speedup": 2.5917358144719262,
+      "time_reduction_fraction": 0.6141582045453375
+    }
+  ],
+  "sample_scope": "11 videos, 151.3346 seconds, 303 frames; WISE only; one run per configuration",
+  "fixed_query_quality": [
+    {
+      "scope": "production_background",
+      "origin": "all",
+      "count": 9,
+      "top1_video_same_count": 9,
+      "mean_top5_video_overlap": 1.0,
+      "baseline": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 9
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 9
+        }
+      }
+    },
+    {
+      "scope": "production_background",
+      "origin": "same_source_crop",
+      "count": 8,
+      "top1_video_same_count": 8,
+      "mean_top5_video_overlap": 1.0,
+      "baseline": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 7
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 8
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 7
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 8
+        }
+      }
+    },
+    {
+      "scope": "production_background",
+      "origin": "independent_image",
+      "count": 1,
+      "top1_video_same_count": 1,
+      "mean_top5_video_overlap": 1.0,
+      "baseline": {
+        "region_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "region_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        },
+        "video_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "video_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "region_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        },
+        "video_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "video_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        }
+      }
+    },
+    {
+      "scope": "subset",
+      "origin": "all",
+      "count": 9,
+      "top1_video_same_count": 9,
+      "mean_top5_video_overlap": 0.9777777777777779,
+      "baseline": {
+        "region_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 7
+        },
+        "region_known_class": {
+          "count": 9,
+          "top1": 8,
+          "top5": 8
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 9,
+          "top1": 8,
+          "top5": 9
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 7
+        },
+        "region_known_class": {
+          "count": 9,
+          "top1": 8,
+          "top5": 8
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 9,
+          "top1": 8,
+          "top5": 9
+        }
+      }
+    },
+    {
+      "scope": "subset",
+      "origin": "same_source_crop",
+      "count": 8,
+      "top1_video_same_count": 8,
+      "mean_top5_video_overlap": 0.975,
+      "baseline": {
+        "region_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 7
+        },
+        "region_known_class": {
+          "count": 8,
+          "top1": 7,
+          "top5": 7
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 8,
+          "top1": 7,
+          "top5": 8
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 7
+        },
+        "region_known_class": {
+          "count": 8,
+          "top1": 7,
+          "top5": 7
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_known_class": {
+          "count": 8,
+          "top1": 7,
+          "top5": 8
+        }
+      }
+    },
+    {
+      "scope": "subset",
+      "origin": "independent_image",
+      "count": 1,
+      "top1_video_same_count": 1,
+      "mean_top5_video_overlap": 1.0,
+      "baseline": {
+        "region_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "region_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        },
+        "video_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "video_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "region_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        },
+        "video_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "video_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        }
+      }
+    }
+  ],
+  "face_quality": {
+    "threshold": 0.45,
+    "alignment": "same media/time; greedy bbox IoU >= 0.9",
+    "gallery_numerical_integrity": {
+      "baseline": {
+        "all_finite": true,
+        "nonfinite_vector_count": 0,
+        "nonfinite_value_count": 0,
+        "dimension": 512,
+        "scan": "all underlying IndexFlatIP rows, once at gallery load",
+        "count": 215,
+        "norm_min": 0.9999999228125442,
+        "norm_median": 0.9999999942413224,
+        "norm_max": 1.0000000809965395,
+        "zero_count": 0
+      },
+      "variant": {
+        "all_finite": true,
+        "nonfinite_vector_count": 0,
+        "nonfinite_value_count": 0,
+        "dimension": 512,
+        "scan": "all underlying IndexFlatIP rows, once at gallery load",
+        "count": 215,
+        "norm_min": 0.9999999009086422,
+        "norm_median": 1.0000000059788055,
+        "norm_max": 1.0000000854737845,
+        "zero_count": 0
+      }
+    },
+    "baseline_faces": 215,
+    "variant_faces": 215,
+    "aligned_faces": 215,
+    "baseline_unmatched": 0,
+    "variant_unmatched": 0,
+    "aligned_vector_cosine_min": 0.9999957899566103,
+    "aligned_vector_cosine_median": 0.9999999771137471,
+    "aligned_vector_cosine_undefined_count": 0,
+    "registered_queries": [
+      {
+        "query_number": 1,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 0.9999999929769328,
+          "norm_median": 0.9999999929769328,
+          "norm_max": 0.9999999929769328,
+          "zero_count": 0
+        },
+        "baseline_candidates": 19,
+        "variant_candidates": 19,
+        "retained_candidates": 19,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 2,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 0.9999999961130228,
+          "norm_median": 0.9999999961130228,
+          "norm_max": 0.9999999961130228,
+          "zero_count": 0
+        },
+        "baseline_candidates": 0,
+        "variant_candidates": 0,
+        "retained_candidates": 0,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 3,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 0.9999999852801129,
+          "norm_median": 0.9999999852801129,
+          "norm_max": 0.9999999852801129,
+          "zero_count": 0
+        },
+        "baseline_candidates": 0,
+        "variant_candidates": 0,
+        "retained_candidates": 0,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 4,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 1.0000000105838691,
+          "norm_median": 1.0000000105838691,
+          "norm_max": 1.0000000105838691,
+          "zero_count": 0
+        },
+        "baseline_candidates": 0,
+        "variant_candidates": 0,
+        "retained_candidates": 0,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 5,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 1.0000000469637724,
+          "norm_median": 1.0000000469637724,
+          "norm_max": 1.0000000469637724,
+          "zero_count": 0
+        },
+        "baseline_candidates": 0,
+        "variant_candidates": 0,
+        "retained_candidates": 0,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      }
+    ],
+    "limitation": "Candidate consistency against existing registrations; not a new identity accuracy evaluation."
+  },
+  "replay_status": "invalid-production-changed",
+  "qwen_load_and_text_warmup_seconds": 8.707320082990918,
+  "replay_trials": [
+    {
+      "trial": "r1-media40-baseline",
+      "status": "completed",
+      "config": {
+        "name": "baseline",
+        "owl": "baseline",
+        "face": "cpu",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 40,
+      "source": {
+        "media": {
+          "id": 40,
+          "path": "1246.mp4",
+          "duration": 35.44,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared/1246.mp4",
+          "sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7"
+        },
+        "job": {
+          "id": "029be21217b547ccb94d194e00715f08",
+          "filename": "1246.mp4",
+          "suffix": ".mp4",
+          "sha256": "ff5484d7eca0ca2fef86ed6f7dc3f14740b6e4f5b390bb04c4417a0d36e6ea0c",
+          "bytes": 2310208,
+          "duration": 35.44
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+        "prepared_name": "1246.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-7_38vcpy/project",
+      "stages": {
+        "probe": 0.04898837499786168,
+        "transcode": 0.8924911249778233,
+        "transcoded_sha256_check": 0.0011651249951682985,
+        "full_project_copy": 1.7637745419633575,
+        "full_copy_sha256_check": 0.5700753330020234,
+        "pre_extraction_validation": 0.01205537497298792,
+        "wise_extract_subprocess": 67.9119030830334,
+        "wise_create_index_subprocess": 3.167252457991708,
+        "new_media_validation": 0.014781625010073185,
+        "qwen_prepare": 0.0033005839795805514,
+        "qwen_encode_new_segments": 19.983640582999215,
+        "qwen_finish": 0.004915958037599921,
+        "validate_and_load": 0.6228293749736622,
+        "qwen_reuse_verification": 0.33400612499099225
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793168882.485572,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 314,
+            "coded_width": 640,
+            "coded_height": 314,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "16799:16800",
+            "display_aspect_ratio": "214:105",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt470bg",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 453632,
+            "duration": "35.440000",
+            "bit_rate": "518897",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "886",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "35.440000",
+          "size": "2310208",
+          "bit_rate": "521491",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.76.100"
+          }
+        }
+      },
+      "transcoded_sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "1246.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "6338333261363733633937633532653961646266303333313130393339313436"
+          },
+          "size_in_bytes": 2273350,
+          "date_modified": "2026-10-28 06:28:03.382128",
+          "media_type": "VIDEO",
+          "format": "mp4",
+          "width": 640,
+          "height": 314,
+          "num_frames": 886,
+          "duration": 35.44
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 77,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10674
+        },
+        "thumbnails": 71
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2152,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 313420
+        },
+        "media_count": 42,
+        "qwen_segments": 143
+      },
+      "new_qwen_segments": 8,
+      "new_qwen_vectors_sha256": "3f37fda4b6bb7cf82e143e1062bb386a2f85c685cfcc9cf2d0e24e0f5b6e85f1",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 95.33998158300528,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 95.34130999998888,
+        "before": {
+          "rss_bytes": 312180736,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 4283121664,
+          "system_available_bytes": 7221035008,
+          "system_swap_used_bytes": 26480345088
+        },
+        "after": {
+          "rss_bytes": 997801984,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5458001920,
+          "system_available_bytes": 6911721472,
+          "system_swap_used_bytes": 25771114496
+        },
+        "sampled_peak": {
+          "rss_bytes": 1230995456,
+          "mps_allocated_bytes": 4474246912,
+          "mps_driver_bytes": 5474795520,
+          "system_available_bytes": 9741025280,
+          "system_swap_used_bytes": 26480345088
+        },
+        "min_system_available_bytes": 5657493504
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 0.905246582988184,
+      "adjusted_wall_seconds": 94.4347350000171,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793168977.827094,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.33057108405046165
+    },
+    {
+      "trial": "r1-media40-optimized",
+      "status": "completed",
+      "config": {
+        "name": "optimized",
+        "owl": "fast_fp16_weights",
+        "face": "coreml",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 40,
+      "source": {
+        "media": {
+          "id": 40,
+          "path": "1246.mp4",
+          "duration": 35.44,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared/1246.mp4",
+          "sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7"
+        },
+        "job": {
+          "id": "029be21217b547ccb94d194e00715f08",
+          "filename": "1246.mp4",
+          "suffix": ".mp4",
+          "sha256": "ff5484d7eca0ca2fef86ed6f7dc3f14740b6e4f5b390bb04c4417a0d36e6ea0c",
+          "bytes": 2310208,
+          "duration": 35.44
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+        "prepared_name": "1246.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-30z0evjp/project",
+      "stages": {
+        "probe": 0.04463237494928762,
+        "transcode": 1.0271730829845183,
+        "transcoded_sha256_check": 0.0011692919651977718,
+        "full_project_copy": 1.3658162920037284,
+        "full_copy_sha256_check": 0.7726192079717293,
+        "pre_extraction_validation": 0.012226249964442104,
+        "wise_extract_subprocess": 33.959695833036676,
+        "wise_create_index_subprocess": 2.9119376249727793,
+        "new_media_validation": 0.014366124989464879,
+        "qwen_prepare": 0.0030942499870434403,
+        "qwen_encode_new_segments": 18.908808708016295,
+        "qwen_finish": 0.0021917090052738786,
+        "validate_and_load": 0.3720502500073053,
+        "qwen_reuse_verification": 0.2525063329958357
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793168978.2619462,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 314,
+            "coded_width": 640,
+            "coded_height": 314,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "16799:16800",
+            "display_aspect_ratio": "214:105",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt470bg",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 453632,
+            "duration": "35.440000",
+            "bit_rate": "518897",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "886",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "35.440000",
+          "size": "2310208",
+          "bit_rate": "521491",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.76.100"
+          }
+        }
+      },
+      "transcoded_sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "1246.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "6338333261363733633937633532653961646266303333313130393339313436"
+          },
+          "size_in_bytes": 2273350,
+          "date_modified": "2026-10-28 06:29:39.305288",
+          "media_type": "VIDEO",
+          "format": "mp4",
+          "width": 640,
+          "height": 314,
+          "num_frames": 886,
+          "duration": 35.44
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 77,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+        },
+        "thumbnails": 71
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2152,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 313399
+        },
+        "media_count": 42,
+        "qwen_segments": 143
+      },
+      "new_qwen_segments": 8,
+      "new_qwen_vectors_sha256": "3f37fda4b6bb7cf82e143e1062bb386a2f85c685cfcc9cf2d0e24e0f5b6e85f1",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 59.65754437504802,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 59.65766204200918,
+        "before": {
+          "rss_bytes": 1220165632,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5458001920,
+          "system_available_bytes": 6911721472,
+          "system_swap_used_bytes": 25771114496
+        },
+        "after": {
+          "rss_bytes": 1237024768,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5474779136,
+          "system_available_bytes": 7604142080,
+          "system_swap_used_bytes": 25762725888
+        },
+        "sampled_peak": {
+          "rss_bytes": 1237647360,
+          "mps_allocated_bytes": 4474246912,
+          "mps_driver_bytes": 5474811904,
+          "system_available_bytes": 10280386560,
+          "system_swap_used_bytes": 25771114496
+        },
+        "min_system_available_bytes": 6071140352
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 1.0262948329327628,
+      "adjusted_wall_seconds": 58.631249542115256,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793169037.9198232,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.10339445801218972
+    },
+    {
+      "trial": "r1-media41-baseline",
+      "status": "completed",
+      "config": {
+        "name": "baseline",
+        "owl": "baseline",
+        "face": "cpu",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 41,
+      "source": {
+        "media": {
+          "id": 41,
+          "path": "抖音20261027-906986.mp4",
+          "duration": 26.875,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared/抖音20261027-906986.mp4",
+          "sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431"
+        },
+        "job": {
+          "id": "0fe31e1020b9487d80e9d1b4e9a703e8",
+          "filename": "抖音20261027-906986.mp4",
+          "suffix": ".mp4",
+          "sha256": "efee2e9fe9647e3fe8b3f17b4f71673e1edcdf354ed1e18d0029118b139e0abb",
+          "bytes": 1282374,
+          "duration": 26.875
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+        "prepared_name": "抖音20261027-906986.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-nfhgi93s/project",
+      "stages": {
+        "probe": 0.04211670800577849,
+        "transcode": 0.5062364580226131,
+        "transcoded_sha256_check": 0.0007210830226540565,
+        "full_project_copy": 1.2662478749989532,
+        "full_copy_sha256_check": 0.8652107919915579,
+        "pre_extraction_validation": 0.02007987501565367,
+        "wise_extract_subprocess": 55.44142237503547,
+        "wise_create_index_subprocess": 3.1171014580177143,
+        "new_media_validation": 0.03198425000300631,
+        "qwen_prepare": 0.0032301670289598405,
+        "qwen_encode_new_segments": 12.727312957984395,
+        "qwen_finish": 0.014051291043870151,
+        "validate_and_load": 0.38261162501294166,
+        "qwen_reuse_verification": 0.2711134999990463
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793169038.1169841,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 360,
+            "coded_width": 640,
+            "coded_height": 360,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 22,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "16/1",
+            "avg_frame_rate": "16/1",
+            "time_base": "1/16384",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 440320,
+            "duration": "26.875000",
+            "bit_rate": "248635",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "430",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/44100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 1181704,
+            "duration": "26.796009",
+            "bit_rate": "127999",
+            "nb_frames": "1156",
+            "extradata_size": 2,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "26.875000",
+          "size": "1282374",
+          "bit_rate": "381729",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.45.100"
+          }
+        }
+      },
+      "transcoded_sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "抖音20261027-906986.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "3836343830383366373863363366343731363964623462316366626439373063"
+          },
+          "size_in_bytes": 1144032,
+          "date_modified": "2026-10-28 06:30:38.607606",
+          "media_type": "AV",
+          "format": "mp4",
+          "width": 640,
+          "height": 360,
+          "num_frames": 430,
+          "duration": 26.875
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 1,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28955
+        },
+        "thumbnails": 54
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2076,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 331701
+        },
+        "media_count": 42,
+        "qwen_segments": 141
+      },
+      "new_qwen_segments": 6,
+      "new_qwen_vectors_sha256": "d9aaf2a1ba94e5044f3e3bf11f5097c8dcadb3071d1d0dba1914b5349ff3e39f",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 74.70175366697367,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 74.7019089999958,
+        "before": {
+          "rss_bytes": 1473167360,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5474779136,
+          "system_available_bytes": 7604142080,
+          "system_swap_used_bytes": 25762725888
+        },
+        "after": {
+          "rss_bytes": 1332527104,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5457100800,
+          "system_available_bytes": 7589806080,
+          "system_swap_used_bytes": 26044071936
+        },
+        "sampled_peak": {
+          "rss_bytes": 1473298432,
+          "mps_allocated_bytes": 4457469696,
+          "mps_driver_bytes": 5474779136,
+          "system_available_bytes": 10703503360,
+          "system_swap_used_bytes": 26211844096
+        },
+        "min_system_available_bytes": 5415419904
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 1.1370453750132583,
+      "adjusted_wall_seconds": 73.56470829196041,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793169112.8191621,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.1806287090294063
+    },
+    {
+      "trial": "r1-media41-optimized",
+      "status": "completed",
+      "config": {
+        "name": "optimized",
+        "owl": "fast_fp16_weights",
+        "face": "coreml",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 41,
+      "source": {
+        "media": {
+          "id": 41,
+          "path": "抖音20261027-906986.mp4",
+          "duration": 26.875,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared/抖音20261027-906986.mp4",
+          "sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431"
+        },
+        "job": {
+          "id": "0fe31e1020b9487d80e9d1b4e9a703e8",
+          "filename": "抖音20261027-906986.mp4",
+          "suffix": ".mp4",
+          "sha256": "efee2e9fe9647e3fe8b3f17b4f71673e1edcdf354ed1e18d0029118b139e0abb",
+          "bytes": 1282374,
+          "duration": 26.875
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+        "prepared_name": "抖音20261027-906986.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-sep6nioy/project",
+      "stages": {
+        "probe": 0.03997774998424575,
+        "transcode": 0.4066419590380974,
+        "transcoded_sha256_check": 0.0007350000087171793,
+        "full_project_copy": 1.377121832978446,
+        "full_copy_sha256_check": 0.6254806669894606,
+        "pre_extraction_validation": 0.009347000042907894,
+        "wise_extract_subprocess": 29.38682733301539,
+        "wise_create_index_subprocess": 3.227094666042831,
+        "new_media_validation": 0.030325832951348275,
+        "qwen_prepare": 0.0035771249677054584,
+        "qwen_encode_new_segments": 12.560180375003256,
+        "qwen_finish": 0.0025127080152742565,
+        "validate_and_load": 0.3938162080012262,
+        "qwen_reuse_verification": 0.2777364170178771
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793169113.0976079,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 360,
+            "coded_width": 640,
+            "coded_height": 360,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 22,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "16/1",
+            "avg_frame_rate": "16/1",
+            "time_base": "1/16384",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 440320,
+            "duration": "26.875000",
+            "bit_rate": "248635",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "430",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/44100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 1181704,
+            "duration": "26.796009",
+            "bit_rate": "127999",
+            "nb_frames": "1156",
+            "extradata_size": 2,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "26.875000",
+          "size": "1282374",
+          "bit_rate": "381729",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.45.100"
+          }
+        }
+      },
+      "transcoded_sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "抖音20261027-906986.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "3836343830383366373863363366343731363964623462316366626439373063"
+          },
+          "size_in_bytes": 1144032,
+          "date_modified": "2026-10-28 06:31:53.526009",
+          "media_type": "AV",
+          "format": "mp4",
+          "width": 640,
+          "height": 360,
+          "num_frames": 430,
+          "duration": 26.875
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 1,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28940
+        },
+        "thumbnails": 54
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2076,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 331686
+        },
+        "media_count": 42,
+        "qwen_segments": 141
+      },
+      "new_qwen_segments": 6,
+      "new_qwen_vectors_sha256": "d9aaf2a1ba94e5044f3e3bf11f5097c8dcadb3071d1d0dba1914b5349ff3e39f",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 48.35128770797746,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 48.35144612501608,
+        "before": {
+          "rss_bytes": 1568636928,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5457100800,
+          "system_available_bytes": 7589806080,
+          "system_swap_used_bytes": 26044071936
+        },
+        "after": {
+          "rss_bytes": 1288470528,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5457100800,
+          "system_available_bytes": 7760314368,
+          "system_swap_used_bytes": 25985351680
+        },
+        "sampled_peak": {
+          "rss_bytes": 1568800768,
+          "mps_allocated_bytes": 4423913216,
+          "mps_driver_bytes": 5457117184,
+          "system_available_bytes": 10109091840,
+          "system_swap_used_bytes": 26044071936
+        },
+        "min_system_available_bytes": 5795528704
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 0.9039520840160549,
+      "adjusted_wall_seconds": 47.44733562396141,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793169161.449225,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.10273683397099376
+    },
+    {
+      "trial": "r2-media40-baseline",
+      "status": "completed",
+      "config": {
+        "name": "baseline",
+        "owl": "baseline",
+        "face": "cpu",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 40,
+      "source": {
+        "media": {
+          "id": 40,
+          "path": "1246.mp4",
+          "duration": 35.44,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared/1246.mp4",
+          "sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7"
+        },
+        "job": {
+          "id": "029be21217b547ccb94d194e00715f08",
+          "filename": "1246.mp4",
+          "suffix": ".mp4",
+          "sha256": "ff5484d7eca0ca2fef86ed6f7dc3f14740b6e4f5b390bb04c4417a0d36e6ea0c",
+          "bytes": 2310208,
+          "duration": 35.44
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+        "prepared_name": "1246.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-amfz7l60/project",
+      "stages": {
+        "probe": 0.03607720899162814,
+        "transcode": 0.9797005419968627,
+        "transcoded_sha256_check": 0.0010854160063900054,
+        "full_project_copy": 1.2542160830344073,
+        "full_copy_sha256_check": 1.2188009579549544,
+        "pre_extraction_validation": 0.0178454170236364,
+        "wise_extract_subprocess": 66.49263458303176,
+        "wise_create_index_subprocess": 3.0305167909828015,
+        "new_media_validation": 0.014805082988459617,
+        "qwen_prepare": 0.0033939999993890524,
+        "qwen_encode_new_segments": 18.436268500052392,
+        "qwen_finish": 0.0024632909917272627,
+        "validate_and_load": 0.3731755829649046,
+        "qwen_reuse_verification": 0.31039895804133266
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793169219.898585,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 314,
+            "coded_width": 640,
+            "coded_height": 314,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "16799:16800",
+            "display_aspect_ratio": "214:105",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt470bg",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 453632,
+            "duration": "35.440000",
+            "bit_rate": "518897",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "886",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "35.440000",
+          "size": "2310208",
+          "bit_rate": "521491",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.76.100"
+          }
+        }
+      },
+      "transcoded_sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "1246.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "6338333261363733633937633532653961646266303333313130393339313436"
+          },
+          "size_in_bytes": 2273350,
+          "date_modified": "2026-10-28 06:33:40.868893",
+          "media_type": "VIDEO",
+          "format": "mp4",
+          "width": 640,
+          "height": 314,
+          "num_frames": 886,
+          "duration": 35.44
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 77,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10674
+        },
+        "thumbnails": 71
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2152,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 313420
+        },
+        "media_count": 42,
+        "qwen_segments": 143
+      },
+      "new_qwen_segments": 8,
+      "new_qwen_vectors_sha256": "3f37fda4b6bb7cf82e143e1062bb386a2f85c685cfcc9cf2d0e24e0f5b6e85f1",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 92.17939375003334,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 92.17956775001949,
+        "before": {
+          "rss_bytes": 1422180352,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5475975168,
+          "system_available_bytes": 7588741120,
+          "system_swap_used_bytes": 25893076992
+        },
+        "after": {
+          "rss_bytes": 1185824768,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5475975168,
+          "system_available_bytes": 7467352064,
+          "system_swap_used_bytes": 26057375744
+        },
+        "sampled_peak": {
+          "rss_bytes": 1422311424,
+          "mps_allocated_bytes": 4474246912,
+          "mps_driver_bytes": 5475991552,
+          "system_available_bytes": 10500866048,
+          "system_swap_used_bytes": 26166427648
+        },
+        "min_system_available_bytes": 5368987648
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 1.530285332002677,
+      "adjusted_wall_seconds": 90.64910841803066,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793169312.078451,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.17220575001556426
+    },
+    {
+      "trial": "r2-media40-optimized",
+      "status": "completed",
+      "config": {
+        "name": "optimized",
+        "owl": "fast_fp16_weights",
+        "face": "coreml",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 40,
+      "source": {
+        "media": {
+          "id": 40,
+          "path": "1246.mp4",
+          "duration": 35.44,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared/1246.mp4",
+          "sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7"
+        },
+        "job": {
+          "id": "029be21217b547ccb94d194e00715f08",
+          "filename": "1246.mp4",
+          "suffix": ".mp4",
+          "sha256": "ff5484d7eca0ca2fef86ed6f7dc3f14740b6e4f5b390bb04c4417a0d36e6ea0c",
+          "bytes": 2310208,
+          "duration": 35.44
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+        "prepared_name": "1246.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-2wuk0mrr/project",
+      "stages": {
+        "probe": 0.037595124973449856,
+        "transcode": 0.9414630419923924,
+        "transcoded_sha256_check": 0.0012375409714877605,
+        "full_project_copy": 1.3114208749611862,
+        "full_copy_sha256_check": 1.221835916978307,
+        "pre_extraction_validation": 0.013438417052384466,
+        "wise_extract_subprocess": 32.019811832986306,
+        "wise_create_index_subprocess": 3.1253094160347246,
+        "new_media_validation": 0.01338870800100267,
+        "qwen_prepare": 0.003249750006943941,
+        "qwen_encode_new_segments": 18.654870915983338,
+        "qwen_finish": 0.00200058298651129,
+        "validate_and_load": 0.4108559580054134,
+        "qwen_reuse_verification": 0.29284716700203717
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793169161.643146,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 314,
+            "coded_width": 640,
+            "coded_height": 314,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "16799:16800",
+            "display_aspect_ratio": "214:105",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt470bg",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 453632,
+            "duration": "35.440000",
+            "bit_rate": "518897",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "886",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/source.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "35.440000",
+          "size": "2310208",
+          "bit_rate": "521491",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.76.100"
+          }
+        }
+      },
+      "transcoded_sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "1246.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "6338333261363733633937633532653961646266303333313130393339313436"
+          },
+          "size_in_bytes": 2273350,
+          "date_modified": "2026-10-28 06:32:42.601868",
+          "media_type": "VIDEO",
+          "format": "mp4",
+          "width": 640,
+          "height": 314,
+          "num_frames": 886,
+          "duration": 35.44
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 77,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+        },
+        "thumbnails": 71
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2152,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 313399
+        },
+        "media_count": 42,
+        "qwen_segments": 143
+      },
+      "new_qwen_segments": 8,
+      "new_qwen_vectors_sha256": "3f37fda4b6bb7cf82e143e1062bb386a2f85c685cfcc9cf2d0e24e0f5b6e85f1",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 58.05731404200196,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 58.05745462496998,
+        "before": {
+          "rss_bytes": 1525039104,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5457100800,
+          "system_available_bytes": 7760314368,
+          "system_swap_used_bytes": 25985351680
+        },
+        "after": {
+          "rss_bytes": 1185513472,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5475975168,
+          "system_available_bytes": 7588741120,
+          "system_swap_used_bytes": 25893076992
+        },
+        "sampled_peak": {
+          "rss_bytes": 1525170176,
+          "mps_allocated_bytes": 4474246912,
+          "mps_driver_bytes": 5475991552,
+          "system_available_bytes": 10173235200,
+          "system_swap_used_bytes": 25985351680
+        },
+        "min_system_available_bytes": 6482853888
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 1.515920624951832,
+      "adjusted_wall_seconds": 56.54139341705013,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793169219.700841,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.09894070803420618
+    },
+    {
+      "trial": "r2-media41-baseline",
+      "status": "completed",
+      "config": {
+        "name": "baseline",
+        "owl": "baseline",
+        "face": "cpu",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 41,
+      "source": {
+        "media": {
+          "id": 41,
+          "path": "抖音20261027-906986.mp4",
+          "duration": 26.875,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared/抖音20261027-906986.mp4",
+          "sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431"
+        },
+        "job": {
+          "id": "0fe31e1020b9487d80e9d1b4e9a703e8",
+          "filename": "抖音20261027-906986.mp4",
+          "suffix": ".mp4",
+          "sha256": "efee2e9fe9647e3fe8b3f17b4f71673e1edcdf354ed1e18d0029118b139e0abb",
+          "bytes": 1282374,
+          "duration": 26.875
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+        "prepared_name": "抖音20261027-906986.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-o7huwotw/project",
+      "stages": {
+        "probe": 0.04521599999861792,
+        "transcode": 0.4540191669948399,
+        "transcoded_sha256_check": 0.0007963330135680735,
+        "full_project_copy": 1.4528644169913605,
+        "full_copy_sha256_check": 0.6632617079885677,
+        "pre_extraction_validation": 0.008587416028603911,
+        "wise_extract_subprocess": 61.498452792002354,
+        "wise_create_index_subprocess": 2.642757082998287,
+        "new_media_validation": 0.037072749983053654,
+        "qwen_prepare": 0.0032122500124387443,
+        "qwen_encode_new_segments": 15.235130540968385,
+        "qwen_finish": 0.0024082090239971876,
+        "validate_and_load": 0.38685629196697846,
+        "qwen_reuse_verification": 0.2815500830183737
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793169358.748972,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 360,
+            "coded_width": 640,
+            "coded_height": 360,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 22,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "16/1",
+            "avg_frame_rate": "16/1",
+            "time_base": "1/16384",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 440320,
+            "duration": "26.875000",
+            "bit_rate": "248635",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "430",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/44100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 1181704,
+            "duration": "26.796009",
+            "bit_rate": "127999",
+            "nb_frames": "1156",
+            "extradata_size": 2,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "26.875000",
+          "size": "1282374",
+          "bit_rate": "381729",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.45.100"
+          }
+        }
+      },
+      "transcoded_sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "抖音20261027-906986.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "3836343830383366373863363366343731363964623462316366626439373063"
+          },
+          "size_in_bytes": 1144032,
+          "date_modified": "2026-10-28 06:35:59.209180",
+          "media_type": "AV",
+          "format": "mp4",
+          "width": 640,
+          "height": 360,
+          "num_frames": 430,
+          "duration": 26.875
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 1,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28955
+        },
+        "thumbnails": 54
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2076,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 331701
+        },
+        "media_count": 42,
+        "qwen_segments": 141
+      },
+      "new_qwen_segments": 6,
+      "new_qwen_vectors_sha256": "d9aaf2a1ba94e5044f3e3bf11f5097c8dcadb3071d1d0dba1914b5349ff3e39f",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 82.72496016701916,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 82.72511716699228,
+        "before": {
+          "rss_bytes": 1215152128,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5457100800,
+          "system_available_bytes": 5961531392,
+          "system_swap_used_bytes": 23963041792
+        },
+        "after": {
+          "rss_bytes": 1187037184,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5457100800,
+          "system_available_bytes": 7643316224,
+          "system_swap_used_bytes": 23992926208
+        },
+        "sampled_peak": {
+          "rss_bytes": 1217609728,
+          "mps_allocated_bytes": 4457469696,
+          "mps_driver_bytes": 5457117184,
+          "system_available_bytes": 12118540288,
+          "system_swap_used_bytes": 27348697088
+        },
+        "min_system_available_bytes": 4267196416
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 0.9456081240205094,
+      "adjusted_wall_seconds": 81.77935204299865,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793169441.474358,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.16764862497802824
+    },
+    {
+      "trial": "r2-media41-optimized",
+      "status": "completed",
+      "config": {
+        "name": "optimized",
+        "owl": "fast_fp16_weights",
+        "face": "coreml",
+        "processor_device": "cpu"
+      },
+      "original_media_id": 41,
+      "source": {
+        "media": {
+          "id": 41,
+          "path": "抖音20261027-906986.mp4",
+          "duration": 26.875,
+          "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared",
+          "absolute_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared/抖音20261027-906986.mp4",
+          "sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431"
+        },
+        "job": {
+          "id": "0fe31e1020b9487d80e9d1b4e9a703e8",
+          "filename": "抖音20261027-906986.mp4",
+          "suffix": ".mp4",
+          "sha256": "efee2e9fe9647e3fe8b3f17b4f71673e1edcdf354ed1e18d0029118b139e0abb",
+          "bytes": 1282374,
+          "duration": 26.875
+        },
+        "source": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+        "prepared_name": "抖音20261027-906986.mp4"
+      },
+      "base_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+      "temporary_project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/replays/e2e-r1/work/replay-3k2vf6e2/project",
+      "stages": {
+        "probe": 0.03962095797760412,
+        "transcode": 0.461514291993808,
+        "transcoded_sha256_check": 0.0007290420471690595,
+        "full_project_copy": 1.3010319999884814,
+        "full_copy_sha256_check": 1.1331388339749537,
+        "pre_extraction_validation": 0.014659332984592766,
+        "wise_extract_subprocess": 26.415149791981094,
+        "wise_create_index_subprocess": 3.11552837502677,
+        "new_media_validation": 0.03221062500961125,
+        "qwen_prepare": 0.0030796669889241457,
+        "qwen_encode_new_segments": 12.352440792019479,
+        "qwen_finish": 0.00430791696999222,
+        "validate_and_load": 0.6857102090143599,
+        "qwen_reuse_verification": 0.3506819579633884
+      },
+      "excluded_stages": [
+        "transcoded_sha256_check",
+        "full_copy_sha256_check",
+        "qwen_reuse_verification"
+      ],
+      "started_epoch": 1793169312.3447301,
+      "scope": "probe-to-index-load; no HTTP upload, queue wait, or publication",
+      "source_probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 640,
+            "height": 360,
+            "coded_width": 640,
+            "coded_height": 360,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 22,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "16/1",
+            "avg_frame_rate": "16/1",
+            "time_base": "1/16384",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 440320,
+            "duration": "26.875000",
+            "bit_rate": "248635",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "430",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/44100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 1181704,
+            "duration": "26.796009",
+            "bit_rate": "127999",
+            "nb_frames": "1156",
+            "extradata_size": 2,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler",
+              "vendor_id": "[0][0][0][0]"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/source.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "26.875000",
+          "size": "1282374",
+          "bit_rate": "381729",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf58.45.100"
+          }
+        }
+      },
+      "transcoded_sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431",
+      "matches_frozen_prepared_sha256": true,
+      "base_copy_bytes": 1349105793,
+      "full_copy_file_count": 44,
+      "full_copy_hashes_match": true,
+      "new_media": {
+        "media": {
+          "id": 42,
+          "source_collection_id": 29,
+          "path": "抖音20261027-906986.mp4",
+          "checksum": {
+            "sqlite_bytes_hex": "3836343830383366373863363366343731363964623462316366626439373063"
+          },
+          "size_in_bytes": 1144032,
+          "date_modified": "2026-10-28 06:35:12.822873",
+          "media_type": "AV",
+          "format": "mp4",
+          "width": 640,
+          "height": 360,
+          "num_frames": 430,
+          "duration": 26.875
+        },
+        "vector_counts": {
+          "deepinsight/insightface/buffalo_l/_unknown": 1,
+          "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28940
+        },
+        "thumbnails": 54
+      },
+      "reused_qwen_segments": 135,
+      "loaded": {
+        "index_counts": {
+          "VIDEO:deepinsight/insightface/buffalo_l/_unknown": 2076,
+          "VIDEO:transformers/owlv2/google/owlv2-base-patch16-ensemble": 331686
+        },
+        "media_count": 42,
+        "qwen_segments": 141
+      },
+      "new_qwen_segments": 6,
+      "new_qwen_vectors_sha256": "d9aaf2a1ba94e5044f3e3bf11f5097c8dcadb3071d1d0dba1914b5349ff3e39f",
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true,
+      "elapsed_wall_seconds": 45.92064545798348,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 45.92080924997572,
+        "before": {
+          "rss_bytes": 1422393344,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5475975168,
+          "system_available_bytes": 7467352064,
+          "system_swap_used_bytes": 26057375744
+        },
+        "after": {
+          "rss_bytes": 978550784,
+          "mps_allocated_bytes": 4255064832,
+          "mps_driver_bytes": 5457100800,
+          "system_available_bytes": 5961531392,
+          "system_swap_used_bytes": 24114036736
+        },
+        "sampled_peak": {
+          "rss_bytes": 1422540800,
+          "mps_allocated_bytes": 4457469696,
+          "mps_driver_bytes": 5479120896,
+          "system_available_bytes": 10222174208,
+          "system_swap_used_bytes": 26057375744
+        },
+        "min_system_available_bytes": 5961531392
+      },
+      "resource_scope_note": "Replay-parent RSS/MPS includes resident Qwen; extraction child has its own resources in extract-metrics.json. System availability/swap include the online server and other processes. Do not add overlapping measurements.",
+      "excluded_verification_seconds": 1.4845498339855112,
+      "adjusted_wall_seconds": 44.43609562399797,
+      "wall_definition": "elapsed_wall_seconds covers probe through completed index load and SHA checks. adjusted_wall_seconds subtracts only listed excluded_stages. Qwen cold loading, runtime imports, and post-trial cleanup are outside both.",
+      "finished_epoch": 1793169358.265725,
+      "temporary_project_retained": false,
+      "cleanup_seconds": 0.3789197909645736
+    }
+  ],
+  "replay_comparison": [
+    {
+      "media_id": 40,
+      "configurations": {
+        "baseline": {
+          "trials": 2,
+          "raw_seconds": [
+            95.33998158300528,
+            92.17939375003334
+          ],
+          "adjusted_seconds": [
+            94.4347350000171,
+            90.64910841803066
+          ],
+          "mean_raw_seconds": 93.75968766651931,
+          "mean_adjusted_seconds": 92.54192170902388,
+          "mean_stages": {
+            "full_copy_sha256_check": 0.8944381454784889,
+            "full_project_copy": 1.5089953124988824,
+            "new_media_validation": 0.014793353999266401,
+            "pre_extraction_validation": 0.01495039599831216,
+            "probe": 0.04253279199474491,
+            "qwen_encode_new_segments": 19.209954541525804,
+            "qwen_finish": 0.003689624514663592,
+            "qwen_prepare": 0.003347291989484802,
+            "qwen_reuse_verification": 0.32220254151616246,
+            "transcode": 0.936095833487343,
+            "transcoded_sha256_check": 0.001125270500779152,
+            "validate_and_load": 0.4980024789692834,
+            "wise_create_index_subprocess": 3.0988846244872548,
+            "wise_extract_subprocess": 67.20226883303258
+          },
+          "qwen_new_vector_hashes": [
+            "3f37fda4b6bb7cf82e143e1062bb386a2f85c685cfcc9cf2d0e24e0f5b6e85f1"
+          ]
+        },
+        "optimized": {
+          "trials": 2,
+          "raw_seconds": [
+            59.65754437504802,
+            58.05731404200196
+          ],
+          "adjusted_seconds": [
+            58.631249542115256,
+            56.54139341705013
+          ],
+          "mean_raw_seconds": 58.85742920852499,
+          "mean_adjusted_seconds": 57.58632147958269,
+          "mean_stages": {
+            "full_copy_sha256_check": 0.9972275624750182,
+            "full_project_copy": 1.3386185834824573,
+            "new_media_validation": 0.013877416495233774,
+            "pre_extraction_validation": 0.012832333508413285,
+            "probe": 0.04111374996136874,
+            "qwen_encode_new_segments": 18.781839811999816,
+            "qwen_finish": 0.0020961459958925843,
+            "qwen_prepare": 0.0031719999969936907,
+            "qwen_reuse_verification": 0.27267674999893643,
+            "transcode": 0.9843180624884553,
+            "transcoded_sha256_check": 0.0012034164683427662,
+            "validate_and_load": 0.39145310400635935,
+            "wise_create_index_subprocess": 3.018623520503752,
+            "wise_extract_subprocess": 32.98975383301149
+          },
+          "qwen_new_vector_hashes": [
+            "3f37fda4b6bb7cf82e143e1062bb386a2f85c685cfcc9cf2d0e24e0f5b6e85f1"
+          ]
+        }
+      },
+      "speedup": 1.6070122093461854,
+      "time_reduction_fraction": 0.37772719200008387
+    },
+    {
+      "media_id": 41,
+      "configurations": {
+        "baseline": {
+          "trials": 2,
+          "raw_seconds": [
+            74.70175366697367,
+            82.72496016701916
+          ],
+          "adjusted_seconds": [
+            73.56470829196041,
+            81.77935204299865
+          ],
+          "mean_raw_seconds": 78.71335691699642,
+          "mean_adjusted_seconds": 77.67203016747953,
+          "mean_stages": {
+            "full_copy_sha256_check": 0.7642362499900628,
+            "full_project_copy": 1.3595561459951568,
+            "new_media_validation": 0.03452849999302998,
+            "pre_extraction_validation": 0.01433364552212879,
+            "probe": 0.043666354002198204,
+            "qwen_encode_new_segments": 13.98122174947639,
+            "qwen_finish": 0.00822975003393367,
+            "qwen_prepare": 0.0032212085206992924,
+            "qwen_reuse_verification": 0.27633179150871,
+            "transcode": 0.4801278125087265,
+            "transcoded_sha256_check": 0.000758708018111065,
+            "validate_and_load": 0.38473395848996006,
+            "wise_create_index_subprocess": 2.8799292705080006,
+            "wise_extract_subprocess": 58.46993758351891
+          },
+          "qwen_new_vector_hashes": [
+            "d9aaf2a1ba94e5044f3e3bf11f5097c8dcadb3071d1d0dba1914b5349ff3e39f"
+          ]
+        },
+        "optimized": {
+          "trials": 2,
+          "raw_seconds": [
+            48.35128770797746,
+            45.92064545798348
+          ],
+          "adjusted_seconds": [
+            47.44733562396141,
+            44.43609562399797
+          ],
+          "mean_raw_seconds": 47.13596658298047,
+          "mean_adjusted_seconds": 45.94171562397969,
+          "mean_stages": {
+            "full_copy_sha256_check": 0.8793097504822072,
+            "full_project_copy": 1.3390769164834637,
+            "new_media_validation": 0.03126822898047976,
+            "pre_extraction_validation": 0.01200316651375033,
+            "probe": 0.039799353980924934,
+            "qwen_encode_new_segments": 12.456310583511367,
+            "qwen_finish": 0.0034103124926332384,
+            "qwen_prepare": 0.003328395978314802,
+            "qwen_reuse_verification": 0.31420918749063276,
+            "transcode": 0.4340781255159527,
+            "transcoded_sha256_check": 0.0007320210279431194,
+            "validate_and_load": 0.539763208507793,
+            "wise_create_index_subprocess": 3.1713115205348004,
+            "wise_extract_subprocess": 27.90098856249824
+          },
+          "qwen_new_vector_hashes": [
+            "d9aaf2a1ba94e5044f3e3bf11f5097c8dcadb3071d1d0dba1914b5349ff3e39f"
+          ]
+        }
+      },
+      "speedup": 1.6906645542627041,
+      "time_reduction_fraction": 0.408516611128635
+    }
+  ],
+  "integrity_review": {
+    "reviewed_at": "2026-10-27T23:39:41.179185-07:00",
+    "suite_status_preserved": "invalid-production-changed",
+    "trial_count": 8,
+    "all_trials_completed": true,
+    "all_trial_integrity_checks": {
+      "full_copy_hashes_match": true,
+      "matches_frozen_prepared_sha256": true,
+      "old_qwen_vectors_exactly_unchanged": true,
+      "old_wise_feature_shards_exactly_unchanged": true
+    },
+    "baseline_snapshot": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+    "final_active_snapshot": "/Users/zhanghemign/Desktop/视频检索/projects/releases/native-qwen-5a211b588e454345b921505c17d781e1/demo",
+    "baseline_snapshot_hashes_unchanged": true,
+    "registration_database_unchanged": true,
+    "formal_code_differences": [
+      "scripts/ingestion.py",
+      "scripts/library_search.py",
+      "scripts/native_qwen.py",
+      "scripts/qwen_project.py",
+      "scripts/server.py",
+      "wise_config.yaml"
+    ],
+    "temporary_work_directories_remaining": 0,
+    "interpretation": "Eight trial measurements compare the same original frozen snapshot. The end-of-suite active-pointer guard failed after a concurrent production release. Do not treat this as validation of the newly active native_qwen pipeline. Original suite status is retained.",
+    "timing_caution": "The last baseline trial overlaps the concurrent production release. Its inputs/configuration remain comparable, but independent model warmup or other resource contention cannot be excluded. Keep all raw trials; do not use the larger second-round media41 speedup for the primary estimate.",
+    "primary_time_reduction": {
+      "media40_two_round_mean": 0.37772719200008387,
+      "media41_first_pair": 0.3550258442451171,
+      "media41_first_pair_baseline_seconds": 73.56470829196041,
+      "media41_first_pair_optimized_seconds": 47.44733562396141
+    },
+    "configuration_change_review": {
+      "wise_config_changed_at": "2026-10-27T23:35:33-07:00",
+      "change": "Added a Qwen-only extractor configuration; existing OWL and face settings unchanged. Last child logs confirm only original OWL/face extractors and settings.",
+      "ingestion_change": "replay.py does not import scripts/ingestion.py; it runs the originally implemented equivalent stages."
+    }
+  }
+}

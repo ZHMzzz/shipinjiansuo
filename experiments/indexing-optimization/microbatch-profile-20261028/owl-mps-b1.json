@@ -1,0 +1,12 @@
+{
+  "model": "owl",
+  "mode": "mps",
+  "runtime": {
+    "dtype": "torch.float16",
+    "attention_class": "Owlv2Attention"
+  },
+  "stages": [],
+  "modules": [],
+  "batch": 1,
+  "logical_items": 4
+}

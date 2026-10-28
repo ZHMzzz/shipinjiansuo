@@ -1,0 +1,12 @@
+__pycache__/
+*.npy
+*.log
+current-full/features/
+current-full/index/
+current-full/wise-project/
+original-full/features/
+original-full/index/
+original-full/wise-project/
+current-check/features/
+current-check/index/
+replays/*/*/work/

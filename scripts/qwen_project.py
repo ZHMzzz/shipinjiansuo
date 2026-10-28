@@ -22,6 +22,7 @@ RETIRED = ('mlfoundations/open_clip/ViT-B-16-SigLIP2-256/webli',)
 
 def retained_fingerprint(project):
     files = list((project/'action-index').rglob('*')) + list((project/'store'/FACE).rglob('*'))
+    files += list((project/'store'/SETTINGS['model']).rglob('*')) + [project/'qwen-encoding.json']
     files.append(project/'thumbs.db')
     fingerprints = {str(p.relative_to(project)): hashlib.sha256(p.read_bytes()).hexdigest()
                     for p in files if p.is_file()}
@@ -31,6 +32,8 @@ def retained_fingerprint(project):
                              ('vector_metadata_insightface', '')]:
             rows = db.execute(f'SELECT * FROM {table}{where} ORDER BY 1', (FACE,) if where else ()).fetchall()
             fingerprints[table] = hashlib.sha256(repr(rows).encode()).hexdigest()
+        rows = db.execute('SELECT * FROM vectors WHERE feature_extractor_id=? ORDER BY id', (SETTINGS['model'],)).fetchall()
+        fingerprints['qwen_vectors'] = hashlib.sha256(repr(rows).encode()).hexdigest()
     return fingerprints
 
 

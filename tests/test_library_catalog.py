@@ -6,6 +6,16 @@ from scripts.video_deletion import prune_project
 from test_video_deletion import fixture
 
 
+def test_native_only_catalog_retains_segment_counts(tmp_path):
+    from scripts.native_qwen import prepare_native_qwen_project
+    manager,old,_=fixture(tmp_path)
+    before=list_video_catalog(old,manager.jobs())
+    stage=prepare_native_qwen_project(tmp_path)
+    after=list_video_catalog(stage,manager.jobs())
+    assert [v['action_segments'] for v in before['videos']]==[v['action_segments'] for v in after['videos']]==[1,1]
+    assert not (stage/'action-index').exists()
+
+
 def test_repeated_queries_do_not_rescan_vector_metadata(tmp_path):
     manager,project,_=fixture(tmp_path);jobs=manager.jobs()
     first=list_video_catalog(project,jobs)

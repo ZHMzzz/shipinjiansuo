@@ -239,6 +239,8 @@ def gi(value):
 def write_report(summary):
     models = summary['models']
     lines = ['# 两个已训练 PPE 模型的本机对照', '',
+        '**本批素材中 YOLOv8s 的裸头检出更多、戴帽误报更少，适合作为后续实验基线；但它仍漏掉 29/45 个明确裸头帧，两者都不宜直接接入正式检索作硬过滤。** 结论只适用于本轮固定阈值与素材，没有训练或调参。', '',
+        '检测框实图见 [三列对照](comparison.jpg)，具体误报和漏检位置见 [视觉复核](visual-review.md)。', '',
         '本轮只做离线检测，没有训练或微调；两个权重在独立进程中顺序运行。所有识别指标仅使用原主测试第一轮，三轮用于重复性；如果 timing-clean 完成，性能表优先使用逐帧排除已检测并发的补测，识别结果不替换。', '',
         f"两套权重均已在本机 MPS 跑通。在本批确定标签帧上，YOLOv8 的误报更少（{models[1]['confusion']['fp']} 对 {models[0]['confusion']['fp']}）、裸头检出更多（{models[1]['confusion']['tp']} 对 {models[0]['confusion']['tp']}），但其裸头帧 Recall 仍只有 {percent(models[1]['confusion']['recall'])}。这支持把 YOLOv8 保留为后续对照候选，尚不足以直接作为正式检索的唯一自动过滤条件。", '',
         '| 权重 | 实际结构 | 参数量 | 文件大小 MB | 固定来源 |',
@@ -287,7 +289,7 @@ def write_report(summary):
         for r in m['timing']['rounds']:
             lines.append(f"| {TITLES[m['model']['id']]} | {r['number']} | {r['predict_stats']['total_seconds']:.2f} | {r['wall_seconds']:.2f} | {r['predict_stats']['count']} |")
     lines += ['', '性能数据来源：' + '；'.join(f"{TITLES[m['model']['id']]}：`{m['performance_source']}`" for m in models) + '。', '',
-        '计时前后同步 MPS；单次调用包含预处理、前向、后处理及结果转 CPU，排除 PNG 读取、视频解码、绘图、网络下载。整轮墙钟还包括资源/进程采样与日志，门控补测还包括帧间等待和被弃用的推理；首次预测包含设备迁移、predictor 初始化与融合等成本。模型调用 FPS 不是完整视频入库或在线检索 FPS。', '',
+        '计时前后同步 MPS；单次调用包含预处理、前向、后处理及结果转 CPU，排除 PNG 读取、视频解码、绘图、网络下载。整轮墙钟还包括资源/进程采样与日志，门控补测还包括帧间等待和被弃用的推理；首次预测包含设备迁移、predictor 初始化与融合等成本。它是新进程内的首次调用，系统和 Metal 编译缓存可能已热，不能当作清空缓存后的冷启动。模型调用 FPS 不是完整视频入库或在线检索 FPS。', '',
         f"一次性准备帧共 {summary['dataset']['decode_and_write_seconds']:.2f} 秒，包含视频打开、抽帧读取、PNG 编码写入和 SHA256，不能称纯解码耗时。每模型预载 PNG 并校验哈希分别为 " + '、'.join(f"{TITLES[m['model']['id']]} {m['timing']['png_read_and_hash_seconds']:.2f} 秒" for m in models) + '。', '', '## 内存', '',
         '| 模型 | 加载前 RSS→峰值 GiB | Metal allocated 峰值 GiB | Metal driver 峰值 GiB | 系统可用最低 GiB | 系统 swap 起始→结束 GiB |',
         '|---|---:|---:|---:|---:|---|']

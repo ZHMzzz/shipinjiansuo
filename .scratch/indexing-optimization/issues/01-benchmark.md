@@ -1,5 +1,6 @@
 Status: ready-for-agent
 Type: task
+Resolution: completed
 
 # 对比 OWLv2 与人脸后端优化
 
@@ -13,3 +14,6 @@ Type: task
 ## Comments
 
 - 已开始：冻结生产状态与实验数据，准备按单因素及组合顺序执行。
+- 实验完成：6 个整批配置、CPU/CoreML 诊断、固定/匹配查询回归、两视频两轮共 8 次入库回放。结果见 `experiments/indexing-optimization/REPORT.md`。
+- 候选为仅入库 fast processor + 实际 FP16 权重 + CoreML；查询保留 baseline。WISE 单次筛选 288.65→111.37 秒；原链路完整回放保守采用约 35%–38% 耗时减少。
+- 完整性边界：所有 trial 完成且副本匹配冻结哈希，旧快照与登记库未变；同期其他工作改源码并发布 native_qwen 新快照，触发套件最终生产指针保护警报。原始警报保留；末次受发布时段影响的基线不用于主提速结论，新链路未验证。本实验未启用正式配置。

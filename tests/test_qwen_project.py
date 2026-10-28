@@ -8,14 +8,13 @@ from test_action_search import project, save
 def fixture(root):
     path=project(root/'projects'); save(path)
     with sqlite3.connect(path/'metadata/internal.db') as db:
-        db.executescript('''CREATE TABLE vectors(id INTEGER PRIMARY KEY,feature_extractor_id TEXT);
-            CREATE TABLE vector_metadata_insightface(vector_id INTEGER REFERENCES vectors(id) ON DELETE CASCADE,score REAL);
+        db.executescript('''CREATE TABLE vector_metadata_insightface(vector_id INTEGER REFERENCES vectors(id) ON DELETE CASCADE,score REAL);
             CREATE TABLE vector_metadata_owlv2(vector_id INTEGER REFERENCES vectors(id) ON DELETE CASCADE,score REAL);
             CREATE TABLE featured(vector_id INTEGER REFERENCES vectors(id) ON DELETE CASCADE);''')
-        db.executemany('INSERT INTO vectors VALUES(?,?)',enumerate((FACE,*RETIRED,OWL),1))
-        db.execute('INSERT INTO vector_metadata_insightface VALUES(1,.9)')
-        db.execute('INSERT INTO vector_metadata_owlv2 VALUES(3,.8)')
-        db.executemany('INSERT INTO featured VALUES(?)',[(1,),(2,),(3,)])
+        db.executemany('INSERT INTO vectors(id,feature_extractor_id) VALUES(?,?)',enumerate((FACE,*RETIRED,OWL),101))
+        db.execute('INSERT INTO vector_metadata_insightface VALUES(101,.9)')
+        db.execute('INSERT INTO vector_metadata_owlv2 VALUES(103,.8)')
+        db.executemany('INSERT INTO featured VALUES(?)',[(101,),(102,),(103,)])
     for model in (FACE,*RETIRED,OWL):
         folder=path/'store'/model/'features';folder.mkdir(parents=True)
         (folder/'vectors.bin').write_bytes(model.encode())
@@ -31,8 +30,8 @@ def test_migration_preserves_data_and_old_release_and_is_idempotent(tmp_path):
     assert before==retained_fingerprint(stage)==retained_fingerprint(old)
     assert all((old/'store'/m).exists() and not (stage/'store'/m).exists() for m in RETIRED)
     with sqlite3.connect(stage/'metadata/internal.db') as db:
-        assert db.execute('SELECT * FROM vectors').fetchall()==[(1,FACE),(3,OWL)]
-        assert db.execute('SELECT * FROM featured').fetchall()==[(1,),(3,)]
+        assert db.execute('SELECT id,feature_extractor_id FROM vectors WHERE id>=101').fetchall()==[(101,FACE),(103,OWL)]
+        assert db.execute('SELECT * FROM featured').fetchall()==[(101,),(103,)]
     assert prepare_qwen_project(tmp_path)==stage
 
 

@@ -3,6 +3,7 @@ import sqlite3
 from unittest.mock import Mock
 
 import numpy as np
+import faiss
 import pytest
 from scripts.action_search import ActionEngine, windows, plan, media_catalog, read_snapshot, select_hits
 
@@ -12,6 +13,7 @@ def project(tmp_path, duration=18):
     with sqlite3.connect(path/'metadata/internal.db') as db:
         db.executescript('''CREATE TABLE source_collections(id INTEGER,location TEXT);
             CREATE TABLE media(id INTEGER,path TEXT,duration REAL,source_collection_id INTEGER,media_type TEXT);
+            CREATE TABLE vectors(id INTEGER PRIMARY KEY,modality TEXT,feature_extractor_id TEXT,media_id INTEGER,timestamp REAL,end_timestamp REAL);
             INSERT INTO source_collections VALUES(1,'/example');''')
         db.execute("INSERT INTO media VALUES(7,'a.mp4',?,1,'VIDEO')", (duration,))
     return path
@@ -53,7 +55,10 @@ def test_incremental_index_preserves_vectors_and_blocks_incomplete_publication(t
 
 def test_snapshot_rejects_changed_media_and_misaligned_vectors(tmp_path):
     path=project(tmp_path); save(path)
-    np.save(path/'action-index/vectors.npy',np.zeros((1,4),dtype='float32'))
+    from scripts.native_qwen import QWEN
+    folder=path/'store'/QWEN
+    damaged=faiss.IndexIDMap2(faiss.IndexFlatIP(4))
+    faiss.write_index(damaged,str(folder/'features/video-000000.faiss'))
     with pytest.raises(ValueError,match='不一致'): read_snapshot(path)
     save(path)
     with sqlite3.connect(path/'metadata/internal.db') as db:
