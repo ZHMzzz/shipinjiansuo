@@ -4,7 +4,7 @@ from collections import defaultdict
 import sqlite3
 import numpy as np
 from fastapi import HTTPException
-from wise.api.common import MediaQueryTerm
+from wise.api.common import MediaQueryTerm, TextQueryTerm
 from wise.api.services.embedding import EmbeddingConfig
 from wise.api.standalone.search import search_output_to_response
 from wise.data_models import MediaType, ModalityType
@@ -12,10 +12,36 @@ if __package__:
     from .qwen_project import OWL, FACE
     from .combined_search import person_scene_search
     from .semantic_filter import filter_semantic_hits
+    from .native_qwen import QWEN
 else:
     from qwen_project import OWL, FACE
     from combined_search import person_scene_search
     from semantic_filter import filter_semantic_hits
+    from native_qwen import QWEN
+
+
+def native_text_search(project, search, config, query, limit, allowed=None):
+    """WISE embedding, top-k and segment response; no relevance post-filter."""
+    terms = [TextQueryTerm(term_id='text', is_negative=False, txt=query)]
+    constraint = None
+    if QWEN not in search.search_indices.get(ModalityType.VIDEO, {}):
+        raise HTTPException(409, 'Qwen 片段索引尚未就绪，请等待索引建立完成后重试')
+    count = search.search_indices[ModalityType.VIDEO][QWEN].index.ntotal
+    if allowed is not None:
+        with sqlite3.connect(project.wise_project._project_dir/'metadata/internal.db') as db:
+            constraint = np.asarray([vid for vid, mid in db.execute(
+                'SELECT id,media_id FROM vectors WHERE feature_extractor_id=?', (QWEN,))
+                if mid in allowed], dtype='int64')
+        count = len(constraint)
+    end = min(limit, config.max_search_results, count)
+    if end == 0:
+        return {'video_results':None}, False
+    result = search.search(terms, EmbeddingConfig(query_prefix='',
+        text_queries_weight=config.text_queries_weight, negative_queries_weight=config.negative_queries_weight),
+        modality_type=ModalityType.VIDEO, feature_extractor_id=QWEN,
+        start=0, end=end, filter_specs={}, vector_id_constraint=constraint)
+    data = search_output_to_response(config, project, terms, MediaType.VIDEO, result, 1)
+    return data.model_dump(mode='json', exclude={'query'}), count > end
 
 
 def matching_media(catalog, filename):
@@ -43,10 +69,9 @@ def object_constraints(db_path, allowed, face_times=None):
 
 def normalize(data, catalog, mode, limit, threshold):
     by_id = {str(v['id']): v for v in catalog}
-    hits = (data.get('video_results') or {}).get('unmerged_windows', [])
-    if mode in ('text', 'person_scene'):
-        hits = filter_semantic_hits(hits,
-            score_key='scene_similarity' if mode == 'person_scene' else 'distance')
+    hits = (data.get('video_results') or {}).get('merged_windows' if mode == 'text' else 'unmerged_windows', [])
+    if mode == 'person_scene':
+        hits = filter_semantic_hits(hits, score_key='scene_similarity')
     items, seen = [], set()
     for hit in hits:
         mid = str(hit['media_id'])
@@ -55,8 +80,8 @@ def normalize(data, catalog, mode, limit, threshold):
         if mid in seen: continue
         seen.add(mid)
         v = by_id[mid]
-        # Qwen results are windows; WISE face/object results are frame hits.
-        start = hit['ts'] if mode == 'text' else hit.get('thumbnail_ts', hit['ts'])
+        # WISE merged segments use the highest-scoring hit as representative.
+        start = hit.get('thumbnail_ts', hit['ts'])
         items.append({**v, 'thumbnail':hit['thumbnail'], 'start':start,
             'end':min(hit['te'], v['duration']), 'score':hit['distance'], 'kind':mode,
             'face_similarity':hit.get('face_similarity'),
@@ -90,10 +115,11 @@ def search_library(*, catalog, query, person, filename, image_bytes, threshold,
             hit.update(evidence.get(str(hit['vector_id']),{}))
         return normalize(data,selected,'person_scene',limit,threshold)
     if query:
-        # Select videos before truncation; one extra video detects a real cap.
-        data = actions.search(project.wise_project._project_dir,query,limit+1,
-            media_ids=allowed,group_by_video=True)
-        return normalize(data,selected,'text',limit,threshold)
+        data, limited = native_text_search(project, search, config, query, limit,
+            allowed=allowed if filename else None)
+        response = normalize(data, selected, 'text', limit, threshold)
+        response['limited'] = limited
+        return response
     face_times = None
     if person:
         count = search.search_indices[ModalityType.VIDEO][FACE].index.ntotal

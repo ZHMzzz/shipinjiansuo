@@ -9,10 +9,10 @@ import sqlite3
 import uuid
 
 try:
-    from .action_search import read_snapshot
+    from .action_search import read_snapshot, SETTINGS
     from .ingestion import prepare_versions
 except ImportError:
-    from action_search import read_snapshot
+    from action_search import read_snapshot, SETTINGS
     from ingestion import prepare_versions
 
 FACE = 'deepinsight/insightface/buffalo_l/_unknown'
@@ -37,7 +37,7 @@ def retained_fingerprint(project):
 def validate_project(project, require_owl=False):
     with sqlite3.connect(project/'metadata/internal.db') as db:
         models = {r[0] for r in db.execute('SELECT DISTINCT feature_extractor_id FROM vectors')}
-    if models - {FACE, OWL} or any((project/'store'/model).exists() for model in RETIRED):
+    if models - {FACE, OWL, SETTINGS['model']} or any((project/'store'/model).exists() for model in RETIRED):
         raise ValueError('WISE 索引仍包含已停用模型，请先移除 SigLIP，保留 Qwen、OWLv2 与人脸索引')
     if require_owl and not (project/'store'/OWL/'index/video-IndexFlatIP.faiss').exists():
         raise ValueError('缺少 OWLv2 索引，请先运行 scripts/restore_owl_project.py 构建并发布')

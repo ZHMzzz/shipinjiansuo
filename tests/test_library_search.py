@@ -45,9 +45,9 @@ def test_normalize_keeps_best_window_per_video():
     catalog=[dict(id=1,name='真实名称.mp4',duration=20,url='/demo/media/1')]
     hits=[dict(media_id=1,ts=0,te=4,thumbnail_ts=1,thumbnail='thumbnail/a',distance=.9),
           dict(media_id=1,ts=8,te=12,thumbnail_ts=9,thumbnail='thumbnail/b',distance=.8)]
-    data={'video_results':{'unmerged_windows':hits}}
+    data={'video_results':{'unmerged_windows':hits,'merged_windows':hits}}
     text=normalize(data,catalog,'text',100,.45)
-    assert [h['start'] for h in text['items']]==[0]
+    assert [h['start'] for h in text['items']]==[1]
     objects=normalize(data,catalog,'object',100,.45)
     assert len(objects['items'])==1 and objects['items'][0]['start']==1
     assert objects['items'][0]['name']=='真实名称.mp4'
@@ -68,16 +68,19 @@ def test_native_object_routing_does_not_serialize_uploaded_binary(monkeypatch):
     assert search.search.call_args.kwargs['feature_extractor_id']==OWL
 
 
-@pytest.mark.parametrize('count,limited', [(2,False),(3,True)])
-def test_text_route_groups_before_video_limit_and_reports_extra_video(count, limited):
+def test_text_route_uses_native_candidates_without_score_filter(monkeypatch):
+    import scripts.library_search as module
     catalog=[dict(id=i,name=f'{i}.mp4',duration=20) for i in range(1,4)]
     actions=Mock()
-    actions.search.return_value={'video_results':{'unmerged_windows':[
-        dict(media_id=i,ts=8,te=16,thumbnail=f'thumb/{i}',distance=.9-i*.01)
-        for i in range(1,count+1)]}}
+    native=Mock(return_value=({'video_results':{'merged_windows':[
+        dict(media_id=i,ts=8,te=16,thumbnail=f'thumb/{i}',distance=.4-i*.1)
+        for i in (1,1,2)]}},True))
+    monkeypatch.setattr(module,'native_text_search',native)
+    project=NS(wise_project=NS(_project_dir='project'))
     result=search_library(catalog=catalog,query='写字',person='',filename='',image_bytes=None,
-        threshold=.45,limit=2,project=NS(wise_project=NS(_project_dir='project')),
+        threshold=.45,limit=3,project=project,
         search=None,embedding=None,actions=actions,config=None,people_db=None)
-    actions.search.assert_called_once_with('project','写字',3,media_ids={1,2,3},group_by_video=True)
+    native.assert_called_once_with(project,None,None,'写字',3,allowed=None)
+    actions.search.assert_not_called()
     assert [item['id'] for item in result['items']] == [1,2]
-    assert result['limited'] is limited
+    assert result['limited'] is True

@@ -11,6 +11,11 @@ feature_extractor_config:
     device: cpu
     compile: false
     warmup: true
+  hf/Qwen/Qwen3-VL-Embedding/2B:
+    dtype: float16
+    max_total_pixels: 1048576
+    # server.py shares and warms ActionEngine's instance before accepting queries.
+    warmup: false
 search_target_order:
   - owlv2
   - insightface

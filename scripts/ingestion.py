@@ -296,6 +296,14 @@ class IngestionManager:
                 except ImportError:
                     from qwen_project import validate_project, FACE, OWL
                 validate_project(stage, require_owl=True)
+                # WISE add_media discovers every model in store/. Qwen segments
+                # are encoded by build_actions, so omit its derived store during
+                # frame extraction and recreate it before publishing this stage.
+                try:
+                    from .native_qwen import QWEN
+                except ImportError:
+                    from native_qwen import QWEN
+                shutil.rmtree(stage/'store'/QWEN, ignore_errors=True)
                 expected=max(1,math.ceil(duration*2)*2)
                 def extraction_progress(line):
                     match=re.search(r'Feature extraction:\s*(\d+)it',line)

@@ -30,8 +30,9 @@ from wise.wise_project import WiseProject
 from ingestion import IngestionManager, MAX_UPLOAD
 from combined_search import person_scene_search
 from query_image import decode_query_image
-from qwen_project import prepare_qwen_project, validate_project, FACE
-from library_search import search_library
+from qwen_project import validate_project, FACE
+from native_qwen import prepare_native_qwen_project, sync_native_qwen, validate_native_qwen, QWEN
+from library_search import search_library, native_text_search
 from video_deletion import delete_video
 from library_catalog import list_video_catalog
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
@@ -39,7 +40,7 @@ from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapsh
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / 'data/people.sqlite'
 logging.basicConfig(level=logging.INFO)
-config = APIConfig(command='serve', project_dir=prepare_qwen_project(ROOT))
+config = APIConfig(command='serve', project_dir=prepare_native_qwen_project(ROOT))
 validate_project(config.project_dir, require_owl=True)
 app = create_app(config, ROOT / 'wise/frontend/dist')
 search_gate = asyncio.Lock()
@@ -64,6 +65,7 @@ async def publish_project(stage):
         def load():
             validate_project(stage, require_owl=True)
             read_snapshot(stage, complete=True)
+            validate_native_qwen(stage)
             project = WiseProject(stage, read_only=True)
             service = LocalWiseProjectService(project, new_config)
             search = LocalSearchService(service, dependencies.embedding_service)
@@ -110,6 +112,7 @@ async def build_action_index(stage, progress):
             await asyncio.sleep(0)
     if ingestion.stopping.is_set(): raise RuntimeError('服务停止，动作索引未发布')
     await asyncio.to_thread(actions.finish, stage, catalog, records, vectors)
+    await asyncio.to_thread(sync_native_qwen, stage)
 
 
 ingestion = IngestionManager(ROOT, publish_project, build_action_index)
@@ -125,6 +128,7 @@ async def lifespan(application):
         logging.info('正在加载并预热 Qwen 自然语言检索模型…')
         try:
             await asyncio.to_thread(actions.query_vector, '视频中的场景和动作')
+            dependencies.embedding_service.feature_extractors[QWEN] = actions.extractor
         except Exception:
             logging.exception('Qwen 启动预热失败，服务未就绪；请处理错误后重新启动')
             raise
@@ -308,9 +312,9 @@ def query_image(photo):
         raise HTTPException(400, '无法读取图片')
 
 
-def segment_search(project, query, limit=20):
+def segment_search(project, search, query, limit=20):
     try:
-        return actions.search(project.wise_project._project_dir, query, limit)
+        return native_text_search(project, search, config, query, limit)[0]
     except ValueError as exc:
         raise HTTPException(409, str(exc)) from exc
     except RuntimeError as exc:
@@ -319,14 +323,14 @@ def segment_search(project, query, limit=20):
 
 
 @app.post('/mvp-api/search')
-def search_segments(project: ProjectServiceDep, query: str = Form('', max_length=1000),
+def search_segments(project: ProjectServiceDep, search: SearchServiceDep, query: str = Form('', max_length=1000),
                     photo: UploadFile | None = File(None),
                     limit: int = Form(20, ge=1, le=50), refine: bool = Form(False)):
     query = query.strip()
     if photo is not None: raise HTTPException(400, '图片请使用物体检索，已移除图文联合检索')
     if not query: raise HTTPException(400, '请输入场景或动作描述')
     if refine: raise HTTPException(410, '物体图片已恢复 WISE OWLv2，请刷新页面使用物体图片入口')
-    return segment_search(project, query, limit)
+    return segment_search(project, search, query, limit)
 
 
 @app.post('/mvp-api/library/search')
