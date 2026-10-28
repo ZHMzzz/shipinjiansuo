@@ -40,7 +40,7 @@ reference.addEventListener('change', () => {
   feedback('search-error'); syncInputs();
 });
 natural.addEventListener('input', syncInputs);
-el('person').addEventListener('input', syncInputs);
+el('person').addEventListener('change', syncInputs);
 el('clear-reference').onclick = event => { event.preventDefault(); clearReference(); reference.focus(); };
 
 function play(item) {
@@ -168,7 +168,11 @@ syncInputs();
 try { await loadCatalog(); } catch (e) { feedback('search-error','视频库读取失败：' + e.message, true); }
 try {
   await mountMaintenance({onPeopleChanged:names => {
-    el('people').replaceChildren(...names.map(name => { const option = node('option'); option.value = name; return option; }));
+    const select = el('person'), selected = select.value;
+    const all = node('option', '全部人物'); all.value = '';
+    select.replaceChildren(all, ...names.map(name => { const option = node('option', name); option.value = name; return option; }));
+    select.value = names.includes(selected) ? selected : '';
+    syncInputs();
   }, onLibraryChanged:() => loadCatalog(true).catch(e => feedback('search-error',e.message,true))});
 } catch (e) { feedback('search-error','维护窗口加载失败，请刷新页面：' + e.message,true); }
 checkIndex(); setInterval(checkIndex, 15000);
