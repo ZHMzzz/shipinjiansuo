@@ -32,7 +32,8 @@ from combined_search import person_scene_search
 from query_image import decode_query_image
 from qwen_project import prepare_qwen_project, validate_project, FACE
 from library_search import search_library
-from video_deletion import delete_video, media_revision
+from video_deletion import delete_video
+from library_catalog import list_video_catalog
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -176,31 +177,7 @@ def retry_job(job_id: str):
 
 @app.get('/mvp-api/videos')
 def list_videos(project: ProjectServiceDep):
-    # Read the immutable version bound to this request, not the moving symlink.
-    with sqlite3.connect(project.wise_project._project_dir/'metadata/internal.db') as db:
-        db.row_factory=sqlite3.Row
-        rows=db.execute("SELECT m.id,m.path,m.checksum,s.location,m.duration,m.width,m.height,m.size_in_bytes FROM media m JOIN source_collections s ON s.id=m.source_collection_id WHERE media_type IN ('VIDEO','AV') ORDER BY m.id DESC").fetchall()
-        counts={}
-        for mid,model,count in db.execute('SELECT media_id,feature_extractor_id,count(*) FROM vectors GROUP BY media_id,feature_extractor_id'):
-            counts.setdefault(mid,{})[model]=count
-    uploaded={job['media_id']:job for job in ingestion.jobs() if job['status']=='completed'}
-    action_meta = project.wise_project._project_dir/'action-index/metadata.json'
-    action_counts = {}
-    if action_meta.exists():
-        for segment in json.loads(action_meta.read_text())['segments']:
-            mid = segment['media_id']; action_counts[mid] = action_counts.get(mid, 0)+1
-    videos=[]
-    for row in rows:
-        item=dict(row)
-        item['revision']=media_revision(item,project.wise_project._project_dir)
-        item.pop('checksum');item.pop('location')
-        job=uploaded.get(row['id'])
-        item.update(name=job['filename'] if job else row['path'],created=job['created'] if job else None,
-                    url=f"/demo/media/{row['id']}",thumbnail=f"/demo/thumbnail?media_id={row['id']}&timestamp=0",
-                    features=counts.get(row['id'],{}))
-        item['action_segments'] = action_counts.get(row['id'], 0)
-        videos.append(item)
-    return {'videos':videos,'count':len(videos),'total_duration':sum(v['duration'] or 0 for v in videos)}
+    return list_video_catalog(project.wise_project._project_dir, ingestion.jobs())
 
 @app.delete('/mvp-api/videos/{media_id}')
 async def remove_video(media_id: int, revision: str = Header(..., alias='If-Match', min_length=64, max_length=64)):
