@@ -1,0 +1,134 @@
+{
+  "scope": "three images, three measured warm repeats each; no decode, database or indexing",
+  "images": [
+    "/Users/zhanghemign/Desktop/视频检索/experiments/owl-qwen-comparison/source-1.png",
+    "/Users/zhanghemign/Desktop/视频检索/experiments/owl-qwen-comparison/source-13.png",
+    "/Users/zhanghemign/Desktop/视频检索/experiments/owl-qwen-comparison/source-21.png"
+  ],
+  "runs": [
+    {
+      "name": "baseline",
+      "load_and_warmup_seconds": 6.646575207996648,
+      "parameter_dtype": "torch.float32",
+      "projection_output_dtype": "torch.float32",
+      "processor": {
+        "name": "baseline",
+        "fast_processor": false,
+        "processor_device": null,
+        "autocast_device": null,
+        "autocast_dtype": null,
+        "weights_dtype": "unchanged",
+        "processor_class": "Owlv2Processor",
+        "image_processor_class": "Owlv2ImageProcessor",
+        "image_processor_config": {
+          "_processor_class": "Owlv2Processor",
+          "image_processor_type": "Owlv2ImageProcessor",
+          "do_rescale": true,
+          "rescale_factor": 0.00392156862745098,
+          "do_pad": true,
+          "do_resize": true,
+          "size": {
+            "height": 960,
+            "width": 960
+          },
+          "resample": 2,
+          "do_normalize": true,
+          "image_mean": [
+            0.48145466,
+            0.4578275,
+            0.40821073
+          ],
+          "image_std": [
+            0.26862954,
+            0.26130258,
+            0.27577711
+          ]
+        }
+      },
+      "samples": [
+        {
+          "image": 0,
+          "repeat": 0,
+          "seconds": 0.7103090410237201,
+          "regions": 76
+        },
+        {
+          "image": 1,
+          "repeat": 0,
+          "seconds": 0.7292157080373727,
+          "regions": 145
+        },
+        {
+          "image": 2,
+          "repeat": 0,
+          "seconds": 0.714300292020198,
+          "regions": 367
+        },
+        {
+          "image": 0,
+          "repeat": 1,
+          "seconds": 0.7022572089917958,
+          "regions": 76
+        },
+        {
+          "image": 1,
+          "repeat": 1,
+          "seconds": 0.6945627499953844,
+          "regions": 145
+        },
+        {
+          "image": 2,
+          "repeat": 1,
+          "seconds": 0.679343499999959,
+          "regions": 367
+        },
+        {
+          "image": 0,
+          "repeat": 2,
+          "seconds": 0.699006000009831,
+          "regions": 76
+        },
+        {
+          "image": 1,
+          "repeat": 2,
+          "seconds": 0.7166624999954365,
+          "regions": 145
+        },
+        {
+          "image": 2,
+          "repeat": 2,
+          "seconds": 0.7019477909780107,
+          "regions": 367
+        }
+      ],
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 6.347975416982081,
+        "before": {
+          "rss_bytes": 649904128,
+          "mps_allocated_bytes": 619897600,
+          "mps_driver_bytes": 2399862784,
+          "system_available_bytes": 11954913280,
+          "system_swap_used_bytes": 27911520256
+        },
+        "after": {
+          "rss_bytes": 650133504,
+          "mps_allocated_bytes": 619897600,
+          "mps_driver_bytes": 2399862784,
+          "system_available_bytes": 12266602496,
+          "system_swap_used_bytes": 27903131648
+        },
+        "sampled_peak": {
+          "rss_bytes": 650166272,
+          "mps_allocated_bytes": 675217408,
+          "mps_driver_bytes": 2410921984,
+          "system_available_bytes": 12266602496,
+          "system_swap_used_bytes": 27911520256
+        },
+        "min_system_available_bytes": 11950309376
+      },
+      "median_seconds": 0.7022572089917958
+    }
+  ]
+}

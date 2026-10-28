@@ -1,0 +1,159 @@
+{
+  "2b-fp16": {
+    "quality": {
+      "all": {
+        "queries": 12,
+        "hit_at_1": 0.8333333333333334,
+        "hit_at_3": 0.9166666666666666,
+        "hit_at_5": 1,
+        "recall_at_3": 0.8472222222222222,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 0.8958333333333334
+      },
+      "zh": {
+        "queries": 6,
+        "hit_at_1": 0.8333333333333334,
+        "hit_at_3": 0.8333333333333334,
+        "hit_at_5": 1,
+        "recall_at_3": 0.8333333333333334,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 0.875
+      },
+      "en": {
+        "queries": 6,
+        "hit_at_1": 0.8333333333333334,
+        "hit_at_3": 1,
+        "hit_at_5": 1,
+        "recall_at_3": 0.8611111111111112,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 0.9166666666666666
+      }
+    },
+    "load_seconds": 12.83242925000377,
+    "warm_video_median_seconds": 2.1002735419897363,
+    "warm_query_median_seconds": 0.06144645847962238,
+    "warm_query_p95_seconds": 0.11795815702353138,
+    "faiss_median_seconds": 2.5395507691428065e-05,
+    "peak_metal_bytes": 5488459776,
+    "peak_rss_bytes": 2618261504,
+    "peak_physical_footprint_bytes": 6584453040,
+    "minimum_system_available_bytes": 4635721728,
+    "initial_swap_used_bytes": 20562968576,
+    "peak_swap_used_bytes": 21406154752,
+    "rankings_identical_across_rounds": true,
+    "repeated_video_min_cosine": 1.0,
+    "runtime": {
+      "torch": "2.8.0",
+      "device": "mps",
+      "dtype": "float16"
+    }
+  },
+  "8b-q8": {
+    "quality": {
+      "all": {
+        "queries": 12,
+        "hit_at_1": 0.8333333333333334,
+        "hit_at_3": 0.9166666666666666,
+        "hit_at_5": 1,
+        "recall_at_3": 0.875,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 0.8958333333333334
+      },
+      "zh": {
+        "queries": 6,
+        "hit_at_1": 0.8333333333333334,
+        "hit_at_3": 0.8333333333333334,
+        "hit_at_5": 1,
+        "recall_at_3": 0.8333333333333334,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 0.875
+      },
+      "en": {
+        "queries": 6,
+        "hit_at_1": 0.8333333333333334,
+        "hit_at_3": 1,
+        "hit_at_5": 1,
+        "recall_at_3": 0.9166666666666666,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 0.9166666666666666
+      }
+    },
+    "load_seconds": 4.097472833003849,
+    "warm_video_median_seconds": 3.663173209002707,
+    "warm_query_median_seconds": 0.23773941601393744,
+    "warm_query_p95_seconds": 0.3488112875143997,
+    "faiss_median_seconds": 5.693748244084418e-05,
+    "peak_metal_bytes": 10051747840,
+    "peak_rss_bytes": 9946939392,
+    "peak_physical_footprint_bytes": 2275107768,
+    "minimum_system_available_bytes": 3766534144,
+    "initial_swap_used_bytes": 24059772928,
+    "peak_swap_used_bytes": 24267194368,
+    "rankings_identical_across_rounds": true,
+    "repeated_video_min_cosine": 1.0,
+    "runtime": {
+      "llama_cpp": "b11944 / 1b4554eff",
+      "device": "Metal",
+      "language_quantization": "Q8_0",
+      "vision_quantization": "Q8_0",
+      "transport": "raw RGB frames, aligned template/timestamps/EOS",
+      "context": 4096,
+      "batch": 2048,
+      "threads": 4
+    }
+  },
+  "input_alignment": [
+    {
+      "id": "fence_vault",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "fence_jump",
+      "tokens": 1052,
+      "aligned": true
+    },
+    {
+      "id": "fall",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "worker_barehead",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "helmet_indoor",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "helmet_outdoor",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "helmet_squat",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "fence_standing",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "normal_walking",
+      "tokens": 980,
+      "aligned": true
+    },
+    {
+      "id": "normal_sitting",
+      "tokens": 980,
+      "aligned": true
+    }
+  ],
+  "production_unchanged": true,
+  "sample": "10 clips; 6 intents in Chinese and English"
+}

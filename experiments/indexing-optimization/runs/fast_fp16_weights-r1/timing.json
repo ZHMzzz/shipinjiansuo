@@ -1,0 +1,19 @@
+{
+  "name": "fast_fp16_weights-r1",
+  "owl": "fast_fp16_weights",
+  "face": "cpu",
+  "processor_device": "cpu",
+  "project": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/runs/fast_fp16_weights-r1/project",
+  "status": "completed",
+  "started_epoch": 1793168087.971888,
+  "extract_wall_seconds": 125.97387550002895,
+  "extract_exit_code": 0,
+  "index_wall_seconds": 2.262385375041049,
+  "index_exit_code": 0,
+  "vector_counts": {
+    "deepinsight/insightface/buffalo_l/_unknown": 215,
+    "transformers/owlv2/google/owlv2-base-patch16-ensemble": 75582
+  },
+  "wise_total_seconds": 128.23626087507,
+  "finished_epoch": 1793168216.254028
+}

@@ -1,0 +1,59 @@
+{
+  "completed_at": 1793159369.748527,
+  "status": "passed",
+  "active_model": "Qwen3-VL-Embedding-2B FP16",
+  "active_pointer_unchanged": true,
+  "targets": [
+    {
+      "path": "experiments/qwen8b-int8/models",
+      "file_count": 7,
+      "logical_bytes": 8800585627,
+      "allocated_bytes": 8804352000
+    },
+    {
+      "path": "experiments/qwen8b-int8/runtime",
+      "file_count": 61,
+      "logical_bytes": 59845625,
+      "allocated_bytes": 59973632
+    },
+    {
+      "path": "experiments/qwen8b-int8/frames",
+      "file_count": 40,
+      "logical_bytes": 327333779,
+      "allocated_bytes": 327385088
+    },
+    {
+      "path": "experiments/qwen8b-int8/__pycache__",
+      "file_count": 4,
+      "logical_bytes": 62252,
+      "allocated_bytes": 69632
+    },
+    {
+      "path": "experiments/qwen8b-full-library/frames",
+      "file_count": 258,
+      "logical_bytes": 1298553364,
+      "allocated_bytes": 1299877888
+    },
+    {
+      "path": "experiments/qwen8b-full-library/aligned-encoder",
+      "file_count": 1,
+      "logical_bytes": 238896,
+      "allocated_bytes": 241664
+    },
+    {
+      "path": "experiments/qwen8b-full-library/__pycache__",
+      "file_count": 1,
+      "logical_bytes": 31618,
+      "allocated_bytes": 32768
+    }
+  ],
+  "removed_allocated_bytes": 10491932672,
+  "removed_logical_bytes": 10486651161,
+  "retained_files_verified": 377,
+  "protected_files_verified": 97,
+  "retained_changed": [],
+  "protected_changed": [],
+  "disk_free_before_bytes": 18270240768,
+  "disk_free_after_bytes": 28753551360,
+  "note": "Reports, labels/review images, raw rankings/resource samples, result vectors and experimental indexes, source/provenance and reproduction scripts retained. Re-running 8B requires downloading/building its removed runtime and weights and regenerating frames."
+}

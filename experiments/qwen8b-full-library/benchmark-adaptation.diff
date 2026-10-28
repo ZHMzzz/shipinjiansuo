@@ -1,0 +1,184 @@
+--- qwen8b-int8/benchmark.py
++++ qwen8b-full-library/benchmark.py
+@@ -18,6 +18,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parents[1]
++ASSETS = ROOT / 'experiments/qwen8b-int8'
+ SOURCE = ROOT / 'experiments/action-search'
+ MANIFEST = json.loads((SOURCE / 'manifest.json').read_text())
+ FRAMES = HERE / 'frames'
+@@ -97,7 +98,7 @@
+     dataset = json.loads((HERE / 'dataset.json').read_text())
+     baseline = json.loads((HERE / '2b-fp16.json').read_text())
+     for item in dataset['clips']:
+-        array = np.load(FRAMES / (item['id'] + '.npy'))
++        array = np.load(FRAMES / (item['id'] + '.npz'))['frames']
+         messages = [{'role': 'user', 'content': [{'type': 'video',
+             'video': [Image.fromarray(frame) for frame in array], 'total_pixels': 1048576}]}]
+         _, videos, _ = process_vision_info(messages, image_patch_size=16,
+@@ -111,7 +112,7 @@
+         item['aligned_rgb_sha256'] = hashlib.sha256(rgb.tobytes()).hexdigest()
+         item['rgb_rounding_max_abs_error'] = float(np.max(np.abs(floats - rgb)))
+     dataset['transport'] = 'same sampled frames; production resize; uint8 rounding for libmtmd RGB API'
+-    save(HERE / 'dataset.json', dataset)
++    save(HERE / 'aligned-inputs.json', {'clips': dataset['clips'], 'transport': dataset['transport']})
+     print('Aligned frames to production visual token grids', flush=True)
+ 
+ 
+@@ -134,8 +135,12 @@
+                 physical += footprint(p.pid) or 0
+             except self.psutil.NoSuchProcess:
+                 pass
++        try:
++            phase = json.loads((HERE / 'phase.json').read_text())['phase']
++        except (FileNotFoundError, json.JSONDecodeError):
++            phase = 'starting'
+         vm = self.psutil.virtual_memory()
+-        row = {'seconds': time.perf_counter() - self.started, 'rss_bytes': rss,
++        row = {'phase': phase, 'unix': time.time(), 'seconds': time.perf_counter() - self.started, 'rss_bytes': rss,
+                'physical_footprint_bytes': physical, 'system_available_bytes': vm.available,
+                'swap_used_bytes': self.psutil.swap_memory().used}
+         self.samples.append(row)
+@@ -172,6 +177,7 @@
+ 
+ def metrics(ranking, expected):
+     relevant = set(expected)
++    if not relevant: return {}
+     flags = [x['id'] in relevant for x in ranking]
+     first = next((i + 1 for i, flag in enumerate(flags) if flag), None)
+     return {'hit_at_1': int(any(flags[:1])), 'hit_at_3': int(any(flags[:3])),
+@@ -183,10 +189,18 @@
+     import numpy as np
+     import psutil
+     dataset = json.loads((HERE / 'dataset.json').read_text())
++    if args.backend == '8b-q8':
++        aligned = json.loads((HERE / 'aligned-inputs.json').read_text())
++        by_id = {c['id']: c for c in aligned['clips']}
++        dataset['clips'] = [by_id[c['id']] for c in dataset['clips']]
+     out = HERE / (args.backend + '.json')
+     report = {'backend': args.backend, 'status': 'running', 'clips': [], 'queries': [],
+               'query_rounds': args.rounds, 'pid': os.getpid(), 'model_load_seconds': None}
+     save(out, report)
++    def phase(name):
++        save(HERE / 'phase.json', {'phase': name, 'unix': time.time()})
++        report.setdefault('phase_boundaries', []).append({'phase': name, 'unix': time.time()})
++    phase('loading')
+     server = None
+     if args.backend == '2b-fp16':
+         import torch
+@@ -217,7 +231,7 @@
+         extractor._model.register_forward_pre_hook(capture, with_kwargs=True)
+ 
+         def video(item):
+-            frames = np.load(FRAMES / (item['id'] + '.npy'))
++            frames = np.load(FRAMES / (item['id'] + '.npz'))['frames']
+             tensor = torch.from_numpy(frames).permute(0, 3, 1, 2)
+             t = time.perf_counter()
+             v = extractor.extract_video_segment_features(tensor).vectors[0]
+@@ -243,10 +257,10 @@
+         from PIL import Image
+         from qwen_vl_utils import process_vision_info
+         torch.set_num_threads(1)
+-        binary = HERE / 'runtime/aligned-encoder'
+-        cmd = [str(binary), str(HERE / 'models/Qwen3-VL-Embedding-8B.Q8_0.gguf'),
+-               str(HERE / 'models/Qwen3-VL-Embedding-8B.mmproj-Q8_0.gguf'),
+-               str(HERE / 'runtime/llama-b11944')]
++        binary = HERE / 'aligned-encoder'
++        cmd = [str(binary), str(ASSETS / 'models/Qwen3-VL-Embedding-8B.Q8_0.gguf'),
++               str(ASSETS / 'models/Qwen3-VL-Embedding-8B.mmproj-Q8_0.gguf'),
++               str(ASSETS / 'runtime/llama-b11944')]
+         report['server_command'] = cmd
+         log = (HERE / '8b-q8-server.log').open('w')
+         t = time.perf_counter()
+@@ -281,11 +295,12 @@
+             server.stdin.flush()
+             data = read_response()
+             metal_memory.update(metal_allocated_bytes=data['metal_allocated_bytes'],
+-                                sampled_metal_peak_bytes=data['metal_peak_bytes'])
++                sampled_metal_peak_bytes=max(metal_memory['sampled_metal_peak_bytes'], data['metal_peak_bytes']),
++                request_metal_peak_bytes=data['metal_peak_bytes'])
+             return np.array(data['embedding'], dtype='float32'), time.perf_counter() - t, data['input']
+ 
+         def video(item):
+-            array = np.load(FRAMES / (item['id'] + '.npy'))
++            array = np.load(FRAMES / (item['id'] + '.npz'))['frames']
+             started = time.perf_counter()
+             messages = [{'role': 'user', 'content': [{'type': 'video',
+                 'video': [Image.fromarray(frame) for frame in array], 'total_pixels': 1048576}]}]
+@@ -300,7 +315,7 @@
+                 'timestamps': [f'<{i + .25:.1f} seconds>' for i in range(8)],
+                 'rgb_path': str(FRAMES / (item['id'] + '.aligned.rgb')), 'width': w, 'height': h})
+             total_seconds = time.perf_counter() - started
+-            reference = json.loads((HERE / 'template-reference.json').read_text())
++            reference = json.loads((ASSETS / 'template-reference.json').read_text())
+             expected_text = [x for x in reference['tokens'] if x != 151656]
+             info = result[2]
+             info['preprocess_seconds'] = preprocess_seconds
+@@ -333,7 +348,9 @@
+         report['loaded_memory'] = memory()
+         save(out, report)
+         print('LOADED', args.backend, report['model_load_seconds'], flush=True)
++        phase('video')
+         vectors = []
++        video_started = time.perf_counter()
+         for item in dataset['clips']:
+             v, seconds, shape = video(item)
+             assert np.isfinite(v).all() and np.linalg.norm(v) > .5
+@@ -343,6 +360,9 @@
+                                     'dimension': len(v), 'memory': memory()})
+             save(out, report)
+             print('VIDEO', item['id'], round(seconds, 3), shape, flush=True)
++        report['all_segments_wall_seconds'] = time.perf_counter() - video_started
++        report['video_phase_memory'] = memory()
++        phase('video_repeat')
+         # Repeat after warm-up to separate first-run setup from sustained encoding.
+         report['warm_video_repeats'] = []
+         for item in dataset['clips'][:3]:
+@@ -355,6 +375,12 @@
+         import faiss
+         index = faiss.IndexFlatIP(matrix.shape[1])
+         index.add(matrix)
++        report['post_video_memory'] = memory()
++        if args.backend == '2b-fp16':
++            metal_peaks.update(allocated_bytes=0, driver_bytes=0)
++        else:
++            metal_memory['sampled_metal_peak_bytes'] = 0
++        phase('query')
+         qvectors = []
+         for round_index in range(args.rounds):
+             for qindex, query in enumerate(dataset['queries']):
+@@ -368,13 +394,15 @@
+                            for i, s in zip(ids[0], scores[0])]
+                 row = {**query, 'round': round_index, 'query_index': qindex,
+                        'encode_seconds': seconds, 'search_seconds': search_seconds,
+-                       'ranking': ranking, 'metrics': metrics(ranking, query['expected'])}
++                       'ranking': ranking, 'memory': memory(), 'metrics': metrics(ranking, query['expected'])}
+                 report['queries'].append(row)
+                 qvectors.append(v)
+                 save(out, report)
+                 print('QUERY', round_index, query['text'], round(seconds, 3), ranking[:1], flush=True)
+         np.save(HERE / (args.backend + '-query-vectors.npy'), np.stack(qvectors))
+         report['final_memory'] = memory()
++        phase('finishing')
++        faiss.write_index(index, str(HERE / (args.backend + '-index.faiss')))
+         report['status'] = 'completed'
+         save(out, report)
+     finally:
+@@ -393,6 +421,7 @@
+     cmd = [sys.executable, str(Path(__file__).resolve()), '--worker',
+            '--backend', args.backend, '--rounds', str(args.rounds)]
+     started = time.perf_counter()
++    save(HERE / 'phase.json', {'phase': 'starting', 'unix': time.time()})
+     with (HERE / (args.backend + '.log')).open('w') as log:
+         proc = subprocess.Popen(cmd, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
+         with Monitor(proc.pid) as monitor:
+@@ -434,7 +463,7 @@
+     parser.add_argument('--rounds', type=int, default=3)
+     args = parser.parse_args()
+     if args.prepare:
+-        prepare()
++        raise SystemExit('Use prepare.py, then freeze_labels.py before encoding')
+     elif args.align_frames:
+         align_frames()
+     elif args.worker:

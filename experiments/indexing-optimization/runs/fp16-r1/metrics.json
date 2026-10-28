@@ -1,0 +1,62 @@
+{
+  "owl": "fp16",
+  "face": "cpu",
+  "processor_device": "cpu",
+  "timers": {
+    "warmup_face_features": {
+      "seconds": 0.3377565830014646,
+      "calls": 1
+    },
+    "warmup_owl_forward": {
+      "seconds": 4.837127249978948,
+      "calls": 1
+    },
+    "warmup_owl_features": {
+      "seconds": 5.066145624965429,
+      "calls": 1
+    },
+    "face_features": {
+      "seconds": 27.015401334967464,
+      "calls": 42
+    },
+    "owl_forward": {
+      "seconds": 221.9268160747015,
+      "calls": 303
+    },
+    "owl_features": {
+      "seconds": 249.1191140829469,
+      "calls": 42
+    }
+  },
+  "initializing": false,
+  "initialization_seconds": 6.150538791960571,
+  "status": "completed",
+  "extract_main_seconds": 292.7315161660081,
+  "resources": {
+    "scope": "current_process",
+    "sample_interval_seconds": 0.05,
+    "total_seconds": 292.7344925000216,
+    "before": {
+      "rss_bytes": 593608704,
+      "mps_allocated_bytes": 0,
+      "mps_driver_bytes": 458752,
+      "system_available_bytes": 8253816832,
+      "system_swap_used_bytes": 20891566080
+    },
+    "after": {
+      "rss_bytes": 363708416,
+      "mps_allocated_bytes": 619897600,
+      "mps_driver_bytes": 9073016832,
+      "system_available_bytes": 5358682112,
+      "system_swap_used_bytes": 27595964416
+    },
+    "sampled_peak": {
+      "rss_bytes": 1615855616,
+      "mps_allocated_bytes": 6650057984,
+      "mps_driver_bytes": 9084076032,
+      "system_available_bytes": 8269692928,
+      "system_swap_used_bytes": 27735818240
+    },
+    "min_system_available_bytes": 3332456448
+  }
+}

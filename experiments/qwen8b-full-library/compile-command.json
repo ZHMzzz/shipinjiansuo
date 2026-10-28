@@ -1,0 +1,23 @@
+[
+  "clang++",
+  "-x",
+  "objective-c++",
+  "-std=c++17",
+  "-O2",
+  "-I",
+  "/Users/zhanghemign/Desktop/\u89c6\u9891\u68c0\u7d22/experiments/qwen8b-int8/runtime/include",
+  "experiments/qwen8b-full-library/aligned_encoder.cpp",
+  "-L",
+  "/Users/zhanghemign/Desktop/\u89c6\u9891\u68c0\u7d22/experiments/qwen8b-int8/runtime/llama-b11944",
+  "-Wl,-rpath,/Users/zhanghemign/Desktop/\u89c6\u9891\u68c0\u7d22/experiments/qwen8b-int8/runtime/llama-b11944",
+  "-lllama",
+  "-lmtmd",
+  "-lggml",
+  "-lggml-base",
+  "-framework",
+  "Metal",
+  "-framework",
+  "Foundation",
+  "-o",
+  "experiments/qwen8b-full-library/aligned-encoder"
+]

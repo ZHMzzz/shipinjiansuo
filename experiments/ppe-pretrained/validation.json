@@ -1,0 +1,58 @@
+{
+  "production_files_unchanged": true,
+  "production_changed_files": [],
+  "hashed_files": 157,
+  "pointer_unchanged": true,
+  "server_pids_unchanged": true,
+  "library_counts_unchanged": true,
+  "production_packages_unchanged": true,
+  "labels_frozen": true,
+  "models": {
+    "yolo11-ppe": {
+      "rounds": 3,
+      "frames_each_round": [
+        238,
+        238,
+        238
+      ],
+      "same_detections_main_and_clean": true,
+      "repeat_identical": true,
+      "input_signature": [
+        [
+          [
+            1,
+            3,
+            640,
+            640
+          ],
+          "torch.float32",
+          "mps:0"
+        ]
+      ],
+      "weight_sha256_unchanged": true
+    },
+    "yolov8-ppe": {
+      "rounds": 3,
+      "frames_each_round": [
+        238,
+        238,
+        238
+      ],
+      "same_detections_main_and_clean": true,
+      "repeat_identical": true,
+      "input_signature": [
+        [
+          [
+            1,
+            3,
+            640,
+            640
+          ],
+          "torch.float32",
+          "mps:0"
+        ]
+      ],
+      "weight_sha256_unchanged": true
+    }
+  }
+}

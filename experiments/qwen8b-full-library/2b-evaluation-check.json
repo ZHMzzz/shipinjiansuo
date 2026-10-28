@@ -1,0 +1,13 @@
+{
+  "validation": {
+    "rankings_identical_across_rounds": true,
+    "vector_dimension": 2048,
+    "min_repeat_cosine": 1.0,
+    "production_vector_cosine": {
+      "min": 0.9999998807907104,
+      "median": 1.0,
+      "below_0999": []
+    }
+  },
+  "score_rows": 68
+}

@@ -1,0 +1,12 @@
+{
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "python": "3.11.15",
+  "torch": "2.8.0",
+  "transformers": "4.57.6",
+  "opencv": "4.11.0",
+  "physical_ram_bytes": 34359738368,
+  "cpu": "Apple M5",
+  "sampling_validation": "exact production frame formula; raw RGB SHA256 per segment",
+  "evaluation_code_sha256_before_results": "dece12f281073c2364acd419dd21600bf06d915f18089a6b9ba30e1c356f5f7e",
+  "evaluation_code_sha256_after_audit_classification": "696d2f87d8706e2688a32223b99d635e63dbcd76ad540c580b83639ac92adf94"
+}

@@ -1,0 +1,902 @@
+{
+  "project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/delete-71040c1c090945bb8e6c18e2b0e9035c/demo",
+  "settings": {
+    "schema": 1,
+    "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+    "dtype": "float16",
+    "max_total_pixels": 1048576,
+    "window_seconds": 8.0,
+    "stride_seconds": 4.0,
+    "frames": 16
+  },
+  "media": [
+    {
+      "id": 1,
+      "path": "backpack-street.mp4",
+      "duration": 14.6146,
+      "location": "data/videos"
+    },
+    {
+      "id": 2,
+      "path": "backpack-walking.mp4",
+      "duration": 8.52,
+      "location": "data/videos"
+    },
+    {
+      "id": 3,
+      "path": "coughing-6XvsLPDioVA_000000_000010.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 4,
+      "path": "coughing-7XXXwvatW1U_000051_000061.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 5,
+      "path": "frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 6,
+      "path": "frying-vegetables-hxK9mej0_zw_000086_000096.mp4",
+      "duration": 10.01,
+      "location": "data/videos"
+    },
+    {
+      "id": 7,
+      "path": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+      "duration": 9.833333,
+      "location": "data/videos"
+    },
+    {
+      "id": 8,
+      "path": "jogging-OmWoDAQM1kk_000000_000010.mp4",
+      "duration": 9.533333,
+      "location": "data/videos"
+    },
+    {
+      "id": 9,
+      "path": "shouting-84cxLPOEnGg_000011_000021.mp4",
+      "duration": 10.01,
+      "location": "data/videos"
+    },
+    {
+      "id": 10,
+      "path": "shouting-85P9CDTfGjE_000000_000010.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 11,
+      "path": "singing-GO5DhmRmHco_000112_000122.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 12,
+      "path": "singing-I6NDj1EcP6w_000073_000083.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 13,
+      "path": "whistling-LqQYSUb_TJI_000052_000062.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 14,
+      "path": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+      "duration": 10.0,
+      "location": "data/videos"
+    },
+    {
+      "id": 15,
+      "path": "新增人物检索验证.mp4",
+      "duration": 3.0,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/de82f5f223f5483b84f540f91c539799/prepared"
+    },
+    {
+      "id": 16,
+      "path": "带音轨上传验证.mp4",
+      "duration": 2.0,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/17ed832fe5314653bfb9c6a9967a775f/prepared"
+    },
+    {
+      "id": 17,
+      "path": "动作定位_串接测试24秒.mp4",
+      "duration": 24.0,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/9fa8c12df98e4e4dbbba6f9ba2e56bb6/prepared"
+    },
+    {
+      "id": 18,
+      "path": "围栏翻越_户外短片.mp4",
+      "duration": 1.4,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0e66275176d4465bb35d882b6c7b984c/prepared"
+    },
+    {
+      "id": 19,
+      "path": "抽烟02_安全帽工人吸烟.mp4",
+      "duration": 7.875,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/820716e81ec7430fa0b3030666308956/prepared"
+    },
+    {
+      "id": 20,
+      "path": "火情02_明火黑烟.mp4",
+      "duration": 7.875,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/eee1e6b6002d4491a032f3a7580c3a35/prepared"
+    },
+    {
+      "id": 21,
+      "path": "摔倒01_白天工地.mp4",
+      "duration": 8.0,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/f68a7461c03640a8bf3e924d1925e9f0/prepared"
+    },
+    {
+      "id": 22,
+      "path": "抖音20261026-905866.mp4",
+      "duration": 37.533333,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/9e31872308c14ba09323492c6efe8edf/prepared"
+    },
+    {
+      "id": 23,
+      "path": "抖音20261026-627411.mp4",
+      "duration": 56.24,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/db3654cb83fd46ecbb4b5397e8cc1691/prepared"
+    },
+    {
+      "id": 24,
+      "path": "256df2fd406b3ef48f3e351fdb950be1.mp4",
+      "duration": 8.8,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/2090047b4cd948259266b24c2897cf9f/prepared"
+    },
+    {
+      "id": 25,
+      "path": "01_走廊抽香烟.mp4",
+      "duration": 9.72,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/aa77211c957340ce8f0d2033ed6d5667/prepared"
+    },
+    {
+      "id": 26,
+      "path": "03_雪地滑倒.mp4",
+      "duration": 13.2,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/85c9b3a8987643e8a04a6861a0868bd1/prepared"
+    },
+    {
+      "id": 27,
+      "path": "抖音20261027-739727.mp4",
+      "duration": 16.4,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/581fdcafb2194abb86fc39b1ff23e60d/prepared"
+    },
+    {
+      "id": 28,
+      "path": "抖音20261027-677447.mp4",
+      "duration": 18.083333,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0292b4b6f8f34a9696c91335cd35f56b/prepared"
+    },
+    {
+      "id": 29,
+      "path": "抖音20261027-384911.mp4",
+      "duration": 18.333333,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/fa63c0e3d870474dbe6f9eb3b71278a6/prepared"
+    },
+    {
+      "id": 30,
+      "path": "抖音20261027-801535.mp4",
+      "duration": 33.760069,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/21ebf62dda0a43d787470765fab53d3f/prepared"
+    },
+    {
+      "id": 31,
+      "path": "抖音20261027-852563.mp4",
+      "duration": 55.22,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/c605fa5ccdf2402f8b9fcb5a9aa0e3bb/prepared"
+    },
+    {
+      "id": 32,
+      "path": "抖音20261027-076258.mp4",
+      "duration": 16.333333,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/6d35a63cecdc4eda87d38f6aa64029a1/prepared"
+    },
+    {
+      "id": 33,
+      "path": "Qwen无脸入库回归.mp4",
+      "duration": 3.2,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/3fe4a5e125fa445da76e7d508dc015b8/prepared"
+    },
+    {
+      "id": 34,
+      "path": "Qwen人脸入库回归.mp4",
+      "duration": 2.2,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/7670228132304e21926f2511ee3f7d3f/prepared"
+    },
+    {
+      "id": 35,
+      "path": "抖音20261027-177626.mp4",
+      "duration": 17.9,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/6f1b86116d294366821ca05c9ef5bdc1/prepared"
+    },
+    {
+      "id": 36,
+      "path": "抖音20261027-386739.mp4",
+      "duration": 10.2,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/99665511ca014933a022c5a2a633e6b2/prepared"
+    },
+    {
+      "id": 37,
+      "path": "抖音20261027-818216.mp4",
+      "duration": 6.466666,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/3e7ae961327e4e06bfd88c9e31e56517/prepared"
+    },
+    {
+      "id": 38,
+      "path": "抖音20261027-340275.mp4",
+      "duration": 17.6,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/7ea38ec9eeb54829ad1ed67a933bd202/prepared"
+    },
+    {
+      "id": 39,
+      "path": "OWLv2原生链路入库回归.mp4",
+      "duration": 1.6,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/9d89fc3c95b44358a6e252dba4855b09/prepared"
+    },
+    {
+      "id": 40,
+      "path": "1246.mp4",
+      "duration": 35.44,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared"
+    }
+  ],
+  "segments": [
+    {
+      "media_id": 1,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 1,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 1,
+      "ts": 8.0,
+      "te": 14.6146
+    },
+    {
+      "media_id": 2,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 2,
+      "ts": 4.0,
+      "te": 8.52
+    },
+    {
+      "media_id": 3,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 3,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 4,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 4,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 5,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 5,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 6,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 6,
+      "ts": 4.0,
+      "te": 10.01
+    },
+    {
+      "media_id": 7,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 7,
+      "ts": 4.0,
+      "te": 9.833333
+    },
+    {
+      "media_id": 8,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 8,
+      "ts": 4.0,
+      "te": 9.533333
+    },
+    {
+      "media_id": 9,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 9,
+      "ts": 4.0,
+      "te": 10.01
+    },
+    {
+      "media_id": 10,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 10,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 11,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 11,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 12,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 12,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 13,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 13,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 14,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 14,
+      "ts": 4.0,
+      "te": 10.0
+    },
+    {
+      "media_id": 15,
+      "ts": 0.0,
+      "te": 3.0
+    },
+    {
+      "media_id": 16,
+      "ts": 0.0,
+      "te": 2.0
+    },
+    {
+      "media_id": 17,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 17,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 17,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 17,
+      "ts": 12.0,
+      "te": 20.0
+    },
+    {
+      "media_id": 17,
+      "ts": 16.0,
+      "te": 24.0
+    },
+    {
+      "media_id": 18,
+      "ts": 0.0,
+      "te": 1.4
+    },
+    {
+      "media_id": 19,
+      "ts": 0.0,
+      "te": 7.875
+    },
+    {
+      "media_id": 20,
+      "ts": 0.0,
+      "te": 7.875
+    },
+    {
+      "media_id": 21,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 22,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 22,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 22,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 22,
+      "ts": 12.0,
+      "te": 20.0
+    },
+    {
+      "media_id": 22,
+      "ts": 16.0,
+      "te": 24.0
+    },
+    {
+      "media_id": 22,
+      "ts": 20.0,
+      "te": 28.0
+    },
+    {
+      "media_id": 22,
+      "ts": 24.0,
+      "te": 32.0
+    },
+    {
+      "media_id": 22,
+      "ts": 28.0,
+      "te": 36.0
+    },
+    {
+      "media_id": 22,
+      "ts": 32.0,
+      "te": 37.533333
+    },
+    {
+      "media_id": 23,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 23,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 23,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 23,
+      "ts": 12.0,
+      "te": 20.0
+    },
+    {
+      "media_id": 23,
+      "ts": 16.0,
+      "te": 24.0
+    },
+    {
+      "media_id": 23,
+      "ts": 20.0,
+      "te": 28.0
+    },
+    {
+      "media_id": 23,
+      "ts": 24.0,
+      "te": 32.0
+    },
+    {
+      "media_id": 23,
+      "ts": 28.0,
+      "te": 36.0
+    },
+    {
+      "media_id": 23,
+      "ts": 32.0,
+      "te": 40.0
+    },
+    {
+      "media_id": 23,
+      "ts": 36.0,
+      "te": 44.0
+    },
+    {
+      "media_id": 23,
+      "ts": 40.0,
+      "te": 48.0
+    },
+    {
+      "media_id": 23,
+      "ts": 44.0,
+      "te": 52.0
+    },
+    {
+      "media_id": 23,
+      "ts": 48.0,
+      "te": 56.0
+    },
+    {
+      "media_id": 23,
+      "ts": 52.0,
+      "te": 56.24
+    },
+    {
+      "media_id": 24,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 24,
+      "ts": 4.0,
+      "te": 8.8
+    },
+    {
+      "media_id": 25,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 25,
+      "ts": 4.0,
+      "te": 9.72
+    },
+    {
+      "media_id": 26,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 26,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 26,
+      "ts": 8.0,
+      "te": 13.2
+    },
+    {
+      "media_id": 27,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 27,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 27,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 27,
+      "ts": 12.0,
+      "te": 16.4
+    },
+    {
+      "media_id": 28,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 28,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 28,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 28,
+      "ts": 12.0,
+      "te": 18.083333
+    },
+    {
+      "media_id": 29,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 29,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 29,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 29,
+      "ts": 12.0,
+      "te": 18.333333
+    },
+    {
+      "media_id": 30,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 30,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 30,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 30,
+      "ts": 12.0,
+      "te": 20.0
+    },
+    {
+      "media_id": 30,
+      "ts": 16.0,
+      "te": 24.0
+    },
+    {
+      "media_id": 30,
+      "ts": 20.0,
+      "te": 28.0
+    },
+    {
+      "media_id": 30,
+      "ts": 24.0,
+      "te": 32.0
+    },
+    {
+      "media_id": 30,
+      "ts": 28.0,
+      "te": 33.760069
+    },
+    {
+      "media_id": 31,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 31,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 31,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 31,
+      "ts": 12.0,
+      "te": 20.0
+    },
+    {
+      "media_id": 31,
+      "ts": 16.0,
+      "te": 24.0
+    },
+    {
+      "media_id": 31,
+      "ts": 20.0,
+      "te": 28.0
+    },
+    {
+      "media_id": 31,
+      "ts": 24.0,
+      "te": 32.0
+    },
+    {
+      "media_id": 31,
+      "ts": 28.0,
+      "te": 36.0
+    },
+    {
+      "media_id": 31,
+      "ts": 32.0,
+      "te": 40.0
+    },
+    {
+      "media_id": 31,
+      "ts": 36.0,
+      "te": 44.0
+    },
+    {
+      "media_id": 31,
+      "ts": 40.0,
+      "te": 48.0
+    },
+    {
+      "media_id": 31,
+      "ts": 44.0,
+      "te": 52.0
+    },
+    {
+      "media_id": 31,
+      "ts": 48.0,
+      "te": 55.22
+    },
+    {
+      "media_id": 32,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 32,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 32,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 32,
+      "ts": 12.0,
+      "te": 16.333333
+    },
+    {
+      "media_id": 33,
+      "ts": 0.0,
+      "te": 3.2
+    },
+    {
+      "media_id": 34,
+      "ts": 0.0,
+      "te": 2.2
+    },
+    {
+      "media_id": 35,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 35,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 35,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 35,
+      "ts": 12.0,
+      "te": 17.9
+    },
+    {
+      "media_id": 36,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 36,
+      "ts": 4.0,
+      "te": 10.2
+    },
+    {
+      "media_id": 37,
+      "ts": 0.0,
+      "te": 6.466666
+    },
+    {
+      "media_id": 38,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 38,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 38,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 38,
+      "ts": 12.0,
+      "te": 17.6
+    },
+    {
+      "media_id": 39,
+      "ts": 0.0,
+      "te": 1.6
+    },
+    {
+      "media_id": 40,
+      "ts": 0.0,
+      "te": 8.0
+    },
+    {
+      "media_id": 40,
+      "ts": 4.0,
+      "te": 12.0
+    },
+    {
+      "media_id": 40,
+      "ts": 8.0,
+      "te": 16.0
+    },
+    {
+      "media_id": 40,
+      "ts": 12.0,
+      "te": 20.0
+    },
+    {
+      "media_id": 40,
+      "ts": 16.0,
+      "te": 24.0
+    },
+    {
+      "media_id": 40,
+      "ts": 20.0,
+      "te": 28.0
+    },
+    {
+      "media_id": 40,
+      "ts": 24.0,
+      "te": 32.0
+    },
+    {
+      "media_id": 40,
+      "ts": 28.0,
+      "te": 35.44
+    }
+  ],
+  "built_at": 1793118677.4729369
+}

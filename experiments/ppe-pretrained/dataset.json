@@ -1,0 +1,2362 @@
+{
+  "schema": 1,
+  "sampling_fps": 2,
+  "input_policy": "Native decoded BGR pixels saved as PNG; no model-dependent crop or preprocessing. Half-open clip intervals.",
+  "label_status": "frozen_before_model_predictions",
+  "cases": [
+    {
+      "id": "fixture_helmet_indoor",
+      "group": "historical_diagnostic",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/experiments/action-search/videos/helmet_indoor.mp4",
+      "media_id": null,
+      "start": 0,
+      "end": 8.008000000000001,
+      "expected_no_helmet": "no",
+      "note": "室内近景：唯一可见人员佩戴黄色安全帽。",
+      "source_sha256": "3bea0ba7f5e29afddcbea0d15926537441a9d545bd3611d670cb2bf54d44bb2f",
+      "source_fps": 29.97002997002997,
+      "source_frame_count": 240,
+      "frames": [
+        {
+          "id": "fixture_helmet_indoor_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 360,
+          "sha256": "49c10ab1120d84b6b92773389ccea5b12a7b9b6cb4921bdf35a511e021da0c53"
+        },
+        {
+          "id": "fixture_helmet_indoor_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0001.png",
+          "timestamp": 0.5005000000000001,
+          "source_frame": 15,
+          "width": 640,
+          "height": 360,
+          "sha256": "76c9ad331ceb0b6363362c32ad412acc7ff14794ba08d36c0e3a59b180315816"
+        },
+        {
+          "id": "fixture_helmet_indoor_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0002.png",
+          "timestamp": 1.0010000000000001,
+          "source_frame": 30,
+          "width": 640,
+          "height": 360,
+          "sha256": "c0e8baf8aea7da18021c6b9df63f1f8e366a18e12ef68e6afddffb8c4c0380e6"
+        },
+        {
+          "id": "fixture_helmet_indoor_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0003.png",
+          "timestamp": 1.5015,
+          "source_frame": 45,
+          "width": 640,
+          "height": 360,
+          "sha256": "4e52446e2fad3f6cbea1504a87d6b96d992e17100de9d839dbd0ae1840788474"
+        },
+        {
+          "id": "fixture_helmet_indoor_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0004.png",
+          "timestamp": 2.0020000000000002,
+          "source_frame": 60,
+          "width": 640,
+          "height": 360,
+          "sha256": "21dedf0f6794ec6ee96238c055f33086f90cfec350b4ceffde1ed922f3ef64dd"
+        },
+        {
+          "id": "fixture_helmet_indoor_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0005.png",
+          "timestamp": 2.5025,
+          "source_frame": 75,
+          "width": 640,
+          "height": 360,
+          "sha256": "0bec33088e177415f5e19ba442744b0b3c5819202df2459ac7e96c0b0188a091"
+        },
+        {
+          "id": "fixture_helmet_indoor_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0006.png",
+          "timestamp": 3.003,
+          "source_frame": 90,
+          "width": 640,
+          "height": 360,
+          "sha256": "ce30097bfcaff79276ead9d8cbbff10602067baf75a178761b1eef84f76b5dea"
+        },
+        {
+          "id": "fixture_helmet_indoor_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0007.png",
+          "timestamp": 3.5035000000000003,
+          "source_frame": 105,
+          "width": 640,
+          "height": 360,
+          "sha256": "10b0ccd12bf3af4bf398df6e334f0087694d43c4745a72685c230dd1db3df054"
+        },
+        {
+          "id": "fixture_helmet_indoor_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0008.png",
+          "timestamp": 4.0040000000000004,
+          "source_frame": 120,
+          "width": 640,
+          "height": 360,
+          "sha256": "14ac619761d37809f0940b0755494599cf9ae2e89ed3604cb22fff14cda39894"
+        },
+        {
+          "id": "fixture_helmet_indoor_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0009.png",
+          "timestamp": 4.5045,
+          "source_frame": 135,
+          "width": 640,
+          "height": 360,
+          "sha256": "55d60da8ae1aa527f25b84ce7f9083b46c4eb37dea240b8229eab243af044dee"
+        },
+        {
+          "id": "fixture_helmet_indoor_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0010.png",
+          "timestamp": 5.005,
+          "source_frame": 150,
+          "width": 640,
+          "height": 360,
+          "sha256": "f1822327acea08d50944bb8b86095587a875845a6ac7b8e703f4cdc86b9942da"
+        },
+        {
+          "id": "fixture_helmet_indoor_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0011.png",
+          "timestamp": 5.5055000000000005,
+          "source_frame": 165,
+          "width": 640,
+          "height": 360,
+          "sha256": "7c1ed1f5ca04a415b39ccaf2d34bd147b80fa2d57584f66ad2f1d7b1f08f6a3a"
+        },
+        {
+          "id": "fixture_helmet_indoor_0012",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0012.png",
+          "timestamp": 6.006,
+          "source_frame": 180,
+          "width": 640,
+          "height": 360,
+          "sha256": "6979d31d98e52ed43524c6b11588a9320ee8a4813d6db0bd514ff701bcea283c"
+        },
+        {
+          "id": "fixture_helmet_indoor_0013",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0013.png",
+          "timestamp": 6.5065,
+          "source_frame": 195,
+          "width": 640,
+          "height": 360,
+          "sha256": "dc1ad4fc865ab85fe5a913f32f2911ff783cdf5763d8138fb943972be674fdad"
+        },
+        {
+          "id": "fixture_helmet_indoor_0014",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0014.png",
+          "timestamp": 7.007000000000001,
+          "source_frame": 210,
+          "width": 640,
+          "height": 360,
+          "sha256": "670b12401ed8833efa71ff15bfc0e05ff1278d471e3cf5d3f444a163f2cf6c94"
+        },
+        {
+          "id": "fixture_helmet_indoor_0015",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0015.png",
+          "timestamp": 7.5075,
+          "source_frame": 225,
+          "width": 640,
+          "height": 360,
+          "sha256": "f8fec0d6b51306daa31cc19901d5d9c174e868fef41bd31bce63118316b41f0d"
+        },
+        {
+          "id": "fixture_helmet_indoor_0016",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_indoor/0016.png",
+          "timestamp": 7.974633333333333,
+          "source_frame": 239,
+          "width": 640,
+          "height": 360,
+          "sha256": "12fb20b0f7c4078684044cffd16f0d2fb308dca0c6169be779d148ae8efdac77"
+        }
+      ],
+      "decode_and_write_seconds": 0.43753120803739876,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "fixture_helmet_outdoor",
+      "group": "historical_diagnostic",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/experiments/action-search/videos/helmet_outdoor.mp4",
+      "media_id": null,
+      "start": 0,
+      "end": 8.0,
+      "expected_no_helmet": "no",
+      "note": "室外近景：两名可见人员分别佩戴白色、黄色安全帽。",
+      "source_sha256": "609d21909366521148feca9387f7280341d149cd11989e483880bfd587547540",
+      "source_fps": 25.0,
+      "source_frame_count": 200,
+      "frames": [
+        {
+          "id": "fixture_helmet_outdoor_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 360,
+          "sha256": "cee8c37abb30208584305f316e0fffec26f096e7997985412e3ab689abde27af"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0001.png",
+          "timestamp": 0.48,
+          "source_frame": 12,
+          "width": 640,
+          "height": 360,
+          "sha256": "3e706813521044df6ba75d344a46b9540933258dd86e308a5a6b7fa56377726e"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0002.png",
+          "timestamp": 1.0,
+          "source_frame": 25,
+          "width": 640,
+          "height": 360,
+          "sha256": "b55c6c22df8327210cb535579e10bcfa1a5ccfa2017e61abc9bb38dd48773f63"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0003.png",
+          "timestamp": 1.52,
+          "source_frame": 38,
+          "width": 640,
+          "height": 360,
+          "sha256": "2b19b84625b574a7ff3750171b50d755dbb2f85e68aab7edf5b943fb69753086"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0004.png",
+          "timestamp": 2.0,
+          "source_frame": 50,
+          "width": 640,
+          "height": 360,
+          "sha256": "f2fdd100d2436c2493138c5376d6f12c38ef82332d2d0311a9a54d3c0a395672"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0005.png",
+          "timestamp": 2.48,
+          "source_frame": 62,
+          "width": 640,
+          "height": 360,
+          "sha256": "60596e36508903a8b2530dfea705a6ef32ffada0d17a153672037898bbd33df0"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0006.png",
+          "timestamp": 3.0,
+          "source_frame": 75,
+          "width": 640,
+          "height": 360,
+          "sha256": "b65b321121a7d608c99249f07fa2e712b7502bfec5f8957c35581076e892f3f3"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0007.png",
+          "timestamp": 3.52,
+          "source_frame": 88,
+          "width": 640,
+          "height": 360,
+          "sha256": "0f19ae315a99ea924b32d2ccee40239e08558221ce3717f500ed5f8cdde4d48c"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0008.png",
+          "timestamp": 4.0,
+          "source_frame": 100,
+          "width": 640,
+          "height": 360,
+          "sha256": "9254fdec61b129375b5409696dc6eba1042cfa397e4ee4c6080be56fa480a007"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0009.png",
+          "timestamp": 4.48,
+          "source_frame": 112,
+          "width": 640,
+          "height": 360,
+          "sha256": "054ebe9eda8e2473661673b3a21ba4fe152348c58b501982b8296a06ec010ef0"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0010.png",
+          "timestamp": 5.0,
+          "source_frame": 125,
+          "width": 640,
+          "height": 360,
+          "sha256": "a4598cd78767c698928534e6a48fdada8fd30bfffdf557a3fe8010d6fd08d6f3"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0011.png",
+          "timestamp": 5.52,
+          "source_frame": 138,
+          "width": 640,
+          "height": 360,
+          "sha256": "6b61fb02644574e3fa1cfc00f768212011348b10446776310a31dcef13c0e5b3"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0012",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0012.png",
+          "timestamp": 6.0,
+          "source_frame": 150,
+          "width": 640,
+          "height": 360,
+          "sha256": "9d53580de2a17a044d5123c3eb497bc08ee1e8336950b60df0b95b784aa38809"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0013",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0013.png",
+          "timestamp": 6.48,
+          "source_frame": 162,
+          "width": 640,
+          "height": 360,
+          "sha256": "2453ad364dcd8f21f1a29c005c22a532c38b5d751304356899d34eb0c1ea3e09"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0014",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0014.png",
+          "timestamp": 7.0,
+          "source_frame": 175,
+          "width": 640,
+          "height": 360,
+          "sha256": "c6f7f6688812e59746591e8c48d6b3488b65db7cc8138c68fd5b589a9f6e1610"
+        },
+        {
+          "id": "fixture_helmet_outdoor_0015",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_outdoor/0015.png",
+          "timestamp": 7.52,
+          "source_frame": 188,
+          "width": 640,
+          "height": 360,
+          "sha256": "f87924d93c37f09412effed4ed32dd49c4751e960424905b2e52f67b5a81c8a2"
+        }
+      ],
+      "decode_and_write_seconds": 0.48035654198611155,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "fixture_helmet_squat",
+      "group": "historical_diagnostic",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/experiments/action-search/videos/helmet_squat.mp4",
+      "media_id": null,
+      "start": 0,
+      "end": 8.0,
+      "expected_no_helmet": "no",
+      "note": "室内三名人员均佩戴安全帽，含侧脸、背面及蹲姿。",
+      "source_sha256": "281b50733cea30e04cf7ff18ede029b9ae07a4ea475d6d5fa70af20f560b5d76",
+      "source_fps": 30.0,
+      "source_frame_count": 240,
+      "frames": [
+        {
+          "id": "fixture_helmet_squat_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 360,
+          "sha256": "22b04f9301e68b6c9913e9eb2e2f286c88ddc7a86a508dee20a715934f53aeb9"
+        },
+        {
+          "id": "fixture_helmet_squat_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0001.png",
+          "timestamp": 0.5,
+          "source_frame": 15,
+          "width": 640,
+          "height": 360,
+          "sha256": "fd7e36178761a6b7127a15ac2d335d2392ef00de72e50685dbd525c6922c7e96"
+        },
+        {
+          "id": "fixture_helmet_squat_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0002.png",
+          "timestamp": 1.0,
+          "source_frame": 30,
+          "width": 640,
+          "height": 360,
+          "sha256": "581400ed69a30effd2acb421deeb52c655f85f23ff5d56344145305100abc222"
+        },
+        {
+          "id": "fixture_helmet_squat_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0003.png",
+          "timestamp": 1.5,
+          "source_frame": 45,
+          "width": 640,
+          "height": 360,
+          "sha256": "6031f9f03f778bdb5cc24ce6c311980e511aa3eba82f70eefcb6235180fe6288"
+        },
+        {
+          "id": "fixture_helmet_squat_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0004.png",
+          "timestamp": 2.0,
+          "source_frame": 60,
+          "width": 640,
+          "height": 360,
+          "sha256": "fb9a955da31fa72109c63e41ccb5be6112201b2d05472c02aa3e2031e282dcd1"
+        },
+        {
+          "id": "fixture_helmet_squat_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0005.png",
+          "timestamp": 2.5,
+          "source_frame": 75,
+          "width": 640,
+          "height": 360,
+          "sha256": "98784bdd521d466aeb8a240d1e4e43a81e044e2d503e9a6376d34f45cd010972"
+        },
+        {
+          "id": "fixture_helmet_squat_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0006.png",
+          "timestamp": 3.0,
+          "source_frame": 90,
+          "width": 640,
+          "height": 360,
+          "sha256": "1d650e2661af56cd3c3a87a9741e7e0c6db865507f899867c23d24ecfd247af5"
+        },
+        {
+          "id": "fixture_helmet_squat_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0007.png",
+          "timestamp": 3.5,
+          "source_frame": 105,
+          "width": 640,
+          "height": 360,
+          "sha256": "d1404a78b8fb822a21fe3686775a09f0587f20e7064ccfa4aa077eb05299200c"
+        },
+        {
+          "id": "fixture_helmet_squat_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0008.png",
+          "timestamp": 4.0,
+          "source_frame": 120,
+          "width": 640,
+          "height": 360,
+          "sha256": "4d2b66a71af262617a651b4d99240e2780234ff8bb4585649fa7168239973feb"
+        },
+        {
+          "id": "fixture_helmet_squat_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0009.png",
+          "timestamp": 4.5,
+          "source_frame": 135,
+          "width": 640,
+          "height": 360,
+          "sha256": "5f4a8cc9ae6490b2bd26effe98e60e02e9ac316d6a3e66d13efce16abb3873bc"
+        },
+        {
+          "id": "fixture_helmet_squat_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0010.png",
+          "timestamp": 5.0,
+          "source_frame": 150,
+          "width": 640,
+          "height": 360,
+          "sha256": "2d50e02b4396dc405e0350d54c3e9dc4c8bf6dc4016f413e5e1b04b7be440326"
+        },
+        {
+          "id": "fixture_helmet_squat_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0011.png",
+          "timestamp": 5.5,
+          "source_frame": 165,
+          "width": 640,
+          "height": 360,
+          "sha256": "6a358e8e4eddc1e10cb32c9e284532d94f3c1b8c95a09775b69517598cfbda4d"
+        },
+        {
+          "id": "fixture_helmet_squat_0012",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0012.png",
+          "timestamp": 6.0,
+          "source_frame": 180,
+          "width": 640,
+          "height": 360,
+          "sha256": "115fb98cc7c20c478700523166074428a232fae5548894da1b469bc1c6967d25"
+        },
+        {
+          "id": "fixture_helmet_squat_0013",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0013.png",
+          "timestamp": 6.5,
+          "source_frame": 195,
+          "width": 640,
+          "height": 360,
+          "sha256": "60fc26b392ca15cb7884bcdfa824d9d4112755864b1f9335a4030c61c2f876be"
+        },
+        {
+          "id": "fixture_helmet_squat_0014",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0014.png",
+          "timestamp": 7.0,
+          "source_frame": 210,
+          "width": 640,
+          "height": 360,
+          "sha256": "ae08326d5ed9bbcb4f8d8df2f9bc42154e7ed815dfb915268da79f9d4ea0bf1c"
+        },
+        {
+          "id": "fixture_helmet_squat_0015",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_helmet_squat/0015.png",
+          "timestamp": 7.5,
+          "source_frame": 225,
+          "width": 640,
+          "height": 360,
+          "sha256": "700d83e1503cf15ebe2b24f118b80630173e6bcab3d418a338c0d7262bfb32c3"
+        }
+      ],
+      "decode_and_write_seconds": 0.5967137920088135,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "fixture_worker_barehead",
+      "group": "historical_diagnostic",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/experiments/action-search/videos/worker_barehead.mp4",
+      "media_id": null,
+      "start": 0,
+      "end": 2.0016680567139282,
+      "expected_no_helmet": "yes",
+      "note": "仓库行走人员头发/头部清晰可见，没有佩戴安全帽；与fall为同源素材。",
+      "source_sha256": "caee006f3b296082c940eda0d9444e35c332d72f1a388182e167376b788176f8",
+      "source_fps": 23.98,
+      "source_frame_count": 48,
+      "frames": [
+        {
+          "id": "fixture_worker_barehead_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_worker_barehead/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 360,
+          "sha256": "a7b8c5f81ae0c94edbc2f6567ba6aa049d60f609f90d817c9f0d8dab76670c23"
+        },
+        {
+          "id": "fixture_worker_barehead_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_worker_barehead/0001.png",
+          "timestamp": 0.5004170141784821,
+          "source_frame": 12,
+          "width": 640,
+          "height": 360,
+          "sha256": "b6be4e827213c3242aa3578f644ccb0bfd631dce96ea8909268b3278d5690a3c"
+        },
+        {
+          "id": "fixture_worker_barehead_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_worker_barehead/0002.png",
+          "timestamp": 1.0008340283569641,
+          "source_frame": 24,
+          "width": 640,
+          "height": 360,
+          "sha256": "b9b466dc3eeb4369b1514dfc7eeefed19b0e1ba0a43b9de51dd6dd5a4ba08aa3"
+        },
+        {
+          "id": "fixture_worker_barehead_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_worker_barehead/0003.png",
+          "timestamp": 1.5012510425354462,
+          "source_frame": 36,
+          "width": 640,
+          "height": 360,
+          "sha256": "fcf83ff4225cb983520bd8bf3e10137edc1eb370dd37315c8b8f38913b309b84"
+        },
+        {
+          "id": "fixture_worker_barehead_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_worker_barehead/0004.png",
+          "timestamp": 1.9599666388657213,
+          "source_frame": 47,
+          "width": 640,
+          "height": 360,
+          "sha256": "11ea196e768e902815e3e3cf85a7d8d79d2c5dac6c528ff98d06099113b79262"
+        }
+      ],
+      "decode_and_write_seconds": 0.11688520899042487,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "fixture_fall",
+      "group": "historical_diagnostic",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/experiments/action-search/videos/fall.mp4",
+      "media_id": null,
+      "start": 0,
+      "end": 8.006672226855713,
+      "expected_no_helmet": "yes",
+      "note": "仓库摔倒人员头部裸露；与worker_barehead为同源素材。",
+      "source_sha256": "a5dc08a21d8ed83f387116355f6359a6a47830191650dc5a0c7b2d3983c208e7",
+      "source_fps": 23.98,
+      "source_frame_count": 192,
+      "frames": [
+        {
+          "id": "fixture_fall_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 360,
+          "sha256": "004af42d7d54c4f0cb23486c9844c999cab80afdefad9087da6c1084c4628d53"
+        },
+        {
+          "id": "fixture_fall_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0001.png",
+          "timestamp": 0.5004170141784821,
+          "source_frame": 12,
+          "width": 640,
+          "height": 360,
+          "sha256": "dec43c7d032232bb12789e9d07dbb1d78fda215b150ad010180990c454f61522"
+        },
+        {
+          "id": "fixture_fall_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0002.png",
+          "timestamp": 1.0008340283569641,
+          "source_frame": 24,
+          "width": 640,
+          "height": 360,
+          "sha256": "e5e02806648352c9cdee68d258bdd0175f80bda54749a67d5cedacbd2686c534"
+        },
+        {
+          "id": "fixture_fall_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0003.png",
+          "timestamp": 1.5012510425354462,
+          "source_frame": 36,
+          "width": 640,
+          "height": 360,
+          "sha256": "dda5017843d0ce34f3401289c1af5e84267f5c65a3ae4d113ef5930e5d66a716"
+        },
+        {
+          "id": "fixture_fall_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0004.png",
+          "timestamp": 2.0016680567139282,
+          "source_frame": 48,
+          "width": 640,
+          "height": 360,
+          "sha256": "b4458702f01c68827ac4f353a56e95489443e46726ffd60373c2e99660a08f49"
+        },
+        {
+          "id": "fixture_fall_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0005.png",
+          "timestamp": 2.5020850708924103,
+          "source_frame": 60,
+          "width": 640,
+          "height": 360,
+          "sha256": "a88b120a4d3142edab7dff6882d78fb90f861d94ffe91433a11d8a136420e763"
+        },
+        {
+          "id": "fixture_fall_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0006.png",
+          "timestamp": 3.0025020850708923,
+          "source_frame": 72,
+          "width": 640,
+          "height": 360,
+          "sha256": "7e8ac9ef694ec6691bfeee9443d9aa5816ee5611dd6c9fbc3d391f520cd9119c"
+        },
+        {
+          "id": "fixture_fall_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0007.png",
+          "timestamp": 3.5029190992493744,
+          "source_frame": 84,
+          "width": 640,
+          "height": 360,
+          "sha256": "0b27984d8f3e696ed1d302adbb7e1ea4af7e7fd353a3ad9e2461c9ae5e298cf6"
+        },
+        {
+          "id": "fixture_fall_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0008.png",
+          "timestamp": 4.0033361134278564,
+          "source_frame": 96,
+          "width": 640,
+          "height": 360,
+          "sha256": "b2ae6b549fdfdc9e5987a9e3117ca9c5c62aafa3d672707e1cf077fc503a9387"
+        },
+        {
+          "id": "fixture_fall_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0009.png",
+          "timestamp": 4.5037531276063385,
+          "source_frame": 108,
+          "width": 640,
+          "height": 360,
+          "sha256": "ee1eb428cc603a60665faac6662cf34385ed6303a9fba30bb4369f81f87c42b4"
+        },
+        {
+          "id": "fixture_fall_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0010.png",
+          "timestamp": 5.004170141784821,
+          "source_frame": 120,
+          "width": 640,
+          "height": 360,
+          "sha256": "87843a4fedc4db9cad67661912eb74620faba0e099b7e50e3338d4ab66527130"
+        },
+        {
+          "id": "fixture_fall_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0011.png",
+          "timestamp": 5.504587155963303,
+          "source_frame": 132,
+          "width": 640,
+          "height": 360,
+          "sha256": "ff72993a5b4d781f392765a6040f7dc5f23304c27637b12f865d46fe698ed996"
+        },
+        {
+          "id": "fixture_fall_0012",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0012.png",
+          "timestamp": 6.005004170141785,
+          "source_frame": 144,
+          "width": 640,
+          "height": 360,
+          "sha256": "b1463cbe65be3a320e1b9509409ee82d1143e9b8ab6df1f9f5833e02b447b669"
+        },
+        {
+          "id": "fixture_fall_0013",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0013.png",
+          "timestamp": 6.505421184320267,
+          "source_frame": 156,
+          "width": 640,
+          "height": 360,
+          "sha256": "5429b375698c075ec42f4950572ceed7f1a73f7da46d66d111d861251db36348"
+        },
+        {
+          "id": "fixture_fall_0014",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0014.png",
+          "timestamp": 7.005838198498749,
+          "source_frame": 168,
+          "width": 640,
+          "height": 360,
+          "sha256": "095b3e19273fccd13abc8b300b20521f010ca9f1510b25bd35e63c2d08c17a81"
+        },
+        {
+          "id": "fixture_fall_0015",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0015.png",
+          "timestamp": 7.506255212677231,
+          "source_frame": 180,
+          "width": 640,
+          "height": 360,
+          "sha256": "e5f92ae026725d607445605872a0acb08cf07ec9acd1a659da23038d6a115018"
+        },
+        {
+          "id": "fixture_fall_0016",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/fixture_fall/0016.png",
+          "timestamp": 7.964970809007506,
+          "source_frame": 191,
+          "width": 640,
+          "height": 360,
+          "sha256": "2af5d0f17a97dbbdfbcc933b32571d04b8513dfe3de0a37658cb0953dd5d0a11"
+        }
+      ],
+      "decode_and_write_seconds": 0.7079122919822112,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "library21",
+      "group": "current_library",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/f68a7461c03640a8bf3e924d1925e9f0/prepared/摔倒01_白天工地.mp4",
+      "media_id": 21,
+      "start": 0,
+      "end": 8,
+      "expected_no_helmet": "no",
+      "note": "工地摔倒演示：所有抽样帧的唯一可见人员均佩戴黄色安全帽；正是前述语义误报。",
+      "source_sha256": "0d33029b09c0eafff2449575468be9b6f54ea29af617a7499596a2daf77ca9e6",
+      "source_fps": 24.0,
+      "source_frame_count": 192,
+      "frames": [
+        {
+          "id": "library21_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 360,
+          "sha256": "b8ab70e6ed4528147476f7f8176f98c9109e6bf474629a1ebd34eccb87dd579f"
+        },
+        {
+          "id": "library21_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0001.png",
+          "timestamp": 0.5,
+          "source_frame": 12,
+          "width": 640,
+          "height": 360,
+          "sha256": "8ebf0e4271445f2c5aeea7367cc11a6b9bd1058b67ce494a8472ca784d5018d0"
+        },
+        {
+          "id": "library21_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0002.png",
+          "timestamp": 1.0,
+          "source_frame": 24,
+          "width": 640,
+          "height": 360,
+          "sha256": "ba371c531a8227c3e41277d6a23e46acb0be89e6a87270ca21574979903f3471"
+        },
+        {
+          "id": "library21_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0003.png",
+          "timestamp": 1.5,
+          "source_frame": 36,
+          "width": 640,
+          "height": 360,
+          "sha256": "e263454971959475f9e3a62fb4d19b23acab601246448baad6964357e973e0a4"
+        },
+        {
+          "id": "library21_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0004.png",
+          "timestamp": 2.0,
+          "source_frame": 48,
+          "width": 640,
+          "height": 360,
+          "sha256": "9454a32d582bb68c0c69b7ef8bcd63952e62a068afc6c7fe04402cd0273e9d68"
+        },
+        {
+          "id": "library21_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0005.png",
+          "timestamp": 2.5,
+          "source_frame": 60,
+          "width": 640,
+          "height": 360,
+          "sha256": "5abb07dbd7096b4c07dfc89df275dca35397a03d2c6bc9de56a052e88680b86b"
+        },
+        {
+          "id": "library21_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0006.png",
+          "timestamp": 3.0,
+          "source_frame": 72,
+          "width": 640,
+          "height": 360,
+          "sha256": "f1a3be74062675f7a7e1354cdf7ab43909d0a2763da6620db96cf1d70a6a7e93"
+        },
+        {
+          "id": "library21_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0007.png",
+          "timestamp": 3.5,
+          "source_frame": 84,
+          "width": 640,
+          "height": 360,
+          "sha256": "8a479ca6435876cce146f65b6c8fe7b7441f4e6d48066361786094370a81782c"
+        },
+        {
+          "id": "library21_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0008.png",
+          "timestamp": 4.0,
+          "source_frame": 96,
+          "width": 640,
+          "height": 360,
+          "sha256": "ea53e45fee71e96867498845686dbcebf23c99e7677bdf177482d5f926414cdf"
+        },
+        {
+          "id": "library21_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0009.png",
+          "timestamp": 4.5,
+          "source_frame": 108,
+          "width": 640,
+          "height": 360,
+          "sha256": "9d6f926c7d38b023af439b97ba4ddc3861963465ae0211870c9e2dd6691f2066"
+        },
+        {
+          "id": "library21_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0010.png",
+          "timestamp": 5.0,
+          "source_frame": 120,
+          "width": 640,
+          "height": 360,
+          "sha256": "743e4e55e824c79f8928dc637cc235cfe978ceaff485270ddb3b8f8b0a8d1fbc"
+        },
+        {
+          "id": "library21_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0011.png",
+          "timestamp": 5.5,
+          "source_frame": 132,
+          "width": 640,
+          "height": 360,
+          "sha256": "d73bc6b213fe0c83c8604a812c6849725d91dd5902a0cc090efe472d39f4e11f"
+        },
+        {
+          "id": "library21_0012",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0012.png",
+          "timestamp": 6.0,
+          "source_frame": 144,
+          "width": 640,
+          "height": 360,
+          "sha256": "3f73effcf6de04cce6f81f45b5783127eb13b7bbdac71b0e20d4572a5a5e9697"
+        },
+        {
+          "id": "library21_0013",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0013.png",
+          "timestamp": 6.5,
+          "source_frame": 156,
+          "width": 640,
+          "height": 360,
+          "sha256": "ef820328bdf9fe137d8b3507b616add8860a667181096b7dd239a7782b9d7edc"
+        },
+        {
+          "id": "library21_0014",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0014.png",
+          "timestamp": 7.0,
+          "source_frame": 168,
+          "width": 640,
+          "height": 360,
+          "sha256": "22af026e37774c729bfc017022bb478c0cf13cf7f79fef684b07ea180e9e85c0"
+        },
+        {
+          "id": "library21_0015",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library21/0015.png",
+          "timestamp": 7.5,
+          "source_frame": 180,
+          "width": 640,
+          "height": 360,
+          "sha256": "fd4e08de86dccd8687bb531e199a9069eba71d6ae3cd32fa6a30d2abdeeb596b"
+        }
+      ],
+      "decode_and_write_seconds": 1.0861870830412954,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "hat_before",
+      "group": "current_library",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/581fdcafb2194abb86fc39b1ff23e60d/prepared/抖音20261027-739727.mp4",
+      "media_id": 27,
+      "start": 0,
+      "end": 4,
+      "expected_no_helmet": "no",
+      "note": "0–4秒两名蓝衣人员均戴红色安全帽；字幕及内嵌检测框不作标签依据。",
+      "source_sha256": "cdb7a4b3b7353c347fd0dd44991d851cd978a1e6121fe3e7934ca507afd0e1a3",
+      "source_fps": 30.0,
+      "source_frame_count": 492,
+      "frames": [
+        {
+          "id": "hat_before_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 362,
+          "height": 640,
+          "sha256": "79e16fbf6fb7a598226e8993131cc5ac71dab2f0ac9e8b804cf6748bea65e9c9"
+        },
+        {
+          "id": "hat_before_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0001.png",
+          "timestamp": 0.5,
+          "source_frame": 15,
+          "width": 362,
+          "height": 640,
+          "sha256": "5d97dd8e1839c3a4f9593b41b158ea5e62330ac0a97e5074fe7f0373415d5635"
+        },
+        {
+          "id": "hat_before_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0002.png",
+          "timestamp": 1.0,
+          "source_frame": 30,
+          "width": 362,
+          "height": 640,
+          "sha256": "b4450178fd985fb607866b130ed5b43020729774d31880c5db526ccd368b956f"
+        },
+        {
+          "id": "hat_before_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0003.png",
+          "timestamp": 1.5,
+          "source_frame": 45,
+          "width": 362,
+          "height": 640,
+          "sha256": "4794e0b7dd4b03da74c26e28bed5f261923760b551abe3cbd354442a40c6f0ab"
+        },
+        {
+          "id": "hat_before_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0004.png",
+          "timestamp": 2.0,
+          "source_frame": 60,
+          "width": 362,
+          "height": 640,
+          "sha256": "3c1a95581cb69c748e4f2e5624b29703bd388d6ca55ef7708dbf2d785ca3822d"
+        },
+        {
+          "id": "hat_before_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0005.png",
+          "timestamp": 2.5,
+          "source_frame": 75,
+          "width": 362,
+          "height": 640,
+          "sha256": "ebf16e4f2ba560adf47e6d437b358f6a34f6bfb6b4d3992a62184b972e57edec"
+        },
+        {
+          "id": "hat_before_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0006.png",
+          "timestamp": 3.0,
+          "source_frame": 90,
+          "width": 362,
+          "height": 640,
+          "sha256": "d68fdb9b7aa64b9c8734278c67644110ce22033369e11ab8abd2190e5470dc8a"
+        },
+        {
+          "id": "hat_before_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_before/0007.png",
+          "timestamp": 3.5,
+          "source_frame": 105,
+          "width": 362,
+          "height": 640,
+          "sha256": "abf030489c5bed32da13277e96277749e1279a7cf796002c76c56cc9cb3870b7"
+        }
+      ],
+      "decode_and_write_seconds": 0.1847691669827327,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "hat_transition",
+      "group": "current_library",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/581fdcafb2194abb86fc39b1ff23e60d/prepared/抖音20261027-739727.mp4",
+      "media_id": 27,
+      "start": 4,
+      "end": 8,
+      "expected_no_helmet": "yes",
+      "note": "4–8秒摘帽过渡；4/4.5秒仍戴帽，5秒双手及帽子遮挡头部判unknown，5.5–7.5秒可见裸头。",
+      "source_sha256": "cdb7a4b3b7353c347fd0dd44991d851cd978a1e6121fe3e7934ca507afd0e1a3",
+      "source_fps": 30.0,
+      "source_frame_count": 492,
+      "frames": [
+        {
+          "id": "hat_transition_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0000.png",
+          "timestamp": 4.0,
+          "source_frame": 120,
+          "width": 362,
+          "height": 640,
+          "sha256": "f4fb426f39543ca8f58b0496e04de450241d16213fa49ad1f93a790d3fec5a0e"
+        },
+        {
+          "id": "hat_transition_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0001.png",
+          "timestamp": 4.5,
+          "source_frame": 135,
+          "width": 362,
+          "height": 640,
+          "sha256": "f3c41fcdb6166a898611ae1507e1fbe907dbf58eff8f29adfef2e7ba3ad8e2ae"
+        },
+        {
+          "id": "hat_transition_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0002.png",
+          "timestamp": 5.0,
+          "source_frame": 150,
+          "width": 362,
+          "height": 640,
+          "sha256": "5c76ff710b304e07a8022a0fe6abac3447b475b5676e7d42d4c3be794d885cfe"
+        },
+        {
+          "id": "hat_transition_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0003.png",
+          "timestamp": 5.5,
+          "source_frame": 165,
+          "width": 362,
+          "height": 640,
+          "sha256": "ddba38d207d26731bf9d10887cf4ce8b00bd80faaa7f66525f1b22a62374633d"
+        },
+        {
+          "id": "hat_transition_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0004.png",
+          "timestamp": 6.0,
+          "source_frame": 180,
+          "width": 362,
+          "height": 640,
+          "sha256": "cbd620c9b0a7f4f3a34225ebcd594d80ad1eb122466e153f5d6fb5145c1bac5e"
+        },
+        {
+          "id": "hat_transition_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0005.png",
+          "timestamp": 6.5,
+          "source_frame": 195,
+          "width": 362,
+          "height": 640,
+          "sha256": "6f7bea5758ef2102a4dd8e65d391c646ce4f542f459ba706a34c9d66f2dc16c7"
+        },
+        {
+          "id": "hat_transition_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0006.png",
+          "timestamp": 7.0,
+          "source_frame": 210,
+          "width": 362,
+          "height": 640,
+          "sha256": "737f3f58b130669add7fe9d35359f98d367d5103639df0c492032ab7900d1b93"
+        },
+        {
+          "id": "hat_transition_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_transition/0007.png",
+          "timestamp": 7.5,
+          "source_frame": 225,
+          "width": 362,
+          "height": 640,
+          "sha256": "367767c78fdf5662313989a30abfd46f48393c03ff7514fe03250fa2e901f151"
+        }
+      ],
+      "decode_and_write_seconds": 0.3868060000240803,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "hat_after",
+      "group": "current_library",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/581fdcafb2194abb86fc39b1ff23e60d/prepared/抖音20261027-739727.mp4",
+      "media_id": 27,
+      "start": 8,
+      "end": 14,
+      "expected_no_helmet": "yes",
+      "note": "8–13秒存在裸头人员及仍戴红帽人员；13.5秒为无人物片尾。模型输入保留原视频字幕与框，存在素材捷径风险。",
+      "source_sha256": "cdb7a4b3b7353c347fd0dd44991d851cd978a1e6121fe3e7934ca507afd0e1a3",
+      "source_fps": 30.0,
+      "source_frame_count": 492,
+      "frames": [
+        {
+          "id": "hat_after_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0000.png",
+          "timestamp": 8.0,
+          "source_frame": 240,
+          "width": 362,
+          "height": 640,
+          "sha256": "c486cf552d52b3f7e285650ac2e91dfa3e8ba11a70cadd464fb309d28ff1dc46"
+        },
+        {
+          "id": "hat_after_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0001.png",
+          "timestamp": 8.5,
+          "source_frame": 255,
+          "width": 362,
+          "height": 640,
+          "sha256": "823fe1b9180f6d5e05c26676b635e9347fcffa2e8ba582acd8abd9d27d4551a4"
+        },
+        {
+          "id": "hat_after_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0002.png",
+          "timestamp": 9.0,
+          "source_frame": 270,
+          "width": 362,
+          "height": 640,
+          "sha256": "cc67f2f0fc0cb375217a1c714d5a2bda56e4683661466eca3f15dfebe18eecb7"
+        },
+        {
+          "id": "hat_after_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0003.png",
+          "timestamp": 9.5,
+          "source_frame": 285,
+          "width": 362,
+          "height": 640,
+          "sha256": "8799216de4a14c7cdf250043b38347c8e5af0c60ab834fbe2f713b24fe163592"
+        },
+        {
+          "id": "hat_after_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0004.png",
+          "timestamp": 10.0,
+          "source_frame": 300,
+          "width": 362,
+          "height": 640,
+          "sha256": "2ed4d18f3fc74b2bf460bbb3d12fbd18638e5f2c0ebbc854afe011b2d99f2a11"
+        },
+        {
+          "id": "hat_after_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0005.png",
+          "timestamp": 10.5,
+          "source_frame": 315,
+          "width": 362,
+          "height": 640,
+          "sha256": "60ac4ecf286e433aabb7cb042949a4fd1ca35aa2a749fb434ae8b5631221804c"
+        },
+        {
+          "id": "hat_after_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0006.png",
+          "timestamp": 11.0,
+          "source_frame": 330,
+          "width": 362,
+          "height": 640,
+          "sha256": "9114b92e132d76967ba4a0fff316678a3bbcd964e8e48b7c7740222b54fe1f12"
+        },
+        {
+          "id": "hat_after_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0007.png",
+          "timestamp": 11.5,
+          "source_frame": 345,
+          "width": 362,
+          "height": 640,
+          "sha256": "c20f8a31ee52cc7a91ba2e4b6a285ea0e6b103c809acfa725bacece5f587274a"
+        },
+        {
+          "id": "hat_after_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0008.png",
+          "timestamp": 12.0,
+          "source_frame": 360,
+          "width": 362,
+          "height": 640,
+          "sha256": "f2a1a2fc3a0ffec5700b7b997733674e082b25fb681b8da82c6f42ffb864f52d"
+        },
+        {
+          "id": "hat_after_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0009.png",
+          "timestamp": 12.5,
+          "source_frame": 375,
+          "width": 362,
+          "height": 640,
+          "sha256": "a41232adc4c8ed3f8764425c87ef90bfff9d0bc60f8ecabf1a1aedba38d23fa1"
+        },
+        {
+          "id": "hat_after_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0010.png",
+          "timestamp": 13.0,
+          "source_frame": 390,
+          "width": 362,
+          "height": 640,
+          "sha256": "ba72db1328b09d18e36cea2ab954d3088207682442cc7f76b4f2cb29fd37d7e9"
+        },
+        {
+          "id": "hat_after_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/hat_after/0011.png",
+          "timestamp": 13.5,
+          "source_frame": 405,
+          "width": 362,
+          "height": 640,
+          "sha256": "96e3be2742d882a2230dffd9efc4b52fca6c3a789108e4456e5c5ef9ccf166fe"
+        }
+      ],
+      "decode_and_write_seconds": 0.42468966700835153,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "library30",
+      "group": "current_library",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/21ebf62dda0a43d787470765fab53d3f/prepared/抖音20261027-801535.mp4",
+      "media_id": 30,
+      "start": 0,
+      "end": 33.76006952568773,
+      "expected_no_helmet": "yes",
+      "note": "多人工地片段并非全员戴帽：5.014–7.989秒中央迷彩衣男子裸头且手持黄色帽子。其它多人远景/遮挡帧不强行做完整状态标签。30.986秒起为无人物片尾。",
+      "source_sha256": "e67dedcc8bc8689e052534daf4e1abadd1b2722a0066359cc4c9ce3093a7feec",
+      "source_fps": 29.917,
+      "source_frame_count": 1010,
+      "frames": [
+        {
+          "id": "library30_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 360,
+          "height": 640,
+          "sha256": "695a3b701ab6ed1783410ccb56347a1b78896e275bc9881bb86abfa3101e679a"
+        },
+        {
+          "id": "library30_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0001.png",
+          "timestamp": 0.5013871711735802,
+          "source_frame": 15,
+          "width": 360,
+          "height": 640,
+          "sha256": "361b792808ff3f33c6f77df823481270efa256e1097b7705a72870aa6a2e0fea"
+        },
+        {
+          "id": "library30_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0002.png",
+          "timestamp": 1.0027743423471605,
+          "source_frame": 30,
+          "width": 360,
+          "height": 640,
+          "sha256": "0975375734b64a32058ad66c147af86eb506139f2dda79019ebceeaf9b831ed5"
+        },
+        {
+          "id": "library30_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0003.png",
+          "timestamp": 1.5041615135207407,
+          "source_frame": 45,
+          "width": 360,
+          "height": 640,
+          "sha256": "61fcc46a0a6e9dbc4611a9fc34473efb60f9297c4e98eb2440ef489cc6a1f655"
+        },
+        {
+          "id": "library30_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0004.png",
+          "timestamp": 2.005548684694321,
+          "source_frame": 60,
+          "width": 360,
+          "height": 640,
+          "sha256": "0c706cd65148a80b0801f33db926d44b4dd7f7ec45a87f88c41018501f4b01a2"
+        },
+        {
+          "id": "library30_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0005.png",
+          "timestamp": 2.506935855867901,
+          "source_frame": 75,
+          "width": 360,
+          "height": 640,
+          "sha256": "e1c536ad47dd561ee2ed1a5f2b6c899dfd5dd063650461753e64f326c83a438f"
+        },
+        {
+          "id": "library30_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0006.png",
+          "timestamp": 3.0083230270414814,
+          "source_frame": 90,
+          "width": 360,
+          "height": 640,
+          "sha256": "5d24bbabdec7c6c49712257fc823901f916881b14b8ca56aa1a5c7b701b12020"
+        },
+        {
+          "id": "library30_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0007.png",
+          "timestamp": 3.5097101982150614,
+          "source_frame": 105,
+          "width": 360,
+          "height": 640,
+          "sha256": "45d1cd326bad12e8ae58b2617a6db6798db3b3899dbe049683bb16f125f98842"
+        },
+        {
+          "id": "library30_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0008.png",
+          "timestamp": 4.011097369388642,
+          "source_frame": 120,
+          "width": 360,
+          "height": 640,
+          "sha256": "5797657f4e39b87c5e694420d267cefc8cee0165acaf608c5278398b4f489984"
+        },
+        {
+          "id": "library30_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0009.png",
+          "timestamp": 4.512484540562222,
+          "source_frame": 135,
+          "width": 360,
+          "height": 640,
+          "sha256": "ae34f2d88cfc373c09b5564f87d38a1a95633d9bada2fd46756124a55db0bb1f"
+        },
+        {
+          "id": "library30_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0010.png",
+          "timestamp": 5.013871711735802,
+          "source_frame": 150,
+          "width": 360,
+          "height": 640,
+          "sha256": "5ba4c60c7f57724996c66991e6761087f5bc9c0282fa8e92bcd8d6e6dd5f6440"
+        },
+        {
+          "id": "library30_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0011.png",
+          "timestamp": 5.515258882909382,
+          "source_frame": 165,
+          "width": 360,
+          "height": 640,
+          "sha256": "69215bd5417ff94325e9337a7a3fd02b1a3cd0f2c17bdcac7295efd8ddc8b03d"
+        },
+        {
+          "id": "library30_0012",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0012.png",
+          "timestamp": 6.016646054082963,
+          "source_frame": 180,
+          "width": 360,
+          "height": 640,
+          "sha256": "0766694618350b4788a2a7862564623ad4d235a7e775a8317a9ceeac1d1fc513"
+        },
+        {
+          "id": "library30_0013",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0013.png",
+          "timestamp": 6.48460741384497,
+          "source_frame": 194,
+          "width": 360,
+          "height": 640,
+          "sha256": "aced3766a00155176ed2fae70668e26b26c2fbcb3a734a2a5393bfd4a6264a0c"
+        },
+        {
+          "id": "library30_0014",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0014.png",
+          "timestamp": 6.985994585018551,
+          "source_frame": 209,
+          "width": 360,
+          "height": 640,
+          "sha256": "2395b8dd78229730638255d973a022e57fbf17f8f2c060c862e8139656cbf363"
+        },
+        {
+          "id": "library30_0015",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0015.png",
+          "timestamp": 7.487381756192131,
+          "source_frame": 224,
+          "width": 360,
+          "height": 640,
+          "sha256": "b573785ff2a15745c670a3e181db9bdcabefe27094cc40f296945a2c28f88b59"
+        },
+        {
+          "id": "library30_0016",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0016.png",
+          "timestamp": 7.988768927365712,
+          "source_frame": 239,
+          "width": 360,
+          "height": 640,
+          "sha256": "76f64ac0c1b8101a2b1b57aa7aaceab77ca9618a035b4e6c1364c6c5fad68cd6"
+        },
+        {
+          "id": "library30_0017",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0017.png",
+          "timestamp": 8.490156098539291,
+          "source_frame": 254,
+          "width": 360,
+          "height": 640,
+          "sha256": "09bb9aafc653748b64dcec1c045449f9f0924c7b9f829f3fa0f555876d39980a"
+        },
+        {
+          "id": "library30_0018",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0018.png",
+          "timestamp": 8.991543269712873,
+          "source_frame": 269,
+          "width": 360,
+          "height": 640,
+          "sha256": "cc8ee6088bd5f5847f0b9047982fb680d79fa92b762db030b812bf9828b151bd"
+        },
+        {
+          "id": "library30_0019",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0019.png",
+          "timestamp": 9.492930440886452,
+          "source_frame": 284,
+          "width": 360,
+          "height": 640,
+          "sha256": "7920fd29720735e6c159c07a106cbf0f2d68941e726c34f2e8421604b4bcfb78"
+        },
+        {
+          "id": "library30_0020",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0020.png",
+          "timestamp": 9.994317612060032,
+          "source_frame": 299,
+          "width": 360,
+          "height": 640,
+          "sha256": "552a1f6561841bd289900e6f314bee5b290b87d3964415cc02f147ee4df90844"
+        },
+        {
+          "id": "library30_0021",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0021.png",
+          "timestamp": 10.495704783233613,
+          "source_frame": 314,
+          "width": 360,
+          "height": 640,
+          "sha256": "7d3358af20c8925e8a2ce48138e6a431d8db7c1f492de04f3579d705604d39de"
+        },
+        {
+          "id": "library30_0022",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0022.png",
+          "timestamp": 10.997091954407193,
+          "source_frame": 329,
+          "width": 360,
+          "height": 640,
+          "sha256": "c95420c0eb70a9f2a84caf04c69f272eaae76971ff81e5c55f5bd00613a79e61"
+        },
+        {
+          "id": "library30_0023",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0023.png",
+          "timestamp": 11.498479125580772,
+          "source_frame": 344,
+          "width": 360,
+          "height": 640,
+          "sha256": "46a64e905738322ba4a11949dc31de54c2fa428478845ecbc269b21bb09e28f3"
+        },
+        {
+          "id": "library30_0024",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0024.png",
+          "timestamp": 11.999866296754353,
+          "source_frame": 359,
+          "width": 360,
+          "height": 640,
+          "sha256": "08ef1b1b67b57291f3dcf05dad718c4c05b923c4ba099652c921f623ff7c29f6"
+        },
+        {
+          "id": "library30_0025",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0025.png",
+          "timestamp": 12.501253467927933,
+          "source_frame": 374,
+          "width": 360,
+          "height": 640,
+          "sha256": "0e11513cd6267d62dca824ef10d7534982571fae887d546d106db0096ad2d9e8"
+        },
+        {
+          "id": "library30_0026",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0026.png",
+          "timestamp": 13.002640639101514,
+          "source_frame": 389,
+          "width": 360,
+          "height": 640,
+          "sha256": "b79e0198cc4cb2280b6451bf7ed7b3099cb52cbdccabbe30a1956455b12babfa"
+        },
+        {
+          "id": "library30_0027",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0027.png",
+          "timestamp": 13.504027810275094,
+          "source_frame": 404,
+          "width": 360,
+          "height": 640,
+          "sha256": "2b84c020f3e06809f0a1d99421d31e7888c9e5ccabe1daa19dc1d1960d26bd85"
+        },
+        {
+          "id": "library30_0028",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0028.png",
+          "timestamp": 14.005414981448673,
+          "source_frame": 419,
+          "width": 360,
+          "height": 640,
+          "sha256": "f9e490934850d6ee165dcbb646c82a171e95d532fafe7649b844e50f8da2bb76"
+        },
+        {
+          "id": "library30_0029",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0029.png",
+          "timestamp": 14.506802152622255,
+          "source_frame": 434,
+          "width": 360,
+          "height": 640,
+          "sha256": "69d4ffdd953608cc701af6fc364810932086d887bcfd35c1131c25bb19cbb208"
+        },
+        {
+          "id": "library30_0030",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0030.png",
+          "timestamp": 15.008189323795834,
+          "source_frame": 449,
+          "width": 360,
+          "height": 640,
+          "sha256": "77d56d55ba38731e3e9e67dd9453e331dd9a6e269a8296764443eb9df03fd354"
+        },
+        {
+          "id": "library30_0031",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0031.png",
+          "timestamp": 15.509576494969414,
+          "source_frame": 464,
+          "width": 360,
+          "height": 640,
+          "sha256": "ffa78425829c8be265fb37fdbd002c8eb8e7c4a4121a49e95e939aadf4a04efb"
+        },
+        {
+          "id": "library30_0032",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0032.png",
+          "timestamp": 16.010963666142995,
+          "source_frame": 479,
+          "width": 360,
+          "height": 640,
+          "sha256": "58e0cc758e35e6b72eca59d0c5d1c0972647ff0e8025ff0c8bd459be0a6f214b"
+        },
+        {
+          "id": "library30_0033",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0033.png",
+          "timestamp": 16.512350837316575,
+          "source_frame": 494,
+          "width": 360,
+          "height": 640,
+          "sha256": "009a8df9c10290e19428062bc757bed41dd5e3048b31a9e0e3d5b635ddc1036f"
+        },
+        {
+          "id": "library30_0034",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0034.png",
+          "timestamp": 17.013738008490154,
+          "source_frame": 509,
+          "width": 360,
+          "height": 640,
+          "sha256": "b7af9b39d573a9d7fc334e51dad01e52e1ff5a25a3e769a50bfb54d745c8cc11"
+        },
+        {
+          "id": "library30_0035",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0035.png",
+          "timestamp": 17.515125179663734,
+          "source_frame": 524,
+          "width": 360,
+          "height": 640,
+          "sha256": "af1fdd43b961cc11353ea0f76ab2d083ad77ac1afe184d6c5b78bbb799725e66"
+        },
+        {
+          "id": "library30_0036",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0036.png",
+          "timestamp": 18.016512350837317,
+          "source_frame": 539,
+          "width": 360,
+          "height": 640,
+          "sha256": "0c66e709330b59a1d8415044b4c3e8419a8aa723f5293097fb3ce002370558ea"
+        },
+        {
+          "id": "library30_0037",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0037.png",
+          "timestamp": 18.484473710599325,
+          "source_frame": 553,
+          "width": 360,
+          "height": 640,
+          "sha256": "5d2913891d6bd4347e60dc1d762afea79f00d17a1868a88743772cefc5513379"
+        },
+        {
+          "id": "library30_0038",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0038.png",
+          "timestamp": 18.985860881772904,
+          "source_frame": 568,
+          "width": 360,
+          "height": 640,
+          "sha256": "0c70d4a4f43e96a33242fbea6dea99961b37311bc9784328126505634802e3ce"
+        },
+        {
+          "id": "library30_0039",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0039.png",
+          "timestamp": 19.487248052946484,
+          "source_frame": 583,
+          "width": 360,
+          "height": 640,
+          "sha256": "bbbafa8823a2ea247a4a51f83ad507cfe2f7dd4293eb85b21cc3b26626c05552"
+        },
+        {
+          "id": "library30_0040",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0040.png",
+          "timestamp": 19.988635224120063,
+          "source_frame": 598,
+          "width": 360,
+          "height": 640,
+          "sha256": "5ac6b3dcad64d71b0ce4d81765718b2af049cb8684415618ca70f43afb151018"
+        },
+        {
+          "id": "library30_0041",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0041.png",
+          "timestamp": 20.490022395293643,
+          "source_frame": 613,
+          "width": 360,
+          "height": 640,
+          "sha256": "39517281ed77fe8e3b0a529764d2d09894a7e9bf51fd577f675e431d6be748ab"
+        },
+        {
+          "id": "library30_0042",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0042.png",
+          "timestamp": 20.991409566467226,
+          "source_frame": 628,
+          "width": 360,
+          "height": 640,
+          "sha256": "1eac2d5012061c689d970bac9ac716b897d38e2e90460b239c91f37e36f04777"
+        },
+        {
+          "id": "library30_0043",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0043.png",
+          "timestamp": 21.492796737640806,
+          "source_frame": 643,
+          "width": 360,
+          "height": 640,
+          "sha256": "20ed584b6d12d0eb2b789411b283fd0690931214e1e5305273891d83409078ab"
+        },
+        {
+          "id": "library30_0044",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0044.png",
+          "timestamp": 21.994183908814385,
+          "source_frame": 658,
+          "width": 360,
+          "height": 640,
+          "sha256": "78e843d4274e3b811a4b425c719cd0c69cb0f3231297d53aac07ca23d81b5d0f"
+        },
+        {
+          "id": "library30_0045",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0045.png",
+          "timestamp": 22.495571079987965,
+          "source_frame": 673,
+          "width": 360,
+          "height": 640,
+          "sha256": "fb68c35e53d06542d7fdcb67eeedd56a0a581816a5e6ce45c0085170e27f32b9"
+        },
+        {
+          "id": "library30_0046",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0046.png",
+          "timestamp": 22.996958251161544,
+          "source_frame": 688,
+          "width": 360,
+          "height": 640,
+          "sha256": "1e852e21978dc75458e0b8caaaa9b68496f8bd50634580629df327d20cea9c76"
+        },
+        {
+          "id": "library30_0047",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0047.png",
+          "timestamp": 23.498345422335127,
+          "source_frame": 703,
+          "width": 360,
+          "height": 640,
+          "sha256": "14629c870632e2ed14a115936ba04c8df7b443bc0612775b42c50344bbcb58bb"
+        },
+        {
+          "id": "library30_0048",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0048.png",
+          "timestamp": 23.999732593508707,
+          "source_frame": 718,
+          "width": 360,
+          "height": 640,
+          "sha256": "1924a07f12b459602e13c1e71cd28a90962405374473e8458b60954639103b83"
+        },
+        {
+          "id": "library30_0049",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0049.png",
+          "timestamp": 24.501119764682286,
+          "source_frame": 733,
+          "width": 360,
+          "height": 640,
+          "sha256": "89b725f042257bd85034609e0595d2faf419a09d4f1fc0cedbee3d9cf73935be"
+        },
+        {
+          "id": "library30_0050",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0050.png",
+          "timestamp": 25.002506935855866,
+          "source_frame": 748,
+          "width": 360,
+          "height": 640,
+          "sha256": "ea9d27db89d5109c06f0fde89bfe9a842918c3a10cb801a7915e1e2c7b5093bf"
+        },
+        {
+          "id": "library30_0051",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0051.png",
+          "timestamp": 25.503894107029446,
+          "source_frame": 763,
+          "width": 360,
+          "height": 640,
+          "sha256": "ee9890359578fba30ab2ce0cc806f93f3c83e243eb9aade968da62e00e66df96"
+        },
+        {
+          "id": "library30_0052",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0052.png",
+          "timestamp": 26.00528127820303,
+          "source_frame": 778,
+          "width": 360,
+          "height": 640,
+          "sha256": "3406e81867f7613d4f863df77a7b57bd9b14c366d0479ad9f8754ccd7e645d2a"
+        },
+        {
+          "id": "library30_0053",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0053.png",
+          "timestamp": 26.50666844937661,
+          "source_frame": 793,
+          "width": 360,
+          "height": 640,
+          "sha256": "73518c3e3520dc8d70bae5eace2cfa02c319cdeb9f2f28ed9da8056e59dd6d12"
+        },
+        {
+          "id": "library30_0054",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0054.png",
+          "timestamp": 27.008055620550188,
+          "source_frame": 808,
+          "width": 360,
+          "height": 640,
+          "sha256": "81f9c827f36cd1b9bd9ce42ccf5c46ec08b6da78b7da217feaaab93655051c7f"
+        },
+        {
+          "id": "library30_0055",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0055.png",
+          "timestamp": 27.509442791723767,
+          "source_frame": 823,
+          "width": 360,
+          "height": 640,
+          "sha256": "ebd784750c4f81cca3cc0d3206cc02b7f300dc2812d7c606f0bcc834965074a5"
+        },
+        {
+          "id": "library30_0056",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0056.png",
+          "timestamp": 28.010829962897347,
+          "source_frame": 838,
+          "width": 360,
+          "height": 640,
+          "sha256": "73a743be1d0089d5d3857c0512eec76eb909669a44fec48f1b9a0b4dd3313996"
+        },
+        {
+          "id": "library30_0057",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0057.png",
+          "timestamp": 28.512217134070927,
+          "source_frame": 853,
+          "width": 360,
+          "height": 640,
+          "sha256": "5997f1730e359cde67e4efe309b8f573a100e59c39db92575451357a3cd13ec1"
+        },
+        {
+          "id": "library30_0058",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0058.png",
+          "timestamp": 29.01360430524451,
+          "source_frame": 868,
+          "width": 360,
+          "height": 640,
+          "sha256": "674dde04d34f88f3a22e5a1c22951dbceac9c1ce41a87ca7c62cdafdaf7d3de6"
+        },
+        {
+          "id": "library30_0059",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0059.png",
+          "timestamp": 29.51499147641809,
+          "source_frame": 883,
+          "width": 360,
+          "height": 640,
+          "sha256": "deba8c909c4c4620e7cd93e4ae1e8bd3e17cf60b2f5e23415223c8ba033837be"
+        },
+        {
+          "id": "library30_0060",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0060.png",
+          "timestamp": 30.01637864759167,
+          "source_frame": 898,
+          "width": 360,
+          "height": 640,
+          "sha256": "308554e2c025c823cf41f519038ca71eefcc5faf9c8f7c140c0275661794214f"
+        },
+        {
+          "id": "library30_0061",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0061.png",
+          "timestamp": 30.484340007353676,
+          "source_frame": 912,
+          "width": 360,
+          "height": 640,
+          "sha256": "d1b26ae23cef020b52009b69131a893ee6850941ac472da2e6e991fb663f2f29"
+        },
+        {
+          "id": "library30_0062",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0062.png",
+          "timestamp": 30.985727178527256,
+          "source_frame": 927,
+          "width": 360,
+          "height": 640,
+          "sha256": "ef57ebf3db879750988bebe9e964db7133f0b7c13a43095dfbf96913770116b2"
+        },
+        {
+          "id": "library30_0063",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0063.png",
+          "timestamp": 31.48711434970084,
+          "source_frame": 942,
+          "width": 360,
+          "height": 640,
+          "sha256": "2348a1cf2515b86cf9aea52d9b89fa7a673fd03b4a09f7ec83cf6636bd00b823"
+        },
+        {
+          "id": "library30_0064",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0064.png",
+          "timestamp": 31.98850152087442,
+          "source_frame": 957,
+          "width": 360,
+          "height": 640,
+          "sha256": "0311a3a6cec8f2b8779164e54fe161f7e9b267f9c84bbc79b8f53b2b1c4c090f"
+        },
+        {
+          "id": "library30_0065",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0065.png",
+          "timestamp": 32.489888692048,
+          "source_frame": 972,
+          "width": 360,
+          "height": 640,
+          "sha256": "1be5da5405fa9b84b452318685287253ba737ee5978cb267efa0f3f6fc758d60"
+        },
+        {
+          "id": "library30_0066",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0066.png",
+          "timestamp": 32.99127586322158,
+          "source_frame": 987,
+          "width": 360,
+          "height": 640,
+          "sha256": "0dfc46ad978ff88d84a9178bd2c39953ebeffd8ab89f8dce2fa23943798cfb05"
+        },
+        {
+          "id": "library30_0067",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library30/0067.png",
+          "timestamp": 33.49266303439516,
+          "source_frame": 1002,
+          "width": 360,
+          "height": 640,
+          "sha256": "73e8137740746b1d4b45ac33a46f59ce837f6463e2a317cfb00f0a1ff57ffff6"
+        }
+      ],
+      "decode_and_write_seconds": 5.27794391696807,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "library41",
+      "group": "current_library",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared/抖音20261027-906986.mp4",
+      "media_id": 41,
+      "start": 0,
+      "end": 26.875,
+      "expected_no_helmet": "unknown",
+      "note": "低清室内多人脚手架场景；部分地面人员可见黄色安全帽，但上层人物头部超出画面、远处头部无法可靠判断。不能从可见戴帽者推断全员戴帽。24秒起无人物片尾。",
+      "source_sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431",
+      "source_fps": 16.0,
+      "source_frame_count": 430,
+      "frames": [
+        {
+          "id": "library41_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0000.png",
+          "timestamp": 0.0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 360,
+          "sha256": "4e724dce480d968e77726ecb23ba42ad1547a66c761f5edb37c0045246511c8d"
+        },
+        {
+          "id": "library41_0001",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0001.png",
+          "timestamp": 0.5,
+          "source_frame": 8,
+          "width": 640,
+          "height": 360,
+          "sha256": "8eedc156de0843167b5968465a09244e34e0ee57551c0d1cf3aa7db0096b3966"
+        },
+        {
+          "id": "library41_0002",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0002.png",
+          "timestamp": 1.0,
+          "source_frame": 16,
+          "width": 640,
+          "height": 360,
+          "sha256": "96ef413449cdbb2a007e29937a0e6d5fbc74a83795f7503e2d3bf27fd7144f07"
+        },
+        {
+          "id": "library41_0003",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0003.png",
+          "timestamp": 1.5,
+          "source_frame": 24,
+          "width": 640,
+          "height": 360,
+          "sha256": "8e4ba0c49131c995e7a92b8f4eeedf781f7405a1e6a5d984d11fc30b77566850"
+        },
+        {
+          "id": "library41_0004",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0004.png",
+          "timestamp": 2.0,
+          "source_frame": 32,
+          "width": 640,
+          "height": 360,
+          "sha256": "c48fbfc7ccc5fee1d1b49665d466b85dd5d86932de5500fe8401ef188b30c467"
+        },
+        {
+          "id": "library41_0005",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0005.png",
+          "timestamp": 2.5,
+          "source_frame": 40,
+          "width": 640,
+          "height": 360,
+          "sha256": "8e225ff1762141f03764ef794fc7fcfd1e92ec49bc90686768a1ba79623844a4"
+        },
+        {
+          "id": "library41_0006",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0006.png",
+          "timestamp": 3.0,
+          "source_frame": 48,
+          "width": 640,
+          "height": 360,
+          "sha256": "24baa58e7048b056e8159db27f81e9dbd51b5c5d039fa8dcc58b05aad4f372df"
+        },
+        {
+          "id": "library41_0007",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0007.png",
+          "timestamp": 3.5,
+          "source_frame": 56,
+          "width": 640,
+          "height": 360,
+          "sha256": "7003db457eae7c542c8e1995443d0001e69599a274f6c152eb6a5d0bac658391"
+        },
+        {
+          "id": "library41_0008",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0008.png",
+          "timestamp": 4.0,
+          "source_frame": 64,
+          "width": 640,
+          "height": 360,
+          "sha256": "e5877330f2d2369be6dcec94b36d87d0fd6280640b033a568cec2f02728a5fe0"
+        },
+        {
+          "id": "library41_0009",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0009.png",
+          "timestamp": 4.5,
+          "source_frame": 72,
+          "width": 640,
+          "height": 360,
+          "sha256": "ccd50714065fa2c0477abc37f3046d5b95f77f54fd6258c0bc49ad476836bbfa"
+        },
+        {
+          "id": "library41_0010",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0010.png",
+          "timestamp": 5.0,
+          "source_frame": 80,
+          "width": 640,
+          "height": 360,
+          "sha256": "537b30c36327b48f895c0281be4ff92b1f2303266f27bcd78fd8c97dca5d0694"
+        },
+        {
+          "id": "library41_0011",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0011.png",
+          "timestamp": 5.5,
+          "source_frame": 88,
+          "width": 640,
+          "height": 360,
+          "sha256": "26c5823d4277f4956e107a6e2c27c51bf34e704c1883dad9101ecdc368b86e95"
+        },
+        {
+          "id": "library41_0012",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0012.png",
+          "timestamp": 6.0,
+          "source_frame": 96,
+          "width": 640,
+          "height": 360,
+          "sha256": "be9322c6f3affedcea15e1bb4b174993a609bafe8b68e3e62d2cd03d17763598"
+        },
+        {
+          "id": "library41_0013",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0013.png",
+          "timestamp": 6.5,
+          "source_frame": 104,
+          "width": 640,
+          "height": 360,
+          "sha256": "f9795f272d7dc83256b0952f0dfedc8574345377047820e0dd941fe99dd75706"
+        },
+        {
+          "id": "library41_0014",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0014.png",
+          "timestamp": 7.0,
+          "source_frame": 112,
+          "width": 640,
+          "height": 360,
+          "sha256": "24fc60133a7f081b0a9922f7bb83fbc636aff45275274d2b3c6b820e7d3d8cac"
+        },
+        {
+          "id": "library41_0015",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0015.png",
+          "timestamp": 7.5,
+          "source_frame": 120,
+          "width": 640,
+          "height": 360,
+          "sha256": "802520f90f8f4049652d0efc29f6ca6fd5e29455aaabb379bc7a2a2dd9cb2c07"
+        },
+        {
+          "id": "library41_0016",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0016.png",
+          "timestamp": 8.0,
+          "source_frame": 128,
+          "width": 640,
+          "height": 360,
+          "sha256": "d38ae9e32a3631c2d535dad981a4a95fada524b51b9902c25f0b3cf24a3bfb05"
+        },
+        {
+          "id": "library41_0017",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0017.png",
+          "timestamp": 8.5,
+          "source_frame": 136,
+          "width": 640,
+          "height": 360,
+          "sha256": "7ebc39212b49e008803d659b4eb005ae8176e2375f5b4b01c7767d011b754256"
+        },
+        {
+          "id": "library41_0018",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0018.png",
+          "timestamp": 9.0,
+          "source_frame": 144,
+          "width": 640,
+          "height": 360,
+          "sha256": "7c631385188a639f690eb00c3c684418ecf03547f5a549cb22a0b44251462cca"
+        },
+        {
+          "id": "library41_0019",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0019.png",
+          "timestamp": 9.5,
+          "source_frame": 152,
+          "width": 640,
+          "height": 360,
+          "sha256": "ffd4799939ee9b5b589a1128bcd151f61ddae84e94c56e63e1ae4bccf73150df"
+        },
+        {
+          "id": "library41_0020",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0020.png",
+          "timestamp": 10.0,
+          "source_frame": 160,
+          "width": 640,
+          "height": 360,
+          "sha256": "853b66f6112d7c2e8abc79758c42b107530ef547a2f71f89f60e17f6b47fdb65"
+        },
+        {
+          "id": "library41_0021",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0021.png",
+          "timestamp": 10.5,
+          "source_frame": 168,
+          "width": 640,
+          "height": 360,
+          "sha256": "e9e047991650040cf3ac22257a2bb46a2e3001b2e988a05f20070e631ae23a8e"
+        },
+        {
+          "id": "library41_0022",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0022.png",
+          "timestamp": 11.0,
+          "source_frame": 176,
+          "width": 640,
+          "height": 360,
+          "sha256": "8b554894232b72effbbe31e597807c50c5b17cf51acebd7c30735c4271ab2073"
+        },
+        {
+          "id": "library41_0023",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0023.png",
+          "timestamp": 11.5,
+          "source_frame": 184,
+          "width": 640,
+          "height": 360,
+          "sha256": "0275383ed5e422643da344b56ec8aa44f41a2af102ef3b45d28c8602d5894051"
+        },
+        {
+          "id": "library41_0024",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0024.png",
+          "timestamp": 12.0,
+          "source_frame": 192,
+          "width": 640,
+          "height": 360,
+          "sha256": "9880a2bfd8e6d4baa9a0ad10ef7fd087bfb5d799f22ba4318d7947e78422940a"
+        },
+        {
+          "id": "library41_0025",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0025.png",
+          "timestamp": 12.5,
+          "source_frame": 200,
+          "width": 640,
+          "height": 360,
+          "sha256": "ce1d57ab2037328adc883f5c8b4fafd441664cc234b12421fcd60ede2bd14a4b"
+        },
+        {
+          "id": "library41_0026",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0026.png",
+          "timestamp": 13.0,
+          "source_frame": 208,
+          "width": 640,
+          "height": 360,
+          "sha256": "1bfb793ec41fdae24d077b49cda6011f2e55fa3bd8fb6193a8369bd4b7deda1e"
+        },
+        {
+          "id": "library41_0027",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0027.png",
+          "timestamp": 13.5,
+          "source_frame": 216,
+          "width": 640,
+          "height": 360,
+          "sha256": "1e01938b4ca6fb4c5834fc9d0c392727bf58e5fccbaefb6bca5100da594615ab"
+        },
+        {
+          "id": "library41_0028",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0028.png",
+          "timestamp": 14.0,
+          "source_frame": 224,
+          "width": 640,
+          "height": 360,
+          "sha256": "2f097d070213b5ccb895ddc87dc9b23210eedd044b6e138510b9a80a4ef2f6d3"
+        },
+        {
+          "id": "library41_0029",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0029.png",
+          "timestamp": 14.5,
+          "source_frame": 232,
+          "width": 640,
+          "height": 360,
+          "sha256": "51279680307ec04749cd0bbf997da19d4530566904105342e23529366a853205"
+        },
+        {
+          "id": "library41_0030",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0030.png",
+          "timestamp": 15.0,
+          "source_frame": 240,
+          "width": 640,
+          "height": 360,
+          "sha256": "63a455b9c98705edaa4847f369958a0784dd7503ba01bc086ba57fb05f655f70"
+        },
+        {
+          "id": "library41_0031",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0031.png",
+          "timestamp": 15.5,
+          "source_frame": 248,
+          "width": 640,
+          "height": 360,
+          "sha256": "34a86bc56c10764ac4952e110030948a838848330b00019132e809e2ce33f83a"
+        },
+        {
+          "id": "library41_0032",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0032.png",
+          "timestamp": 16.0,
+          "source_frame": 256,
+          "width": 640,
+          "height": 360,
+          "sha256": "a5fa210ab49680dbb1eea5f25475949c3d2408d16e9cfac9406d013f444089c9"
+        },
+        {
+          "id": "library41_0033",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0033.png",
+          "timestamp": 16.5,
+          "source_frame": 264,
+          "width": 640,
+          "height": 360,
+          "sha256": "6861a0e6491264d65a996bd4e9e397b861f3194344c80d599839f53445e78d05"
+        },
+        {
+          "id": "library41_0034",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0034.png",
+          "timestamp": 17.0,
+          "source_frame": 272,
+          "width": 640,
+          "height": 360,
+          "sha256": "964f8a00fe4b0167c15c7b2f18d673f8a10c71be4b69bf8050b3be7cb9d37541"
+        },
+        {
+          "id": "library41_0035",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0035.png",
+          "timestamp": 17.5,
+          "source_frame": 280,
+          "width": 640,
+          "height": 360,
+          "sha256": "6b21c50ce24cd9e290bccc1399bf98868503e766ece42c095a46699aabe23449"
+        },
+        {
+          "id": "library41_0036",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0036.png",
+          "timestamp": 18.0,
+          "source_frame": 288,
+          "width": 640,
+          "height": 360,
+          "sha256": "49fc9257d320796dafb32d72705e77863e793f42d8f3c268cddd6306c456f31b"
+        },
+        {
+          "id": "library41_0037",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0037.png",
+          "timestamp": 18.5,
+          "source_frame": 296,
+          "width": 640,
+          "height": 360,
+          "sha256": "e9507a447dd2e8394c41608c680898c6c6d4bb1520deb6919ae8f547e80b1eca"
+        },
+        {
+          "id": "library41_0038",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0038.png",
+          "timestamp": 19.0,
+          "source_frame": 304,
+          "width": 640,
+          "height": 360,
+          "sha256": "a98c3ffa4106d55d6d8abaabe654e8ef159e6427f5b60efb1b2f5a434987934d"
+        },
+        {
+          "id": "library41_0039",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0039.png",
+          "timestamp": 19.5,
+          "source_frame": 312,
+          "width": 640,
+          "height": 360,
+          "sha256": "dc3a68cbb5f1d1c46251d5eae2c2375c20bd6697c7e060232a0655c1c2d6e3fa"
+        },
+        {
+          "id": "library41_0040",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0040.png",
+          "timestamp": 20.0,
+          "source_frame": 320,
+          "width": 640,
+          "height": 360,
+          "sha256": "983d6acdd26d0d020c8055a60fc85a848e414ae663b02fb673d949fb5f6a7e3d"
+        },
+        {
+          "id": "library41_0041",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0041.png",
+          "timestamp": 20.5,
+          "source_frame": 328,
+          "width": 640,
+          "height": 360,
+          "sha256": "b88eac3ad735e84ff0251443d1b8ff1e9696d86872114ab137f442593d1946b5"
+        },
+        {
+          "id": "library41_0042",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0042.png",
+          "timestamp": 21.0,
+          "source_frame": 336,
+          "width": 640,
+          "height": 360,
+          "sha256": "792f1ed1a33032db1b1ddac471b5a19b4ff7d82baf54f161eb964582fe072805"
+        },
+        {
+          "id": "library41_0043",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0043.png",
+          "timestamp": 21.5,
+          "source_frame": 344,
+          "width": 640,
+          "height": 360,
+          "sha256": "f1f4b728b3128dd6f77f9e2c0b0cb80d6c12a39f88bf0cc36b0480ad34a2a8db"
+        },
+        {
+          "id": "library41_0044",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0044.png",
+          "timestamp": 22.0,
+          "source_frame": 352,
+          "width": 640,
+          "height": 360,
+          "sha256": "d87d8d8dcd416b79f30446c7037b53922176bbcb233debb8a2c3cef6c5c74138"
+        },
+        {
+          "id": "library41_0045",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0045.png",
+          "timestamp": 22.5,
+          "source_frame": 360,
+          "width": 640,
+          "height": 360,
+          "sha256": "b2ee164287dbc8411442af7bb6be07ccd755992a0293fc723df186b714536568"
+        },
+        {
+          "id": "library41_0046",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0046.png",
+          "timestamp": 23.0,
+          "source_frame": 368,
+          "width": 640,
+          "height": 360,
+          "sha256": "3934a39a3b71cbb923f37dae21813f55c47f1e5bd23b717d4cfe4c334692c74d"
+        },
+        {
+          "id": "library41_0047",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0047.png",
+          "timestamp": 23.5,
+          "source_frame": 376,
+          "width": 640,
+          "height": 360,
+          "sha256": "12b96edd0a093b66f3b489221dd7ef40a6ed32d4f0c2a69790af881f9556283c"
+        },
+        {
+          "id": "library41_0048",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0048.png",
+          "timestamp": 24.0,
+          "source_frame": 384,
+          "width": 640,
+          "height": 360,
+          "sha256": "ed1f59142e81691ba6e5d854819a385032f2db1dd0f2c7e8b6183431f879cb8f"
+        },
+        {
+          "id": "library41_0049",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0049.png",
+          "timestamp": 24.5,
+          "source_frame": 392,
+          "width": 640,
+          "height": 360,
+          "sha256": "bc57981ce375935c95d5fa23edb08b8d67aac5cb030182c5f26070a19dc35400"
+        },
+        {
+          "id": "library41_0050",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0050.png",
+          "timestamp": 25.0,
+          "source_frame": 400,
+          "width": 640,
+          "height": 360,
+          "sha256": "7c32b81c4007dee381e03c74ed1a67e4bb394e88dc256eb2fdaf5fb5f5815387"
+        },
+        {
+          "id": "library41_0051",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0051.png",
+          "timestamp": 25.5,
+          "source_frame": 408,
+          "width": 640,
+          "height": 360,
+          "sha256": "2e1fe388ecb4270f297ca4338c5af7cf5eb81a5b4520ced71bd70e121afa4256"
+        },
+        {
+          "id": "library41_0052",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0052.png",
+          "timestamp": 26.0,
+          "source_frame": 416,
+          "width": 640,
+          "height": 360,
+          "sha256": "c6a5336847f4c50323bc38d38cc6f72cdc8e0110cd65ff2e1fdcfa3b87d09164"
+        },
+        {
+          "id": "library41_0053",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/library41/0053.png",
+          "timestamp": 26.5,
+          "source_frame": 424,
+          "width": 640,
+          "height": 360,
+          "sha256": "086bde8156f45024d2d647731c5d5a2ce0e5dafc2ae79ded5fc78310fd65d682"
+        }
+      ],
+      "decode_and_write_seconds": 1.6442917920066975,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    },
+    {
+      "id": "head_out_of_frame",
+      "group": "visibility_diagnostic",
+      "type": "image",
+      "source_path": "/Users/zhanghemign/Desktop/视频检索/experiments/instruct-verifier/head-out-of-frame.jpg",
+      "media_id": null,
+      "start": 0,
+      "end": 0,
+      "expected_no_helmet": "unknown",
+      "note": "仅躯干及手部入镜，头部不可见。不能因未检测到帽子就判裸头。",
+      "source_sha256": "ca8615c2dced71717dfd7faaaa6d623aa0b14bc5cb202e75b3bd39c430c38242",
+      "frames": [
+        {
+          "id": "head_out_of_frame_0000",
+          "path": "/Users/zhanghemign/Desktop/视频检索/experiments/ppe-pretrained/frames/head_out_of_frame/0000.png",
+          "timestamp": 0,
+          "source_frame": 0,
+          "width": 640,
+          "height": 126,
+          "sha256": "26fb6223c4be05f83a6ef35d7d2042d7a5e764dcece53f3ae1e4c38fd930cd62"
+        }
+      ],
+      "decode_and_write_seconds": 0.006099667050875723,
+      "label_scope": "Whether at least one clearly visible head without a safety helmet is present; not whether construction work is occurring."
+    }
+  ],
+  "limitations": [
+    "Existing clips are correlated and some include overlays; not an independent dataset or object-detection mAP benchmark.",
+    "No model prediction was used to create labels.",
+    "Frame labels indicate presence of at least one visible bare head, not per-person detection IoU or mAP.",
+    "library30 has sparse certain positive frame labels; all other action frames are unknown, so labelled-frame metrics are not whole-video accuracy.",
+    "Unknown frames are excluded from binary accuracy; no_person frames are separately identified.",
+    "No helmet does not establish construction activity; this experiment isolates PPE detection."
+  ],
+  "labeling_method": "Single Codex visual review of all contact sheets plus selected original-resolution frames. Model predictions were not consulted. Ambiguous people/occlusion retained as unknown."
+}

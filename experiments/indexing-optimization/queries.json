@@ -1,0 +1,353 @@
+{
+  "schema": 1,
+  "model": "transformers/owlv2/google/owlv2-base-patch16-ensemble",
+  "production_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+  "media": [
+    {
+      "id": 1,
+      "path": "backpack-street.mp4",
+      "duration": 14.6146,
+      "location": "data/videos",
+      "sha256": "4bc98e10c10b0d7d3d5b622a141182d97648aa2793fe820b64cf0b637eae1aa8"
+    },
+    {
+      "id": 2,
+      "path": "backpack-walking.mp4",
+      "duration": 8.52,
+      "location": "data/videos",
+      "sha256": "27ea6a1e6f3591d883a751d46f5b441fd120c2c5dc4001e120bc5f3f0d280f48"
+    },
+    {
+      "id": 3,
+      "path": "coughing-6XvsLPDioVA_000000_000010.mp4",
+      "duration": 10.0,
+      "location": "data/videos",
+      "sha256": "823cf2f300d46271963e18aa8b603c52d35bce88a4ca4833ad8f5f94ab408eb8"
+    },
+    {
+      "id": 5,
+      "path": "frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+      "duration": 10.0,
+      "location": "data/videos",
+      "sha256": "f6d8a0d75eba208b83b3ff18aad5dec375a4dcea877f8e3a3e231faf634565e8"
+    },
+    {
+      "id": 9,
+      "path": "shouting-84cxLPOEnGg_000011_000021.mp4",
+      "duration": 10.01,
+      "location": "data/videos",
+      "sha256": "63bd052b262ac79c0b607c8176713987dec27d225e0693cded2177062274ff5e"
+    },
+    {
+      "id": 13,
+      "path": "whistling-LqQYSUb_TJI_000052_000062.mp4",
+      "duration": 10.0,
+      "location": "data/videos",
+      "sha256": "66d2418aa6a0fbe4b6c2858467a6c6fd6388e3ef7c28d1c8290ff7a63827c831"
+    },
+    {
+      "id": 14,
+      "path": "whistling-OdLV8MmYkKI_000001_000011.mp4",
+      "duration": 10.0,
+      "location": "data/videos",
+      "sha256": "f2a97c740528be83988cce81e7deddb3adc2941b955e1c97315674e0258d88d1"
+    },
+    {
+      "id": 19,
+      "path": "抽烟02_安全帽工人吸烟.mp4",
+      "duration": 7.875,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/820716e81ec7430fa0b3030666308956/prepared",
+      "sha256": "04ad857da9edcca514081d39ace96e00c6d0f4074d3821cdb441dfdbba354c40"
+    },
+    {
+      "id": 21,
+      "path": "摔倒01_白天工地.mp4",
+      "duration": 8.0,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/f68a7461c03640a8bf3e924d1925e9f0/prepared",
+      "sha256": "0d33029b09c0eafff2449575468be9b6f54ea29af617a7499596a2daf77ca9e6"
+    },
+    {
+      "id": 40,
+      "path": "1246.mp4",
+      "duration": 35.44,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared",
+      "sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7"
+    },
+    {
+      "id": 41,
+      "path": "抖音20261027-906986.mp4",
+      "duration": 26.875,
+      "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared",
+      "sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431"
+    }
+  ],
+  "queries": [
+    {
+      "id": "bag_street",
+      "image": "experiments/owl-qwen-comparison/queries/bag_street.png",
+      "source_media": [
+        1
+      ],
+      "known_class_media": [
+        1,
+        2,
+        17
+      ],
+      "label": "backpack",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-1.png",
+      "crop_xyxy": [
+        211,
+        173,
+        390,
+        356
+      ],
+      "crop_area_fraction": 0.14217447916666667,
+      "image_sha256": "bffad8092011e2493d532417eb35c87c62f16aa4bbac691c09d983e5b061de16",
+      "subset_source_media": [
+        1
+      ],
+      "subset_known_class_media": [
+        1,
+        2
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "bag_indoor",
+      "image": "experiments/owl-qwen-comparison/queries/bag_indoor.png",
+      "source_media": [
+        2,
+        17
+      ],
+      "known_class_media": [
+        1,
+        2,
+        17
+      ],
+      "label": "backpack",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-2.png",
+      "crop_xyxy": [
+        184,
+        218,
+        331,
+        550
+      ],
+      "crop_area_fraction": 0.21182291666666667,
+      "image_sha256": "61232beb7bfb4da76c1a3ac90f2d67daac96b73ec93b67f2d9da02fd82ea2bb2",
+      "subset_source_media": [
+        2
+      ],
+      "subset_known_class_media": [
+        1,
+        2
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "glasses",
+      "image": "experiments/owl-qwen-comparison/queries/glasses.png",
+      "source_media": [
+        3
+      ],
+      "known_class_media": [
+        3,
+        4,
+        24
+      ],
+      "label": "eyeglasses",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-3.png",
+      "crop_xyxy": [
+        224,
+        50,
+        435,
+        148
+      ],
+      "crop_area_fraction": 0.08974826388888889,
+      "image_sha256": "e5be66e169857704e42a712a04f837de90ab0b37ee942d9611f6054886ee383f",
+      "subset_source_media": [
+        3
+      ],
+      "subset_known_class_media": [
+        3
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "pan",
+      "image": "experiments/owl-qwen-comparison/queries/pan.png",
+      "source_media": [
+        5
+      ],
+      "known_class_media": [
+        5,
+        6
+      ],
+      "label": "pan",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-5.png",
+      "crop_xyxy": [
+        192,
+        241,
+        371,
+        317
+      ],
+      "crop_area_fraction": 0.05904513888888889,
+      "image_sha256": "519cfaa2dcaa7e88a86918acdb968adc74a2ad25c322e256ed5296143e16850c",
+      "subset_source_media": [
+        5
+      ],
+      "subset_known_class_media": [
+        5
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "sunglasses_pair",
+      "image": "experiments/owl-qwen-comparison/queries/sunglasses_pair.png",
+      "source_media": [
+        13
+      ],
+      "known_class_media": [
+        13,
+        14
+      ],
+      "label": "sunglasses",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-13.png",
+      "crop_xyxy": [
+        307,
+        176,
+        486,
+        266
+      ],
+      "crop_area_fraction": 0.069921875,
+      "image_sha256": "b2b0f557d9da16fc05a0755e936a56900371e862cacad67d9f3dafca0df4f79b",
+      "subset_source_media": [
+        13
+      ],
+      "subset_known_class_media": [
+        13,
+        14
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "sunglasses_single",
+      "image": "experiments/owl-qwen-comparison/queries/sunglasses_single.png",
+      "source_media": [
+        14
+      ],
+      "known_class_media": [
+        13,
+        14
+      ],
+      "label": "sunglasses",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-14.png",
+      "crop_xyxy": [
+        282,
+        72,
+        448,
+        155
+      ],
+      "crop_area_fraction": 0.059800347222222223,
+      "image_sha256": "99f309028265a6a2caafc5510a81ee355e6b9699fda9508a0574048345348a25",
+      "subset_source_media": [
+        14
+      ],
+      "subset_known_class_media": [
+        13,
+        14
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "helmet_small",
+      "image": "experiments/owl-qwen-comparison/queries/helmet_small.png",
+      "source_media": [
+        19
+      ],
+      "known_class_media": [
+        17,
+        19,
+        20,
+        21
+      ],
+      "label": "helmet",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-19.png",
+      "crop_xyxy": [
+        166,
+        303,
+        224,
+        337
+      ],
+      "crop_area_fraction": 0.008327702702702703,
+      "image_sha256": "e247a445279e2d42658a12d0b9359780706235728c89e8b72f2a79f607be445f",
+      "subset_source_media": [
+        19
+      ],
+      "subset_known_class_media": [
+        19,
+        21
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "excavator",
+      "image": "experiments/owl-qwen-comparison/queries/excavator.png",
+      "source_media": [
+        21
+      ],
+      "known_class_media": [
+        21
+      ],
+      "label": "excavator",
+      "source_ts": 1.25,
+      "source_image": "experiments/owl-qwen-comparison/source-21.png",
+      "crop_xyxy": [
+        301,
+        0,
+        512,
+        86
+      ],
+      "crop_area_fraction": 0.07875868055555556,
+      "image_sha256": "ddb263a09388614c6ec7f592943cba788ab8e85ce6bc1a0b4dfa62d1694c742b",
+      "subset_source_media": [
+        21
+      ],
+      "subset_known_class_media": [
+        21
+      ],
+      "origin": "same_source_crop"
+    },
+    {
+      "id": "independent_bag",
+      "image": "data/queries/backpack-independent.jpg",
+      "source_media": [],
+      "known_class_media": [
+        1,
+        2,
+        17
+      ],
+      "label": "backpack",
+      "image_sha256": "ed644bab13513423d87f29829b960f64287b7179f49b6ed51cb7a838876b4f13",
+      "subset_source_media": [],
+      "subset_known_class_media": [
+        1,
+        2
+      ],
+      "origin": "independent_image"
+    }
+  ],
+  "source_design_sha256": "e2e67979d4a9926c5f01278587aa8e5fa65bbd7e8022721351a6fab1cf37c3aa",
+  "limitations": [
+    "Only independent_bag is an independent query image; other queries are same-source crops.",
+    "Known-class positives are inherited annotations, not exhaustive labels of the full background.",
+    "Region Top-k follows WISE raw FAISS ordering; video Top-k is a separate best-region-per-video metric.",
+    "This is regression evidence on a fixed small sample, not a general accuracy estimate."
+  ]
+}

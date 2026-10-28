@@ -1,0 +1,13 @@
+﻿query,expected,2B_top1,8B_Q8_top1,2B_hit1,8B_hit1,2B_top5,8B_top5
+人员翻越围栏,"fence_vault, fence_jump",fence_jump,fence_jump,1,1,"fence_jump, fence_vault, helmet_outdoor, fall, helmet_squat","fence_jump, fence_vault, helmet_squat, normal_walking, worker_barehead"
+A person climbs over a fence.,"fence_vault, fence_jump",fence_jump,fence_jump,1,1,"fence_jump, fence_vault, normal_walking, fall, worker_barehead","fence_jump, fence_vault, normal_walking, fence_standing, worker_barehead"
+一个人失去平衡摔倒在地,fall,fall,fall,1,1,"fall, fence_vault, fence_jump, normal_walking, fence_standing","fall, fence_jump, fence_vault, normal_walking, fence_standing"
+A person loses balance and falls to the ground.,fall,fall,fall,1,1,"fall, fence_vault, fence_jump, normal_walking, fence_standing","fall, fence_vault, fence_jump, fence_standing, normal_walking"
+作业人员没有佩戴安全帽,"fall, worker_barehead",helmet_outdoor,helmet_squat,0,0,"helmet_outdoor, helmet_squat, helmet_indoor, fall, worker_barehead","helmet_squat, helmet_outdoor, helmet_indoor, fall, worker_barehead"
+A worker without a safety helmet.,"fall, worker_barehead",helmet_outdoor,helmet_outdoor,0,0,"helmet_outdoor, fall, helmet_squat, helmet_indoor, worker_barehead","helmet_outdoor, fall, helmet_squat, worker_barehead, helmet_indoor"
+工人佩戴安全帽,"helmet_indoor, helmet_outdoor, helmet_squat",helmet_outdoor,helmet_outdoor,1,1,"helmet_outdoor, helmet_squat, helmet_indoor, fall, worker_barehead","helmet_outdoor, helmet_squat, helmet_indoor, worker_barehead, fall"
+Workers wearing safety helmets.,"helmet_indoor, helmet_outdoor, helmet_squat",helmet_outdoor,helmet_outdoor,1,1,"helmet_outdoor, helmet_squat, fall, helmet_indoor, worker_barehead","helmet_outdoor, helmet_squat, helmet_indoor, worker_barehead, fall"
+工人蹲下作业,helmet_squat,helmet_squat,helmet_squat,1,1,"helmet_squat, helmet_outdoor, fall, helmet_indoor, fence_jump","helmet_squat, helmet_outdoor, fall, helmet_indoor, worker_barehead"
+Workers squatting down to work.,helmet_squat,helmet_squat,helmet_squat,1,1,"helmet_squat, helmet_outdoor, fall, helmet_indoor, fence_jump","helmet_squat, helmet_outdoor, fall, fence_jump, worker_barehead"
+一个人正常行走,"worker_barehead, normal_walking",normal_walking,normal_walking,1,1,"normal_walking, worker_barehead, fence_jump, fence_vault, fall","normal_walking, worker_barehead, fence_jump, fence_vault, fence_standing"
+A person walking normally.,"worker_barehead, normal_walking",normal_walking,normal_walking,1,1,"normal_walking, worker_barehead, fence_vault, fence_standing, fall","normal_walking, worker_barehead, fence_jump, fence_vault, fence_standing"

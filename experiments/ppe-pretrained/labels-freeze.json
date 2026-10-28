@@ -1,0 +1,14 @@
+{
+  "frozen_at_utc": "2026-10-28T06:06:46.830138+00:00",
+  "predictions_seen": false,
+  "dataset_sha256": "f5c0df38bb8811d5b7bcc8233abb7d6f35d67d2713edb0bb97f1cbf47ffa226e",
+  "labels_sha256": "090c60325b24850893a0c06d8f07678cd1e1132728c455ccb2d7097acc4d18b3",
+  "cases": 12,
+  "frames": 238,
+  "frame_state_counts": {
+    "helmet_only": 75,
+    "bare_present": 45,
+    "unknown": 105,
+    "no_person": 13
+  }
+}

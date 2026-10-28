@@ -1,0 +1,5 @@
+.deps/
+models/
+.config/
+frames/
+*.log

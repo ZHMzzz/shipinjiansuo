@@ -1,0 +1,6 @@
+runtime/
+models/
+frames/
+*.tar.gz
+*.zip
+venv/

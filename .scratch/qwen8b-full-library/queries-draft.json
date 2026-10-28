@@ -1,0 +1,690 @@
+{
+  "status": "draft_for_review",
+  "production_changed": false,
+  "benchmark_started": false,
+  "media_count": 40,
+  "segment_count": 129,
+  "queries": [
+    {
+      "id": "B01",
+      "group": "基础",
+      "query": "背着灰色双肩包的人在室外人行道上走路",
+      "candidate_media_ids": [
+        1
+      ],
+      "note": "与室内背包行走对照",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B02",
+      "group": "基础",
+      "query": "背着黑色双肩包的人沿室内木质墙面走路",
+      "candidate_media_ids": [
+        2,
+        17
+      ],
+      "note": "17 只标注背包行走时段",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B03",
+      "group": "基础",
+      "query": "戴眼镜的男子坐在汽车里",
+      "candidate_media_ids": [
+        3,
+        34
+      ],
+      "note": "同源短片一并标注",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B04",
+      "group": "基础",
+      "query": "穿黄色上衣、戴眼镜的女孩站在木门旁",
+      "candidate_media_ids": [
+        4
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B05",
+      "group": "基础",
+      "query": "厨房里穿围裙的女子用锅炒蔬菜",
+      "candidate_media_ids": [
+        5
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B06",
+      "group": "基础",
+      "query": "锅里有蘑菇，有人用锅铲翻炒",
+      "candidate_media_ids": [
+        6
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B07",
+      "group": "基础",
+      "query": "穿黑色运动服的人在蓝色墙面的室内球场跑步",
+      "candidate_media_ids": [
+        7
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B08",
+      "group": "基础",
+      "query": "有人在摆着屏风的白色房间里跑动",
+      "candidate_media_ids": [
+        8
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B09",
+      "group": "基础",
+      "query": "小宝宝坐在地上，手里摆弄黄色布料",
+      "candidate_media_ids": [
+        9
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B10",
+      "group": "基础",
+      "query": "几个孩子在室外面对镜头张大嘴巴",
+      "candidate_media_ids": [
+        10
+      ],
+      "note": "不把张嘴直接标为喊叫",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B11",
+      "group": "基础",
+      "query": "夜晚，一群人站在亮灯的白色建筑前",
+      "candidate_media_ids": [
+        11
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B12",
+      "group": "基础",
+      "query": "几名成年男子站在店铺外，围成半圈",
+      "candidate_media_ids": [
+        12
+      ],
+      "note": "不以文件名推断唱歌",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B13",
+      "group": "基础",
+      "query": "室外近景里，一名男子和戴墨镜的女子一起面对镜头",
+      "candidate_media_ids": [
+        13
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B14",
+      "group": "基础",
+      "query": "戴墨镜的女子坐在公园里，把手指放到嘴边",
+      "candidate_media_ids": [
+        14,
+        39
+      ],
+      "note": "同源短片一并标注",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B15",
+      "group": "基础",
+      "query": "穿橙黑色上衣的幼儿坐在地毯上翻弄一本书",
+      "candidate_media_ids": [
+        15,
+        16
+      ],
+      "note": "书本物体需原视频确认；同源短片一并标注",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B16",
+      "group": "基础",
+      "query": "仓库室内，戴安全帽的作业人员站在货架附近",
+      "candidate_media_ids": [
+        17
+      ],
+      "note": "只标注开头时段；检查其他仓库片是否也符合",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B17",
+      "group": "基础",
+      "query": "背着双肩包的人在室内走动",
+      "candidate_media_ids": [
+        2,
+        17
+      ],
+      "note": "用于串接视频中段定位",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B18",
+      "group": "基础",
+      "query": "仓库里有人失去平衡，随后倒在地上",
+      "candidate_media_ids": [
+        17
+      ],
+      "note": "用于串接视频末段定位，需连续画面确认",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B19",
+      "group": "基础",
+      "query": "穿西装的人翻越室外金属围栏",
+      "candidate_media_ids": [
+        18
+      ],
+      "note": "需连续画面确认翻越过程",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B20",
+      "group": "基础",
+      "query": "仓库货架通道里，戴黄色安全帽的人把手抬到嘴边",
+      "candidate_media_ids": [
+        19
+      ],
+      "note": "不预先认定吸烟",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B21",
+      "group": "基础",
+      "query": "仓库货架旁出现橙色火焰和黑烟",
+      "candidate_media_ids": [
+        20
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B22",
+      "group": "基础",
+      "query": "白天工地上，穿反光衣的人在土路旁倒下",
+      "candidate_media_ids": [
+        21
+      ],
+      "note": "倒下还是蹲下，需连续画面确认",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B23",
+      "group": "基础",
+      "query": "穿白色上衣的男子坐在桌前面对镜头讲话",
+      "candidate_media_ids": [
+        22
+      ],
+      "note": "只标注人物画面，不含转场和片尾",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B24",
+      "group": "基础",
+      "query": "明亮的舞蹈练习室里，多个人一起跳舞",
+      "candidate_media_ids": [
+        23
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B25",
+      "group": "基础",
+      "query": "办公室里，戴眼镜的男子对镜头比出剪刀手",
+      "candidate_media_ids": [
+        24
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B26",
+      "group": "基础",
+      "query": "室内走廊里，一名男子把手抬到嘴边",
+      "candidate_media_ids": [
+        25
+      ],
+      "note": "不预先认定吸烟",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B27",
+      "group": "基础",
+      "query": "雪地街道上有人倒在地上，旁边还有站着的人",
+      "candidate_media_ids": [
+        26
+      ],
+      "note": "不含开头黑屏文字",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B28",
+      "group": "基础",
+      "query": "蓝色工服的人员在门岗桌旁，一人坐着写字、一人站着",
+      "candidate_media_ids": [
+        27
+      ],
+      "note": "安全帽状态另作细粒度查询",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B29",
+      "group": "基础",
+      "query": "行人街道上，穿黑色上衣的人在白衣男子身旁弯下身",
+      "candidate_media_ids": [
+        28
+      ],
+      "note": "先用可见姿态；是否冲突需连续画面确认",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B30",
+      "group": "基础",
+      "query": "路边两只狗用后腿站立，前爪互相搭着",
+      "candidate_media_ids": [
+        29
+      ],
+      "note": "不推断攻击意图",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B31",
+      "group": "基础",
+      "query": "多名戴安全帽、穿反光衣的工人在钢筋堆旁聚集",
+      "candidate_media_ids": [
+        30
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B32",
+      "group": "基础",
+      "query": "有观众围观的舞台上，有人跳街舞",
+      "candidate_media_ids": [
+        31
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B33",
+      "group": "基础",
+      "query": "下雨的城市街道上，有人撑伞，路面湿漉漉的",
+      "candidate_media_ids": [
+        32
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B34",
+      "group": "基础",
+      "query": "画面是彩色条纹测试图，没有真实人物",
+      "candidate_media_ids": [
+        33
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B35",
+      "group": "基础",
+      "query": "黑色背景前，穿黑色长裙的女子转身摆姿势",
+      "candidate_media_ids": [
+        35
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B36",
+      "group": "基础",
+      "query": "夜间室外活动中，穿黑色长裙的女子在摄影镜头前摆姿势",
+      "candidate_media_ids": [
+        36
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B37",
+      "group": "基础",
+      "query": "戴黑色棒球帽的女子坐在餐桌前看手机",
+      "candidate_media_ids": [
+        37
+      ],
+      "note": "桌上有食物不等于正在吃饭",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B38",
+      "group": "基础",
+      "query": "时尚杂志封面和人物写真图片轮流切换",
+      "candidate_media_ids": [
+        38
+      ],
+      "note": "",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B39",
+      "group": "基础",
+      "query": "冰面上，穿红色队服的运动员弯腰用刷子扫冰",
+      "candidate_media_ids": [
+        40
+      ],
+      "note": "需标注运动员出现的时间段",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "B40",
+      "group": "基础",
+      "query": "冰壶石在冰面上滑向彩色圆形目标区域",
+      "candidate_media_ids": [
+        40
+      ],
+      "note": "需标注石头和目标区域的时间段",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H01",
+      "group": "混淆",
+      "query": "站在桌旁的蓝色工服人员头上没有戴安全帽",
+      "candidate_media_ids": [
+        27
+      ],
+      "note": "核心：主体与安全帽状态绑定；需逐段确认",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H02",
+      "group": "混淆",
+      "query": "戴红色安全帽的蓝色工服人员坐在桌前写字",
+      "candidate_media_ids": [
+        27
+      ],
+      "note": "与同一画面的站立人员区分",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H03",
+      "group": "混淆",
+      "query": "有人把安全帽从头上摘下来",
+      "candidate_media_ids": [
+        27
+      ],
+      "note": "核心：动作过程，字幕不能作为答案；未拍到过程则不入主评分",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H04",
+      "group": "混淆",
+      "query": "戴黄色安全帽的工人在货架旁抬手靠近嘴部",
+      "candidate_media_ids": [
+        19
+      ],
+      "note": "对照无安全帽走廊男子、车内男子、公园女子",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H05",
+      "group": "混淆",
+      "query": "工人戴着安全帽在工地上跌倒",
+      "candidate_media_ids": [
+        21
+      ],
+      "note": "对照仓库倒地、雪地倒地；需验证跌倒过程和当时帽子状态",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H06",
+      "group": "混淆",
+      "query": "有人在雪地上倒地后试图起身",
+      "candidate_media_ids": [
+        26
+      ],
+      "note": "对照工地倒地、冰壶弯腰；需连续画面确认",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H07",
+      "group": "混淆",
+      "query": "两个人在街道上发生推搡或踢打",
+      "candidate_media_ids": [
+        28
+      ],
+      "note": "候选待核实；对照狗的动作、跳舞、工人挥手；不由文件名定真值",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H08",
+      "group": "混淆",
+      "query": "两只狗站起来互相扑向对方",
+      "candidate_media_ids": [
+        29
+      ],
+      "note": "对照人与人肢体接触；需连续画面确认",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H09",
+      "group": "混淆",
+      "query": "戴棒球帽的人坐在摆着食物的桌旁低头看手机",
+      "candidate_media_ids": [
+        37
+      ],
+      "note": "对照安全帽、炒菜；判断看手机而非吃饭",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H10",
+      "group": "混淆",
+      "query": "室内有人背着双肩包走路，背包挂在后背上",
+      "candidate_media_ids": [
+        2,
+        17
+      ],
+      "note": "对照室外背包与室内跑步",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H11",
+      "group": "混淆",
+      "query": "很多人一起跳舞，地点是明亮的练习室",
+      "candidate_media_ids": [
+        23
+      ],
+      "note": "对照舞台街舞、工地聚集和街头接触",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H12",
+      "group": "混淆",
+      "query": "仓库货架旁有明火和浓烟",
+      "candidate_media_ids": [
+        20
+      ],
+      "note": "对照同一仓库里的人员、锅里炒菜",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H13",
+      "group": "混淆",
+      "query": "画面主要是锅里的蘑菇被翻炒的近景",
+      "candidate_media_ids": [
+        6
+      ],
+      "note": "对照厨房人物远景、仓库火焰",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H14",
+      "group": "混淆",
+      "query": "穿黑色长裙的女子在夜间室外活动现场摆姿势",
+      "candidate_media_ids": [
+        36
+      ],
+      "note": "对照黑背景长裙、静态写真；不按人物身份判分",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H15",
+      "group": "混淆",
+      "query": "红色队服的运动员在冰上弯腰扫动刷子",
+      "candidate_media_ids": [
+        40
+      ],
+      "note": "对照工人弯腰、雪地摔倒、室内舞蹈",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "H16",
+      "group": "混淆",
+      "query": "地毯上的幼儿在摆弄书本，不是在摆弄黄色布料",
+      "candidate_media_ids": [
+        15,
+        16
+      ],
+      "note": "同一句自然语言的否定约束；不新增负向向量机制",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P01",
+      "group": "口语改写",
+      "query": "找那段下雨天大家打伞过街的视频",
+      "candidate_media_ids": [
+        32
+      ],
+      "note": "与 B33 配对；过街是否可见需确认，必要时改为在街上走",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P02",
+      "group": "口语改写",
+      "query": "找背着包在屋里走来走去的那个人",
+      "candidate_media_ids": [
+        2,
+        17
+      ],
+      "note": "与 B17 配对",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P03",
+      "group": "口语改写",
+      "query": "货架边着火冒黑烟的是哪段",
+      "candidate_media_ids": [
+        20
+      ],
+      "note": "与 B21 配对",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P04",
+      "group": "口语改写",
+      "query": "有两只狗站起来搭着爪子的那段",
+      "candidate_media_ids": [
+        29
+      ],
+      "note": "与 B30 配对",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P05",
+      "group": "口语改写",
+      "query": "吃饭的桌子前，有个戴帽子的女生在玩手机",
+      "candidate_media_ids": [
+        37
+      ],
+      "note": "与 B37 配对；语境省略不能变成进食动作",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P06",
+      "group": "口语改写",
+      "query": "有人穿着红衣服，在冰上拿刷子扫来扫去",
+      "candidate_media_ids": [
+        40
+      ],
+      "note": "与 B39 配对",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P07",
+      "group": "口语改写",
+      "query": "找地上全是雪，有人倒在地上的画面",
+      "candidate_media_ids": [
+        26
+      ],
+      "note": "与 B27 配对",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "P08",
+      "group": "口语改写",
+      "query": "穿蓝工服站在桌边的那个人没戴安全帽",
+      "candidate_media_ids": [
+        27
+      ],
+      "note": "与 H01 配对",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "N01",
+      "group": "候选无答案",
+      "query": "有人骑自行车从路口经过",
+      "candidate_media_ids": [],
+      "note": "须全库逐段核验，雨天/街道背景可能存在自行车",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "N02",
+      "group": "候选无答案",
+      "query": "一只猫跳到餐桌上",
+      "candidate_media_ids": [],
+      "note": "须全库逐段核验",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "N03",
+      "group": "候选无答案",
+      "query": "有人在游泳池里游泳",
+      "candidate_media_ids": [],
+      "note": "须全库逐段核验",
+      "label_status": "draft_unjudged"
+    },
+    {
+      "id": "N04",
+      "group": "候选无答案",
+      "query": "有人坐在驾驶位开汽车，同时用手操作方向盘",
+      "candidate_media_ids": [],
+      "note": "对照车内男子，停车坐车不等于开车；须全库核验",
+      "label_status": "draft_unjudged"
+    }
+  ]
+}
+

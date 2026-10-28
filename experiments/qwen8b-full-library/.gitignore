@@ -1,0 +1,5 @@
+frames/
+review/
+*.npz
+__pycache__/
+aligned-encoder
