@@ -1,0 +1,183 @@
+{
+  "model_load_seconds": 39.45312479196582,
+  "warmup_seconds": 11.864167459018063,
+  "completed_cases": 15,
+  "groups": {
+    "followup_helmet": {
+      "cases": 5,
+      "labelled": 5,
+      "correct": 4,
+      "true_positive": 2,
+      "positives": 2,
+      "false_positive": 1,
+      "negatives": 3,
+      "unknown_or_invalid": 0,
+      "total_seconds": 59.50105445692316,
+      "median_seconds": 11.251627124962397
+    },
+    "followup_positive": {
+      "cases": 1,
+      "labelled": 1,
+      "correct": 1,
+      "true_positive": 1,
+      "positives": 1,
+      "false_positive": 0,
+      "negatives": 0,
+      "unknown_or_invalid": 0,
+      "total_seconds": 13.057909749972168,
+      "median_seconds": 13.057909749972168
+    },
+    "helmet_observation": {
+      "cases": 8,
+      "labelled": 8,
+      "correct": 0,
+      "true_positive": 0,
+      "positives": 4,
+      "false_positive": 0,
+      "negatives": 4,
+      "unknown_or_invalid": 8,
+      "total_seconds": 55.983707792067435,
+      "median_seconds": 7.129137333511608
+    },
+    "uncertain_diagnostic": {
+      "cases": 1,
+      "labelled": 1,
+      "correct": 0,
+      "true_positive": 0,
+      "positives": 0,
+      "false_positive": 0,
+      "negatives": 0,
+      "unknown_or_invalid": 0,
+      "total_seconds": 6.923553665983491,
+      "median_seconds": 6.923553665983491
+    }
+  },
+  "queries": {
+    "作业人员没有佩戴安全帽": [
+      {
+        "id": "hat_strict_before",
+        "expected": "no",
+        "match": "yes",
+        "seconds": 5.820045749947894
+      },
+      {
+        "id": "hat_strict_before_high",
+        "expected": "no",
+        "match": "no",
+        "seconds": 13.390391374996398
+      },
+      {
+        "id": "hat_after_high",
+        "expected": "yes",
+        "match": "yes",
+        "seconds": 10.99312329100212
+      },
+      {
+        "id": "fixture_helmet_squat_high",
+        "expected": "no",
+        "match": "no",
+        "seconds": 18.045866916014347
+      },
+      {
+        "id": "fixture_worker_barehead_high",
+        "expected": "yes",
+        "match": "yes",
+        "seconds": 11.251627124962397
+      },
+      {
+        "id": "fixture_fall_observe",
+        "expected": "yes",
+        "match": "invalid",
+        "seconds": 9.62176933401497
+      },
+      {
+        "id": "fixture_worker_barehead_observe",
+        "expected": "yes",
+        "match": "invalid",
+        "seconds": 4.992342583020218
+      },
+      {
+        "id": "fixture_helmet_indoor_observe",
+        "expected": "no",
+        "match": "invalid",
+        "seconds": 7.027521167008672
+      },
+      {
+        "id": "fixture_helmet_outdoor_observe",
+        "expected": "no",
+        "match": "invalid",
+        "seconds": 5.493860249989666
+      },
+      {
+        "id": "fixture_helmet_squat_observe",
+        "expected": "no",
+        "match": "invalid",
+        "seconds": 9.23964420799166
+      },
+      {
+        "id": "hat_after_observe",
+        "expected": "yes",
+        "match": "invalid",
+        "seconds": 8.683529958012514
+      },
+      {
+        "id": "real_barehead_window_observe",
+        "expected": "yes",
+        "match": "invalid",
+        "seconds": 7.2307535000145435
+      },
+      {
+        "id": "hat_strict_before_observe",
+        "expected": "no",
+        "match": "invalid",
+        "seconds": 3.694286792015191
+      }
+    ],
+    "图中人物没有佩戴安全帽": [
+      {
+        "id": "head_out_of_frame",
+        "expected": "unknown",
+        "match": "yes",
+        "seconds": 6.923553665983491
+      }
+    ],
+    "戴红色安全帽的人坐着写字": [
+      {
+        "id": "red_hat_write_high",
+        "expected": "yes",
+        "match": "yes",
+        "seconds": 13.057909749972168
+      }
+    ]
+  },
+  "repeated_candidate_batches": {
+    "main": {
+      "count": 0,
+      "first5_seconds": 0,
+      "all_seconds": 0,
+      "decisions": []
+    },
+    "repeat1": {
+      "count": 0,
+      "first5_seconds": 0,
+      "all_seconds": 0,
+      "decisions": []
+    },
+    "repeat2": {
+      "count": 0,
+      "first5_seconds": 0,
+      "all_seconds": 0,
+      "decisions": []
+    }
+  },
+  "resources": {
+    "max_rss_GiB": 2.6641845703125,
+    "max_mps_driver_GiB": 5.5257415771484375,
+    "min_system_available_GiB": 4.525665283203125,
+    "swap_GiB_range": [
+      21.50750732421875,
+      22.265380859375
+    ]
+  },
+  "index_unchanged": true
+}

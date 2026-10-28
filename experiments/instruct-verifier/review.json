@@ -1,0 +1,90 @@
+{
+  "normalization": "Post-hoc only: split exact enum scalar/comma-separated string into a list; no reinterpretation of observations.",
+  "cases": [
+    {
+      "id": "fixture_fall_observe",
+      "expected": "yes",
+      "normalized_match": "yes",
+      "heads": [
+        "bare"
+      ],
+      "correct": true
+    },
+    {
+      "id": "fixture_worker_barehead_observe",
+      "expected": "yes",
+      "normalized_match": "no",
+      "heads": [
+        "helmet"
+      ],
+      "correct": false
+    },
+    {
+      "id": "fixture_helmet_indoor_observe",
+      "expected": "no",
+      "normalized_match": "no",
+      "heads": [
+        "helmet"
+      ],
+      "correct": true
+    },
+    {
+      "id": "fixture_helmet_outdoor_observe",
+      "expected": "no",
+      "normalized_match": "yes",
+      "heads": [
+        "helmet",
+        "bare"
+      ],
+      "correct": false
+    },
+    {
+      "id": "fixture_helmet_squat_observe",
+      "expected": "no",
+      "normalized_match": "yes",
+      "heads": [
+        "helmet",
+        "bare",
+        "unclear"
+      ],
+      "correct": false
+    },
+    {
+      "id": "hat_after_observe",
+      "expected": "yes",
+      "normalized_match": "no",
+      "heads": [
+        "helmet"
+      ],
+      "correct": false
+    },
+    {
+      "id": "real_barehead_window_observe",
+      "expected": "yes",
+      "normalized_match": "yes",
+      "heads": [
+        "bare"
+      ],
+      "correct": true
+    },
+    {
+      "id": "hat_strict_before_observe",
+      "expected": "no",
+      "normalized_match": "no",
+      "heads": [
+        "helmet"
+      ],
+      "correct": true
+    }
+  ],
+  "correct": 4,
+  "total": 8,
+  "contradictory_or_wrong_evidence": [
+    "fixture_helmet_squat",
+    "hat_before",
+    "ppe_candidate_27",
+    "ppe_candidate_19",
+    "ppe_candidate_20"
+  ],
+  "note": "Exact labels were corrected for 0–6s because helmet removal occurs around 5s; strict 0–4s is a separate follow-up."
+}

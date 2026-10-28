@@ -1,0 +1,6 @@
+{
+  "model": "Qwen/Qwen3-VL-2B-Instruct",
+  "revision": "89644892e4d85e24eaac8bacfd4f463576704203",
+  "local_path": "/Users/zhanghemign/.cache/huggingface/hub/models--Qwen--Qwen3-VL-2B-Instruct/snapshots/89644892e4d85e24eaac8bacfd4f463576704203",
+  "download_seconds": 470.206219292013
+}
