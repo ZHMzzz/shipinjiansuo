@@ -2,7 +2,7 @@ import {el, node, api, feedback, formatTime, formatSize} from './api.js';
 import {mountMaintenance} from './maintenance.js';
 import {createVideoDeletion, trashIcon} from './video-delete.js';
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 50;
 let catalog = [], items = [], page = 1, mode = 'browse', applied = {}, limited = false;
 let request = null, generation = 0, previewURL = null;
 const natural = el('natural'), reference = el('reference');
