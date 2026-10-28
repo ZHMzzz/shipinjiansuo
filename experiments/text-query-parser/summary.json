@@ -1,0 +1,47 @@
+{
+  "model_load_seconds": 4.196115291968454,
+  "groups": {
+    "short": {
+      "n": 12,
+      "schema_valid": 0,
+      "strict_pass": 0,
+      "p50_seconds": 0.9462810000113677,
+      "p95_seconds": 1.6090994104451963,
+      "min_seconds": 0.6562776250066236,
+      "max_seconds": 1.8246337079908699,
+      "median_output_tokens": 29.0
+    },
+    "paragraph": {
+      "n": 12,
+      "schema_valid": 3,
+      "strict_pass": 2,
+      "p50_seconds": 1.2368825419689529,
+      "p95_seconds": 2.199080268733087,
+      "min_seconds": 0.6994607920059934,
+      "max_seconds": 2.3325382500188425,
+      "median_output_tokens": 38.0
+    },
+    "all": {
+      "n": 24,
+      "schema_valid": 3,
+      "strict_pass": 2,
+      "p50_seconds": 1.149850437999703,
+      "p95_seconds": 2.0500993249093877,
+      "min_seconds": 0.6562776250066236,
+      "max_seconds": 2.3325382500188425,
+      "median_output_tokens": 34.5
+    }
+  },
+  "repeat_calls": 8,
+  "repeat_exact_matches": 8,
+  "repeat_p50_seconds": 1.016019333503209,
+  "warmup_seconds": 1.8971234579803422,
+  "memory": {
+    "rss_bytes": 389955584,
+    "mps_driver_bytes": 7524352000,
+    "swap_bytes": 23985848320
+  },
+  "index_unchanged": true,
+  "pid_unchanged": true,
+  "pid": "75954"
+}

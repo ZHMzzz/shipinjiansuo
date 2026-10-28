@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "model": "deepseek-flash",
+  "thinking": {
+    "type": "disabled"
+  },
+  "temperature": 0,
+  "response_format": {
+    "type": "json_object"
+  },
+  "max_tokens": 640,
+  "stream": false,
+  "expected_calls": 33,
+  "automatic_retries": 0,
+  "note": "Same frozen prompt and cases as local baseline. JSON mode is an API-side format constraint absent from local baseline. No videos, indexes, or gold criteria sent."
+}

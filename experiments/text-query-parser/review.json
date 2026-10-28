@@ -1,0 +1,29 @@
+{
+  "method": "代理逐条对照预先固定 criteria 审阅；不是独立人工盲评。允许同义表达，格式错单列，严格通过要求格式正确且全部语义要求满足。即使原文可供人读懂，也不视为程序可执行的解析结果。",
+  "cases": [
+    {"id":"s01","semantic_pass":false,"note":"必要条件为空，未提取户外或慢跑。"},
+    {"id":"s02","semantic_pass":false,"note":"整句原样作为一个条件，没有拆分戴红帽与骑车；缺 must_not 且 JSON 尾逗号。"},
+    {"id":"s03","semantic_pass":false,"note":"必要/排除条件均为空，工人与未佩戴丢失。"},
+    {"id":"s04","semantic_pass":false,"note":"把跑步或者骑车变成同组 must，OR 错成 AND。"},
+    {"id":"s05","semantic_pass":false,"note":"列出摘帽和搬箱子，但先后顺序丢失；搬箱子重复设为偏好，关系描述主体不清。"},
+    {"id":"s06","semantic_pass":false,"note":"搬箱子丢失；白天同时被设为必要条件和偏好。"},
+    {"id":"s07","semantic_pass":false,"note":"保留戴帽工人与另一骑车者，但旁边的位置关系丢失。"},
+    {"id":"s08","semantic_pass":false,"note":"输出空条件组作为备选，等价于允许任意场景；结构也无效。"},
+    {"id":"s09","semantic_pass":true,"note":"至少两名与共同搬同一箱子这一动作的完整语义保留；不存在两个独立场景/动作必须拆分。但缺少多个规定字段且 JSON 无效，严格结果仍失败。"},
+    {"id":"s10","semantic_pass":false,"note":"未佩戴被放入 prefer，错误地弱化为非必需条件。"},
+    {"id":"s11","semantic_pass":false,"note":"没有提取任何必要条件，把明确的红卡车与黄帽场景整个移入不确定项。"},
+    {"id":"s12","semantic_pass":false,"note":"两动作有保留，但同人关系不确定被放入 prefer 而非 uncertain。"},
+    {"id":"p01","semantic_pass":false,"note":"保留工地、骑车、搬箱子与两人不同，但丢失红色安全帽、旁边、白天偏好和排除室内。"},
+    {"id":"p02","semantic_pass":false,"note":"三动作保留，但缺先后关系，同一人要求被误作偏好。"},
+    {"id":"p03","semantic_pass":true,"note":"两个独立备选组正确，车辆起火或工人摔倒，无新增约束。"},
+    {"id":"p04","semantic_pass":false,"note":"户外与单跑者偏好保留，但慢跑泛化成跑步；格式尾逗号。"},
+    {"id":"p05","semantic_pass":false,"note":"蓝上衣与骑车无显式主体绑定；白天偏好丢失，把不受限制的地点时间作不确定。"},
+    {"id":"p06","semantic_pass":false,"note":"保留至少一人未戴帽，但工地丢失，并且拆成两个冗余备选组。"},
+    {"id":"p07","semantic_pass":false,"note":"仅保留两种戴帽状态，遗漏站在一起、随后骑车离开及指代歧义。"},
+    {"id":"p08","semantic_pass":false,"note":"把仓库推手推车备选条件错误地列为 must_not 排除项。"},
+    {"id":"p09","semantic_pass":false,"note":"两个条件均用泛指有人，没有保留必须同一人的绑定；又添加无意义偏好有人。"},
+    {"id":"p10","semantic_pass":false,"note":"先放下中的先无完整后继关系；坐凳子和写字未拆分，不要求桌子被误作偏好。"},
+    {"id":"p11","semantic_pass":false,"note":"JSON 合法，但把同一场景的三部分放入三个 OR 备选组；人物指代跨组悬空。"},
+    {"id":"p12","semantic_pass":true,"note":"groups 为空并将未指定内容的视频标为不确定，未虚构拍摄时间；不强求不确定说明的措辞一致。"}
+  ]
+}
