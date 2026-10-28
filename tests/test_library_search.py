@@ -41,13 +41,13 @@ def test_empty_filename_candidate_skips_model():
     actions.search.assert_not_called()
 
 
-def test_normalize_keeps_multiple_text_windows_but_deduplicates_objects():
+def test_normalize_keeps_best_window_per_video():
     catalog=[dict(id=1,name='真实名称.mp4',duration=20,url='/demo/media/1')]
     hits=[dict(media_id=1,ts=0,te=4,thumbnail_ts=1,thumbnail='thumbnail/a',distance=.9),
           dict(media_id=1,ts=8,te=12,thumbnail_ts=9,thumbnail='thumbnail/b',distance=.8)]
     data={'video_results':{'unmerged_windows':hits}}
     text=normalize(data,catalog,'text',100,.45)
-    assert [h['start'] for h in text['items']]==[0,8]
+    assert [h['start'] for h in text['items']]==[0]
     objects=normalize(data,catalog,'object',100,.45)
     assert len(objects['items'])==1 and objects['items'][0]['start']==1
     assert objects['items'][0]['name']=='真实名称.mp4'
@@ -66,3 +66,18 @@ def test_native_object_routing_does_not_serialize_uploaded_binary(monkeypatch):
         config=NS(text_queries_weight=2,negative_queries_weight=.2),people_db=None)
     assert result['items']==[] and result['mode']=='object'
     assert search.search.call_args.kwargs['feature_extractor_id']==OWL
+
+
+@pytest.mark.parametrize('count,limited', [(2,False),(3,True)])
+def test_text_route_groups_before_video_limit_and_reports_extra_video(count, limited):
+    catalog=[dict(id=i,name=f'{i}.mp4',duration=20) for i in range(1,4)]
+    actions=Mock()
+    actions.search.return_value={'video_results':{'unmerged_windows':[
+        dict(media_id=i,ts=8,te=16,thumbnail=f'thumb/{i}',distance=1-i*.1)
+        for i in range(1,count+1)]}}
+    result=search_library(catalog=catalog,query='写字',person='',filename='',image_bytes=None,
+        threshold=.45,limit=2,project=NS(wise_project=NS(_project_dir='project')),
+        search=None,embedding=None,actions=actions,config=None,people_db=None)
+    actions.search.assert_called_once_with('project','写字',3,media_ids={1,2,3},group_by_video=True)
+    assert [item['id'] for item in result['items']] == [1,2]
+    assert result['limited'] is limited

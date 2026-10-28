@@ -47,7 +47,7 @@ def normalize(data, catalog, mode, limit, threshold):
         mid = str(hit['media_id'])
         if mid not in by_id: continue
         if mode == 'face' and hit['distance'] < threshold: continue
-        if mode != 'text' and mid in seen: continue
+        if mid in seen: continue
         seen.add(mid)
         v = by_id[mid]
         # Qwen results are windows; WISE face/object results are frame hits.
@@ -57,7 +57,8 @@ def normalize(data, catalog, mode, limit, threshold):
             'face_similarity':hit.get('face_similarity'),
             'scene_ts':hit.get('scene_ts'), 'scene_te':hit.get('scene_te')})
         if len(items) >= limit: break
-    return {'items':items, 'total':len(items), 'mode':mode, 'limited':len(hits) >= limit}
+    return {'items':items, 'total':len(items), 'mode':mode,
+        'limited':len(hits) > limit if mode == 'text' else len(hits) >= limit}
 
 
 def search_library(*, catalog, query, person, filename, image_bytes, threshold,
@@ -84,7 +85,9 @@ def search_library(*, catalog, query, person, filename, image_bytes, threshold,
             hit.update(evidence.get(str(hit['vector_id']),{}))
         return normalize(data,selected,'person_scene',limit,threshold)
     if query:
-        data = actions.search(project.wise_project._project_dir,query,limit,media_ids=allowed)
+        # Select videos before truncation; one extra video detects a real cap.
+        data = actions.search(project.wise_project._project_dir,query,limit+1,
+            media_ids=allowed,group_by_video=True)
         return normalize(data,selected,'text',limit,threshold)
     face_times = None
     if person:

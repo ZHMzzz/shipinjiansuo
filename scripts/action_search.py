@@ -66,8 +66,8 @@ def read_snapshot(project, complete=False):
     return meta, vectors, index
 
 
-def select_hits(segments, scores, ids, limit=20):
-    """Suppress near-identical overlapping windows; retain separate events/video."""
+def select_hits(segments, scores, ids, limit=20, *, group_by_video=False):
+    """Consume descending scores; keep each video's best hit or distinct windows."""
     selected = []
     for score, index in zip(scores, ids):
         if index < 0: continue
@@ -75,6 +75,9 @@ def select_hits(segments, scores, ids, limit=20):
         duplicate = False
         for other in selected:
             if item['media_id'] != other['media_id']: continue
+            if group_by_video:
+                duplicate = True
+                break
             overlap = max(0, min(item['te'], other['te']) - max(item['ts'], other['ts']))
             union = max(item['te'], other['te']) - min(item['ts'], other['ts'])
             if overlap / max(union, 1e-6) >= .5:
@@ -201,7 +204,7 @@ class ActionEngine:
             if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
         return vector, cached
 
-    def search(self, project, query, limit, *, media_ids=None):
+    def search(self, project, query, limit, *, media_ids=None, group_by_video=False):
         snapshot = self.get_snapshot(project)
         if snapshot is None: raise ValueError('Qwen 片段索引正在补建，请查看视频库中的索引进度')
         meta, vectors, index = snapshot
@@ -210,11 +213,11 @@ class ActionEngine:
         encoded = time.perf_counter()
         # Apply filename candidate restrictions before truncating the ranking.
         # Otherwise unrelated videos can consume the entire shortlist.
-        scores, ids = index.search(vector, index.ntotal if media_ids is not None else min(index.ntotal, max(limit*5, 100)))
+        scores, ids = index.search(vector, index.ntotal if media_ids is not None or group_by_video else min(index.ntotal, max(limit*5, 100)))
         if media_ids is not None:
             keep = [i for i, idx in enumerate(ids[0]) if idx >= 0 and meta['segments'][int(idx)]['media_id'] in media_ids]
             scores, ids = scores[:,keep], ids[:,keep]
-        hits = select_hits(meta['segments'], scores[0], ids[0], limit)
+        hits = select_hits(meta['segments'], scores[0], ids[0], limit, group_by_video=group_by_video)
         videos = {m['id']: {'filename': m['path'], 'duration': m['duration']} for m in meta['media']}
         for hit in hits:
             mid = hit['media_id']; preview = (hit['ts']+hit['te'])/2

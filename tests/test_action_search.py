@@ -125,3 +125,24 @@ def test_filename_candidate_is_not_lost_beyond_initial_shortlist(tmp_path):
     result=engine.search(path,'test',2,media_ids={19})
     assert [h['media_id'] for h in result['video_results']['unmerged_windows']]==[19]
     assert result['score_kind']=='action'
+
+
+def test_video_grouping_searches_beyond_duplicate_windows_before_limit():
+    # A long video occupies the first 150 ranked windows. The next video must
+    # still be found, retaining the first video's highest-scoring timestamp.
+    engine = ActionEngine()
+    segments = [dict(media_id=1, ts=float(600-i*4), te=float(608-i*4)) for i in range(150)]
+    segments += [dict(media_id=2, ts=12., te=20.), dict(media_id=3, ts=0., te=8.)]
+    index = Mock(ntotal=len(segments))
+    index.search.return_value = (np.linspace(.99,.1,len(segments))[None,:], np.arange(len(segments))[None,:])
+    engine.get_snapshot = Mock(return_value=({'segments':segments, 'media':[
+        dict(id=i,path=f'{i}.mp4',duration=700.) for i in (1,2,3)]}, None, index))
+    engine.query_vector = Mock(return_value=(np.ones((1,2),dtype='float32'),False))
+    result = engine.search('unused','查询',2,group_by_video=True)
+    hits = result['video_results']['unmerged_windows']
+    assert [(h['media_id'],h['ts']) for h in hits] == [(1,600.),(2,12.)]
+    assert hits[0]['distance'] > hits[1]['distance']
+    assert hits[0]['link'] == '/demo/media/1#t=600.0,608.0'
+    assert index.search.call_args.args[1] == len(segments)
+    filtered = engine.search('unused','查询',2,media_ids={2,3},group_by_video=True)
+    assert [h['media_id'] for h in filtered['video_results']['unmerged_windows']] == [2,3]

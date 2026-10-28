@@ -56,7 +56,7 @@ el('video-dialog').addEventListener('close', () => {
 function render() {
   const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE)); page = Math.min(page, pages);
   el('list-title').textContent = mode === 'browse' ? (applied.filename ? '筛选视频' : '全部视频') : '查询结果';
-  el('count').textContent = `${items.length} ${mode === 'text' ? '个片段' : '个视频'}`;
+  el('count').textContent = `${items.length} 个视频`;
   const grid = el('video-grid'); grid.replaceChildren();
   if (!items.length) grid.append(node('p', '没有找到视频，请调整条件或新增视频。', 'empty'));
   for (const item of items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)) {
