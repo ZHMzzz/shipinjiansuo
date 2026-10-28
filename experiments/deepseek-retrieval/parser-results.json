@@ -1,0 +1,1510 @@
+{
+  "settings": {
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "thinking": {
+      "type": "disabled"
+    },
+    "temperature": 0,
+    "response_format": {
+      "type": "json_object"
+    },
+    "max_tokens": 640,
+    "stream": false,
+    "expected_calls": 36,
+    "automatic_retries": 0,
+    "note": "Frozen retrieval dataset and same parser prompt as previous text benchmark. JSON mode is an API-side format constraint absent from local baseline. No videos, indexes, or gold criteria sent."
+  },
+  "started_utc": "2026-10-28T05:10:58.668274+00:00",
+  "design_sha256": "e92f0a4ce134864442964d26903b78da253c5b1a3e02d33817ba435af61c7248",
+  "index_before": {
+    "action-index/index.faiss": "c8b8321121be9e494bc672d9dfcdbc741317846ed56c1a3afab0d8cd2f8aa5df",
+    "action-index/metadata.json": "5d0669e4cf005bf39a770e24fd6fa09198e668eb5a4919965d1e5f0854460c07",
+    "action-index/vectors.npy": "cb7e80d0ea3732f73e033dc22caf87e203659a84288d9d5f3743f8b4d41c99ec"
+  },
+  "server_pid_before": "75954",
+  "results": [
+    {
+      "phase": "warmup",
+      "id": "warmup",
+      "kind": "warmup",
+      "query": "海边有人放风筝。",
+      "started_utc": "2026-10-28T05:10:58.753388+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6557752499938942,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在海边\",\"人物A放风筝\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在海边",
+              "人物A放风筝"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 37,
+        "total_tokens": 454,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.65586150001036
+    },
+    {
+      "phase": "main",
+      "id": "write",
+      "kind": "original26",
+      "query": "戴红色安全帽的人坐着写字",
+      "started_utc": "2026-10-28T05:11:28.814710+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6116941669606604,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A戴红色安全帽\",\"人物A坐着\",\"人物A写字\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A戴红色安全帽",
+              "人物A坐着",
+              "人物A写字"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 419,
+        "completion_tokens": 43,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 163
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6118354579666629
+    },
+    {
+      "phase": "main",
+      "id": "cook",
+      "kind": "original26",
+      "query": "锅里正在炒蔬菜",
+      "started_utc": "2026-10-28T05:11:29.427596+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5318571249954402,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"锅里正在炒蔬菜\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "锅里正在炒蔬菜"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 416,
+        "completion_tokens": 33,
+        "total_tokens": 449,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 160
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5319742079591379
+    },
+    {
+      "phase": "main",
+      "id": "fence",
+      "kind": "original26",
+      "query": "有人翻越围栏",
+      "started_utc": "2026-10-28T05:11:29.960662+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6669145420310088,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"有人翻越围栏\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "有人翻越围栏"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 34,
+        "total_tokens": 451,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6669461250421591
+    },
+    {
+      "phase": "main",
+      "id": "smoke",
+      "kind": "original26",
+      "query": "戴安全帽的工人在吸烟",
+      "started_utc": "2026-10-28T05:11:30.627904+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.4688495000009425,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A戴安全帽\",\"人物A是工人\",\"人物A吸烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A戴安全帽",
+              "人物A是工人",
+              "人物A吸烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 419,
+        "completion_tokens": 43,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 163
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.46890304097905755
+    },
+    {
+      "phase": "main",
+      "id": "fire",
+      "kind": "original26",
+      "query": "现场出现明火和黑烟",
+      "started_utc": "2026-10-28T05:11:31.097388+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.3928269169991836,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"现场出现明火\",\"现场出现黑烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "现场出现明火",
+              "现场出现黑烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 419,
+        "completion_tokens": 38,
+        "total_tokens": 457,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 163
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.3928802090231329
+    },
+    {
+      "phase": "main",
+      "id": "fall",
+      "kind": "original26",
+      "query": "有人在仓库里突然失去平衡倒在地上",
+      "started_utc": "2026-10-28T05:11:31.490921+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.965693290985655,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在仓库\",\"人物A突然失去平衡\",\"人物A倒在地上\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在仓库",
+              "人物A突然失去平衡",
+              "人物A倒在地上"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 43,
+        "total_tokens": 463,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 164
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.9658607500023209
+    },
+    {
+      "phase": "main",
+      "id": "bag",
+      "kind": "original26",
+      "query": "一个人背着背包在街道上走路",
+      "started_utc": "2026-10-28T05:11:32.458711+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5313595829647966,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A背着背包\",\"人物A在街道上走路\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A背着背包",
+              "人物A在街道上走路"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 419,
+        "completion_tokens": 40,
+        "total_tokens": 459,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 163
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5314026669948362
+    },
+    {
+      "phase": "main",
+      "id": "snow",
+      "kind": "original26",
+      "query": "有人在雪地上滑倒",
+      "started_utc": "2026-10-28T05:11:32.990741+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6328581250272691,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在雪地上\",\"人物A滑倒\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在雪地上",
+              "人物A滑倒"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 38,
+        "total_tokens": 455,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6328880829969421
+    },
+    {
+      "phase": "main",
+      "id": "piano",
+      "kind": "original26",
+      "query": "戴安全帽的工人在弹钢琴",
+      "started_utc": "2026-10-28T05:11:33.624016+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.699923750013113,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A戴安全帽\",\"人物A是工人\",\"人物A弹钢琴\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A戴安全帽",
+              "人物A是工人",
+              "人物A弹钢琴"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 44,
+        "total_tokens": 464,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 164
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.7000056660035625
+    },
+    {
+      "phase": "main",
+      "id": "swim",
+      "kind": "original26",
+      "query": "有人在厨房游泳",
+      "started_utc": "2026-10-28T05:11:34.325486+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.32902191701577976,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在厨房\",\"人物A游泳\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在厨房",
+              "人物A游泳"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 415,
+        "completion_tokens": 36,
+        "total_tokens": 451,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 159
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.32908095902530476
+    },
+    {
+      "phase": "main",
+      "id": "pizza",
+      "kind": "original26",
+      "query": "厨师在厨房揉面制作披萨",
+      "started_utc": "2026-10-28T05:11:34.655427+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.7062861659796908,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在厨房\",\"人物A是厨师\",\"人物A揉面\",\"人物A制作披萨\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在厨房",
+              "人物A是厨师",
+              "人物A揉面",
+              "人物A制作披萨"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 48,
+        "total_tokens": 468,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 164
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.7063339999876916
+    },
+    {
+      "phase": "main",
+      "id": "space",
+      "kind": "original26",
+      "query": "宇航员在太空舱外维修卫星",
+      "started_utc": "2026-10-28T05:11:35.362833+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.7364520419505425,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在太空舱外\",\"人物A是宇航员\",\"人物A维修卫星\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在太空舱外",
+              "人物A是宇航员",
+              "人物A维修卫星"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 45,
+        "total_tokens": 465,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 164
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.7364969999762252
+    },
+    {
+      "phase": "main",
+      "id": "outdoor_run",
+      "kind": "original26",
+      "query": "有人在户外慢跑",
+      "started_utc": "2026-10-28T05:11:36.099860+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.38396683300379664,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在户外\",\"人物A慢跑\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在户外",
+              "人物A慢跑"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 416,
+        "completion_tokens": 37,
+        "total_tokens": 453,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 160
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.3840058330097236
+    },
+    {
+      "phase": "main",
+      "id": "helmet_bike",
+      "kind": "original26",
+      "query": "戴红色安全帽的人骑自行车",
+      "started_utc": "2026-10-28T05:11:36.484731+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.494307916960679,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A戴红色安全帽\",\"人物A骑自行车\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A戴红色安全帽",
+              "人物A骑自行车"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 419,
+        "completion_tokens": 40,
+        "total_tokens": 459,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 163
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.4943615419906564
+    },
+    {
+      "phase": "main",
+      "id": "indoor_run",
+      "kind": "original26",
+      "query": "有人在室内慢跑",
+      "started_utc": "2026-10-28T05:11:36.980103+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5165001670247875,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在室内\",\"人物A慢跑\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在室内",
+              "人物A慢跑"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 416,
+        "completion_tokens": 37,
+        "total_tokens": 453,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 160
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5165296250488609
+    },
+    {
+      "phase": "main",
+      "id": "write_paraphrase",
+      "kind": "original26",
+      "query": "工人坐在桌前低头书写",
+      "started_utc": "2026-10-28T05:11:37.497219+00:00",
+      "schema_valid": true,
+      "request_seconds": 1.2280489170225337,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"工人坐在桌前\",\"工人低头书写\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "工人坐在桌前",
+              "工人低头书写"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 36,
+        "total_tokens": 453,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 1.2280772920348682
+    },
+    {
+      "phase": "main",
+      "id": "corridor_smoke",
+      "kind": "original26",
+      "query": "有人在走廊里抽香烟",
+      "started_utc": "2026-10-28T05:11:38.725825+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5402827080106363,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在走廊\",\"人物A抽香烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在走廊",
+              "人物A抽香烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 37,
+        "total_tokens": 454,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5403264170163311
+    },
+    {
+      "phase": "main",
+      "id": "excavator_fall",
+      "kind": "original26",
+      "query": "挖掘机旁边有人跌倒",
+      "started_utc": "2026-10-28T05:11:39.266699+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6547774589853361,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景中有挖掘机\",\"人物A跌倒\",\"人物A在挖掘机旁边\"],\"must_not\":[],\"prefer\":[],\"relations\":[\"人物A位于挖掘机旁边\"]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景中有挖掘机",
+              "人物A跌倒",
+              "人物A在挖掘机旁边"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": [
+              "人物A位于挖掘机旁边"
+            ]
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 51,
+        "total_tokens": 468,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6548284590244293
+    },
+    {
+      "phase": "main",
+      "id": "fire_paraphrase",
+      "kind": "original26",
+      "query": "工地起火并冒出黑色浓烟",
+      "started_utc": "2026-10-28T05:11:39.922927+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6803103749989532,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在工地\",\"起火\",\"冒出黑色浓烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在工地",
+              "起火",
+              "冒出黑色浓烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 419,
+        "completion_tokens": 39,
+        "total_tokens": 458,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 163
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6803540000109933
+    },
+    {
+      "phase": "main",
+      "id": "indoor_bag",
+      "kind": "original26",
+      "query": "有人背着背包在室内走路",
+      "started_utc": "2026-10-28T05:11:40.603931+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6001187499496154,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A背着背包\",\"人物A在室内走路\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A背着背包",
+              "人物A在室内走路"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 418,
+        "completion_tokens": 39,
+        "total_tokens": 457,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 162
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6001493329531513
+    },
+    {
+      "phase": "main",
+      "id": "stool_write",
+      "kind": "original26",
+      "query": "有人坐在凳子上低头写字",
+      "started_utc": "2026-10-28T05:11:41.204659+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6708887910353951,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A坐在凳子上\",\"人物A低头写字\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A坐在凳子上",
+              "人物A低头写字"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 418,
+        "completion_tokens": 39,
+        "total_tokens": 457,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 162
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6709217909956351
+    },
+    {
+      "phase": "main",
+      "id": "warehouse_fire",
+      "kind": "original26",
+      "query": "仓库里的货架旁起火冒黑烟",
+      "started_utc": "2026-10-28T05:11:41.876190+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5851124160108157,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在仓库\",\"货架旁起火冒黑烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[\"起火冒黑烟发生在货架旁\"]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在仓库",
+              "货架旁起火冒黑烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": [
+              "起火冒黑烟发生在货架旁"
+            ]
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 421,
+        "completion_tokens": 49,
+        "total_tokens": 470,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 165
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5851642080233432
+    },
+    {
+      "phase": "main",
+      "id": "indoor_track",
+      "kind": "original26",
+      "query": "有人在室内跑道上跑步",
+      "started_utc": "2026-10-28T05:11:42.462712+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5320372909773141,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在室内跑道\",\"人物A跑步\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在室内跑道",
+              "人物A跑步"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 37,
+        "total_tokens": 454,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5321317499619909
+    },
+    {
+      "phase": "main",
+      "id": "helmet_smoke2",
+      "kind": "original26",
+      "query": "工人戴着安全帽吸烟",
+      "started_utc": "2026-10-28T05:11:42.996283+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5474448750028387,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"工人戴着安全帽\",\"工人吸烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "工人戴着安全帽",
+              "工人吸烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 36,
+        "total_tokens": 453,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5474724580417387
+    },
+    {
+      "phase": "main",
+      "id": "outdoor_bag",
+      "kind": "original26",
+      "query": "有人在户外背包行走",
+      "started_utc": "2026-10-28T05:11:43.544406+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.36333745799493045,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在户外\",\"人物A背包\",\"人物A行走\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在户外",
+              "人物A背包",
+              "人物A行走"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 416,
+        "completion_tokens": 40,
+        "total_tokens": 456,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 160
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.3633657500031404
+    },
+    {
+      "phase": "main",
+      "id": "snow_fall2",
+      "kind": "original26",
+      "query": "有人跌倒在积雪覆盖的地面",
+      "started_utc": "2026-10-28T05:11:43.908590+00:00",
+      "schema_valid": true,
+      "request_seconds": 1.0035989169846289,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"有人跌倒\",\"地面被积雪覆盖\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "有人跌倒",
+              "地面被积雪覆盖"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 419,
+        "completion_tokens": 36,
+        "total_tokens": 455,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 163
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 1.0036291669821367
+    },
+    {
+      "phase": "main",
+      "id": "paragraph_write",
+      "kind": "paragraph6",
+      "query": "帮我找一个人戴着红色安全帽坐着写字的片段。只需要这些画面，不限定地点。",
+      "started_utc": "2026-10-28T05:11:44.912955+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5910729159950279,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A戴着红色安全帽\",\"人物A坐着\",\"人物A写字\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A戴着红色安全帽",
+              "人物A坐着",
+              "人物A写字"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 432,
+        "completion_tokens": 43,
+        "total_tokens": 475,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 176
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5911167500307783
+    },
+    {
+      "phase": "main",
+      "id": "paragraph_indoor_run",
+      "kind": "paragraph6",
+      "query": "我想找有人在室内慢跑的视频。衣服颜色不限，具体是哪一个人也没有要求。",
+      "started_utc": "2026-10-28T05:11:45.505582+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5526262919884175,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在室内\",\"人物A慢跑\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在室内",
+              "人物A慢跑"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 37,
+        "total_tokens": 467,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 174
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5526700830087066
+    },
+    {
+      "phase": "main",
+      "id": "paragraph_smoke",
+      "kind": "paragraph6",
+      "query": "请找一个工人戴着安全帽吸烟的画面。戴帽子和吸烟必须是同一个人，不需要限定帽子的颜色。",
+      "started_utc": "2026-10-28T05:11:46.059477+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.597908208030276,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A是工人\",\"人物A戴着安全帽\",\"人物A吸烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A是工人",
+              "人物A戴着安全帽",
+              "人物A吸烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 435,
+        "completion_tokens": 43,
+        "total_tokens": 478,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 179
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5979964170255698
+    },
+    {
+      "phase": "main",
+      "id": "paragraph_bag",
+      "kind": "paragraph6",
+      "query": "想找户外有人背着背包行走的片段。背包颜色和衣服颜色都不限，不用限定具体人物。",
+      "started_utc": "2026-10-28T05:11:46.659452+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6537881660042331,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在户外\",\"人物A背着背包\",\"人物A行走\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在户外",
+              "人物A背着背包",
+              "人物A行走"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 435,
+        "completion_tokens": 41,
+        "total_tokens": 476,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 179
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6538224159739912
+    },
+    {
+      "phase": "main",
+      "id": "paragraph_fire",
+      "kind": "paragraph6",
+      "query": "我要找仓库里的火情画面，货架旁边起火并冒出黑烟。不要限制具体是哪一家仓库。",
+      "started_utc": "2026-10-28T05:11:47.314047+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5869456670479849,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在仓库\",\"货架旁边起火\",\"起火处冒出黑烟\"],\"must_not\":[],\"prefer\":[],\"relations\":[\"起火位置在货架旁边\"]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在仓库",
+              "货架旁边起火",
+              "起火处冒出黑烟"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": [
+              "起火位置在货架旁边"
+            ]
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 436,
+        "completion_tokens": 50,
+        "total_tokens": 486,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 180
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.586994000012055
+    },
+    {
+      "phase": "main",
+      "id": "paragraph_helmet_bike",
+      "kind": "paragraph6",
+      "query": "帮我找有人戴着红色安全帽骑自行车的视频。要求骑车的人本人戴着这顶帽子，地点没有限制。",
+      "started_utc": "2026-10-28T05:11:47.903084+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.7554960420238785,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A戴红色安全帽\",\"人物A骑自行车\"],\"must_not\":[],\"prefer\":[],\"relations\":[\"人物A是骑车的人\"]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A戴红色安全帽",
+              "人物A骑自行车"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": [
+              "人物A是骑车的人"
+            ]
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 437,
+        "completion_tokens": 46,
+        "total_tokens": 483,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 181
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.7555247920099646
+    },
+    {
+      "phase": "main",
+      "id": "logic_or",
+      "kind": "logic3",
+      "query": "有人在室内慢跑，或者有人在雪地滑倒，找到其中任意一类都可以。",
+      "started_utc": "2026-10-28T05:11:48.659387+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.5146950830239803,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"场景在室内\",\"人物A慢跑\"],\"must_not\":[],\"prefer\":[],\"relations\":[]},{\"must\":[\"场景在雪地\",\"人物B滑倒\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "场景在室内",
+              "人物A慢跑"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          },
+          {
+            "must": [
+              "场景在雪地",
+              "人物B滑倒"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 65,
+        "total_tokens": 495,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 174
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.5147733750054613
+    },
+    {
+      "phase": "main",
+      "id": "logic_no_helmet",
+      "kind": "logic3",
+      "query": "有人未佩戴安全帽",
+      "started_utc": "2026-10-28T05:11:49.177778+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.6902727079577744,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"有人未佩戴安全帽\"],\"must_not\":[],\"prefer\":[],\"relations\":[]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "有人未佩戴安全帽"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": []
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 417,
+        "completion_tokens": 34,
+        "total_tokens": 451,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 161
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.6903082079952583
+    },
+    {
+      "phase": "main",
+      "id": "logic_order",
+      "kind": "logic3",
+      "query": "同一个工人先摘下安全帽，再坐着写字。",
+      "started_utc": "2026-10-28T05:11:49.868940+00:00",
+      "schema_valid": true,
+      "request_seconds": 0.837647249980364,
+      "http_status": 200,
+      "raw": "{\"groups\":[{\"must\":[\"人物A是工人\",\"人物A先摘下安全帽\",\"人物A再坐着写字\"],\"must_not\":[],\"prefer\":[],\"relations\":[\"人物A先摘下安全帽，再坐着写字\"]}],\"uncertain\":[]}",
+      "parsed": {
+        "groups": [
+          {
+            "must": [
+              "人物A是工人",
+              "人物A先摘下安全帽",
+              "人物A再坐着写字"
+            ],
+            "must_not": [],
+            "prefer": [],
+            "relations": [
+              "人物A先摘下安全帽，再坐着写字"
+            ]
+          }
+        ],
+        "uncertain": []
+      },
+      "finish_reason": "stop",
+      "response_model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 423,
+        "completion_tokens": 57,
+        "total_tokens": 480,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 167
+      },
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "reasoning_returned": false,
+      "total_seconds": 0.837698083021678
+    }
+  ],
+  "runner_notes": [
+    "Resumed after offline runner missing kind field; completed requests preserved, no retry of successful calls."
+  ],
+  "index_after": {
+    "action-index/index.faiss": "c8b8321121be9e494bc672d9dfcdbc741317846ed56c1a3afab0d8cd2f8aa5df",
+    "action-index/metadata.json": "5d0669e4cf005bf39a770e24fd6fa09198e668eb5a4919965d1e5f0854460c07",
+    "action-index/vectors.npy": "cb7e80d0ea3732f73e033dc22caf87e203659a84288d9d5f3743f8b4d41c99ec"
+  },
+  "pointer_unchanged": true,
+  "server_pid_after": "75954",
+  "completed_utc": "2026-10-28T05:11:50.770293+00:00"
+}

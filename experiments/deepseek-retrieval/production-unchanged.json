@@ -1,0 +1,111 @@
+{
+  "checks": [
+    {
+      "id": "outdoor_run",
+      "query": "有人在户外慢跑",
+      "online_ids": [
+        1,
+        2,
+        7,
+        17,
+        28
+      ],
+      "offline_baseline_ids": [
+        1,
+        2,
+        7,
+        17,
+        28
+      ],
+      "offline_filtered_ids": [
+        1,
+        7,
+        28
+      ],
+      "baseline_matches": true
+    },
+    {
+      "id": "helmet_bike",
+      "query": "戴红色安全帽的人骑自行车",
+      "online_ids": [
+        1,
+        27,
+        32
+      ],
+      "offline_baseline_ids": [
+        1,
+        27,
+        32
+      ],
+      "offline_filtered_ids": [],
+      "baseline_matches": true
+    },
+    {
+      "id": "write",
+      "query": "戴红色安全帽的人坐着写字",
+      "online_ids": [
+        27
+      ],
+      "offline_baseline_ids": [
+        27
+      ],
+      "offline_filtered_ids": [
+        27
+      ],
+      "baseline_matches": true
+    },
+    {
+      "id": "paragraph_helmet_bike",
+      "query": "帮我找有人戴着红色安全帽骑自行车的视频。要求骑车的人本人戴着这顶帽子，地点没有限制。",
+      "online_ids": [
+        27,
+        32
+      ],
+      "offline_baseline_ids": [
+        27,
+        32
+      ],
+      "offline_filtered_ids": [],
+      "baseline_matches": true
+    },
+    {
+      "id": "fire_paraphrase",
+      "query": "工地起火并冒出黑色浓烟",
+      "online_ids": [
+        20,
+        41
+      ],
+      "offline_baseline_ids": [
+        20,
+        41
+      ],
+      "offline_filtered_ids": [],
+      "baseline_matches": true
+    },
+    {
+      "id": "logic_or",
+      "query": "有人在室内慢跑，或者有人在雪地滑倒，找到其中任意一类都可以。",
+      "online_ids": [
+        7,
+        17,
+        26
+      ],
+      "offline_baseline_ids": [
+        7,
+        17,
+        26
+      ],
+      "offline_filtered_ids": [
+        7,
+        17,
+        26
+      ],
+      "baseline_matches": true
+    }
+  ],
+  "project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/515b4148aa28447984a9ed7ebd76f210/demo",
+  "index_unchanged": true,
+  "pointer_unchanged": true,
+  "server_pid": "75954",
+  "pid_unchanged": true
+}

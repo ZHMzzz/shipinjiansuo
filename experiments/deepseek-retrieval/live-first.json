@@ -1,0 +1,131 @@
+{
+  "items": [
+    {
+      "id": 7,
+      "path": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+      "duration": 9.833333,
+      "width": 640,
+      "height": 360,
+      "size_in_bytes": 919071,
+      "revision": "1b182309341cf2457f09856c1f6ddf9099d87917c1877b764e1b735d7d3721e2",
+      "url": "/demo/media/7",
+      "thumbnail": "/demo/thumbnail?media_id=7&timestamp=6.9166665",
+      "features": {
+        "deepinsight/insightface/buffalo_l/_unknown": 18,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 2344
+      },
+      "action_segments": 2,
+      "name": "jogging-OV-CGjSLNbg_000053_000063.mp4",
+      "created": null,
+      "start": 4.0,
+      "end": 9.833333,
+      "score": 0.5794353485107422,
+      "kind": "text",
+      "face_similarity": null,
+      "scene_ts": null,
+      "scene_te": null
+    },
+    {
+      "id": 2,
+      "path": "backpack-walking.mp4",
+      "duration": 8.52,
+      "width": 360,
+      "height": 640,
+      "size_in_bytes": 374558,
+      "revision": "b1dfbf054683e42b0210ad3ff1d3a0685fbd5d0f86301354a4521fab96020eaf",
+      "url": "/demo/media/2",
+      "thumbnail": "/demo/thumbnail?media_id=2&timestamp=6.26",
+      "features": {
+        "deepinsight/insightface/buffalo_l/_unknown": 17,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 970
+      },
+      "action_segments": 2,
+      "name": "backpack-walking.mp4",
+      "created": null,
+      "start": 4.0,
+      "end": 8.52,
+      "score": 0.5719151496887207,
+      "kind": "text",
+      "face_similarity": null,
+      "scene_ts": null,
+      "scene_te": null
+    },
+    {
+      "id": 17,
+      "path": "动作定位_串接测试24秒.mp4",
+      "duration": 24.0,
+      "width": 640,
+      "height": 360,
+      "size_in_bytes": 892647,
+      "revision": "790d8da3602f6c85d61e51b3c8ed16177bbb6c0335db0d975e28f66006a1cde6",
+      "url": "/demo/media/17",
+      "thumbnail": "/demo/thumbnail?media_id=17&timestamp=12.0",
+      "features": {
+        "deepinsight/insightface/buffalo_l/_unknown": 40,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 6201
+      },
+      "action_segments": 5,
+      "name": "动作定位_串接测试24秒.mp4",
+      "created": 1793073430.33025,
+      "start": 8.0,
+      "end": 16.0,
+      "score": 0.5502804517745972,
+      "kind": "text",
+      "face_similarity": null,
+      "scene_ts": null,
+      "scene_te": null
+    },
+    {
+      "id": 1,
+      "path": "backpack-street.mp4",
+      "duration": 14.6146,
+      "width": 640,
+      "height": 360,
+      "size_in_bytes": 427164,
+      "revision": "635fa64e480cf7bf2c172afe6df612a9f9edb1d737c73a076169d8bba00fcef2",
+      "url": "/demo/media/1",
+      "thumbnail": "/demo/thumbnail?media_id=1&timestamp=8.0",
+      "features": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 2529
+      },
+      "action_segments": 3,
+      "name": "backpack-street.mp4",
+      "created": null,
+      "start": 4.0,
+      "end": 12.0,
+      "score": 0.5307570099830627,
+      "kind": "text",
+      "face_similarity": null,
+      "scene_ts": null,
+      "scene_te": null
+    },
+    {
+      "id": 28,
+      "path": "抖音20261027-677447.mp4",
+      "duration": 18.083333,
+      "width": 360,
+      "height": 640,
+      "size_in_bytes": 2218014,
+      "revision": "b1f03e16a607397f1f17bd801d2b32e5d85eb53ea8b2ff162cad794863b1d891",
+      "url": "/demo/media/28",
+      "thumbnail": "/demo/thumbnail?media_id=28&timestamp=8.0",
+      "features": {
+        "deepinsight/insightface/buffalo_l/_unknown": 196,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 14140
+      },
+      "action_segments": 4,
+      "name": "抖音20261027-677447.mp4",
+      "created": 1793093511.963786,
+      "start": 4.0,
+      "end": 12.0,
+      "score": 0.5059723258018494,
+      "kind": "text",
+      "face_similarity": null,
+      "scene_ts": null,
+      "scene_te": null
+    }
+  ],
+  "total": 5,
+  "mode": "text",
+  "limited": false
+}

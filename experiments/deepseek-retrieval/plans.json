@@ -1,0 +1,713 @@
+[
+  {
+    "id": "write",
+    "query": "戴红色安全帽的人坐着写字",
+    "groups_raw": [
+      [
+        "人物A戴红色安全帽",
+        "人物A坐着",
+        "人物A写字"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人戴红色安全帽",
+        "有人坐着",
+        "有人写字"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "cook",
+    "query": "锅里正在炒蔬菜",
+    "groups_raw": [
+      [
+        "锅里正在炒蔬菜"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "锅里正在炒蔬菜"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "fence",
+    "query": "有人翻越围栏",
+    "groups_raw": [
+      [
+        "有人翻越围栏"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人翻越围栏"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "smoke",
+    "query": "戴安全帽的工人在吸烟",
+    "groups_raw": [
+      [
+        "人物A戴安全帽",
+        "人物A是工人",
+        "人物A吸烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人戴安全帽",
+        "有人是工人",
+        "有人吸烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "fire",
+    "query": "现场出现明火和黑烟",
+    "groups_raw": [
+      [
+        "现场出现明火",
+        "现场出现黑烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "现场出现明火",
+        "现场出现黑烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "fall",
+    "query": "有人在仓库里突然失去平衡倒在地上",
+    "groups_raw": [
+      [
+        "场景在仓库",
+        "人物A突然失去平衡",
+        "人物A倒在地上"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在仓库",
+        "有人突然失去平衡",
+        "有人倒在地上"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "bag",
+    "query": "一个人背着背包在街道上走路",
+    "groups_raw": [
+      [
+        "人物A背着背包",
+        "人物A在街道上走路"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人背着背包",
+        "有人在街道上走路"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "snow",
+    "query": "有人在雪地上滑倒",
+    "groups_raw": [
+      [
+        "场景在雪地上",
+        "人物A滑倒"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在雪地上",
+        "有人滑倒"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "piano",
+    "query": "戴安全帽的工人在弹钢琴",
+    "groups_raw": [
+      [
+        "人物A戴安全帽",
+        "人物A是工人",
+        "人物A弹钢琴"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人戴安全帽",
+        "有人是工人",
+        "有人弹钢琴"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "swim",
+    "query": "有人在厨房游泳",
+    "groups_raw": [
+      [
+        "场景在厨房",
+        "人物A游泳"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在厨房",
+        "有人游泳"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "pizza",
+    "query": "厨师在厨房揉面制作披萨",
+    "groups_raw": [
+      [
+        "场景在厨房",
+        "人物A是厨师",
+        "人物A揉面",
+        "人物A制作披萨"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在厨房",
+        "有人是厨师",
+        "有人揉面",
+        "有人制作披萨"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "space",
+    "query": "宇航员在太空舱外维修卫星",
+    "groups_raw": [
+      [
+        "场景在太空舱外",
+        "人物A是宇航员",
+        "人物A维修卫星"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在太空舱外",
+        "有人是宇航员",
+        "有人维修卫星"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "outdoor_run",
+    "query": "有人在户外慢跑",
+    "groups_raw": [
+      [
+        "场景在户外",
+        "人物A慢跑"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在户外",
+        "有人慢跑"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "helmet_bike",
+    "query": "戴红色安全帽的人骑自行车",
+    "groups_raw": [
+      [
+        "人物A戴红色安全帽",
+        "人物A骑自行车"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人戴红色安全帽",
+        "有人骑自行车"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "indoor_run",
+    "query": "有人在室内慢跑",
+    "groups_raw": [
+      [
+        "场景在室内",
+        "人物A慢跑"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在室内",
+        "有人慢跑"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "write_paraphrase",
+    "query": "工人坐在桌前低头书写",
+    "groups_raw": [
+      [
+        "工人坐在桌前",
+        "工人低头书写"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "工人坐在桌前",
+        "工人低头书写"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "corridor_smoke",
+    "query": "有人在走廊里抽香烟",
+    "groups_raw": [
+      [
+        "场景在走廊",
+        "人物A抽香烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在走廊",
+        "有人抽香烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "excavator_fall",
+    "query": "挖掘机旁边有人跌倒",
+    "groups_raw": [
+      [
+        "场景中有挖掘机",
+        "人物A跌倒",
+        "人物A在挖掘机旁边"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景中有挖掘机",
+        "有人跌倒",
+        "有人在挖掘机旁边"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [
+      "人物A位于挖掘机旁边"
+    ],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "fire_paraphrase",
+    "query": "工地起火并冒出黑色浓烟",
+    "groups_raw": [
+      [
+        "场景在工地",
+        "起火",
+        "冒出黑色浓烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在工地",
+        "起火",
+        "冒出黑色浓烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "indoor_bag",
+    "query": "有人背着背包在室内走路",
+    "groups_raw": [
+      [
+        "人物A背着背包",
+        "人物A在室内走路"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人背着背包",
+        "有人在室内走路"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "stool_write",
+    "query": "有人坐在凳子上低头写字",
+    "groups_raw": [
+      [
+        "人物A坐在凳子上",
+        "人物A低头写字"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人坐在凳子上",
+        "有人低头写字"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "warehouse_fire",
+    "query": "仓库里的货架旁起火冒黑烟",
+    "groups_raw": [
+      [
+        "场景在仓库",
+        "货架旁起火冒黑烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在仓库",
+        "货架旁起火冒黑烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [
+      "起火冒黑烟发生在货架旁"
+    ],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "indoor_track",
+    "query": "有人在室内跑道上跑步",
+    "groups_raw": [
+      [
+        "场景在室内跑道",
+        "人物A跑步"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在室内跑道",
+        "有人跑步"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "helmet_smoke2",
+    "query": "工人戴着安全帽吸烟",
+    "groups_raw": [
+      [
+        "工人戴着安全帽",
+        "工人吸烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "工人戴着安全帽",
+        "工人吸烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "outdoor_bag",
+    "query": "有人在户外背包行走",
+    "groups_raw": [
+      [
+        "场景在户外",
+        "人物A背包",
+        "人物A行走"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在户外",
+        "有人背包",
+        "有人行走"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "snow_fall2",
+    "query": "有人跌倒在积雪覆盖的地面",
+    "groups_raw": [
+      [
+        "有人跌倒",
+        "地面被积雪覆盖"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人跌倒",
+        "地面被积雪覆盖"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "paragraph_write",
+    "query": "帮我找一个人戴着红色安全帽坐着写字的片段。只需要这些画面，不限定地点。",
+    "groups_raw": [
+      [
+        "人物A戴着红色安全帽",
+        "人物A坐着",
+        "人物A写字"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人戴着红色安全帽",
+        "有人坐着",
+        "有人写字"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "paragraph_indoor_run",
+    "query": "我想找有人在室内慢跑的视频。衣服颜色不限，具体是哪一个人也没有要求。",
+    "groups_raw": [
+      [
+        "场景在室内",
+        "人物A慢跑"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在室内",
+        "有人慢跑"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "paragraph_smoke",
+    "query": "请找一个工人戴着安全帽吸烟的画面。戴帽子和吸烟必须是同一个人，不需要限定帽子的颜色。",
+    "groups_raw": [
+      [
+        "人物A是工人",
+        "人物A戴着安全帽",
+        "人物A吸烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人是工人",
+        "有人戴着安全帽",
+        "有人吸烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "paragraph_bag",
+    "query": "想找户外有人背着背包行走的片段。背包颜色和衣服颜色都不限，不用限定具体人物。",
+    "groups_raw": [
+      [
+        "场景在户外",
+        "人物A背着背包",
+        "人物A行走"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在户外",
+        "有人背着背包",
+        "有人行走"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "paragraph_fire",
+    "query": "我要找仓库里的火情画面，货架旁边起火并冒出黑烟。不要限制具体是哪一家仓库。",
+    "groups_raw": [
+      [
+        "场景在仓库",
+        "货架旁边起火",
+        "起火处冒出黑烟"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在仓库",
+        "货架旁边起火",
+        "起火处冒出黑烟"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [
+      "起火位置在货架旁边"
+    ],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "paragraph_helmet_bike",
+    "query": "帮我找有人戴着红色安全帽骑自行车的视频。要求骑车的人本人戴着这顶帽子，地点没有限制。",
+    "groups_raw": [
+      [
+        "人物A戴红色安全帽",
+        "人物A骑自行车"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人戴红色安全帽",
+        "有人骑自行车"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [
+      "人物A是骑车的人"
+    ],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "logic_or",
+    "query": "有人在室内慢跑，或者有人在雪地滑倒，找到其中任意一类都可以。",
+    "groups_raw": [
+      [
+        "场景在室内",
+        "人物A慢跑"
+      ],
+      [
+        "场景在雪地",
+        "人物B滑倒"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "场景在室内",
+        "有人慢跑"
+      ],
+      [
+        "场景在雪地",
+        "有人滑倒"
+      ]
+    ],
+    "fallback_reasons": [],
+    "unverified_relations": [],
+    "status": "approximate_condition_gate"
+  },
+  {
+    "id": "logic_no_helmet",
+    "query": "有人未佩戴安全帽",
+    "groups_raw": [
+      [
+        "有人未佩戴安全帽"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人未佩戴安全帽"
+      ]
+    ],
+    "fallback_reasons": [
+      "negative_fact_in_must"
+    ],
+    "unverified_relations": [],
+    "status": "baseline_fallback"
+  },
+  {
+    "id": "logic_order",
+    "query": "同一个工人先摘下安全帽，再坐着写字。",
+    "groups_raw": [
+      [
+        "人物A是工人",
+        "人物A先摘下安全帽",
+        "人物A再坐着写字"
+      ]
+    ],
+    "groups_normalized": [
+      [
+        "有人是工人",
+        "有人先摘下安全帽",
+        "有人再坐着写字"
+      ]
+    ],
+    "fallback_reasons": [
+      "temporal_order"
+    ],
+    "unverified_relations": [
+      "人物A先摘下安全帽，再坐着写字"
+    ],
+    "status": "baseline_fallback"
+  }
+]
