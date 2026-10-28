@@ -22,7 +22,6 @@ function syncInputs() {
   reference.disabled = Boolean(natural.value.trim());
   reference.closest('.image-picker').classList.toggle('unavailable', reference.disabled);
   el('clear-reference').hidden = !hasImage;
-  el('threshold-control').hidden = !el('person').value.trim();
   reference.closest('.image-input').classList.toggle('has-image', hasImage);
 }
 function clearReference() {
@@ -58,11 +57,6 @@ function render() {
   const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE)); page = Math.min(page, pages);
   el('list-title').textContent = mode === 'browse' ? (applied.filename ? '筛选视频' : '全部视频') : '查询结果';
   el('count').textContent = `${items.length} ${mode === 'text' ? '个片段' : '个视频'}`;
-  el('active-conditions').replaceChildren();
-  for (const [key, label] of [['query','描述'],['person','人名'],['image','图片'],['filename','文件名']]) {
-    if (applied[key]) el('active-conditions').append(node('span', `${label}：${applied[key]}`));
-  }
-  el('active-conditions').hidden = !el('active-conditions').children.length;
   const grid = el('video-grid'); grid.replaceChildren();
   if (!items.length) grid.append(node('p', '没有找到视频，请调整条件或新增视频。', 'empty'));
   for (const item of items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)) {
@@ -124,7 +118,6 @@ el('query-form').onsubmit = async event => {
   if (input.query && input.image) { feedback('search-error', '自然语言与参考图片请分开查询', true); return; }
   const form = new FormData();
   for (const key of ['query','person','filename']) form.set(key,input[key]);
-  form.set('threshold',el('face-threshold').value || '.45');
   if (reference.files[0]) form.set('photo',reference.files[0]);
   const current = generation, controller = new AbortController(); request = controller;
   setSearchBusy(true);
@@ -134,7 +127,7 @@ el('query-form').onsubmit = async event => {
     if (current !== generation) return;
     if (data.mode === 'text' || (data.mode === 'person_scene' && data.items.length)) qwenLoaded = true;
     items = data.items; mode = data.mode; limited = data.limited; applied = input; page = 1; render();
-    el('search-status').textContent = mode === 'person_scene' ? '按包含人物的场景片段排序，点击从人物出现时刻播放。' : mode === 'person_object' ? '物体命中时间附近检测到此人物，不保证出现在同一帧。' : mode === 'text' ? '按语义相关性排列；同一视频可返回多个片段。' : '';
+    el('search-status').textContent = '';
   } catch (error) {
     if (current === generation && error.name !== 'AbortError') { feedback('search-error', error.message, true); el('search-status').textContent = '查询未完成，仍显示上次结果。'; }
   } finally {
@@ -142,7 +135,7 @@ el('query-form').onsubmit = async event => {
   }
 };
 el('reset').onclick = async () => {
-  cancelSearch(); el('query-form').reset(); clearReference(); el('face-threshold').value = '.45';
+  cancelSearch(); el('query-form').reset(); clearReference();
   applied = {}; mode = 'browse'; limited = false; page = 1; items = catalog;
   feedback('search-error'); el('search-status').textContent = ''; render();
   try { await loadCatalog(); } catch (e) { feedback('search-error', '视频库读取失败：' + e.message, true); }

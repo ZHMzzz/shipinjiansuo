@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>寻帧 · 视频检索</title><link rel="stylesheet" href="/mvp/catalog.css?v=4"></head><body>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>寻帧 · 视频检索</title><link rel="stylesheet" href="/mvp/catalog.css?v=5"></head><body>
 <header class="topbar"><a class="brand" href="/mvp/">寻帧 <span class="brand-en">VIDEO LIBRARY</span></a><div class="header-right"><button id="open-people" disabled class="outline-button" type="button">人脸维护</button></div></header>
 <main class="workspace">
 <section class="query-panel"><div class="query-heading"><h1>搜索视频</h1><span>从描述、人物或参考图片开始</span></div>
@@ -8,9 +8,9 @@
 <div class="field image"><span>以图搜图</span><div class="image-input"><label class="image-picker" for="reference"><span id="image-prompt">▧　选择参考图片</span><img id="image-preview" hidden><input id="reference" type="file" accept="image/*"></label><button id="clear-reference" type="button" aria-label="清空参考图片" title="清空图片" hidden>×</button></div></div>
 <label class="field filename"><span>视频名称</span><input id="filename" maxlength="255" placeholder="输入文件名" autocomplete="off"></label>
 <button id="search-button" class="search-button" type="submit"><span class="search-icon" aria-hidden="true">⌕</span><span id="search-label">查询</span></button></form>
-<div class="query-foot"><label id="threshold-control" hidden>人脸门槛 <input id="face-threshold" type="number" min="0" max="1" step="0.05" value="0.45"></label><button id="reset" type="button">重置条件</button></div></section>
+<div class="query-foot"><button id="reset" type="button">重置条件</button></div></section>
 <p id="search-error" role="alert" hidden></p><p id="index-status" hidden></p><section class="library"><div class="library-toolbar"><div><h2 id="list-title">全部视频</h2><span id="count"></span><button id="open-upload" disabled class="add-video-button" type="button"><span>＋</span> 新增视频</button></div></div>
-<p id="search-status" role="status" aria-live="polite"></p><div id="active-conditions" hidden></div><div class="library-content"><div id="video-grid"></div></div>
+<p id="search-status" role="status" aria-live="polite"></p><div class="library-content"><div id="video-grid"></div></div>
 <div class="pagination"><span id="range"></span><nav id="pages" aria-label="视频分页"></nav></div></section>
 </main><dialog id="video-dialog"><button id="close-video" aria-label="关闭预览">×</button><video controls playsinline></video><h3></h3><p id="play-caption"></p></dialog>
-<script type="module" src="/mvp/catalog.js?v=4"></script></body></html>
+<script type="module" src="/mvp/catalog.js?v=5"></script></body></html>
