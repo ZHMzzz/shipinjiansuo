@@ -1,0 +1,372 @@
+{
+  "scope": "Offline only; manually specified conditions, same original Qwen segment; do not modify production API, index, or UI.",
+  "rules": {
+    "minimum_condition_scores": [
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55
+    ],
+    "maximum_condition_gaps": [
+      null,
+      0.2,
+      0.15,
+      0.1,
+      0.08
+    ]
+  },
+  "cases": [
+    {
+      "id": "write",
+      "split": "calibration",
+      "query": "戴红色安全帽的人坐着写字",
+      "conditions": [
+        "有人戴着红色安全帽",
+        "有人坐着写字"
+      ],
+      "positive_media": [
+        27
+      ],
+      "negative_media": [
+        17,
+        23
+      ]
+    },
+    {
+      "id": "cook",
+      "split": "calibration",
+      "query": "锅里正在炒蔬菜",
+      "conditions": [
+        "画面中有蔬菜",
+        "有人用锅炒菜"
+      ],
+      "positive_media": [
+        5,
+        6
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "fence",
+      "split": "calibration",
+      "query": "有人翻越围栏",
+      "conditions": [
+        "画面中有围栏",
+        "有人翻越围栏"
+      ],
+      "positive_media": [
+        18
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "smoke",
+      "split": "calibration",
+      "query": "戴安全帽的工人在吸烟",
+      "conditions": [
+        "有人戴着安全帽",
+        "有人在吸烟"
+      ],
+      "positive_media": [
+        19
+      ],
+      "negative_media": [
+        27
+      ]
+    },
+    {
+      "id": "fire",
+      "split": "calibration",
+      "query": "现场出现明火和黑烟",
+      "conditions": [
+        "现场出现明火",
+        "现场冒出黑烟"
+      ],
+      "positive_media": [
+        20
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "fall",
+      "split": "calibration",
+      "query": "有人在仓库里突然失去平衡倒在地上",
+      "conditions": [
+        "场景在仓库里",
+        "有人失去平衡摔倒在地上"
+      ],
+      "positive_media": [
+        17
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "bag",
+      "split": "calibration",
+      "query": "一个人背着背包在街道上走路",
+      "conditions": [
+        "有人背着背包",
+        "有人在街道上走路"
+      ],
+      "positive_media": [
+        1
+      ],
+      "negative_media": [
+        2,
+        17
+      ]
+    },
+    {
+      "id": "snow",
+      "split": "calibration",
+      "query": "有人在雪地上滑倒",
+      "conditions": [
+        "场景在雪地上",
+        "有人滑倒在地上"
+      ],
+      "positive_media": [
+        26
+      ],
+      "negative_media": [
+        17,
+        21
+      ]
+    },
+    {
+      "id": "piano",
+      "split": "calibration",
+      "query": "戴安全帽的工人在弹钢琴",
+      "conditions": [
+        "有人戴着安全帽",
+        "有人弹钢琴"
+      ],
+      "positive_media": [],
+      "expected_empty": true,
+      "negative_media": []
+    },
+    {
+      "id": "swim",
+      "split": "calibration",
+      "query": "有人在厨房游泳",
+      "conditions": [
+        "场景在厨房里",
+        "有人游泳"
+      ],
+      "positive_media": [],
+      "expected_empty": true,
+      "negative_media": []
+    },
+    {
+      "id": "pizza",
+      "split": "calibration",
+      "query": "厨师在厨房揉面制作披萨",
+      "conditions": [
+        "场景在厨房里",
+        "有人揉面制作披萨"
+      ],
+      "positive_media": [],
+      "expected_empty": true,
+      "negative_media": []
+    },
+    {
+      "id": "space",
+      "split": "calibration",
+      "query": "宇航员在太空舱外维修卫星",
+      "conditions": [
+        "宇航员在太空中",
+        "有人维修卫星"
+      ],
+      "positive_media": [],
+      "expected_empty": true,
+      "negative_media": []
+    },
+    {
+      "id": "outdoor_run",
+      "split": "holdout",
+      "query": "有人在户外慢跑",
+      "conditions": [
+        "场景在户外",
+        "有人慢跑"
+      ],
+      "positive_media": [],
+      "expected_empty": true,
+      "negative_media": []
+    },
+    {
+      "id": "helmet_bike",
+      "split": "holdout",
+      "query": "戴红色安全帽的人骑自行车",
+      "conditions": [
+        "有人戴着红色安全帽",
+        "有人骑自行车"
+      ],
+      "positive_media": [],
+      "expected_empty": true,
+      "negative_media": []
+    },
+    {
+      "id": "indoor_run",
+      "split": "holdout",
+      "query": "有人在室内慢跑",
+      "conditions": [
+        "场景在室内",
+        "有人慢跑"
+      ],
+      "positive_media": [
+        7,
+        8
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "write_paraphrase",
+      "split": "holdout",
+      "query": "工人坐在桌前低头书写",
+      "conditions": [
+        "有人坐在桌前",
+        "有人低头书写"
+      ],
+      "positive_media": [],
+      "negative_media": [
+        27
+      ],
+      "label_review": "原标注不准确：视频27的人坐凳子上在膝上书写，没有桌子；删除27不算误删。其他候选未全面标注。"
+    },
+    {
+      "id": "corridor_smoke",
+      "split": "holdout",
+      "query": "有人在走廊里抽香烟",
+      "conditions": [
+        "场景在走廊里",
+        "有人抽香烟"
+      ],
+      "positive_media": [
+        25
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "excavator_fall",
+      "split": "holdout",
+      "query": "挖掘机旁边有人跌倒",
+      "conditions": [
+        "画面中有挖掘机",
+        "有人跌倒在地上"
+      ],
+      "positive_media": [
+        21
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "fire_paraphrase",
+      "split": "holdout",
+      "query": "工地起火并冒出黑色浓烟",
+      "conditions": [
+        "场景在工地上",
+        "现场起火冒出黑烟"
+      ],
+      "positive_media": [],
+      "negative_media": [
+        20
+      ],
+      "label_review": "原标注不准确：视频20为仓库货架旁火情，不能直接认定为建筑工地；删除20不算误删。"
+    },
+    {
+      "id": "indoor_bag",
+      "split": "holdout",
+      "query": "有人背着背包在室内走路",
+      "conditions": [
+        "有人背着背包",
+        "有人在室内走路"
+      ],
+      "positive_media": [
+        2,
+        17
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "stool_write",
+      "split": "supplemental",
+      "query": "有人坐在凳子上低头写字",
+      "conditions": [
+        "有人坐在凳子上",
+        "有人低头写字"
+      ],
+      "positive_media": [
+        27
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "warehouse_fire",
+      "split": "supplemental",
+      "query": "仓库里的货架旁起火冒黑烟",
+      "conditions": [
+        "场景在仓库里",
+        "货架旁起火冒黑烟"
+      ],
+      "positive_media": [
+        20
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "indoor_track",
+      "split": "supplemental",
+      "query": "有人在室内跑道上跑步",
+      "conditions": [
+        "场景在室内",
+        "有人在跑道上跑步"
+      ],
+      "positive_media": [
+        7
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "helmet_smoke2",
+      "split": "supplemental",
+      "query": "工人戴着安全帽吸烟",
+      "conditions": [
+        "有人戴着安全帽",
+        "有人抽香烟"
+      ],
+      "positive_media": [
+        19
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "outdoor_bag",
+      "split": "supplemental",
+      "query": "有人在户外背包行走",
+      "conditions": [
+        "场景在户外",
+        "有人背着背包"
+      ],
+      "positive_media": [
+        1
+      ],
+      "negative_media": []
+    },
+    {
+      "id": "snow_fall2",
+      "split": "supplemental",
+      "query": "有人跌倒在积雪覆盖的地面",
+      "conditions": [
+        "地面上有积雪",
+        "有人跌倒在地上"
+      ],
+      "positive_media": [
+        26
+      ],
+      "negative_media": []
+    }
+  ],
+  "selection": "Choose using calibration only: preserve all baseline-retained known-positive videos, maximize rejection of annotated baseline false-positive videos; ties prefer lower absolute threshold then looser gap. Report all rules and holdout failures.",
+  "label_note": "Partial negative annotations use previously reviewed scenes: 17 indoor backpack/walking/fall, 23 indoor room without red hardhat, 27 writing scene, 2 indoor backpack walk, 21 construction fall without snow. Other unlabelled returned videos are not counted as correct.",
+  "supplemental_note": "Frame audit corrected two unsupported positive labels. Six extra positive queries are declared before encoding, with the calibration-selected rule frozen at minimum=.35,gap=.15; supplemental labels do not select thresholds."
+}
