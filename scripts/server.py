@@ -35,7 +35,7 @@ from native_qwen import prepare_native_qwen_project, validate_native_qwen, QWEN
 from library_search import search_library, native_text_search
 from video_deletion import delete_video
 from library_catalog import list_video_catalog
-from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, read_snapshot, windows
+from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, VIDEO_PATCH_PROJECTION, read_snapshot, windows
 
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / 'data/people.sqlite'
@@ -153,7 +153,8 @@ def action_status(project: ProjectServiceDep):
     meta = snapshot[0] if snapshot else {'media':[], 'segments':[]}
     return {**ingestion.action_state, 'indexed_videos':len(meta['media']),
         'indexed_segments':len(meta['segments']), 'model_loaded':actions.extractor is not None,
-        'model_load_seconds':actions.last_load_seconds, 'settings':ACTION_SETTINGS}
+        'model_load_seconds':actions.last_load_seconds, 'settings':ACTION_SETTINGS,
+        'video_patch_projection':VIDEO_PATCH_PROJECTION}
 
 
 @app.post('/mvp-api/actions/retry')

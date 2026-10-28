@@ -10,6 +10,11 @@ from pathlib import Path
 import faiss
 import numpy as np
 
+if __package__:
+    from .qwen_projection import VIDEO_PATCH_PROJECTION, linear_video_projection
+else:
+    from qwen_projection import VIDEO_PATCH_PROJECTION, linear_video_projection
+
 SETTINGS = {'schema': 1, 'model': 'hf/Qwen/Qwen3-VL-Embedding/2B',
             'dtype': 'float16', 'max_total_pixels': 1048576,
             'window_seconds': 8.0, 'stride_seconds': 4.0, 'frames': 16}
@@ -153,7 +158,8 @@ class ActionEngine:
                 if not ok: raise RuntimeError(f"动作抽帧失败：{media['path']} @ {number/fps:.2f}s")
                 frames.append(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
             tensor = torch.from_numpy(np.stack(frames)).permute(0, 3, 1, 2)
-            vector = model.extract_video_segment_features(tensor).vectors[0]
+            with linear_video_projection(model):
+                vector = model.extract_video_segment_features(tensor).vectors[0]
             torch.mps.synchronize()
             if not np.isfinite(vector).all(): raise RuntimeError('动作模型返回无效向量')
             return vector.astype('float32')

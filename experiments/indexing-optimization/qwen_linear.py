@@ -31,6 +31,14 @@ def install_linear(extractor):
     return original,{'class':type(patch).__name__,'kernel':list(kernel),'input_width':width,'output_width':patch.embed_dim,'dtype':str(conv.weight.dtype),'device':str(conv.weight.device)}
 
 def worker(variant,part,repeat):
+    # Production now scopes Linear in encode_segment. Disable that scope here
+    # so the explicit Conv/Linear experimental variants remain independent.
+    from contextlib import nullcontext
+    from unittest.mock import patch
+    with patch('action_search.linear_video_projection', lambda extractor: nullcontext()):
+        return _worker(variant,part,repeat)
+
+def _worker(variant,part,repeat):
     import numpy as np
     import torch
     import psutil

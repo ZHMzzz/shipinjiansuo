@@ -29,6 +29,8 @@
 
 Apple Silicon 入库默认使用 OWLv2 快速 CPU 预处理、MPS FP16 权重和 InsightFace CoreML，网页上传与 `index.sh` 共用 `scripts/extract_frames.py`。这些适配只在提取子进程启用，查询端保持原处理器/精度；Qwen 继续写入原生 WISE。固定形状模型副本与编译缓存位于 `data/model-cache/frame-acceleration/`，不改下载的原模型。首次编译可能较慢；后端不可用时任务明确失败，已有视频库继续可用。
 
+Qwen 新增视频及缺失片段补建默认采用同权重线性图像块投影：仅在 `ActionEngine.encode_segment` 内将全块 Conv3d 等价改写为 Linear，结束或异常后恢复原方法；文字查询保持原路径。批量仍为 1，FP16、16 帧及像素预算不变，不自动重编已有视频。当前模型结构不符合适配要求时明确报错。此优化有浮点差异，完整对照的 Qwen 编码耗时减少约 41%，不代表完整上传提速；测试边界见 [Qwen 线性投影实验](experiments/indexing-optimization/QWEN_LINEAR.md)。
+
 如需回退后续入库任务，先停止服务，再以 `VIDEO_FRAME_ACCELERATION=0 ./scripts/start.sh` 启动；命令行可用 `VIDEO_FRAME_ACCELERATION=0 ./scripts/index.sh`。取消该环境变量并重启即可恢复默认加速。此开关不会重算已有索引。
 
 ## 素材与结果
