@@ -11,5 +11,6 @@ if [[ ! -x .media-runtime/bin/ffmpeg ]]; then
 fi
 source scripts/env.sh
 HF_HUB_OFFLINE=0 python scripts/warm_models.py
+./scripts/setup_owl_sdpa.sh
 (cd wise/frontend && npm ci && npm run build)
 echo '环境准备完成。执行 ./scripts/index.sh 建索引，再 ./scripts/start.sh 启动。'

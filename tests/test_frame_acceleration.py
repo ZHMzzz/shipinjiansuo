@@ -13,12 +13,15 @@ def test_importing_entrypoint_does_not_patch_query_models():
     from transformers import Owlv2ImageProcessorFast
     before=(TransformersOWLv2FeatureExtractor.__dict__['processor'],
             TransformersOWLv2Model._load_torch_model,
+            TransformersOWLv2Model.get_image_features, TransformersOWLv2Model.get_text_features,
             model_zoo.PickableInferenceSession,Owlv2ImageProcessorFast.preprocess)
     importlib.import_module('scripts.frame_acceleration')
     importlib.import_module('scripts.extract_frames')
     importlib.import_module('scripts.frame_worker')
+    importlib.import_module('scripts.owl_sdpa')
     assert before==(TransformersOWLv2FeatureExtractor.__dict__['processor'],
                     TransformersOWLv2Model._load_torch_model,
+                    TransformersOWLv2Model.get_image_features, TransformersOWLv2Model.get_text_features,
                     model_zoo.PickableInferenceSession,Owlv2ImageProcessorFast.preprocess)
 
 

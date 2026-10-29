@@ -151,10 +151,12 @@ class IngestionManager:
         fcntl.flock(self.lockfile, fcntl.LOCK_EX | fcntl.LOCK_NB)
         self.loop = loop
         self.recover()
-        logging.info('Frame worker reuse=%s idle_seconds=%s timeout_seconds=%s',
+        logging.info('Frame worker reuse=%s idle_seconds=%s timeout_seconds=%s owl_sdpa=%s',
                      self.frame_worker is not None,
                      self.frame_worker.idle_seconds if self.frame_worker else None,
-                     self.frame_worker.timeout_seconds if self.frame_worker else None)
+                     self.frame_worker.timeout_seconds if self.frame_worker else None,
+                     os.environ.get('VIDEO_FRAME_ACCELERATION', '1') == '1' and
+                     os.environ.get('VIDEO_OWL_SDPA', '1') == '1')
         self.thread = threading.Thread(target=self.worker, name='video-ingestion', daemon=True)
         self.thread.start()
 

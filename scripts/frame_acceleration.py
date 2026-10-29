@@ -9,6 +9,7 @@ import fcntl
 import hashlib
 import json
 import logging
+import os
 from pathlib import Path
 import tempfile
 
@@ -175,10 +176,21 @@ def enable():
     global _enabled
     if _enabled:
         return
+    sdpa = os.environ.get('VIDEO_OWL_SDPA', '1')
+    if sdpa not in ('0', '1'):
+        raise ValueError('VIDEO_OWL_SDPA must be 0 or 1')
+    if sdpa == '1':
+        if __package__:
+            from . import owl_sdpa
+        else:
+            import owl_sdpa
+        owl_sdpa.runtime_python()
     import torch
     if not torch.backends.mps.is_available():
         raise RuntimeError('入库加速需要 Apple MPS；可用 VIDEO_FRAME_ACCELERATION=0 回退')
     install_coreml()
     install_owl()
+    if sdpa == '1':
+        owl_sdpa.install()
     _enabled=True
-    logger.info('Frame acceleration enabled: fast CPU preprocessing + MPS FP16 weights + CoreML; extraction process only')
+    logger.info('Frame acceleration enabled: fast CPU preprocessing + MPS FP16 weights + CoreML; OWLv2 SDPA=%s; extraction process only', sdpa)

@@ -7,6 +7,7 @@ import math
 import os
 from pathlib import Path
 import selectors
+import signal
 import subprocess
 import sys
 import time
@@ -37,12 +38,21 @@ class FrameWorker:
         try:
             if process is not None:
                 try:
+                    # Also reap a backend left after its front-end crashed.
+                    try:
+                        os.killpg(process.pid, signal.SIGTERM)
+                    except (ProcessLookupError, PermissionError):
+                        # macOS can report EPERM for an already-exited group.
+                        if process.poll() is None:
+                            process.terminate()
                     if process.poll() is None:
-                        process.terminate()
                         try:
                             process.wait(timeout=5)
                         except subprocess.TimeoutExpired:
-                            process.kill()
+                            try:
+                                os.killpg(process.pid, signal.SIGKILL)
+                            except (ProcessLookupError, PermissionError):
+                                process.kill()
                             process.wait()
                 finally:
                     for stream in (process.stdin, process.stdout):
@@ -70,6 +80,7 @@ class FrameWorker:
                 [sys.executable, '-u', str(Path(__file__).resolve()), '--worker'],
                 cwd=self.root, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT, pass_fds=(write_fd,),
+                start_new_session=True,
                 env={**os.environ, 'HF_HUB_OFFLINE': '1', 'PYTHONUNBUFFERED': '1',
                      'VIDEO_FRAME_RESULT_FD': str(write_fd)})
         finally:

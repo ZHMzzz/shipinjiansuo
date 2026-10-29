@@ -29,6 +29,10 @@
 
 Apple Silicon 入库默认使用 OWLv2 快速 CPU 预处理、MPS FP16 权重和 InsightFace CoreML，网页上传与 `index.sh` 共用 `scripts/extract_frames.py`。这些适配只在提取子进程启用，查询端保持原处理器/精度；Qwen 继续写入原生 WISE。固定形状模型副本与编译缓存位于 `data/model-cache/frame-acceleration/`，不改下载的原模型。首次编译可能较慢；后端不可用时任务明确失败，已有视频库继续可用。
 
+OWLv2 入库默认启用官方 SDPA，模型推理独立运行于 Torch 2.14.1 / Transformers 5.21.0，解码和查询继续使用原环境。先执行 `./scripts/setup_owl_sdpa.sh` 创建 `data/model-cache/owl-sdpa/runtime/`（完整 `setup.sh` 已包含此步骤）；依赖固定在 `requirements-owl-sdpa.lock.txt`，不安装 torchaudio。模型仍为原权重、FP16、960px、batch=1，不启用 `torch.compile`。输入与输出通过可复用 mmap 传递，推理子进程随帧提取进程复用和退出；版本不符、缺失运行时、崩溃或推理超时均明确失败，不静默回退。
+
+仅回退 SDPA 时，停止服务后执行 `VIDEO_OWL_SDPA=0 ./scripts/start.sh`，保留快速预处理、FP16、CoreML 和模型复用；CLI 同样支持该开关。`VIDEO_OWL_SDPA_PYTHON` 可指定符合固定版本要求的独立 Python 可执行文件。上述开关只影响后续入库，旧索引不重算。35.44 秒视频的隔离测试中，模型复用后完整入库均值减少约 25%，首次加载帧模型时约 5.8%；9 个参考图中有一个查询第五名发生变化，并非逐位无损，详见 [完整 SDPA 回归](experiments/indexing-optimization/owl-sdpa-full-20261028/summary.json)。
+
 Qwen 新增视频及缺失片段补建默认采用同权重线性图像块投影：仅在 `ActionEngine.encode_segment` 内将全块 Conv3d 等价改写为 Linear，结束或异常后恢复原方法；文字查询保持原路径。批量仍为 1，FP16、16 帧及像素预算不变，不自动重编已有视频。当前模型结构不符合适配要求时明确报错。此优化有浮点差异，完整对照的 Qwen 编码耗时减少约 41%，不代表完整上传提速；测试边界见 [Qwen 线性投影实验](experiments/indexing-optimization/QWEN_LINEAR.md)。
 
 如需回退后续入库任务，先停止服务，再以 `VIDEO_FRAME_ACCELERATION=0 ./scripts/start.sh` 启动；命令行可用 `VIDEO_FRAME_ACCELERATION=0 ./scripts/index.sh`。取消该环境变量并重启即可恢复默认加速。此开关不会重算已有索引。
@@ -68,6 +72,7 @@ Qwen 新增视频及缺失片段补建默认采用同权重线性图像块投影
 | `scripts/index.sh` | 提取特征和建索引是两个独立阶段 |
 | `scripts/extract_frames.py` / `scripts/frame_acceleration.py` | 仅在入库子进程启用加速，隔离在线查询模型 |
 | `scripts/frame_worker.py` | 网页入库的模型复用、超时、失败重建及空闲回收 |
+| `scripts/owl_sdpa.py` / `scripts/setup_owl_sdpa.sh` | 独立 OWLv2 SDPA 运行时、共享内存通信和固定依赖安装 |
 | `wise/src/wise/_main/extract_features.py` | 如何遍历媒体、抽帧、写特征与元数据 |
 | `wise/src/wise/dataloader/streamreader.py` | 解码、采样率与时间戳如何对应 |
 | `wise/src/wise/feature/feature_extractor_factory.py` | 模型ID怎样映射到具体编码器 |

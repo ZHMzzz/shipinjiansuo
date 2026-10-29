@@ -13,7 +13,7 @@ from scripts.frame_worker import FrameWorker
 def worker(tmp_path, monkeypatch):
     child = tmp_path/'fake_worker.py'
     child.write_text('''
-import json, os, sys, time
+import json, os, sys, time, subprocess
 pipe = os.fdopen(int(os.environ['VIDEO_FRAME_RESULT_FD']), 'w', buffering=1)
 def send(value): pipe.write(json.dumps(value)+'\\n')
 if os.environ.get('TEST_SLOW_START'): time.sleep(20)
@@ -21,6 +21,9 @@ send({'event':'ready'})
 count = 0
 for line in sys.stdin:
     args = json.loads(line)['args']
+    if args[0] == 'spawn-child':
+        child = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(60)'])
+        with open(args[1], 'w') as output: output.write(str(child.pid))
     if args[0] == 'crash': os._exit(9)
     if args[0] == 'hang': time.sleep(20)
     if args[0] == 'fail':
@@ -104,3 +107,16 @@ def test_ingestion_worker_rollback_switch(tmp_path, monkeypatch):
     monkeypatch.setenv('VIDEO_FRAME_WORKER_REUSE', '0')
     manager = IngestionManager(tmp_path, None)
     assert manager.frame_worker is None
+
+
+def test_close_stops_descendant_model_process(worker, tmp_path):
+    pid_file = tmp_path/'backend.pid'
+    worker.extract(['spawn-child', str(pid_file)], io.StringIO())
+    pid = int(pid_file.read_text())
+    worker.close()
+    for _ in range(30):
+        state = subprocess.run(['ps','-p',str(pid),'-o','stat='], capture_output=True, text=True).stdout.strip()
+        if not state or state.startswith('Z'):
+            break
+        time.sleep(.05)
+    assert not state or state.startswith('Z'), f'Backend {pid} still executing: {state}'
