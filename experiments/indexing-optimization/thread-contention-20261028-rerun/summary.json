@@ -1,0 +1,6238 @@
+{
+  "status": "completed",
+  "source_video_seconds": 35.44,
+  "scope": "Actual process_job on isolated clone of current 44-video library; each trial adds one duplicate content video. Qwen and frame models resident after serial warmup. No HTTP transfer, queue wait or online query contention.",
+  "order": [
+    "serial-warmup",
+    "serial-t1-r1",
+    "full-t1-r1",
+    "cpu-t1-r1",
+    "serial-t2-r1",
+    "full-t2-r1",
+    "cpu-t2-r1",
+    "serial-t4-r1",
+    "full-t4-r1",
+    "cpu-t4-r1",
+    "cpu-t1-r2",
+    "full-t1-r2",
+    "serial-t1-r2",
+    "cpu-t4-r2",
+    "full-t4-r2",
+    "serial-t4-r2",
+    "cpu-t2-r2",
+    "full-t2-r2",
+    "serial-t2-r2",
+    "serial-t4-r3",
+    "full-t4-r3",
+    "cpu-t4-r3",
+    "serial-t1-r3",
+    "full-t1-r3",
+    "cpu-t1-r3",
+    "serial-t2-r3",
+    "full-t2-r3",
+    "cpu-t2-r3"
+  ],
+  "groups": {
+    "serial-t1": {
+      "n": 3,
+      "seconds": [
+        30.3906032909872,
+        49.68897274998017,
+        34.4352189580095
+      ],
+      "total_seconds": {
+        "mean": 38.17159833299229,
+        "min": 30.3906032909872,
+        "max": 49.68897274998017,
+        "p95": 49.68897274998017
+      },
+      "frame_task_seconds": {
+        "mean": 16.384172180318274,
+        "min": 13.11434441700112,
+        "max": 21.454269957961515,
+        "p95": 21.454269957961515
+      },
+      "qwen_task_seconds": {
+        "mean": 15.097655569688262,
+        "min": 12.286990917054936,
+        "max": 18.737979375000577,
+        "p95": 18.737979375000577
+      },
+      "rss_peak_gib": {
+        "mean": 3.4957275390625,
+        "min": 3.261810302734375,
+        "max": 3.83917236328125,
+        "p95": 3.83917236328125
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.371103922526042,
+        "min": 6.3632965087890625,
+        "max": 6.3750152587890625,
+        "p95": 6.3750152587890625
+      },
+      "gpu_mean_percent": 69.09214672529791,
+      "background_gpu_mean_percent": 12.047619047619047,
+      "gpu_ge90_sample_percent": 55.8272463554795,
+      "swap_in_mib_mean": 479.2708333333333,
+      "swap_out_mib_mean": 329.9583333333333,
+      "compression_mib_mean": 23725.583333333332,
+      "decompression_mib_mean": 28507.828125,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.004339428967796266,
+        "frame_worker:mps_to_cpu": 0.2709284009373126,
+        "owl_backend:mps_to_cpu": 0.4745842796595146,
+        "qwen_parent:mps_synchronize": 0.00018225028179585934,
+        "qwen_parent:mps_to_cpu": 3.521096750026724
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "reduction_vs_serial_t1_percent": 0.0
+    },
+    "full-t1": {
+      "n": 3,
+      "seconds": [
+        30.353469583031256,
+        38.49026891699759,
+        32.67762641701847
+      ],
+      "total_seconds": {
+        "mean": 33.84045497234911,
+        "min": 30.353469583031256,
+        "max": 38.49026891699759,
+        "p95": 38.49026891699759
+      },
+      "frame_task_seconds": {
+        "mean": 23.196950805334684,
+        "min": 21.775413708004635,
+        "max": 24.339430749998428,
+        "p95": 24.339430749998428
+      },
+      "qwen_task_seconds": {
+        "mean": 26.53675644433436,
+        "min": 23.367942457960453,
+        "max": 29.957420959020965,
+        "p95": 29.957420959020965
+      },
+      "rss_peak_gib": {
+        "mean": 3.111058553059896,
+        "min": 2.8629608154296875,
+        "max": 3.37445068359375,
+        "p95": 3.37445068359375
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.43218994140625,
+        "min": 6.43218994140625,
+        "max": 6.43218994140625,
+        "p95": 6.43218994140625
+      },
+      "gpu_mean_percent": 69.86326263673837,
+      "background_gpu_mean_percent": 18.377777777777776,
+      "gpu_ge90_sample_percent": 56.44851197515814,
+      "swap_in_mib_mean": 243.0625,
+      "swap_out_mib_mean": 456.5,
+      "compression_mib_mean": 40442.354166666664,
+      "decompression_mib_mean": 36930.729166666664,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0027158046529317894,
+        "frame_worker:mps_to_cpu": 0.4330180840527949,
+        "owl_backend:mps_to_cpu": 0.5907930572866462,
+        "qwen_parent:join_qwen_after_frames": 3.3404483193104775,
+        "qwen_parent:mps_synchronize": 0.00018026363492632905,
+        "qwen_parent:mps_to_cpu": 4.550363444296333
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "reduction_vs_serial_t1_percent": 11.346507743427948
+    },
+    "cpu-t1": {
+      "n": 3,
+      "seconds": [
+        28.89518125000177,
+        36.7877115419833,
+        33.460455624968745
+      ],
+      "total_seconds": {
+        "mean": 33.04778280565127,
+        "min": 28.89518125000177,
+        "max": 36.7877115419833,
+        "p95": 36.7877115419833
+      },
+      "frame_task_seconds": {
+        "mean": 15.46110861133396,
+        "min": 13.23975354200229,
+        "max": 17.049037542019505,
+        "p95": 17.049037542019505
+      },
+      "qwen_task_seconds": {
+        "mean": 11.659445944339192,
+        "min": 10.224601124995388,
+        "max": 13.279438542027492,
+        "p95": 13.279438542027492
+      },
+      "rss_peak_gib": {
+        "mean": 3.1132710774739585,
+        "min": 3.0136260986328125,
+        "max": 3.185455322265625,
+        "p95": 3.185455322265625
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.3711090087890625,
+        "min": 6.3632965087890625,
+        "max": 6.3750152587890625,
+        "p95": 6.3750152587890625
+      },
+      "gpu_mean_percent": 71.98003362757461,
+      "background_gpu_mean_percent": 14.066666666666666,
+      "gpu_ge90_sample_percent": 59.83823977040484,
+      "swap_in_mib_mean": 120.15625,
+      "swap_out_mib_mean": 234.64583333333334,
+      "compression_mib_mean": 23275.421875,
+      "decompression_mib_mean": 26763.578125,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0006861695243666569,
+        "frame_worker:mps_to_cpu": 0.1507038769001762,
+        "owl_backend:mps_to_cpu": 0.30288870343550417,
+        "qwen_parent:consumer_queue_get": 0.0013134727293315034,
+        "qwen_parent:mps_synchronize": 6.259626631314556e-05,
+        "qwen_parent:mps_to_cpu": 3.4668489156562523,
+        "qwen_parent:producer_queue_put": 21.995127374927204
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 9,
+          "image_top10_media_time_order_same_queries": 9,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "reduction_vs_serial_t1_percent": 13.423109723211212
+    },
+    "serial-t2": {
+      "n": 3,
+      "seconds": [
+        34.89262533397414,
+        41.06362604198512,
+        34.24731295800302
+      ],
+      "total_seconds": {
+        "mean": 36.73452144465409,
+        "min": 34.24731295800302,
+        "max": 41.06362604198512,
+        "p95": 41.06362604198512
+      },
+      "frame_task_seconds": {
+        "mean": 14.123185958655085,
+        "min": 13.113404834002722,
+        "max": 14.686916999984533,
+        "p95": 14.686916999984533
+      },
+      "qwen_task_seconds": {
+        "mean": 16.056678125013907,
+        "min": 13.45355495903641,
+        "max": 20.172079708019737,
+        "p95": 20.172079708019737
+      },
+      "rss_peak_gib": {
+        "mean": 3.140385945638021,
+        "min": 3.0074920654296875,
+        "max": 3.2967987060546875,
+        "p95": 3.2967987060546875
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.3678436279296875,
+        "min": 6.3632965087890625,
+        "max": 6.375,
+        "p95": 6.375
+      },
+      "gpu_mean_percent": 74.14922854387656,
+      "background_gpu_mean_percent": 13.2,
+      "gpu_ge90_sample_percent": 60.27000964320154,
+      "swap_in_mib_mean": 210.29166666666666,
+      "swap_out_mib_mean": 77.54166666666667,
+      "compression_mib_mean": 27314.697916666668,
+      "decompression_mib_mean": 29495.385416666668,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0008302483474835753,
+        "frame_worker:mps_to_cpu": 0.11910961424776663,
+        "owl_backend:mps_to_cpu": 0.2622268556151539,
+        "qwen_parent:mps_synchronize": 7.572100730612874e-05,
+        "qwen_parent:mps_to_cpu": 3.4095522924132333
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": false,
+      "all_retrieval_exact": false,
+      "reduction_vs_serial_t1_percent": 3.7647804941301377
+    },
+    "full-t2": {
+      "n": 3,
+      "seconds": [
+        28.61466283298796,
+        39.60741279198555,
+        33.0095900829765
+      ],
+      "total_seconds": {
+        "mean": 33.743888569316674,
+        "min": 28.61466283298796,
+        "max": 39.60741279198555,
+        "p95": 39.60741279198555
+      },
+      "frame_task_seconds": {
+        "mean": 23.487622638989706,
+        "min": 20.197178291971795,
+        "max": 27.447235416970216,
+        "p95": 27.447235416970216
+      },
+      "qwen_task_seconds": {
+        "mean": 26.87270015231722,
+        "min": 22.149578832963016,
+        "max": 32.2648990409798,
+        "p95": 32.2648990409798
+      },
+      "rss_peak_gib": {
+        "mean": 3.165257771809896,
+        "min": 2.758270263671875,
+        "max": 3.55743408203125,
+        "p95": 3.55743408203125
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.4382069905598955,
+        "min": 6.43218994140625,
+        "max": 6.4453125,
+        "p95": 6.4453125
+      },
+      "gpu_mean_percent": 69.02130259511212,
+      "background_gpu_mean_percent": 18.711111111111112,
+      "gpu_ge90_sample_percent": 56.334089191232046,
+      "swap_in_mib_mean": 122.03645833333333,
+      "swap_out_mib_mean": 434.2291666666667,
+      "compression_mib_mean": 46150.458333333336,
+      "decompression_mib_mean": 42429.385416666664,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0016821634878093998,
+        "frame_worker:mps_to_cpu": 0.46688034598870826,
+        "owl_backend:mps_to_cpu": 0.6382049329889318,
+        "qwen_parent:join_qwen_after_frames": 3.3874337360224067,
+        "qwen_parent:mps_synchronize": 0.00017312434889997044,
+        "qwen_parent:mps_to_cpu": 4.9324444866700405
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": false,
+      "all_retrieval_exact": false,
+      "reduction_vs_serial_t1_percent": 11.599487464607105
+    },
+    "cpu-t2": {
+      "n": 3,
+      "seconds": [
+        31.31056654197164,
+        42.32827841700055,
+        31.73454595799558
+      ],
+      "total_seconds": {
+        "mean": 35.124463638989255,
+        "min": 31.31056654197164,
+        "max": 42.32827841700055,
+        "p95": 42.32827841700055
+      },
+      "frame_task_seconds": {
+        "mean": 15.60098238933521,
+        "min": 13.793621541990433,
+        "max": 18.583775709033944,
+        "p95": 18.583775709033944
+      },
+      "qwen_task_seconds": {
+        "mean": 12.11194108335379,
+        "min": 11.176192499988247,
+        "max": 13.735252583050169,
+        "p95": 13.735252583050169
+      },
+      "rss_peak_gib": {
+        "mean": 3.346318562825521,
+        "min": 3.1536712646484375,
+        "max": 3.5254974365234375,
+        "p95": 3.5254974365234375
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.3672027587890625,
+        "min": 6.3632965087890625,
+        "max": 6.3750152587890625,
+        "p95": 6.3750152587890625
+      },
+      "gpu_mean_percent": 74.94360373925592,
+      "background_gpu_mean_percent": 29.288888888888888,
+      "gpu_ge90_sample_percent": 56.88750862663906,
+      "swap_in_mib_mean": 320.8958333333333,
+      "swap_out_mib_mean": 75.22916666666667,
+      "compression_mib_mean": 25083.635416666668,
+      "decompression_mib_mean": 27803.807291666668,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0008693042327649891,
+        "frame_worker:mps_to_cpu": 0.14293148748887083,
+        "owl_backend:mps_to_cpu": 0.3000086965233398,
+        "qwen_parent:consumer_queue_get": 0.00023732035576055446,
+        "qwen_parent:mps_synchronize": 0.00011201400775462389,
+        "qwen_parent:mps_to_cpu": 3.4717814173782244,
+        "qwen_parent:producer_queue_put": 22.453799556901988
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": false,
+      "all_retrieval_exact": false,
+      "reduction_vs_serial_t1_percent": 7.982727543712387
+    },
+    "serial-t4": {
+      "n": 3,
+      "seconds": [
+        37.20156108302763,
+        44.43590779101942,
+        42.71953145903535
+      ],
+      "total_seconds": {
+        "mean": 41.4523334443608,
+        "min": 37.20156108302763,
+        "max": 44.43590779101942,
+        "p95": 44.43590779101942
+      },
+      "frame_task_seconds": {
+        "mean": 17.443181277990032,
+        "min": 15.77105479198508,
+        "max": 19.04815766698448,
+        "p95": 19.04815766698448
+      },
+      "qwen_task_seconds": {
+        "mean": 16.17940570800177,
+        "min": 13.977243667002767,
+        "max": 17.994140541006345,
+        "p95": 17.994140541006345
+      },
+      "rss_peak_gib": {
+        "mean": 2.835357666015625,
+        "min": 2.345062255859375,
+        "max": 3.097564697265625,
+        "p95": 3.097564697265625
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.371103922526042,
+        "min": 6.3632965087890625,
+        "max": 6.38671875,
+        "p95": 6.38671875
+      },
+      "gpu_mean_percent": 69.21875870608265,
+      "background_gpu_mean_percent": 20.644444444444446,
+      "gpu_ge90_sample_percent": 47.834184594747974,
+      "swap_in_mib_mean": 729.4479166666666,
+      "swap_out_mib_mean": 369.5208333333333,
+      "compression_mib_mean": 32354.369791666668,
+      "decompression_mib_mean": 35223.651041666664,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0017271539545617998,
+        "frame_worker:mps_to_cpu": 0.25004649645416066,
+        "owl_backend:mps_to_cpu": 0.44996291525118676,
+        "qwen_parent:mps_synchronize": 9.99593563998739e-05,
+        "qwen_parent:mps_to_cpu": 3.579178153343188
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": false,
+      "all_retrieval_exact": false,
+      "reduction_vs_serial_t1_percent": -8.594701963351948
+    },
+    "full-t4": {
+      "n": 3,
+      "seconds": [
+        33.30264170799637,
+        44.05112620902946,
+        35.366647250019014
+      ],
+      "total_seconds": {
+        "mean": 37.57347172234828,
+        "min": 33.30264170799637,
+        "max": 44.05112620902946,
+        "p95": 44.05112620902946
+      },
+      "frame_task_seconds": {
+        "mean": 24.076984208329424,
+        "min": 21.964524333016016,
+        "max": 26.146988333959598,
+        "p95": 26.146988333959598
+      },
+      "qwen_task_seconds": {
+        "mean": 28.765368458349258,
+        "min": 24.751895209017675,
+        "max": 33.55325570801506,
+        "p95": 33.55325570801506
+      },
+      "rss_peak_gib": {
+        "mean": 2.7862548828125,
+        "min": 2.5922393798828125,
+        "max": 2.92303466796875,
+        "p95": 2.92303466796875
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.4345041910807295,
+        "min": 6.43218994140625,
+        "max": 6.4390716552734375,
+        "p95": 6.4390716552734375
+      },
+      "gpu_mean_percent": 63.0916533758639,
+      "background_gpu_mean_percent": 33.22380952380952,
+      "gpu_ge90_sample_percent": 46.27325890483785,
+      "swap_in_mib_mean": 435.9895833333333,
+      "swap_out_mib_mean": 1079.625,
+      "compression_mib_mean": 51129.083333333336,
+      "decompression_mib_mean": 47936.880208333336,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0018556668073870242,
+        "frame_worker:mps_to_cpu": 0.4889921526967858,
+        "owl_backend:mps_to_cpu": 0.736790835915599,
+        "qwen_parent:join_qwen_after_frames": 4.6958511803338,
+        "qwen_parent:mps_synchronize": 0.00024313939502462745,
+        "qwen_parent:mps_to_cpu": 4.29886394366622
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": false,
+      "all_retrieval_exact": false,
+      "reduction_vs_serial_t1_percent": 1.5669414872969578
+    },
+    "cpu-t4": {
+      "n": 3,
+      "seconds": [
+        35.51189120899653,
+        43.43413650000002,
+        32.517747958016116
+      ],
+      "total_seconds": {
+        "mean": 37.15459188900422,
+        "min": 32.517747958016116,
+        "max": 43.43413650000002,
+        "p95": 43.43413650000002
+      },
+      "frame_task_seconds": {
+        "mean": 15.807302097324282,
+        "min": 15.016457833989989,
+        "max": 16.89337175001856,
+        "p95": 16.89337175001856
+      },
+      "qwen_task_seconds": {
+        "mean": 13.378272986330558,
+        "min": 11.946126249968074,
+        "max": 15.208906417014077,
+        "p95": 15.208906417014077
+      },
+      "rss_peak_gib": {
+        "mean": 2.8938140869140625,
+        "min": 2.5587615966796875,
+        "max": 3.3062286376953125,
+        "p95": 3.3062286376953125
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.375010172526042,
+        "min": 6.3632965087890625,
+        "max": 6.38671875,
+        "p95": 6.38671875
+      },
+      "gpu_mean_percent": 67.40596236969235,
+      "background_gpu_mean_percent": 16.187301587301587,
+      "gpu_ge90_sample_percent": 46.94508009153318,
+      "swap_in_mib_mean": 696.5677083333334,
+      "swap_out_mib_mean": 849.84375,
+      "compression_mib_mean": 33360.890625,
+      "decompression_mib_mean": 36697.786458333336,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0010049285095495482,
+        "frame_worker:mps_to_cpu": 0.1724938910532122,
+        "owl_backend:mps_to_cpu": 0.3257860573939979,
+        "qwen_parent:consumer_queue_get": 0.0005466250004246831,
+        "qwen_parent:mps_synchronize": 0.00011809769785031676,
+        "qwen_parent:mps_to_cpu": 3.3233381527049155,
+        "qwen_parent:producer_queue_put": 22.919775150658097
+      },
+      "quality_by_trial": [
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        },
+        {
+          "text_top10_identity_same_queries": 73,
+          "image_top5_video_order_same_queries": 8,
+          "image_top10_media_time_order_same_queries": 8,
+          "face_candidate_order_same_queries": 5
+        }
+      ],
+      "qwen_max_abs_diff": 0.0,
+      "all_outputs_exact": false,
+      "all_retrieval_exact": false,
+      "reduction_vs_serial_t1_percent": 2.664301439819594
+    }
+  },
+  "trials": [
+    {
+      "name": "serial-warmup",
+      "mode": "serial",
+      "total_seconds": 45.953844250005204,
+      "frame_task_seconds": 27.064182083006017,
+      "qwen_task_seconds": 12.55315170797985,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.4208984375,
+      "uss_peak_gib": 0.0609588623046875,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.397648811340332,
+      "mps_max_sample_age_seconds": 0.20113391702761874,
+      "system_available_min_gib": 5.0437469482421875,
+      "system_swap_out_delta_mib": 13.765625,
+      "system_swap_used_before_gib": 28.35662841796875,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.8858372090035118,
+        "feature_phase": 27.064213666017167,
+        "index": 4.026686958968639,
+        "qwen_prepare_and_encode": 12.557461292017251,
+        "qwen_write_native": 0.007315249997191131,
+        "validate_load_local_publish": 0.5858656250056811
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 809.046875,
+          "peak_mib_per_second": 330.2418831477863
+        },
+        "swap_out": {
+          "total_mib": 2297.765625,
+          "peak_mib_per_second": 912.3078798324149
+        },
+        "page_in": {
+          "total_mib": 3793.0625,
+          "peak_mib_per_second": 823.9464885121131
+        },
+        "page_out": {
+          "total_mib": 13.765625,
+          "peak_mib_per_second": 4.174914070420188
+        },
+        "compression": {
+          "total_mib": 46053.53125,
+          "peak_mib_per_second": 5967.207822802484
+        },
+        "decompression": {
+          "total_mib": 46447.0625,
+          "peak_mib_per_second": 8419.9618635317
+        },
+        "gpu_percent": {
+          "mean": 52.93827160493827,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 44.44444444444444,
+        "cpu_percent": {
+          "mean": 73.61481481481482,
+          "min": 0.0,
+          "max": 98.9,
+          "p95": 97.5
+        },
+        "sample_count": 81,
+        "sample_cost_seconds": {
+          "mean": 0.062431350387747823,
+          "min": 0.029249334009364247,
+          "max": 0.28358237497741356,
+          "p95": 0.10665754199726507
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 5.671875,
+          "peak_mib_per_second": 3.2192460672775436
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 392.296875,
+          "peak_mib_per_second": 458.8908335616433
+        },
+        "page_out": {
+          "total_mib": 1.125,
+          "peak_mib_per_second": 1.3562059994598388
+        },
+        "compression": {
+          "total_mib": 3726.1875,
+          "peak_mib_per_second": 3208.613868972046
+        },
+        "decompression": {
+          "total_mib": 2947.0625,
+          "peak_mib_per_second": 1058.8334733210063
+        },
+        "gpu_percent": {
+          "mean": 13.8,
+          "min": 0,
+          "max": 31,
+          "p95": 31
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 52.0,
+          "min": 32.1,
+          "max": 68.0,
+          "p95": 68.0
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.057567908389804266,
+          "min": 0.03263729199534282,
+          "max": 0.12148970796260983,
+          "p95": 0.12148970796260983
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 217,
+          "total_seconds": 0.3519463703269139,
+          "max_seconds": 0.05707370798336342
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 73,
+          "total_seconds": 0.002899831102695316,
+          "max_seconds": 0.00148304202593863
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 217,
+          "total_seconds": 0.1607559995027259,
+          "max_seconds": 0.0054782090010121465
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.160698623978533,
+          "max_seconds": 0.41558758297469467
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 6.533297710120678e-05,
+          "max_seconds": 1.812499249354005e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "serial-t1-r1",
+      "mode": "serial",
+      "total_seconds": 30.3906032909872,
+      "frame_task_seconds": 13.11434441700112,
+      "qwen_task_seconds": 12.286990917054936,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.83917236328125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.12130254099611193,
+      "system_available_min_gib": 5.685272216796875,
+      "system_swap_out_delta_mib": 7.125,
+      "system_swap_used_before_gib": 29.75299072265625,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.87471437494969,
+        "feature_phase": 13.114379334030673,
+        "index": 2.7980868340237066,
+        "qwen_prepare_and_encode": 12.291520625003614,
+        "qwen_write_native": 0.01042729098116979,
+        "validate_load_local_publish": 0.7104591249953955
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 143.0625,
+          "peak_mib_per_second": 106.16066586810079
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 1622.53125,
+          "peak_mib_per_second": 1175.364441854211
+        },
+        "page_out": {
+          "total_mib": 7.125,
+          "peak_mib_per_second": 2.5652481469477837
+        },
+        "compression": {
+          "total_mib": 14374.6875,
+          "peak_mib_per_second": 6113.602373468694
+        },
+        "decompression": {
+          "total_mib": 19421.921875,
+          "peak_mib_per_second": 8081.187656239243
+        },
+        "gpu_percent": {
+          "mean": 72.34545454545454,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 63.63636363636363,
+        "cpu_percent": {
+          "mean": 57.401818181818186,
+          "min": 0.0,
+          "max": 93.5,
+          "p95": 88.4
+        },
+        "sample_count": 55,
+        "sample_cost_seconds": {
+          "mean": 0.05044401667546481,
+          "min": 0.033318458998110145,
+          "max": 0.08416945894714445,
+          "p95": 0.07210725004551932
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 9.484375,
+          "peak_mib_per_second": 4.026784284956545
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 39.8125,
+          "peak_mib_per_second": 22.513622771051068
+        },
+        "page_out": {
+          "total_mib": 8.15625,
+          "peak_mib_per_second": 14.017122605045605
+        },
+        "compression": {
+          "total_mib": 2412.390625,
+          "peak_mib_per_second": 2119.1983192195544
+        },
+        "decompression": {
+          "total_mib": 3469.59375,
+          "peak_mib_per_second": 1560.004459433978
+        },
+        "gpu_percent": {
+          "mean": 3,
+          "min": 0,
+          "max": 11,
+          "p95": 11
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 48.77333333333333,
+          "min": 26.0,
+          "max": 73.2,
+          "p95": 73.2
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.057034583467369275,
+          "min": 0.042498249968048185,
+          "max": 0.07603270903928205,
+          "p95": 0.07603270903928205
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.23767795914318413,
+          "max_seconds": 0.0033847499871626496
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0005621209274977446,
+          "max_seconds": 2.4540990125387907e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.10746045428095385,
+          "max_seconds": 0.0022345830220729113
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.1564222080633044,
+          "max_seconds": 0.4046233750414103
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 4.254287341609597e-05,
+          "max_seconds": 1.1582975275814533e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "full-t1-r1",
+      "mode": "full",
+      "total_seconds": 30.353469583031256,
+      "frame_task_seconds": 21.775413708004635,
+      "qwen_task_seconds": 23.367942457960453,
+      "frame_qwen_task_overlap_seconds": 21.77484537498094,
+      "rss_peak_gib": 3.37445068359375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.50897216796875,
+      "mps_max_sample_age_seconds": 0.5783616660046391,
+      "system_available_min_gib": 4.8038177490234375,
+      "system_swap_out_delta_mib": 16.53125,
+      "system_swap_used_before_gib": 29.61224365234375,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.06003262498416,
+        "feature_phase": 23.368797999981325,
+        "index": 4.855270833009854,
+        "qwen_prepare_and_encode": 0.005634375032968819,
+        "qwen_write_native": 0.006729666027240455,
+        "validate_load_local_publish": 0.4533773330040276
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 151.09375,
+          "peak_mib_per_second": 47.160550112424346
+        },
+        "swap_out": {
+          "total_mib": 501.5625,
+          "peak_mib_per_second": 902.9806806860269
+        },
+        "page_in": {
+          "total_mib": 2876.453125,
+          "peak_mib_per_second": 944.0296038965256
+        },
+        "page_out": {
+          "total_mib": 16.53125,
+          "peak_mib_per_second": 7.210576877480533
+        },
+        "compression": {
+          "total_mib": 41180.859375,
+          "peak_mib_per_second": 6310.380344344395
+        },
+        "decompression": {
+          "total_mib": 36171.03125,
+          "peak_mib_per_second": 8163.052072969411
+        },
+        "gpu_percent": {
+          "mean": 72.03921568627452,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 64.70588235294117,
+        "cpu_percent": {
+          "mean": 79.04509803921569,
+          "min": 42.2,
+          "max": 99.5,
+          "p95": 97.9
+        },
+        "sample_count": 51,
+        "sample_cost_seconds": {
+          "mean": 0.0967458554568664,
+          "min": 0.035134917008690536,
+          "max": 0.5529750839923508,
+          "p95": 0.14429925003787503
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 8.6875,
+          "peak_mib_per_second": 3.2559307547506315
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 118.125,
+          "peak_mib_per_second": 99.47429823134688
+        },
+        "page_out": {
+          "total_mib": 8.90625,
+          "peak_mib_per_second": 13.78638482502789
+        },
+        "compression": {
+          "total_mib": 5382.453125,
+          "peak_mib_per_second": 3669.125273151147
+        },
+        "decompression": {
+          "total_mib": 5774.78125,
+          "peak_mib_per_second": 2370.750921800551
+        },
+        "gpu_percent": {
+          "mean": 17.866666666666667,
+          "min": 0,
+          "max": 45,
+          "p95": 45
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 57.766666666666666,
+          "min": 34.4,
+          "max": 88.2,
+          "p95": 88.2
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05546597212475414,
+          "min": 0.03970949997892603,
+          "max": 0.06767454097280279,
+          "p95": 0.06767454097280279
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.4636221990804188,
+          "max_seconds": 0.022035333968233317
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0011882889084517956,
+          "max_seconds": 9.033299284055829e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.36044283030787483,
+          "max_seconds": 0.028623166028410196
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 4.783473416988272,
+          "max_seconds": 0.997262499993667
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 8.166697807610035e-05,
+          "max_seconds": 2.1417043171823025e-05
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 1.5931738329818472,
+          "max_seconds": 1.5931738329818472
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "cpu-t1-r1",
+      "mode": "cpu",
+      "total_seconds": 28.89518125000177,
+      "frame_task_seconds": 13.23975354200229,
+      "qwen_task_seconds": 10.224601124995388,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.0136260986328125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.460091590881348,
+      "mps_max_sample_age_seconds": 0.16044158296426758,
+      "system_available_min_gib": 5.333465576171875,
+      "system_swap_out_delta_mib": 7.171875,
+      "system_swap_used_before_gib": 29.88330078125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.8849943749955855,
+        "feature_phase": 13.239784625009634,
+        "index": 3.3488640830037184,
+        "qwen_prepare_and_encode": 10.230553540983237,
+        "qwen_write_native": 0.006648665992543101,
+        "validate_load_local_publish": 0.5819280419964343
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 36.125,
+          "peak_mib_per_second": 5.733695266398848
+        },
+        "swap_out": {
+          "total_mib": 247.0,
+          "peak_mib_per_second": 447.45235243815097
+        },
+        "page_in": {
+          "total_mib": 1915.859375,
+          "peak_mib_per_second": 776.267924893383
+        },
+        "page_out": {
+          "total_mib": 7.171875,
+          "peak_mib_per_second": 2.8305437274680605
+        },
+        "compression": {
+          "total_mib": 15915.84375,
+          "peak_mib_per_second": 7040.763421105721
+        },
+        "decompression": {
+          "total_mib": 20347.015625,
+          "peak_mib_per_second": 6487.412475902537
+        },
+        "gpu_percent": {
+          "mean": 75.03846153846153,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 61.53846153846154,
+        "cpu_percent": {
+          "mean": 57.63846153846154,
+          "min": 0.0,
+          "max": 93.7,
+          "p95": 87.9
+        },
+        "sample_count": 52,
+        "sample_cost_seconds": {
+          "mean": 0.054045758863839395,
+          "min": 0.03230445901863277,
+          "max": 0.12678133399458602,
+          "p95": 0.08738433301914483
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 67.9375,
+          "peak_mib_per_second": 58.34404437703038
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 488.5625,
+          "peak_mib_per_second": 312.4785408675176
+        },
+        "page_out": {
+          "total_mib": 20.21875,
+          "peak_mib_per_second": 32.59251808077431
+        },
+        "compression": {
+          "total_mib": 5783.546875,
+          "peak_mib_per_second": 2481.305350706123
+        },
+        "decompression": {
+          "total_mib": 7349.78125,
+          "peak_mib_per_second": 3046.1320346034
+        },
+        "gpu_percent": {
+          "mean": 3.8,
+          "min": 0,
+          "max": 22,
+          "p95": 22
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 67.7,
+          "min": 44.6,
+          "max": 89.3,
+          "p95": 89.3
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.04749439727359762,
+          "min": 0.03442795801674947,
+          "max": 0.08362204098375514,
+          "p95": 0.08362204098375514
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.23182716133305803,
+          "max_seconds": 0.0036872500204481184
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0005082941497676075,
+          "max_seconds": 3.304099664092064e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.09471625467995182,
+          "max_seconds": 0.0019035000004805624
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 193,
+          "total_seconds": 19.636868838511873,
+          "max_seconds": 0.11833887500688434
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.00019900110783055425,
+          "max_seconds": 7.450004341080785e-05
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.170051415101625,
+          "max_seconds": 0.4136774580110796
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 3.57499229721725e-05,
+          "max_seconds": 8.165952749550343e-06
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "serial-t2-r1",
+      "mode": "serial",
+      "total_seconds": 34.89262533397414,
+      "frame_task_seconds": 13.113404834002722,
+      "qwen_task_seconds": 14.544399707985576,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.1168670654296875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.416475057601929,
+      "mps_max_sample_age_seconds": 0.18487187498249114,
+      "system_available_min_gib": 5.590087890625,
+      "system_swap_out_delta_mib": 9.796875,
+      "system_swap_used_before_gib": 30.04632568359375,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 0.8609036669950001,
+        "feature_phase": 13.11343304195907,
+        "index": 4.83059983298881,
+        "qwen_prepare_and_encode": 14.563153541006614,
+        "qwen_write_native": 0.013536957965698093,
+        "validate_load_local_publish": 0.8714859589817934
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 361.71875,
+          "peak_mib_per_second": 186.71529062791197
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 2688.421875,
+          "peak_mib_per_second": 1227.3571812059001
+        },
+        "page_out": {
+          "total_mib": 9.796875,
+          "peak_mib_per_second": 3.0849823273093078
+        },
+        "compression": {
+          "total_mib": 26409.4375,
+          "peak_mib_per_second": 5993.0806634760565
+        },
+        "decompression": {
+          "total_mib": 28956.84375,
+          "peak_mib_per_second": 8074.0198039132765
+        },
+        "gpu_percent": {
+          "mean": 72.1639344262295,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 59.01639344262295,
+        "cpu_percent": {
+          "mean": 65.78032786885245,
+          "min": 27.2,
+          "max": 98.6,
+          "p95": 92.0
+        },
+        "sample_count": 61,
+        "sample_cost_seconds": {
+          "mean": 0.07079776019796913,
+          "min": 0.034049290989059955,
+          "max": 0.42059295799117535,
+          "p95": 0.11401770898373798
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 18.625,
+          "peak_mib_per_second": 17.703754898551896
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 51.171875,
+          "peak_mib_per_second": 21.306686478343078
+        },
+        "page_out": {
+          "total_mib": 8.8125,
+          "peak_mib_per_second": 13.779591461366602
+        },
+        "compression": {
+          "total_mib": 5831.515625,
+          "peak_mib_per_second": 5496.212037272945
+        },
+        "decompression": {
+          "total_mib": 3569.71875,
+          "peak_mib_per_second": 1734.8828658518428
+        },
+        "gpu_percent": {
+          "mean": 3.1333333333333333,
+          "min": 0,
+          "max": 24,
+          "p95": 24
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 48.153333333333336,
+          "min": 23.7,
+          "max": 71.9,
+          "p95": 71.9
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05984232785801093,
+          "min": 0.04693379200762138,
+          "max": 0.07944016600959003,
+          "p95": 0.07944016600959003
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.2428953648195602,
+          "max_seconds": 0.005531792005058378
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0005197129212319851,
+          "max_seconds": 2.058397512882948e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.12910329562146217,
+          "max_seconds": 0.02500066696666181
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.465490125119686,
+          "max_seconds": 0.4513463329640217
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 4.7124980483204126e-05,
+          "max_seconds": 1.1499971151351929e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "full-t2-r1",
+      "mode": "full",
+      "total_seconds": 28.61466283298796,
+      "frame_task_seconds": 20.197178291971795,
+      "qwen_task_seconds": 22.149578832963016,
+      "frame_qwen_task_overlap_seconds": 20.19657562498469,
+      "rss_peak_gib": 3.55743408203125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.495065212249756,
+      "mps_max_sample_age_seconds": 0.26974874996813014,
+      "system_available_min_gib": 5.0492095947265625,
+      "system_swap_out_delta_mib": 9.59375,
+      "system_swap_used_before_gib": 29.62445068359375,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.0899065000121482,
+        "feature_phase": 22.150292709004134,
+        "index": 3.8666999580455013,
+        "qwen_prepare_and_encode": 0.005009083019103855,
+        "qwen_write_native": 0.006158708012662828,
+        "validate_load_local_publish": 0.44248037500074133
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 42.28125,
+          "peak_mib_per_second": 16.559080050279114
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 2264.359375,
+          "peak_mib_per_second": 923.4789240677326
+        },
+        "page_out": {
+          "total_mib": 9.59375,
+          "peak_mib_per_second": 3.2077784412201464
+        },
+        "compression": {
+          "total_mib": 29493.203125,
+          "peak_mib_per_second": 6937.482956732763
+        },
+        "decompression": {
+          "total_mib": 25579.46875,
+          "peak_mib_per_second": 8328.045378466515
+        },
+        "gpu_percent": {
+          "mean": 68.51020408163265,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 61.224489795918366,
+        "cpu_percent": {
+          "mean": 71.6,
+          "min": 0.0,
+          "max": 99.5,
+          "p95": 98.9
+        },
+        "sample_count": 49,
+        "sample_cost_seconds": {
+          "mean": 0.0808298988968647,
+          "min": 0.034206375014036894,
+          "max": 0.18059608398471028,
+          "p95": 0.1475784580106847
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 66.125,
+          "peak_mib_per_second": 89.67675277280878
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 405.921875,
+          "peak_mib_per_second": 213.30577509466806
+        },
+        "page_out": {
+          "total_mib": 9.640625,
+          "peak_mib_per_second": 10.588945235711886
+        },
+        "compression": {
+          "total_mib": 5264.765625,
+          "peak_mib_per_second": 2899.9036126610067
+        },
+        "decompression": {
+          "total_mib": 6769.65625,
+          "peak_mib_per_second": 3041.069719651705
+        },
+        "gpu_percent": {
+          "mean": 19.533333333333335,
+          "min": 6,
+          "max": 46,
+          "p95": 46
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 55.82666666666667,
+          "min": 29.0,
+          "max": 79.8,
+          "p95": 79.8
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.06709585846401751,
+          "min": 0.03489016700768843,
+          "max": 0.28300483303610235,
+          "p95": 0.28300483303610235
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.43369308416731656,
+          "max_seconds": 0.012454207986593246
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0012794132926501334,
+          "max_seconds": 0.0001906250254251063
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.35232441552216187,
+          "max_seconds": 0.010788957995828241
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 5.201392292918172,
+          "max_seconds": 0.8993632499477826
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 8.17091204226017e-05,
+          "max_seconds": 1.8624996300786734e-05
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 1.9530557499965653,
+          "max_seconds": 1.9530557499965653
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "cpu-t2-r1",
+      "mode": "cpu",
+      "total_seconds": 31.31056654197164,
+      "frame_task_seconds": 13.793621541990433,
+      "qwen_task_seconds": 11.176192499988247,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.3597869873046875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.460083723068237,
+      "mps_max_sample_age_seconds": 0.12077212502481416,
+      "system_available_min_gib": 5.307891845703125,
+      "system_swap_out_delta_mib": 8.265625,
+      "system_swap_used_before_gib": 29.52667236328125,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.0262875409680419,
+        "feature_phase": 13.793648082995787,
+        "index": 3.454194208025001,
+        "qwen_prepare_and_encode": 11.181887291953899,
+        "qwen_write_native": 0.06701087497640401,
+        "validate_load_local_publish": 0.943911082984414
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 270.578125,
+          "peak_mib_per_second": 69.62120887090506
+        },
+        "swap_out": {
+          "total_mib": 56.3125,
+          "peak_mib_per_second": 102.42538621924705
+        },
+        "page_in": {
+          "total_mib": 2560.671875,
+          "peak_mib_per_second": 1139.1482388296215
+        },
+        "page_out": {
+          "total_mib": 8.375,
+          "peak_mib_per_second": 3.4226162864740775
+        },
+        "compression": {
+          "total_mib": 27639.03125,
+          "peak_mib_per_second": 6302.425883645215
+        },
+        "decompression": {
+          "total_mib": 28998.015625,
+          "peak_mib_per_second": 7914.710763467516
+        },
+        "gpu_percent": {
+          "mean": 71.01818181818182,
+          "min": 0,
+          "max": 100,
+          "p95": 99
+        },
+        "gpu_samples_ge90_percent": 60.0,
+        "cpu_percent": {
+          "mean": 71.30727272727273,
+          "min": 29.0,
+          "max": 100.0,
+          "p95": 97.5
+        },
+        "sample_count": 55,
+        "sample_cost_seconds": {
+          "mean": 0.06812335985437544,
+          "min": 0.03713125002104789,
+          "max": 0.15973175002727658,
+          "p95": 0.11794870800804347
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 37.75,
+          "peak_mib_per_second": 38.08672306081819
+        },
+        "swap_out": {
+          "total_mib": 11.875,
+          "peak_mib_per_second": 21.814729885012447
+        },
+        "page_in": {
+          "total_mib": 215.84375,
+          "peak_mib_per_second": 128.51209107418015
+        },
+        "page_out": {
+          "total_mib": 8.6875,
+          "peak_mib_per_second": 14.080546101272178
+        },
+        "compression": {
+          "total_mib": 4433.234375,
+          "peak_mib_per_second": 2018.0481042399126
+        },
+        "decompression": {
+          "total_mib": 6612.921875,
+          "peak_mib_per_second": 2922.2903875755046
+        },
+        "gpu_percent": {
+          "mean": 9,
+          "min": 0,
+          "max": 28,
+          "p95": 28
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 56.79333333333334,
+          "min": 30.3,
+          "max": 73.7,
+          "p95": 73.7
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.048135708400513975,
+          "min": 0.034528582997154444,
+          "max": 0.06675108399940655,
+          "p95": 0.06675108399940655
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.24352521559922025,
+          "max_seconds": 0.003270416986197233
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0005782055668532848,
+          "max_seconds": 2.424995182082057e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.1164905057521537,
+          "max_seconds": 0.003508750000037253
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 205,
+          "total_seconds": 20.871935920324177,
+          "max_seconds": 0.12243133300216869
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.00013733399100601673,
+          "max_seconds": 2.0833977032452822e-05
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.322896334109828,
+          "max_seconds": 0.4224030419718474
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 5.1957962568849325e-05,
+          "max_seconds": 1.1582975275814533e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "serial-t4-r1",
+      "mode": "serial",
+      "total_seconds": 37.20156108302763,
+      "frame_task_seconds": 15.77105479198508,
+      "qwen_task_seconds": 13.977243667002767,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.063446044921875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.38671875,
+      "mps_tensor_sum_peak_gib": 4.43991231918335,
+      "mps_max_sample_age_seconds": 0.27340475004166365,
+      "system_available_min_gib": 5.179168701171875,
+      "system_swap_out_delta_mib": 15.375,
+      "system_swap_used_before_gib": 29.74737548828125,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.104767999961041,
+        "feature_phase": 15.771094583033118,
+        "index": 3.8612580000190064,
+        "qwen_prepare_and_encode": 13.98205566604156,
+        "qwen_write_native": 0.02708804199937731,
+        "validate_load_local_publish": 1.0001003329525702
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 1043.03125,
+          "peak_mib_per_second": 136.983541835098
+        },
+        "swap_out": {
+          "total_mib": 456.1875,
+          "peak_mib_per_second": 687.0628669529593
+        },
+        "page_in": {
+          "total_mib": 3071.953125,
+          "peak_mib_per_second": 1167.222234595353
+        },
+        "page_out": {
+          "total_mib": 15.375,
+          "peak_mib_per_second": 4.090403961345225
+        },
+        "compression": {
+          "total_mib": 36122.203125,
+          "peak_mib_per_second": 6074.447722108595
+        },
+        "decompression": {
+          "total_mib": 38275.46875,
+          "peak_mib_per_second": 6682.131392304176
+        },
+        "gpu_percent": {
+          "mean": 65.12307692307692,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 56.92307692307692,
+        "cpu_percent": {
+          "mean": 82.44769230769231,
+          "min": 53.4,
+          "max": 100.0,
+          "p95": 99.1
+        },
+        "sample_count": 65,
+        "sample_cost_seconds": {
+          "mean": 0.07005919807841285,
+          "min": 0.039409374992828816,
+          "max": 0.1758386250003241,
+          "p95": 0.11282745801145211
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 230.59375,
+          "peak_mib_per_second": 57.72314707766704
+        },
+        "swap_out": {
+          "total_mib": 125.375,
+          "peak_mib_per_second": 204.04415664961843
+        },
+        "page_in": {
+          "total_mib": 264.171875,
+          "peak_mib_per_second": 81.02725932310516
+        },
+        "page_out": {
+          "total_mib": 11.265625,
+          "peak_mib_per_second": 13.045195957284928
+        },
+        "compression": {
+          "total_mib": 3907.53125,
+          "peak_mib_per_second": 1585.7923296145134
+        },
+        "decompression": {
+          "total_mib": 6512.109375,
+          "peak_mib_per_second": 2213.360343317895
+        },
+        "gpu_percent": {
+          "mean": 7.733333333333333,
+          "min": 0,
+          "max": 20,
+          "p95": 20
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 73.85333333333334,
+          "min": 43.5,
+          "max": 95.1,
+          "p95": 95.1
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.04968143053896104,
+          "min": 0.034659083001315594,
+          "max": 0.1098396250163205,
+          "p95": 0.1098396250163205
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.30561209010193124,
+          "max_seconds": 0.010982416977640241
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0009930017404258251,
+          "max_seconds": 6.48329732939601e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.16098095913184807,
+          "max_seconds": 0.01831045898143202
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.3037359170848504,
+          "max_seconds": 0.4265476250438951
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 7.850199472159147e-05,
+          "max_seconds": 3.287498839199543e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "full-t4-r1",
+      "mode": "full",
+      "total_seconds": 33.30264170799637,
+      "frame_task_seconds": 21.964524333016016,
+      "qwen_task_seconds": 24.751895209017675,
+      "frame_qwen_task_overlap_seconds": 21.963840584037825,
+      "rss_peak_gib": 2.92303466796875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.4390716552734375,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.32528391695814207,
+      "system_available_min_gib": 4.426971435546875,
+      "system_swap_out_delta_mib": 11.75,
+      "system_swap_used_before_gib": 29.1824951171875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.591263250040356,
+        "feature_phase": 24.77222066599643,
+        "index": 4.802760874968953,
+        "qwen_prepare_and_encode": 0.009133499988820404,
+        "qwen_write_native": 0.008941166044678539,
+        "validate_load_local_publish": 0.9573731669806875
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 402.90625,
+          "peak_mib_per_second": 107.46209905367313
+        },
+        "swap_out": {
+          "total_mib": 308.375,
+          "peak_mib_per_second": 448.5753506697597
+        },
+        "page_in": {
+          "total_mib": 3438.125,
+          "peak_mib_per_second": 1456.8300748292215
+        },
+        "page_out": {
+          "total_mib": 12.296875,
+          "peak_mib_per_second": 2.6276449753697153
+        },
+        "compression": {
+          "total_mib": 47551.609375,
+          "peak_mib_per_second": 6285.957059585616
+        },
+        "decompression": {
+          "total_mib": 44641.140625,
+          "peak_mib_per_second": 8064.608564703979
+        },
+        "gpu_percent": {
+          "mean": 60.2,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 47.27272727272727,
+        "cpu_percent": {
+          "mean": 92.91090909090909,
+          "min": 0.0,
+          "max": 100.0,
+          "p95": 100.0
+        },
+        "sample_count": 55,
+        "sample_cost_seconds": {
+          "mean": 0.10816393269289454,
+          "min": 0.042015874991193414,
+          "max": 0.3654649999807589,
+          "p95": 0.16863791702780873
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 168.515625,
+          "peak_mib_per_second": 50.267989980688185
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 68.5,
+          "peak_mib_per_second": 39.62241513816755
+        },
+        "page_out": {
+          "total_mib": 9.09375,
+          "peak_mib_per_second": 14.000397219435987
+        },
+        "compression": {
+          "total_mib": 7996.5625,
+          "peak_mib_per_second": 2931.3928143851367
+        },
+        "decompression": {
+          "total_mib": 8986.3125,
+          "peak_mib_per_second": 2169.1439450487564
+        },
+        "gpu_percent": {
+          "mean": 7.133333333333334,
+          "min": 0,
+          "max": 23,
+          "p95": 23
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 73.68666666666667,
+          "min": 39.7,
+          "max": 96.6,
+          "p95": 96.6
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.04793546665459871,
+          "min": 0.03605016699293628,
+          "max": 0.06481325003551319,
+          "p95": 0.06481325003551319
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.4764816297683865,
+          "max_seconds": 0.011787208030000329
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0013639209792017937,
+          "max_seconds": 7.483398076146841e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.3076609995914623,
+          "max_seconds": 0.009882375015877187
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 4.584500582073815,
+          "max_seconds": 0.9544652079930529
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0002565420581959188,
+          "max_seconds": 8.1458012573421e-05
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 2.807603332970757,
+          "max_seconds": 2.807603332970757
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "cpu-t4-r1",
+      "mode": "cpu",
+      "total_seconds": 35.51189120899653,
+      "frame_task_seconds": 15.512076707964297,
+      "qwen_task_seconds": 12.979786292009521,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 2.8164520263671875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.42428731918335,
+      "mps_max_sample_age_seconds": 0.3131140830228105,
+      "system_available_min_gib": 5.117401123046875,
+      "system_swap_out_delta_mib": 15.1875,
+      "system_swap_used_before_gib": 29.62347412109375,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.0745200829696842,
+        "feature_phase": 15.512128249974921,
+        "index": 3.858275667007547,
+        "qwen_prepare_and_encode": 12.986697374959476,
+        "qwen_write_native": 0.02012287499383092,
+        "validate_load_local_publish": 0.8195953749818727
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 504.71875,
+          "peak_mib_per_second": 56.585295888513286
+        },
+        "swap_out": {
+          "total_mib": 1000.75,
+          "peak_mib_per_second": 958.6786378306812
+        },
+        "page_in": {
+          "total_mib": 2521.046875,
+          "peak_mib_per_second": 1114.6306438900735
+        },
+        "page_out": {
+          "total_mib": 15.140625,
+          "peak_mib_per_second": 8.059075516040194
+        },
+        "compression": {
+          "total_mib": 34406.90625,
+          "peak_mib_per_second": 5903.456776287178
+        },
+        "decompression": {
+          "total_mib": 38744.4375,
+          "peak_mib_per_second": 6012.73058709792
+        },
+        "gpu_percent": {
+          "mean": 67.81666666666666,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 51.666666666666664,
+        "cpu_percent": {
+          "mean": 84.57,
+          "min": 48.1,
+          "max": 100.0,
+          "p95": 100.0
+        },
+        "sample_count": 60,
+        "sample_cost_seconds": {
+          "mean": 0.08740412431943696,
+          "min": 0.03448058298090473,
+          "max": 0.25668574997689575,
+          "p95": 0.16465275001246482
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 501.359375,
+          "peak_mib_per_second": 152.09236151989288
+        },
+        "swap_out": {
+          "total_mib": 282.875,
+          "peak_mib_per_second": 295.02885891688686
+        },
+        "page_in": {
+          "total_mib": 93.015625,
+          "peak_mib_per_second": 25.58681359839955
+        },
+        "page_out": {
+          "total_mib": 19.703125,
+          "peak_mib_per_second": 32.37387341393515
+        },
+        "compression": {
+          "total_mib": 9708.421875,
+          "peak_mib_per_second": 4278.908926851574
+        },
+        "decompression": {
+          "total_mib": 11003.0,
+          "peak_mib_per_second": 3408.013767613678
+        },
+        "gpu_percent": {
+          "mean": 2.2,
+          "min": 0,
+          "max": 10,
+          "p95": 10
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 63.766666666666666,
+          "min": 36.9,
+          "max": 92.5,
+          "p95": 92.5
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.050958872260525825,
+          "min": 0.034895375021733344,
+          "max": 0.07152454199967906,
+          "p95": 0.07152454199967906
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.3305975758121349,
+          "max_seconds": 0.019983624981250614
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0010006230440922081,
+          "max_seconds": 0.0001400840119458735
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.15388083597645164,
+          "max_seconds": 0.0055629159905947745
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 205,
+          "total_seconds": 20.926998751354404,
+          "max_seconds": 0.156588833022397
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.000884292006958276,
+          "max_seconds": 0.0006132079870440066
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.276814832002856,
+          "max_seconds": 0.5142520829685964
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0001337080611847341,
+          "max_seconds": 3.308401210233569e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "cpu-t1-r2",
+      "mode": "cpu",
+      "total_seconds": 36.7877115419833,
+      "frame_task_seconds": 17.049037542019505,
+      "qwen_task_seconds": 13.279438542027492,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.185455322265625,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.4502174999797717,
+      "system_available_min_gib": 5.2083892822265625,
+      "system_swap_out_delta_mib": 14.125,
+      "system_swap_used_before_gib": 29.980712890625,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.9322870829491876,
+        "feature_phase": 17.04908029199578,
+        "index": 3.5846668329904787,
+        "qwen_prepare_and_encode": 13.28536445798818,
+        "qwen_write_native": 0.020794665964785963,
+        "validate_load_local_publish": 0.896125832980033
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 291.34375,
+          "peak_mib_per_second": 46.517153356838
+        },
+        "swap_out": {
+          "total_mib": 284.875,
+          "peak_mib_per_second": 522.0842709535023
+        },
+        "page_in": {
+          "total_mib": 2611.5625,
+          "peak_mib_per_second": 1188.9916392918926
+        },
+        "page_out": {
+          "total_mib": 14.125,
+          "peak_mib_per_second": 3.0355439695886384
+        },
+        "compression": {
+          "total_mib": 32343.140625,
+          "peak_mib_per_second": 7542.710098072089
+        },
+        "decompression": {
+          "total_mib": 35873.546875,
+          "peak_mib_per_second": 7283.1482504381975
+        },
+        "gpu_percent": {
+          "mean": 64.90163934426229,
+          "min": 0,
+          "max": 100,
+          "p95": 97
+        },
+        "gpu_samples_ge90_percent": 52.459016393442624,
+        "cpu_percent": {
+          "mean": 83.88524590163935,
+          "min": 55.8,
+          "max": 100.0,
+          "p95": 98.4
+        },
+        "sample_count": 61,
+        "sample_cost_seconds": {
+          "mean": 0.09923156354190843,
+          "min": 0.03636633401038125,
+          "max": 0.3620361660141498,
+          "p95": 0.16565650003030896
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 32.546875,
+          "peak_mib_per_second": 15.047923066499349
+        },
+        "swap_out": {
+          "total_mib": 20.5625,
+          "peak_mib_per_second": 37.16086757333147
+        },
+        "page_in": {
+          "total_mib": 284.078125,
+          "peak_mib_per_second": 92.60143249659909
+        },
+        "page_out": {
+          "total_mib": 2.3125,
+          "peak_mib_per_second": 1.1305566861889973
+        },
+        "compression": {
+          "total_mib": 3802.03125,
+          "peak_mib_per_second": 1661.8970782205442
+        },
+        "decompression": {
+          "total_mib": 5815.6875,
+          "peak_mib_per_second": 2422.7875881443015
+        },
+        "gpu_percent": {
+          "mean": 20.6,
+          "min": 0,
+          "max": 54,
+          "p95": 54
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 64.02666666666667,
+          "min": 21.9,
+          "max": 84.2,
+          "p95": 84.2
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05016469720673437,
+          "min": 0.034582416992634535,
+          "max": 0.07569166697794572,
+          "p95": 0.07569166697794572
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.36722966213710606,
+          "max_seconds": 0.01554291695356369
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0009014621609821916,
+          "max_seconds": 3.458303399384022e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.19852846127469093,
+          "max_seconds": 0.011391500011086464
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 233,
+          "total_seconds": 24.026691042119637,
+          "max_seconds": 0.205815082998015
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.0035074990591965616,
+          "max_seconds": 0.003229541005566716
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.618822373857256,
+          "max_seconds": 0.4955020829802379
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 8.9749984908849e-05,
+          "max_seconds": 2.0417035557329655e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "full-t1-r2",
+      "mode": "full",
+      "total_seconds": 38.49026891699759,
+      "frame_task_seconds": 24.339430749998428,
+      "qwen_task_seconds": 29.957420959020965,
+      "frame_qwen_task_overlap_seconds": 24.339021000021603,
+      "rss_peak_gib": 3.09576416015625,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.487519979476929,
+      "mps_max_sample_age_seconds": 0.43214295798679814,
+      "system_available_min_gib": 4.4903717041015625,
+      "system_swap_out_delta_mib": 11.5625,
+      "system_swap_used_before_gib": 29.9254150390625,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.3461067919852212,
+        "feature_phase": 29.95832704100758,
+        "index": 5.44898991700029,
+        "qwen_prepare_and_encode": 0.008318583015352488,
+        "qwen_write_native": 0.02722016698680818,
+        "validate_load_local_publish": 0.630979000008665
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 464.0,
+          "peak_mib_per_second": 57.64319331945294
+        },
+        "swap_out": {
+          "total_mib": 627.875,
+          "peak_mib_per_second": 448.55648718065123
+        },
+        "page_in": {
+          "total_mib": 2848.015625,
+          "peak_mib_per_second": 1084.202311870217
+        },
+        "page_out": {
+          "total_mib": 11.546875,
+          "peak_mib_per_second": 2.710556878333296
+        },
+        "compression": {
+          "total_mib": 46261.625,
+          "peak_mib_per_second": 5411.51656532328
+        },
+        "decompression": {
+          "total_mib": 43245.5625,
+          "peak_mib_per_second": 7582.472667532472
+        },
+        "gpu_percent": {
+          "mean": 61.85245901639344,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 44.26229508196721,
+        "cpu_percent": {
+          "mean": 91.55409836065574,
+          "min": 69.9,
+          "max": 100.0,
+          "p95": 100.0
+        },
+        "sample_count": 61,
+        "sample_cost_seconds": {
+          "mean": 0.12826034296151312,
+          "min": 0.04109816695563495,
+          "max": 0.4365222079795785,
+          "p95": 0.19759679201524705
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 38.0625,
+          "peak_mib_per_second": 31.873870454743457
+        },
+        "swap_out": {
+          "total_mib": 18.5,
+          "peak_mib_per_second": 34.05507856832983
+        },
+        "page_in": {
+          "total_mib": 221.03125,
+          "peak_mib_per_second": 59.970303053182185
+        },
+        "page_out": {
+          "total_mib": 1.65625,
+          "peak_mib_per_second": 1.0066957347056962
+        },
+        "compression": {
+          "total_mib": 5706.015625,
+          "peak_mib_per_second": 2195.2058805199454
+        },
+        "decompression": {
+          "total_mib": 6810.03125,
+          "peak_mib_per_second": 2096.128523946916
+        },
+        "gpu_percent": {
+          "mean": 13,
+          "min": 0,
+          "max": 68,
+          "p95": 68
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 64.43333333333334,
+          "min": 50.7,
+          "max": 85.4,
+          "p95": 85.4
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.042578788854492206,
+          "min": 0.0362942919600755,
+          "max": 0.053659999975934625,
+          "p95": 0.053659999975934625
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.8550310868886299,
+          "max_seconds": 0.05072691600071266
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.005258332006633282,
+          "max_seconds": 0.002536166983190924
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.583195589017123,
+          "max_seconds": 0.02179149998119101
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.4313676659367047,
+          "max_seconds": 0.6791319170151837
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0003547919914126396,
+          "max_seconds": 0.000191457977052778
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 5.618519915966317,
+          "max_seconds": 5.618519915966317
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "serial-t1-r2",
+      "mode": "serial",
+      "total_seconds": 49.68897274998017,
+      "frame_task_seconds": 21.454269957961515,
+      "qwen_task_seconds": 18.737979375000577,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.261810302734375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.460091590881348,
+      "mps_max_sample_age_seconds": 0.5631085410132073,
+      "system_available_min_gib": 5.0996856689453125,
+      "system_swap_out_delta_mib": 15.15625,
+      "system_swap_used_before_gib": 30.31817626953125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 2.1277037910185754,
+        "feature_phase": 21.454320915974677,
+        "index": 4.293592916976195,
+        "qwen_prepare_and_encode": 18.74412112502614,
+        "qwen_write_native": 0.025171333050820976,
+        "validate_load_local_publish": 1.2058783750399016
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 1189.453125,
+          "peak_mib_per_second": 138.13381622734167
+        },
+        "swap_out": {
+          "total_mib": 989.875,
+          "peak_mib_per_second": 759.3585809856967
+        },
+        "page_in": {
+          "total_mib": 4629.71875,
+          "peak_mib_per_second": 1088.59763873434
+        },
+        "page_out": {
+          "total_mib": 15.15625,
+          "peak_mib_per_second": 4.148020361734879
+        },
+        "compression": {
+          "total_mib": 39205.75,
+          "peak_mib_per_second": 4467.253917829547
+        },
+        "decompression": {
+          "total_mib": 44377.453125,
+          "peak_mib_per_second": 6741.880665758037
+        },
+        "gpu_percent": {
+          "mean": 58.160493827160494,
+          "min": 0,
+          "max": 100,
+          "p95": 97
+        },
+        "gpu_samples_ge90_percent": 38.27160493827161,
+        "cpu_percent": {
+          "mean": 93.65432098765432,
+          "min": 74.8,
+          "max": 100.0,
+          "p95": 99.8
+        },
+        "sample_count": 81,
+        "sample_cost_seconds": {
+          "mean": 0.1119555843114439,
+          "min": 0.04583258298225701,
+          "max": 0.3428240839857608,
+          "p95": 0.18799450004007667
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 98.59375,
+          "peak_mib_per_second": 96.77774766930108
+        },
+        "swap_out": {
+          "total_mib": 422.125,
+          "peak_mib_per_second": 316.81119160505045
+        },
+        "page_in": {
+          "total_mib": 200.375,
+          "peak_mib_per_second": 50.76162278381913
+        },
+        "page_out": {
+          "total_mib": 2.421875,
+          "peak_mib_per_second": 1.1247315338551784
+        },
+        "compression": {
+          "total_mib": 12008.0625,
+          "peak_mib_per_second": 2930.1277546090005
+        },
+        "decompression": {
+          "total_mib": 11112.34375,
+          "peak_mib_per_second": 2473.488500746564
+        },
+        "gpu_percent": {
+          "mean": 8.142857142857142,
+          "min": 0,
+          "max": 35,
+          "p95": 35
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 88.33571428571429,
+          "min": 60.0,
+          "max": 100.0,
+          "p95": 100.0
+        },
+        "sample_count": 14,
+        "sample_cost_seconds": {
+          "mean": 0.09110338093679664,
+          "min": 0.03969870798755437,
+          "max": 0.28291912499116734,
+          "p95": 0.28291912499116734
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.9127047970541753,
+          "max_seconds": 0.035049500002060086
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.011866291868500412,
+          "max_seconds": 0.010206750012002885
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.5804389981785789,
+          "max_seconds": 0.023085374967195094
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.481437917042058,
+          "max_seconds": 0.6020866669714451
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.00046262500109151006,
+          "max_seconds": 0.0002394170151092112
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "cpu-t4-r2",
+      "mode": "cpu",
+      "total_seconds": 43.43413650000002,
+      "frame_task_seconds": 16.89337175001856,
+      "qwen_task_seconds": 15.208906417014077,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 2.5587615966796875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.38671875,
+      "mps_tensor_sum_peak_gib": 4.460091590881348,
+      "mps_max_sample_age_seconds": 0.42472549999365583,
+      "system_available_min_gib": 5.0975341796875,
+      "system_swap_out_delta_mib": 17.0625,
+      "system_swap_used_before_gib": 29.40277099609375,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.132683250005357,
+        "feature_phase": 16.893461624975316,
+        "index": 8.362036457983777,
+        "qwen_prepare_and_encode": 15.217432916979305,
+        "qwen_write_native": 0.06216387503081933,
+        "validate_load_local_publish": 1.0147782089770772
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 1464.484375,
+          "peak_mib_per_second": 249.7005602771455
+        },
+        "swap_out": {
+          "total_mib": 1548.78125,
+          "peak_mib_per_second": 918.341304725323
+        },
+        "page_in": {
+          "total_mib": 2884.65625,
+          "peak_mib_per_second": 1231.8575637771107
+        },
+        "page_out": {
+          "total_mib": 17.0625,
+          "peak_mib_per_second": 5.662973298208735
+        },
+        "compression": {
+          "total_mib": 43768.90625,
+          "peak_mib_per_second": 3812.220960269995
+        },
+        "decompression": {
+          "total_mib": 45860.6875,
+          "peak_mib_per_second": 7331.574628640042
+        },
+        "gpu_percent": {
+          "mean": 63.594202898550726,
+          "min": 0,
+          "max": 100,
+          "p95": 98
+        },
+        "gpu_samples_ge90_percent": 34.78260869565217,
+        "cpu_percent": {
+          "mean": 90.4,
+          "min": 66.3,
+          "max": 100.0,
+          "p95": 100.0
+        },
+        "sample_count": 69,
+        "sample_cost_seconds": {
+          "mean": 0.12377408036685454,
+          "min": 0.04304754099575803,
+          "max": 0.4508061250089668,
+          "p95": 0.23369895899668336
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 277.8125,
+          "peak_mib_per_second": 69.86510453835642
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 128.03125,
+          "peak_mib_per_second": 32.49386255070999
+        },
+        "page_out": {
+          "total_mib": 12.296875,
+          "peak_mib_per_second": 11.187811362332242
+        },
+        "compression": {
+          "total_mib": 12551.203125,
+          "peak_mib_per_second": 3214.7954707512513
+        },
+        "decompression": {
+          "total_mib": 12970.9375,
+          "peak_mib_per_second": 2989.3838519744586
+        },
+        "gpu_percent": {
+          "mean": 21.428571428571427,
+          "min": 8,
+          "max": 50,
+          "p95": 50
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 83.80714285714285,
+          "min": 50.7,
+          "max": 99.8,
+          "p95": 99.8
+        },
+        "sample_count": 14,
+        "sample_cost_seconds": {
+          "mean": 0.08600507148990541,
+          "min": 0.039757291960995644,
+          "max": 0.32188175001647323,
+          "p95": 0.32188175001647323
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.3599515017704107,
+          "max_seconds": 0.010992499999701977
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0013133799075149,
+          "max_seconds": 0.0001253749942407012
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.22556333325337619,
+          "max_seconds": 0.01688387501053512
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 253,
+          "total_seconds": 26.542270874546375,
+          "max_seconds": 0.2175960830063559
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.0005471659824252129,
+          "max_seconds": 0.00015820900443941355
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 2.907285417022649,
+          "max_seconds": 0.4653547080233693
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0001607100130058825,
+          "max_seconds": 4.229199839755893e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "full-t4-r2",
+      "mode": "full",
+      "total_seconds": 44.05112620902946,
+      "frame_task_seconds": 26.146988333959598,
+      "qwen_task_seconds": 33.55325570801506,
+      "frame_qwen_task_overlap_seconds": 26.1459542500088,
+      "rss_peak_gib": 2.5922393798828125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.4322509765625,
+      "mps_tensor_sum_peak_gib": 4.495071887969971,
+      "mps_max_sample_age_seconds": 0.5196288750157692,
+      "system_available_min_gib": 4.424224853515625,
+      "system_swap_out_delta_mib": 19.421875,
+      "system_swap_used_before_gib": 29.328857421875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.7960304589942098,
+        "feature_phase": 33.55467083398253,
+        "index": 6.079947000020184,
+        "qwen_prepare_and_encode": 0.00922595796873793,
+        "qwen_write_native": 0.012186540989205241,
+        "validate_load_local_publish": 1.3656719159916975
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 581.171875,
+          "peak_mib_per_second": 73.31598455118369
+        },
+        "swap_out": {
+          "total_mib": 2483.625,
+          "peak_mib_per_second": 1574.6217496753109
+        },
+        "page_in": {
+          "total_mib": 3836.171875,
+          "peak_mib_per_second": 1204.8209650982246
+        },
+        "page_out": {
+          "total_mib": 19.421875,
+          "peak_mib_per_second": 3.2727238723104515
+        },
+        "compression": {
+          "total_mib": 62508.609375,
+          "peak_mib_per_second": 5688.709409101109
+        },
+        "decompression": {
+          "total_mib": 59273.140625,
+          "peak_mib_per_second": 6420.434074459198
+        },
+        "gpu_percent": {
+          "mean": 63.303030303030305,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 42.42424242424242,
+        "cpu_percent": {
+          "mean": 90.98484848484848,
+          "min": 60.7,
+          "max": 100.0,
+          "p95": 100.0
+        },
+        "sample_count": 66,
+        "sample_cost_seconds": {
+          "mean": 0.16419745256037763,
+          "min": 0.04255654203006998,
+          "max": 0.6625230410136282,
+          "p95": 0.38698887499049306
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 149.09375,
+          "peak_mib_per_second": 74.15657809963439
+        },
+        "swap_out": {
+          "total_mib": 23.1875,
+          "peak_mib_per_second": 39.56492374337562
+        },
+        "page_in": {
+          "total_mib": 91.921875,
+          "peak_mib_per_second": 32.04794666689178
+        },
+        "page_out": {
+          "total_mib": 2.234375,
+          "peak_mib_per_second": 1.1760714373171295
+        },
+        "compression": {
+          "total_mib": 10831.5625,
+          "peak_mib_per_second": 2886.7464172761042
+        },
+        "decompression": {
+          "total_mib": 11642.8125,
+          "peak_mib_per_second": 2754.801129131922
+        },
+        "gpu_percent": {
+          "mean": 62.07142857142857,
+          "min": 43,
+          "max": 72,
+          "p95": 72
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 91.20714285714286,
+          "min": 63.7,
+          "max": 100.0,
+          "p95": 100.0
+        },
+        "sample_count": 14,
+        "sample_cost_seconds": {
+          "mean": 0.08976901199951369,
+          "min": 0.045002083003055304,
+          "max": 0.2302365840296261,
+          "p95": 0.2302365840296261
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 1.0022176218335517,
+          "max_seconds": 0.04574295796919614
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0028887870139442384,
+          "max_seconds": 0.0006596660241484642
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.790818250970915,
+          "max_seconds": 0.18154191703069955
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 2.5415140830446035,
+          "max_seconds": 0.44458704197313637
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0001760851009748876,
+          "max_seconds": 3.604200901463628e-05
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 7.40753779100487,
+          "max_seconds": 7.40753779100487
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "serial-t4-r2",
+      "mode": "serial",
+      "total_seconds": 44.43590779101942,
+      "frame_task_seconds": 19.04815766698448,
+      "qwen_task_seconds": 16.5668329159962,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.097564697265625,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.4600958824157715,
+      "mps_max_sample_age_seconds": 0.2630304580088705,
+      "system_available_min_gib": 5.4474029541015625,
+      "system_swap_out_delta_mib": 13.546875,
+      "system_swap_used_before_gib": 30.95526123046875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 2.0934928750502877,
+        "feature_phase": 19.04819654201856,
+        "index": 4.019058083998971,
+        "qwen_prepare_and_encode": 16.57238312496338,
+        "qwen_write_native": 0.028377167007420212,
+        "validate_load_local_publish": 1.5602376249735244
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 569.65625,
+          "peak_mib_per_second": 109.51551730261231
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 2495.859375,
+          "peak_mib_per_second": 1019.708635383024
+        },
+        "page_out": {
+          "total_mib": 13.546875,
+          "peak_mib_per_second": 3.543717113992893
+        },
+        "compression": {
+          "total_mib": 27742.390625,
+          "peak_mib_per_second": 6245.662712791326
+        },
+        "decompression": {
+          "total_mib": 31845.03125,
+          "peak_mib_per_second": 6121.820776849999
+        },
+        "gpu_percent": {
+          "mean": 69.67605633802818,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 39.436619718309856,
+        "cpu_percent": {
+          "mean": 83.36056338028169,
+          "min": 43.6,
+          "max": 100.0,
+          "p95": 99.8
+        },
+        "sample_count": 71,
+        "sample_cost_seconds": {
+          "mean": 0.12256504576013778,
+          "min": 0.03360404202248901,
+          "max": 0.6711677080020308,
+          "p95": 0.29078704200219363
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 130.84375,
+          "peak_mib_per_second": 47.5360338014037
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 192.8125,
+          "peak_mib_per_second": 65.45363368400946
+        },
+        "page_out": {
+          "total_mib": 9.875,
+          "peak_mib_per_second": 14.53148906520048
+        },
+        "compression": {
+          "total_mib": 5627.203125,
+          "peak_mib_per_second": 2068.1853420148173
+        },
+        "decompression": {
+          "total_mib": 6206.09375,
+          "peak_mib_per_second": 1526.925000588563
+        },
+        "gpu_percent": {
+          "mean": 37.266666666666666,
+          "min": 21,
+          "max": 73,
+          "p95": 73
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 87.28,
+          "min": 59.9,
+          "max": 99.3,
+          "p95": 99.3
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.06758172499248757,
+          "min": 0.04591187497135252,
+          "max": 0.0926668340107426,
+          "p95": 0.0926668340107426
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.547549951937981,
+          "max_seconds": 0.0972262910217978
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0031805861508473754,
+          "max_seconds": 0.0016408750088885427
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.29692486790008843,
+          "max_seconds": 0.03137791698100045
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.1277665009256452,
+          "max_seconds": 0.5159761669929139
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.00013487599790096283,
+          "max_seconds": 4.258297849446535e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "cpu-t2-r2",
+      "mode": "cpu",
+      "total_seconds": 42.32827841700055,
+      "frame_task_seconds": 18.583775709033944,
+      "qwen_task_seconds": 13.735252583050169,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.1536712646484375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.19720745895756409,
+      "system_available_min_gib": 5.395111083984375,
+      "system_swap_out_delta_mib": 15.125,
+      "system_swap_used_before_gib": 30.35369873046875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 2.0620971669559367,
+        "feature_phase": 18.58381266699871,
+        "index": 5.458450208010618,
+        "qwen_prepare_and_encode": 13.747631416015793,
+        "qwen_write_native": 0.02308962499955669,
+        "validate_load_local_publish": 1.0535912909545004
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 499.140625,
+          "peak_mib_per_second": 168.13975107794056
+        },
+        "swap_out": {
+          "total_mib": 169.375,
+          "peak_mib_per_second": 165.84150407031427
+        },
+        "page_in": {
+          "total_mib": 3473.109375,
+          "peak_mib_per_second": 1062.1331439823173
+        },
+        "page_out": {
+          "total_mib": 15.234375,
+          "peak_mib_per_second": 3.1798660447248195
+        },
+        "compression": {
+          "total_mib": 27625.390625,
+          "peak_mib_per_second": 6677.365242213635
+        },
+        "decompression": {
+          "total_mib": 30411.34375,
+          "peak_mib_per_second": 7685.382063738696
+        },
+        "gpu_percent": {
+          "mean": 76.8840579710145,
+          "min": 0,
+          "max": 100,
+          "p95": 99
+        },
+        "gpu_samples_ge90_percent": 46.3768115942029,
+        "cpu_percent": {
+          "mean": 83.33478260869565,
+          "min": 48.7,
+          "max": 99.7,
+          "p95": 99.5
+        },
+        "sample_count": 69,
+        "sample_cost_seconds": {
+          "mean": 0.11424633030496213,
+          "min": 0.04638295801123604,
+          "max": 0.2751096250140108,
+          "p95": 0.1874724170193076
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 15.71875,
+          "peak_mib_per_second": 5.8727813269676155
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 143.15625,
+          "peak_mib_per_second": 70.77069662484672
+        },
+        "page_out": {
+          "total_mib": 9.40625,
+          "peak_mib_per_second": 12.224790478068126
+        },
+        "compression": {
+          "total_mib": 4284.6875,
+          "peak_mib_per_second": 1461.0956278955732
+        },
+        "decompression": {
+          "total_mib": 5283.328125,
+          "peak_mib_per_second": 1587.8199173398975
+        },
+        "gpu_percent": {
+          "mean": 44.266666666666666,
+          "min": 19,
+          "max": 65,
+          "p95": 65
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 68.97333333333333,
+          "min": 25.4,
+          "max": 90.1,
+          "p95": 90.1
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.049654411194690815,
+          "min": 0.037379167042672634,
+          "max": 0.09698054095497355,
+          "p95": 0.09698054095497355
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.38735303975408897,
+          "max_seconds": 0.00729625002713874
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.001413998892530799,
+          "max_seconds": 0.00043399998685345054
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.19062432798091322,
+          "max_seconds": 0.005629583029076457
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 248,
+          "total_seconds": 25.579317123745568,
+          "max_seconds": 0.13126500003272668
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.00042412703623995185,
+          "max_seconds": 0.00017162499716505408
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.442183999984991,
+          "max_seconds": 0.5300787920132279
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.00022387498756870627,
+          "max_seconds": 0.0001170419855043292
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "full-t2-r2",
+      "mode": "full",
+      "total_seconds": 39.60741279198555,
+      "frame_task_seconds": 27.447235416970216,
+      "qwen_task_seconds": 32.2648990409798,
+      "frame_qwen_task_overlap_seconds": 27.44648366601905,
+      "rss_peak_gib": 3.1800689697265625,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.4453125,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.3839345409651287,
+      "system_available_min_gib": 4.51300048828125,
+      "system_swap_out_delta_mib": 17.0,
+      "system_swap_used_before_gib": 29.97772216796875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.1784268749761395,
+        "feature_phase": 32.265856999962125,
+        "index": 4.680197916983161,
+        "qwen_prepare_and_encode": 0.004929665999952704,
+        "qwen_write_native": 0.005523541010916233,
+        "validate_load_local_publish": 0.45406820898642763
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 171.515625,
+          "peak_mib_per_second": 43.97061382939203
+        },
+        "swap_out": {
+          "total_mib": 911.9375,
+          "peak_mib_per_second": 1281.906253596582
+        },
+        "page_in": {
+          "total_mib": 3110.609375,
+          "peak_mib_per_second": 766.3010055600517
+        },
+        "page_out": {
+          "total_mib": 17.0,
+          "peak_mib_per_second": 3.717497437667275
+        },
+        "compression": {
+          "total_mib": 70680.125,
+          "peak_mib_per_second": 7034.800738218079
+        },
+        "decompression": {
+          "total_mib": 65819.296875,
+          "peak_mib_per_second": 7831.5598277898125
+        },
+        "gpu_percent": {
+          "mean": 63.68333333333333,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 46.666666666666664,
+        "cpu_percent": {
+          "mean": 85.15833333333333,
+          "min": 49.4,
+          "max": 100.0,
+          "p95": 99.8
+        },
+        "sample_count": 60,
+        "sample_cost_seconds": {
+          "mean": 0.15541917430139923,
+          "min": 0.03966695797862485,
+          "max": 0.8502755420049652,
+          "p95": 0.45006599999032915
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 52.140625,
+          "peak_mib_per_second": 50.062657465866614
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 111.140625,
+          "peak_mib_per_second": 56.30085277652429
+        },
+        "page_out": {
+          "total_mib": 22.953125,
+          "peak_mib_per_second": 35.54012689121647
+        },
+        "compression": {
+          "total_mib": 10285.28125,
+          "peak_mib_per_second": 3613.149914906146
+        },
+        "decompression": {
+          "total_mib": 10054.53125,
+          "peak_mib_per_second": 3395.036964507063
+        },
+        "gpu_percent": {
+          "mean": 23,
+          "min": 6,
+          "max": 46,
+          "p95": 46
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 69.45714285714286,
+          "min": 38.7,
+          "max": 99.9,
+          "p95": 99.9
+        },
+        "sample_count": 14,
+        "sample_cost_seconds": {
+          "mean": 0.07563878564646334,
+          "min": 0.03272820799611509,
+          "max": 0.3515602499828674,
+          "p95": 0.3515602499828674
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.9860817513545044,
+          "max_seconds": 0.2475152499973774
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0026455778279341757,
+          "max_seconds": 0.0006935829878784716
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.6323950387304649,
+          "max_seconds": 0.06496099999640137
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.901907584106084,
+          "max_seconds": 0.81910520902602
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0003479149891063571,
+          "max_seconds": 0.00018145801732316613
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 4.818543083034456,
+          "max_seconds": 4.818543083034456
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "serial-t2-r2",
+      "mode": "serial",
+      "total_seconds": 41.06362604198512,
+      "frame_task_seconds": 14.569236041978002,
+      "qwen_task_seconds": 20.172079708019737,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.0074920654296875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.375,
+      "mps_tensor_sum_peak_gib": 4.460083723068237,
+      "mps_max_sample_age_seconds": 0.3839203749666922,
+      "system_available_min_gib": 5.0849151611328125,
+      "system_swap_out_delta_mib": 14.78125,
+      "system_swap_used_before_gib": 30.6260986328125,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 0.923934249964077,
+        "feature_phase": 14.569265457976144,
+        "index": 3.2396408329950646,
+        "qwen_prepare_and_encode": 20.176549083029386,
+        "qwen_write_native": 0.07622683298541233,
+        "validate_load_local_publish": 1.5162053749663755
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 167.828125,
+          "peak_mib_per_second": 45.541081625933494
+        },
+        "swap_out": {
+          "total_mib": 183.0,
+          "peak_mib_per_second": 335.4061002615252
+        },
+        "page_in": {
+          "total_mib": 2795.25,
+          "peak_mib_per_second": 996.3291944850644
+        },
+        "page_out": {
+          "total_mib": 14.765625,
+          "peak_mib_per_second": 5.266849915432861
+        },
+        "compression": {
+          "total_mib": 37865.359375,
+          "peak_mib_per_second": 7823.219313402771
+        },
+        "decompression": {
+          "total_mib": 38027.890625,
+          "peak_mib_per_second": 10302.671165894379
+        },
+        "gpu_percent": {
+          "mean": 70.95588235294117,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 52.94117647058823,
+        "cpu_percent": {
+          "mean": 74.54117647058824,
+          "min": 38.0,
+          "max": 100.0,
+          "p95": 99.8
+        },
+        "sample_count": 68,
+        "sample_cost_seconds": {
+          "mean": 0.09918903185205315,
+          "min": 0.031122417014557868,
+          "max": 0.7126934170373715,
+          "p95": 0.27391066699055955
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 52.6875,
+          "peak_mib_per_second": 65.59959937442488
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 471.65625,
+          "peak_mib_per_second": 388.1665573904856
+        },
+        "page_out": {
+          "total_mib": 20.578125,
+          "peak_mib_per_second": 33.81874033554742
+        },
+        "compression": {
+          "total_mib": 4696.0625,
+          "peak_mib_per_second": 1773.1700258160151
+        },
+        "decompression": {
+          "total_mib": 6343.34375,
+          "peak_mib_per_second": 2134.3608435167903
+        },
+        "gpu_percent": {
+          "mean": 6.2,
+          "min": 0,
+          "max": 19,
+          "p95": 19
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 61.32,
+          "min": 34.3,
+          "max": 89.4,
+          "p95": 89.4
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.058052091673016545,
+          "min": 0.0389552500564605,
+          "max": 0.11008091701660305,
+          "p95": 0.11008091701660305
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.26981545879971236,
+          "max_seconds": 0.0035044170217588544
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0005507462192326784,
+          "max_seconds": 2.274999860674143e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.11716592108132318,
+          "max_seconds": 0.0023416659678332508
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 2.940802876080852,
+          "max_seconds": 0.4706922919722274
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0001328310463577509,
+          "max_seconds": 2.8958020266145468e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "serial-t4-r3",
+      "mode": "serial",
+      "total_seconds": 42.71953145903535,
+      "frame_task_seconds": 17.510331375000533,
+      "qwen_task_seconds": 17.994140541006345,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 2.345062255859375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.33239154203329235,
+      "system_available_min_gib": 5.3007965087890625,
+      "system_swap_out_delta_mib": 17.078125,
+      "system_swap_used_before_gib": 31.054931640625,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 0.8963171250070445,
+        "feature_phase": 17.51042916701408,
+        "index": 4.545116624969523,
+        "qwen_prepare_and_encode": 18.00040199997602,
+        "qwen_write_native": 0.012861166964285076,
+        "validate_load_local_publish": 0.8610864169895649
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 575.65625,
+          "peak_mib_per_second": 108.62385487960111
+        },
+        "swap_out": {
+          "total_mib": 652.375,
+          "peak_mib_per_second": 1108.4967017634415
+        },
+        "page_in": {
+          "total_mib": 2593.671875,
+          "peak_mib_per_second": 1167.0319771061438
+        },
+        "page_out": {
+          "total_mib": 17.078125,
+          "peak_mib_per_second": 4.226879427134865
+        },
+        "compression": {
+          "total_mib": 33198.515625,
+          "peak_mib_per_second": 7628.840685264432
+        },
+        "decompression": {
+          "total_mib": 35550.453125,
+          "peak_mib_per_second": 8617.683459787715
+        },
+        "gpu_percent": {
+          "mean": 72.85714285714286,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 47.142857142857146,
+        "cpu_percent": {
+          "mean": 82.81285714285714,
+          "min": 40.1,
+          "max": 99.8,
+          "p95": 99.7
+        },
+        "sample_count": 70,
+        "sample_cost_seconds": {
+          "mean": 0.10508466428977305,
+          "min": 0.033398040977772325,
+          "max": 0.5187138339970261,
+          "p95": 0.1946352500235662
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 34.125,
+          "peak_mib_per_second": 34.76356691325749
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 374.0,
+          "peak_mib_per_second": 307.4382720827305
+        },
+        "page_out": {
+          "total_mib": 11.34375,
+          "peak_mib_per_second": 15.177789542241904
+        },
+        "compression": {
+          "total_mib": 6709.21875,
+          "peak_mib_per_second": 3236.5681787333765
+        },
+        "decompression": {
+          "total_mib": 7826.59375,
+          "peak_mib_per_second": 2212.9040763722014
+        },
+        "gpu_percent": {
+          "mean": 16.933333333333334,
+          "min": 0,
+          "max": 50,
+          "p95": 50
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 78.74666666666667,
+          "min": 39.7,
+          "max": 99.8,
+          "p95": 99.8
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.054710238663634905,
+          "min": 0.033880333008710295,
+          "max": 0.09979366697371006,
+          "p95": 0.09979366697371006
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.496726703713648,
+          "max_seconds": 0.023671875009313226
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0010078739724121988,
+          "max_seconds": 4.93330298922956e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.2922336623305455,
+          "max_seconds": 0.018009082996286452
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 4.306032042019069,
+          "max_seconds": 0.5847911250311881
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 8.650007657706738e-05,
+          "max_seconds": 3.0333991162478924e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "full-t4-r3",
+      "mode": "full",
+      "total_seconds": 35.366647250019014,
+      "frame_task_seconds": 24.119439958012663,
+      "qwen_task_seconds": 27.99095445801504,
+      "frame_qwen_task_overlap_seconds": 24.11884008301422,
+      "rss_peak_gib": 2.8434906005859375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.6416207080474123,
+      "system_available_min_gib": 4.925933837890625,
+      "system_swap_out_delta_mib": 16.0625,
+      "system_swap_used_before_gib": 31.13671875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 0.8784241669927724,
+        "feature_phase": 27.991944333014544,
+        "index": 5.316228791954927,
+        "qwen_prepare_and_encode": 0.006268791970796883,
+        "qwen_write_native": 0.006795332999899983,
+        "validate_load_local_publish": 0.5602981249685399
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 323.890625,
+          "peak_mib_per_second": 111.94411413409912
+        },
+        "swap_out": {
+          "total_mib": 446.875,
+          "peak_mib_per_second": 719.439662157921
+        },
+        "page_in": {
+          "total_mib": 2336.984375,
+          "peak_mib_per_second": 710.82331104351
+        },
+        "page_out": {
+          "total_mib": 16.0625,
+          "peak_mib_per_second": 3.1641090547617057
+        },
+        "compression": {
+          "total_mib": 43327.03125,
+          "peak_mib_per_second": 6201.28144982304
+        },
+        "decompression": {
+          "total_mib": 39896.359375,
+          "peak_mib_per_second": 7480.792461170983
+        },
+        "gpu_percent": {
+          "mean": 65.7719298245614,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 49.12280701754386,
+        "cpu_percent": {
+          "mean": 81.9140350877193,
+          "min": 39.3,
+          "max": 98.2,
+          "p95": 98.0
+        },
+        "sample_count": 57,
+        "sample_cost_seconds": {
+          "mean": 0.12142444531261724,
+          "min": 0.0386625420069322,
+          "max": 0.610397957963869,
+          "p95": 0.336945666000247
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 8.25,
+          "peak_mib_per_second": 2.864317070943231
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 279.65625,
+          "peak_mib_per_second": 156.9001982850359
+        },
+        "page_out": {
+          "total_mib": 9.25,
+          "peak_mib_per_second": 13.446435448295725
+        },
+        "compression": {
+          "total_mib": 4832.21875,
+          "peak_mib_per_second": 1778.1457393000828
+        },
+        "decompression": {
+          "total_mib": 6364.484375,
+          "peak_mib_per_second": 1926.5623083220466
+        },
+        "gpu_percent": {
+          "mean": 30.466666666666665,
+          "min": 6,
+          "max": 76,
+          "p95": 76
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 60.64666666666667,
+          "min": 34.4,
+          "max": 84.9,
+          "p95": 84.9
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05739893327699974,
+          "min": 0.03419845801545307,
+          "max": 0.10332054202444851,
+          "p95": 0.10332054202444851
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.7316732561448589,
+          "max_seconds": 0.09464537497842684
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0013142924290150404,
+          "max_seconds": 0.00022504199296236038
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.3684972075279802,
+          "max_seconds": 0.01757358299801126
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 5.7705771658802405,
+          "max_seconds": 1.1591613750206307
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.00029679102590307593,
+          "max_seconds": 0.00012524996418505907
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 3.872412417025771,
+          "max_seconds": 3.872412417025771
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "cpu-t4-r3",
+      "mode": "cpu",
+      "total_seconds": 32.517747958016116,
+      "frame_task_seconds": 15.016457833989989,
+      "qwen_task_seconds": 11.946126249968074,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.3062286376953125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.12640066700987518,
+      "system_available_min_gib": 5.4475860595703125,
+      "system_swap_out_delta_mib": 8.359375,
+      "system_swap_used_before_gib": 31.1903076171875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 0.8349829170037992,
+        "feature_phase": 15.016488624969497,
+        "index": 3.1855212079826742,
+        "qwen_prepare_and_encode": 11.951042874949053,
+        "qwen_write_native": 0.009099332964979112,
+        "validate_load_local_publish": 0.9313152090180665
+      },
+      "threads": 4,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 120.5,
+          "peak_mib_per_second": 54.506471431010745
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 2050.890625,
+          "peak_mib_per_second": 1009.003404361862
+        },
+        "page_out": {
+          "total_mib": 8.359375,
+          "peak_mib_per_second": 3.699891884362089
+        },
+        "compression": {
+          "total_mib": 21906.859375,
+          "peak_mib_per_second": 7112.390166843022
+        },
+        "decompression": {
+          "total_mib": 25488.234375,
+          "peak_mib_per_second": 6527.95095127308
+        },
+        "gpu_percent": {
+          "mean": 70.80701754385964,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 54.3859649122807,
+        "cpu_percent": {
+          "mean": 70.30877192982456,
+          "min": 31.8,
+          "max": 97.0,
+          "p95": 96.6
+        },
+        "sample_count": 57,
+        "sample_cost_seconds": {
+          "mean": 0.0731327185609476,
+          "min": 0.03272412496153265,
+          "max": 0.17862066702218726,
+          "p95": 0.1448417499777861
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 50.0,
+          "peak_mib_per_second": 29.330320080905956
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 76.609375,
+          "peak_mib_per_second": 32.27636633065984
+        },
+        "page_out": {
+          "total_mib": 21.0625,
+          "peak_mib_per_second": 30.48144725180655
+        },
+        "compression": {
+          "total_mib": 6444.296875,
+          "peak_mib_per_second": 2879.872446496586
+        },
+        "decompression": {
+          "total_mib": 7846.3125,
+          "peak_mib_per_second": 2802.530364674532
+        },
+        "gpu_percent": {
+          "mean": 24.933333333333334,
+          "min": 0,
+          "max": 50,
+          "p95": 50
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 63.81333333333333,
+          "min": 27.6,
+          "max": 96.1,
+          "p95": 96.1
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05904489433160052,
+          "min": 0.041059792041778564,
+          "max": 0.13797300000442192,
+          "p95": 0.13797300000442192
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.28680909459944814,
+          "max_seconds": 0.004349041962996125
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0007007825770415366,
+          "max_seconds": 3.524997737258673e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.13803750392980874,
+          "max_seconds": 0.0064717920031398535
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 208,
+          "total_seconds": 21.290055826073512,
+          "max_seconds": 0.12317879201145843
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.0002084170118905604,
+          "max_seconds": 4.783400800079107e-05
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.785914209089242,
+          "max_seconds": 0.5074628330185078
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 5.987501936033368e-05,
+          "max_seconds": 1.9000028260052204e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35264,
+          "requested": 4,
+          "actual": 4
+        },
+        {
+          "pid": 35413,
+          "requested": 4,
+          "actual": 4
+        }
+      ]
+    },
+    {
+      "name": "serial-t1-r3",
+      "mode": "serial",
+      "total_seconds": 34.4352189580095,
+      "frame_task_seconds": 14.583902165992185,
+      "qwen_task_seconds": 14.267996417009272,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.386199951171875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.375,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.17240854201372713,
+      "system_available_min_gib": 5.4227447509765625,
+      "system_swap_out_delta_mib": 10.8125,
+      "system_swap_used_before_gib": 31.00274658203125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.0472332920180634,
+        "feature_phase": 14.5839387079468,
+        "index": 3.1611279999488033,
+        "qwen_prepare_and_encode": 14.272368584002834,
+        "qwen_write_native": 0.009839875041507185,
+        "validate_load_local_publish": 0.7730916250147857
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 105.296875,
+          "peak_mib_per_second": 123.9063895256534
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 1953.421875,
+          "peak_mib_per_second": 870.9569999817098
+        },
+        "page_out": {
+          "total_mib": 10.75,
+          "peak_mib_per_second": 3.6244614201925933
+        },
+        "compression": {
+          "total_mib": 17596.3125,
+          "peak_mib_per_second": 6102.804364525096
+        },
+        "decompression": {
+          "total_mib": 21724.109375,
+          "peak_mib_per_second": 8543.03671022948
+        },
+        "gpu_percent": {
+          "mean": 76.77049180327869,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 65.57377049180327,
+        "cpu_percent": {
+          "mean": 62.22459016393443,
+          "min": 34.9,
+          "max": 98.7,
+          "p95": 81.9
+        },
+        "sample_count": 61,
+        "sample_cost_seconds": {
+          "mean": 0.06156126434483458,
+          "min": 0.03245387499919161,
+          "max": 0.18043245800072327,
+          "p95": 0.10135337500832975
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 58.1875,
+          "peak_mib_per_second": 39.228727381417045
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 175.21875,
+          "peak_mib_per_second": 122.64878504057445
+        },
+        "page_out": {
+          "total_mib": 9.78125,
+          "peak_mib_per_second": 14.078369591626462
+        },
+        "compression": {
+          "total_mib": 6270.875,
+          "peak_mib_per_second": 3292.7398352654222
+        },
+        "decompression": {
+          "total_mib": 7972.40625,
+          "peak_mib_per_second": 2922.9656199154456
+        },
+        "gpu_percent": {
+          "mean": 25,
+          "min": 0,
+          "max": 57,
+          "p95": 57
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 58.22,
+          "min": 28.6,
+          "max": 87.8,
+          "p95": 87.8
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.059137011144775896,
+          "min": 0.036601875035557896,
+          "max": 0.18099791603162885,
+          "p95": 0.18099791603162885
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.27337008278118446,
+          "max_seconds": 0.006772541964892298
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0005898741073906422,
+          "max_seconds": 3.625004319474101e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.12488575035240501,
+          "max_seconds": 0.0034519999753683805
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.9254301249748096,
+          "max_seconds": 0.5868607500451617
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 4.158297087997198e-05,
+          "max_seconds": 1.087499549612403e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "full-t1-r3",
+      "mode": "full",
+      "total_seconds": 32.67762641701847,
+      "frame_task_seconds": 23.47600795800099,
+      "qwen_task_seconds": 26.28490591602167,
+      "frame_qwen_task_overlap_seconds": 23.475351291010156,
+      "rss_peak_gib": 2.8629608154296875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.4455827919882722,
+      "system_available_min_gib": 4.8121795654296875,
+      "system_swap_out_delta_mib": 10.75,
+      "system_swap_used_before_gib": 30.77618408203125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.8843332910328172,
+        "feature_phase": 26.285758750047535,
+        "index": 4.402676124998834,
+        "qwen_prepare_and_encode": 0.007078624970745295,
+        "qwen_write_native": 0.006703999999444932,
+        "validate_load_local_publish": 0.475213292054832
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 114.09375,
+          "peak_mib_per_second": 117.44820697862185
+        },
+        "swap_out": {
+          "total_mib": 240.0625,
+          "peak_mib_per_second": 351.94582673260163
+        },
+        "page_in": {
+          "total_mib": 2355.25,
+          "peak_mib_per_second": 1170.1250209325165
+        },
+        "page_out": {
+          "total_mib": 10.75,
+          "peak_mib_per_second": 3.3379032383781846
+        },
+        "compression": {
+          "total_mib": 33884.578125,
+          "peak_mib_per_second": 6231.994108157776
+        },
+        "decompression": {
+          "total_mib": 31375.59375,
+          "peak_mib_per_second": 7539.712867580171
+        },
+        "gpu_percent": {
+          "mean": 75.69811320754717,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 60.37735849056604,
+        "cpu_percent": {
+          "mean": 81.39622641509433,
+          "min": 41.4,
+          "max": 99.5,
+          "p95": 99.0
+        },
+        "sample_count": 53,
+        "sample_cost_seconds": {
+          "mean": 0.11925306135924744,
+          "min": 0.041864292055834085,
+          "max": 0.5167450000299141,
+          "p95": 0.2225329169887118
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 125.03125,
+          "peak_mib_per_second": 161.51967884890206
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 75.03125,
+          "peak_mib_per_second": 38.516696726706634
+        },
+        "page_out": {
+          "total_mib": 20.875,
+          "peak_mib_per_second": 33.20522354075391
+        },
+        "compression": {
+          "total_mib": 4160.609375,
+          "peak_mib_per_second": 3317.8458625053554
+        },
+        "decompression": {
+          "total_mib": 4710.3125,
+          "peak_mib_per_second": 2092.960647526781
+        },
+        "gpu_percent": {
+          "mean": 24.266666666666666,
+          "min": 0,
+          "max": 44,
+          "p95": 44
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 54.42,
+          "min": 24.8,
+          "max": 85.0,
+          "p95": 85.0
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05881032226607204,
+          "min": 0.041889082989655435,
+          "max": 0.09958862495841458,
+          "p95": 0.09958862495841458
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.4537258858908899,
+          "max_seconds": 0.009741040994413197
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0017007930437102914,
+          "max_seconds": 0.0005009170272387564
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.35541583283338696,
+          "max_seconds": 0.009621916979085654
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 5.436249249964021,
+          "max_seconds": 1.160975666018203
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 0.0001043319352902472,
+          "max_seconds": 2.6165973395109177e-05
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 2.8096512089832686,
+          "max_seconds": 2.8096512089832686
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "cpu-t1-r3",
+      "mode": "cpu",
+      "total_seconds": 33.460455624968745,
+      "frame_task_seconds": 16.094534749980085,
+      "qwen_task_seconds": 11.474298165994696,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.1407318115234375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.393037557601929,
+      "mps_max_sample_age_seconds": 0.19565858296118677,
+      "system_available_min_gib": 5.24456787109375,
+      "system_swap_out_delta_mib": 8.0,
+      "system_swap_used_before_gib": 30.8543701171875,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.8930138329742476,
+        "feature_phase": 16.094557583972346,
+        "index": 3.1523165840189904,
+        "qwen_prepare_and_encode": 11.479422999953385,
+        "qwen_write_native": 0.012248083017766476,
+        "validate_load_local_publish": 1.2504835409927182
+      },
+      "threads": 1,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10678
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 9,
+        "image_top10_media_time_order_same_queries": 9,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 33.0,
+          "peak_mib_per_second": 7.174812283227076
+        },
+        "swap_out": {
+          "total_mib": 172.0625,
+          "peak_mib_per_second": 314.4801609506577
+        },
+        "page_in": {
+          "total_mib": 2622.5,
+          "peak_mib_per_second": 1142.2313336181735
+        },
+        "page_out": {
+          "total_mib": 7.96875,
+          "peak_mib_per_second": 2.8306876586169323
+        },
+        "compression": {
+          "total_mib": 21567.28125,
+          "peak_mib_per_second": 7345.855452353756
+        },
+        "decompression": {
+          "total_mib": 24070.171875,
+          "peak_mib_per_second": 7406.970121437082
+        },
+        "gpu_percent": {
+          "mean": 76,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 65.51724137931035,
+        "cpu_percent": {
+          "mean": 66.69655172413793,
+          "min": 29.8,
+          "max": 93.1,
+          "p95": 92.2
+        },
+        "sample_count": 58,
+        "sample_cost_seconds": {
+          "mean": 0.07312912355450078,
+          "min": 0.036732375039719045,
+          "max": 0.18712108302861452,
+          "p95": 0.12180333299329504
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 25.4375,
+          "peak_mib_per_second": 27.477545628392605
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 83.84375,
+          "peak_mib_per_second": 91.39241821557115
+        },
+        "page_out": {
+          "total_mib": 8.765625,
+          "peak_mib_per_second": 10.336664694171565
+        },
+        "compression": {
+          "total_mib": 2323.765625,
+          "peak_mib_per_second": 1479.5356215570446
+        },
+        "decompression": {
+          "total_mib": 3231.515625,
+          "peak_mib_per_second": 748.9434628956842
+        },
+        "gpu_percent": {
+          "mean": 17.8,
+          "min": 0,
+          "max": 31,
+          "p95": 31
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 52.13333333333333,
+          "min": 27.6,
+          "max": 79.8,
+          "p95": 79.8
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05363334152692308,
+          "min": 0.038007707975339144,
+          "max": 0.07020999997621402,
+          "p95": 0.07020999997621402
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.3096092868363485,
+          "max_seconds": 0.004584000038448721
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0006487522623501718,
+          "max_seconds": 2.3374974261969328e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.15886691474588588,
+          "max_seconds": 0.017058250028640032
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 218,
+          "total_seconds": 22.3218222441501,
+          "max_seconds": 0.1262383330031298
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.0002339180209673941,
+          "max_seconds": 8.554203668609262e-05
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.6116729580098763,
+          "max_seconds": 0.5062760830041952
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 6.228889105841517e-05,
+          "max_seconds": 1.6207981389015913e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35264,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 35413,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "serial-t2-r3",
+      "mode": "serial",
+      "total_seconds": 34.24731295800302,
+      "frame_task_seconds": 14.686916999984533,
+      "qwen_task_seconds": 13.45355495903641,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.2967987060546875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.365234375,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.14741316699655727,
+      "system_available_min_gib": 5.204437255859375,
+      "system_swap_out_delta_mib": 5.921875,
+      "system_swap_used_before_gib": 30.8065185546875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.2407307919929735,
+        "feature_phase": 14.686945541005116,
+        "index": 3.3162772079813294,
+        "qwen_prepare_and_encode": 13.457699915976264,
+        "qwen_write_native": 0.014245750033296645,
+        "validate_load_local_publish": 0.8737281669746153
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 101.328125,
+          "peak_mib_per_second": 51.02959615459
+        },
+        "swap_out": {
+          "total_mib": 49.625,
+          "peak_mib_per_second": 58.681436175440496
+        },
+        "page_in": {
+          "total_mib": 2455.203125,
+          "peak_mib_per_second": 1220.8436084159757
+        },
+        "page_out": {
+          "total_mib": 5.921875,
+          "peak_mib_per_second": 2.7556838275322892
+        },
+        "compression": {
+          "total_mib": 17669.296875,
+          "peak_mib_per_second": 5900.552872789701
+        },
+        "decompression": {
+          "total_mib": 21501.421875,
+          "peak_mib_per_second": 10192.551224623856
+        },
+        "gpu_percent": {
+          "mean": 79.32786885245902,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 68.85245901639344,
+        "cpu_percent": {
+          "mean": 60.68688524590164,
+          "min": 19.1,
+          "max": 99.3,
+          "p95": 89.7
+        },
+        "sample_count": 61,
+        "sample_cost_seconds": {
+          "mean": 0.058002416002487796,
+          "min": 0.03472750005312264,
+          "max": 0.14996899996185675,
+          "p95": 0.085593624971807
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 194.96875,
+          "peak_mib_per_second": 88.63742301851828
+        },
+        "swap_out": {
+          "total_mib": 51.0,
+          "peak_mib_per_second": 77.3027141926208
+        },
+        "page_in": {
+          "total_mib": 678.71875,
+          "peak_mib_per_second": 260.13096839226733
+        },
+        "page_out": {
+          "total_mib": 20.28125,
+          "peak_mib_per_second": 32.61562464651999
+        },
+        "compression": {
+          "total_mib": 6227.125,
+          "peak_mib_per_second": 2010.0274788079553
+        },
+        "decompression": {
+          "total_mib": 7124.6875,
+          "peak_mib_per_second": 1526.4186944629762
+        },
+        "gpu_percent": {
+          "mean": 30.266666666666666,
+          "min": 0,
+          "max": 61,
+          "p95": 61
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 69.60666666666667,
+          "min": 42.8,
+          "max": 90.1,
+          "p95": 90.1
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05569171107684572,
+          "min": 0.043174958031158894,
+          "max": 0.08766966703115031,
+          "p95": 0.08766966703115031
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.27396974322618917,
+          "max_seconds": 0.005076457979157567
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0014202859019860625,
+          "max_seconds": 0.0008475410286337137
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.11105962604051456,
+          "max_seconds": 0.002363917010370642
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.8223638760391623,
+          "max_seconds": 0.5235501250135712
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 4.72069950774312e-05,
+          "max_seconds": 1.0374991688877344e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "full-t2-r3",
+      "mode": "full",
+      "total_seconds": 33.0095900829765,
+      "frame_task_seconds": 22.818454208027106,
+      "qwen_task_seconds": 26.203622583008837,
+      "frame_qwen_task_overlap_seconds": 22.813033624959644,
+      "rss_peak_gib": 2.758270263671875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.4371185302734375,
+      "mps_tensor_sum_peak_gib": 4.441906690597534,
+      "mps_max_sample_age_seconds": 0.5341582089895383,
+      "system_available_min_gib": 4.4145050048828125,
+      "system_swap_out_delta_mib": 12.328125,
+      "system_swap_used_before_gib": 30.75341796875,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 1.1128116669715382,
+        "feature_phase": 26.209237083035987,
+        "index": 4.605223959020805,
+        "qwen_prepare_and_encode": 0.004818540997803211,
+        "qwen_write_native": 0.007934875029604882,
+        "validate_load_local_publish": 0.46993083297275007
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 152.3125,
+          "peak_mib_per_second": 52.43740812512945
+        },
+        "swap_out": {
+          "total_mib": 390.75,
+          "peak_mib_per_second": 460.191280303767
+        },
+        "page_in": {
+          "total_mib": 2239.078125,
+          "peak_mib_per_second": 961.1274351924227
+        },
+        "page_out": {
+          "total_mib": 12.328125,
+          "peak_mib_per_second": 2.883777104370995
+        },
+        "compression": {
+          "total_mib": 38278.046875,
+          "peak_mib_per_second": 6207.603658366749
+        },
+        "decompression": {
+          "total_mib": 35889.390625,
+          "peak_mib_per_second": 7841.946438833849
+        },
+        "gpu_percent": {
+          "mean": 74.87037037037037,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 61.111111111111114,
+        "cpu_percent": {
+          "mean": 74.52037037037037,
+          "min": 45.4,
+          "max": 99.8,
+          "p95": 96.8
+        },
+        "sample_count": 54,
+        "sample_cost_seconds": {
+          "mean": 0.11285877466973572,
+          "min": 0.038749707979150116,
+          "max": 0.8327266249689274,
+          "p95": 0.24982274998910725
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 6.5,
+          "peak_mib_per_second": 3.366616959254364
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 104.9375,
+          "peak_mib_per_second": 40.65660560263956
+        },
+        "page_out": {
+          "total_mib": 6.78125,
+          "peak_mib_per_second": 10.874797069770759
+        },
+        "compression": {
+          "total_mib": 2528.921875,
+          "peak_mib_per_second": 1478.9440077627926
+        },
+        "decompression": {
+          "total_mib": 3075.03125,
+          "peak_mib_per_second": 1338.9629384312786
+        },
+        "gpu_percent": {
+          "mean": 13.6,
+          "min": 0,
+          "max": 52,
+          "p95": 52
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 46.85333333333333,
+          "min": 21.5,
+          "max": 65.0,
+          "p95": 65.0
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.054717322264332326,
+          "min": 0.04446604097029194,
+          "max": 0.07223320798948407,
+          "p95": 0.07223320798948407
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.4948399634449743,
+          "max_seconds": 0.016553541994653642
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0011214993428438902,
+          "max_seconds": 6.312504410743713e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.41592158371349797,
+          "max_seconds": 0.04588158300612122
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 5.694033582985867,
+          "max_seconds": 1.1909841250162572
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 8.974893717095256e-05,
+          "max_seconds": 2.6708992663770914e-05
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 3.3907023750361986,
+          "max_seconds": 3.3907023750361986
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    },
+    {
+      "name": "cpu-t2-r3",
+      "mode": "cpu",
+      "total_seconds": 31.73454595799558,
+      "frame_task_seconds": 14.425549916981254,
+      "qwen_task_seconds": 11.424378167022951,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.5254974365234375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.42038106918335,
+      "mps_max_sample_age_seconds": 0.12203749996842816,
+      "system_available_min_gib": 5.3694000244140625,
+      "system_swap_out_delta_mib": 7.875,
+      "system_swap_used_before_gib": 31.00494384765625,
+      "outputs_exact": false,
+      "retrieval_exact": false,
+      "stages": {
+        "transcode": 0.8496079160249792,
+        "feature_phase": 14.425572999985889,
+        "index": 3.200089249992743,
+        "qwen_prepare_and_encode": 11.429544208978768,
+        "qwen_write_native": 0.009494500001892447,
+        "validate_load_local_publish": 1.1720277919666842
+      },
+      "threads": 2,
+      "new_vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "hf/Qwen/Qwen3-VL-Embedding/2B": 8,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10681
+      },
+      "qwen_max_abs_diff": 0.0,
+      "quality": {
+        "text_top10_identity_same_queries": 73,
+        "image_top5_video_order_same_queries": 8,
+        "image_top10_media_time_order_same_queries": 8,
+        "face_candidate_order_same_queries": 5
+      },
+      "host": {
+        "swap_in": {
+          "total_mib": 192.96875,
+          "peak_mib_per_second": 142.37327064767723
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 1997.90625,
+          "peak_mib_per_second": 1287.9577282540622
+        },
+        "page_out": {
+          "total_mib": 7.875,
+          "peak_mib_per_second": 3.198872004229546
+        },
+        "compression": {
+          "total_mib": 19986.484375,
+          "peak_mib_per_second": 7049.983188035287
+        },
+        "decompression": {
+          "total_mib": 24002.0625,
+          "peak_mib_per_second": 10512.277177166707
+        },
+        "gpu_percent": {
+          "mean": 76.92857142857143,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 64.28571428571429,
+        "cpu_percent": {
+          "mean": 65.29107142857143,
+          "min": 27.5,
+          "max": 93.4,
+          "p95": 92.0
+        },
+        "sample_count": 56,
+        "sample_cost_seconds": {
+          "mean": 0.06179365030298608,
+          "min": 0.03610787499928847,
+          "max": 0.1239443329977803,
+          "p95": 0.10693245800212026
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 19.09375,
+          "peak_mib_per_second": 18.097641411931875
+        },
+        "swap_out": {
+          "total_mib": 10.8125,
+          "peak_mib_per_second": 11.189708885610875
+        },
+        "page_in": {
+          "total_mib": 210.953125,
+          "peak_mib_per_second": 86.01121349954528
+        },
+        "page_out": {
+          "total_mib": 19.078125,
+          "peak_mib_per_second": 32.73206011260914
+        },
+        "compression": {
+          "total_mib": 6251.625,
+          "peak_mib_per_second": 2549.051653665777
+        },
+        "decompression": {
+          "total_mib": 7407.375,
+          "peak_mib_per_second": 2202.031946055597
+        },
+        "gpu_percent": {
+          "mean": 34.6,
+          "min": 0,
+          "max": 90,
+          "p95": 90
+        },
+        "gpu_samples_ge90_percent": 6.666666666666667,
+        "cpu_percent": {
+          "mean": 60.693333333333335,
+          "min": 39.1,
+          "max": 78.3,
+          "p95": 78.3
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05956234434076275,
+          "min": 0.04241258301772177,
+          "max": 0.10207083297427744,
+          "p95": 0.10207083297427744
+        }
+      },
+      "waits": {
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.2691478342167102,
+          "max_seconds": 0.005175833008252084
+        },
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0006157082389108837,
+          "max_seconds": 6.212497828528285e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.12167962873354554,
+          "max_seconds": 0.0030423750285990536
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 205,
+          "total_seconds": 20.910145626636222,
+          "max_seconds": 0.11701287497999147
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.00015050004003569484,
+          "max_seconds": 2.7542002499103546e-05
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.6502639180398546,
+          "max_seconds": 0.5056681670248508
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 6.020907312631607e-05,
+          "max_seconds": 1.2375006917864084e-05
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 34747,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35264,
+          "requested": 2,
+          "actual": 2
+        },
+        {
+          "pid": 35413,
+          "requested": 2,
+          "actual": 2
+        }
+      ]
+    }
+  ],
+  "retrieval_scope": {
+    "text_queries": 73,
+    "text_result": "FAISS Top10 segment records and scores",
+    "reference_images": 9,
+    "image_result": "Top10 regions and Top5 distinct videos from top100 regions, including times/boxes/scores",
+    "registered_faces": 5,
+    "face_result": "All candidates at threshold 0.45, times and scores"
+  },
+  "memory_notes": [
+    "RSS is sum over benchmark parent and descendants, including shared-page double counting; live server excluded.",
+    "Cross-process USS is denied by macOS and is unavailable; not reported as zero.",
+    "MPS counters are sampled in Qwen, frame and OWLv2 model processes at 100ms; sums aligned by timestamps. Tensor allocation and driver reserved memory overlap and must not be added to RSS or each other.",
+    "MPS allocator metrics do not include all CoreML allocations. System available memory and swap include unrelated processes; existing swap does not imply every byte was created by this test.",
+    "Peaks are sampled, not exact hardware peaks."
+  ],
+  "method_notes": [
+    "Three scheduling modes x torch CPU intra-op threads 1/2/4; 3 warm repetitions per cell with rotated/reversed order (recorded); one initial serial warmup excluded. This is not a fully counterbalanced positional design.",
+    "Same original process_job and 35.44s media; actual thread count recorded at each child request. OMP_NUM_THREADS and OPENBLAS_NUM_THREADS environment remain 1; no production edits.",
+    "IORegistry Device Utilization % is whole-device observational sampling; includes unrelated applications, no per-process attribution, no claimed exclusive access.",
+    "vm_stat counters are whole-system interval deltas. Swap rates do not isolate this job. Sample interval is approximately 0.5s plus measurement cost.",
+    "Existing Tensor.cpu on MPS and torch.mps.synchronize wrapped for CPU-visible blocking duration; includes outstanding compute, copies, scheduling; not pure GPU queue wait. No extra synchronizations added.",
+    "Full-mode join and bounded producer/consumer queue waits include application-level waiting. Different wait categories/processes overlap; do not add to obtain total delay.",
+    "Metal exact queue/compute trace unavailable: xctrace requires full Xcode; powermetrics requires admin password. No privilege changes attempted.",
+    "Background host samples before each trial; no unrelated apps closed or production service stopped. Formal resident models remain loaded while the isolated experiment owns another set, so memory pressure is not identical to normal production reuse.",
+    "Fixed-query consistency regression, not independent retrieval accuracy; model resident timings exclude first load and HTTP transfer/queue wait.",
+    "Initial attempt is excluded entirely because a main-thread-only setting did not update existing encoding worker threads. Valid rerun sets and checks counts inside executing threads; sampled result-return and synchronize calls assert actual settings."
+  ],
+  "production_unchanged": true,
+  "same_thread_consistency": {
+    "1": {
+      "n": 9,
+      "frame_signatures_identical": true,
+      "qwen_vectors_identical": true,
+      "retrieval_identical": true
+    },
+    "2": {
+      "n": 9,
+      "frame_signatures_identical": true,
+      "qwen_vectors_identical": true,
+      "retrieval_identical": true
+    },
+    "4": {
+      "n": 9,
+      "frame_signatures_identical": true,
+      "qwen_vectors_identical": true,
+      "retrieval_identical": true
+    }
+  },
+  "image_order_changes": [
+    {
+      "trial": "serial-t2-r1",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "full-t2-r1",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "cpu-t2-r1",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "serial-t4-r1",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "full-t4-r1",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "cpu-t4-r1",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "cpu-t4-r2",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "full-t4-r2",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "serial-t4-r2",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "cpu-t2-r2",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "full-t2-r2",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "serial-t2-r2",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "serial-t4-r3",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "full-t4-r3",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "cpu-t4-r3",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "serial-t2-r3",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "full-t2-r3",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    },
+    {
+      "trial": "cpu-t2-r3",
+      "query": "helmet_small",
+      "baseline": [
+        40,
+        45,
+        9,
+        5,
+        17
+      ],
+      "current": [
+        45,
+        40,
+        9,
+        5,
+        17
+      ]
+    }
+  ],
+  "final_integrity": {
+    "production_fingerprint_unchanged": true,
+    "service": {
+      "status": "ready",
+      "progress": 100,
+      "message": "全部已入库视频支持 Qwen 片段检索",
+      "indexed_videos": 44,
+      "indexed_segments": 146,
+      "model_loaded": true,
+      "model_load_seconds": 8.160699291038327,
+      "settings": {
+        "schema": 1,
+        "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+        "dtype": "float16",
+        "max_total_pixels": 1048576,
+        "window_seconds": 8.0,
+        "stride_seconds": 4.0,
+        "frames": 16
+      },
+      "video_patch_projection": "linear_same_weights_v1"
+    },
+    "completed_warm_trials": 27,
+    "excluded_warmups": 1,
+    "excluded_first_attempt": true,
+    "all_qwen_vectors_and_text_face_results_exact": true,
+    "schedule_checks_passed": true,
+    "temporary_work_cleaned": true,
+    "experiment_model_processes_exited": true,
+    "unit_tests_passed": 5,
+    "remaining_disk_gib": 7.949974060058594
+  },
+  "cpu_preprocessor_followup": {
+    "scope": "CPU-only fast image processor on identical decoded pixels, three frames; not end-to-end indexing nor accuracy test",
+    "results": {
+      "1": {
+        "outputs_exact_vs_1": true,
+        "max_abs_diff": 0.0,
+        "different_values": 0,
+        "timings": [
+          0.018133375036995858,
+          0.017918792029377073,
+          0.018282665987499058,
+          0.01794633304234594,
+          0.017963416001293808,
+          0.017923292005434632,
+          0.018610125000122935,
+          0.018837082956451923,
+          0.017870625015348196
+        ],
+        "mean_seconds_per_three_frames": 0.01816507856387438
+      },
+      "2": {
+        "outputs_exact_vs_1": false,
+        "max_abs_diff": 7.152557373046875e-07,
+        "different_values": 963189,
+        "timings": [
+          0.009799166989978403,
+          0.009131165978033096,
+          0.009054791007656604,
+          0.009175374987535179,
+          0.00937554199481383,
+          0.009107417019549757,
+          0.0092312500346452,
+          0.009212500008288771,
+          0.009084792050998658
+        ],
+        "mean_seconds_per_three_frames": 0.009241333341277722
+      },
+      "4": {
+        "outputs_exact_vs_1": false,
+        "max_abs_diff": 7.152557373046875e-07,
+        "different_values": 963189,
+        "timings": [
+          0.006702125014271587,
+          0.0075953330378979445,
+          0.007356667018029839,
+          0.00726762501290068,
+          0.008264874981250614,
+          0.007692167011555284,
+          0.006639708008151501,
+          0.006808542006183416,
+          0.007071292027831078
+        ],
+        "mean_seconds_per_three_frames": 0.00726648156867466
+      }
+    }
+  },
+  "conclusion": {
+    "recommended_threads": 1,
+    "production_changed": false,
+    "thread_speed_result": "No consistent end-to-end benefit from 2 or 4 threads across scheduling modes; 4-thread means are slower in every mode, but system background/swap variability limits causal attribution.",
+    "scheduling_result": "CPU-preparation overlap at 1 thread has lowest observed mean (33.05s); full overlap at 1 thread 33.84s; broad ranges prevent a stable winner claim.",
+    "memory_result": "Sampled summed MPS driver allocation peaks 6.38-6.45GiB; system paging is active. This does not indicate the Qwen MPS allocation cap is binding.",
+    "waiting_result": "Existing MPS-to-CPU blocking intervals, explicit synchronization and application queue waits measured; exact Metal scheduler queue latency unavailable. CPU consumer queue waits average 0.24-1.31ms per job, suggesting preparation supply is not the bottleneck on this clip.",
+    "quality_result": "Qwen vectors, 73 text query results and 5 registered-face results exact in all runs. At 2/4 threads OWL has 10681 vs10678 regions; 8/9 image video Top5 order unchanged; helmet_small swaps duplicate content media40/45. Same-thread outputs exact across all9 runs.",
+    "numerical_followup": "Fixed-pixel CPU fast processor independently differs by at most 7.15e-7 at2/4 vs1 threads. Three-frame mean processing time18.17/9.24/7.27ms. This local speedup is not an end-to-end speedup."
+  }
+}

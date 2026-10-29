@@ -1,0 +1,76 @@
+{
+  "main_seconds": 16.648648959002458,
+  "timers": {
+    "initialization/all": {
+      "calls": 1,
+      "inclusive_seconds": 0.3106363749830052,
+      "exclusive_seconds": 0.3106363749830052
+    },
+    "frames/face_preprocess": {
+      "calls": 9,
+      "inclusive_seconds": 0.0027826649602502584,
+      "exclusive_seconds": 0.0027826649602502584
+    },
+    "frames/decode_data_next": {
+      "calls": 10,
+      "inclusive_seconds": 0.540734670124948,
+      "exclusive_seconds": 0.5379520051646978
+    },
+    "frames/face_age_gender": {
+      "calls": 77,
+      "inclusive_seconds": 0.09610554663231596,
+      "exclusive_seconds": 0.09610554663231596
+    },
+    "frames/face_recognition": {
+      "calls": 77,
+      "inclusive_seconds": 0.6893381240661256,
+      "exclusive_seconds": 0.6893381240661256
+    },
+    "frames/face_features": {
+      "calls": 9,
+      "inclusive_seconds": 1.7292767509352416,
+      "exclusive_seconds": 0.9438330802368
+    },
+    "frames/db_vector_insert": {
+      "calls": 10755,
+      "inclusive_seconds": 1.2522712541976944,
+      "exclusive_seconds": 1.2522712541976944
+    },
+    "frames/faiss_add": {
+      "calls": 21510,
+      "inclusive_seconds": 0.19708103185985237,
+      "exclusive_seconds": 0.11309471423737705
+    },
+    "frames/owl_preprocess": {
+      "calls": 71,
+      "inclusive_seconds": 0.6559702480444685,
+      "exclusive_seconds": 0.6559702480444685
+    },
+    "frames/owl_forward_including_rpc": {
+      "calls": 71,
+      "inclusive_seconds": 11.392923749051988,
+      "exclusive_seconds": 11.392923749051988
+    },
+    "frames/owl_metadata": {
+      "calls": 71,
+      "inclusive_seconds": 0.07516479282639921,
+      "exclusive_seconds": 0.07516479282639921
+    },
+    "frames/owl_features": {
+      "calls": 80,
+      "inclusive_seconds": 24.633850831654854,
+      "exclusive_seconds": 0.19356066902400926
+    },
+    "frames/db_thumbnail_insert": {
+      "calls": 71,
+      "inclusive_seconds": 0.007271033769939095,
+      "exclusive_seconds": 0.007271033769939095
+    },
+    "frames/faiss_save": {
+      "calls": 4,
+      "inclusive_seconds": 0.11495491699315608,
+      "exclusive_seconds": 0.11495491699315608
+    }
+  },
+  "note": "Nested inclusive timings overlap; OWL forward includes RPC and MPS copies. No extra per-event GPU synchronization."
+}

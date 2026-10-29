@@ -135,7 +135,7 @@ el('query-form').onsubmit = async event => {
   }
 };
 el('reset').onclick = async () => {
-  cancelSearch(); el('query-form').reset(); clearReference();
+  cancelSearch(); HTMLFormElement.prototype.reset.call(el('query-form')); clearReference();
   applied = {}; mode = 'browse'; limited = false; page = 1; items = catalog;
   feedback('search-error'); el('search-status').textContent = ''; render();
   try { await loadCatalog(); } catch (e) { feedback('search-error', '视频库读取失败：' + e.message, true); }

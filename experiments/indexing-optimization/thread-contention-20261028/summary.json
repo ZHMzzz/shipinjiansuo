@@ -1,0 +1,871 @@
+{
+  "status": "running",
+  "source_video_seconds": 35.44,
+  "scope": "Actual process_job on isolated clone of current 44-video library; each trial adds one duplicate content video. Qwen and frame models resident after serial warmup. No HTTP transfer, queue wait or online query contention.",
+  "order": [
+    "serial-warmup",
+    "serial-t1-r1",
+    "full-t1-r1",
+    "cpu-t1-r1"
+  ],
+  "groups": {
+    "serial-t1": {
+      "n": 1,
+      "seconds": [
+        34.40051908302121
+      ],
+      "total_seconds": {
+        "mean": 34.40051908302121,
+        "min": 34.40051908302121,
+        "max": 34.40051908302121,
+        "p95": 34.40051908302121
+      },
+      "frame_task_seconds": {
+        "mean": 14.66804791695904,
+        "min": 14.66804791695904,
+        "max": 14.66804791695904,
+        "p95": 14.66804791695904
+      },
+      "qwen_task_seconds": {
+        "mean": 13.69671304099029,
+        "min": 13.69671304099029,
+        "max": 13.69671304099029,
+        "p95": 13.69671304099029
+      },
+      "rss_peak_gib": {
+        "mean": 3.3973846435546875,
+        "min": 3.3973846435546875,
+        "max": 3.3973846435546875,
+        "p95": 3.3973846435546875
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.3632965087890625,
+        "min": 6.3632965087890625,
+        "max": 6.3632965087890625,
+        "p95": 6.3632965087890625
+      },
+      "gpu_mean_percent": 73.12903225806451,
+      "background_gpu_mean_percent": 29.066666666666666,
+      "gpu_ge90_sample_percent": 59.67741935483871,
+      "swap_in_mib_mean": 33.25,
+      "swap_out_mib_mean": 0.0,
+      "compression_mib_mean": 19616.53125,
+      "decompression_mib_mean": 23039.8125,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0003665459807962179,
+        "frame_worker:mps_to_cpu": 0.11037087446311489,
+        "owl_backend:mps_to_cpu": 0.267566334863659,
+        "qwen_parent:mps_synchronize": 6.037403363734484e-05,
+        "qwen_parent:mps_to_cpu": 3.5147208740818314
+      },
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "reduction_vs_serial_t1_percent": 0.0
+    },
+    "full-t1": {
+      "n": 1,
+      "seconds": [
+        29.815898667031433
+      ],
+      "total_seconds": {
+        "mean": 29.815898667031433,
+        "min": 29.815898667031433,
+        "max": 29.815898667031433,
+        "p95": 29.815898667031433
+      },
+      "frame_task_seconds": {
+        "mean": 21.743845041957684,
+        "min": 21.743845041957684,
+        "max": 21.743845041957684,
+        "p95": 21.743845041957684
+      },
+      "qwen_task_seconds": {
+        "mean": 23.443557874998078,
+        "min": 23.443557874998078,
+        "max": 23.443557874998078,
+        "p95": 23.443557874998078
+      },
+      "rss_peak_gib": {
+        "mean": 2.948028564453125,
+        "min": 2.948028564453125,
+        "max": 2.948028564453125,
+        "p95": 2.948028564453125
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.43218994140625,
+        "min": 6.43218994140625,
+        "max": 6.43218994140625,
+        "p95": 6.43218994140625
+      },
+      "gpu_mean_percent": 78.64,
+      "background_gpu_mean_percent": 6.733333333333333,
+      "gpu_ge90_sample_percent": 74.0,
+      "swap_in_mib_mean": 217.140625,
+      "swap_out_mib_mean": 491.75,
+      "compression_mib_mean": 35038.4375,
+      "decompression_mib_mean": 31228.1875,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0007644123979844153,
+        "frame_worker:mps_to_cpu": 0.3346458810265176,
+        "owl_backend:mps_to_cpu": 0.4467039607116021,
+        "qwen_parent:join_qwen_after_frames": 1.700478333979845,
+        "qwen_parent:mps_synchronize": 6.562494672834873e-05,
+        "qwen_parent:mps_to_cpu": 6.2883013761020266
+      },
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "reduction_vs_serial_t1_percent": 13.327183828027088
+    },
+    "cpu-t1": {
+      "n": 1,
+      "seconds": [
+        31.652876584033947
+      ],
+      "total_seconds": {
+        "mean": 31.652876584033947,
+        "min": 31.652876584033947,
+        "max": 31.652876584033947,
+        "p95": 31.652876584033947
+      },
+      "frame_task_seconds": {
+        "mean": 15.049636750016361,
+        "min": 15.049636750016361,
+        "max": 15.049636750016361,
+        "p95": 15.049636750016361
+      },
+      "qwen_task_seconds": {
+        "mean": 11.089160666975658,
+        "min": 11.089160666975658,
+        "max": 11.089160666975658,
+        "p95": 11.089160666975658
+      },
+      "rss_peak_gib": {
+        "mean": 2.817901611328125,
+        "min": 2.817901611328125,
+        "max": 2.817901611328125,
+        "p95": 2.817901611328125
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.375,
+        "min": 6.375,
+        "max": 6.375,
+        "p95": 6.375
+      },
+      "gpu_mean_percent": 78.17857142857143,
+      "background_gpu_mean_percent": 28.133333333333333,
+      "gpu_ge90_sample_percent": 62.5,
+      "swap_in_mib_mean": 267.21875,
+      "swap_out_mib_mean": 141.625,
+      "compression_mib_mean": 23940.3125,
+      "decompression_mib_mean": 28726.3125,
+      "waits": {
+        "frame_worker:mps_synchronize": 0.0005114590749144554,
+        "frame_worker:mps_to_cpu": 0.12442721333354712,
+        "owl_backend:mps_to_cpu": 0.27381916547892615,
+        "qwen_parent:consumer_queue_get": 0.0001900839852169156,
+        "qwen_parent:mps_synchronize": 5.1876879297196865e-05,
+        "qwen_parent:mps_to_cpu": 3.3053607080946676,
+        "qwen_parent:producer_queue_put": 21.89068754593609
+      },
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "reduction_vs_serial_t1_percent": 7.987212321872761
+    }
+  },
+  "trials": [
+    {
+      "name": "serial-warmup",
+      "mode": "serial",
+      "total_seconds": 49.70891408302123,
+      "frame_task_seconds": 28.642836292041466,
+      "qwen_task_seconds": 14.427699374966323,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.2967376708984375,
+      "uss_peak_gib": 0.0431365966796875,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.17604270798619837,
+      "system_available_min_gib": 5.0320587158203125,
+      "system_swap_out_delta_mib": 13.40625,
+      "system_swap_used_before_gib": 27.00860595703125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.9133562080096453,
+        "feature_phase": 28.642900125007145,
+        "index": 3.6992122079827823,
+        "qwen_prepare_and_encode": 14.43285029096296,
+        "qwen_write_native": 0.06001462502172217,
+        "validate_load_local_publish": 0.8319711670046672
+      },
+      "threads": 1,
+      "host": {
+        "swap_in": {
+          "total_mib": 95.25,
+          "peak_mib_per_second": 45.14375486310131
+        },
+        "swap_out": {
+          "total_mib": 2399.125,
+          "peak_mib_per_second": 780.0643305123192
+        },
+        "page_in": {
+          "total_mib": 5394.46875,
+          "peak_mib_per_second": 1295.9341886575692
+        },
+        "page_out": {
+          "total_mib": 13.421875,
+          "peak_mib_per_second": 3.8224108235978735
+        },
+        "compression": {
+          "total_mib": 43587.65625,
+          "peak_mib_per_second": 6433.99894851214
+        },
+        "decompression": {
+          "total_mib": 42801.015625,
+          "peak_mib_per_second": 7874.366681184631
+        },
+        "gpu_percent": {
+          "mean": 58.42696629213483,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 43.82022471910113,
+        "cpu_percent": {
+          "mean": 67.73820224719101,
+          "min": 0.0,
+          "max": 98.7,
+          "p95": 95.4
+        },
+        "sample_count": 89,
+        "sample_cost_seconds": {
+          "mean": 0.05989661704280592,
+          "min": 0.030824750021565706,
+          "max": 0.2774345420184545,
+          "p95": 0.12905050005065277
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 3.125,
+          "peak_mib_per_second": 2.6659798294431787
+        },
+        "swap_out": {
+          "total_mib": 1085.4375,
+          "peak_mib_per_second": 971.2429485504522
+        },
+        "page_in": {
+          "total_mib": 526.890625,
+          "peak_mib_per_second": 204.5163199981553
+        },
+        "page_out": {
+          "total_mib": 1.046875,
+          "peak_mib_per_second": 0.593374235971437
+        },
+        "compression": {
+          "total_mib": 6636.609375,
+          "peak_mib_per_second": 2347.8344895930577
+        },
+        "decompression": {
+          "total_mib": 6444.0,
+          "peak_mib_per_second": 2009.3553258635989
+        },
+        "gpu_percent": {
+          "mean": 17.133333333333333,
+          "min": 0,
+          "max": 40,
+          "p95": 40
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 60.32,
+          "min": 36.4,
+          "max": 85.9,
+          "p95": 85.9
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05443952214360858,
+          "min": 0.032060125027783215,
+          "max": 0.11636766698211432,
+          "p95": 0.11636766698211432
+        }
+      },
+      "waits": {
+        "frame_worker:mps_synchronize": {
+          "count": 73,
+          "total_seconds": 0.00045641668839380145,
+          "max_seconds": 7.599999662488699e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 217,
+          "total_seconds": 0.12464599357917905,
+          "max_seconds": 0.00413633300922811
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.480302332958672,
+          "max_seconds": 0.4877620830084197
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 5.1665003411471844e-05,
+          "max_seconds": 7.833004929125309e-06
+        },
+        "owl_backend:mps_to_cpu": {
+          "count": 217,
+          "total_seconds": 0.30113399878609926,
+          "max_seconds": 0.013936667004600167
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 27440,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27745,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27998,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "serial-t1-r1",
+      "mode": "serial",
+      "total_seconds": 34.40051908302121,
+      "frame_task_seconds": 14.66804791695904,
+      "qwen_task_seconds": 13.69671304099029,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.3973846435546875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.11808574997121468,
+      "system_available_min_gib": 5.7242584228515625,
+      "system_swap_out_delta_mib": 13.078125,
+      "system_swap_used_before_gib": 29.3814697265625,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.2084499589982443,
+        "feature_phase": 14.668084457982332,
+        "index": 3.3189983339980245,
+        "qwen_prepare_and_encode": 13.701443459023722,
+        "qwen_write_native": 0.03770124999573454,
+        "validate_load_local_publish": 0.737688499968499
+      },
+      "threads": 1,
+      "host": {
+        "swap_in": {
+          "total_mib": 33.25,
+          "peak_mib_per_second": 6.671029925705616
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 2895.5625,
+          "peak_mib_per_second": 1313.1170476488562
+        },
+        "page_out": {
+          "total_mib": 13.078125,
+          "peak_mib_per_second": 4.0051027998868785
+        },
+        "compression": {
+          "total_mib": 19616.53125,
+          "peak_mib_per_second": 6665.870752230257
+        },
+        "decompression": {
+          "total_mib": 23039.8125,
+          "peak_mib_per_second": 7191.373139466597
+        },
+        "gpu_percent": {
+          "mean": 73.12903225806451,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 59.67741935483871,
+        "cpu_percent": {
+          "mean": 65.88870967741936,
+          "min": 0.0,
+          "max": 99.8,
+          "p95": 95.0
+        },
+        "sample_count": 62,
+        "sample_cost_seconds": {
+          "mean": 0.05627627693672454,
+          "min": 0.03181162499822676,
+          "max": 0.11261008400470018,
+          "p95": 0.0781432919902727
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 6.0625,
+          "peak_mib_per_second": 4.0940273775506775
+        },
+        "swap_out": {
+          "total_mib": 68.125,
+          "peak_mib_per_second": 123.46343726875035
+        },
+        "page_in": {
+          "total_mib": 203.734375,
+          "peak_mib_per_second": 109.98440145684091
+        },
+        "page_out": {
+          "total_mib": 9.515625,
+          "peak_mib_per_second": 15.744419981978256
+        },
+        "compression": {
+          "total_mib": 1963.34375,
+          "peak_mib_per_second": 1307.2399353382089
+        },
+        "decompression": {
+          "total_mib": 4757.609375,
+          "peak_mib_per_second": 2535.026081208526
+        },
+        "gpu_percent": {
+          "mean": 29.066666666666666,
+          "min": 0,
+          "max": 52,
+          "p95": 52
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 54.85333333333333,
+          "min": 40.3,
+          "max": 77.9,
+          "p95": 77.9
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.055500355684974544,
+          "min": 0.035853292036335915,
+          "max": 0.07535075000487268,
+          "p95": 0.07535075000487268
+        }
+      },
+      "waits": {
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0003665459807962179,
+          "max_seconds": 2.5541987270116806e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.11037087446311489,
+          "max_seconds": 0.0030099169816821814
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.5147208740818314,
+          "max_seconds": 0.4542094999924302
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 6.037403363734484e-05,
+          "max_seconds": 1.7832964658737183e-05
+        },
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.267566334863659,
+          "max_seconds": 0.005232583032920957
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 27440,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27745,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27998,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "full-t1-r1",
+      "mode": "full",
+      "total_seconds": 29.815898667031433,
+      "frame_task_seconds": 21.743845041957684,
+      "qwen_task_seconds": 23.443557874998078,
+      "frame_qwen_task_overlap_seconds": 21.743162915983703,
+      "rss_peak_gib": 2.948028564453125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.4389280840405263,
+      "system_available_min_gib": 4.9385986328125,
+      "system_swap_out_delta_mib": 10.125,
+      "system_swap_used_before_gib": 29.33428955078125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.9408117499551736,
+        "feature_phase": 23.444389749958646,
+        "index": 4.330666667025071,
+        "qwen_prepare_and_encode": 0.005138500011526048,
+        "qwen_write_native": 0.0060605829930864275,
+        "validate_load_local_publish": 0.47338449995731935
+      },
+      "threads": 1,
+      "host": {
+        "swap_in": {
+          "total_mib": 217.140625,
+          "peak_mib_per_second": 141.32661281593062
+        },
+        "swap_out": {
+          "total_mib": 491.75,
+          "peak_mib_per_second": 870.6131121948971
+        },
+        "page_in": {
+          "total_mib": 2505.515625,
+          "peak_mib_per_second": 846.8893847089972
+        },
+        "page_out": {
+          "total_mib": 10.125,
+          "peak_mib_per_second": 2.3513635783098072
+        },
+        "compression": {
+          "total_mib": 35038.4375,
+          "peak_mib_per_second": 6838.415086566206
+        },
+        "decompression": {
+          "total_mib": 31228.1875,
+          "peak_mib_per_second": 8595.412598131681
+        },
+        "gpu_percent": {
+          "mean": 78.64,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 74.0,
+        "cpu_percent": {
+          "mean": 73.68599999999999,
+          "min": 35.5,
+          "max": 98.3,
+          "p95": 92.8
+        },
+        "sample_count": 50,
+        "sample_cost_seconds": {
+          "mean": 0.09275780508411118,
+          "min": 0.04865091701503843,
+          "max": 0.6322718329611234,
+          "p95": 0.14620099996682256
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 7.5625,
+          "peak_mib_per_second": 4.180074511111935
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 27.671875,
+          "peak_mib_per_second": 13.710964795093526
+        },
+        "page_out": {
+          "total_mib": 8.15625,
+          "peak_mib_per_second": 12.282739295604618
+        },
+        "compression": {
+          "total_mib": 3585.5,
+          "peak_mib_per_second": 1514.1449067646502
+        },
+        "decompression": {
+          "total_mib": 4848.375,
+          "peak_mib_per_second": 1362.8647617464733
+        },
+        "gpu_percent": {
+          "mean": 6.733333333333333,
+          "min": 0,
+          "max": 36,
+          "p95": 36
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 52.06,
+          "min": 25.2,
+          "max": 66.1,
+          "p95": 66.1
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.05336946673148001,
+          "min": 0.03729037498123944,
+          "max": 0.07624104100978002,
+          "p95": 0.07624104100978002
+        }
+      },
+      "waits": {
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0007644123979844153,
+          "max_seconds": 0.00012533401604741812
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.3346458810265176,
+          "max_seconds": 0.010581624985206872
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 6.2883013761020266,
+          "max_seconds": 1.0791484590154141
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 6.562494672834873e-05,
+          "max_seconds": 1.808302477002144e-05
+        },
+        "qwen_parent:join_qwen_after_frames": {
+          "count": 1,
+          "total_seconds": 1.700478333979845,
+          "max_seconds": 1.700478333979845
+        },
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.4467039607116021,
+          "max_seconds": 0.010362708009779453
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 27440,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27745,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27998,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    },
+    {
+      "name": "cpu-t1-r1",
+      "mode": "cpu",
+      "total_seconds": 31.652876584033947,
+      "frame_task_seconds": 15.049636750016361,
+      "qwen_task_seconds": 11.089160666975658,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 2.817901611328125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.375,
+      "mps_tensor_sum_peak_gib": 4.43991231918335,
+      "mps_max_sample_age_seconds": 0.14631208300124854,
+      "system_available_min_gib": 5.6158905029296875,
+      "system_swap_out_delta_mib": 8.953125,
+      "system_swap_used_before_gib": 29.55670166015625,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.8648100420250557,
+        "feature_phase": 15.049670792010147,
+        "index": 3.3362889580312185,
+        "qwen_prepare_and_encode": 11.094029708008748,
+        "qwen_write_native": 0.00796891696518287,
+        "validate_load_local_publish": 0.6624584580422379
+      },
+      "threads": 1,
+      "host": {
+        "swap_in": {
+          "total_mib": 267.21875,
+          "peak_mib_per_second": 95.61545890206366
+        },
+        "swap_out": {
+          "total_mib": 141.625,
+          "peak_mib_per_second": 192.93797126567807
+        },
+        "page_in": {
+          "total_mib": 2240.25,
+          "peak_mib_per_second": 1274.9966819754193
+        },
+        "page_out": {
+          "total_mib": 8.953125,
+          "peak_mib_per_second": 3.3159839058953224
+        },
+        "compression": {
+          "total_mib": 23940.3125,
+          "peak_mib_per_second": 6183.396897261789
+        },
+        "decompression": {
+          "total_mib": 28726.3125,
+          "peak_mib_per_second": 9645.584500418494
+        },
+        "gpu_percent": {
+          "mean": 78.17857142857143,
+          "min": 0,
+          "max": 100,
+          "p95": 100
+        },
+        "gpu_samples_ge90_percent": 62.5,
+        "cpu_percent": {
+          "mean": 63.90535714285714,
+          "min": 0.0,
+          "max": 96.3,
+          "p95": 88.6
+        },
+        "sample_count": 56,
+        "sample_cost_seconds": {
+          "mean": 0.06669705875745942,
+          "min": 0.03245362499728799,
+          "max": 0.12227295798948035,
+          "p95": 0.10928616602905095
+        }
+      },
+      "background": {
+        "swap_in": {
+          "total_mib": 23.75,
+          "peak_mib_per_second": 10.457822049692655
+        },
+        "swap_out": {
+          "total_mib": 0.0,
+          "peak_mib_per_second": 0.0
+        },
+        "page_in": {
+          "total_mib": 138.328125,
+          "peak_mib_per_second": 62.90746904014683
+        },
+        "page_out": {
+          "total_mib": 18.75,
+          "peak_mib_per_second": 32.1288008943744
+        },
+        "compression": {
+          "total_mib": 5639.53125,
+          "peak_mib_per_second": 2070.7149807506235
+        },
+        "decompression": {
+          "total_mib": 6319.890625,
+          "peak_mib_per_second": 1487.576493100356
+        },
+        "gpu_percent": {
+          "mean": 28.133333333333333,
+          "min": 0,
+          "max": 53,
+          "p95": 53
+        },
+        "gpu_samples_ge90_percent": 0.0,
+        "cpu_percent": {
+          "mean": 67.68,
+          "min": 45.4,
+          "max": 93.4,
+          "p95": 93.4
+        },
+        "sample_count": 15,
+        "sample_cost_seconds": {
+          "mean": 0.06007189179848259,
+          "min": 0.03410504199564457,
+          "max": 0.18012991698924452,
+          "p95": 0.18012991698924452
+        }
+      },
+      "waits": {
+        "frame_worker:mps_synchronize": {
+          "count": 72,
+          "total_seconds": 0.0005114590749144554,
+          "max_seconds": 5.0458009354770184e-05
+        },
+        "frame_worker:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.12442721333354712,
+          "max_seconds": 0.007305916980840266
+        },
+        "qwen_parent:producer_queue_put": {
+          "count": 215,
+          "total_seconds": 21.89068754593609,
+          "max_seconds": 0.12357550003798679
+        },
+        "qwen_parent:consumer_queue_get": {
+          "count": 8,
+          "total_seconds": 0.0001900839852169156,
+          "max_seconds": 5.1875016652047634e-05
+        },
+        "qwen_parent:mps_to_cpu": {
+          "count": 8,
+          "total_seconds": 3.3053607080946676,
+          "max_seconds": 0.4490678749862127
+        },
+        "qwen_parent:mps_synchronize": {
+          "count": 8,
+          "total_seconds": 5.1876879297196865e-05,
+          "max_seconds": 1.5042023733258247e-05
+        },
+        "owl_backend:mps_to_cpu": {
+          "count": 213,
+          "total_seconds": 0.27381916547892615,
+          "max_seconds": 0.00968433398520574
+        }
+      },
+      "thread_proof": [
+        {
+          "pid": 27440,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27745,
+          "requested": 1,
+          "actual": 1
+        },
+        {
+          "pid": 27998,
+          "requested": 1,
+          "actual": 1
+        }
+      ]
+    }
+  ],
+  "retrieval_scope": {
+    "text_queries": 73,
+    "text_result": "FAISS Top10 segment records and scores",
+    "reference_images": 9,
+    "image_result": "Top10 regions and Top5 distinct videos from top100 regions, including times/boxes/scores",
+    "registered_faces": 5,
+    "face_result": "All candidates at threshold 0.45, times and scores"
+  },
+  "memory_notes": [
+    "RSS is sum over benchmark parent and descendants, including shared-page double counting; live server excluded.",
+    "Cross-process USS is denied by macOS and is unavailable; not reported as zero.",
+    "MPS counters are sampled in Qwen, frame and OWLv2 model processes at 100ms; sums aligned by timestamps. Tensor allocation and driver reserved memory overlap and must not be added to RSS or each other.",
+    "MPS allocator metrics do not include all CoreML allocations. System available memory and swap include unrelated processes; existing swap does not imply every byte was created by this test.",
+    "Peaks are sampled, not exact hardware peaks."
+  ],
+  "method_notes": [
+    "Three scheduling modes x torch CPU intra-op threads 1/2/4; 3 balanced warm repetitions per cell; one initial serial warmup excluded.",
+    "Same original process_job and 35.44s media; actual thread count recorded at each child request. OMP_NUM_THREADS and OPENBLAS_NUM_THREADS environment remain 1; no production edits.",
+    "IORegistry Device Utilization % is whole-device observational sampling; includes unrelated applications, no per-process attribution, no claimed exclusive access.",
+    "vm_stat counters are whole-system interval deltas. Swap rates do not isolate this job. Sample interval is approximately 0.5s plus measurement cost.",
+    "Existing Tensor.cpu on MPS and torch.mps.synchronize wrapped for CPU-visible blocking duration; includes outstanding compute, copies, scheduling; not pure GPU queue wait. No extra synchronizations added.",
+    "Full-mode join and bounded producer/consumer queue waits include application-level waiting. Different wait categories/processes overlap; do not add to obtain total delay.",
+    "Metal exact queue/compute trace unavailable: xctrace requires full Xcode; powermetrics requires admin password. No privilege changes attempted.",
+    "Background host samples before each trial; no unrelated apps closed or production service stopped.",
+    "Fixed-query consistency regression, not independent retrieval accuracy; model resident timings exclude first load and HTTP transfer/queue wait."
+  ],
+  "production_unchanged": null
+}

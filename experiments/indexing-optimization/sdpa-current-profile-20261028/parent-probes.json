@@ -1,0 +1,528 @@
+{
+  "qwen_segments": [
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 0.0,
+        "te": 8.0
+      },
+      "decode_open": {
+        "seconds": 0.03711304202442989,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 0.0013744579628109932,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.1948002511053346,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.0076285008690319955,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 2.316771624959074,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0006855000392533839,
+        "calls": 1
+      },
+      "total_seconds": 2.5653565840329975
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 4.0,
+        "te": 12.0
+      },
+      "decode_open": {
+        "seconds": 0.0028748750337399542,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 2.6659690774977207e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.2469153759884648,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.006925458030309528,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.4069919579778798,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.000549167045392096,
+        "calls": 1
+      },
+      "total_seconds": 1.6698165420093574
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 8.0,
+        "te": 16.0
+      },
+      "decode_open": {
+        "seconds": 0.002742708020377904,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 3.874942194670439e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.29071520996512845,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.00573512411210686,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.4379086249973625,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0006079589948058128,
+        "calls": 1
+      },
+      "total_seconds": 1.7397021659999155
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 12.0,
+        "te": 20.0
+      },
+      "decode_open": {
+        "seconds": 0.0023760829935781658,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 3.7079444155097008e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.33540004008682445,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.006694458075799048,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.454657833033707,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.00035970896715298295,
+        "calls": 1
+      },
+      "total_seconds": 1.8020665000076406
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 16.0,
+        "te": 24.0
+      },
+      "decode_open": {
+        "seconds": 0.0020319170434959233,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 3.999972250312567e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.3294522499782033,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.006469917891081423,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.4934689580113627,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.003560457960702479,
+        "calls": 1
+      },
+      "total_seconds": 1.8375733339926228
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 20.0,
+        "te": 28.0
+      },
+      "decode_open": {
+        "seconds": 0.006818540976382792,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 4.125002305954695e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.32375262392451987,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.006710500922054052,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.5003290409804322,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.000905958004295826,
+        "calls": 1
+      },
+      "total_seconds": 1.8420886659878306
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 24.0,
+        "te": 32.0
+      },
+      "decode_open": {
+        "seconds": 0.0030902919825166464,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 3.7090503610670567e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.4293135409243405,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.007723585003986955,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.4627701659919694,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0005666249780915678,
+        "calls": 1
+      },
+      "total_seconds": 1.9068408329621889
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 28.0,
+        "te": 35.44
+      },
+      "decode_open": {
+        "seconds": 0.002385666943155229,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 4.833971615880728e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.37228900397894904,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.007008582062553614,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.7612666669883765,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0011015000054612756,
+        "calls": 1
+      },
+      "total_seconds": 2.1494084169971757
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 0.0,
+        "te": 8.0
+      },
+      "decode_open": {
+        "seconds": 0.0038930000155232847,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 8.625967893749475e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.16091762424912304,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.007370790117420256,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 3.528332000016235,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0012351670302450657,
+        "calls": 1
+      },
+      "total_seconds": 3.7079033330082893
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 4.0,
+        "te": 12.0
+      },
+      "decode_open": {
+        "seconds": 0.0048564590397290885,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 6.416987162083387e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.3380847069201991,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.007638916024006903,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.4903609160101041,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0003987910458818078,
+        "calls": 1
+      },
+      "total_seconds": 1.846441000001505
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 8.0,
+        "te": 16.0
+      },
+      "decode_open": {
+        "seconds": 0.0022782080341130495,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 3.875000402331352e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.29170104302465916,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.005786081019323319,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.323026625032071,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0004265420138835907,
+        "calls": 1
+      },
+      "total_seconds": 1.6249462499981746
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 12.0,
+        "te": 20.0
+      },
+      "decode_open": {
+        "seconds": 0.0026028749998658895,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 5.249981768429279e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.2811304170754738,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.005531583970878273,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.3329659580485895,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0004212080384604633,
+        "calls": 1
+      },
+      "total_seconds": 1.6241997089819051
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 16.0,
+        "te": 24.0
+      },
+      "decode_open": {
+        "seconds": 0.002029791008681059,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 3.250956069678068e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.305374622985255,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.005879918055143207,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.4032493330305442,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.03348012495553121,
+        "calls": 1
+      },
+      "total_seconds": 1.7576383340056054
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 20.0,
+        "te": 28.0
+      },
+      "decode_open": {
+        "seconds": 0.050029167032334954,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 5.00003807246685e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.5591491650557145,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.008719919074792415,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.3744282920379192,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.00028487504459917545,
+        "calls": 1
+      },
+      "total_seconds": 1.997114458004944
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 24.0,
+        "te": 32.0
+      },
+      "decode_open": {
+        "seconds": 0.0016732499934732914,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 2.5840126909315586e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.2786731260130182,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.0056914989836514,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.3616390829556622,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0007489590207114816,
+        "calls": 1
+      },
+      "total_seconds": 1.6499948329874314
+    },
+    {
+      "segment": {
+        "media_id": 45,
+        "ts": 28.0,
+        "te": 35.44
+      },
+      "decode_open": {
+        "seconds": 0.0025660829851403832,
+        "calls": 1
+      },
+      "decode_get": {
+        "seconds": 3.6259880289435387e-06,
+        "calls": 2
+      },
+      "decode_seek": {
+        "seconds": 0.26749783300329,
+        "calls": 16
+      },
+      "decode_read": {
+        "seconds": 0.006004460097756237,
+        "calls": 16
+      },
+      "model_features": {
+        "seconds": 1.3397723329835571,
+        "calls": 1
+      },
+      "decode_release": {
+        "seconds": 0.0005385419935919344,
+        "calls": 1
+      },
+      "total_seconds": 1.6189135420136154
+    }
+  ],
+  "copytree": [
+    {
+      "source": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/sdpa-current-profile-20261028/work/replay-w3_jk6dk/projects/releases/initial/demo",
+      "destination": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/sdpa-current-profile-20261028/work/replay-w3_jk6dk/projects/releases/f3540680ffca4d3f8501e112a858d9cb/demo",
+      "seconds": 1.881519542017486
+    },
+    {
+      "source": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/sdpa-current-profile-20261028/work/replay-8c0dnccm/projects/releases/initial/demo",
+      "destination": "/Users/zhanghemign/Desktop/视频检索/experiments/indexing-optimization/sdpa-current-profile-20261028/work/replay-8c0dnccm/projects/releases/e05f29daa2a14fb5bec3e894c902dee0/demo",
+      "seconds": 3.346376249974128
+    }
+  ]
+}

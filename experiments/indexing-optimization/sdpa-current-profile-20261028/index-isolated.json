@@ -1,0 +1,14 @@
+{
+  "trials": [
+    {
+      "mode": "baseline",
+      "wall_seconds": 3.8018217500066385
+    },
+    {
+      "mode": "profile",
+      "wall_seconds": 2.197510166966822
+    }
+  ],
+  "production_unchanged": true,
+  "scope": "existing 44-video clone; Qwen store temporarily hidden; independent from model-loaded upload run"
+}

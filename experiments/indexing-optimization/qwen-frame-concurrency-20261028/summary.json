@@ -1,0 +1,467 @@
+{
+  "status": "completed",
+  "source_video_seconds": 35.44,
+  "scope": "Actual process_job on isolated clone of current 44-video library; each trial adds one duplicate content video. Qwen and frame models resident after serial warmup. No HTTP transfer, queue wait or online query contention.",
+  "order": [
+    "serial-warmup",
+    "serial-r1",
+    "full-r1",
+    "cpu-r1",
+    "full-r2",
+    "cpu-r2",
+    "serial-r2",
+    "cpu-r3",
+    "serial-r3",
+    "full-r3"
+  ],
+  "groups": {
+    "serial": {
+      "n": 3,
+      "seconds": [
+        32.171298249973916,
+        33.81826716696378,
+        33.01313120900886
+      ],
+      "mean_seconds": 33.00089887531552,
+      "median_seconds": 33.01313120900886,
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "rss_peak_gib": {
+        "mean": 3.5587361653645835,
+        "min": 3.2897796630859375,
+        "max": 3.8583984375
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.371103922526042,
+        "min": 6.3632965087890625,
+        "max": 6.3750152587890625
+      },
+      "mps_tensor_sum_peak_gib": {
+        "mean": 4.460096597671509,
+        "min": 4.460083723068237,
+        "max": 4.4601030349731445
+      },
+      "frame_task_seconds": {
+        "mean": 14.084980277984869,
+        "min": 13.375844624999445,
+        "max": 14.87972358398838
+      },
+      "qwen_task_seconds": {
+        "mean": 13.123562069338126,
+        "min": 12.8158708330011,
+        "max": 13.373165750002954
+      },
+      "frame_qwen_task_overlap_seconds": {
+        "mean": 0,
+        "min": 0,
+        "max": 0
+      },
+      "mean_time_reduction_percent": 0.0
+    },
+    "full": {
+      "n": 3,
+      "seconds": [
+        29.33512212499045,
+        29.97142579202773,
+        32.692471542046405
+      ],
+      "mean_seconds": 30.666339819688194,
+      "median_seconds": 29.97142579202773,
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "rss_peak_gib": {
+        "mean": 3.105534871419271,
+        "min": 2.8600921630859375,
+        "max": 3.56414794921875
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.434478759765625,
+        "min": 6.43218994140625,
+        "max": 6.439056396484375
+      },
+      "mps_tensor_sum_peak_gib": {
+        "mean": 4.495077610015869,
+        "min": 4.495077610015869,
+        "max": 4.495077610015869
+      },
+      "frame_task_seconds": {
+        "mean": 22.07934486134521,
+        "min": 20.64871416601818,
+        "max": 22.93417808401864
+      },
+      "qwen_task_seconds": {
+        "mean": 23.47165197231031,
+        "min": 22.52271908399416,
+        "max": 24.598548332985956
+      },
+      "frame_qwen_task_overlap_seconds": {
+        "mean": 22.07855390299422,
+        "min": 20.64757600001758,
+        "max": 22.933517166995443
+      },
+      "mean_time_reduction_percent": 7.074228688278438
+    },
+    "cpu": {
+      "n": 3,
+      "seconds": [
+        32.24796495802002,
+        30.948739999963436,
+        30.27424045803491
+      ],
+      "mean_seconds": 31.156981805339456,
+      "median_seconds": 30.948739999963436,
+      "all_outputs_exact": true,
+      "all_retrieval_exact": true,
+      "rss_peak_gib": {
+        "mean": 3.7083587646484375,
+        "min": 3.5852813720703125,
+        "max": 3.9173431396484375
+      },
+      "mps_driver_sum_peak_gib": {
+        "mean": 6.3795725504557295,
+        "min": 6.3750152587890625,
+        "max": 6.3886871337890625
+      },
+      "mps_tensor_sum_peak_gib": {
+        "mean": 4.437742869059245,
+        "min": 4.393037557601929,
+        "max": 4.4601030349731445
+      },
+      "frame_task_seconds": {
+        "mean": 14.397910500333333,
+        "min": 13.922785834001843,
+        "max": 15.08728187502129
+      },
+      "qwen_task_seconds": {
+        "mean": 11.316832972321814,
+        "min": 11.019223292008974,
+        "max": 11.58880245796172
+      },
+      "frame_qwen_task_overlap_seconds": {
+        "mean": 0,
+        "min": 0,
+        "max": 0
+      },
+      "mean_time_reduction_percent": 5.5874752895149316
+    }
+  },
+  "trials": [
+    {
+      "name": "serial-warmup",
+      "mode": "serial",
+      "total_seconds": 45.491459500044584,
+      "frame_task_seconds": 26.92709587502759,
+      "qwen_task_seconds": 12.67327462497633,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.6153106689453125,
+      "uss_peak_gib": 0.14031982421875,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.409639120101929,
+      "mps_max_sample_age_seconds": 0.2261834999662824,
+      "system_available_min_gib": 5.055816650390625,
+      "system_swap_out_delta_mib": 25.1875,
+      "system_swap_used_before_gib": 26.99456787109375,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.390489624987822,
+        "feature_phase": 26.927122458000667,
+        "index": 3.1721718329936266,
+        "qwen_prepare_and_encode": 12.679288708022796,
+        "qwen_write_native": 0.011231500015128404,
+        "validate_load_local_publish": 0.7174438750371337
+      }
+    },
+    {
+      "name": "serial-r1",
+      "mode": "serial",
+      "total_seconds": 32.171298249973916,
+      "frame_task_seconds": 13.999372624966782,
+      "qwen_task_seconds": 13.181649625010323,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.8583984375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.22640375001356006,
+      "system_available_min_gib": 5.105133056640625,
+      "system_swap_out_delta_mib": 31.375,
+      "system_swap_used_before_gib": 27.51287841796875,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.961132499971427,
+        "feature_phase": 13.999399915977847,
+        "index": 2.731336290948093,
+        "qwen_prepare_and_encode": 13.199580374988727,
+        "qwen_write_native": 0.012600832968018949,
+        "validate_load_local_publish": 0.5437098749680445
+      }
+    },
+    {
+      "name": "full-r1",
+      "mode": "full",
+      "total_seconds": 29.33512212499045,
+      "frame_task_seconds": 20.64871416601818,
+      "qwen_task_seconds": 22.52271908399416,
+      "frame_qwen_task_overlap_seconds": 20.64757600001758,
+      "rss_peak_gib": 3.56414794921875,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.13597370800562203,
+      "system_available_min_gib": 4.8249359130859375,
+      "system_swap_out_delta_mib": 18.6875,
+      "system_swap_used_before_gib": 28.117919921875,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.0230381669825874,
+        "feature_phase": 22.523938583035488,
+        "index": 4.627232875034679,
+        "qwen_prepare_and_encode": 0.005666417011525482,
+        "qwen_write_native": 0.007266458997037262,
+        "validate_load_local_publish": 0.5867494170088321
+      }
+    },
+    {
+      "name": "cpu-r1",
+      "mode": "cpu",
+      "total_seconds": 32.24796495802002,
+      "frame_task_seconds": 15.08728187502129,
+      "qwen_task_seconds": 11.58880245796172,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.9173431396484375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.460088014602661,
+      "mps_max_sample_age_seconds": 0.12667849997524172,
+      "system_available_min_gib": 5.3134765625,
+      "system_swap_out_delta_mib": 18.96875,
+      "system_swap_used_before_gib": 28.094482421875,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.3102416250039823,
+        "feature_phase": 15.087307000008877,
+        "index": 2.969860291981604,
+        "qwen_prepare_and_encode": 11.597023458976764,
+        "qwen_write_native": 0.008335458987858146,
+        "validate_load_local_publish": 0.6636179169872776
+      }
+    },
+    {
+      "name": "full-r2",
+      "mode": "full",
+      "total_seconds": 29.97142579202773,
+      "frame_task_seconds": 22.65514233399881,
+      "qwen_task_seconds": 23.293688499950804,
+      "frame_qwen_task_overlap_seconds": 22.65456854196964,
+      "rss_peak_gib": 2.892364501953125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.43218994140625,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.35028312500799075,
+      "system_available_min_gib": 4.793731689453125,
+      "system_swap_out_delta_mib": 17.6875,
+      "system_swap_used_before_gib": 28.055419921875,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.2517247080104426,
+        "feature_phase": 23.295998417015653,
+        "index": 4.4143190829781815,
+        "qwen_prepare_and_encode": 0.005897291994187981,
+        "qwen_write_native": 0.007506499998271465,
+        "validate_load_local_publish": 0.474936707993038
+      }
+    },
+    {
+      "name": "cpu-r2",
+      "mode": "cpu",
+      "total_seconds": 30.948739999963436,
+      "frame_task_seconds": 14.183663791976869,
+      "qwen_task_seconds": 11.34247316699475,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.5852813720703125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3886871337890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.2334116249694489,
+      "system_available_min_gib": 5.210296630859375,
+      "system_swap_out_delta_mib": 32.71875,
+      "system_swap_used_before_gib": 28.4893798828125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.997792458976619,
+        "feature_phase": 14.183720458007883,
+        "index": 2.867079499992542,
+        "qwen_prepare_and_encode": 11.34889737505,
+        "qwen_write_native": 0.027048416959587485,
+        "validate_load_local_publish": 1.0181933339918032
+      }
+    },
+    {
+      "name": "serial-r2",
+      "mode": "serial",
+      "total_seconds": 33.81826716696378,
+      "frame_task_seconds": 14.87972358398838,
+      "qwen_task_seconds": 12.8158708330011,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.5280303955078125,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.375,
+      "mps_tensor_sum_peak_gib": 4.460083723068237,
+      "mps_max_sample_age_seconds": 0.17998583300504833,
+      "system_available_min_gib": 5.093780517578125,
+      "system_swap_out_delta_mib": 12.5,
+      "system_swap_used_before_gib": 28.4190673828125,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.4256875839782879,
+        "feature_phase": 14.879742583958432,
+        "index": 3.3785818750038743,
+        "qwen_prepare_and_encode": 12.8213052500505,
+        "qwen_write_native": 0.012420207960531116,
+        "validate_load_local_publish": 0.7066777920117602
+      }
+    },
+    {
+      "name": "cpu-r3",
+      "mode": "cpu",
+      "total_seconds": 30.27424045803491,
+      "frame_task_seconds": 13.922785834001843,
+      "qwen_task_seconds": 11.019223292008974,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.6224517822265625,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3750152587890625,
+      "mps_tensor_sum_peak_gib": 4.393037557601929,
+      "mps_max_sample_age_seconds": 0.17737133300397545,
+      "system_available_min_gib": 5.7474822998046875,
+      "system_swap_out_delta_mib": 30.859375,
+      "system_swap_used_before_gib": 29.0728759765625,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.987052374985069,
+        "feature_phase": 13.922809958981816,
+        "index": 2.9269750410458073,
+        "qwen_prepare_and_encode": 11.025080541032366,
+        "qwen_write_native": 0.02786225004820153,
+        "validate_load_local_publish": 0.8280728749814443
+      }
+    },
+    {
+      "name": "serial-r3",
+      "mode": "serial",
+      "total_seconds": 33.01313120900886,
+      "frame_task_seconds": 13.375844624999445,
+      "qwen_task_seconds": 13.373165750002954,
+      "frame_qwen_task_overlap_seconds": 0,
+      "rss_peak_gib": 3.2897796630859375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.3632965087890625,
+      "mps_tensor_sum_peak_gib": 4.4601030349731445,
+      "mps_max_sample_age_seconds": 0.34528874995885417,
+      "system_available_min_gib": 5.746002197265625,
+      "system_swap_out_delta_mib": 28.734375,
+      "system_swap_used_before_gib": 29.0181884765625,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 0.9462707500206307,
+        "feature_phase": 13.375866290996782,
+        "index": 3.3060620420146734,
+        "qwen_prepare_and_encode": 13.378465457994025,
+        "qwen_write_native": 0.007980457972735167,
+        "validate_load_local_publish": 0.9302722499705851
+      }
+    },
+    {
+      "name": "full-r3",
+      "mode": "full",
+      "total_seconds": 32.692471542046405,
+      "frame_task_seconds": 22.93417808401864,
+      "qwen_task_seconds": 24.598548332985956,
+      "frame_qwen_task_overlap_seconds": 22.933517166995443,
+      "rss_peak_gib": 2.8600921630859375,
+      "uss_peak_gib": null,
+      "mps_driver_sum_peak_gib": 6.439056396484375,
+      "mps_tensor_sum_peak_gib": 4.495077610015869,
+      "mps_max_sample_age_seconds": 0.47131062496919185,
+      "system_available_min_gib": 4.3000946044921875,
+      "system_swap_out_delta_mib": 11.859375,
+      "system_swap_used_before_gib": 28.96405029296875,
+      "outputs_exact": true,
+      "retrieval_exact": true,
+      "stages": {
+        "transcode": 1.252380667021498,
+        "feature_phase": 24.599890709039755,
+        "index": 5.736378625035286,
+        "qwen_prepare_and_encode": 0.010215415968559682,
+        "qwen_write_native": 0.0111222910345532,
+        "validate_load_local_publish": 0.5082717909826897
+      }
+    }
+  ],
+  "retrieval_scope": {
+    "text_queries": 73,
+    "text_result": "FAISS Top10 segment records and scores",
+    "reference_images": 9,
+    "image_result": "Top10 regions and Top5 distinct videos from top100 regions, including times/boxes/scores",
+    "registered_faces": 5,
+    "face_result": "All candidates at threshold 0.45, times and scores"
+  },
+  "memory_notes": [
+    "RSS is sum over benchmark parent and descendants, including shared-page double counting; live server excluded.",
+    "Cross-process USS is denied by macOS and is unavailable; not reported as zero.",
+    "MPS counters are sampled in Qwen, frame and OWLv2 model processes at 100ms; sums aligned by timestamps. Tensor allocation and driver reserved memory overlap and must not be added to RSS or each other.",
+    "MPS allocator metrics do not include all CoreML allocations. System available memory and swap include unrelated processes; existing swap does not imply every byte was created by this test.",
+    "Peaks are sampled, not exact hardware peaks.",
+    "Observed system swap-out was roughly 12–33 MiB per steady trial; shared system memory pressure adds uncertainty. Lower sampled RSS does not establish lower physical memory demand."
+  ],
+  "method_notes": [
+    "Full mode starts original Qwen encoding with frame extraction, joins both before index construction; native writes remain serial.",
+    "CPU mode copies original decode/processor steps into a CPU producer, queue capacity 2 (plus in-flight preparation/consumption); Qwen forward stays after frame extraction and index creation.",
+    "Schedule timestamps delimit tasks, including CPU work/waits; they are not Metal kernel traces.",
+    "Fixed query regression measures consistency, not an independent accuracy or recall benchmark.",
+    "Aborted attempt1 stopped at original disk safety threshold; its partial data is excluded. Only regenerated experimental buffers/indexes were removed; production remained unchanged.",
+    "CPU producer additionally hashes decoded raw frames for replay consistency; this small probe cost is included. No online query-load stress test."
+  ],
+  "production_unchanged": true,
+  "final_integrity": {
+    "production_fingerprint_unchanged": true,
+    "service": {
+      "status": "ready",
+      "progress": 100,
+      "message": "全部已入库视频支持 Qwen 片段检索",
+      "indexed_videos": 44,
+      "indexed_segments": 146,
+      "model_loaded": true,
+      "model_load_seconds": 8.160699291038327,
+      "settings": {
+        "schema": 1,
+        "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+        "dtype": "float16",
+        "max_total_pixels": 1048576,
+        "window_seconds": 8.0,
+        "stride_seconds": 4.0,
+        "frames": 16
+      },
+      "video_patch_projection": "linear_same_weights_v1"
+    },
+    "completed_warm_trials": 9,
+    "serial_warmup_excluded": true,
+    "all_outputs_and_fixed_query_results_exact": true,
+    "cpu_raw_frame_hashes_identical_across_runs": true,
+    "schedule_overlap_checks_passed": true,
+    "single_resident_frame_worker": true,
+    "temporary_mmap_buffers_cleaned": true,
+    "unit_tests_passed": 3,
+    "remaining_disk_gib": 12.306781768798828
+  },
+  "conclusion": "Full concurrency mean 7.07% faster, CPU-only preparation mean 5.59% faster on one 35.44s video (3 warm runs each). Full faster by 0.49s on average than CPU mode; not enough evidence of stable superiority. Formal environment unchanged."
+}
