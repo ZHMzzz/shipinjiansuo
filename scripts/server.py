@@ -35,6 +35,7 @@ from native_qwen import prepare_native_qwen_project, validate_native_qwen, QWEN
 from library_search import search_library, native_text_search
 from video_deletion import delete_video
 from library_catalog import list_video_catalog
+from original_media import original_response
 from action_search import ActionEngine, SETTINGS as ACTION_SETTINGS, VIDEO_PATCH_PROJECTION, read_snapshot, windows
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -192,6 +193,11 @@ def retry_job(job_id: str):
 @app.get('/mvp-api/videos')
 def list_videos(project: ProjectServiceDep):
     return list_video_catalog(project.wise_project._project_dir, ingestion.jobs())
+
+
+@app.api_route('/mvp-api/videos/{media_id}/original', methods=['GET', 'HEAD'])
+def play_original(media_id: int, revision: str, project: ProjectServiceDep):
+    return original_response(media_id, revision, project.wise_project._project_dir, ingestion.jobs())
 
 @app.delete('/mvp-api/videos/{media_id}')
 async def remove_video(media_id: int, revision: str = Header(..., alias='If-Match', min_length=64, max_length=64)):

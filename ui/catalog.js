@@ -1,6 +1,7 @@
 import {el, node, api, feedback, formatTime, formatSize} from './api.js';
 import {mountMaintenance} from './maintenance.js';
 import {createVideoDeletion, trashIcon} from './video-delete.js';
+import {createVideoPlayer} from './video-player.js';
 
 const PAGE_SIZE = 50;
 let catalog = [], items = [], page = 1, mode = 'browse', applied = {}, limited = false;
@@ -42,16 +43,20 @@ natural.addEventListener('input', syncInputs);
 el('person').addEventListener('change', syncInputs);
 el('clear-reference').onclick = event => { event.preventDefault(); clearReference(); reference.focus(); };
 
+let playCaption = '';
+const videoPlayer = createVideoPlayer(el('video-dialog').querySelector('video'), message => {
+  el('play-caption').textContent = [playCaption, message].filter(Boolean).join(' · ');
+});
+const resolution = item => item.width && item.height ? `${item.width} × ${item.height}` : '分辨率未知';
 function play(item) {
-  const dialog = el('video-dialog'), player = dialog.querySelector('video');
+  const dialog = el('video-dialog');
   dialog.querySelector('h3').textContent = item.name;
-  el('play-caption').textContent = item.kind ? `${labels[item.kind]}命中 · 从 ${formatTime(item.start)} 开始播放` : `时长 ${formatTime(item.duration)} · ${item.width} × ${item.height}`;
-  player.onloadedmetadata = () => { player.currentTime = Math.min(item.start || 0, player.duration || Infinity); player.play().catch(() => {}); };
-  player.src = item.url; dialog.showModal();
+  playCaption = item.kind ? `${labels[item.kind]}命中 · 从 ${formatTime(item.start)} 开始播放` : `时长 ${formatTime(item.duration)} · ${resolution(item)} · ${formatSize(item.size_in_bytes)}`;
+  dialog.showModal(); videoPlayer.play(item);
 }
 el('close-video').onclick = () => el('video-dialog').close();
 el('video-dialog').addEventListener('close', () => {
-  const player = el('video-dialog').querySelector('video'); player.pause(); player.removeAttribute('src'); player.load();
+  videoPlayer.stop();
 });
 function render() {
   const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE)); page = Math.min(page, pages);
@@ -72,7 +77,7 @@ function render() {
     open.append(thumb, info); open.onclick = () => play(item);
     const footer = node('div', undefined, 'card-footer');
     const meta = node('div', undefined, 'card-meta');
-    meta.append(node('span', item.kind ? labels[item.kind] : `${item.width} × ${item.height}`), node('span', item.kind ? `${formatTime(item.start)}–${formatTime(item.end)}` : formatSize(item.size_in_bytes)));
+    meta.append(node('span', item.kind ? labels[item.kind] : resolution(item)), node('span', item.kind ? `${formatTime(item.start)}–${formatTime(item.end)}` : formatSize(item.size_in_bytes)));
     const remove = node('button', undefined, 'delete-video-button'); remove.type = 'button';
     remove.innerHTML = trashIcon + '<span>删除</span>'; remove.setAttribute('aria-label',`删除视频：${item.name}`);
     remove.onclick = () => openDeletion(item); footer.append(meta,remove);

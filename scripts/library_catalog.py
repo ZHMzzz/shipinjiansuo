@@ -6,8 +6,10 @@ from pathlib import Path
 
 if __package__:
     from .video_deletion import media_revision
+    from .original_media import ROOT, upload_for_media, original_path, original_metadata
 else:
     from video_deletion import media_revision
+    from original_media import ROOT, upload_for_media, original_path, original_metadata
 
 
 @lru_cache(maxsize=4)
@@ -27,19 +29,28 @@ def read_catalog_snapshot(project):
             mid=segment['media_id'];action_counts[mid]=action_counts.get(mid,0)+1
     for item in rows:
         item['revision']=media_revision(item,project)
-        item.pop('checksum');item.pop('location')
+        item.pop('checksum')
         item.update(url=f"/demo/media/{item['id']}",thumbnail=f"/demo/thumbnail?media_id={item['id']}&timestamp=0",
             features=counts.get(item['id'],{}),action_segments=action_counts.get(item['id'],0))
     return rows
 
 
-def list_video_catalog(project, jobs):
+def list_video_catalog(project, jobs, root=ROOT):
     # Resolve before the cache boundary: uploads/deletions publish a new path.
     project=Path(project).resolve()
-    uploaded={job['media_id']:job for job in jobs if job['status']=='completed'}
     videos=[]
     for row in read_catalog_snapshot(project):
-        job=uploaded.get(row['id'])
-        videos.append({**row,'features':dict(row['features']),
-            'name':job['filename'] if job else row['path'], 'created':job['created'] if job else None})
+        job=upload_for_media(row,jobs,root)
+        item={**row,'features':dict(row['features']),
+            'name':job['filename'] if job else row['path'], 'created':job['created'] if job else None}
+        item.pop('location')
+        source=original_path(job,root)
+        if source is not None:
+            try:
+                item.update(original_metadata(source,root))
+                item['fallback_url']=row['url']
+                item['url']=f"/mvp-api/videos/{row['id']}/original?revision={row['revision']}"
+            except OSError:
+                pass  # Original disappeared; the indexed copy remains playable.
+        videos.append(item)
     return {'videos':videos,'count':len(videos),'total_duration':sum(v['duration'] or 0 for v in videos)}
