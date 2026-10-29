@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "source_media": {
+    "id": 40,
+    "path": "1246.mp4",
+    "duration": 35.44,
+    "location": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared"
+  },
+  "input_sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7",
+  "trials": [
+    {
+      "mode": "baseline",
+      "wall_seconds": 31.264042750000954,
+      "counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+      },
+      "new_media_id": 45
+    },
+    {
+      "mode": "profile",
+      "wall_seconds": 31.525956582976505,
+      "counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+      },
+      "new_media_id": 45
+    }
+  ],
+  "scope": "Frame extraction child only, same prepared 35.44s video, full project clone, original production acceleration, no Qwen/re-index/publication.",
+  "outputs_exact": {
+    "deepinsight/insightface/buffalo_l/_unknown": true,
+    "transformers/owlv2/google/owlv2-base-patch16-ensemble": true
+  },
+  "metadata_exact": true,
+  "production_unchanged": true
+}

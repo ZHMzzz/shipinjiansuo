@@ -1,0 +1,903 @@
+{
+  "status": "completed",
+  "sources": {
+    "40": {
+      "path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/029be21217b547ccb94d194e00715f08/prepared/1246.mp4",
+      "sha256": "d79ae80114d011e6656cce46d6e3a5000a91dc25d462665c1a0935e7962f1bc7",
+      "duration": 35.44
+    },
+    "41": {
+      "path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/0fe31e1020b9487d80e9d1b4e9a703e8/prepared/抖音20261027-906986.mp4",
+      "sha256": "90825b860aa812454de93c54caa6af57bd5dfaae3218719f2893db3102004431",
+      "duration": 26.875
+    },
+    "43": {
+      "path": "/Users/zhanghemign/Desktop/视频检索/data/uploads/8e41414ed3574556a13a153b01b8068c/prepared/grok-video-6c01f7a8-ff94-48c8-b5b2-bb86d1cdb000.mp4",
+      "sha256": "8987e2198197dea8a1a7d88884c5cd44aa9d48d00793e4eaaa2bbe8197954734",
+      "duration": 10.041666
+    }
+  },
+  "trials": [
+    {
+      "event": "completed",
+      "pid": 67223,
+      "seconds": 25.615391375031322,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 25.48563995800214,
+        "before": {
+          "rss_bytes": 582909952,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 10174709760,
+          "system_swap_used_bytes": 24480514048
+        },
+        "after": {
+          "rss_bytes": 873218048,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1184579584,
+          "system_available_bytes": 8118697984,
+          "system_swap_used_bytes": 24480514048
+        },
+        "sampled_peak": {
+          "rss_bytes": 1852309504,
+          "mps_allocated_bytes": 976634624,
+          "mps_driver_bytes": 1401618432,
+          "system_available_bytes": 10174709760,
+          "system_swap_used_bytes": 24480514048
+        },
+        "min_system_available_bytes": 7620870144
+      },
+      "idle_memory": {
+        "rss_bytes": 1142751232,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1184579584,
+        "open_fds": 25
+      },
+      "models": 0,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 25.61616158398101,
+      "variant": "fresh",
+      "media_id": 40,
+      "repeat": 1,
+      "duration": 35.44,
+      "startup_charged_seconds": 4.329380749957636,
+      "elapsed_seconds": 30.709568750928156,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "12b9dbb32439ad9e71b92029237b933cbacec06754eacda030c7b46d04b824e8",
+          "ids_times_metadata": "1a8e54d53d77ec0e0501e97b839e63b89f6655ca968a21f444687a500d37c4ae"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "3d560ab2a0721895d3b241debe2fa0fa248294e4f85e5607d88a00b2065d6f7c",
+          "ids_times_metadata": "1393290ff9a75a191cefab27f49b72f496ad00ded2e252830ee71d94bdd712e6"
+        }
+      },
+      "exit_seconds": 0.764026416989509
+    },
+    {
+      "event": "completed",
+      "pid": 67863,
+      "seconds": 25.12107275001472,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 25.033819208969362,
+        "before": {
+          "rss_bytes": 612139008,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 10993467392,
+          "system_swap_used_bytes": 24480514048
+        },
+        "after": {
+          "rss_bytes": 1255129088,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1390575616,
+          "system_available_bytes": 9094414336,
+          "system_swap_used_bytes": 24480514048
+        },
+        "sampled_peak": {
+          "rss_bytes": 1996980224,
+          "mps_allocated_bytes": 976634624,
+          "mps_driver_bytes": 1401634816,
+          "system_available_bytes": 10993467392,
+          "system_swap_used_bytes": 24480514048
+        },
+        "min_system_available_bytes": 7912685568
+      },
+      "idle_memory": {
+        "rss_bytes": 1329283072,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1390575616,
+        "open_fds": 25
+      },
+      "models": 2,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 25.121560583007522,
+      "variant": "reused",
+      "media_id": 40,
+      "repeat": 1,
+      "duration": 35.44,
+      "startup_charged_seconds": 4.2861124579794705,
+      "elapsed_seconds": 29.407673040986992,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "12b9dbb32439ad9e71b92029237b933cbacec06754eacda030c7b46d04b824e8",
+          "ids_times_metadata": "1a8e54d53d77ec0e0501e97b839e63b89f6655ca968a21f444687a500d37c4ae"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "3d560ab2a0721895d3b241debe2fa0fa248294e4f85e5607d88a00b2065d6f7c",
+          "ids_times_metadata": "1393290ff9a75a191cefab27f49b72f496ad00ded2e252830ee71d94bdd712e6"
+        }
+      }
+    },
+    {
+      "event": "completed",
+      "pid": 67863,
+      "seconds": 19.889194125018548,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 19.82456799998181,
+        "before": {
+          "rss_bytes": 1329299456,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1390575616,
+          "system_available_bytes": 9094414336,
+          "system_swap_used_bytes": 24480514048
+        },
+        "after": {
+          "rss_bytes": 1717321728,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1390575616,
+          "system_available_bytes": 9073377280,
+          "system_swap_used_bytes": 24480514048
+        },
+        "sampled_peak": {
+          "rss_bytes": 1721548800,
+          "mps_allocated_bytes": 698608384,
+          "mps_driver_bytes": 1401634816,
+          "system_available_bytes": 9188179968,
+          "system_swap_used_bytes": 24480514048
+        },
+        "min_system_available_bytes": 8641708032
+      },
+      "idle_memory": {
+        "rss_bytes": 1716994048,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1390575616,
+        "open_fds": 25
+      },
+      "models": 2,
+      "counts": {
+        "created": 2,
+        "reused": 2
+      },
+      "request_wall_seconds": 19.88948941702256,
+      "variant": "reused",
+      "media_id": 41,
+      "repeat": 1,
+      "duration": 26.875,
+      "startup_charged_seconds": 0.0,
+      "elapsed_seconds": 19.88948941702256,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 1,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28940
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "bfb93feedd8886833d40adfb14d19fdb75245b8214c03e51d383da5ef1610e7e",
+          "ids_times_metadata": "691bf1ee92e9447864f9e70fd420dae49c3376a354a750dda488a59e5ffd5ac8"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "e00fdc463f7b81b18163746a771dea44258c8366b5174c2ed8d1af21288f9951",
+          "ids_times_metadata": "ab671d20ed43495a884766d418016058d340513c3cbfa8b84e2bfa7d412c2277"
+        }
+      }
+    },
+    {
+      "event": "completed",
+      "pid": 68931,
+      "seconds": 22.70938395796111,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 22.64198120799847,
+        "before": {
+          "rss_bytes": 611926016,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 9364537344,
+          "system_swap_used_bytes": 24480514048
+        },
+        "after": {
+          "rss_bytes": 993443840,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1182482432,
+          "system_available_bytes": 8531722240,
+          "system_swap_used_bytes": 24480514048
+        },
+        "sampled_peak": {
+          "rss_bytes": 1725366272,
+          "mps_allocated_bytes": 670952704,
+          "mps_driver_bytes": 1403731968,
+          "system_available_bytes": 9364537344,
+          "system_swap_used_bytes": 24480514048
+        },
+        "min_system_available_bytes": 6378356736
+      },
+      "idle_memory": {
+        "rss_bytes": 993443840,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1182482432,
+        "open_fds": 25
+      },
+      "models": 0,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 22.71005483297631,
+      "variant": "fresh",
+      "media_id": 41,
+      "repeat": 1,
+      "duration": 26.875,
+      "startup_charged_seconds": 4.522300833021291,
+      "elapsed_seconds": 27.680872915952932,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 1,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28940
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "bfb93feedd8886833d40adfb14d19fdb75245b8214c03e51d383da5ef1610e7e",
+          "ids_times_metadata": "691bf1ee92e9447864f9e70fd420dae49c3376a354a750dda488a59e5ffd5ac8"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "e00fdc463f7b81b18163746a771dea44258c8366b5174c2ed8d1af21288f9951",
+          "ids_times_metadata": "ab671d20ed43495a884766d418016058d340513c3cbfa8b84e2bfa7d412c2277"
+        }
+      },
+      "exit_seconds": 0.44851724995533004
+    },
+    {
+      "event": "completed",
+      "pid": 69548,
+      "seconds": 9.285485041968059,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 9.194713542005047,
+        "before": {
+          "rss_bytes": 612073472,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 9927327744,
+          "system_swap_used_bytes": 24480514048
+        },
+        "after": {
+          "rss_bytes": 676151296,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1184579584,
+          "system_available_bytes": 7551877120,
+          "system_swap_used_bytes": 24480514048
+        },
+        "sampled_peak": {
+          "rss_bytes": 1916207104,
+          "mps_allocated_bytes": 982165760,
+          "mps_driver_bytes": 1401602048,
+          "system_available_bytes": 9927327744,
+          "system_swap_used_bytes": 24480514048
+        },
+        "min_system_available_bytes": 7127302144
+      },
+      "idle_memory": {
+        "rss_bytes": 813694976,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1184579584,
+        "open_fds": 25
+      },
+      "models": 0,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 9.285925665986724,
+      "variant": "fresh",
+      "media_id": 43,
+      "repeat": 1,
+      "duration": 10.041666,
+      "startup_charged_seconds": 4.101290624996182,
+      "elapsed_seconds": 13.8837542499532,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 54,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 6362
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "538c9c11c0df4cbf315dc0948a336e4b1b54ba44a1da8dcd5e5e469e696c9c6e",
+          "ids_times_metadata": "a789cf365a406e1957c935e634e969c91f47135ea4dc5662c4dae3dcc6b8c803"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "a0fda3db39e7e1936153023ae76cb7d444da2c9093f0c76973304d43902c9f2e",
+          "ids_times_metadata": "70339914dea3604942aa248862eef5dbcac6568c9dd41308e15df8d695884631"
+        }
+      },
+      "exit_seconds": 0.4965379589702934
+    },
+    {
+      "event": "completed",
+      "pid": 67863,
+      "seconds": 7.829897417046595,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 7.573937624983955,
+        "before": {
+          "rss_bytes": 194281472,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1331855360,
+          "system_available_bytes": 7551877120,
+          "system_swap_used_bytes": 24480514048
+        },
+        "after": {
+          "rss_bytes": 490733568,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1390575616,
+          "system_available_bytes": 9063759872,
+          "system_swap_used_bytes": 24480514048
+        },
+        "sampled_peak": {
+          "rss_bytes": 1065877504,
+          "mps_allocated_bytes": 365270784,
+          "mps_driver_bytes": 1401634816,
+          "system_available_bytes": 9523396608,
+          "system_swap_used_bytes": 24480514048
+        },
+        "min_system_available_bytes": 7551877120
+      },
+      "idle_memory": {
+        "rss_bytes": 751058944,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1390575616,
+        "open_fds": 25
+      },
+      "models": 2,
+      "counts": {
+        "created": 2,
+        "reused": 4
+      },
+      "request_wall_seconds": 7.830617457977496,
+      "variant": "reused",
+      "media_id": 43,
+      "repeat": 1,
+      "duration": 10.041666,
+      "startup_charged_seconds": 0.0,
+      "elapsed_seconds": 7.830617457977496,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 54,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 6362
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "538c9c11c0df4cbf315dc0948a336e4b1b54ba44a1da8dcd5e5e469e696c9c6e",
+          "ids_times_metadata": "a789cf365a406e1957c935e634e969c91f47135ea4dc5662c4dae3dcc6b8c803"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "a0fda3db39e7e1936153023ae76cb7d444da2c9093f0c76973304d43902c9f2e",
+          "ids_times_metadata": "70339914dea3604942aa248862eef5dbcac6568c9dd41308e15df8d695884631"
+        }
+      }
+    },
+    {
+      "event": "completed",
+      "pid": 67863,
+      "seconds": 24.171293584047817,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 24.102994166954886,
+        "before": {
+          "rss_bytes": 751075328,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1390575616,
+          "system_available_bytes": 9063759872,
+          "system_swap_used_bytes": 24480514048
+        },
+        "after": {
+          "rss_bytes": 1365753856,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1390575616,
+          "system_available_bytes": 9059926016,
+          "system_swap_used_bytes": 24472125440
+        },
+        "sampled_peak": {
+          "rss_bytes": 1367883776,
+          "mps_allocated_bytes": 982165760,
+          "mps_driver_bytes": 1401634816,
+          "system_available_bytes": 9063759872,
+          "system_swap_used_bytes": 24480514048
+        },
+        "min_system_available_bytes": 8573206528
+      },
+      "idle_memory": {
+        "rss_bytes": 1365753856,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1390575616,
+        "open_fds": 25
+      },
+      "models": 2,
+      "counts": {
+        "created": 2,
+        "reused": 6
+      },
+      "request_wall_seconds": 24.171621999994386,
+      "variant": "reused",
+      "media_id": 40,
+      "repeat": 2,
+      "duration": 35.44,
+      "startup_charged_seconds": 0.0,
+      "elapsed_seconds": 24.171621999994386,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "12b9dbb32439ad9e71b92029237b933cbacec06754eacda030c7b46d04b824e8",
+          "ids_times_metadata": "1a8e54d53d77ec0e0501e97b839e63b89f6655ca968a21f444687a500d37c4ae"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "3d560ab2a0721895d3b241debe2fa0fa248294e4f85e5607d88a00b2065d6f7c",
+          "ids_times_metadata": "1393290ff9a75a191cefab27f49b72f496ad00ded2e252830ee71d94bdd712e6"
+        }
+      }
+    },
+    {
+      "event": "completed",
+      "pid": 70633,
+      "seconds": 26.592344250006136,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 26.488977958040778,
+        "before": {
+          "rss_bytes": 613203968,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 9579937792,
+          "system_swap_used_bytes": 24472125440
+        },
+        "after": {
+          "rss_bytes": 545996800,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1186676736,
+          "system_available_bytes": 7770357760,
+          "system_swap_used_bytes": 24463736832
+        },
+        "sampled_peak": {
+          "rss_bytes": 1632747520,
+          "mps_allocated_bytes": 982165760,
+          "mps_driver_bytes": 1403715584,
+          "system_available_bytes": 9579937792,
+          "system_swap_used_bytes": 24472125440
+        },
+        "min_system_available_bytes": 6452920320
+      },
+      "idle_memory": {
+        "rss_bytes": 800325632,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1186676736,
+        "open_fds": 25
+      },
+      "models": 0,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 26.592997499974445,
+      "variant": "fresh",
+      "media_id": 40,
+      "repeat": 2,
+      "duration": 35.44,
+      "startup_charged_seconds": 4.260726541979238,
+      "elapsed_seconds": 31.30535845895065,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 77,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 10653
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "12b9dbb32439ad9e71b92029237b933cbacec06754eacda030c7b46d04b824e8",
+          "ids_times_metadata": "1a8e54d53d77ec0e0501e97b839e63b89f6655ca968a21f444687a500d37c4ae"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "3d560ab2a0721895d3b241debe2fa0fa248294e4f85e5607d88a00b2065d6f7c",
+          "ids_times_metadata": "1393290ff9a75a191cefab27f49b72f496ad00ded2e252830ee71d94bdd712e6"
+        }
+      },
+      "exit_seconds": 0.45163441699696705
+    },
+    {
+      "event": "completed",
+      "pid": 71305,
+      "seconds": 21.12322883401066,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 21.055580332991667,
+        "before": {
+          "rss_bytes": 613138432,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 9550692352,
+          "system_swap_used_bytes": 24463736832
+        },
+        "after": {
+          "rss_bytes": 920485888,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1136345088,
+          "system_available_bytes": 7818690560,
+          "system_swap_used_bytes": 24463736832
+        },
+        "sampled_peak": {
+          "rss_bytes": 1790509056,
+          "mps_allocated_bytes": 698608384,
+          "mps_driver_bytes": 1397686272,
+          "system_available_bytes": 9550692352,
+          "system_swap_used_bytes": 24463736832
+        },
+        "min_system_available_bytes": 6950109184
+      },
+      "idle_memory": {
+        "rss_bytes": 920502272,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1136345088,
+        "open_fds": 25
+      },
+      "models": 0,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 21.12366733397357,
+      "variant": "fresh",
+      "media_id": 41,
+      "repeat": 2,
+      "duration": 26.875,
+      "startup_charged_seconds": 4.40260924998438,
+      "elapsed_seconds": 25.979497417982202,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 1,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28940
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "bfb93feedd8886833d40adfb14d19fdb75245b8214c03e51d383da5ef1610e7e",
+          "ids_times_metadata": "691bf1ee92e9447864f9e70fd420dae49c3376a354a750dda488a59e5ffd5ac8"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "e00fdc463f7b81b18163746a771dea44258c8366b5174c2ed8d1af21288f9951",
+          "ids_times_metadata": "ab671d20ed43495a884766d418016058d340513c3cbfa8b84e2bfa7d412c2277"
+        }
+      },
+      "exit_seconds": 0.4532208340242505
+    },
+    {
+      "event": "completed",
+      "pid": 67863,
+      "seconds": 18.995422292035073,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 18.88291633297922,
+        "before": {
+          "rss_bytes": 194183168,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1331855360,
+          "system_available_bytes": 10022797312,
+          "system_swap_used_bytes": 24463736832
+        },
+        "after": {
+          "rss_bytes": 1175306240,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1380089856,
+          "system_available_bytes": 9113419776,
+          "system_swap_used_bytes": 24455348224
+        },
+        "sampled_peak": {
+          "rss_bytes": 1177780224,
+          "mps_allocated_bytes": 982165760,
+          "mps_driver_bytes": 1403731968,
+          "system_available_bytes": 10022797312,
+          "system_swap_used_bytes": 24463736832
+        },
+        "min_system_available_bytes": 8862334976
+      },
+      "idle_memory": {
+        "rss_bytes": 1436909568,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1380089856,
+        "open_fds": 25
+      },
+      "models": 2,
+      "counts": {
+        "created": 2,
+        "reused": 8
+      },
+      "request_wall_seconds": 18.995891624945216,
+      "variant": "reused",
+      "media_id": 41,
+      "repeat": 2,
+      "duration": 26.875,
+      "startup_charged_seconds": 0.0,
+      "elapsed_seconds": 18.995891624945216,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 1,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 28940
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "bfb93feedd8886833d40adfb14d19fdb75245b8214c03e51d383da5ef1610e7e",
+          "ids_times_metadata": "691bf1ee92e9447864f9e70fd420dae49c3376a354a750dda488a59e5ffd5ac8"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "e00fdc463f7b81b18163746a771dea44258c8366b5174c2ed8d1af21288f9951",
+          "ids_times_metadata": "ab671d20ed43495a884766d418016058d340513c3cbfa8b84e2bfa7d412c2277"
+        }
+      }
+    },
+    {
+      "event": "completed",
+      "pid": 67863,
+      "seconds": 7.109391667007003,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 7.043902290984988,
+        "before": {
+          "rss_bytes": 1436925952,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1380089856,
+          "system_available_bytes": 9113419776,
+          "system_swap_used_bytes": 24455348224
+        },
+        "after": {
+          "rss_bytes": 1438760960,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1392672768,
+          "system_available_bytes": 8871297024,
+          "system_swap_used_bytes": 24455348224
+        },
+        "sampled_peak": {
+          "rss_bytes": 1440202752,
+          "mps_allocated_bytes": 982165760,
+          "mps_driver_bytes": 1403731968,
+          "system_available_bytes": 9113419776,
+          "system_swap_used_bytes": 24455348224
+        },
+        "min_system_available_bytes": 8829583360
+      },
+      "idle_memory": {
+        "rss_bytes": 1438760960,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1392672768,
+        "open_fds": 25
+      },
+      "models": 2,
+      "counts": {
+        "created": 2,
+        "reused": 10
+      },
+      "request_wall_seconds": 7.109655916981865,
+      "variant": "reused",
+      "media_id": 43,
+      "repeat": 2,
+      "duration": 10.041666,
+      "startup_charged_seconds": 0.0,
+      "elapsed_seconds": 7.109655916981865,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 54,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 6362
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "538c9c11c0df4cbf315dc0948a336e4b1b54ba44a1da8dcd5e5e469e696c9c6e",
+          "ids_times_metadata": "a789cf365a406e1957c935e634e969c91f47135ea4dc5662c4dae3dcc6b8c803"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "a0fda3db39e7e1936153023ae76cb7d444da2c9093f0c76973304d43902c9f2e",
+          "ids_times_metadata": "70339914dea3604942aa248862eef5dbcac6568c9dd41308e15df8d695884631"
+        }
+      }
+    },
+    {
+      "event": "completed",
+      "pid": 72702,
+      "seconds": 10.333675750007387,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 10.193780749978032,
+        "before": {
+          "rss_bytes": 611794944,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 9556967424,
+          "system_swap_used_bytes": 24455348224
+        },
+        "after": {
+          "rss_bytes": 755613696,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1186676736,
+          "system_available_bytes": 7362822144,
+          "system_swap_used_bytes": 24446959616
+        },
+        "sampled_peak": {
+          "rss_bytes": 1649491968,
+          "mps_allocated_bytes": 698608384,
+          "mps_driver_bytes": 1403715584,
+          "system_available_bytes": 9556967424,
+          "system_swap_used_bytes": 24455348224
+        },
+        "min_system_available_bytes": 6483492864
+      },
+      "idle_memory": {
+        "rss_bytes": 879820800,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1186676736,
+        "open_fds": 25
+      },
+      "models": 0,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 10.33429441699991,
+      "variant": "fresh",
+      "media_id": 43,
+      "repeat": 2,
+      "duration": 10.041666,
+      "startup_charged_seconds": 4.378075541986618,
+      "elapsed_seconds": 15.202444625960197,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 54,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 6362
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "538c9c11c0df4cbf315dc0948a336e4b1b54ba44a1da8dcd5e5e469e696c9c6e",
+          "ids_times_metadata": "a789cf365a406e1957c935e634e969c91f47135ea4dc5662c4dae3dcc6b8c803"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "a0fda3db39e7e1936153023ae76cb7d444da2c9093f0c76973304d43902c9f2e",
+          "ids_times_metadata": "70339914dea3604942aa248862eef5dbcac6568c9dd41308e15df8d695884631"
+        }
+      },
+      "exit_seconds": 0.4900746669736691
+    },
+    {
+      "event": "completed",
+      "pid": 73177,
+      "seconds": 8.086614625004586,
+      "resources": {
+        "scope": "current_process",
+        "sample_interval_seconds": 0.05,
+        "total_seconds": 8.011039207980502,
+        "before": {
+          "rss_bytes": 612499456,
+          "mps_allocated_bytes": 0,
+          "mps_driver_bytes": 458752,
+          "system_available_bytes": 11027349504,
+          "system_swap_used_bytes": 24446959616
+        },
+        "after": {
+          "rss_bytes": 2017968128,
+          "mps_allocated_bytes": 309964032,
+          "mps_driver_bytes": 1392640000,
+          "system_available_bytes": 8605876224,
+          "system_swap_used_bytes": 24438571008
+        },
+        "sampled_peak": {
+          "rss_bytes": 2025455616,
+          "mps_allocated_bytes": 676483840,
+          "mps_driver_bytes": 1403699200,
+          "system_available_bytes": 11027349504,
+          "system_swap_used_bytes": 24446959616
+        },
+        "min_system_available_bytes": 8543748096
+      },
+      "idle_memory": {
+        "rss_bytes": 2017968128,
+        "mps_allocated_bytes": 309964032,
+        "mps_driver_bytes": 1392640000,
+        "open_fds": 25
+      },
+      "models": 2,
+      "counts": {
+        "created": 2,
+        "reused": 0
+      },
+      "request_wall_seconds": 8.086925500014331,
+      "variant": "recovered",
+      "media_id": 43,
+      "repeat": 1,
+      "duration": 10.041666,
+      "startup_charged_seconds": 3.8852789999800734,
+      "elapsed_seconds": 11.972204499994405,
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 54,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 6362
+      },
+      "outputs_exact": true,
+      "output_signatures": {
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": {
+          "vectors": "538c9c11c0df4cbf315dc0948a336e4b1b54ba44a1da8dcd5e5e469e696c9c6e",
+          "ids_times_metadata": "a789cf365a406e1957c935e634e969c91f47135ea4dc5662c4dae3dcc6b8c803"
+        },
+        "deepinsight/insightface/buffalo_l/_unknown": {
+          "vectors": "a0fda3db39e7e1936153023ae76cb7d444da2c9093f0c76973304d43902c9f2e",
+          "ids_times_metadata": "70339914dea3604942aa248862eef5dbcac6568c9dd41308e15df8d695884631"
+        }
+      }
+    }
+  ],
+  "scope": "Frame extraction only, new-process versus serial cached-model worker; same full-library clones and prepared videos; no Qwen, index rebuild, upload transfer or publication.",
+  "persistent_startup_seconds": 4.2861124579794705,
+  "idle_after_six_jobs": {
+    "event": "stats",
+    "memory": {
+      "rss_bytes": 265240576,
+      "mps_allocated_bytes": 309964032,
+      "mps_driver_bytes": 1331855360,
+      "open_fds": 25
+    },
+    "models": 2,
+    "counts": {
+      "created": 2,
+      "reused": 10
+    },
+    "request_wall_seconds": 0.001133957994170487
+  },
+  "failure_recovery": {
+    "invalid_task": {
+      "event": "failed",
+      "error": "AssertionError('All values for media_dir_list must be directories')",
+      "pid": 67863,
+      "request_wall_seconds": 0.0074531250284053385
+    },
+    "old_pid": 67863,
+    "new_pid": 73177,
+    "next_task_completed": true,
+    "next_task_outputs_exact": true
+  },
+  "production_unchanged": true
+}

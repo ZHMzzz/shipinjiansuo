@@ -33,6 +33,10 @@ Qwen 新增视频及缺失片段补建默认采用同权重线性图像块投影
 
 如需回退后续入库任务，先停止服务，再以 `VIDEO_FRAME_ACCELERATION=0 ./scripts/start.sh` 启动；命令行可用 `VIDEO_FRAME_ACCELERATION=0 ./scripts/index.sh`。取消该环境变量并重启即可恢复默认加速。此开关不会重算已有索引。
 
+网页上传默认复用独立的串行帧提取进程及 OWLv2/InsightFace 模型，项目、数据加载器和写入对象仍按任务创建。首次任务需要加载模型，连续任务可省去重复启动和加载时间。进程空闲 600 秒后退出以释放模型内存；失败、崩溃或超时会销毁进程，失败任务仍通过网页“重试”从新临时项目开始，下一条任务自动启动新进程。仅成功校验的临时项目可以发布，Qwen 和查询端配置不变。
+
+可在启动服务时设置 `VIDEO_FRAME_WORKER_REUSE=0` 回退为每条视频新建提取进程，保留既有帧加速；`VIDEO_FRAME_WORKER_IDLE_SECONDS`、`VIDEO_FRAME_WORKER_STARTUP_SECONDS`、`VIDEO_FRAME_WORKER_TIMEOUT_SECONDS` 分别控制空闲回收、进程启动和单次提取超时，默认 600、120、1800 秒，必须为有限正数。长视频如需超过 30 分钟的帧提取时间，可调高最后一项。修改配置、代码或模型文件后须重启服务。`index.sh` 仍为单次命令，不保留后台进程。
+
 ## 素材与结果
 
 - 初始 14 段短视频，缩放到最长边 640、H.264、去掉音轨，保留原片段时间轴。逐项来源见 `data/manifest.json`，预览见 `data/contact-sheet.jpg`。网页上传的视频另存于 `data/uploads/`，保留可用音轨，当前总数以视频库为准。
@@ -63,6 +67,7 @@ Qwen 新增视频及缺失片段补建默认采用同权重线性图像块投影
 |---|---|
 | `scripts/index.sh` | 提取特征和建索引是两个独立阶段 |
 | `scripts/extract_frames.py` / `scripts/frame_acceleration.py` | 仅在入库子进程启用加速，隔离在线查询模型 |
+| `scripts/frame_worker.py` | 网页入库的模型复用、超时、失败重建及空闲回收 |
 | `wise/src/wise/_main/extract_features.py` | 如何遍历媒体、抽帧、写特征与元数据 |
 | `wise/src/wise/dataloader/streamreader.py` | 解码、采样率与时间戳如何对应 |
 | `wise/src/wise/feature/feature_extractor_factory.py` | 模型ID怎样映射到具体编码器 |

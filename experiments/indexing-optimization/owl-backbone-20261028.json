@@ -1,0 +1,96 @@
+{
+  "scope": "4 resident real frames, synchronized instrumentation, not a speedup test; nested keys overlap",
+  "torch": "2.8.0",
+  "frames_seconds": [
+    0,
+    5,
+    15,
+    30
+  ],
+  "plain_seconds": [
+    1.1880246250075288,
+    1.2164346249774098,
+    1.1206310829729773,
+    1.138340292032808
+  ],
+  "instrumented": [
+    {
+      "seconds": 1.2521123749902472,
+      "parts": {
+        "patch_conv_inclusive_in_embeddings": 0.010366791917476803,
+        "embeddings": 0.013019041973166168,
+        "encoder_norms": 0.028261040162760764,
+        "attention_including_qkv": 0.8807523739524186,
+        "mlp": 0.22668662789510563,
+        "vision_total_inclusive": 1.1887037080014125
+      },
+      "signature": [
+        {
+          "vectors": "ea7f2de05bb02ca1e1f0d67c391dfcb3a791565f6100b815c9ca69719ec19554",
+          "metadata": "53296b19b9ed4599a2b6a496179c7cd938c96aecefb381887488fd75e519ec02",
+          "regions": 330
+        },
+        {
+          "vectors": "db62aa6b6f2dcfcb117b324e43501685a437caa0a3be37eb07b7728d85b56703",
+          "metadata": "2c7f70c9817c1e87b93ba86981efa141206fb13be8c63ad261f181c90521c204",
+          "regions": 207
+        },
+        {
+          "vectors": "b3e38b70493fe3c46f5db365c4f9a50cbed3b693e07fdbde8a5eae9f4ff72b51",
+          "metadata": "de893ee82b92cd15c1f678b9f9be9b22729596278370698ff3ee94805efcab13",
+          "regions": 118
+        },
+        {
+          "vectors": "a78b43a4c1466549840f80197f6e2d010452ae68c422548374b47e937c1cc4dd",
+          "metadata": "b780971e64584ed2fa14ffcdf35617dfb0af1171f9d9e5e9b94fcf342dddd6c1",
+          "regions": 147
+        }
+      ]
+    },
+    {
+      "seconds": 1.2281582090072334,
+      "parts": {
+        "patch_conv_inclusive_in_embeddings": 0.010277958062943071,
+        "embeddings": 0.012702250969596207,
+        "encoder_norms": 0.031246080761775374,
+        "attention_including_qkv": 0.8592949577141553,
+        "mlp": 0.2273399190744385,
+        "vision_total_inclusive": 1.1710453340783715
+      },
+      "signature": [
+        {
+          "vectors": "ea7f2de05bb02ca1e1f0d67c391dfcb3a791565f6100b815c9ca69719ec19554",
+          "metadata": "53296b19b9ed4599a2b6a496179c7cd938c96aecefb381887488fd75e519ec02",
+          "regions": 330
+        },
+        {
+          "vectors": "db62aa6b6f2dcfcb117b324e43501685a437caa0a3be37eb07b7728d85b56703",
+          "metadata": "2c7f70c9817c1e87b93ba86981efa141206fb13be8c63ad261f181c90521c204",
+          "regions": 207
+        },
+        {
+          "vectors": "b3e38b70493fe3c46f5db365c4f9a50cbed3b693e07fdbde8a5eae9f4ff72b51",
+          "metadata": "de893ee82b92cd15c1f678b9f9be9b22729596278370698ff3ee94805efcab13",
+          "regions": 118
+        },
+        {
+          "vectors": "a78b43a4c1466549840f80197f6e2d010452ae68c422548374b47e937c1cc4dd",
+          "metadata": "b780971e64584ed2fa14ffcdf35617dfb0af1171f9d9e5e9b94fcf342dddd6c1",
+          "regions": 147
+        }
+      ]
+    }
+  ],
+  "plain_mean_seconds": 1.165857656247681,
+  "instrumented_mean_seconds": 1.2401352919987403,
+  "parts_mean_seconds": {
+    "patch_conv_inclusive_in_embeddings": 0.010322374990209937,
+    "embeddings": 0.012860646471381187,
+    "encoder_norms": 0.02975356046226807,
+    "attention_including_qkv": 0.8700236658332869,
+    "mlp": 0.22701327348477207,
+    "vision_total_inclusive": 1.179874521039892
+  },
+  "outputs_exact": true,
+  "production_unchanged": true
+}

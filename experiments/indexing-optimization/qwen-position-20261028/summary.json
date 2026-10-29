@@ -1,0 +1,274 @@
+{
+  "sample": {
+    "baseline": {
+      "encode_seconds": 38.66293368747574,
+      "decode_and_encode_seconds": 47.139995750039816,
+      "runs_seconds": [
+        40.20119245885871,
+        37.12467491609277
+      ],
+      "repeat_vectors_exact": true
+    },
+    "cached": {
+      "encode_seconds": 38.81037256208947,
+      "decode_and_encode_seconds": 47.37780245768954,
+      "runs_seconds": [
+        39.40372762421612,
+        38.21701749996282
+      ],
+      "repeat_vectors_exact": true
+    },
+    "time_reduction_percent": {
+      "encode_seconds": -0.38134425029803243,
+      "decode_and_encode_seconds": -0.5044690901346183
+    }
+  },
+  "full_library": {
+    "baseline": {
+      "encode_seconds": 168.56397341366392,
+      "decode_and_encode_seconds": 203.19991387368646
+    },
+    "cached": {
+      "encode_seconds": 162.74444916524226,
+      "decode_and_encode_seconds": 196.29506262840005
+    },
+    "time_reduction_percent": {
+      "encode_seconds": 3.452412832094476,
+      "decode_and_encode_seconds": 3.398058155466843
+    }
+  },
+  "resources": {
+    "baseline": {
+      "peak_mps_driver_gib": 5.1270751953125,
+      "peak_rss_gib": 0.814117431640625,
+      "minimum_available_gib": 4.3494873046875
+    },
+    "cached": {
+      "peak_mps_driver_gib": 5.1348724365234375,
+      "peak_rss_gib": 0.8260650634765625,
+      "minimum_available_gib": 4.32928466796875
+    }
+  },
+  "cache": {
+    "baseline": [
+      null,
+      null,
+      null
+    ],
+    "cached": [
+      {
+        "hits": 56,
+        "misses": 6,
+        "evictions": 0,
+        "resident_bytes": 24510464,
+        "peak_bytes": 24510464,
+        "limit_bytes": 67108864,
+        "unique_grids": 3,
+        "entries": 6
+      },
+      {
+        "hits": 56,
+        "misses": 6,
+        "evictions": 0,
+        "resident_bytes": 24510464,
+        "peak_bytes": 24510464,
+        "limit_bytes": 67108864,
+        "unique_grids": 3,
+        "entries": 6
+      },
+      {
+        "hits": 216,
+        "misses": 14,
+        "evictions": 0,
+        "resident_bytes": 57794560,
+        "peak_bytes": 57794560,
+        "limit_bytes": 67108864,
+        "unique_grids": 7,
+        "entries": 14
+      }
+    ]
+  },
+  "vector_comparison": {
+    "exact_equal": true,
+    "max_abs": 0.0,
+    "videos": 44,
+    "segments": 146,
+    "inputs_identical": true
+  },
+  "quality": [
+    {
+      "scope": "labeled_40",
+      "queries": 68,
+      "top1_same": 68,
+      "top5_same_order": 68,
+      "mean_top5_overlap": 1.0,
+      "top1_segment_same": 68,
+      "changed_query_ids": [],
+      "answerable_queries": 64,
+      "baseline": {
+        "hit1": 61,
+        "hit5": 64,
+        "mrr": 0.9739583333333334,
+        "recall5": 1.0
+      },
+      "cached": {
+        "hit1": 61,
+        "hit5": 64,
+        "mrr": 0.9739583333333334,
+        "recall5": 1.0
+      },
+      "worse_first_positive_rank": []
+    },
+    {
+      "scope": "full_library",
+      "queries": 73,
+      "top1_same": 73,
+      "top5_same_order": 73,
+      "mean_top5_overlap": 1.0,
+      "top1_segment_same": 73,
+      "changed_query_ids": []
+    }
+  ],
+  "person_scene": {
+    "registrations": 5,
+    "queries_per_registration": 73,
+    "comparisons": 365,
+    "nonempty_baseline": 24,
+    "nonempty_cached": 24,
+    "same_video_order": 365,
+    "same_result_set": 365,
+    "same_windows": 365,
+    "face_evidence_identical": true,
+    "changes": [],
+    "scope": "Existing face vectors, person_scene_search fusion, WISE response, and current semantic thresholds/normalize. Fixed scene query vectors. Stability only; no exhaustive identity+scene ground truth.",
+    "variants": {
+      "baseline": "Production Linear without position cache",
+      "cached": "Production Linear with position cache"
+    }
+  },
+  "scope": "Qwen per-segment cumulative time; full gallery composed of sample r1 plus rest r1; cold cache after model warmup in each process. Excludes model load, transcode, OWL/face and publication.",
+  "production_unchanged": true,
+  "paired": {
+    "method": "One resident model, two fixed clips per turn, 16 ABBA turns, cache prefilled; no synchronized inner-function hooks",
+    "rows": [
+      {
+        "turn": 0,
+        "variant": "baseline",
+        "encode_seconds": 1.921338917047251,
+        "decode_and_encode_seconds": 2.233284958987497
+      },
+      {
+        "turn": 1,
+        "variant": "cached",
+        "encode_seconds": 1.995798084011767,
+        "decode_and_encode_seconds": 2.332611874968279
+      },
+      {
+        "turn": 2,
+        "variant": "cached",
+        "encode_seconds": 1.912514166033361,
+        "decode_and_encode_seconds": 2.2030402079690248
+      },
+      {
+        "turn": 3,
+        "variant": "baseline",
+        "encode_seconds": 1.9141798759810627,
+        "decode_and_encode_seconds": 2.2067803330137394
+      },
+      {
+        "turn": 4,
+        "variant": "baseline",
+        "encode_seconds": 1.9959436240023933,
+        "decode_and_encode_seconds": 2.2849023330491036
+      },
+      {
+        "turn": 5,
+        "variant": "cached",
+        "encode_seconds": 1.9175999159924686,
+        "decode_and_encode_seconds": 2.2206793749937788
+      },
+      {
+        "turn": 6,
+        "variant": "cached",
+        "encode_seconds": 1.9454014580114745,
+        "decode_and_encode_seconds": 2.2412924169912003
+      },
+      {
+        "turn": 7,
+        "variant": "baseline",
+        "encode_seconds": 1.9472213760600425,
+        "decode_and_encode_seconds": 2.2367053750203922
+      },
+      {
+        "turn": 8,
+        "variant": "baseline",
+        "encode_seconds": 2.011664583988022,
+        "decode_and_encode_seconds": 2.313597332977224
+      },
+      {
+        "turn": 9,
+        "variant": "cached",
+        "encode_seconds": 2.0032198750413954,
+        "decode_and_encode_seconds": 2.3009379580034874
+      },
+      {
+        "turn": 10,
+        "variant": "cached",
+        "encode_seconds": 1.9594575419905595,
+        "decode_and_encode_seconds": 2.2505344999954104
+      },
+      {
+        "turn": 11,
+        "variant": "baseline",
+        "encode_seconds": 2.016450291033834,
+        "decode_and_encode_seconds": 2.310487999988254
+      },
+      {
+        "turn": 12,
+        "variant": "baseline",
+        "encode_seconds": 2.01140849996591,
+        "decode_and_encode_seconds": 2.3130994999664836
+      },
+      {
+        "turn": 13,
+        "variant": "cached",
+        "encode_seconds": 2.1583522080327384,
+        "decode_and_encode_seconds": 2.534309124981519
+      },
+      {
+        "turn": 14,
+        "variant": "cached",
+        "encode_seconds": 2.030746457981877,
+        "decode_and_encode_seconds": 2.3612070829840377
+      },
+      {
+        "turn": 15,
+        "variant": "baseline",
+        "encode_seconds": 2.0384737500571646,
+        "decode_and_encode_seconds": 2.3463672500220127
+      }
+    ],
+    "mean_encode_seconds": {
+      "baseline": 1.98208511476696,
+      "cached": 1.9903862133869552
+    },
+    "time_reduction_percent": -0.4188063649815055,
+    "all_vectors_exact": true,
+    "cache": {
+      "hits": 34,
+      "misses": 2,
+      "evictions": 0,
+      "resident_bytes": 7798784,
+      "peak_bytes": 7798784,
+      "limit_bytes": 67108864,
+      "unique_grids": 1,
+      "entries": 2
+    }
+  },
+  "conclusion": "No stable whole-encoding speedup: ABBA sample and resident-model ABBA are about 0.4% slower; full-gallery single comparison is 3.45% faster. Do not deploy based on these measurements.",
+  "experiment_source_sha256": {
+    "qwen_position_cache.py": "b025a33bd4b8724b7e52747617349b7c7204c4d8256a1b6b3fa95bfa4db373a8",
+    "qwen_position_evaluate.py": "2cd22d7ae196a8eaf3b66e4f94cd4ddc324b0a4fb291b4b8a9f396ec5806ade9",
+    "test_qwen_position_cache.py": "bc8d77d15d1c198135696e8c5664c3c2c9e8d2888812b7e1789d34bb82c14b5b"
+  }
+}

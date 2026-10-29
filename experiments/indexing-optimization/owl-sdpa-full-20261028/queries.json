@@ -1,0 +1,31 @@
+{
+  "manifest_sha256": "6c2e0dfd1cc564a6f5dcfa9bf58db68bfeee49762a38fdddfd949fcfe5d86947",
+  "vectors_sha256": "1b414aac0a1a7b61411ba94519c7c7d7580a2a011e2466d407a2cf02eec4359a",
+  "model": "transformers/owlv2/google/owlv2-base-patch16-ensemble",
+  "device": "mps",
+  "variant": {
+    "name": "baseline",
+    "fast_processor": false,
+    "processor_device": null,
+    "autocast_device": null,
+    "autocast_dtype": null,
+    "weights_dtype": "unchanged"
+  },
+  "path": "WISE EmbeddingService.embed, external-image hook and final weighted-average normalization",
+  "query_ids": [
+    "bag_street",
+    "bag_indoor",
+    "glasses",
+    "pan",
+    "sunglasses_pair",
+    "sunglasses_single",
+    "helmet_small",
+    "excavator",
+    "independent_bag"
+  ],
+  "source_sha256": {
+    "wise/src/wise/api/services/embedding/_embedding.py": "4c8cd75d7916aeda7de8aeb111e01c27ba3bb5c1c0f9f94260072274155f936b",
+    "wise/src/wise/feature/transformers_owlv2.py": "b81a90f608afc4dae447cdbb6d1ea351573e104544cceabc74bfdc3b99c473d0"
+  },
+  "original_provenance_sha256": "d9cd41124efad13adb2eb9cff4da1080f33eff03283a6ca7deeda934f41a9875"
+}

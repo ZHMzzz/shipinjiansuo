@@ -1,0 +1,41 @@
+{
+  "video_seconds": 35.44,
+  "total_seconds": 54.36653087497689,
+  "new_qwen_segments": 8,
+  "stages": [
+    {
+      "name": "视频转码",
+      "seconds": 0.9490380000206642,
+      "percent": 1.7456291301777265
+    },
+    {
+      "name": "物体与人脸特征提取（含子进程启动和模型初始化）",
+      "seconds": 34.51144429203123,
+      "percent": 63.47920997827673
+    },
+    {
+      "name": "物体与人脸检索索引构建",
+      "seconds": 3.7641350000048988,
+      "percent": 6.923625508975422
+    },
+    {
+      "name": "Qwen 片段编码及写入",
+      "seconds": 12.675487916974816,
+      "percent": 23.314873531518494
+    },
+    {
+      "name": "校验、加载及本地发布",
+      "seconds": 0.6737593329744413,
+      "percent": 1.2392906483657034
+    },
+    {
+      "name": "文件检查、项目复制及其他未单独计时开销",
+      "seconds": 1.792666332970839,
+      "percent": 3.2973712026859228
+    }
+  ],
+  "scope": "actual process_job on isolated roots; publication/load is local; no HTTP upload or queue wait",
+  "production_unchanged": true,
+  "baseline": "Current production OWLv2 fast CPU processor + MPS FP16, InsightFace CoreML, Qwen same-weight Linear; no position cache",
+  "fixture_note": "Only untimed initial test fixture used APFS clone; measured IngestionManager copy used original shutil.copytree. First attempt stopped before timing due to disk-space threshold."
+}

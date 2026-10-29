@@ -1,0 +1,1699 @@
+{
+  "scope": "All 44 re-extracted video galleries; unchanged frozen 9 reference-image queries",
+  "changed_top5_video_order": [
+    "glasses"
+  ],
+  "changed_top5_video_membership": [
+    "glasses"
+  ],
+  "changed_top1_video": [],
+  "queries": [
+    {
+      "query_id": "bag_street",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        22,
+        1,
+        38,
+        5,
+        10
+      ],
+      "sdpa_video_top5": [
+        22,
+        1,
+        38,
+        5,
+        10
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "sdpa_source": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "matches": [
+        {
+          "media_id": 22,
+          "filename": "0022-抖音20261026-905866.mp4",
+          "baseline_time": 8.5,
+          "sdpa_best_time": 8.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 4.430531978607178,
+          "sdpa_best_score": 4.397116661071777,
+          "baseline_box": [
+            0.3244357638888889,
+            0.47821044921875,
+            0.39105902777777773,
+            0.2447509765625
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3213975694444444,
+            0.47698974609375,
+            0.3953993055555555,
+            0.2462158203125
+          ],
+          "same_frame_best_iou": 0.9831389283298329,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 1,
+          "filename": "0001-backpack-street.mp4",
+          "baseline_time": 8.5,
+          "sdpa_best_time": 8.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 4.258060455322266,
+          "sdpa_best_score": 4.263726234436035,
+          "baseline_box": [
+            0.35888671875,
+            0.7289496527777778,
+            0.228515625,
+            0.2712673611111111
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.35888671875,
+            0.728515625,
+            0.228515625,
+            0.2712673611111111
+          ],
+          "same_frame_best_iou": 0.9968051118210864,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 38,
+          "filename": "0038-抖音20261027-340275.mp4",
+          "baseline_time": 6.5,
+          "sdpa_best_time": 6.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 4.116555690765381,
+          "sdpa_best_score": 4.118401527404785,
+          "baseline_box": [
+            0.36393229166666663,
+            0.44970703125,
+            0.6011284722222222,
+            0.548828125
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3669704861111111,
+            0.44482421875,
+            0.6019965277777778,
+            0.5537109375
+          ],
+          "same_frame_best_iou": 0.9798484999930406,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 5,
+          "filename": "0005-frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+          "baseline_time": 6.0,
+          "sdpa_best_time": 6.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 3.9778594970703125,
+          "sdpa_best_score": 3.9776883125305176,
+          "baseline_box": [
+            0.357666015625,
+            0.4702690972222222,
+            0.35498046875,
+            0.5325520833333333
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.358154296875,
+            0.4702690972222222,
+            0.35498046875,
+            0.5325520833333333
+          ],
+          "same_frame_best_iou": 0.997252747252747,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 10,
+          "filename": "0010-shouting-85P9CDTfGjE_000000_000010.mp4",
+          "baseline_time": 0.5,
+          "sdpa_best_time": 0.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 3.8201212882995605,
+          "sdpa_best_score": 3.8096413612365723,
+          "baseline_box": [
+            0.004774305555555555,
+            0.6229248046875,
+            0.8645833333333333,
+            0.289306640625
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.004774305555555555,
+            0.6229248046875,
+            0.8645833333333333,
+            0.289306640625
+          ],
+          "same_frame_best_iou": 1.0,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "bag_indoor",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        2,
+        17,
+        1,
+        28,
+        12
+      ],
+      "sdpa_video_top5": [
+        2,
+        17,
+        1,
+        28,
+        12
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "matches": [
+        {
+          "media_id": 2,
+          "filename": "0002-backpack-walking.mp4",
+          "baseline_time": 6.5,
+          "sdpa_best_time": 6.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 9.501306533813477,
+          "sdpa_best_score": 9.494220733642578,
+          "baseline_box": [
+            0.38151041666666663,
+            0.4208984375,
+            0.3862847222222222,
+            0.380859375
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.38151041666666663,
+            0.4208984375,
+            0.3862847222222222,
+            0.380859375
+          ],
+          "same_frame_best_iou": 1.0,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 17,
+          "filename": "0017-动作定位_串接测试24秒.mp4",
+          "baseline_time": 14.5,
+          "sdpa_best_time": 14.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 9.393590927124023,
+          "sdpa_best_score": 9.373041152954102,
+          "baseline_box": [
+            0.4617919921875,
+            0.4214409722222222,
+            0.118408203125,
+            0.3810763888888889
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.4617919921875,
+            0.42111545138888884,
+            0.118408203125,
+            0.3817274305555555
+          ],
+          "same_frame_best_iou": 0.9982944855031272,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 1,
+          "filename": "0001-backpack-street.mp4",
+          "baseline_time": 14.0,
+          "sdpa_best_time": 14.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 6.5727410316467285,
+          "sdpa_best_score": 6.567807674407959,
+          "baseline_box": [
+            0.3504638671875,
+            0.4372829861111111,
+            0.244384765625,
+            0.5629340277777778
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3504638671875,
+            0.43771701388888884,
+            0.244384765625,
+            0.5620659722222222
+          ],
+          "same_frame_best_iou": 0.9984579799537394,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 28,
+          "filename": "0028-抖音20261027-677447.mp4",
+          "baseline_time": 6.5,
+          "sdpa_best_time": 6.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 4.97689962387085,
+          "sdpa_best_score": 4.975035667419434,
+          "baseline_box": [
+            0.20087348090277776,
+            0.407379150390625,
+            0.07958984375,
+            0.06561279296875
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.20079210069444442,
+            0.407379150390625,
+            0.07975260416666666,
+            0.06561279296875
+          ],
+          "same_frame_best_iou": 0.9979591836734701,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 12,
+          "filename": "0012-singing-I6NDj1EcP6w_000073_000083.mp4",
+          "baseline_time": 1.5,
+          "sdpa_best_time": 1.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 4.953697681427002,
+          "sdpa_best_score": 4.9674906730651855,
+          "baseline_box": [
+            0.0238189697265625,
+            0.3342556423611111,
+            0.046539306640625,
+            0.14963107638888887
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.0238494873046875,
+            0.3342556423611111,
+            0.046478271484375,
+            0.14963107638888887
+          ],
+          "same_frame_best_iou": 0.9986885245901644,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "glasses",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        4,
+        3,
+        34,
+        24,
+        13
+      ],
+      "sdpa_video_top5": [
+        4,
+        3,
+        34,
+        24,
+        14
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "sdpa_source": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "matches": [
+        {
+          "media_id": 4,
+          "filename": "0004-coughing-7XXXwvatW1U_000051_000061.mp4",
+          "baseline_time": 8.0,
+          "sdpa_best_time": 8.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 8.328503608703613,
+          "sdpa_best_score": 8.327316284179688,
+          "baseline_box": [
+            0.3235677083333333,
+            0.278564453125,
+            0.65625,
+            0.24072265625
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3232421875,
+            0.278564453125,
+            0.65625,
+            0.24072265625
+          ],
+          "same_frame_best_iou": 0.9990084283589491,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 3,
+          "filename": "0003-coughing-6XvsLPDioVA_000000_000010.mp4",
+          "baseline_time": 7.5,
+          "sdpa_best_time": 7.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.473650932312012,
+          "sdpa_best_score": 7.474096298217773,
+          "baseline_box": [
+            0.20556640625,
+            0.17003038194444445,
+            0.474609375,
+            0.208984375
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.20556640625,
+            0.17024739583333331,
+            0.474609375,
+            0.208984375
+          ],
+          "same_frame_best_iou": 0.9979253112033195,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 34,
+          "filename": "0034-Qwen人脸入库回归.mp4",
+          "baseline_time": 0.0,
+          "sdpa_best_time": 0.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.149822235107422,
+          "sdpa_best_score": 7.14500093460083,
+          "baseline_box": [
+            0.26708984375,
+            0.18744574652777776,
+            0.41259765625,
+            0.17805989583333331
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.26708984375,
+            0.18766276041666666,
+            0.41259765625,
+            0.17805989583333331
+          ],
+          "same_frame_best_iou": 0.997565429093122,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 24,
+          "filename": "0024-256df2fd406b3ef48f3e351fdb950be1.mp4",
+          "baseline_time": 7.5,
+          "sdpa_best_time": 7.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 6.499236106872559,
+          "sdpa_best_score": 6.488354206085205,
+          "baseline_box": [
+            0.11783854166666666,
+            0.4290771484375,
+            0.5529513888888888,
+            0.106689453125
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.11827256944444443,
+            0.429168701171875,
+            0.5529513888888888,
+            0.10650634765625
+          ],
+          "same_frame_best_iou": 0.9967191592217336,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 13,
+          "filename": "0013-whistling-LqQYSUb_TJI_000052_000062.mp4",
+          "baseline_time": 2.0,
+          "sdpa_best_time": 2.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 5.706613063812256,
+          "sdpa_best_score": 5.71500301361084,
+          "baseline_box": [
+            0.5159912109375,
+            0.447265625,
+            0.382080078125,
+            0.2834201388888889
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.5164794921875,
+            0.44769965277777773,
+            0.382080078125,
+            0.2834201388888889
+          ],
+          "same_frame_best_iou": 0.9944009351940934,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "pan",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        5,
+        6,
+        37,
+        40,
+        31
+      ],
+      "sdpa_video_top5": [
+        5,
+        6,
+        37,
+        40,
+        31
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "matches": [
+        {
+          "media_id": 5,
+          "filename": "0005-frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+          "baseline_time": 4.5,
+          "sdpa_best_time": 4.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.782506942749023,
+          "sdpa_best_score": 7.7673444747924805,
+          "baseline_box": [
+            0.003173828125,
+            0.007378472222222222,
+            0.91943359375,
+            0.9904513888888888
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.003173828125,
+            0.007378472222222222,
+            0.91943359375,
+            0.9904513888888888
+          ],
+          "same_frame_best_iou": 1.0,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 6,
+          "filename": "0006-frying-vegetables-hxK9mej0_zw_000086_000096.mp4",
+          "baseline_time": 6.0,
+          "sdpa_best_time": 6.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.734753131866455,
+          "sdpa_best_score": 7.7387003898620605,
+          "baseline_box": [
+            0.10986328125,
+            0.009114583333333332,
+            0.83984375,
+            0.986111111111111
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.10986328125,
+            0.009114583333333332,
+            0.83984375,
+            0.986111111111111
+          ],
+          "same_frame_best_iou": 1.0,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 37,
+          "filename": "0037-抖音20261027-818216.mp4",
+          "baseline_time": 1.0,
+          "sdpa_best_time": 1.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 2.7891979217529297,
+          "sdpa_best_score": 2.786428213119507,
+          "baseline_box": [
+            0.8835194593558282,
+            0.427490234375,
+            0.1175469708588957,
+            0.0517578125
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.8835194593558282,
+            0.4275360107421875,
+            0.1175469708588957,
+            0.051666259765625
+          ],
+          "same_frame_best_iou": 0.9982311320754708,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 40,
+          "filename": "0040-1246.mp4",
+          "baseline_time": 26.5,
+          "sdpa_best_time": 26.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 1.24260413646698,
+          "sdpa_best_score": 1.2448500394821167,
+          "baseline_box": [
+            0.3536376953125,
+            0.6129951234076433,
+            0.105224609375,
+            0.15736962579617833
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3536376953125,
+            0.6129951234076433,
+            0.105224609375,
+            0.15736962579617833
+          ],
+          "same_frame_best_iou": 0.9999999999999996,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 31,
+          "filename": "0031-抖音20261027-852563.mp4",
+          "baseline_time": 9.5,
+          "sdpa_best_time": 9.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 1.1130883693695068,
+          "sdpa_best_score": 1.1309700012207031,
+          "baseline_box": [
+            0.543212890625,
+            0.08365885416666666,
+            0.38720703125,
+            0.294921875
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.543212890625,
+            0.08387586805555555,
+            0.38720703125,
+            0.294921875
+          ],
+          "same_frame_best_iou": 0.9985294117647054,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "sunglasses_pair",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        13,
+        14,
+        39,
+        4,
+        31
+      ],
+      "sdpa_video_top5": [
+        13,
+        14,
+        39,
+        4,
+        31
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "matches": [
+        {
+          "media_id": 13,
+          "filename": "0013-whistling-LqQYSUb_TJI_000052_000062.mp4",
+          "baseline_time": 2.0,
+          "sdpa_best_time": 2.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.645968914031982,
+          "sdpa_best_score": 7.651120662689209,
+          "baseline_box": [
+            0.5159912109375,
+            0.447265625,
+            0.382080078125,
+            0.2834201388888889
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.5164794921875,
+            0.44769965277777773,
+            0.382080078125,
+            0.2834201388888889
+          ],
+          "same_frame_best_iou": 0.9944009351940934,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 14,
+          "filename": "0014-whistling-OdLV8MmYkKI_000001_000011.mp4",
+          "baseline_time": 7.0,
+          "sdpa_best_time": 7.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.2186970710754395,
+          "sdpa_best_score": 7.213646411895752,
+          "baseline_box": [
+            0.1414794921875,
+            0.29557291666666663,
+            0.287841796875,
+            0.2738715277777778
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.1417236328125,
+            0.29557291666666663,
+            0.287353515625,
+            0.2738715277777778
+          ],
+          "same_frame_best_iou": 0.998303647158609,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 39,
+          "filename": "0039-OWLv2原生链路入库回归.mp4",
+          "baseline_time": 0.0,
+          "sdpa_best_time": 0.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.01424503326416,
+          "sdpa_best_score": 7.01524019241333,
+          "baseline_box": [
+            0.45391845703125,
+            0.23811848958333331,
+            0.2493896484375,
+            0.16916232638888887
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.45391845703125,
+            0.23822699652777776,
+            0.2493896484375,
+            0.1689453125
+          ],
+          "same_frame_best_iou": 0.9987171263630535,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 4,
+          "filename": "0004-coughing-7XXXwvatW1U_000051_000061.mp4",
+          "baseline_time": 8.0,
+          "sdpa_best_time": 8.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 6.8252482414245605,
+          "sdpa_best_score": 6.825552463531494,
+          "baseline_box": [
+            0.3235677083333333,
+            0.278564453125,
+            0.65625,
+            0.24072265625
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3232421875,
+            0.278564453125,
+            0.65625,
+            0.24072265625
+          ],
+          "same_frame_best_iou": 0.9990084283589491,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 31,
+          "filename": "0031-抖音20261027-852563.mp4",
+          "baseline_time": 29.5,
+          "sdpa_best_time": 29.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 5.063194274902344,
+          "sdpa_best_score": 5.000851631164551,
+          "baseline_box": [
+            0.50732421875,
+            0.13416883680555555,
+            0.162109375,
+            0.17588975694444445
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.50732421875,
+            0.1338433159722222,
+            0.162109375,
+            0.17719184027777776
+          ],
+          "same_frame_best_iou": 0.9926515615431722,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "sunglasses_single",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        4,
+        13,
+        14,
+        39,
+        3
+      ],
+      "sdpa_video_top5": [
+        4,
+        13,
+        14,
+        39,
+        3
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 2,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 3,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "sdpa_source": {
+        "first_positive_rank": 3,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "matches": [
+        {
+          "media_id": 4,
+          "filename": "0004-coughing-7XXXwvatW1U_000051_000061.mp4",
+          "baseline_time": 8.0,
+          "sdpa_best_time": 8.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.206998825073242,
+          "sdpa_best_score": 7.206539154052734,
+          "baseline_box": [
+            0.3235677083333333,
+            0.278564453125,
+            0.65625,
+            0.24072265625
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3232421875,
+            0.278564453125,
+            0.65625,
+            0.24072265625
+          ],
+          "same_frame_best_iou": 0.9990084283589491,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 13,
+          "filename": "0013-whistling-LqQYSUb_TJI_000052_000062.mp4",
+          "baseline_time": 2.0,
+          "sdpa_best_time": 2.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 7.125915050506592,
+          "sdpa_best_score": 7.132925033569336,
+          "baseline_box": [
+            0.5159912109375,
+            0.447265625,
+            0.382080078125,
+            0.2834201388888889
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.5164794921875,
+            0.44769965277777773,
+            0.382080078125,
+            0.2834201388888889
+          ],
+          "same_frame_best_iou": 0.9944009351940934,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 14,
+          "filename": "0014-whistling-OdLV8MmYkKI_000001_000011.mp4",
+          "baseline_time": 3.5,
+          "sdpa_best_time": 5.5,
+          "best_time_shift_seconds": 2.0,
+          "baseline_score": 6.86679744720459,
+          "sdpa_best_score": 6.851801872253418,
+          "baseline_box": [
+            0.45037841796875,
+            0.1748046875,
+            0.2281494140625,
+            0.236328125
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.45037841796875,
+            0.1745876736111111,
+            0.2281494140625,
+            0.236328125
+          ],
+          "same_frame_best_iou": 0.9981651376146787,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 39,
+          "filename": "0039-OWLv2原生链路入库回归.mp4",
+          "baseline_time": 0.0,
+          "sdpa_best_time": 0.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 6.838687419891357,
+          "sdpa_best_score": 6.838320732116699,
+          "baseline_box": [
+            0.45391845703125,
+            0.23811848958333331,
+            0.2493896484375,
+            0.16916232638888887
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.45391845703125,
+            0.23822699652777776,
+            0.2493896484375,
+            0.1689453125
+          ],
+          "same_frame_best_iou": 0.9987171263630535,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 3,
+          "filename": "0003-coughing-6XvsLPDioVA_000000_000010.mp4",
+          "baseline_time": 7.5,
+          "sdpa_best_time": 7.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 6.015442848205566,
+          "sdpa_best_score": 6.0164642333984375,
+          "baseline_box": [
+            0.20556640625,
+            0.17003038194444445,
+            0.474609375,
+            0.208984375
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.20556640625,
+            0.17024739583333331,
+            0.474609375,
+            0.208984375
+          ],
+          "same_frame_best_iou": 0.9979253112033195,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "helmet_small",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        40,
+        9,
+        5,
+        17,
+        42
+      ],
+      "sdpa_video_top5": [
+        40,
+        9,
+        5,
+        17,
+        42
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 4,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 4,
+        "hit_at_1": false,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 6,
+        "hit_at_1": false,
+        "hit_at_5": false
+      },
+      "sdpa_source": {
+        "first_positive_rank": 6,
+        "hit_at_1": false,
+        "hit_at_5": false
+      },
+      "matches": [
+        {
+          "media_id": 40,
+          "filename": "0040-1246.mp4",
+          "baseline_time": 29.0,
+          "sdpa_best_time": 29.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 3.307767629623413,
+          "sdpa_best_score": 3.3234691619873047,
+          "baseline_box": [
+            0.3410491943359375,
+            0.5263485270700637,
+            0.050811767578125,
+            0.09379976114649681
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.341094970703125,
+            0.5263485270700637,
+            0.05072021484375,
+            0.09379976114649681
+          ],
+          "same_frame_best_iou": 0.9981981981981981,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 9,
+          "filename": "0009-shouting-84cxLPOEnGg_000011_000021.mp4",
+          "baseline_time": 8.5,
+          "sdpa_best_time": 8.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 2.912623167037964,
+          "sdpa_best_score": 2.8961472511291504,
+          "baseline_box": [
+            0.2142333984375,
+            0.06586371527777778,
+            0.290283203125,
+            0.43381076388888884
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.2147216796875,
+            0.06586371527777778,
+            0.289794921875,
+            0.43381076388888884
+          ],
+          "same_frame_best_iou": 0.9983179142136248,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 5,
+          "filename": "0005-frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+          "baseline_time": 9.0,
+          "sdpa_best_time": 9.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 2.374706268310547,
+          "sdpa_best_score": 2.3807246685028076,
+          "baseline_box": [
+            0.771240234375,
+            0.4431966145833333,
+            0.23193359375,
+            0.1943359375
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.771240234375,
+            0.4431966145833333,
+            0.23193359375,
+            0.1943359375
+          ],
+          "same_frame_best_iou": 0.9999999999999993,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 17,
+          "filename": "0017-动作定位_串接测试24秒.mp4",
+          "baseline_time": 6.5,
+          "sdpa_best_time": 6.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 2.3719482421875,
+          "sdpa_best_score": 2.3670718669891357,
+          "baseline_box": [
+            0.54144287109375,
+            0.24088541666666666,
+            0.1007080078125,
+            0.1970486111111111
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.54144287109375,
+            0.24104817708333331,
+            0.1007080078125,
+            0.19672309027777776
+          ],
+          "same_frame_best_iou": 0.998348017621145,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 42,
+          "filename": "0042-grok-video-bf178a27-87cb-4b3f-b592-999e5879d6e8.mp4",
+          "baseline_time": 10.0,
+          "sdpa_best_time": 10.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 2.296038866043091,
+          "sdpa_best_score": 2.2924792766571045,
+          "baseline_box": [
+            0.4815826416015625,
+            0.5130208333333333,
+            0.018768310546875,
+            0.034722222222222224
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.4815826416015625,
+            0.5130208333333333,
+            0.018768310546875,
+            0.034722222222222224
+          ],
+          "same_frame_best_iou": 0.9999999999999993,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "excavator",
+      "origin": "same_source_crop",
+      "baseline_video_top5": [
+        21,
+        30,
+        10,
+        44,
+        27
+      ],
+      "sdpa_video_top5": [
+        21,
+        30,
+        10,
+        44,
+        27
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "baseline_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_source": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "matches": [
+        {
+          "media_id": 21,
+          "filename": "0021-摔倒01_白天工地.mp4",
+          "baseline_time": 2.0,
+          "sdpa_best_time": 1.0,
+          "best_time_shift_seconds": -1.0,
+          "baseline_score": 7.767696380615234,
+          "sdpa_best_score": 7.767815589904785,
+          "baseline_box": [
+            0.7254638671875,
+            0.03537326388888889,
+            0.270751953125,
+            0.3146701388888889
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.7254638671875,
+            0.03537326388888889,
+            0.270751953125,
+            0.3146701388888889
+          ],
+          "same_frame_best_iou": 1.0,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 30,
+          "filename": "0030-抖音20261027-801535.mp4",
+          "baseline_time": 21.0,
+          "sdpa_best_time": 21.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 5.937952518463135,
+          "sdpa_best_score": 5.952566146850586,
+          "baseline_box": [
+            0.0078125,
+            0.2569580078125,
+            0.9670138888888888,
+            0.285888671875
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.0078125,
+            0.2569580078125,
+            0.9670138888888888,
+            0.285888671875
+          ],
+          "same_frame_best_iou": 1.0,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 10,
+          "filename": "0010-shouting-85P9CDTfGjE_000000_000010.mp4",
+          "baseline_time": 8.5,
+          "sdpa_best_time": 9.0,
+          "best_time_shift_seconds": 0.5,
+          "baseline_score": 4.6623215675354,
+          "sdpa_best_score": 4.6663384437561035,
+          "baseline_box": [
+            -0.00390625,
+            0.141357421875,
+            1.0147569444444444,
+            0.517578125
+          ],
+          "sdpa_box_at_baseline_time": [
+            -0.00390625,
+            0.14111328125,
+            1.0147569444444444,
+            0.517578125
+          ],
+          "same_frame_best_iou": 0.9990570485619992,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 44,
+          "filename": "0044-15396218_1920_1080_25fps.mp4",
+          "baseline_time": 23.5,
+          "sdpa_best_time": 23.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 4.378966808319092,
+          "sdpa_best_score": 4.37753963470459,
+          "baseline_box": [
+            0.54388427734375,
+            0.14713541666666666,
+            0.1553955078125,
+            0.2938368055555555
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.54388427734375,
+            0.14713541666666666,
+            0.1553955078125,
+            0.2938368055555555
+          ],
+          "same_frame_best_iou": 1.0000000000000002,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 27,
+          "filename": "0027-抖音20261027-739727.mp4",
+          "baseline_time": 5.0,
+          "sdpa_best_time": 5.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 3.847585916519165,
+          "sdpa_best_score": 3.844478130340576,
+          "baseline_box": [
+            0.510833908839779,
+            0.410064697265625,
+            0.12387776243093922,
+            0.08270263671875
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.5104022790055248,
+            0.409759521484375,
+            0.12387776243093922,
+            0.08282470703125
+          ],
+          "same_frame_best_iou": 0.9872342163851379,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    },
+    {
+      "query_id": "independent_bag",
+      "origin": "independent_image",
+      "baseline_video_top5": [
+        17,
+        2,
+        1,
+        23,
+        5
+      ],
+      "sdpa_video_top5": [
+        17,
+        2,
+        1,
+        23,
+        5
+      ],
+      "top1_video_same": true,
+      "baseline_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "sdpa_known_class": {
+        "first_positive_rank": 1,
+        "hit_at_1": true,
+        "hit_at_5": true
+      },
+      "baseline_source": null,
+      "sdpa_source": null,
+      "matches": [
+        {
+          "media_id": 17,
+          "filename": "0017-动作定位_串接测试24秒.mp4",
+          "baseline_time": 14.5,
+          "sdpa_best_time": 14.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 6.067105770111084,
+          "sdpa_best_score": 6.039703369140625,
+          "baseline_box": [
+            0.4617919921875,
+            0.4214409722222222,
+            0.118408203125,
+            0.3810763888888889
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.4617919921875,
+            0.42111545138888884,
+            0.118408203125,
+            0.3817274305555555
+          ],
+          "same_frame_best_iou": 0.9982944855031272,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 2,
+          "filename": "0002-backpack-walking.mp4",
+          "baseline_time": 1.0,
+          "sdpa_best_time": 1.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 6.032367706298828,
+          "sdpa_best_score": 6.0216546058654785,
+          "baseline_box": [
+            0.48111979166666663,
+            0.3868408203125,
+            0.4292534722222222,
+            0.416748046875
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.4814453125,
+            0.3868408203125,
+            0.4286024305555555,
+            0.416748046875
+          ],
+          "same_frame_best_iou": 0.9984833164812945,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 1,
+          "filename": "0001-backpack-street.mp4",
+          "baseline_time": 3.0,
+          "sdpa_best_time": 3.0,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 5.388686656951904,
+          "sdpa_best_score": 5.390884876251221,
+          "baseline_box": [
+            0.3436279296875,
+            0.507595486111111,
+            0.260986328125,
+            0.49262152777777773
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3436279296875,
+            0.507595486111111,
+            0.260986328125,
+            0.49262152777777773
+          ],
+          "same_frame_best_iou": 1.0000000000000004,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 23,
+          "filename": "0023-抖音20261026-627411.mp4",
+          "baseline_time": 21.5,
+          "sdpa_best_time": 21.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 3.9663689136505127,
+          "sdpa_best_score": 3.972576856613159,
+          "baseline_box": [
+            0.6968994140625,
+            0.3118489583333333,
+            0.302490234375,
+            0.5108506944444444
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.69677734375,
+            0.3118489583333333,
+            0.302734375,
+            0.51171875
+          ],
+          "same_frame_best_iou": 0.9974985635721909,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        },
+        {
+          "media_id": 5,
+          "filename": "0005-frying-vegetables-5E20wCGF6Ig_000122_000132.mp4",
+          "baseline_time": 6.5,
+          "sdpa_best_time": 6.5,
+          "best_time_shift_seconds": 0.0,
+          "baseline_score": 3.2568860054016113,
+          "sdpa_best_score": 3.241215944290161,
+          "baseline_box": [
+            0.3360595703125,
+            0.46918402777777773,
+            0.373779296875,
+            0.532986111111111
+          ],
+          "sdpa_box_at_baseline_time": [
+            0.3358154296875,
+            0.46875,
+            0.374267578125,
+            0.5338541666666666
+          ],
+          "same_frame_best_iou": 0.9970714736501578,
+          "note": "Best geometric match in same frame, not a human object-identity label; time shift compares best query hit in this video."
+        }
+      ]
+    }
+  ],
+  "faces": {
+    "threshold": 0.45,
+    "alignment": "same media/time; greedy bbox IoU >= 0.9",
+    "gallery_numerical_integrity": {
+      "baseline": {
+        "all_finite": true,
+        "nonfinite_vector_count": 0,
+        "nonfinite_value_count": 0,
+        "dimension": 512,
+        "scan": "all underlying IndexFlatIP rows, once at gallery load",
+        "count": 2178,
+        "norm_min": 0.9999998957818713,
+        "norm_median": 1.00000000146207,
+        "norm_max": 1.0000001180544276,
+        "zero_count": 0
+      },
+      "variant": {
+        "all_finite": true,
+        "nonfinite_vector_count": 0,
+        "nonfinite_value_count": 0,
+        "dimension": 512,
+        "scan": "all underlying IndexFlatIP rows, once at gallery load",
+        "count": 2178,
+        "norm_min": 0.9999998957818713,
+        "norm_median": 1.00000000146207,
+        "norm_max": 1.0000001180544276,
+        "zero_count": 0
+      }
+    },
+    "baseline_faces": 2178,
+    "variant_faces": 2178,
+    "aligned_faces": 2178,
+    "baseline_unmatched": 0,
+    "variant_unmatched": 0,
+    "aligned_vector_cosine_min": 0.9999999999999998,
+    "aligned_vector_cosine_median": 1.0,
+    "aligned_vector_cosine_undefined_count": 0,
+    "registered_queries": [
+      {
+        "query_number": 1,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 0.9999999929769328,
+          "norm_median": 0.9999999929769328,
+          "norm_max": 0.9999999929769328,
+          "zero_count": 0
+        },
+        "baseline_candidates": 23,
+        "variant_candidates": 23,
+        "retained_candidates": 23,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 2,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 0.9999999961130228,
+          "norm_median": 0.9999999961130228,
+          "norm_max": 0.9999999961130228,
+          "zero_count": 0
+        },
+        "baseline_candidates": 46,
+        "variant_candidates": 46,
+        "retained_candidates": 46,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 3,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 0.9999999852801129,
+          "norm_median": 0.9999999852801129,
+          "norm_max": 0.9999999852801129,
+          "zero_count": 0
+        },
+        "baseline_candidates": 17,
+        "variant_candidates": 17,
+        "retained_candidates": 17,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 4,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 1.0000000105838691,
+          "norm_median": 1.0000000105838691,
+          "norm_max": 1.0000000105838691,
+          "zero_count": 0
+        },
+        "baseline_candidates": 18,
+        "variant_candidates": 18,
+        "retained_candidates": 18,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      },
+      {
+        "query_number": 5,
+        "numerical_integrity": {
+          "all_finite": true,
+          "dimension": 512,
+          "count": 1,
+          "norm_min": 1.0000000469637724,
+          "norm_median": 1.0000000469637724,
+          "norm_max": 1.0000000469637724,
+          "zero_count": 0
+        },
+        "baseline_candidates": 23,
+        "variant_candidates": 23,
+        "retained_candidates": 23,
+        "removed_candidates": 0,
+        "added_candidates": 0,
+        "candidate_jaccard": 1.0,
+        "candidate_sets_identical": true
+      }
+    ],
+    "limitation": "Candidate consistency against existing registrations; not a new identity accuracy evaluation."
+  },
+  "summary": [
+    {
+      "scope": "full_library_44_reextracted",
+      "origin": "all",
+      "count": 9,
+      "top1_video_same_count": 9,
+      "mean_top5_video_overlap": 0.9777777777777779,
+      "baseline": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 7
+        },
+        "video_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 9
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 8
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 7
+        },
+        "video_known_class": {
+          "count": 9,
+          "top1": 6,
+          "top5": 9
+        }
+      }
+    },
+    {
+      "scope": "full_library_44_reextracted",
+      "origin": "same_source_crop",
+      "count": 8,
+      "top1_video_same_count": 8,
+      "mean_top5_video_overlap": 0.975,
+      "baseline": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 7
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 7
+        },
+        "video_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 8
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 6
+        },
+        "region_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 7
+        },
+        "video_source": {
+          "count": 8,
+          "top1": 4,
+          "top5": 7
+        },
+        "video_known_class": {
+          "count": 8,
+          "top1": 5,
+          "top5": 8
+        }
+      }
+    },
+    {
+      "scope": "full_library_44_reextracted",
+      "origin": "independent_image",
+      "count": 1,
+      "top1_video_same_count": 1,
+      "mean_top5_video_overlap": 1.0,
+      "baseline": {
+        "region_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "region_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        },
+        "video_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "video_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        }
+      },
+      "variant": {
+        "region_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "region_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        },
+        "video_source": {
+          "count": 0,
+          "top1": 0,
+          "top5": 0
+        },
+        "video_known_class": {
+          "count": 1,
+          "top1": 1,
+          "top5": 1
+        }
+      }
+    }
+  ]
+}

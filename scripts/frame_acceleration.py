@@ -1,7 +1,8 @@
 """Apple Silicon frame-indexing acceleration, installed only by extract_frames.
 
 Importing this module changes nothing. Never call enable() in the query server:
-the class adapters intentionally live only for one extraction child process.
+the class adapters intentionally live only in the extraction child process,
+which may retain models across serial ingestion jobs.
 """
 from contextlib import contextmanager
 import fcntl

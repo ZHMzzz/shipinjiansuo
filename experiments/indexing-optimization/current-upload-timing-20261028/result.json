@@ -1,0 +1,32 @@
+{
+  "status": "failed",
+  "settings": {
+    "schema": 1,
+    "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+    "dtype": "float16",
+    "max_total_pixels": 1048576,
+    "window_seconds": 8.0,
+    "stride_seconds": 4.0,
+    "frames": 16
+  },
+  "source_media_id": 40,
+  "source_sha256": "ff5484d7eca0ca2fef86ed6f7dc3f14740b6e4f5b390bb04c4417a0d36e6ea0c",
+  "baseline_project": "/Users/zhanghemign/Desktop/视频检索/projects/releases/e0a462544ac0415c8d415e5f5ac6cf72/demo",
+  "before_media_count": 44,
+  "before_segments": 146,
+  "trials": [
+    {
+      "name": "production",
+      "owl": "fast_fp16_weights",
+      "face": "coreml",
+      "status": "running",
+      "stages": {},
+      "initial_copy_hashes_match": true
+    }
+  ],
+  "scope": "actual process_job on isolated roots; publication/load is local; no HTTP upload or queue wait",
+  "qwen_load_and_query_warmup_seconds": 10.91079258400714,
+  "production_entrypoint": true,
+  "error": "HTTPException(status_code=507, detail='磁盘可用空间不足 3GB，请先释放空间')",
+  "production_unchanged": true
+}

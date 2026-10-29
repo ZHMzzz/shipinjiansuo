@@ -1,0 +1,24 @@
+{
+  "production_unchanged": true,
+  "torch": "2.8.0",
+  "transformers": "4.57.6",
+  "api_status": {
+    "status": "ready",
+    "progress": 100,
+    "message": "全部已入库视频支持 Qwen 片段检索",
+    "indexed_videos": 44,
+    "indexed_segments": 146,
+    "model_loaded": true,
+    "model_load_seconds": 5.4034115839749575,
+    "settings": {
+      "schema": 1,
+      "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+      "dtype": "float16",
+      "max_total_pixels": 1048576,
+      "window_seconds": 8.0,
+      "stride_seconds": 4.0,
+      "frames": 16
+    },
+    "video_patch_projection": "linear_same_weights_v1"
+  }
+}

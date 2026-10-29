@@ -1,0 +1,164 @@
+{
+  "status": "completed",
+  "import_and_probe_setup_seconds": 3.99660616699839,
+  "main_seconds": 26.926993583037984,
+  "timers": {
+    "initialization/face_preprocess": {
+      "calls": 1,
+      "inclusive_seconds": 0.0007219580002129078,
+      "exclusive_seconds": 0.0007219580002129078
+    },
+    "initialization/face_session_1k3d68.onnx": {
+      "calls": 1,
+      "inclusive_seconds": 0.059562458016444,
+      "exclusive_seconds": 0.059562458016444
+    },
+    "initialization/face_session_2d106det.onnx": {
+      "calls": 1,
+      "inclusive_seconds": 0.00546774995746091,
+      "exclusive_seconds": 0.00546774995746091
+    },
+    "initialization/face_session_det_10g.onnx": {
+      "calls": 1,
+      "inclusive_seconds": 0.06290374998934567,
+      "exclusive_seconds": 0.06290374998934567
+    },
+    "initialization/face_session_genderage.onnx": {
+      "calls": 1,
+      "inclusive_seconds": 0.019557874999009073,
+      "exclusive_seconds": 0.019557874999009073
+    },
+    "initialization/face_session_w600k_r50.onnx": {
+      "calls": 1,
+      "inclusive_seconds": 0.3204175410210155,
+      "exclusive_seconds": 0.3204175410210155
+    },
+    "initialization/face_detect": {
+      "calls": 1,
+      "inclusive_seconds": 0.04351820796728134,
+      "exclusive_seconds": 0.04351820796728134
+    },
+    "initialization/face_features": {
+      "calls": 1,
+      "inclusive_seconds": 0.5613990839920007,
+      "exclusive_seconds": 0.04997150204144418
+    },
+    "initialization/face_factory": {
+      "calls": 1,
+      "inclusive_seconds": 0.565447541011963,
+      "exclusive_seconds": 0.0033264990197494626
+    },
+    "initialization/owl_preprocess": {
+      "calls": 1,
+      "inclusive_seconds": 0.008228624996263534,
+      "exclusive_seconds": 0.008228624996263534
+    },
+    "initialization/owl_vision": {
+      "calls": 1,
+      "inclusive_seconds": 0.32310112501727417,
+      "exclusive_seconds": 0.32310112501727417
+    },
+    "initialization/owl_forward": {
+      "calls": 1,
+      "inclusive_seconds": 0.9993087910115719,
+      "exclusive_seconds": 0.6762076659942977
+    },
+    "initialization/owl_metadata": {
+      "calls": 1,
+      "inclusive_seconds": 0.00011249998351559043,
+      "exclusive_seconds": 0.00011249998351559043
+    },
+    "initialization/owl_features": {
+      "calls": 1,
+      "inclusive_seconds": 1.128784042026382,
+      "exclusive_seconds": 0.12113412603503093
+    },
+    "initialization/owl_factory": {
+      "calls": 1,
+      "inclusive_seconds": 1.1651909590000287,
+      "exclusive_seconds": 0.03640691697364673
+    },
+    "initialization/all": {
+      "calls": 1,
+      "inclusive_seconds": 2.039381417038385,
+      "exclusive_seconds": 0.3087429170263931
+    },
+    "frames/face_preprocess": {
+      "calls": 9,
+      "inclusive_seconds": 0.0016734999371692538,
+      "exclusive_seconds": 0.0016734999371692538
+    },
+    "frames/data_next": {
+      "calls": 10,
+      "inclusive_seconds": 0.5014110820484348,
+      "exclusive_seconds": 0.4997375821112655
+    },
+    "frames/face_detect": {
+      "calls": 71,
+      "inclusive_seconds": 0.7737240851274692,
+      "exclusive_seconds": 0.7737240851274692
+    },
+    "frames/face_age_gender": {
+      "calls": 77,
+      "inclusive_seconds": 0.08475183515110984,
+      "exclusive_seconds": 0.08475183515110984
+    },
+    "frames/face_recognition": {
+      "calls": 77,
+      "inclusive_seconds": 0.6242028789129108,
+      "exclusive_seconds": 0.6242028789129108
+    },
+    "frames/face_features": {
+      "calls": 9,
+      "inclusive_seconds": 1.4936398770078085,
+      "exclusive_seconds": 0.01096107781631872
+    },
+    "frames/db_vector_insert": {
+      "calls": 10730,
+      "inclusive_seconds": 0.752073394251056,
+      "exclusive_seconds": 0.752073394251056
+    },
+    "frames/faiss_add": {
+      "calls": 10730,
+      "inclusive_seconds": 0.06750602571992204,
+      "exclusive_seconds": 0.06750602571992204
+    },
+    "frames/owl_preprocess": {
+      "calls": 71,
+      "inclusive_seconds": 0.5608176242676564,
+      "exclusive_seconds": 0.5608176242676564
+    },
+    "frames/owl_vision": {
+      "calls": 71,
+      "inclusive_seconds": 20.5713901699055,
+      "exclusive_seconds": 20.5713901699055
+    },
+    "frames/owl_forward": {
+      "calls": 71,
+      "inclusive_seconds": 21.096974581188988,
+      "exclusive_seconds": 0.5255844112834893
+    },
+    "frames/owl_metadata": {
+      "calls": 71,
+      "inclusive_seconds": 0.047417834866791964,
+      "exclusive_seconds": 0.047417834866791964
+    },
+    "frames/owl_features": {
+      "calls": 9,
+      "inclusive_seconds": 21.836476083029993,
+      "exclusive_seconds": 0.13126604270655662
+    },
+    "frames/db_thumbnail_insert": {
+      "calls": 71,
+      "inclusive_seconds": 0.006505959783680737,
+      "exclusive_seconds": 0.006505959783680737
+    },
+    "frames/faiss_save": {
+      "calls": 4,
+      "inclusive_seconds": 0.004749459971208125,
+      "exclusive_seconds": 0.004749459971208125
+    }
+  },
+  "total_process_body_seconds": 30.923600875015836,
+  "note": "Inclusive parent/child timers overlap; use exclusive sums or top-level events. Synchronization and probe setup add overhead."
+}

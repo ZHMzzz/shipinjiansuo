@@ -1,0 +1,96 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "media_id": 40,
+      "video_seconds": 35.44,
+      "mean_seconds": {
+        "fresh": 31.007463604939403,
+        "reused": 26.78964752049069
+      },
+      "reduction_percent": 13.60258335924267,
+      "first_reused_includes_startup": true
+    },
+    {
+      "media_id": 41,
+      "video_seconds": 26.875,
+      "mean_seconds": {
+        "fresh": 26.830185166967567,
+        "reused": 19.442690520983888
+      },
+      "reduction_percent": 27.534266349674386,
+      "first_reused_includes_startup": false
+    },
+    {
+      "media_id": 43,
+      "video_seconds": 10.041666,
+      "mean_seconds": {
+        "fresh": 14.543099437956698,
+        "reused": 7.47013668747968
+      },
+      "reduction_percent": 48.63449349742442,
+      "first_reused_includes_startup": false
+    }
+  ],
+  "totals_seconds": {
+    "fresh": 144.76149641972734,
+    "reused": 107.40494945790851
+  },
+  "total_reduction_percent": 25.805582206407795,
+  "warm_paired_savings": [
+    {
+      "media_id": 41,
+      "repeat": 1,
+      "seconds_saved": 7.791383498930372
+    },
+    {
+      "media_id": 43,
+      "repeat": 1,
+      "seconds_saved": 6.053136791975703
+    },
+    {
+      "media_id": 40,
+      "repeat": 2,
+      "seconds_saved": 7.133736458956264
+    },
+    {
+      "media_id": 41,
+      "repeat": 2,
+      "seconds_saved": 6.983605793036986
+    },
+    {
+      "media_id": 43,
+      "repeat": 2,
+      "seconds_saved": 8.092788708978333
+    }
+  ],
+  "warm_mean_seconds_saved": 7.210930250375531,
+  "models_created": 2,
+  "model_cache_hits": 10,
+  "all_outputs_exact": true,
+  "peak_mps_driver_gib": 1.3073272705078125,
+  "peak_rss_gib": 1.859832763671875,
+  "idle_after_six_mps_driver_gib": 1.240386962890625,
+  "fd_counts": [
+    25,
+    25,
+    25,
+    25,
+    25,
+    25
+  ],
+  "failure_recovery": {
+    "invalid_task": {
+      "event": "failed",
+      "error": "AssertionError('All values for media_dir_list must be directories')",
+      "pid": 67863,
+      "request_wall_seconds": 0.0074531250284053385
+    },
+    "old_pid": 67863,
+    "new_pid": 73177,
+    "next_task_completed": true,
+    "next_task_outputs_exact": true
+  },
+  "production_unchanged": true,
+  "scope": "Frame extraction only. Fresh includes process startup and exit. Six reused jobs include first startup once; idle worker shutdown is deferred and not charged to response latency. No full upload speedup claim."
+}

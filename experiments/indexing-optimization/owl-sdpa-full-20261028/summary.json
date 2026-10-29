@@ -1,0 +1,228 @@
+{
+  "status": "completed",
+  "configuration": {
+    "baseline": "Torch 2.8.0 + Transformers 4.57.6; current fast CPU processor / actual FP16 MPS / CoreML faces / reused worker",
+    "candidate": "Same front end; isolated OWLv2 Torch 2.14.1 + Transformers 5.21.0 official SDPA backend, shared mmap transport, same weights; no compile",
+    "attribution": "Measured combined runtime upgrade + official SDPA + adapter effect, not a single SDPA toggle."
+  },
+  "upload": {
+    "source_media_id": 40,
+    "video_duration_seconds": 35.44,
+    "scope": "actual process_job on isolated roots; publication/load is local; no HTTP upload or queue wait",
+    "qwen_primed_before_trials": true,
+    "qwen_load_and_query_warmup_excluded_seconds": 11.862050208030269,
+    "trials_order": [
+      "baseline-cold",
+      "sdpa-cold",
+      "sdpa-warm1",
+      "baseline-warm1",
+      "baseline-warm2",
+      "sdpa-warm2"
+    ],
+    "cold_repetitions_per_variant": 1,
+    "warm_repetitions_per_variant": 2,
+    "cold": {
+      "baseline_seconds": 52.32502445799764,
+      "sdpa_seconds": 49.275324999995064,
+      "seconds_saved": 3.0496994580025785,
+      "time_reduction_percent": 5.8283765551808475,
+      "throughput_ratio": 1.0618910064622178
+    },
+    "warm": {
+      "baseline_seconds": 47.385560541501036,
+      "sdpa_seconds": 35.555620000493946,
+      "seconds_saved": 11.82994054100709,
+      "time_reduction_percent": 24.96528563938003,
+      "throughput_ratio": 1.332716474662592,
+      "baseline_samples": [
+        46.882976082968526,
+        47.888145000033546
+      ],
+      "sdpa_samples": [
+        33.71061029197881,
+        37.40062970900908
+      ]
+    },
+    "warm_stages": {
+      "transcode": {
+        "baseline_seconds": 1.3143899994902313,
+        "sdpa_seconds": 1.202263583021704,
+        "seconds_saved": 0.11212641646852717,
+        "time_reduction_percent": 8.53068088710458,
+        "throughput_ratio": 1.0932627570625693
+      },
+      "extract": {
+        "baseline_seconds": 25.044341354019707,
+        "sdpa_seconds": 14.445865167013835,
+        "seconds_saved": 10.598476187005872,
+        "time_reduction_percent": 42.31884575117716,
+        "throughput_ratio": 1.7336684971424752
+      },
+      "index": {
+        "baseline_seconds": 5.055362521001371,
+        "sdpa_seconds": 4.031075583508937,
+        "seconds_saved": 1.024286937492434,
+        "time_reduction_percent": 20.2613943755223,
+        "throughput_ratio": 1.254097675985728
+      },
+      "qwen_prepare_and_encode": {
+        "baseline_seconds": 13.37511606249609,
+        "sdpa_seconds": 13.389895166474162,
+        "seconds_saved": -0.014779103978071362,
+        "time_reduction_percent": -0.11049701482226393,
+        "throughput_ratio": 0.9988962494631717
+      },
+      "qwen_write_native": {
+        "baseline_seconds": 0.016117291495902464,
+        "sdpa_seconds": 0.014573479478713125,
+        "seconds_saved": 0.0015438120171893388,
+        "time_reduction_percent": 9.57860703569099,
+        "throughput_ratio": 1.1059329736213181
+      },
+      "validate_load_local_publish": {
+        "baseline_seconds": 0.841017646016553,
+        "sdpa_seconds": 0.7045926874852739,
+        "seconds_saved": 0.13642495853127912,
+        "time_reduction_percent": 16.221414518167432,
+        "throughput_ratio": 1.1936224445050467
+      }
+    },
+    "all_trials_face_qwen_vectors_and_4_qwen_queries_top10_exact": true
+  },
+  "full_gallery": {
+    "videos": 44,
+    "duration_seconds": 651.299665,
+    "repetitions_per_variant": 1,
+    "scope": "All frames at existing 2fps, original prepared videos; fresh complete OWL/face galleries, same frozen query-side vectors; no Qwen re-encoding.",
+    "extraction": {
+      "baseline_seconds": 484.1611011250061,
+      "sdpa_seconds": 266.35307320801076,
+      "seconds_saved": 217.80802791699534,
+      "time_reduction_percent": 44.98668468220441,
+      "throughput_ratio": 1.8177417489262317
+    },
+    "index_creation": {
+      "baseline_seconds": 3.723308582964819,
+      "sdpa_seconds": 3.790472624998074,
+      "seconds_saved": -0.0671640420332551,
+      "time_reduction_percent": -1.8038806222119064,
+      "throughput_ratio": 0.9822808265147966
+    },
+    "baseline": {
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 2178,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 337740
+      },
+      "frames": 1302
+    },
+    "sdpa": {
+      "vector_counts": {
+        "deepinsight/insightface/buffalo_l/_unknown": 2178,
+        "transformers/owlv2/google/owlv2-base-patch16-ensemble": 337993
+      },
+      "frames": 1302
+    }
+  },
+  "retrieval": {
+    "queries": 9,
+    "query_origins": {
+      "same_source_crop": 8,
+      "independent_image": 1
+    },
+    "top1_video_identical_count": 9,
+    "top5_order_identical_count": 8,
+    "changed_top5": [
+      {
+        "query_id": "glasses",
+        "baseline_video_top5": [
+          4,
+          3,
+          34,
+          24,
+          13
+        ],
+        "sdpa_video_top5": [
+          4,
+          3,
+          34,
+          24,
+          14
+        ]
+      }
+    ],
+    "best_time_changes": [
+      {
+        "query": "sunglasses_single",
+        "media_id": 14,
+        "baseline_time": 3.5,
+        "sdpa_best_time": 5.5,
+        "best_time_shift_seconds": 2.0
+      },
+      {
+        "query": "excavator",
+        "media_id": 21,
+        "baseline_time": 2.0,
+        "sdpa_best_time": 1.0,
+        "best_time_shift_seconds": -1.0
+      },
+      {
+        "query": "excavator",
+        "media_id": 10,
+        "baseline_time": 8.5,
+        "sdpa_best_time": 9.0,
+        "best_time_shift_seconds": 0.5
+      }
+    ],
+    "same_frame_geometric_iou": {
+      "count": 45,
+      "min": 0.9798484999930406,
+      "median": 0.9983179142136248,
+      "scope": "Best geometric match in same frame for each baseline top-5 video hit; not human object-identity validation."
+    },
+    "known_class_video_top1_before_and_after": "6/9",
+    "known_class_video_top5_before_and_after": "9/9",
+    "full_faces": {
+      "baseline": 2178,
+      "sdpa": 2178,
+      "aligned": 2178,
+      "minimum_cosine": 0.9999999999999998,
+      "registered_queries": 5,
+      "all_registered_candidate_sets_identical": true
+    },
+    "limitation": "Full 44-video galleries but only 9 reference-image queries with limited nonexhaustive labels; not a general no-loss claim."
+  },
+  "final_integrity": {
+    "production_fingerprint_unchanged": true,
+    "formal_versions": {
+      "torch": "2.8.0",
+      "transformers": "4.57.6",
+      "torchaudio": "2.8.0"
+    },
+    "formal_status": {
+      "status": "ready",
+      "progress": 100,
+      "message": "全部已入库视频支持 Qwen 片段检索",
+      "indexed_videos": 44,
+      "indexed_segments": 146,
+      "model_loaded": true,
+      "model_load_seconds": 5.4034115839749575,
+      "settings": {
+        "schema": 1,
+        "model": "hf/Qwen/Qwen3-VL-Embedding/2B",
+        "dtype": "float16",
+        "max_total_pixels": 1048576,
+        "window_seconds": 8.0,
+        "stride_seconds": 4.0,
+        "frames": 16
+      },
+      "video_patch_projection": "linear_same_weights_v1"
+    },
+    "remaining_shared_memory_directories": []
+  },
+  "limitations": [
+    "One 35.44s upload clip, cold once and warm twice per variant; not a statistical guarantee across all videos.",
+    "Cold refers to frame worker/model startup; Qwen already primed. HTTP transfer, queue wait and fixture preparation excluded.",
+    "Both trial workers resident during upload comparisons; inference serial. Parent-only RSS metrics are not total adapter process memory.",
+    "Existing torchaudio decoding cannot directly use the isolated new Torch runtime; bridge is an experiment and has not been deployed."
+  ]
+}

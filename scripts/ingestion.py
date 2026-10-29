@@ -53,6 +53,14 @@ class IngestionManager:
         self.stopping = threading.Event()
         self.wakeup = threading.Event()
         self.process = None
+        reuse = os.environ.get('VIDEO_FRAME_WORKER_REUSE', '1')
+        if reuse not in ('0', '1'):
+            raise ValueError('VIDEO_FRAME_WORKER_REUSE must be 0 or 1')
+        try:
+            from .frame_worker import FrameWorker
+        except ImportError:
+            from frame_worker import FrameWorker
+        self.frame_worker = FrameWorker(self.root, self.stopping) if reuse == '1' else None
         self.mutation_lock = threading.Lock()
         self.loop = None
         with self.connect() as db:
@@ -143,6 +151,10 @@ class IngestionManager:
         fcntl.flock(self.lockfile, fcntl.LOCK_EX | fcntl.LOCK_NB)
         self.loop = loop
         self.recover()
+        logging.info('Frame worker reuse=%s idle_seconds=%s timeout_seconds=%s',
+                     self.frame_worker is not None,
+                     self.frame_worker.idle_seconds if self.frame_worker else None,
+                     self.frame_worker.timeout_seconds if self.frame_worker else None)
         self.thread = threading.Thread(target=self.worker, name='video-ingestion', daemon=True)
         self.thread.start()
 
@@ -157,10 +169,19 @@ class IngestionManager:
 
     def worker(self):
         try:
+            self._worker_loop()
+        finally:
+            if self.frame_worker is not None:
+                self.frame_worker.close()
+
+    def _worker_loop(self):
+        try:
             from .video_deletion import pending_cleanup
         except ImportError:
             from video_deletion import pending_cleanup
         while not self.stopping.is_set():
+            if self.frame_worker is not None:
+                self.frame_worker.close_if_idle()
             row = None
             with self.mutation_lock:
                 try:
@@ -309,7 +330,11 @@ class IngestionManager:
                         if match:
                             done=int(match[1])
                             self.update(jid,progress=min(78,15+63*done/expected),message=f'已完成 {done} 次帧特征计算，预计约 {expected} 次')
-                    self.run([sys.executable,'-u',str(Path(__file__).resolve().with_name('extract_frames.py')),str(prepared),'--project-dir',str(stage),'--num-workers','0','--yes'],log,extraction_progress)
+                    args=[str(prepared),'--project-dir',str(stage),'--num-workers','0','--yes']
+                    if self.frame_worker is not None:
+                        self.frame_worker.extract(args,log,extraction_progress)
+                    else:
+                        self.run([sys.executable,'-u',str(Path(__file__).resolve().with_name('extract_frames.py')),*args],log,extraction_progress)
                     self.update(jid,status='indexing',stage='构建检索索引',progress=80,message='合并新旧物体和人脸特征，构建 WISE 检索索引')
                     self.run([sys.executable,'-u','-m','wise','create-index','--project-dir',str(stage),'--overwrite'],log)
             with sqlite3.connect(stage/'metadata/internal.db') as db:

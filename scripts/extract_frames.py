@@ -4,8 +4,7 @@ import os
 import sys
 
 
-def main(argv=None):
-    argv=list(sys.argv[1:] if argv is None else argv)
+def configure(argv):
     logging.basicConfig(level=logging.INFO,format='%(asctime)s %(name)s %(levelname)s %(message)s')
     value=os.environ.get('VIDEO_FRAME_ACCELERATION','1')
     if value not in ('0','1'):
@@ -19,6 +18,11 @@ def main(argv=None):
         enable()
     else:
         logging.getLogger(__name__).info('Frame acceleration disabled; original WISE extraction')
+
+
+def main(argv=None):
+    argv=list(sys.argv[1:] if argv is None else argv)
+    configure(argv)
     from wise._main.extract_features import main as extract
     extract(['extract-features',*argv])
 
