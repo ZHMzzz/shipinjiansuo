@@ -8,13 +8,13 @@
 
 **通过本次有限检索回归的候选是：入库使用 OWLv2 快速处理器（CPU）＋实际 FP16 权重（MPS）＋InsightFace CoreML；查询编码继续保持现有配置。** 11 个视频的 WISE 特征提取与建索引从 288.65 秒降至 111.37 秒，耗时减少 61.42%，速度约 2.59 倍。原入库链路采用较保守口径，完整回放耗时减少约 **35%–38%**：35 秒视频使用两轮均值，27 秒视频使用首轮配对；末次基线与并行发布重叠，不将它产生的更高收益纳入主结论。本实验未将候选启用到生产。
 
-**环境变化：末期另一项发布切换了正式版本，套件最终保护状态为 `invalid-production-changed`，原始警报完整保留。** 8 次回放的初始副本均通过冻结哈希检查，旧快照本身也未改变，支持本报告对原链路的同库比较；不代表新上线 `native_qwen` 链路已验证。审计证据见 [integrity-review.json](integrity-review.json)。
+**环境变化：末期另一项发布切换了正式版本，套件最终保护状态为 `invalid-production-changed`，原始警报完整保留。** 8 次回放的初始副本均通过冻结哈希检查，旧快照本身也未改变，支持本报告对原链路的同库比较；不代表新上线 `native_qwen` 链路已验证。审计证据见 [integrity-review.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/integrity-review.json)。
 
 ## 测试范围与可比条件
 
 - 冻结 11 个视频，共 151.33 秒、303 个采样帧；每秒 2 帧，OWLv2 960 输入、objectness 0.02 不变；InsightFace 使用原 buffalo_l 权重，640 检测输入、0.5 检测阈值，保留 detection / recognition / genderage。
 - 本实验的重推理串行执行，未控制其他并行工作的资源使用。记录子进程启动、模型初始化、预热、特征提取与建索引；没有通过降低采样率、分辨率或替换模型减少工作。
-- 版本：PyTorch 2.8.0、Transformers 4.57.6、ONNX Runtime 1.31.1、InsightFace 0.7.3。输入、生产库、正式代码和配置哈希见 [design.json](design.json)。
+- 版本：PyTorch 2.8.0、Transformers 4.57.6、ONNX Runtime 1.31.1、InsightFace 0.7.3。输入、生产库、正式代码和配置哈希见 [design.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/design.json)。
 - CoreML 使用实验目录中的固定输入形状 ONNX 副本与编译缓存，initializer 字节哈希与原文件相同；原模型只读。检测主要在 CoreML 执行，识别和年龄性别存在少量 CPU kernel；执行证据见 [coreml-notes.md](coreml-notes.md)。不能据此断言使用了 ANE。
 - 下面整批筛选每配置仅一次，存在系统负载与执行顺序影响；最终基线/候选另做两视频、两轮、反转配置顺序的入库回放。
 
@@ -29,9 +29,9 @@
 | 快速处理器＋实际 FP16 权重 | 128.24 s | 减少 55.57% | 75,582 |
 | 上述组合＋InsightFace CoreML | **111.37 s** | **减少 61.42%** | 75,582 |
 
-每项均输出 215 条人脸向量。原始结果在 `runs/<配置>/timing.json`、`metrics.json` 与日志中，[summary.json](summary.json) 汇总这些记录。
+每项均输出 215 条人脸向量。原始结果在 `runs/<配置>/timing.json`、`metrics.json` 与日志中，[summary.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/summary.json) 汇总这些记录。
 
-**本轮单独打开 autocast 慢 4.69%，必须区分真实权重 dtype。** 探针确认 autocast 配置参数仍为 FP32，前向投影为 FP16；实际 FP16 配置的参数和投影输出均为 FP16。有效探针为 [owl-precision-probe-clean.json](owl-precision-probe-clean.json)；首次未清模型缓存、被主动中止的 `owl-precision-probe.json` 不参与结论。未测试 autocast＋fast 整批组合，其收益未知。
+**本轮单独打开 autocast 慢 4.69%，必须区分真实权重 dtype。** 探针确认 autocast 配置参数仍为 FP32，前向投影为 FP16；实际 FP16 配置的参数和投影输出均为 FP16。有效探针为 [owl-precision-probe-clean.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/owl-precision-probe-clean.json)；首次未清模型缓存、被主动中止的 `owl-precision-probe.json` 不参与结论。未测试 autocast＋fast 整批组合，其收益未知。
 
 在实际 FP16 配置上，加入快速处理器将 OWL 特征阶段 113.13 秒降到 91.80 秒；再加入 CoreML，人脸特征阶段从 20.97 秒降至 5.02 秒，约 4.18 倍。`owl_features` 已包含 `owl_forward`，不可相加。CoreML 小样本热推理中位数 13.6–29.6 ms，CPU 为 65.3–107.7 ms；首次会话初始化 1.70 秒、首张推理 2.62 秒，第二会话分别为 0.69 秒、0.044 秒。未证明操作系统缓存全冷，不能把首次会话称为严格冷启动。
 
@@ -49,11 +49,11 @@
 
 两种检索范围内 9/9 查询的首位视频均保持；完整生产背景的 Top5 视频集合平均重合 100%，子库为 97.78%。完整背景的构造是移除这 11 个视频的旧向量、替换为实验向量，其他视频继续使用旧向量，符合增量入库场景。
 
-215 张人脸按同视频、同时间、bbox IoU≥0.9 全部配对，向量余弦最低 0.99999579。5 个已有登记向量在 0.45 门槛下的候选集合完全相同：仅其中 1 个有 19 条候选，其余为零，不能据此声称普遍身份准确率。所有检查过的 OWL、人脸与查询向量均有限且无零向量。详见 [组合检索结果](eval-fast_fp16_coreml-fixed.json)、[质量说明](quality-notes.md)。
+215 张人脸按同视频、同时间、bbox IoU≥0.9 全部配对，向量余弦最低 0.99999579。5 个已有登记向量在 0.45 门槛下的候选集合完全相同：仅其中 1 个有 19 条候选，其余为零，不能据此声称普遍身份准确率。所有检查过的 OWL、人脸与查询向量均有限且无零向量。详见 [组合检索结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_coreml-fixed.json)、[质量说明](quality-notes.md)。
 
-**不建议同时切换查询端的快速处理器。** 匹配新配置重新编码查询后，小头盔查询在完整背景的正例视频排名由第 4 降至第 15，Top5 命中由 9/9 降至 8/9；快速处理器单独也出现此问题。[匹配查询结果](eval-fast_fp16_weights-matched.json)
+**不建议同时切换查询端的快速处理器。** 匹配新配置重新编码查询后，小头盔查询在完整背景的正例视频排名由第 4 降至第 15，Top5 命中由 9/9 降至 8/9；快速处理器单独也出现此问题。[匹配查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-matched.json)
 
-本次使用 8 张同源裁剪图和 1 张独立背包图，仅证明这些样本上的视频命中与稳定性；没有测完整类别召回率、返回框定位准确率。快速处理器＋实际 FP16 权重组合的区域总数减少 117（0.155%），最佳帧/框可能改变，不能称逐向量无损。整批 CoreML 元数据中 214/215 条年龄相同、1 条增加 1 岁，性别全部相同；这是与预览图 smoke 中 1 条减少 1 岁不同的输入集合。[元数据对齐结果](face-metadata-comparison.json)
+本次使用 8 张同源裁剪图和 1 张独立背包图，仅证明这些样本上的视频命中与稳定性；没有测完整类别召回率、返回框定位准确率。快速处理器＋实际 FP16 权重组合的区域总数减少 117（0.155%），最佳帧/框可能改变，不能称逐向量无损。整批 CoreML 元数据中 214/215 条年龄相同、1 条增加 1 岁，性别全部相同；这是与预览图 smoke 中 1 条减少 1 岁不同的输入集合。[元数据对齐结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/face-metadata-comparison.json)
 
 ## 完整入库回放
 
@@ -68,7 +68,7 @@
 
 上表完整保留全部记录。最后一项基线覆盖同期正式发布，存在新服务/模型加载争用资源的可能，不能证明多出的耗时来自基线本身。故主结论使用 35 秒视频两轮均值 **92.54 → 57.59 秒（减少 37.77%）**，以及 27 秒视频首轮 **73.56 → 47.45 秒（减少 35.50%）**；27 秒视频第二轮及全轮均值仅作带环境干扰提示的参考。
 
-表中为 `adjusted_wall_seconds`，仅扣除实验额外 SHA/复用证明检查；并非未调整的实测墙钟。未扣除检查的原始墙钟均值分别为 **93.76 → 58.86 秒**、**78.71 → 47.14 秒**。每轮原始值、被扣阶段和资源记录保留在 [suite.json](replays/e2e-r1/suite.json) 与各 trial 的 `timing.json`。单次配对减少幅度约 35.5%–45.7%，样本量仅两轮，未给出统计置信区间。
+表中为 `adjusted_wall_seconds`，仅扣除实验额外 SHA/复用证明检查；并非未调整的实测墙钟。未扣除检查的原始墙钟均值分别为 **93.76 → 58.86 秒**、**78.71 → 47.14 秒**。每轮原始值、被扣阶段和资源记录保留在 [suite.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/replays/e2e-r1/suite.json) 与各 trial 的 `timing.json`。单次配对减少幅度约 35.5%–45.7%，样本量仅两轮，未给出统计置信区间。
 
 | 平均阶段 | 35 秒片：基线 → 候选 | 27 秒片：基线 → 候选 |
 |---|---:|---:|
@@ -100,4 +100,4 @@ python experiments/indexing-optimization/summarize.py
 
 `bench.py` / `replay.py` 拒绝重用已有运行目录，避免混入旧索引；性能比较需串行运行。`summarize.py` 汇总本报告固定的原始运行名称，新试验需要相应修改汇总名称。查询冻结/比较入口见 [evaluate.py](evaluate.py)；CoreML 独立诊断入口见 [coreml_probe.py](coreml_probe.py)。
 
-实验使用进程内补丁，本实验未编辑正式服务代码、依赖环境或原模型，也未切换活动指针。最终检查确认旧快照、登记库未变；检测到并行工作修改 `server.py`、`library_search.py`、`qwen_project.py`、`ingestion.py`、`wise_config.yaml`、新增 `native_qwen.py`，并发布了新快照。这些变化未被覆盖或撤回。[最终指纹](production-after.json) 保留检查时实际状态，与 [完整性审计](integrity-review.json) 一同解释保护警报。
+实验使用进程内补丁，本实验未编辑正式服务代码、依赖环境或原模型，也未切换活动指针。最终检查确认旧快照、登记库未变；检测到并行工作修改 `server.py`、`library_search.py`、`qwen_project.py`、`ingestion.py`、`wise_config.yaml`、新增 `native_qwen.py`，并发布了新快照。这些变化未被覆盖或撤回。[最终指纹](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/production-after.json) 保留检查时实际状态，与 [完整性审计](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/integrity-review.json) 一同解释保护警报。

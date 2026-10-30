@@ -1,8 +1,0 @@
-{
-  "activated_at": "2026-10-28T02:40:30.665468-07:00",
-  "pid": 17369,
-  "VIDEO_FRAME_ACCELERATION": "1",
-  "regression_tests_passed": 72,
-  "production_entrypoint_validation": "../production-entrypoint-20261028/result.json",
-  "scope": "future frame extraction children; query model configuration unchanged; Qwen native store retained"
-}

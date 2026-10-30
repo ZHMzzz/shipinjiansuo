@@ -42,7 +42,20 @@ __pycache__/
 
 # Local scratch work and generated presentations
 /.scratch/
-/output/presentation/
+/output/
+
+# Optional demonstration video collections (kept locally, not needed for startup)
+/演示视频_摔倒火情抽烟/
+/真实监控演示视频_摔倒火情抽烟/
+
+# Generated experiment data and media; retain source code and written reports
+/experiments/**/*.json
+/experiments/**/*.jsonl
+/experiments/**/*.csv
+/experiments/**/*.jpg
+/experiments/**/*.jpeg
+/experiments/**/*.png
+/experiments/**/*.mp4
 
 # Local experiment work and outputs
 /experiments/onejev-helmet-images/

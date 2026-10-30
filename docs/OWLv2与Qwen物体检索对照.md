@@ -60,7 +60,7 @@ OWLv2 沿用当前实现：960 像素输入、objectness 阈值 0.02、查询选
 
 这里的 IoU 标注是整个粘贴矩形，包含部分上下文，不是严格的物体轮廓框；它只用于判断匹配区域是否随查询变化，不是检测 mAP 评测。OWLv2 也会框错：在一个背景下，两种 1% 背包测试的最高匹配区域落在背景人物上。
 
-![区域核查：绿色为已知粘贴区域，红色为 OWLv2 最高匹配框；上排为 1% 目标，下排为多物体画面。](../experiments/owl-qwen-comparison/owl-localization-review.jpg)
+[区域核查：绿色为已知粘贴区域，红色为 OWLv2 最高匹配框；上排为 1% 目标，下排为多物体画面。](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/owl-qwen-comparison/owl-localization-review.jpg)
 
 ## 性能
 

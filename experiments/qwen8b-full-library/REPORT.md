@@ -111,12 +111,12 @@ Metal 指标：2B 为 PyTorch MPS driver 分配，8B 为 Metal currentAllocatedS
 
 ## 文件与复现
 
-- [summary.json](summary.json)：全部指标、逐查询差异及验证结果。
-- [query-comparison.csv](query-comparison.csv)：68 条查询的首个完整相关排名与 nDCG。
-- [top5-results.csv](top5-results.csv) / [QUERY_RESULTS.md](QUERY_RESULTS.md)：两模型逐查询 Top 5、时间范围与相关性。
-- [labels.csv](labels.csv) / [labels-freeze.json](labels-freeze.json)：8,772 条判断及运行前固定哈希。
+- [summary.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/summary.json)：全部指标、逐查询差异及验证结果。
+- [query-comparison.csv](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/query-comparison.csv)：68 条查询的首个完整相关排名与 nDCG。
+- [top5-results.csv](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/top5-results.csv) / [QUERY_RESULTS.md](QUERY_RESULTS.md)：两模型逐查询 Top 5、时间范围与相关性。
+- [labels.csv](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/labels.csv) / [labels-freeze.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/labels-freeze.json)：8,772 条判断及运行前固定哈希。
 - `2b-fp16.json`、`8b-q8.json`、`*-resources.json`：原始耗时、排名、分阶段资源采样。
-- [production-before.json](production-before.json) / [production-after.json](production-after.json)：前后审计。
+- [production-before.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/production-before.json) / [production-after.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/production-after.json)：前后审计。
 
 模型与运行时复用 `../qwen8b-int8/` 中的固定版本；不安装新依赖、不下载新权重。实验生成的 FAISS 索引和向量仅保存在本目录，从未连接到生产入口。首次执行顺序如下；已有结果目录应保留，复测使用新目录并重新固定快照，避免覆盖历史结果。
 

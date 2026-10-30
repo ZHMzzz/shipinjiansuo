@@ -52,7 +52,7 @@
 
 所有对应的正向“戴安全帽”查询均为 3 / 3。专项指令确实能改变否定查询的行为；把“作业人员”改为“一个人”也减少了人物职业语义的干扰。但效果不稳定：第三对在专项指令＋中性描述＋256×256 下，戴帽分 0.4496、未戴帽分 0.4485，仅差约 0.0011，仍按严格排序计作失败，不能挑选原尺寸的 3 / 3 宣称已解决。
 
-![三组同照片配对头部裁剪](../experiments/reranker-ablation/paired/selected-pairs.jpg)
+[三组同照片配对头部裁剪](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/paired/selected-pairs.jpg)
 
 ## 追加的视频交叉验证
 
@@ -81,11 +81,11 @@
 
 ## 原始材料与复现
 
-- 预先固定设计：[`design.json`](../experiments/reranker-ablation/design.json)。
-- 主实验全部得分、输入形状、时间和内存：[`video-results.json`](../experiments/reranker-ablation/video-results.json)。
-- 原尺寸配对图片结果：[`paired-results.json`](../experiments/reranker-ablation/paired-results.json)。
-- 看过主实验后追加的探索性设计与结果：[`followup-design.json`](../experiments/reranker-ablation/followup-design.json)、[`followup-results.json`](../experiments/reranker-ablation/followup-results.json)。追加结果不替代或覆盖主实验。
-- 素材来源与裁剪：[`paired/sources.json`](../experiments/reranker-ablation/paired/sources.json)、[`paired/manifest.json`](../experiments/reranker-ablation/paired/manifest.json)。
+- 预先固定设计：[`design.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/design.json)。
+- 主实验全部得分、输入形状、时间和内存：[`video-results.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/video-results.json)。
+- 原尺寸配对图片结果：[`paired-results.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/paired-results.json)。
+- 看过主实验后追加的探索性设计与结果：[`followup-design.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/followup-design.json)、[`followup-results.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/followup-results.json)。追加结果不替代或覆盖主实验。
+- 素材来源与裁剪：[`paired/sources.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/paired/sources.json)、[`paired/manifest.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/paired/manifest.json)。
 - 历史脚本：`ablate_reranker.py`、`ablate_reranker_followup.py` 已随重排功能移除（见 [ADR 0005](adr/0005-simplify-semantic-search.md)）。下列命令只记录当时实验，不能在当前版本直接执行。
 
 ```sh
@@ -99,4 +99,4 @@ python scripts/manage.py start
 
 复现依赖当前本地模型、已保存的源短片与配对裁剪。运行出错也应执行最后一条恢复服务。不要同时运行 Demo 与实验，以免重复占用模型内存。
 
-本轮共完成 236 次实际评分，均得到有限分数；脚本语法检查通过。结束后 Demo 已恢复为 ready，当前 27 个视频、74 个动作片段，页面 HTTP 200。实验前后发布指针和三个动作索引文件的 SHA256 一致，详见 [`verification.json`](../experiments/reranker-ablation/verification.json) 与 `index-before.json`、`index-after.json`。Demo 原有参数与开关未修改。
+本轮共完成 236 次实际评分，均得到有限分数；脚本语法检查通过。结束后 Demo 已恢复为 ready，当前 27 个视频、74 个动作片段，页面 HTTP 200。实验前后发布指针和三个动作索引文件的 SHA256 一致，详见 [`verification.json`](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/reranker-ablation/verification.json) 与 `index-before.json`、`index-after.json`。Demo 原有参数与开关未修改。

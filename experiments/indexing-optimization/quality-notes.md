@@ -4,14 +4,14 @@
 
 ## 方法与样本
 
-- 固定 11 个视频，使用真实 WISE 特征与 FAISS 索引。冻结 9 条参考图查询：8 张源视频裁剪图、1 张独立背包产品图。8 张裁剪图均已核对与源图对应裁剪逐像素相同；独立图和同源图分开汇总。见 [冻结查询及正例](queries.json)。
+- 固定 11 个视频，使用真实 WISE 特征与 FAISS 索引。冻结 9 条参考图查询：8 张源视频裁剪图、1 张独立背包产品图。8 张裁剪图均已核对与源图对应裁剪逐像素相同；独立图和同源图分开汇总。见 [冻结查询及正例](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/queries.json)。
 - `fixed`：查询向量由 baseline 编码一次后冻结，仅替换入库向量，隔离索引端变化。`matched`：入库和查询均使用相应变体。查询通过现有 WISE `EmbeddingService.embed`，保留首区域选择、query hook 和最终归一化；索引向量不额外归一化。见 [评测脚本](evaluate.py)。
-- 分别评测固定子库，以及把样本的新向量替换进生产背景后的候选库；背景中样本旧向量先排除，其余视频向量保持不变。`matched` 的生产背景因此属于混合迁移测试，不是全库都以新配置重建的结果。见 [固定查询结果](eval-fast_fp16_weights-fixed.json)、[匹配配置查询结果](eval-fast_fp16_weights-matched.json)。
+- 分别评测固定子库，以及把样本的新向量替换进生产背景后的候选库；背景中样本旧向量先排除，其余视频向量保持不变。`matched` 的生产背景因此属于混合迁移测试，不是全库都以新配置重建的结果。见 [固定查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-fixed.json)、[匹配配置查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-matched.json)。
 - “区域 Top-k”沿用原生 FAISS 区域排序；“视频 Top-k”将每个视频的最高分区域保留一次，是单独的评测口径。正例依据已知视频标签，没有逐框或逐帧完整标注；命中正例视频不能证明返回框定位正确。已知类别正例也不是生产背景的穷尽标注。
 
 ## 只优化入库：指定命中指标保持
 
-下表均为 `fixed`，候选为 `fast_fp16_weights`；数值表示 baseline → 候选。来源：[完整固定查询评测](eval-fast_fp16_weights-fixed.json)。
+下表均为 `fixed`，候选为 `fast_fp16_weights`；数值表示 baseline → 候选。来源：[完整固定查询评测](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-fixed.json)。
 
 | 指标 | 固定子库 | 生产背景替换样本 |
 | --- | ---: | ---: |
@@ -22,17 +22,17 @@
 | 原生区域前 1 条命中已知类别正例视频 | 8/9 → 8/9 | 6/9 → 6/9 |
 | 原生区域前 5 条命中已知类别正例视频 | 8/9 → 8/9 | 8/9 → 8/9 |
 
-这不代表排名和时间完全相同：子库平底锅查询的第五名干扰视频从媒体 3 变为媒体 14；挖掘机查询的最佳帧从 1.0 秒变为 2.0 秒，仍命中媒体 21。小安全帽查询在生产背景中的已知类别正例视频排名从 4 变为 3，源视频仍排第 5。详见结果中 `pan`、`excavator`、`helmet_small` 的逐查询记录：[固定查询结果](eval-fast_fp16_weights-fixed.json)。
+这不代表排名和时间完全相同：子库平底锅查询的第五名干扰视频从媒体 3 变为媒体 14；挖掘机查询的最佳帧从 1.0 秒变为 2.0 秒，仍命中媒体 21。小安全帽查询在生产背景中的已知类别正例视频排名从 4 变为 3，源视频仍排第 5。详见结果中 `pan`、`excavator`、`helmet_small` 的逐查询记录：[固定查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-fixed.json)。
 
 ## 查询也改配置：小安全帽出现退化
 
-`matched` 中，`helmet_small` 的已知类别正例视频在子库从第 4 降至第 6，在生产背景中从第 4 降至第 15；生产背景中的源视频从第 5 降至第 17。两种候选库的已知类别正例视频 Top5 均由 9/9 降至 8/9。因此不能把“索引端指标保持”扩展为“在线查询也可同步切换”。见 [匹配配置查询结果](eval-fast_fp16_weights-matched.json)。
+`matched` 中，`helmet_small` 的已知类别正例视频在子库从第 4 降至第 6，在生产背景中从第 4 降至第 15；生产背景中的源视频从第 5 降至第 17。两种候选库的已知类别正例视频 Top5 均由 9/9 降至 8/9。因此不能把“索引端指标保持”扩展为“在线查询也可同步切换”。见 [匹配配置查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-matched.json)。
 
-独立背包图在匹配配置下仍首位命中已知正例，但生产背景的首位视频从媒体 17 变为媒体 2；两者都是已知正例。这是排名变化，不是该查询新增失败。见 [匹配配置查询结果](eval-fast_fp16_weights-matched.json)。
+独立背包图在匹配配置下仍首位命中已知正例，但生产背景的首位视频从媒体 17 变为媒体 2；两者都是已知正例。这是排名变化，不是该查询新增失败。见 [匹配配置查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-matched.json)。
 
 ## 区域数量、数值与人脸
 
-OWL 区域向量从 **75,699 条变为 75,582 条，净少 117 条（约 0.155%）**。这是总数净变化，不能解读为仅删除了 117 个相同区域；本轮没有证明所有物体框逐一保持。基线、候选和原生产背景的全部底层向量均通过有限值检查，无零向量；没有为了比较而重新归一化。见 [区域计数和数值完整性](eval-fast_fp16_weights-fixed.json)。
+OWL 区域向量从 **75,699 条变为 75,582 条，净少 117 条（约 0.155%）**。这是总数净变化，不能解读为仅删除了 117 个相同区域；本轮没有证明所有物体框逐一保持。基线、候选和原生产背景的全部底层向量均通过有限值检查，无零向量；没有为了比较而重新归一化。见 [区域计数和数值完整性](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-fixed.json)。
 
 | OWL 向量范数 | baseline | fast_fp16_weights |
 | --- | ---: | ---: |
@@ -40,20 +40,20 @@ OWL 区域向量从 **75,699 条变为 75,582 条，净少 117 条（约 0.155%�
 | 中位数 | 18.9913 | 18.9920 |
 | 最大值 | 30.1820 | 30.1638 |
 
-表中数值来自结果的 `gallery_numerical_integrity`；OWL 向量包含模型的打分尺度，范数大于 1 不表示异常。查询向量也全部通过有限值和非零检查。见 [数值检查结果](eval-fast_fp16_weights-fixed.json)。
+表中数值来自结果的 `gallery_numerical_integrity`；OWL 向量包含模型的打分尺度，范数大于 1 不表示异常。查询向量也全部通过有限值和非零检查。见 [数值检查结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-fixed.json)。
 
-`fast_fp16_weights` 单独候选的人脸路径未修改。两版均有 215 条人脸向量，按同一媒体、时间及 bbox IoU ≥ 0.9 全部对齐；向量余弦最低约 1，中位数为 1。5 个已有登记查询在统一 0.45 门槛下的候选集合全部相同，但仅 1 个查询有 19 条候选，其余 4 个均为空。该结果仅证明本样本的候选一致性，不能推导总体身份识别准确率。未读取或导出登记姓名、照片。见 [人脸一致性结果](eval-fast_fp16_weights-fixed.json)。
+`fast_fp16_weights` 单独候选的人脸路径未修改。两版均有 215 条人脸向量，按同一媒体、时间及 bbox IoU ≥ 0.9 全部对齐；向量余弦最低约 1，中位数为 1。5 个已有登记查询在统一 0.45 门槛下的候选集合全部相同，但仅 1 个查询有 19 条候选，其余 4 个均为空。该结果仅证明本样本的候选一致性，不能推导总体身份识别准确率。未读取或导出登记姓名、照片。见 [人脸一致性结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-fixed.json)。
 
 ## 叠加人脸 CoreML 的组合
 
-`fast_fp16_coreml-r1` 使用相同 OWL 入库优化，叠加人脸 CoreML。整批 WISE 特征提取与建索引合计 111.37 秒；这是该批次的 WISE 阶段耗时，不是完整上传链路耗时。见 [整批计时](runs/fast_fp16_coreml-r1/timing.json)。
+`fast_fp16_coreml-r1` 使用相同 OWL 入库优化，叠加人脸 CoreML。整批 WISE 特征提取与建索引合计 111.37 秒；这是该批次的 WISE 阶段耗时，不是完整上传链路耗时。见 [整批计时](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/runs/fast_fp16_coreml-r1/timing.json)。
 
-该组合仍使用冻结的 baseline 查询。其 `summary`、逐查询 `queries`、OWL 和查询数值完整性结果，与 `fast_fp16_weights` 的固定查询结果完全相同：OWL 仍为 75,582 条，子库和生产背景的指定命中指标均保持，生产背景的 Top5 视频集合重合比例为 100%。这里的相同指已报告的数据，不是对索引文件逐字节相同的证明。见 [CoreML 组合固定查询结果](eval-fast_fp16_coreml-fixed.json)、[OWL 单独候选固定查询结果](eval-fast_fp16_weights-fixed.json)。
+该组合仍使用冻结的 baseline 查询。其 `summary`、逐查询 `queries`、OWL 和查询数值完整性结果，与 `fast_fp16_weights` 的固定查询结果完全相同：OWL 仍为 75,582 条，子库和生产背景的指定命中指标均保持，生产背景的 Top5 视频集合重合比例为 100%。这里的相同指已报告的数据，不是对索引文件逐字节相同的证明。见 [CoreML 组合固定查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_coreml-fixed.json)、[OWL 单独候选固定查询结果](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_weights-fixed.json)。
 
-215 条人脸全部对齐，无新增或缺失；向量余弦最低 **0.99999579**，中位数 **0.99999998**，全部有限且无零向量。5 个登记查询在 0.45 门槛下的候选集合仍全部相同，仍只有 1 个查询含 19 条候选，其余为空，因此不扩大前述人脸准确率结论。见 [组合人脸一致性与数值检查](eval-fast_fp16_coreml-fixed.json)。
+215 条人脸全部对齐，无新增或缺失；向量余弦最低 **0.99999579**，中位数 **0.99999998**，全部有限且无零向量。5 个登记查询在 0.45 门槛下的候选集合仍全部相同，仍只有 1 个查询含 19 条候选，其余为空，因此不扩大前述人脸准确率结论。见 [组合人脸一致性与数值检查](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/eval-fast_fp16_coreml-fixed.json)。
 
-对两份既有 SQLite 元数据做只读对齐，215 条中 214 条年龄相同、1 条候选比 baseline 大 1 岁；性别字段 215/215 相同。框的最低 IoU 为 0.99999829，73/215 条框坐标逐值相同；检测分数最大绝对差为 3.58×10⁻⁷。这说明人脸元数据并非逐值完全一致。该补充仅查询已有 `age`、`is_male`、框与分数字段，没有补推理；按相同文件名、时间保留 4 位小数及贪心 bbox IoU ≥ 0.9 对齐。见 [元数据比较及来源 DB 哈希](face-metadata-comparison.json)、[可复现的只读脚本](compare_face_metadata.py)。
+对两份既有 SQLite 元数据做只读对齐，215 条中 214 条年龄相同、1 条候选比 baseline 大 1 岁；性别字段 215/215 相同。框的最低 IoU 为 0.99999829，73/215 条框坐标逐值相同；检测分数最大绝对差为 3.58×10⁻⁷。这说明人脸元数据并非逐值完全一致。该补充仅查询已有 `age`、`is_male`、框与分数字段，没有补推理；按相同文件名、时间保留 4 位小数及贪心 bbox IoU ≥ 0.9 对齐。见 [元数据比较及来源 DB 哈希](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/face-metadata-comparison.json)、[可复现的只读脚本](compare_face_metadata.py)。
 
-整批的“1 条 +1 岁”与微基准的“1 条 −1 岁（35→34）”来自不同输入：前者是入库采样帧，后者是单独的预览图片；不能合并分母或混写变化方向。见 [整批元数据比较](face-metadata-comparison.json)、[CPU 微基准](cpu-smoke.json)、[CoreML 微基准](coreml-smoke.json)。
+整批的“1 条 +1 岁”与微基准的“1 条 −1 岁（35→34）”来自不同输入：前者是入库采样帧，后者是单独的预览图片；不能合并分母或混写变化方向。见 [整批元数据比较](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/face-metadata-comparison.json)、[CPU 微基准](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/cpu-smoke.json)、[CoreML 微基准](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/coreml-smoke.json)。
 
 样本只覆盖 9 张查询图且多数同源，不能据此承诺未见过场景、小目标或其他独立参考图的效果。最终发布决策应保留这个边界，并明确候选仅改变离线入库路径。

@@ -1,8 +1,8 @@
 # 已训练安全帽检测模型离线对照
 
-结果见 [REPORT.md](REPORT.md)，检测框对照见 [comparison.jpg](comparison.jpg) 和 [visual-review.md](visual-review.md)。本实验没有训练模型，没有接入正式检索，也没有运行 ByteTrack。
+结果见 [REPORT.md](REPORT.md)，检测框对照见 [comparison.jpg](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/comparison.jpg) 和 [visual-review.md](visual-review.md)。本实验没有训练模型，没有接入正式检索，也没有运行 ByteTrack。
 
-两个固定版本权重在 `models/`，下载地址、revision、文件大小、SHA256 和下载耗时记录在 [models.json](models.json)。目录内 `.deps/` 是额外依赖，正式 `.venv` 的包版本不变。
+两个固定版本权重在 `models/`，下载地址、revision、文件大小、SHA256 和下载耗时记录在 [models.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/models.json)。目录内 `.deps/` 是额外依赖，正式 `.venv` 的包版本不变。
 
 ## 复现
 

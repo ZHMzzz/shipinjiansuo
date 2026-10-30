@@ -37,4 +37,4 @@ Qwen 加载与四个文字查询预热 12.31 秒，在单条处理计时外。�
 
 结论：只加速入库的 OWLv2/人脸阶段，Qwen 统一走当前原生 WISE 新索引流程，查询编码保持现状。此次未重新编码整个正式视频库，也未实施生产开关。
 
-证据：[result.json](native-recheck-20261028/result.json)、[前指纹](native-recheck-20261028/production-before.json)、[后指纹](native-recheck-20261028/production-after.json)。脚本：[native_recheck.py](native_recheck.py)。各组日志和计时在 `native-recheck-20261028/baseline/`、`optimized/`。脚本拒绝覆盖已有结果；复测需选用新的输出目录名。
+证据：[result.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/native-recheck-20261028/result.json)、[前指纹](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/native-recheck-20261028/production-before.json)、[后指纹](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/native-recheck-20261028/production-after.json)。脚本：[native_recheck.py](native_recheck.py)。各组日志和计时在 `native-recheck-20261028/baseline/`、`optimized/`。脚本拒绝覆盖已有结果；复测需选用新的输出目录名。

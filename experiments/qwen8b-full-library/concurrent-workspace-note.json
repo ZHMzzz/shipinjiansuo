@@ -1,6 +1,0 @@
-{
-  "observed_at": 1793156305.382636,
-  "file": "scripts/action_search.py",
-  "observation": "A concurrent workspace edit added group_by_video selection. This benchmark did not write production code. Sampling, model and index unchanged in inspected diff. Frozen benchmark continues raw segment ranking, plus video/source grouping and the original overlap-filter supplemental view.",
-  "audit_policy": "Report this code hash mismatch separately; do not waive model/index/config/source-video/pointer changes."
-}

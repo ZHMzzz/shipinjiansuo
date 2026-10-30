@@ -11,7 +11,7 @@
 前置工具安装完成后：
 
 ```sh
-git clone https://github.com/ZHMzzz/shipinjiansuo.git
+git clone --depth 1 https://github.com/ZHMzzz/shipinjiansuo.git
 cd shipinjiansuo
 ./scripts/setup.sh --check
 ./scripts/setup.sh
@@ -40,7 +40,7 @@ cd shipinjiansuo
 5. **新增视频**：图库标题旁点击“新增视频”，在弹窗中多选或拖入多个本地视频，按顺序传输。显示真实传输进度、后台处理任务及失败重试。完成后自动刷新图库；已有查询结果保留，可重新查询纳入新视频。单个文件最大 1 GB，相同内容不会重复入库。关闭弹窗不停止传输，刷新或关闭网页会中断未完成的传输；上传成功后的后台处理须保持电脑与服务运行。
 6. **人脸维护**：顶部按钮打开弹窗，输入姓名，可一次选择多张清晰单人照片；输入已有姓名或点击人物旁的“添加照片”会追加，保留原登记。每人最多 10 张，每张最大 10 MB；一次提交全部检查通过后保存，重复上传同一文件自动跳过。右侧显示照片数量，“查看照片”可逐张删除；最后一张须通过“删除人物”移除。已有单张登记自动迁移，无需重新登记或重建视频索引。多人或无人脸照片会拒绝登记。
 7. **删除视频**：卡片底部点击“删除”，确认后删除整段视频及其所有命中片段。同步清理物体、人脸和 Qwen 索引、特征分片、缩略图、对应历史项目记录及托管视频文件；人物登记保持不变。处理中的上传与删除互斥，失败时可重试。外部导入源文件不在本应用托管目录内时保留。
-8. **实验记录**：http://127.0.0.1:9670/mvp/actions.html 保留历史实验记录，不代表当前在线页面。
+8. **实验记录**：文字报告与实验源码保留在 `experiments/`；逐次结果、截图和实验视频不随源码交付。`/mvp/actions.html` 仅在本机已有对应实验数据时可回放，不影响主页面检索。数据恢复方式见 [实验目录说明](experiments/README.md)。
 
 文件名条件先限定检索候选；语义相关性仍来自模型，不使用文件名替代语义编码。空条件返回完整视频库，查询中的分页只针对本次返回结果。
 
@@ -54,7 +54,7 @@ Apple Silicon 入库默认使用 OWLv2 快速 CPU 预处理、MPS FP16 权重和
 
 OWLv2 入库默认启用官方 SDPA，模型推理独立运行于 Torch 2.14.1 / Transformers 5.21.0，解码和查询继续使用原环境。先执行 `./scripts/setup_owl_sdpa.sh` 创建 `data/model-cache/owl-sdpa/runtime/`（完整 `setup.sh` 已包含此步骤）；依赖固定在 `requirements-owl-sdpa.lock.txt`，不安装 torchaudio。模型仍为原权重、FP16、960px、batch=1，不启用 `torch.compile`。输入与输出通过可复用 mmap 传递，推理子进程随帧提取进程复用和退出；版本不符、缺失运行时、崩溃或推理超时均明确失败，不静默回退。
 
-仅回退 SDPA 时，停止服务后执行 `VIDEO_OWL_SDPA=0 ./scripts/start.sh`，保留快速预处理、FP16、CoreML 和模型复用；CLI 同样支持该开关。`VIDEO_OWL_SDPA_PYTHON` 可指定符合固定版本要求的独立 Python 可执行文件。上述开关只影响后续入库，旧索引不重算。35.44 秒视频的隔离测试中，模型复用后完整入库均值减少约 25%，首次加载帧模型时约 5.8%；9 个参考图中有一个查询第五名发生变化，并非逐位无损，详见 [完整 SDPA 回归](experiments/indexing-optimization/owl-sdpa-full-20261028/summary.json)。
+仅回退 SDPA 时，停止服务后执行 `VIDEO_OWL_SDPA=0 ./scripts/start.sh`，保留快速预处理、FP16、CoreML 和模型复用；CLI 同样支持该开关。`VIDEO_OWL_SDPA_PYTHON` 可指定符合固定版本要求的独立 Python 可执行文件。上述开关只影响后续入库，旧索引不重算。35.44 秒视频的隔离测试中，模型复用后完整入库均值减少约 25%，首次加载帧模型时约 5.8%；9 个参考图中有一个查询第五名发生变化，并非逐位无损，详见 [完整 SDPA 回归](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/owl-sdpa-full-20261028/summary.json)。
 
 Qwen 新增视频及缺失片段补建默认采用同权重线性图像块投影：仅在 `ActionEngine.encode_segment` 内将全块 Conv3d 等价改写为 Linear，结束或异常后恢复原方法；文字查询保持原路径。批量仍为 1，FP16、16 帧及像素预算不变，不自动重编已有视频。当前模型结构不符合适配要求时明确报错。此优化有浮点差异，完整对照的 Qwen 编码耗时减少约 41%，不代表完整上传提速；测试边界见 [Qwen 线性投影实验](experiments/indexing-optimization/QWEN_LINEAR.md)。
 
@@ -147,7 +147,9 @@ Qwen 新增视频及缺失片段补建默认采用同权重线性图像块投影
 
 仓库包含根目录应用、已修改的完整 `wise/` 源码、测试、文档、依赖锁文件、演示视频及素材来源。`wise/` 作为普通源码目录提交，克隆后无需另外初始化子模块；原始开发目录仍保留 WISE 上游 Git 历史，但新克隆的仓库只包含本工程的历史。
 
-虚拟环境、模型缓存、生成索引、日志、网页上传的视频和本机人物登记数据库不随源码上传；重复的视频 ZIP 包及原始下载缓存也不提交。已有实验报告和处理后的演示素材保留在仓库中。
+虚拟环境、模型缓存、生成索引、日志、网页上传的视频和本机人物登记数据库不随源码上传。两个额外视频集合「演示视频_摔倒火情抽烟」「真实监控演示视频_摔倒火情抽烟」、临时工作记录、截图及实验生成的数据也不再跟踪；本机已有文件保留。首次运行所需的 `data/videos/`、`data/queries/`、安装工具、测试源码及文字报告继续交付。
+
+首次运行推荐上方 `--depth 1` 浅克隆，或下载最新源码 ZIP，避免拉取历史大文件。普通完整克隆仍包含旧提交中的实验产物；这次清理不改写历史。需要完整开发历史时可执行 `git fetch --unshallow`。实验报告中的历史证据链接指向清理前固定版本，见 [实验目录说明](experiments/README.md)。
 
 首次安装命令见本文顶部和 [完整指南](docs/首次安装与运行.md)。先完成建库再启动服务；人物需要在页面重新登记，之前网页上传的视频需要重新上传。不要把旧机器生成的索引直接搬到不同绝对路径后当成新安装使用。
 
@@ -157,4 +159,4 @@ WISE 代码为 Apache-2.0；InsightFace 代码与预训练模型许可不同，�
 
 中文语义与动作已统一为“中文检索”，负向描述和重排功能已移除，见 [ADR 0005](docs/adr/0005-simplify-semantic-search.md)。
 
-A 版正式页面接入及当时移除图文联合查询的历史规格与验证见 [.scratch/video-library-page/spec.md](.scratch/video-library-page/spec.md)。原型保留在 `codex/prototype-video-library` 分支。图文联合检索现已恢复：参考图与自然语言联合编码进入 Qwen 片段检索，纯图片仍走 OWLv2；详见本文功能说明及 [运行指南](docs/首次安装与运行.md)。
+A 版正式页面接入及当时移除图文联合查询的历史规格与验证见 [.scratch/video-library-page/spec.md](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/.scratch/video-library-page/spec.md)。原型保留在 `codex/prototype-video-library` 分支。图文联合检索现已恢复：参考图与自然语言联合编码进入 Qwen 片段检索，纯图片仍走 OWLv2；详见本文功能说明及 [运行指南](docs/首次安装与运行.md)。

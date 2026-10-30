@@ -25,7 +25,7 @@
   el('experiment-status').textContent='正在读取实验记录…';
   try{
    const response=await fetch('/mvp-api/action-report?run='+el('experiment-run').value);
-   if(!response.ok)throw new Error('实验记录暂不可用');report=await response.json();
+   if(!response.ok)throw new Error('本机没有此轮实验记录；实验数据不随源码交付，请返回检索台使用视频检索。');report=await response.json();
    if(report.status!=='completed')throw new Error('此轮实验尚未完成或未成功，请查看实验日志。');
    const peak=report.sampled_metal_peaks?.mps_driver_bytes;
    const observed=Math.max(...report.clips.map(c=>c.memory.mps_driver_bytes));

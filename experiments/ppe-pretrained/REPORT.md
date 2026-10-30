@@ -2,7 +2,7 @@
 
 **本批素材中 YOLOv8s 的裸头检出更多、戴帽误报更少，适合作为后续实验基线；但它仍漏掉 29/45 个明确裸头帧，两者都不宜直接接入正式检索作硬过滤。** 结论只适用于本轮固定阈值与素材，没有训练或调参。
 
-检测框实图见 [三列对照](comparison.jpg)，具体误报和漏检位置见 [视觉复核](visual-review.md)。
+检测框实图见 [三列对照](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/comparison.jpg)，具体误报和漏检位置见 [视觉复核](visual-review.md)。
 
 本轮只做离线检测，没有训练或微调；两个权重在独立进程中顺序运行。所有识别指标仅使用原主测试第一轮，三轮用于重复性；如果 timing-clean 完成，性能表优先使用逐帧排除已检测并发的补测，识别结果不替换。
 
@@ -62,7 +62,7 @@ unknown 不参与二分类分母：其中的未戴帽预测未经人工确定，
 | library41 | unknown | 54 | 38 / 8 | 0.254–0.867 | 2 / 10 | 0.254–0.363 |
 | head_out_of_frame | unknown | 1 | 0 / 1 | — | 0 / 1 | — |
 
-每帧标签、是否检出安全帽/人员、no-helmet 最高分、时间戳和错误类型见 [frame-results.csv](frame-results.csv)。框坐标及所有类别的分数保留在两个原始结果 JSON；以上是原始检测存在性统计，未强制关联到同一人，未运行 ByteTrack。
+每帧标签、是否检出安全帽/人员、no-helmet 最高分、时间戳和错误类型见 [frame-results.csv](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/frame-results.csv)。框坐标及所有类别的分数保留在两个原始结果 JSON；以上是原始检测存在性统计，未强制关联到同一人，未运行 ByteTrack。
 
 ## 耗时
 
@@ -117,4 +117,4 @@ unknown 不参与二分类分母：其中的未戴帽预测未经人工确定，
 
 离线复算：`python3 experiments/ppe-pretrained/evaluate.py`。它只读取已有结果和冻结标签，不加载模型、不访问正式数据库。
 
-两模型的仓库 revision、下载 SHA256、文件大小和路径见 [models.json](models.json)；固定标签哈希见 [labels-freeze.json](labels-freeze.json)。本轮数据与模型训练来源可能存在重叠，未作训练集排重，不能作为独立泛化评测。
+两模型的仓库 revision、下载 SHA256、文件大小和路径见 [models.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/models.json)；固定标签哈希见 [labels-freeze.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/labels-freeze.json)。本轮数据与模型训练来源可能存在重叠，未作训练集排重，不能作为独立泛化评测。

@@ -1,9 +1,0 @@
-{
-  "production_unchanged": true,
-  "checked_after_paired_test": true,
-  "source_sha256": {
-    "qwen_position_cache.py": "b025a33bd4b8724b7e52747617349b7c7204c4d8256a1b6b3fa95bfa4db373a8",
-    "qwen_position_evaluate.py": "2cd22d7ae196a8eaf3b66e4f94cd4ddc324b0a4fb291b4b8a9f396ec5806ade9",
-    "test_qwen_position_cache.py": "bc8d77d15d1c198135696e8c5664c3c2c9e8d2888812b7e1789d34bb82c14b5b"
-  }
-}

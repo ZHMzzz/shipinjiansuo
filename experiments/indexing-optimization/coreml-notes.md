@@ -4,7 +4,7 @@
 
 ## 配置与证据
 
-- 基线：[cpu-smoke.json](cpu-smoke.json)；候选：[coreml-smoke.json](coreml-smoke.json)；执行诊断：[coreml-profile.json](coreml-profile.json)。
+- 基线：[cpu-smoke.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/cpu-smoke.json)；候选：[coreml-smoke.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/coreml-smoke.json)；执行诊断：[coreml-profile.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/indexing-optimization/coreml-profile.json)。
 - 环境：InsightFace 0.7.3、ONNX Runtime 1.31.1。原 `buffalo_l` 权重、640×640 检测、0.5 检测阈值、detection/recognition/genderage 均保留。
 - CPU 为显式 CPUExecutionProvider；候选为 CoreMLExecutionProvider + CPUExecutionProvider，使用 MLProgram、MLComputeUnits=ALL、RequireStaticInputShapes=1 及实验目录内编译缓存。
 - 两边均使用 ORT 默认线程与图优化设置，保留旧版加载五个 ONNX 后筛除两个人脸关键点模型的行为。候选的有效三个模型只在实验缓存固定输入形状；initializer 字节哈希与原文件一致。
@@ -39,7 +39,7 @@ CoreML 第一次 session 初始化为 1.695 秒，第一张图第一次推理为
 
 实际缓存的五个 `compiled_model.mlmodelc/model.mil` 文件中，检测、识别、属性分区均标注 `fp32`，未出现 `fp16` 类型；ORT 返回的 AllowLowPrecisionAccumulationOnGPU=0。实验没有主动进行 FP16 转换，也不能把 `coremltools.convert()` 的默认 FP16 策略套用到这个 ORT 转换路径。权重一致及 FP32 类型并不保证与 CPU 逐位相同。
 
-缓存核查位置位于 [CoreML 缓存](cache/face/compiled/coreml/)：检测模型分区 fp32 标记 366 处，识别两个分区 640/6 处，属性两个分区 195/13 处，五个分区 fp16 标记均为零。这是类型核查，不是硬件指令追踪。
+缓存核查位置为 `cache/face/compiled/coreml/`（本地生成，不随源码交付）：检测模型分区 fp32 标记 366 处，识别两个分区 640/6 处，属性两个分区 195/13 处，五个分区 fp16 标记均为零。这是类型核查，不是硬件指令追踪。
 
 ## 一致性边界
 

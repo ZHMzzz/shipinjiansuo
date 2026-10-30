@@ -45,7 +45,7 @@
 
 有限的改善来自英文“Workers wearing safety helmets.”：8B 将三段戴帽片段全部排进前三，2B 的第三位为头部裸露的摔倒片段。因此平均 Recall@3 上升约 2.8 个百分点，但 Hit@1、Hit@3、Hit@5、MRR 和中文指标均未提高。其他简单动作查询两者均能首位命中。
 
-完整逐查询排名见 [query-comparison.csv](query-comparison.csv)，原始相似度见两个模型的 JSON。不同模型的相似度数值不能当成同一概率尺度比较。
+完整逐查询排名见 [query-comparison.csv](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/query-comparison.csv)，原始相似度见两个模型的 JSON。不同模型的相似度数值不能当成同一概率尺度比较。
 
 ## 内存与速度的解释
 
@@ -88,12 +88,12 @@ python experiments/qwen8b-int8/summarize.py
 
 顺序执行两种模型，避免并发影响测量。汇总脚本会检查本次保存的生产快照；若以后正式视频库有正常更新，最后的保护校验将失败，需要为新实验重新保存基线，不能忽略校验错误。
 
-- [summary.json](summary.json)：汇总指标和逐段输入对齐检查。
-- [2b-fp16.json](2b-fp16.json)、[8b-q8.json](8b-q8.json)：逐段耗时、逐查询排名、内存快照。
+- [summary.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/summary.json)：汇总指标和逐段输入对齐检查。
+- [2b-fp16.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/2b-fp16.json)、[8b-q8.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/8b-q8.json)：逐段耗时、逐查询排名、内存快照。
 - `*-resources.json`：100ms 进程树与系统内存采样。
 - `initial-baseline/`：首次 2B 运行；`encoder-only-timing/`：8B 加入共享预处理计时前的诊断结果，不用于主表片段速度。
-- [model-provenance.json](model-provenance.json)、[runtime-provenance.json](runtime-provenance.json)：版本、下载来源及 SHA-256。
-- [production-before.json](production-before.json)、[production-after.json](production-after.json)：正式配置和索引保护校验。
+- [model-provenance.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/model-provenance.json)、[runtime-provenance.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/runtime-provenance.json)：版本、下载来源及 SHA-256。
+- [production-before.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/production-before.json)、[production-after.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-int8/production-after.json)：正式配置和索引保护校验。
 - `models/`：约 8.80GB 十进制量化权重；整个独立实验目录约 8.6GiB。大权重、运行时、帧和生成向量不进入 Git。
 
 模型来源：[Qwen3-VL-Embedding-8B Q8_0 转换仓库](https://huggingface.co/mradermacher/Qwen3-VL-Embedding-8B-GGUF)，固定 revision `ffa49879fdb91ed1a436fbc84f37b123f714bb13`；两个下载文件均通过仓库 LFS SHA-256 校验。运行时来源：[llama.cpp b11944](https://github.com/ggml-org/llama.cpp/releases/tag/b11944)。

@@ -2,24 +2,24 @@
 
 使用两份完整的 `*-mps-fp32.json` 第 1 轮原始结果，固定 `conf=0.25`、`iou=0.7`、640×640、FP32/MPS。没有为了图示改变阈值、删除错误框或修改预测前标签。仅渲染人员、戴帽和未戴帽三类；其他 PPE 类仍保留在原始 JSON。
 
-[完整 8 行对照图](comparison.jpg)依次为原始输入、YOLO11n、YOLOv8s。蓝框为人员，绿框为安全帽，红框为未戴帽。图中 `no_helmet` 是对两个模型类别名称的显示归一化；模型原始输出名称保留在 JSON。图片上原来就有的字幕和检测框仍然存在，必须与左列原图比较，避免把素材自带的红色 `head:` 框误认为本次模型检测。
+[完整 8 行对照图](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/comparison.jpg)依次为原始输入、YOLO11n、YOLOv8s。蓝框为人员，绿框为安全帽，红框为未戴帽。图中 `no_helmet` 是对两个模型类别名称的显示归一化；模型原始输出名称保留在 JSON。图片上原来就有的字幕和检测框仍然存在，必须与左列原图比较，避免把素材自带的红色 `head:` 框误认为本次模型检测。
 
 本复核用 `view_image` 实际查看了所有 8 行及附加漏检行，比较检测位置与原图。以下是实例观察，不是完整逐人框标注，也不计算目标级 IoU/mAP。
 
 | 原始帧 | 预测前标签 | YOLO11n | YOLOv8s | 位置核验 |
 |---|---|---|---|---|
-| [工地摔倒 4.000 秒](review-rows/library21_0008.jpg) | 戴帽 | 黄帽约 0.549 | 黄帽约 0.50 | 两个帽框都落在人物头部；11n 另将远处挖掘机框成人员，不能只看是否出现正确帽框就认为全部检测正确 |
-| [摘帽前 2.000 秒](review-rows/hat_before_0004.jpg) | 戴帽 | 同一站立人员头部同时报 `helmet=0.531` 和 `no-helmet=0.288` | 两个红帽均有帽框，无未戴帽框 | 11n 未戴帽框与站立者明显红色安全帽重合，属于直接误报；没有提高阈值隐藏它 |
-| [摘帽过渡 5.000 秒](review-rows/hat_transition_0002.jpg) | 不确定 | 报帽，无未戴帽 | 报帽，无未戴帽 | 帽子和双手遮住头部，看到帽子本身不能严格推出“正在佩戴”；保留 unknown，不按阴性正确计分 |
-| [摘帽后放大画面 12.000 秒](review-rows/hat_after_0008.jpg) | 明确裸头 | `no-helmet=0.695`，框在裸头上 | 未报未戴帽，只识别人和另一顶帽子 | 这例 11n 命中而 8s 漏检，展示了 8s 并非在所有素材上更好。画面本身含字幕和原始框 |
-| [多人施工画面 6.485 秒](review-rows/library30_0013.jpg) | 明确裸头 | 未报裸头 | `No-Helmet=0.378` | 8s 红框落在中间迷彩衣男子裸露头部，11n 漏检；两模型还把顶部起重吊钩识别人，属于背景人员误报 |
-| [仓库行走 1.001 秒](review-rows/fixture_worker_barehead_0002.jpg) | 明确裸头 | 识别人，但未报裸头 | `No-Helmet=0.579` | 8s 红框覆盖实际裸露头部；11n 此帧漏检。该素材与摔倒 fixture 同源 |
-| [脚手架监控 4.000 秒](review-rows/library41_0008.jpg) | 不确定 | 输出 3 个未戴帽框，约 0.717/0.471/0.322 | 识别人，无未戴帽框 | 11n 的约 0.471 框位于近处可见黄色安全帽人员头部，存在局部误报；其余远景头部及上层出画人员不能可靠判读。8s 没报未戴不等于已证明所有人合规 |
-| [头部出画诊断图](review-rows/head_out_of_frame_0000.jpg) | 不确定 | 识别躯干为人，无帽/未戴帽框 | 识别躯干为人，无帽/未戴帽框 | 两模型未直接把出画头部报为未戴，但检测器也没有显式输出“无法判断”；下游不能把“有人且没检测到帽子”改成未戴帽 |
+| [工地摔倒 4.000 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/library21_0008.jpg) | 戴帽 | 黄帽约 0.549 | 黄帽约 0.50 | 两个帽框都落在人物头部；11n 另将远处挖掘机框成人员，不能只看是否出现正确帽框就认为全部检测正确 |
+| [摘帽前 2.000 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/hat_before_0004.jpg) | 戴帽 | 同一站立人员头部同时报 `helmet=0.531` 和 `no-helmet=0.288` | 两个红帽均有帽框，无未戴帽框 | 11n 未戴帽框与站立者明显红色安全帽重合，属于直接误报；没有提高阈值隐藏它 |
+| [摘帽过渡 5.000 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/hat_transition_0002.jpg) | 不确定 | 报帽，无未戴帽 | 报帽，无未戴帽 | 帽子和双手遮住头部，看到帽子本身不能严格推出“正在佩戴”；保留 unknown，不按阴性正确计分 |
+| [摘帽后放大画面 12.000 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/hat_after_0008.jpg) | 明确裸头 | `no-helmet=0.695`，框在裸头上 | 未报未戴帽，只识别人和另一顶帽子 | 这例 11n 命中而 8s 漏检，展示了 8s 并非在所有素材上更好。画面本身含字幕和原始框 |
+| [多人施工画面 6.485 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/library30_0013.jpg) | 明确裸头 | 未报裸头 | `No-Helmet=0.378` | 8s 红框落在中间迷彩衣男子裸露头部，11n 漏检；两模型还把顶部起重吊钩识别人，属于背景人员误报 |
+| [仓库行走 1.001 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/fixture_worker_barehead_0002.jpg) | 明确裸头 | 识别人，但未报裸头 | `No-Helmet=0.579` | 8s 红框覆盖实际裸露头部；11n 此帧漏检。该素材与摔倒 fixture 同源 |
+| [脚手架监控 4.000 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/library41_0008.jpg) | 不确定 | 输出 3 个未戴帽框，约 0.717/0.471/0.322 | 识别人，无未戴帽框 | 11n 的约 0.471 框位于近处可见黄色安全帽人员头部，存在局部误报；其余远景头部及上层出画人员不能可靠判读。8s 没报未戴不等于已证明所有人合规 |
+| [头部出画诊断图](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/head_out_of_frame_0000.jpg) | 不确定 | 识别躯干为人，无帽/未戴帽框 | 识别躯干为人，无帽/未戴帽框 | 两模型未直接把出画头部报为未戴，但检测器也没有显式输出“无法判断”；下游不能把“有人且没检测到帽子”改成未戴帽 |
 
 ## 额外保留的共同漏检
 
-[摘帽后 10.000 秒](review-rows/hat_after_0004.jpg)：站立者裸头清楚可见，但两个模型均未输出未戴帽检测。原视频自带红色 `head:` 框不是本轮检测结果。此帧仍在全量统计中，没有因两个模型都失败而删掉。
+[摘帽后 10.000 秒](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/ppe-pretrained/review-rows/hat_after_0004.jpg)：站立者裸头清楚可见，但两个模型均未输出未戴帽检测。原视频自带红色 `head:` 框不是本轮检测结果。此帧仍在全量统计中，没有因两个模型都失败而删掉。
 
 ## 对结果解读的影响
 

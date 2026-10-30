@@ -30,7 +30,7 @@
 - 清理前后 377 个保留文件 SHA-256 一致。
 - 97 个受保护文件（含现有 2B 权重、索引、配置、相关代码及 40 个源视频）SHA-256 一致。
 - 活动项目指针不变；没有切换模型、改写生产索引或修改生产配置。
-- 逐项删除体积与校验结果见 [cleanup-result.json](cleanup-result.json)，完整清理前清单位于 `.scratch/qwen8b-full-library/cleanup-plan.json`。
+- 逐项删除体积与校验结果见 [cleanup-result.json](https://github.com/ZHMzzz/shipinjiansuo/blob/f5bc7e04e9203ab06b4def75b7038199215ee6ff/experiments/qwen8b-full-library/cleanup-result.json)，完整清理前清单位于 `.scratch/qwen8b-full-library/cleanup-plan.json`。
 
 ## 以后重新运行
 

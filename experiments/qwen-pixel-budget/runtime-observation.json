@@ -1,7 +1,0 @@
-{
-  "package_version": "0.0.14",
-  "source": "/Users/zhanghemign/Desktop/\u89c6\u9891\u68c0\u7d22/.venv/lib/python3.11/site-packages/qwen_vl_utils/vision_process.py",
-  "sha256": "f3710ced8ffe735da57d08cf5236cf9d326ff646ed1bdad2e62593a7801adc33",
-  "FRAME_FACTOR": 2,
-  "per_frame_budget_formula": "total_pixels / nframes * FRAME_FACTOR"
-}
