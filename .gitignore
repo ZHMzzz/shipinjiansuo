@@ -37,3 +37,15 @@ __pycache__/
 
 # Browser verification artifacts
 /.playwright-mcp/
+/.playwright-cli/
+/output/playwright/
+
+# Local scratch work and generated presentations
+/.scratch/
+/output/presentation/
+
+# Local experiment work and outputs
+/experiments/onejev-helmet-images/
+/experiments/owl-qwen-cascade/
+/experiments/red-backpack-offline/
+/experiments/wise-weighted-comparison/
