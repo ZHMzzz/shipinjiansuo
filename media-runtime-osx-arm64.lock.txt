@@ -1,5 +1,5 @@
-List of packages in environment: "/Users/zhanghemign/Desktop/视频检索/.media-runtime"
-
+# FFmpeg 6 runtime for macOS Apple Silicon (explicit package URLs).
+@EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-arm64/aom-3.9.1-h7bae524_0.conda
 https://conda.anaconda.org/conda-forge/osx-arm64/bzip2-1.0.8-h4e30115_10.conda
 https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.10.23-hbd8a1cb_0.conda

@@ -86,7 +86,7 @@
 - 原尺寸配对图片结果：[`paired-results.json`](../experiments/reranker-ablation/paired-results.json)。
 - 看过主实验后追加的探索性设计与结果：[`followup-design.json`](../experiments/reranker-ablation/followup-design.json)、[`followup-results.json`](../experiments/reranker-ablation/followup-results.json)。追加结果不替代或覆盖主实验。
 - 素材来源与裁剪：[`paired/sources.json`](../experiments/reranker-ablation/paired/sources.json)、[`paired/manifest.json`](../experiments/reranker-ablation/paired/manifest.json)。
-- 脚本：[`ablate_reranker.py`](../scripts/ablate_reranker.py)、[`ablate_reranker_followup.py`](../scripts/ablate_reranker_followup.py)。
+- 历史脚本：`ablate_reranker.py`、`ablate_reranker_followup.py` 已随重排功能移除（见 [ADR 0005](adr/0005-simplify-semantic-search.md)）。下列命令只记录当时实验，不能在当前版本直接执行。
 
 ```sh
 source scripts/env.sh
