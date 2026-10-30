@@ -1,13 +1,14 @@
 """Identity-gated face hits ranked by their containing Qwen video windows."""
 from wise.api.services.search.base import SearchOutput
 from wise.api.services.search.face_text import fuse_face_text_frame_results
-from wise.data_models import ModalityType
+if __package__:
+    from .face_search import search_registered_faces
+else:
+    from face_search import search_registered_faces
 
 
-def person_scene_search(vector, scene, threshold, *, face_model, search, actions, project, allowed_media=None):
-    count = search.search_indices[ModalityType.VIDEO][face_model].index.ntotal
-    faces = search.search_with_feature(vector, modality_type=ModalityType.VIDEO,
-        feature_extractor_id=face_model, start=0, end=count, filter_specs={})
+def person_scene_search(vector, scene, threshold, *, face_model, search, actions, project, allowed_media=None, query_image=None):
+    faces = search_registered_faces(vector, search=search, face_model=face_model, threshold=threshold)
     matches = [(vid, score, meta, ext) for vid, score, meta, ext in
                zip(faces.ids, faces.distances, faces.metadata, faces.ext_metadata)
                if score >= threshold and meta.timestamp is not None
@@ -16,7 +17,8 @@ def person_scene_search(vector, scene, threshold, *, face_model, search, actions
     snapshot = actions.get_snapshot(project)
     if snapshot is None: raise ValueError('Qwen 片段索引尚未建立')
     meta, matrix, _ = snapshot
-    query, _ = actions.query_vector(scene)
+    query, _ = (actions.query_vector(scene, image=query_image) if query_image is not None
+                else actions.query_vector(scene))
     scores = matrix @ query[0]
     segments = {}
     for segment, score in zip(meta['segments'], scores):

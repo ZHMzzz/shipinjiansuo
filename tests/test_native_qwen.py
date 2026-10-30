@@ -17,7 +17,7 @@ from wise.data_models import MediaType, ModalityType
 from wise.wise_project import WiseProject
 
 from scripts.action_search import ActionEngine, media_catalog, plan, read_snapshot
-from scripts.library_search import native_text_search, normalize
+from scripts.library_search import native_segment_search, normalize
 from scripts.native_qwen import QWEN, prepare_native_qwen_project, sync_native_qwen, validate_native_qwen
 from scripts.qwen_project import FACE, OWL
 from scripts.video_deletion import delete_video, media_revision, read_media, validate_stores
@@ -150,7 +150,7 @@ def test_first_start_without_segments_allows_background_backfill(tmp_path):
     shutil.rmtree(old/'action-index')
     assert prepare_native_qwen_project(tmp_path) == old
     with pytest.raises(HTTPException) as error:
-        native_text_search(None,SimpleNamespace(search_indices={}),None,'写字',20)
+        native_segment_search(None,SimpleNamespace(search_indices={}),None,'写字',20)
     assert error.value.status_code == 409
 
 
@@ -187,6 +187,7 @@ def test_real_wise_ranking_truncation_merging_and_filename_constraint(tmp_path):
         db.execute("UPDATE media SET size_in_bytes=100,date_modified='2026-10-27 00:00:00',num_frames=100")
     with sqlite3.connect(stage/'thumbs.db') as db:
         db.execute("INSERT INTO thumbnails(media_id,timestamp,content) VALUES(10,4,?)",(b'thumbnail',))
+        db.execute("INSERT INTO thumbnails(media_id,timestamp,content) VALUES(10,8,?)",(b'thumbnail',))
     catalog = media_catalog(stage)
     # Best hit is a later overlapping window; all scores below the old gate.
     scores = np.array([.3,.4,.2,.1],dtype='float32')
@@ -200,7 +201,7 @@ def test_real_wise_ranking_truncation_merging_and_filename_constraint(tmp_path):
     embedding = EmbeddingService({QWEN:extractor})
     project = LocalWiseProjectService(WiseProject(stage,read_only=True),config)
     search = LocalSearchService(project,embedding)
-    data, limited = native_text_search(project,search,config,'骑自行车',2)
+    data, limited = native_segment_search(project,search,config,'骑自行车',2)
     terms = [TextQueryTerm(term_id='text',is_negative=False,txt='骑自行车')]
     raw = search.search(terms,EmbeddingConfig(query_prefix=''),modality_type=ModalityType.VIDEO,
         feature_extractor_id=QWEN,start=0,end=2,filter_specs={})
@@ -213,10 +214,21 @@ def test_real_wise_ranking_truncation_merging_and_filename_constraint(tmp_path):
     result = normalize(data,cards,'text',2,.45)
     assert [x['id'] for x in result['items']] == [10]  # No expansion to fill two videos.
     assert result['items'][0]['start'] == 4 and result['items'][0]['end'] == 12
-    filtered, capped = native_text_search(project,search,config,'骑自行车',2,allowed={20})
+    filtered, capped = native_segment_search(project,search,config,'骑自行车',2,allowed={20})
     assert not capped
     assert [h['media_id'] for h in filtered['video_results']['merged_windows']] == ['20']
-    assert native_text_search(project,search,config,'骑自行车',2,allowed=set()) == ({'video_results':None},False)
+    assert native_segment_search(project,search,config,'骑自行车',2,allowed=set()) == ({'video_results':None},False)
     extractor.extract_text_features.assert_called_with(['骑自行车'])
+    # Joint encoding supplies one Qwen vector, with real WISE ranking and constraints.
+    actions = ActionEngine(); actions.model = Mock(return_value=extractor)
+    extractor.extract_query_features.return_value = np.array([[0,1,0]], dtype='float32')
+    extractor.extract_text_features.reset_mock()
+    image = object()
+    mixed, _ = native_segment_search(project,search,config,'骑自行车',2,image=image,actions=actions)
+    extractor.extract_query_features.assert_called_once_with(image, '骑自行车')
+    extractor.extract_text_features.assert_not_called()
+    assert mixed['video_results']['unmerged_windows'][0]['media_id'] == '20'
+    filtered, _ = native_segment_search(project,search,config,'骑自行车',2,allowed={10},image=image,actions=actions)
+    assert all(h['media_id'] == '10' for h in filtered['video_results']['unmerged_windows'])
     project.wise_project.db_engine.dispose()
     project.wise_project.thumbsdb_engine.dispose()

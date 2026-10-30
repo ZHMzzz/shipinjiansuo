@@ -15,8 +15,10 @@ import numpy as np
 
 if __package__:
     from .action_search import SETTINGS, media_catalog, plan, read_legacy_snapshot
+    from .release_retention import publish_pointer, prune_releases
 else:
     from action_search import SETTINGS, media_catalog, plan, read_legacy_snapshot
+    from release_retention import publish_pointer, prune_releases
 
 QWEN = SETTINGS['model']
 MANIFEST = 'qwen-encoding.json'
@@ -188,9 +190,9 @@ def prepare_native_qwen_project(root):
             validate_project(stage,require_owl=True)
             pointer = root/'projects/demo'
             if pointer.resolve() != current: raise RuntimeError('视频库版本已变化，未发布迁移')
-            temporary = root/'projects/demo.next';temporary.unlink(missing_ok=True)
-            temporary.symlink_to(os.path.relpath(stage,pointer.parent));os.replace(temporary,pointer)
+            publish_pointer(root, stage)
             published = True
+            prune_releases(root)
             return stage
         finally:
             if not published and release.exists(): shutil.rmtree(release)

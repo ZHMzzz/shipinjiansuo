@@ -119,6 +119,26 @@ def test_text_cache_uses_trimmed_query_and_rejects_empty():
     with pytest.raises(ValueError): engine.query_vector(' ')
 
 
+def test_joint_queries_use_both_inputs_without_polluting_text_cache():
+    engine = ActionEngine(); model = Mock()
+    model.extract_text_features.return_value = np.array([[1.,0.]], dtype='float32')
+    model.extract_query_features.side_effect = [np.array([[0.,2.]]), np.array([[-2.,0.]])]
+    engine.model = Mock(return_value=model)
+    text, _ = engine.query_vector('街道')
+    images = [object(), object()]
+    first, cached = engine.query_vector(' 街道 ', image=images[0])
+    second, cached_again = engine.query_vector('街道', image=images[1])
+    assert not cached and not cached_again
+    np.testing.assert_array_equal(first, [[0.,1.]])
+    np.testing.assert_array_equal(second, [[-1.,0.]])
+    assert model.extract_query_features.call_args_list[0].args == (images[0], '街道')
+    assert model.extract_query_features.call_args_list[1].args == (images[1], '街道')
+    current, cached = engine.query_vector('街道')
+    assert cached
+    np.testing.assert_array_equal(current, text)
+    model.extract_text_features.assert_called_once_with(['街道'])
+
+
 def test_filename_candidate_is_not_lost_beyond_initial_shortlist(tmp_path):
     path=project(tmp_path,duration=500)
     with sqlite3.connect(path/'metadata/internal.db') as db:

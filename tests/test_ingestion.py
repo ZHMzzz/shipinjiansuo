@@ -75,3 +75,73 @@ def test_restart_recovers_published_job_and_marks_unpublished_interrupted(tmp_pa
     assert state[a['id']]['media_id']==15
     assert state[b['id']]['status']=='failed'
     assert '重试' in state[b['id']]['message']
+
+
+def test_batch_publications_prune_history_but_failed_upload_keeps_both_versions(tmp_path, monkeypatch):
+    import asyncio
+    import concurrent.futures
+    import json
+    from types import SimpleNamespace
+    from test_video_deletion import fixture
+    from scripts import ingestion
+    from scripts.qwen_project import OWL
+
+    m, original, _ = fixture(tmp_path)
+    m.frame_worker = None
+    m.build_actions = lambda *args: None
+    monkeypatch.setattr(ingestion.subprocess, 'run', lambda *args, **kwargs: SimpleNamespace(
+        returncode=0, stdout=json.dumps({'streams':[{'codec_type':'video'}], 'format':{'duration':2}})))
+
+    def run_coroutine(coroutine, loop):
+        future = concurrent.futures.Future()
+        try: future.set_result(asyncio.run(coroutine))
+        except Exception as exc: future.set_exception(exc)
+        return future
+    monkeypatch.setattr(ingestion.asyncio, 'run_coroutine_threadsafe', run_coroutine)
+    def run(command, log, on_line=None):
+        if 'create-index' not in command: return
+        stage = Path(command[command.index('--project-dir')+1])
+        with sqlite3.connect(stage/'metadata/internal.db') as db:
+            db.execute('INSERT INTO source_collections(id,location,type) VALUES(?,?,?)', (next_id,str((m.uploads/job['id'])/'prepared'),'DIR'))
+            db.execute("INSERT INTO media(id,source_collection_id,path,media_type,format,width,height,duration) VALUES(?,?,'clip.mp4','VIDEO','mp4',64,64,2)", (next_id,next_id))
+            db.execute('INSERT INTO vectors(id,modality,feature_extractor_id,media_id,timestamp) VALUES(?,?,?,?,?)', (next_id,'VIDEO',OWL,next_id,0))
+        with sqlite3.connect(stage/'thumbs.db') as db:
+            db.execute('INSERT INTO thumbnails(media_id,timestamp,content) VALUES(?,0,?)',(next_id,b'thumbnail'))
+    m.run = run
+    for next_id in (1000,1001,1002):
+        job = m.enqueue(UploadFile(file=io.BytesIO(str(next_id).encode()),filename='clip.mp4'))['job']
+        with m.mutation_lock: m.process_job(job)
+        assert next(j for j in m.jobs() if j['id']==job['id'])['status']=='completed'
+        assert len(list((tmp_path/'projects/releases').iterdir()))==2
+        assert ((m.uploads/job['id'])/'source.mp4').exists()
+    assert not original.parent.exists()
+    before = set((tmp_path/'projects/releases').iterdir())
+    current = (tmp_path/'projects/demo').resolve()
+    async def fail(stage): raise RuntimeError('injected publication failure')
+    m.publisher = fail
+    next_id = 1003
+    job = m.enqueue(UploadFile(file=io.BytesIO(b'fail'),filename='clip.mp4'))['job']
+    with m.mutation_lock: m.process_job(job)
+    assert next(j for j in m.jobs() if j['id']==job['id'])['status']=='failed'
+    assert (tmp_path/'projects/demo').resolve()==current
+    assert set((tmp_path/'projects/releases').iterdir())==before
+
+
+def test_successful_backfill_also_retires_older_release(tmp_path, monkeypatch):
+    import shutil
+    from test_video_deletion import fixture
+    from scripts.release_retention import publish_pointer
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1]/'scripts'))
+    import action_search
+    m, old, _ = fixture(tmp_path)
+    previous = tmp_path/'projects/releases/previous/demo'
+    shutil.copytree(old,previous); publish_pointer(tmp_path,previous)
+    def incomplete(project, complete=False):
+        if complete: raise ValueError('missing segment')
+        return None
+    monkeypatch.setattr(action_search,'read_snapshot',incomplete)
+    m.build_actions = lambda *args: None
+    with m.mutation_lock: m.backfill_actions()
+    assert m.action_state['status']=='ready'
+    assert previous.exists() and not old.parent.exists()
+    assert len(list((tmp_path/'projects/releases').iterdir()))==2

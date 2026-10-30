@@ -26,8 +26,19 @@ if __name__ == '__main__':
     for endpoint in ['/mvp-api/search', '/mvp-api/library/search']:
         response = requests.post(BASE+endpoint, data={'query':'在街道上'},
             files={'photo':('bag.jpg',(ROOT/'data/queries/backpack-independent.jpg').read_bytes(),'image/jpeg')},timeout=30)
-        assert response.status_code == 400, response.text
-    report['mixed_query'] = 'rejected at both public endpoints'
+        response.raise_for_status()
+        payload = response.json()
+        if endpoint.endswith('/library/search'):
+            assert payload['mode'] == 'image_text' and payload['items']
+            report['mixed_library'] = payload['items'][:5]
+        else:
+            assert payload['video_results']['unmerged_windows']
+    report['mixed_query'] = 'Qwen joint query accepted at both public endpoints'
+    response = requests.post(BASE+'/mvp-api/library/search',
+        files={'photo':('bag.jpg',(ROOT/'data/queries/backpack-independent.jpg').read_bytes(),'image/jpeg')},timeout=120)
+    response.raise_for_status()
+    assert response.json()['mode'] == 'object' and response.json()['items']
+    report['image_only'] = response.json()['items'][:5]
     response = requests.post(BASE+'/mvp-api/people/演示人物A/search',
                              data=dict(scene='坐在汽车里', threshold=.45), timeout=30)
     response.raise_for_status()
@@ -45,4 +56,4 @@ if __name__ == '__main__':
     assert not response.json()['video_results']
     report['strict_person_threshold'] = 'empty as expected'
     (ROOT/'logs/combined-verification.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
-    print('PASS: mixed query rejected, person + scene and identity threshold')
+    print('PASS: Qwen joint query, OWLv2 image-only query, person + scene and identity threshold')

@@ -1,5 +1,4 @@
 """Local research extension. WISE retains decoding, embeddings, FAISS and playback APIs."""
-import io
 import logging
 import sqlite3
 import time
@@ -11,14 +10,12 @@ from typing import Literal
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-import numpy as np
 import uvicorn
 from fastapi import File, Form, Header, HTTPException, UploadFile
-from fastapi.responses import FileResponse, RedirectResponse, Response
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, UnidentifiedImageError
 from wise.api import create_app
-from wise.api.common import VectorQueryTerm
 from wise.api.dependencies import EmbeddingServiceDep, ProjectServiceDep, SearchServiceDep
 from wise.api.standalone.search import search_output_to_response
 from wise.config import APIConfig
@@ -28,11 +25,15 @@ from wise.api.services.project import LocalWiseProjectService
 from wise.api.services.search import LocalSearchService
 from wise.wise_project import WiseProject
 from ingestion import IngestionManager, MAX_UPLOAD
+from release_retention import publish_pointer
 from combined_search import person_scene_search
+from people_store import initialize_people, load_person_vectors
+from people_api import create_people_router
+from face_search import search_registered_faces
 from query_image import decode_query_image
 from qwen_project import validate_project, FACE
 from native_qwen import prepare_native_qwen_project, validate_native_qwen, QWEN
-from library_search import search_library, native_text_search
+from library_search import search_library, native_segment_search
 from video_deletion import delete_video
 from library_catalog import list_video_catalog
 from original_media import original_response
@@ -52,7 +53,9 @@ actions = ActionEngine()
 async def serialize_search_and_publication(request, call_next):
     # Keep dependency resolution and inference consistent during a version swap.
     # Uploads and task polling remain available while a search is running.
-    if request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/search', '/mvp-api/library/search')):
+    reads_catalog = request.method in ('GET', 'HEAD') and request.url.path.startswith(
+        ('/mvp-api/videos', '/mvp-api/actions/status'))
+    if reads_catalog or request.url.path.startswith(('/demo/', '/mvp-api/people', '/mvp-api/search', '/mvp-api/library/search')):
         async with search_gate:
             return await call_next(request)
     return await call_next(request)
@@ -81,11 +84,7 @@ async def publish_project(stage):
             info.max_search_results=new_config.max_search_results
             return service,search,info
         service,search,info = await asyncio.to_thread(load)
-        pointer=ROOT/'projects/demo'
-        temporary=ROOT/'projects/demo.next'
-        temporary.unlink(missing_ok=True)
-        temporary.symlink_to(os.path.relpath(stage,pointer.parent))
-        os.replace(temporary,pointer)
+        publish_pointer(ROOT, stage)
         old=dependencies.project_service
         config=new_config
         dependencies.config=new_config
@@ -210,8 +209,8 @@ async def remove_video(media_id: int, revision: str = Header(..., alias='If-Matc
         raise HTTPException(503, '删除未完成，请重试：'+str(exc)[:200]) from exc
 
 
-with sqlite3.connect(DB) as db:
-    db.execute('CREATE TABLE IF NOT EXISTS people (name TEXT PRIMARY KEY, vector BLOB NOT NULL, photo BLOB NOT NULL, model TEXT NOT NULL)')
+initialize_people(DB)
+app.include_router(create_people_router(DB, FACE))
 
 
 @app.get('/')
@@ -219,68 +218,12 @@ def home():
     return RedirectResponse('/mvp/')
 
 
-@app.get('/mvp-api/people')
-def people():
-    with sqlite3.connect(DB) as db:
-        return [row[0] for row in db.execute('SELECT name FROM people ORDER BY name')]
-
-
-@app.get('/mvp-api/people/{name}/photo')
-def person_photo(name: str):
-    """Read the existing enrollment photo for the maintenance list."""
-    with sqlite3.connect(DB) as db:
-        row = db.execute('SELECT photo FROM people WHERE name=?', (name,)).fetchone()
-    if row is None:
-        raise HTTPException(404, '此姓名尚未登记')
-    return Response(content=row[0], media_type='image/jpeg', headers={'Cache-Control':'no-store'})
-
-
-@app.post('/mvp-api/people')
-def register(embedding: EmbeddingServiceDep, name: str = Form(...), photo: UploadFile = File(...)):
-    name = name.strip()
-    if not 1 <= len(name) <= 60:
-        raise HTTPException(400, '姓名须为 1～60 个字符')
-    raw = photo.file.read(10 * 1024 * 1024 + 1)
-    if len(raw) > 10 * 1024 * 1024:
-        raise HTTPException(400, '照片应小于 10MB')
-    try:
-        image = decode_query_image(raw)
-    except (UnidentifiedImageError, OSError):
-        raise HTTPException(400, '无法读取图片')
-    extractor = embedding.feature_extractors[FACE]
-    features = extractor.extract_image_features(extractor.preprocess_image([image]))[0]
-    if len(features.vectors) != 1:
-        raise HTTPException(400, f'检测到 {len(features.vectors)} 张人脸，请使用清晰的单人照片')
-    vector = np.asarray(features.vectors[0:1], dtype=np.float32)
-    output = io.BytesIO()
-    image.save(output, 'JPEG', quality=90)
-    with sqlite3.connect(DB) as db:
-        try:
-            db.execute('INSERT INTO people VALUES (?, ?, ?, ?)', (name, vector.tobytes(), output.getvalue(), FACE))
-        except sqlite3.IntegrityError:
-            raise HTTPException(409, '此姓名已登记，请先删除或使用另一姓名')
-    return {'name': name, 'dimensions': vector.shape[1]}
-
-
-@app.delete('/mvp-api/people/{name}')
-def remove_person(name: str):
-    with sqlite3.connect(DB) as db:
-        db.execute('DELETE FROM people WHERE name=?', (name,))
-    return {'deleted': name}
-
-
 @app.post('/mvp-api/people/{name}/search')
 def search_person(name: str, search: SearchServiceDep, project: ProjectServiceDep,
                   embedding: EmbeddingServiceDep, scene: str = Form('', max_length=1000),
                   threshold: float = Form(0.45, ge=0, le=1)):
     started = time.perf_counter()
-    with sqlite3.connect(DB) as db:
-        row = db.execute('SELECT vector, model FROM people WHERE name=?', (name,)).fetchone()
-    if row is None:
-        raise HTTPException(404, '未登记此姓名，请先上传照片登记')
-    if row[1] != FACE:
-        raise HTTPException(409, '人脸模型已改变，请重新登记')
-    vector = np.frombuffer(row[0], dtype=np.float32).reshape(1, -1).copy()
+    vector = load_person_vectors(DB, name, FACE)
     scene = scene.strip()
     if scene:
         try:
@@ -299,10 +242,8 @@ def search_person(name: str, search: SearchServiceDep, project: ProjectServiceDe
                 hit.update(evidence.get(str(hit['vector_id']), {}))
         payload['time'] = time.perf_counter()-started
         return payload
-    result = search.search_with_feature(vector, modality_type=ModalityType.VIDEO,
-        feature_extractor_id=FACE, start=0, end=100, filter_specs={}, vector_id_constraint=None)
-    response = search_output_to_response(config, project,
-        [VectorQueryTerm(term_id='person', is_negative=False, vector=vector)], MediaType.VIDEO, result, 1)
+    result = search_registered_faces(vector, search=search, face_model=FACE, threshold=threshold, limit=100)
+    response = search_output_to_response(config, project, [], MediaType.VIDEO, result, 1)
     response.time = time.perf_counter() - started
     return response
 
@@ -318,9 +259,9 @@ def query_image(photo):
         raise HTTPException(400, '无法读取图片')
 
 
-def segment_search(project, search, query, limit=20):
+def segment_search(project, search, query, limit=20, image=None):
     try:
-        return native_text_search(project, search, config, query, limit)[0]
+        return native_segment_search(project, search, config, query, limit, image=image, actions=actions)[0]
     except ValueError as exc:
         raise HTTPException(409, str(exc)) from exc
     except RuntimeError as exc:
@@ -333,10 +274,10 @@ def search_segments(project: ProjectServiceDep, search: SearchServiceDep, query:
                     photo: UploadFile | None = File(None),
                     limit: int = Form(20, ge=1, le=50), refine: bool = Form(False)):
     query = query.strip()
-    if photo is not None: raise HTTPException(400, '图片请使用物体检索，已移除图文联合检索')
     if not query: raise HTTPException(400, '请输入场景或动作描述')
     if refine: raise HTTPException(410, '物体图片已恢复 WISE OWLv2，请刷新页面使用物体图片入口')
-    return segment_search(project, search, query, limit)
+    image = query_image(photo) if photo is not None else None
+    return segment_search(project, search, query, limit, image=image)
 
 
 @app.post('/mvp-api/library/search')
@@ -345,10 +286,9 @@ def library_query(project: ProjectServiceDep, search: SearchServiceDep, embeddin
                   filename: str = Form('', max_length=255), photo: UploadFile | None = File(None),
                   threshold: float = Form(.45, ge=0, le=1), limit: int = Form(100, ge=1, le=100)):
     query, person, filename = query.strip(), person.strip(), filename.strip()
-    if query and photo is not None: raise HTTPException(400, '自然语言与参考图片请分开查询')
     raw = None
     if photo is not None:
-        query_image(photo)  # Validate size and readability before the native WISE image path.
+        query_image(photo)  # Validate size and readability before either image search path.
         photo.file.seek(0)
         raw = photo.file.read()
     try:

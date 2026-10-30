@@ -12,8 +12,10 @@ import uuid
 
 try:
     from .qwen_project import retained_fingerprint, FACE
+    from .release_retention import publish_pointer, prune_releases
 except ImportError:
     from qwen_project import retained_fingerprint, FACE
+    from release_retention import publish_pointer, prune_releases
 
 OWL = 'transformers/owlv2/google/owlv2-base-patch16-ensemble'
 ROOT = Path(__file__).resolve().parents[1]
@@ -121,9 +123,8 @@ def publish(root, stage):
         if str(current)!=record['base']: raise RuntimeError('视频库已更新，请基于最新版本重新恢复')
         if retained_fingerprint(stage)!=record['retained']: raise RuntimeError('恢复版本校验失败')
         validate_owl(stage)
-        temporary=root/'projects/demo.next';temporary.unlink(missing_ok=True)
-        temporary.symlink_to(os.path.relpath(stage,temporary.parent))
-        os.replace(temporary,root/'projects/demo')
+        publish_pointer(root, stage)
+        prune_releases(root)
 
 
 if __name__=='__main__':

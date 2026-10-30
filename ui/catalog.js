@@ -1,5 +1,5 @@
 import {el, node, api, feedback, formatTime, formatSize} from './api.js';
-import {mountMaintenance} from './maintenance.js';
+import {mountMaintenance} from './maintenance.js?v=batch-1-people-2';
 import {createVideoDeletion, trashIcon} from './video-delete.js';
 import {createVideoPlayer} from './video-player.js';
 
@@ -7,7 +7,7 @@ const PAGE_SIZE = 50;
 let catalog = [], items = [], page = 1, mode = 'browse', applied = {}, limited = false;
 let request = null, generation = 0, previewURL = null, qwenLoaded = null;
 const natural = el('natural'), reference = el('reference');
-const labels = {text:'语义片段', object:'物体图片', face:'人物', person_scene:'人物与场景', person_object:'人物与物体'};
+const labels = {text:'语义片段', image_text:'图文检索', object:'物体图片', face:'人物', person_scene:'人物与场景', person_image_text:'人物与图文', person_object:'人物与物体'};
 
 const openDeletion = createVideoDeletion(async (item,result) => {
   cancelSearch();
@@ -18,10 +18,8 @@ const openDeletion = createVideoDeletion(async (item,result) => {
 });
 
 function syncInputs() {
+  for (const id of ['natural', 'filename']) el(`clear-${id}`).hidden = !el(id).value;
   const hasImage = Boolean(reference.files[0]);
-  natural.disabled = hasImage;
-  reference.disabled = Boolean(natural.value.trim());
-  reference.closest('.image-picker').classList.toggle('unavailable', reference.disabled);
   el('clear-reference').hidden = !hasImage;
   reference.closest('.image-input').classList.toggle('has-image', hasImage);
 }
@@ -39,7 +37,15 @@ reference.addEventListener('change', () => {
   el('image-preview').hidden = false; el('image-prompt').textContent = file.name;
   feedback('search-error'); syncInputs();
 });
-natural.addEventListener('input', syncInputs);
+for (const id of ['natural', 'filename']) {
+  const input = el(id);
+  input.addEventListener('input', syncInputs);
+  el(`clear-${id}`).onclick = () => {
+    input.value = '';
+    input.dispatchEvent(new Event('input', {bubbles:true}));
+    input.focus();
+  };
+}
 el('person').addEventListener('change', syncInputs);
 el('clear-reference').onclick = event => { event.preventDefault(); clearReference(); reference.focus(); };
 
@@ -120,7 +126,6 @@ function cancelSearch() {
 el('query-form').onsubmit = async event => {
   event.preventDefault(); cancelSearch(); feedback('search-error');
   const input = {query:natural.value.trim(), person:el('person').value.trim(), filename:el('filename').value.trim(), image:reference.files[0]?.name};
-  if (input.query && input.image) { feedback('search-error', '自然语言与参考图片请分开查询', true); return; }
   const form = new FormData();
   for (const key of ['query','person','filename']) form.set(key,input[key]);
   if (reference.files[0]) form.set('photo',reference.files[0]);
@@ -130,7 +135,7 @@ el('query-form').onsubmit = async event => {
   try {
     const data = await api('/mvp-api/library/search',{method:'POST',body:form,signal:controller.signal});
     if (current !== generation) return;
-    if (data.mode === 'text' || (data.mode === 'person_scene' && data.items.length)) qwenLoaded = true;
+    if (['text','image_text'].includes(data.mode) || (['person_scene','person_image_text'].includes(data.mode) && data.items.length)) qwenLoaded = true;
     items = data.items; mode = data.mode; limited = data.limited; applied = input; page = 1; render();
     el('search-status').textContent = '';
   } catch (error) {

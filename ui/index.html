@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>寻帧 · 视频检索</title><link rel="stylesheet" href="/mvp/catalog.css?v=6"></head><body>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>寻帧 · 视频检索</title><link rel="stylesheet" href="/mvp/catalog.css?v=9"></head><body>
 <header class="topbar"><a class="brand" href="/mvp/">寻帧 <span class="brand-en">VIDEO LIBRARY</span></a><div class="header-right"><button id="open-people" disabled class="outline-button" type="button">人脸维护</button></div></header>
 <main class="workspace">
 <section class="query-panel"><div class="query-heading"><h1>搜索视频</h1><span>从描述、人物或参考图片开始</span></div>
-<form id="query-form"><label class="field natural"><span>自然语言</span><div class="input-wrap"><input id="natural" maxlength="1000" placeholder="描述你想找的场景或动作" autocomplete="off"></div></label>
+<form id="query-form"><div class="field natural"><label for="natural">自然语言</label><div class="input-wrap"><input id="natural" maxlength="1000" placeholder="描述你想找的场景或动作" autocomplete="off"><button id="clear-natural" class="clear-input" type="button" aria-label="清空自然语言" title="清空自然语言" hidden>×</button></div></div>
 <label class="field person"><span>人名</span><select id="person"><option value="">全部人物</option></select></label>
 <div class="field image"><span>以图搜图</span><div class="image-input"><label class="image-picker" for="reference"><span id="image-prompt">▧　选择参考图片</span><img id="image-preview" hidden><input id="reference" type="file" accept="image/*"></label><button id="clear-reference" type="button" aria-label="清空参考图片" title="清空图片" hidden>×</button></div></div>
-<label class="field filename"><span>视频名称</span><input id="filename" maxlength="255" placeholder="输入文件名" autocomplete="off"></label>
+<div class="field filename"><label for="filename">视频名称</label><div class="input-wrap"><input id="filename" maxlength="255" placeholder="输入文件名" autocomplete="off"><button id="clear-filename" class="clear-input" type="button" aria-label="清空视频名称" title="清空视频名称" hidden>×</button></div></div>
 <div class="query-actions"><button id="reset" type="button">重置条件</button><button id="search-button" class="search-button" type="submit"><span class="search-icon" aria-hidden="true">⌕</span><span id="search-label">查询</span></button></div></form></section>
 <p id="search-error" role="alert" hidden></p><p id="index-status" hidden></p><section class="library"><div class="library-toolbar"><div><h2 id="list-title">全部视频</h2><span id="count"></span><button id="open-upload" disabled class="add-video-button" type="button"><span>＋</span> 新增视频</button></div></div>
 <p id="search-status" role="status" aria-live="polite"></p><div class="library-content"><div id="video-grid"></div></div>
 <div class="pagination"><span id="range"></span><nav id="pages" aria-label="视频分页"></nav></div></section>
 </main><dialog id="video-dialog"><button id="close-video" aria-label="关闭预览">×</button><video controls playsinline></video><h3></h3><p id="play-caption"></p></dialog>
-<script type="module" src="/mvp/catalog.js?v=8"></script></body></html>
+<script type="module" src="/mvp/catalog.js?v=mixed-9-batch-1-people-2"></script></body></html>

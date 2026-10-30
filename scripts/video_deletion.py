@@ -199,6 +199,7 @@ def delete_video(manager, media_id, revision):
         # Online queries now use the complete new snapshot. Cleanup is resumable.
         try:
             cleanup_deleted(manager,stage,record)
+            manager.prune_history(force=True)
         except Exception:
             import logging
             logging.exception('Video removed; durable cleanup will resume')

@@ -192,25 +192,28 @@ class ActionEngine:
             self.snapshot, self.cached_project = snapshot, project
         return self.snapshot
 
-    def query_vector(self, query):
+    def query_vector(self, query, *, image=None):
         query = query.strip()
         if not query:
             raise ValueError('请输入场景或动作描述')
         key = query
-        cached = key in self.query_vectors
+        cached = image is None and key in self.query_vectors
         if cached:
             vector = self.query_vectors[key]
             self.query_vectors.move_to_end(key)
         else:
             model = self.model()
-            vector = model.extract_text_features([query])
+            vector = (model.extract_query_features(image, query) if image is not None
+                      else model.extract_text_features([query]))
             vector = np.asarray(vector, dtype='float32')
             norm = np.linalg.norm(vector, axis=-1, keepdims=True)
             if not np.isfinite(vector).all() or np.any(norm < 1e-8):
                 raise RuntimeError('查询向量无效，请重试')
             vector = vector / norm
-            self.query_vectors[key] = vector
-            if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
+            # Image queries must never reuse or overwrite the text-only cache.
+            if image is None:
+                self.query_vectors[key] = vector
+                if len(self.query_vectors) > 64: self.query_vectors.popitem(last=False)
         return vector, cached
 
     def search(self, project, query, limit, *, media_ids=None, group_by_video=False):

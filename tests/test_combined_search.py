@@ -45,3 +45,15 @@ def test_filename_restriction_applies_before_person_scene_ranking():
     result,evidence = person_scene_search(np.ones((1,4)), '汽车', .45,
         face_model='face',search=search,actions=actions,project='project',allowed_media={2})
     assert result.ids==[11] and list(evidence)==['11']
+
+
+def test_person_with_image_and_text_keeps_identity_and_containing_window():
+    search = face_search([.95,.1,.8], [(1,1.),(1,2.),(2,10.)])
+    actions = NS(get_snapshot=Mock(return_value=({'segments':[dict(media_id=1,ts=0,te=8),
+        dict(media_id=2,ts=0,te=8)]},np.array([[.7],[.9]]),None)),
+        query_vector=Mock(return_value=(np.ones((1,1)),False)))
+    image = object()
+    result, evidence = person_scene_search(np.ones((1,4)), '汽车', .45,
+        face_model='face',search=search,actions=actions,project='project',query_image=image)
+    assert result.ids == [10] and evidence['10']['face_similarity'] >= .45
+    actions.query_vector.assert_called_once_with('汽车', image=image)

@@ -18,6 +18,11 @@ from pathlib import Path
 
 from fastapi import HTTPException
 
+if __package__:
+    from .release_retention import prune_releases
+else:
+    from release_retention import prune_releases
+
 MAX_UPLOAD = 1024 * 1024 * 1024
 EXTENSIONS = {'.mp4', '.mov', '.mkv', '.avi', '.webm', '.m4v', '.mpeg', '.mpg', '.ts'}
 ACTIVE = ('validating', 'transcoding', 'extracting', 'indexing', 'action_indexing', 'publishing')
@@ -62,6 +67,7 @@ class IngestionManager:
             from frame_worker import FrameWorker
         self.frame_worker = FrameWorker(self.root, self.stopping) if reuse == '1' else None
         self.mutation_lock = threading.Lock()
+        self.retention_retry_at = 0.0
         self.loop = None
         with self.connect() as db:
             db.execute('PRAGMA journal_mode=WAL')
@@ -192,6 +198,7 @@ class IngestionManager:
                     logging.exception('视频清理尚未完成，暂缓发布新版本')
                     self.stopping.wait(2)
                     continue
+                self.prune_history()
                 if self.backfill_requested:
                     self.backfill_requested = False
                     self.backfill_actions()
@@ -205,6 +212,12 @@ class IngestionManager:
             if not row:
                 self.wakeup.wait(1)
                 self.wakeup.clear()
+
+    def prune_history(self, force=False):
+        # Called only with mutation_lock held; cleanup never changes job success.
+        if force or time.monotonic() >= self.retention_retry_at:
+            self.retention_retry_at = time.monotonic() + 30
+            prune_releases(self.root)
 
     def request_backfill(self):
         if self.action_state['status'] in ('pending', 'building'):
@@ -255,6 +268,7 @@ class IngestionManager:
                 reset_native_qwen(stage)
             self.build_actions(stage)
             self.wait_async(self.publisher(stage))
+            self.prune_history(force=True)
             self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持 Qwen 片段检索'}
         except Exception as exc:
             self.action_state = {'status': 'failed', 'progress': 0, 'message': str(exc)[:1500]}
@@ -362,6 +376,7 @@ class IngestionManager:
                         future.cancel()
                         raise RuntimeError('发布等待已中断，可重试处理')
             published=True
+            self.prune_history(force=True)
             if self.action_builder:
                 self.action_state = {'status': 'ready', 'progress': 100, 'message': '全部已入库视频支持 Qwen 片段检索'}
             self.update(jid,status='completed',stage='已入库',progress=100,media_id=media_id,message='已加入视频库，可直接播放和检索')

@@ -14,6 +14,7 @@ from fastapi import HTTPException, UploadFile
 from wise.wise_project import WiseProject
 from scripts.action_search import ActionEngine, SETTINGS, media_catalog, plan, read_snapshot
 from scripts.ingestion import IngestionManager
+from scripts.release_retention import publish_pointer, prune_releases
 from scripts.qwen_project import FACE, OWL
 from scripts.video_deletion import (delete_video, prune_project, read_media,
     media_revision, pending_cleanup, validate_stores, recover_action_swap)
@@ -49,9 +50,38 @@ def fixture(root):
     (root/'projects/demo').symlink_to(stage)
     manager.update(job['id'],status='completed',media_id=20)
     async def publish(new):
-        temporary=root/'projects/next';temporary.symlink_to(new);os.replace(temporary,root/'projects/demo')
+        publish_pointer(root, new)
     manager.publisher=publish;manager.wait_async=asyncio.run
     return manager,stage,job
+
+
+def test_delete_prunes_old_releases_after_cleaning_retained_predecessor(tmp_path):
+    manager,old,_ = fixture(tmp_path)
+    second = tmp_path/'projects/releases/second/demo'
+    shutil.copytree(old, second)
+    publish_pointer(tmp_path, second)
+    result = delete_video(manager,20,media_revision(read_media(second,20),second))
+    assert not result['cleanup_pending']
+    assert not old.parent.exists()
+    assert second.exists() and read_media(second,20) is None
+    assert read_media(second,10) and (tmp_path/'data/videos/keep.mp4').exists()
+    assert len(list((tmp_path/'projects/releases').iterdir())) == 2
+
+
+def test_failed_delete_cleanup_keeps_history_until_recovery(tmp_path,monkeypatch):
+    from scripts import video_deletion as module
+    manager,old,_ = fixture(tmp_path)
+    second = tmp_path/'projects/releases/second/demo'
+    shutil.copytree(old, second); publish_pointer(tmp_path, second)
+    cleanup = module.cleanup_deleted
+    monkeypatch.setattr(module,'cleanup_deleted',Mock(side_effect=OSError('cleanup failure')))
+    result = delete_video(manager,20,media_revision(read_media(second,20),second))
+    assert result['cleanup_pending']
+    assert prune_releases(tmp_path) == [] and old.exists()
+    monkeypatch.setattr(module,'cleanup_deleted',cleanup)
+    pending_cleanup(manager)
+    manager.prune_history(force=True)
+    assert not old.parent.exists() and read_media(second,20) is None
 
 
 def test_delete_cleans_all_stores_snapshots_files_jobs_and_preserves_other_vectors(tmp_path):

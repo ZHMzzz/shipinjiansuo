@@ -11,9 +11,11 @@ import uuid
 try:
     from .action_search import read_snapshot, SETTINGS
     from .ingestion import prepare_versions
+    from .release_retention import publish_pointer, prune_releases
 except ImportError:
     from action_search import read_snapshot, SETTINGS
     from ingestion import prepare_versions
+    from release_retention import publish_pointer, prune_releases
 
 FACE = 'deepinsight/insightface/buffalo_l/_unknown'
 OWL = 'transformers/owlv2/google/owlv2-base-patch16-ensemble'
@@ -75,11 +77,9 @@ def prepare_qwen_project(root):
             pointer = root/'projects/demo'
             if pointer.resolve() != current:
                 raise RuntimeError('视频库版本已变化，未发布迁移')
-            temporary = root/'projects/demo.next'
-            temporary.unlink(missing_ok=True)
-            temporary.symlink_to(os.path.relpath(stage, pointer.parent))
-            os.replace(temporary, pointer)
+            publish_pointer(root, stage)
             published = True
+            prune_releases(root)
             return stage
         finally:
             if not published and release.exists(): shutil.rmtree(release)
